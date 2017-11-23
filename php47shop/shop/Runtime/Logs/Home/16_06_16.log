@@ -1,0 +1,27 @@
+[ 2016-06-16T10:34:41+08:00 ] 127.0.0.1 /index.php/Home/Goods/showlist/cat_id/18
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ga.goods_ids' in 'where clause'
+
+[ 2016-06-16T11:58:46+08:00 ] 127.0.0.1 /index.php/Home/Goods/showlist/cat_id/18/attrid_19/%E7%BB%BF%E8%89%B2/attrid_15/%E7%BF%BB%E7%9B%96
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'distinct goods_id) FROM `sp_goods_attr` WHERE `attr_id` = 19 AND `attr_value` = ' at line 1
+
+[ 2016-06-16T12:03:48+08:00 ] 127.0.0.1 /index.php/Home/Goods/showlist/cat_id/18/attrid_19/%E7%BB%BF%E8%89%B2/attrid_15/%E7%BF%BB%E7%9B%96
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND a.attr_sel = '1' GROUP BY a.attr_id' at line 1
+
+[ 2016-06-16T12:05:05+08:00 ] 127.0.0.1 /index.php/Home/Goods/showlist/cat_id/18/attrid_19/%E7%BB%BF%E8%89%B2/attrid_15/%E7%BF%BB%E7%9B%96
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND a.attr_sel = '1' GROUP BY a.attr_id' at line 1
+
+[ 2016-06-16T12:05:11+08:00 ] 127.0.0.1 /index.php/Home/Goods/showlist/cat_id/18/attrid_19/%E7%BB%BF%E8%89%B2/attrid_15/%E7%BF%BB%E7%9B%96
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND a.attr_sel = '1' GROUP BY a.attr_id' at line 1
+
+[ 2016-06-16T12:05:15+08:00 ] 127.0.0.1 /index.php/Home/Goods/showlist/cat_id/18/attrid_19/%E7%BB%BF%E8%89%B2
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND a.attr_sel = '1' GROUP BY a.attr_id' at line 1
+
+[ 2016-06-16T12:05:23+08:00 ] 127.0.0.1 /index.php/Home/Goods/showlist/cat_id/18//attrid_19/%E7%99%BD%E8%89%B2
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND a.attr_sel = '1' GROUP BY a.attr_id' at line 1
+
+[ 2016-06-16T12:06:01+08:00 ] 127.0.0.1 /index.php/Home/Goods/showlist/cat_id/18//attrid_19/%E7%99%BD%E8%89%B2
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND a.attr_sel = '1' GROUP BY a.attr_id' at line 1
+
+[ 2016-06-16T12:13:58+08:00 ] 127.0.0.1 /index.php/Home/Goods/showlist/cat_id/18
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND a.attr_sel = '1' GROUP BY a.attr_id' at line 1
+

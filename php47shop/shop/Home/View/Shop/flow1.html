@@ -1,0 +1,99 @@
+{__NOLAYOUT__}
+<layout name="Pub/layout2" />
+
+
+	<link rel="stylesheet" href="{:C('CSS_URL')}cart.css" type="text/css">
+	
+	<div style="clear:both;"></div>
+
+	<!-- 主体部分 start -->
+	<div class="mycart w990 mt10 bc">
+		<h2><span>我的购物车</span></h2>
+		<table>
+			<thead>
+				<tr>
+					<th class="col1">商品名称</th>
+					<th class="col3">单价</th>
+					<th class="col4">数量</th>	
+					<th class="col5">小计</th>
+					<th class="col6">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+
+<foreach name='cartinfo' item='v'>
+<tr>
+	<td class="col1"><a href=""><img src="{:C('SITE_URL')}{$picTmp[$v['goods_id']]}" alt="" /></a>  <strong><a href="">{$v.goods_name}</a></strong></td>
+	<td class="col3">￥<span>{$v.goods_price}</span></td>
+	<td class="col4"> 
+		<a href="javascript:;" class="reduce_num" onclick="change_number('red',{$v.goods_id})"></a>
+		<input type="text" id="shuliang_{$v.goods_id}" name="amount" value="{$v.goods_buy_number}" class="amount"  onblur="change_number('mod',{$v.goods_id})" />
+		<a href="javascript:;" class="add_num" onclick="change_number('add',{$v.goods_id})"></a>
+	</td>
+	<td class="col5">￥<span id="xiaoji_{$v.goods_id}">{$v.goods_total_price}</span></td>
+	<td class="col6"><a href="">删除</a></td>
+</tr>
+</foreach>
+
+
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="6">购物金额总计： <strong>￥ <span id="total">{$numberprice.price}</span></strong></td>
+				</tr>
+			</tfoot>
+		</table>
+		<div class="cart_btn w990 bc mt10">
+			<a href="" class="continue">继续购物</a>
+			<a href="{:U('Shop/flow2')}" class="checkout">结 算</a>
+		</div>
+	</div>
+	<!-- 主体部分 end -->
+
+	<div style="clear:both;"></div>
+
+<script type="text/javascript">
+//购物车单个商品数量发生变化
+//参数：
+//flag = red数量减少   add增加数量  mod手动修改数量
+//goods_id  被修改数量的商品id
+function change_number(flag,goods_id){
+	var num = $('#shuliang_'+goods_id).val();//获取原数量
+	if(flag==='add'){
+		//数量增减
+		num++;
+	}else if(flag==='red'){
+		//数量增减
+		if(num<2){
+			alert('商品数量必须大于1个，否则请删除之');
+			return false;
+		}
+		num--;
+	}else if(flag==='mod'){
+		//手动修改数量,数量介于1-20之间
+		var reg = /^([1-9]|1\d|20)$/;
+		if(num.match(reg)===null){
+			alert('手动修改的数量不合法');
+			window.location.href = window.location.href; //浏览器更新
+			return false;
+		}
+	}else{
+		alert('参数错误，请联系系统管理员');
+		return false;
+	}
+
+	//调用Ajax实现数量修改
+	$.ajax({
+		url:"{:U('Shop/changeNumber')}",
+		data:{'num':num,'goods_id':goods_id},
+		dataType:'json',
+		Type:'get',
+		success:function(msg){
+			//把小计价格 和 总价格 显示给页面
+			$('#xiaoji_'+goods_id).html(msg.xiaoji);
+			$('#total').html(msg.zongji);
+			$('#shuliang_'+goods_id).val(num);//更新商品的数量
+		}
+	});
+}
+</script>

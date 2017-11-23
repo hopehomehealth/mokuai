@@ -1,0 +1,455 @@
+[ 2016-06-04T08:05:34+08:00 ] 127.0.0.1 /index.php/Home/Shop/addCart?goods_id=24
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001413s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002541s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0109s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0008s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0006s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0010s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\web\php45\shop\Tools\Cart.class.php 第 15 行.
+SQL: SHOW COLUMNS FROM `sp_goods` [ RunTime:0.0097s ]
+SQL: SELECT * FROM `sp_goods` WHERE `goods_id` = 24 LIMIT 1   [ RunTime:0.0009s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002447s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002616s ]
+
+[ 2016-06-04T08:05:42+08:00 ] 127.0.0.1 /index.php/Home/Shop/addCart?goods_id=25
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001459s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002792s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0144s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0008s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0008s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0011s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\web\php45\shop\Tools\Cart.class.php 第 15 行.
+SQL: SHOW COLUMNS FROM `sp_goods` [ RunTime:0.0197s ]
+SQL: SELECT * FROM `sp_goods` WHERE `goods_id` = 25 LIMIT 1   [ RunTime:0.0023s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002269s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002447s ]
+
+[ 2016-06-04T08:05:48+08:00 ] 127.0.0.1 /index.php/Home/Shop/addCart?goods_id=26
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001475s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002635s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0099s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0008s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0005s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0006s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\web\php45\shop\Tools\Cart.class.php 第 15 行.
+SQL: SHOW COLUMNS FROM `sp_goods` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `sp_goods` WHERE `goods_id` = 26 LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002959s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003279s ]
+
+[ 2016-06-04T08:05:54+08:00 ] 127.0.0.1 /index.php/Home/Shop/addCart?goods_id=27
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001782s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003101s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0104s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0012s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0008s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0009s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\web\php45\shop\Tools\Cart.class.php 第 15 行.
+SQL: SHOW COLUMNS FROM `sp_goods` [ RunTime:0.0136s ]
+SQL: SELECT * FROM `sp_goods` WHERE `goods_id` = 27 LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002330s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002488s ]
+
+[ 2016-06-04T08:16:48+08:00 ] 127.0.0.1 /index.php/Home/Shop/delGoods?goods_id=24
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001754s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003118s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0160s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0013s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0009s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0008s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\web\php45\shop\Tools\Cart.class.php 第 15 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001670s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001837s ]
+
+[ 2016-06-04T08:19:17+08:00 ] 127.0.0.1 /index.php/Home/Shop/delGoods?goods_id=25
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002228s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003692s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0107s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0009s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0006s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0005s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\web\php45\shop\Tools\Cart.class.php 第 15 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002702s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002885s ]
+
+[ 2016-06-04T08:20:38+08:00 ] 127.0.0.1 /index.php/Home/Shop/delGoods?goods_id=26
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001720s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002789s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0008s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0012s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\web\php45\shop\Tools\Cart.class.php 第 15 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001690s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001855s ]
+
+[ 2016-06-04T08:20:43+08:00 ] 127.0.0.1 /index.php/Home/Shop/addCart?goods_id=27
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001406s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002418s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0109s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0009s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0007s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0008s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\web\php45\shop\Tools\Cart.class.php 第 15 行.
+SQL: SHOW COLUMNS FROM `sp_goods` [ RunTime:0.0152s ]
+SQL: SELECT * FROM `sp_goods` WHERE `goods_id` = 27 LIMIT 1   [ RunTime:0.0024s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004994s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005190s ]
+
+[ 2016-06-04T08:20:50+08:00 ] 127.0.0.1 /index.php/Home/Shop/addCart?goods_id=24
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.015680s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.040889s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0113s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0011s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0009s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0007s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\web\php45\shop\Tools\Cart.class.php 第 15 行.
+SQL: SHOW COLUMNS FROM `sp_goods` [ RunTime:0.0147s ]
+SQL: SELECT * FROM `sp_goods` WHERE `goods_id` = 24 LIMIT 1   [ RunTime:0.0013s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001762s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001937s ]
+
+[ 2016-06-04T08:20:56+08:00 ] 127.0.0.1 /index.php/Home/Shop/addCart?goods_id=25
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001304s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002281s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0113s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0007s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0007s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\web\php45\shop\Tools\Cart.class.php 第 15 行.
+SQL: SHOW COLUMNS FROM `sp_goods` [ RunTime:0.0129s ]
+SQL: SELECT * FROM `sp_goods` WHERE `goods_id` = 25 LIMIT 1   [ RunTime:0.0016s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001715s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001885s ]
+
+[ 2016-06-04T08:21:03+08:00 ] 127.0.0.1 /index.php/Home/Shop/addCart?goods_id=26
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001573s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002777s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0113s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0009s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0007s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0008s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\web\php45\shop\Tools\Cart.class.php 第 15 行.
+SQL: SHOW COLUMNS FROM `sp_goods` [ RunTime:0.0143s ]
+SQL: SELECT * FROM `sp_goods` WHERE `goods_id` = 26 LIMIT 1   [ RunTime:0.0012s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001780s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001982s ]
+
+[ 2016-06-04T08:21:52+08:00 ] 127.0.0.1 /index.php/Home/Shop/delGoods?goods_id=24
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001514s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002707s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0116s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0012s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0008s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0007s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\web\php45\shop\Tools\Cart.class.php 第 15 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001687s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001845s ]
+
+[ 2016-06-04T08:22:03+08:00 ] 127.0.0.1 /index.php/Home/Shop/delGoods?goods_id=25
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001444s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002474s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0124s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0009s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\web\php45\shop\Tools\Cart.class.php 第 15 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001476s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001684s ]
+
+[ 2016-06-04T10:25:10+08:00 ] 127.0.0.1 /index.php/Home/Shop/addCart?goods_id=24
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001758s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002852s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0068s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0008s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0005s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0005s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\web\php45\shop\Tools\Cart.class.php 第 15 行.
+SQL: SHOW COLUMNS FROM `sp_goods` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `sp_goods` WHERE `goods_id` = 24 LIMIT 1   [ RunTime:0.0011s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001541s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001776s ]
+
+[ 2016-06-04T10:25:16+08:00 ] 127.0.0.1 /index.php/Home/Shop/addCart?goods_id=25
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000917s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001630s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0082s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0007s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0004s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\web\php45\shop\Tools\Cart.class.php 第 15 行.
+SQL: SHOW COLUMNS FROM `sp_goods` [ RunTime:0.0104s ]
+SQL: SELECT * FROM `sp_goods` WHERE `goods_id` = 25 LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001601s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001762s ]
+
+[ 2016-06-04T10:25:23+08:00 ] 127.0.0.1 /index.php/Home/Shop/addCart?goods_id=26
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001279s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002042s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0088s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0006s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0006s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\web\php45\shop\Tools\Cart.class.php 第 15 行.
+SQL: SHOW COLUMNS FROM `sp_goods` [ RunTime:0.0116s ]
+SQL: SELECT * FROM `sp_goods` WHERE `goods_id` = 26 LIMIT 1   [ RunTime:0.0011s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001498s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001645s ]
+
+[ 2016-06-04T10:25:29+08:00 ] 127.0.0.1 /index.php/Home/Shop/addCart?goods_id=27
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001481s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002572s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0071s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0006s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0007s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\web\php45\shop\Tools\Cart.class.php 第 15 行.
+SQL: SHOW COLUMNS FROM `sp_goods` [ RunTime:0.0079s ]
+SQL: SELECT * FROM `sp_goods` WHERE `goods_id` = 27 LIMIT 1   [ RunTime:0.0008s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001088s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001185s ]
+
+[ 2016-06-04T11:24:41+08:00 ] 127.0.0.1 /index.php/Home/Shop/addCart?goods_id=24
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001377s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002354s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0086s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0012s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0009s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0007s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\web\php45\shop\Tools\Cart.class.php 第 15 行.
+SQL: SHOW COLUMNS FROM `sp_goods` [ RunTime:0.0103s ]
+SQL: SELECT * FROM `sp_goods` WHERE `goods_id` = 24 LIMIT 1   [ RunTime:0.0007s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001509s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001672s ]
+
+[ 2016-06-04T11:24:47+08:00 ] 127.0.0.1 /index.php/Home/Shop/addCart?goods_id=25
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001548s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002683s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0098s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0005s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0004s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\web\php45\shop\Tools\Cart.class.php 第 15 行.
+SQL: SHOW COLUMNS FROM `sp_goods` [ RunTime:0.0085s ]
+SQL: SELECT * FROM `sp_goods` WHERE `goods_id` = 25 LIMIT 1   [ RunTime:0.0009s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001602s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001734s ]
+
+[ 2016-06-04T11:24:54+08:00 ] 127.0.0.1 /index.php/Home/Shop/addCart?goods_id=26
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000984s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001680s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0007s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0005s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\web\php45\shop\Tools\Cart.class.php 第 15 行.
+SQL: SHOW COLUMNS FROM `sp_goods` [ RunTime:0.0081s ]
+SQL: SELECT * FROM `sp_goods` WHERE `goods_id` = 26 LIMIT 1   [ RunTime:0.0007s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001512s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001657s ]
+
+[ 2016-06-04T11:26:14+08:00 ] 127.0.0.1 /index.php/Home/Shop/addCart?goods_id=24
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001231s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002125s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0104s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0006s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0005s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\web\php45\shop\Tools\Cart.class.php 第 15 行.
+SQL: SHOW COLUMNS FROM `sp_goods` [ RunTime:0.0083s ]
+SQL: SELECT * FROM `sp_goods` WHERE `goods_id` = 24 LIMIT 1   [ RunTime:0.0006s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001300s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001436s ]
+
+[ 2016-06-04T11:26:19+08:00 ] 127.0.0.1 /index.php/Home/Shop/addCart?goods_id=25
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002094s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003181s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0093s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0009s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0005s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0006s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\web\php45\shop\Tools\Cart.class.php 第 15 行.
+SQL: SHOW COLUMNS FROM `sp_goods` [ RunTime:0.0093s ]
+SQL: SELECT * FROM `sp_goods` WHERE `goods_id` = 25 LIMIT 1   [ RunTime:0.0007s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001271s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001386s ]
+
+[ 2016-06-04T11:26:25+08:00 ] 127.0.0.1 /index.php/Home/Shop/addCart?goods_id=26
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002224s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003910s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0112s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0017s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0006s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0005s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\web\php45\shop\Tools\Cart.class.php 第 15 行.
+SQL: SHOW COLUMNS FROM `sp_goods` [ RunTime:0.0103s ]
+SQL: SELECT * FROM `sp_goods` WHERE `goods_id` = 26 LIMIT 1   [ RunTime:0.0008s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001726s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001935s ]
+
+[ 2016-06-04T11:27:07+08:00 ] 127.0.0.1 /index.php/Home/Shop/addCart?goods_id=24
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001276s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002015s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0006s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0005s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\web\php45\shop\Tools\Cart.class.php 第 15 行.
+SQL: SHOW COLUMNS FROM `sp_goods` [ RunTime:0.0097s ]
+SQL: SELECT * FROM `sp_goods` WHERE `goods_id` = 24 LIMIT 1   [ RunTime:0.0016s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001406s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001614s ]
+
+[ 2016-06-04T11:27:12+08:00 ] 127.0.0.1 /index.php/Home/Shop/addCart?goods_id=25
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001510s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002950s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0111s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0007s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0005s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0004s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\web\php45\shop\Tools\Cart.class.php 第 15 行.
+SQL: SHOW COLUMNS FROM `sp_goods` [ RunTime:0.0073s ]
+SQL: SELECT * FROM `sp_goods` WHERE `goods_id` = 25 LIMIT 1   [ RunTime:0.0006s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001147s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001245s ]
+
+[ 2016-06-04T11:27:19+08:00 ] 127.0.0.1 /index.php/Home/Shop/addCart?goods_id=26
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000923s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001625s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0076s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0006s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0005s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\web\php45\shop\Tools\Cart.class.php 第 15 行.
+SQL: SHOW COLUMNS FROM `sp_goods` [ RunTime:0.0176s ]
+SQL: SELECT * FROM `sp_goods` WHERE `goods_id` = 26 LIMIT 1   [ RunTime:0.0071s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001174s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001293s ]
+
+[ 2016-06-04T11:28:42+08:00 ] 127.0.0.1 /index.php/Home/Shop/addCart?goods_id=26
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000904s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001594s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0071s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0007s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0006s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0007s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\web\php45\shop\Tools\Cart.class.php 第 15 行.
+SQL: SHOW COLUMNS FROM `sp_goods` [ RunTime:0.0091s ]
+SQL: SELECT * FROM `sp_goods` WHERE `goods_id` = 26 LIMIT 1   [ RunTime:0.0006s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001205s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001451s ]
+
+[ 2016-06-04T11:28:46+08:00 ] 127.0.0.1 /index.php/Home/Shop/addCart?goods_id=25
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001645s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002506s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0081s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0005s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0005s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0011s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\web\php45\shop\Tools\Cart.class.php 第 15 行.
+SQL: SHOW COLUMNS FROM `sp_goods` [ RunTime:0.0079s ]
+SQL: SELECT * FROM `sp_goods` WHERE `goods_id` = 25 LIMIT 1   [ RunTime:0.0007s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001456s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001599s ]
+
+[ 2016-06-04T11:29:58+08:00 ] 127.0.0.1 /index.php/Home/Shop/addCart?goods_id=25
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001134s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001927s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0077s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0007s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0005s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0004s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\web\php45\shop\Tools\Cart.class.php 第 15 行.
+SQL: SHOW COLUMNS FROM `sp_goods` [ RunTime:0.0082s ]
+SQL: SELECT * FROM `sp_goods` WHERE `goods_id` = 25 LIMIT 1   [ RunTime:0.0006s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001918s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002270s ]
+
+[ 2016-06-04T11:30:36+08:00 ] 127.0.0.1 /index.php/Home/Shop/addCart?goods_id=25
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000941s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001670s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0267s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0013s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0008s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0007s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\web\php45\shop\Tools\Cart.class.php 第 15 行.
+SQL: SHOW COLUMNS FROM `sp_goods` [ RunTime:0.0077s ]
+SQL: SELECT * FROM `sp_goods` WHERE `goods_id` = 25 LIMIT 1   [ RunTime:0.0007s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001315s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001443s ]
+
+[ 2016-06-04T11:30:45+08:00 ] 127.0.0.1 /index.php/Home/Shop/addCart?goods_id=26
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000924s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001649s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0106s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0007s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0007s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0008s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\web\php45\shop\Tools\Cart.class.php 第 15 行.
+SQL: SHOW COLUMNS FROM `sp_goods` [ RunTime:0.0079s ]
+SQL: SELECT * FROM `sp_goods` WHERE `goods_id` = 26 LIMIT 1   [ RunTime:0.0006s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001076s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001178s ]
+

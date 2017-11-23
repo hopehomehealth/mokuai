@@ -1,0 +1,341 @@
+[ 2016-07-13T16:07:53+08:00 ] 127.0.0.1 /index.php/Home/Comment/getCmtList?page_index=0&goods_id=26
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001203s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002036s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0118s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0008s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0019s ]
+SQL: SHOW COLUMNS FROM `sp_comment` [ RunTime:0.0094s ]
+SQL: SELECT u.user_name,c.cmt_id,c.cmt_msg,c.cmt_star,left(from_unixtime(c.add_time),16) cmttime FROM sp_comment c INNER JOIN sp_user u on c.user_id=u.user_id  WHERE `is_show` = '0' AND `goods_id` = '26' ORDER BY c.cmt_id desc LIMIT 0,3   [ RunTime:0.0016s ]
+SQL: SHOW COLUMNS FROM `sp_back` [ RunTime:0.0110s ]
+SQL: SELECT u.user_name,b.back_msg,b.back_id,left(from_unixtime(b.add_time),16) backtime,b.cmt_id FROM sp_back b INNER JOIN sp_user u on b.user_id=u.user_id  WHERE b.cmt_id IN ('828','822','818') AND b.is_show = '0'  [ RunTime:0.0007s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001368s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001479s ]
+
+[ 2016-07-13T16:08:06+08:00 ] 127.0.0.1 /index.php/Home/Comment/getCmtList?page_index=0&goods_id=32
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001987s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003445s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0107s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0011s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0044s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0012s ]
+SQL: SHOW COLUMNS FROM `sp_comment` [ RunTime:0.0127s ]
+SQL: SELECT u.user_name,c.cmt_id,c.cmt_msg,c.cmt_star,left(from_unixtime(c.add_time),16) cmttime FROM sp_comment c INNER JOIN sp_user u on c.user_id=u.user_id  WHERE `is_show` = '0' AND `goods_id` = '32' ORDER BY c.cmt_id desc LIMIT 0,3   [ RunTime:0.0212s ]
+SQL: SHOW COLUMNS FROM `sp_back` [ RunTime:0.0086s ]
+SQL: SELECT u.user_name,b.back_msg,b.back_id,left(from_unixtime(b.add_time),16) backtime,b.cmt_id FROM sp_back b INNER JOIN sp_user u on b.user_id=u.user_id  WHERE b.cmt_id IN ('830','826','815') AND b.is_show = '0'  [ RunTime:0.0008s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001688s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001863s ]
+
+[ 2016-07-13T16:08:10+08:00 ] 127.0.0.1 /index.php/Home/Comment/getCmtList?page_index=0&goods_id=33
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001913s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003038s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0085s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0009s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0008s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0012s ]
+SQL: SHOW COLUMNS FROM `sp_comment` [ RunTime:0.0079s ]
+SQL: SELECT u.user_name,c.cmt_id,c.cmt_msg,c.cmt_star,left(from_unixtime(c.add_time),16) cmttime FROM sp_comment c INNER JOIN sp_user u on c.user_id=u.user_id  WHERE `is_show` = '0' AND `goods_id` = '33' ORDER BY c.cmt_id desc LIMIT 0,3   [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `sp_back` [ RunTime:0.0119s ]
+SQL: SELECT u.user_name,b.back_msg,b.back_id,left(from_unixtime(b.add_time),16) backtime,b.cmt_id FROM sp_back b INNER JOIN sp_user u on b.user_id=u.user_id  WHERE b.cmt_id IN ('') AND b.is_show = '0'  [ RunTime:0.0008s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001824s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001971s ]
+
+[ 2016-07-13T16:08:15+08:00 ] 127.0.0.1 /index.php/Home/Comment/getCmtList?page_index=0&goods_id=27
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002007s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003492s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0085s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0013s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0011s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `sp_comment` [ RunTime:0.0079s ]
+SQL: SELECT u.user_name,c.cmt_id,c.cmt_msg,c.cmt_star,left(from_unixtime(c.add_time),16) cmttime FROM sp_comment c INNER JOIN sp_user u on c.user_id=u.user_id  WHERE `is_show` = '0' AND `goods_id` = '27' ORDER BY c.cmt_id desc LIMIT 0,3   [ RunTime:0.0012s ]
+SQL: SHOW COLUMNS FROM `sp_back` [ RunTime:0.0145s ]
+SQL: SELECT u.user_name,b.back_msg,b.back_id,left(from_unixtime(b.add_time),16) backtime,b.cmt_id FROM sp_back b INNER JOIN sp_user u on b.user_id=u.user_id  WHERE b.cmt_id IN ('831','811','809') AND b.is_show = '0'  [ RunTime:0.0011s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003065s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003256s ]
+
+[ 2016-07-13T16:08:49+08:00 ] 127.0.0.1 /index.php/Home/Comment/getCmtList?page_index=0&goods_id=27
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001801s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005409s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0417s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0011s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0011s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `sp_comment` [ RunTime:0.0092s ]
+SQL: SELECT u.user_name,c.cmt_id,c.cmt_msg,c.cmt_star,left(from_unixtime(c.add_time),16) cmttime FROM sp_comment c INNER JOIN sp_user u on c.user_id=u.user_id  WHERE `is_show` = '0' AND `goods_id` = '27' ORDER BY c.cmt_id desc LIMIT 0,3   [ RunTime:0.0023s ]
+SQL: SHOW COLUMNS FROM `sp_back` [ RunTime:0.0073s ]
+SQL: SELECT u.user_name,b.back_msg,b.back_id,left(from_unixtime(b.add_time),16) backtime,b.cmt_id FROM sp_back b INNER JOIN sp_user u on b.user_id=u.user_id  WHERE b.cmt_id IN ('831','811','809') AND b.is_show = '0'  [ RunTime:0.0009s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003332s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003540s ]
+
+[ 2016-07-13T16:09:05+08:00 ] 127.0.0.1 /index.php/Home/Comment/addCmt
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003563s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004477s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0067s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0006s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `sp_comment` [ RunTime:0.0064s ]
+SQL: INSERT INTO `sp_comment` (`cmt_star`,`cmt_msg`,`goods_id`,`user_id`,`upd_time`,`add_time`) VALUES ('5','塑料袋口临时决定离开时间登录看<br />','27','33','1468397345','1468397345') [ RunTime:0.0015s ]
+SQL: SELECT u.user_name,c.cmt_id,c.cmt_msg,c.cmt_star,left(from_unixtime(c.add_time),16) cmttime FROM sp_comment c INNER JOIN sp_user u on c.user_id=u.user_id  WHERE `cmt_id` = '832' LIMIT 1   [ RunTime:0.0007s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001561s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001716s ]
+
+[ 2016-07-13T16:09:25+08:00 ] 127.0.0.1 /index.php/Home/Comment/getCmtList?page_index=0&goods_id=27
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001946s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003135s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0008s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0006s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `sp_comment` [ RunTime:0.0147s ]
+SQL: SELECT u.user_name,c.cmt_id,c.cmt_msg,c.cmt_star,left(from_unixtime(c.add_time),16) cmttime FROM sp_comment c INNER JOIN sp_user u on c.user_id=u.user_id  WHERE `is_show` = '0' AND `goods_id` = '27' ORDER BY c.cmt_id desc LIMIT 0,3   [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `sp_back` [ RunTime:0.0080s ]
+SQL: SELECT u.user_name,b.back_msg,b.back_id,left(from_unixtime(b.add_time),16) backtime,b.cmt_id FROM sp_back b INNER JOIN sp_user u on b.user_id=u.user_id  WHERE b.cmt_id IN ('832','831','811') AND b.is_show = '0'  [ RunTime:0.0012s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001716s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001885s ]
+
+[ 2016-07-13T16:09:32+08:00 ] 127.0.0.1 /index.php/Home/User/isLogin
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001166s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001935s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0077s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0007s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0005s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0005s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001456s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001604s ]
+
+[ 2016-07-13T16:09:39+08:00 ] 127.0.0.1 /index.php/Home/Comment/getCmtList?page_index=0&goods_id=27
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.016025s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.017116s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0082s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0125s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `sp_comment` [ RunTime:0.0236s ]
+SQL: SELECT u.user_name,c.cmt_id,c.cmt_msg,c.cmt_star,left(from_unixtime(c.add_time),16) cmttime FROM sp_comment c INNER JOIN sp_user u on c.user_id=u.user_id  WHERE `is_show` = '0' AND `goods_id` = '27' ORDER BY c.cmt_id desc LIMIT 0,3   [ RunTime:0.0012s ]
+SQL: SHOW COLUMNS FROM `sp_back` [ RunTime:0.0088s ]
+SQL: SELECT u.user_name,b.back_msg,b.back_id,left(from_unixtime(b.add_time),16) backtime,b.cmt_id FROM sp_back b INNER JOIN sp_user u on b.user_id=u.user_id  WHERE b.cmt_id IN ('832','831','811') AND b.is_show = '0'  [ RunTime:0.0011s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001799s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001979s ]
+
+[ 2016-07-13T16:09:46+08:00 ] 127.0.0.1 /index.php/Home/Comment/getCmtList?page_index=1&goods_id=27
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001909s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003196s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0062s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0007s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0007s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `sp_comment` [ RunTime:0.0099s ]
+SQL: SELECT u.user_name,c.cmt_id,c.cmt_msg,c.cmt_star,left(from_unixtime(c.add_time),16) cmttime FROM sp_comment c INNER JOIN sp_user u on c.user_id=u.user_id  WHERE `is_show` = '0' AND `goods_id` = '27' ORDER BY c.cmt_id desc LIMIT 3,3   [ RunTime:0.0013s ]
+SQL: SHOW COLUMNS FROM `sp_back` [ RunTime:0.0086s ]
+SQL: SELECT u.user_name,b.back_msg,b.back_id,left(from_unixtime(b.add_time),16) backtime,b.cmt_id FROM sp_back b INNER JOIN sp_user u on b.user_id=u.user_id  WHERE b.cmt_id IN ('809','806','792') AND b.is_show = '0'  [ RunTime:0.0009s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001835s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002059s ]
+
+[ 2016-07-13T16:09:50+08:00 ] 127.0.0.1 /index.php/Home/User/isLogin
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001233s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001961s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0109s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0017s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0008s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0008s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001633s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001801s ]
+
+[ 2016-07-13T16:09:53+08:00 ] 127.0.0.1 /index.php/Home/Comment/sendBack
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001142s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002806s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0088s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0023s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0019s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0081s ]
+SQL: SHOW COLUMNS FROM `sp_back` [ RunTime:0.0066s ]
+SQL: INSERT INTO `sp_back` (`back_msg`,`cmt_id`,`user_id`,`upd_time`,`add_time`) VALUES ('类似的两款手机的离开是','806','33','1468397393','1468397393') [ RunTime:0.0015s ]
+SQL: SELECT u.user_name,b.back_id,b.back_msg,left(from_unixtime(b.add_time),16) backtime FROM sp_back b INNER JOIN sp_user u on b.user_id=u.user_id  WHERE `back_id` = '19' LIMIT 1   [ RunTime:0.0007s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001665s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001830s ]
+
+[ 2016-07-13T16:10:05+08:00 ] 127.0.0.1 /index.php/Home/Comment/getCmtList?page_index=0&goods_id=27
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002576s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004049s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0076s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0006s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `sp_comment` [ RunTime:0.0060s ]
+SQL: SELECT u.user_name,c.cmt_id,c.cmt_msg,c.cmt_star,left(from_unixtime(c.add_time),16) cmttime FROM sp_comment c INNER JOIN sp_user u on c.user_id=u.user_id  WHERE `is_show` = '0' AND `goods_id` = '27' ORDER BY c.cmt_id desc LIMIT 0,3   [ RunTime:0.0012s ]
+SQL: SHOW COLUMNS FROM `sp_back` [ RunTime:0.0081s ]
+SQL: SELECT u.user_name,b.back_msg,b.back_id,left(from_unixtime(b.add_time),16) backtime,b.cmt_id FROM sp_back b INNER JOIN sp_user u on b.user_id=u.user_id  WHERE b.cmt_id IN ('832','831','811') AND b.is_show = '0'  [ RunTime:0.0009s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001545s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001711s ]
+
+[ 2016-07-13T16:10:10+08:00 ] 127.0.0.1 /index.php/Home/Comment/getCmtList?page_index=1&goods_id=27
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001365s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002405s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0140s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0012s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0007s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `sp_comment` [ RunTime:0.0076s ]
+SQL: SELECT u.user_name,c.cmt_id,c.cmt_msg,c.cmt_star,left(from_unixtime(c.add_time),16) cmttime FROM sp_comment c INNER JOIN sp_user u on c.user_id=u.user_id  WHERE `is_show` = '0' AND `goods_id` = '27' ORDER BY c.cmt_id desc LIMIT 3,3   [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `sp_back` [ RunTime:0.0076s ]
+SQL: SELECT u.user_name,b.back_msg,b.back_id,left(from_unixtime(b.add_time),16) backtime,b.cmt_id FROM sp_back b INNER JOIN sp_user u on b.user_id=u.user_id  WHERE b.cmt_id IN ('809','806','792') AND b.is_show = '0'  [ RunTime:0.0006s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001133s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001239s ]
+
+[ 2016-07-13T16:10:13+08:00 ] 127.0.0.1 /index.php/Home/Comment/getCmtList?page_index=2&goods_id=27
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000952s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001664s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0079s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0023s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0007s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `sp_comment` [ RunTime:0.0079s ]
+SQL: SELECT u.user_name,c.cmt_id,c.cmt_msg,c.cmt_star,left(from_unixtime(c.add_time),16) cmttime FROM sp_comment c INNER JOIN sp_user u on c.user_id=u.user_id  WHERE `is_show` = '0' AND `goods_id` = '27' ORDER BY c.cmt_id desc LIMIT 6,3   [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `sp_back` [ RunTime:0.0078s ]
+SQL: SELECT u.user_name,b.back_msg,b.back_id,left(from_unixtime(b.add_time),16) backtime,b.cmt_id FROM sp_back b INNER JOIN sp_user u on b.user_id=u.user_id  WHERE b.cmt_id IN ('785','783','778') AND b.is_show = '0'  [ RunTime:0.0009s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002101s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002275s ]
+
+[ 2016-07-13T16:10:14+08:00 ] 127.0.0.1 /index.php/Home/Comment/getCmtList?page_index=3&goods_id=27
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001224s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002210s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0079s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0008s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0006s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `sp_comment` [ RunTime:0.0076s ]
+SQL: SELECT u.user_name,c.cmt_id,c.cmt_msg,c.cmt_star,left(from_unixtime(c.add_time),16) cmttime FROM sp_comment c INNER JOIN sp_user u on c.user_id=u.user_id  WHERE `is_show` = '0' AND `goods_id` = '27' ORDER BY c.cmt_id desc LIMIT 9,3   [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `sp_back` [ RunTime:0.0066s ]
+SQL: SELECT u.user_name,b.back_msg,b.back_id,left(from_unixtime(b.add_time),16) backtime,b.cmt_id FROM sp_back b INNER JOIN sp_user u on b.user_id=u.user_id  WHERE b.cmt_id IN ('775','765','763') AND b.is_show = '0'  [ RunTime:0.0007s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001142s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001245s ]
+
+[ 2016-07-13T16:10:17+08:00 ] 127.0.0.1 /index.php/Home/Comment/getCmtList?page_index=2&goods_id=27
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001265s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002295s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0141s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0009s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0011s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `sp_comment` [ RunTime:0.0064s ]
+SQL: SELECT u.user_name,c.cmt_id,c.cmt_msg,c.cmt_star,left(from_unixtime(c.add_time),16) cmttime FROM sp_comment c INNER JOIN sp_user u on c.user_id=u.user_id  WHERE `is_show` = '0' AND `goods_id` = '27' ORDER BY c.cmt_id desc LIMIT 6,3   [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `sp_back` [ RunTime:0.0062s ]
+SQL: SELECT u.user_name,b.back_msg,b.back_id,left(from_unixtime(b.add_time),16) backtime,b.cmt_id FROM sp_back b INNER JOIN sp_user u on b.user_id=u.user_id  WHERE b.cmt_id IN ('785','783','778') AND b.is_show = '0'  [ RunTime:0.0007s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001092s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001197s ]
+
+[ 2016-07-13T16:10:23+08:00 ] 127.0.0.1 /index.php/Home/Comment/getCmtList?page_index=3&goods_id=27
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001149s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001945s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0116s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0091s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0008s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `sp_comment` [ RunTime:0.0063s ]
+SQL: SELECT u.user_name,c.cmt_id,c.cmt_msg,c.cmt_star,left(from_unixtime(c.add_time),16) cmttime FROM sp_comment c INNER JOIN sp_user u on c.user_id=u.user_id  WHERE `is_show` = '0' AND `goods_id` = '27' ORDER BY c.cmt_id desc LIMIT 9,3   [ RunTime:0.0012s ]
+SQL: SHOW COLUMNS FROM `sp_back` [ RunTime:0.0077s ]
+SQL: SELECT u.user_name,b.back_msg,b.back_id,left(from_unixtime(b.add_time),16) backtime,b.cmt_id FROM sp_back b INNER JOIN sp_user u on b.user_id=u.user_id  WHERE b.cmt_id IN ('775','765','763') AND b.is_show = '0'  [ RunTime:0.0007s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001162s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001289s ]
+
+[ 2016-07-13T16:10:24+08:00 ] 127.0.0.1 /index.php/Home/Comment/getCmtList?page_index=4&goods_id=27
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001416s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002469s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0096s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0009s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0008s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `sp_comment` [ RunTime:0.0067s ]
+SQL: SELECT u.user_name,c.cmt_id,c.cmt_msg,c.cmt_star,left(from_unixtime(c.add_time),16) cmttime FROM sp_comment c INNER JOIN sp_user u on c.user_id=u.user_id  WHERE `is_show` = '0' AND `goods_id` = '27' ORDER BY c.cmt_id desc LIMIT 12,3   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sp_back` [ RunTime:0.0084s ]
+SQL: SELECT u.user_name,b.back_msg,b.back_id,left(from_unixtime(b.add_time),16) backtime,b.cmt_id FROM sp_back b INNER JOIN sp_user u on b.user_id=u.user_id  WHERE b.cmt_id IN ('744','743','734') AND b.is_show = '0'  [ RunTime:0.0008s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001818s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001958s ]
+
+[ 2016-07-13T16:10:25+08:00 ] 127.0.0.1 /index.php/Home/Comment/getCmtList?page_index=5&goods_id=27
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001749s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003066s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0057s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0006s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `sp_comment` [ RunTime:0.0062s ]
+SQL: SELECT u.user_name,c.cmt_id,c.cmt_msg,c.cmt_star,left(from_unixtime(c.add_time),16) cmttime FROM sp_comment c INNER JOIN sp_user u on c.user_id=u.user_id  WHERE `is_show` = '0' AND `goods_id` = '27' ORDER BY c.cmt_id desc LIMIT 15,3   [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `sp_back` [ RunTime:0.0063s ]
+SQL: SELECT u.user_name,b.back_msg,b.back_id,left(from_unixtime(b.add_time),16) backtime,b.cmt_id FROM sp_back b INNER JOIN sp_user u on b.user_id=u.user_id  WHERE b.cmt_id IN ('733','731','728') AND b.is_show = '0'  [ RunTime:0.0006s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001066s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001167s ]
+
+[ 2016-07-13T16:10:32+08:00 ] 127.0.0.1 /index.php/Home/Shop/addCart?goods_id=27
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001064s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001855s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0071s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0007s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0007s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0006s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\web\php45\shop\Tools\Cart.class.php 第 15 行.
+SQL: SHOW COLUMNS FROM `sp_goods` [ RunTime:0.0082s ]
+SQL: SELECT * FROM `sp_goods` WHERE `goods_id` = 27 LIMIT 1   [ RunTime:0.0009s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001513s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001659s ]
+
+[ 2016-07-13T16:21:04+08:00 ] 127.0.0.1 /index.php/Home/Comment/getCmtList?page_index=0&goods_id=36
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001997s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002929s ]
+SQL: SHOW COLUMNS FROM `sp_category` [ RunTime:0.0096s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 0  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 1  [ RunTime:0.0021s ]
+SQL: SELECT * FROM `sp_category` WHERE `cat_level` = 2  [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `sp_comment` [ RunTime:0.0086s ]
+SQL: SELECT u.user_name,c.cmt_id,c.cmt_msg,c.cmt_star,left(from_unixtime(c.add_time),16) cmttime FROM sp_comment c INNER JOIN sp_user u on c.user_id=u.user_id  WHERE `is_show` = '0' AND `goods_id` = '36' ORDER BY c.cmt_id desc LIMIT 0,3   [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `sp_back` [ RunTime:0.0096s ]
+SQL: SELECT u.user_name,b.back_msg,b.back_id,left(from_unixtime(b.add_time),16) backtime,b.cmt_id FROM sp_back b INNER JOIN sp_user u on b.user_id=u.user_id  WHERE b.cmt_id IN ('') AND b.is_show = '0'  [ RunTime:0.0024s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001782s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001941s ]
+
