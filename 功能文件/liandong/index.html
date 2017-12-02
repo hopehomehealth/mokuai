@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>城市三级联动</title>
+</head>
+<script src="./jquery.js" ></script>
+<script type="text/javascript">
+  	// alert('dsf');
+ //  $(function(){
+ //    	$.ajax({
+ //    		type:"post",
+ //    		url:"./server.php",
+ //    		data:{"pid":1},
+ //    		dataType:"json",
+ //    		success:function(data){
+ //    		  for(var i in data){
+ //    		  	var op = $("<option value='"+data[i].id+"data[i].cityname"+"</option>");
+ //    		  	$("#province").append(op);
+ //    		  }	
+ //    	     },
+ //         });
+	// });
+</script>
+<body>
+
+
+    <!--JSP代码-->
+	<tr>
+		<!-- 第一季  省 -->
+        <td>
+        	<select  class="list_provinces" name="province" onchange="getCitys(this.value)">
+        	   <option value="-1">--请选择省份--</option>
+        	</select>
+        </td>
+        		<!-- 第一季  市 -->
+        <td>
+        	<select class="list_citys" name="city" onchange="getCountrys(this.value)">
+        	   <option value="-1">--请选择城市--</option>
+        	</select>
+        </td>
+        		<!-- 第一季  县 -->
+        <td>
+        	<select  class="list_countrys" onchange="getPosition(this.value)">
+        	   <option value="-1">--请选择区县--</option>
+        	</select>
+        </td>
+    </tr>
+</body>
+<script type="text/javascript">
+    $(function(){
+        $.post('./server.php', // 必须是同一域名下绝对或相对路径
+     {'pid' : 1},
+     function(data){
+        // alert(data);
+         data = eval('('+data+')');
+         var len = data.length;
+         var html = '<option value="-1">请选择省份</option>';
+         for (var i = 0; i < len; i++) {
+             html += '<option value="'+data[i].id+'">'+data[i].cityname+'</option>'
+         }
+         $('.list_provinces').html(html);
+     });
+     // 省级变动同时触发 县级 联动触发
+     $(".list_citys").html('<option value="-1">请选择城市</option>');
+    
+    });
+    function getCitys(e){
+           // alert(e);
+        $.post('server.php', // 必须是同一域名下绝对或相对路径
+         {'pid' : e},
+         function(data){
+             data = eval('('+data+')');
+             // alert(data);
+             var len = data.length;
+             var html = '<option value="-1">请选择城市</option>';
+             for (var i = 0; i < len; i++) {
+                 html += '<option value="'+data[i].id+'">'+data[i].id+data[i].cityname+'</option>'
+             }
+             $('.list_citys').html(html);
+         });
+         // 省级变动同时触发 县级 联动触发
+         $(".list_countrys").html('<option value="-1">请选择区县</option>');
+            
+    }
+    
+// 获取市管辖的 县 名称
+function getCountrys(e){
+    // alert('sdf');
+    // alert(e);
+ $.post('./server.php',
+     { 'pid' : e,},
+     function(data){
+        alert(data);
+         data = eval('('+data+')');
+        // alert(data);
+         $(".list_countrys").empty();
+         var html = '<option value="-1">请选择区县</option>';
+         var len = data.length;
+         for (var i = 0; i < len; i++) {
+             html += '<option value="'+data[i].id+'">'+data[i].cityname+'</option>';
+         }
+         $('.list_countrys').html(html);
+     });
+}
+// // 获取所在地代码
+// function getPosition(e){
+//  alert(e);
+// }
+
+
+
+
+</script>
+</html>
