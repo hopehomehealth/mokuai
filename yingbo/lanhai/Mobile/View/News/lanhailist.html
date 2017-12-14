@@ -1,0 +1,79 @@
+<div class="main">
+  <!--*****banner*****-->
+  <section>
+    <div class="nht-xl fl">
+      <p class="lin-tt">{$pidname|mb_substr=###,0,2,'utf-8'}<span class="d-red">{$pidname|mb_substr=###,2,22,'utf-8'}</span><span class="nht-tt fr">&nbsp;</span></p>
+      <ul class="nht-sumenu fr">
+	  <foreach name="catinfo" item="v">
+        <li><a <if condition="$v.lan_id eq 31">href="{:U('News/falvfagui',array('lan_id'=>$v['lan_id']))}"<elseif condition="$v.lan_id eq 33"/>href="{:U('Advice/showlist',array('lan_id'=>$v['lan_id']))}"<elseif condition="$v.lan_id eq 38"/>href="{:U('Tushu/tushulist',array('lan_id'=>$v['lan_id']))}"<else/>href="{:U('News/newslist',array('lan_id'=>$v['lan_id']))}"</if>>{$v.lan_title}</a></li>
+      </foreach>
+      </ul>
+    </div>
+  </section>
+  <script type="text/javascript">
+    $(".nht-tt").click(function(){
+        $(".nht-sumenu").slideToggle("1000");
+    });
+</script>
+  <section>
+    <div class="lin-ad mb0">
+      <ul class="hiSlider hiSlider3">
+	  <foreach name="clickinfo" item="v">
+        <li class="hiSlider-item"><a href="{:U('News/detail',array('news_id'=>$v['news_id']))}"><img <if condition="($v.pic neq '') AND ($v.pic neq './Public/Upl/news/')">src="{$Think.const.SITE_URL}{$v.pic}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq '')"/>src="{$v.picfirst}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq '')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"</if> alt="{$v.news_title}"></a></li>
+</foreach>
+
+      </ul>
+    </div>
+  </section>
+  <!--*****banner*****-->
+  <!--*****news*****-->
+  <section>
+  <foreach name="catinfo" key="k" item="v">
+
+    <div class="h-l pb1 fl">
+      <p class="h-l-tt">{$v.lan_title|mb_substr=###,0,2,'utf-8'}<span class="d-red">{$v.lan_title|mb_substr=###,2,50,'utf-8'}</span><span class="fr pr2 fs1"><a <if condition="$v.lan_id eq 31">href="{:U('News/falvfagui',array('lan_id'=>$v['lan_id']))}"<elseif condition="$v.lan_id eq 33"/>href="{:U('Advice/showlist',array('lan_id'=>$v['lan_id']))}"<elseif condition="$v.lan_id eq 38"/>href="{:U('Tushu/tushulist',array('lan_id'=>$v['lan_id']))}"<else/>href="{:U('News/newslist',array('lan_id'=>$v['lan_id']))}"</if>><if condition="$v.lan_id eq 33">点击留言>><else/>更多>></if></a></span></p>
+      <foreach name="v.info" key="kk" item="vv">
+	 <if condition="$vv.lan_id eq 31">
+ <div class="h-l pb1 fl">
+            <ul class="news-list fl">
+                  <li>
+                       <a href="{:U('News/detail',array('news_id'=>$vv['news_id']))}">{$vv.news_title}</a>
+                            <p class="fl fs1 l-gray w100">{$vv.add_time}</p>
+                   </li>
+            </ul>
+        </div>
+		<elseif condition="$vv.lan_id eq 38"/>
+ <div class="news-list fl">
+        <dl class="lib-list-a fl">
+          <dt><a href="{:U('News/detail',array('news_id'=>$vv['news_id']))}"><img <if condition="($vv.pic neq '') AND ($vv.pic neq './Public/Upl/news/')">src="{$Think.const.SITE_URL}{$vv.pic}"
+<elseif condition="($vv.match eq 'http') AND ($vv.pic eq '')"/>src="{$vv.picfirst}"
+<elseif condition="($vv.match eq 'http') AND ($vv.pic eq './Public/Upl/news/')"/>src="{$vv.picfirst}"
+<elseif condition="($vv.match neq 'http') AND ($vv.pic eq '')"/>src="{$Think.const.SITE_URL}{$vv.picfirst}"
+<elseif condition="($vv.match neq 'http') AND ($vv.pic eq './Public/Upl/news/')"/>src="{$Think.const.SITE_URL}{$vv.picfirst}"</if>></a></dt>
+          <dd><a href="{:U('News/detail',array('news_id'=>$vv['news_id']))}"><h1>{$vv.news_title}</h1><p class="lib-list-wz fl">{$vv.description}</p></a>
+            <p class="fl fs1 l-gray rqi-a">{$vv.add_time}</p>
+          </dd>
+        </dl>
+      </div>
+	  <else />
+	  	  <div class="news-list fl">
+        <dl class="news-pic fl">
+          <dt><a href="{:U('News/detail',array('news_id'=>$vv['news_id']))}"><img <if condition="($vv.pic neq '') AND ($vv.pic neq './Public/Upl/news/')">src="{$Think.const.SITE_URL}{$vv.pic}"
+<elseif condition="($vv.match eq 'http') AND ($vv.pic eq '')"/>src="{$vv.picfirst}"
+<elseif condition="($vv.match eq 'http') AND ($vv.pic eq './Public/Upl/news/')"/>src="{$vv.picfirst}"
+<elseif condition="($vv.match neq 'http') AND ($vv.pic eq '')"/>src="{$Think.const.SITE_URL}{$vv.picfirst}"
+<elseif condition="($vv.match neq 'http') AND ($vv.pic eq './Public/Upl/news/')"/>src="{$Think.const.SITE_URL}{$vv.picfirst}"</if>></a></dt>
+          <dd><a href="{:U('News/detail',array('news_id'=>$vv['news_id']))}">{$vv.news_title}</a>
+            <p class="fl fs1 l-gray rqi">{$vv.add_time}</p>
+          </dd>
+        </dl>
+      </div>
+	</if>
+	   </foreach>
+    </div>
+   </foreach>
+  </section>

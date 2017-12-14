@@ -1,0 +1,189 @@
+{__NOLAYOUT__}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>新农缘天下商城</title>
+    <link href="{$Think.const.HCSS_URL}basic.css" type="text/css" rel="stylesheet" />
+    <link href="{$Think.const.HCSS_URL}style.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="{$Think.const.HJS_URL}jquery-1.7.2.min.js"></script>
+    <script src="{$Think.const.HJS_URL}iscroll4.js"></script>
+<script src="{$Think.const.HJS_URL}jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="{$Think.const.HJS_URL}L_slide.js"></script>
+<style>
+.xj_zlb{ padding:1% 0 1rem; width:98%; margin:0 auto; overflow:hidden;}
+.xj_zlb dt{ width:100%; float:left }
+.xj_zlb dt img{ width:100%;}
+.xj_zlb dd{ width:100%; padding:0.5rem 0; text-align:center; float:left; font-size:1.4rem; color:#333;}
+.xj_zlb dd a{color:#333;}
+.xj_zlb dd a:hover{color:#dd0045;}
+.headTit { height: 4.400rem; text-align: center; line-height: 4.400rem; color: #fff; font-size: 1.700rem; position: absolute; left: 5.583rem; right: 5.583rem; }
+</style>
+
+</head>
+
+<body>
+<header>
+
+        <a class="head_back1" href="Javascript:window.history.go(-1)">&nbsp;</a>
+        <div class="headTit" width="100%">
+            <a  id="new-tab" class="cur1">房源信息</a>
+            <span>|</span>
+            <a  id="old-tab" class="cur2">购房申请</a>
+        </div>
+
+
+</header>
+
+
+
+<script type='text/javascript'>
+    $(function(){
+        $('#old-tab-show').hide();
+        $('.headTit a').click(function(){
+           $('.headTit a').attr('class','cur2');
+            $(this).attr('class','cur1');
+
+            $('div[id$=-show]').hide();
+            var idflag = $(this).attr('id');
+            $('#'+idflag+'-show').show();
+        });
+    });
+</script>
+
+<div id="new-tab-show" class="main">
+<foreach name="buildinginfo" item="v">
+    <dl class="xj_zlb">
+ <dt><a href="{:U('detail',array('building_id'=>$v['building_id']))}"><img src="{$Think.const.SITE_URL}{$v.pic}"></a></dt>
+ <dd><a href="{:U('detail',array('building_id'=>$v['building_id']))}">{$v.city}：{$v.name}</a></dd>
+</dl>
+</foreach>
+
+</div>
+
+<div id="old-tab-show" class="main">
+
+<link rel="stylesheet" href="{$Think.const.HCSS_URL}personal-reset.css" />
+<link rel="stylesheet" href="{$Think.const.HCSS_URL}personal-style.css" />
+<style>
+.xj_xm{ width:40%; background:#e9e9e9; padding:0.200rem 0 0.200rem 2%; }
+</style>
+
+    <section style="position:relative">
+        <form action="" method="post" enctype='multipart/form-data'>
+        <div class="hous_nav">
+            <p>买房申请</p>
+        </div>
+        <div style="background: #ffffff; width: 100%; margin-top: 1.5rem;">
+
+            <div class="hous_main">
+                <p><i>*</i><span>真实姓名</span><span class="xj_xm">{$userinfo['name']}</span></p>
+                <p><i>*</i><span>手&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机</span>
+                    <span class="xj_xm">{$userinfo['phone']}</span>
+                   </p>
+            </div>
+        </div>
+        <div style="background: #ffffff; width: 100%; margin-top: 1.5rem;">
+            <div class="hous_main1">
+                <p><i>*</i><span>意向区域</span>
+                    <input id="address" type="text" placeholder="请输入详细地址" style="width: 60%;">
+                </p>
+                <p><i style="margin-right: 0.6rem">&nbsp;</i><span>意向楼盘</span>
+                    <input id="building" type="text" placeholder="请输入楼盘名称" style="width: 60%;">
+                </p>
+                <p><i>*</i><span>意向户型</span>
+                    <select  style="width: 30%;" name="type" >
+                        <option value="0">不限</option>
+                        <option value="1">一居</option>
+                        <option value="2">两居</option>
+                        <option value="3">三居</option>
+                        <option value="4">其它</option>
+                    </select>
+                    <e style="color: #DD0045">*请选择您的意向户型</e>
+                </p>
+                <p><i>*</i><span>意向面积</span>
+                    <select style="width: 30%;" name="size" >
+                        <option value="0">不限</option>
+                        <option value="1">90平方</option>
+                        <option value="2">90-120平方</option>
+                        <option value="3">其它</option>
+                    </select>
+                    <e style="color: #DD0045">*请选择您的意向面积</e>
+                </p>
+
+                <p><i style="margin-right: 0.6rem">&nbsp;</i><span>交意向金</span>{$setinfo[0]['houseprice']}&nbsp;&nbsp;元</p>
+                <p><i style="margin-right: 0.6rem">&nbsp;</i>您前面还有<e style="color: #DD0045">&nbsp;{$houseinfo[0]['house_id']}&nbsp;</e>人在排队</p>
+
+            </div>
+        </div>
+        <div class="house2">
+            <p style="text-align: center;">温馨提示：“<e style="color: #DD0045; font-size:  1.3rem">*</e>”为必填项</p>
+            <h5><input id="bsubmit" style="background: #DD0045;font-size:1.800rem;height:3.500rem;font-family: '黑体';color: #ffffff;border-radius:0.4rem" type="button"  value="提&nbsp;&nbsp;&nbsp;&nbsp;交"/></h5>
+        </div>
+            </form>
+    </section>
+
+<script type="text/javascript">
+$(function(){
+    $('#bsubmit').click(function(){
+        var address = $('#address').val();
+        if(address == ''){
+            alert('意向区域不能为空');
+            return false;
+        }
+        var building = $('#building').val();
+        if(building == ''){
+            alert('意向楼盘不能为空');
+            return false;
+        }
+        var type = $('select[name=type]').val();
+        var size = $('select[name=size]').val();
+        $.ajax({
+            url:"__MODULE__/House/fang",
+            data:{'building':building,'type':type,'size':size,'address':address},
+            dataType:'json',
+            type:'post',
+            success:function(data){
+
+                    //alert('感谢您的申请，工作人员会及时与您联系!');
+                    if(data.error == 0){
+                        $("section").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+data.content+"</div>");
+
+                        $("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);setTimeout(function(){$("#errormsg").remove();location.href="__MODULE__/Wxpay/pay/type/housepay/id/"+data.house_id;},2000);
+                    }
+                    if(data.error == 1){
+                        $("section").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+data.content+"</div>");
+
+                        $("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);setTimeout(function(){$("#errormsg").remove();},2000);
+                    }
+                    if(data.error == 2){
+                        location.href="__MODULE__/User/login";
+                    }
+            }
+        });
+    });
+});
+</script>
+
+
+
+</div>
+<footer>
+    <ul>
+          <li <if condition="CONTROLLER_NAME == Index">class="shou_a hover"</if>class="shou"><a href="{:U('Index/index')}"><i>&nbsp;</i>首页</a></li>
+        <li <if condition="CONTROLLER_NAME == Haoche">class="car_a hover"</if>class="car"><a href="{:U('Haoche/showlist')}"><i>&nbsp;</i>豪车俱乐部</a></li>
+        <li <if condition="CONTROLLER_NAME == Agriculture">class="world_a hover"</if>class="world"><a href="{:U('Agriculture/index')}"><i>&nbsp;</i>商家联盟</a></li>
+       <li <if condition="CONTROLLER_NAME == Goods">class="purse_a hover"</if>class="purse"><a href="{:U('Goods/index')}"><i>&nbsp;</i>乐购商城</a></li>
+        <li <if condition="CONTROLLER_NAME == User">class="my_a hover"</if>class="my"><a href="{:U('User/userindex')}"><i>&nbsp;</i>我的</a></li>
+    </ul>
+</footer>
+
+
+
+</body>
+</html>

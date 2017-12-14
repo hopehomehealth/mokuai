@@ -1,0 +1,1 @@
+a:6:{i:0;s:12:"operation_id";i:1;s:14:"operation_name";i:2;s:12:"operation_ip";i:3;s:14:"operation_time";s:3:"_pk";s:12:"operation_id";s:5:"_type";a:4:{s:12:"operation_id";s:7:"int(11)";s:14:"operation_name";s:11:"varchar(68)";s:12:"operation_ip";s:4:"text";s:14:"operation_time";s:7:"int(20)";}}

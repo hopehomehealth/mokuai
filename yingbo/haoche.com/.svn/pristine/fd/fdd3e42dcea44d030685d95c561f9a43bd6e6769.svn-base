@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>农缘天下后台管理系统</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="{$Think.const.CSS_URL}bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{$Think.const.CSS_URL}font-awesome.min.css" />
+    <link rel="stylesheet" href="{$Think.const.CSS_URL}ace.min.css" />
+    <link rel="stylesheet" type="text/css" href="{$Think.const.CSS_URL}style.css">
+    <link rel="stylesheet" type="text/css" href="{$Think.const.CSS_URL}page.css">
+    <link rel="stylesheet" type="text/css" href="{$Think.const.CSS_URL}daterangepicker.css">
+    <script type="text/javascript" src='{$Think.const.JS_URL}jquery-2.1.3.min.js'></script>
+</head>
+<body>
+<div class="navbar navbar-default">
+    <div class="navbar-container">
+        <div class="navbar-header pull-left">
+            <a href="#" class="navbar-brand">
+                <small>农缘天下后台管理系统 </small>
+            </a>
+        </div><!-- /.navbar-header -->
+        <div class="navbar-header pull-right">
+            <ul class="nav ace-nav">
+                <li >
+                    <a href="#">
+                        <i class="icon-user bigger-140"></i>{$Think.session.admin_name}
+                    </a>
+                </li>
+                <li >
+                    <a href="{:U('Manager/logout')}" target="_top"
+                    onclick="if(confirm('确认要退出系统么？')==false){return false;}">
+                        <i class="icon-off bigger-130"></i>退出
+                    </a>
+                </li>
+            </ul><!-- /.ace-nav -->
+        </div><!-- /.navbar-header -->
+    </div><!-- /.navbar-container-->
+</div><!-- /.navbar-->
+
+<div class="main-container">
+    <div class="main-container-inner">
+        <div class="sidebar" id="sidebar">
+            <ul class="nav nav-list">
+                <li <if condition="CONTROLLER_NAME eq Index">class="active"</if>>
+                    <a href="{:U('Index/index')}">
+                        <i class="icon-home"></i>
+                        <span class="menu-text">首页 </span>
+                    </a>
+                </li>
+
+                <li <if condition="(CONTROLLER_NAME eq Haoche) OR (CONTROLLER_NAME eq Haobrand) OR (CONTROLLER_NAME eq Haocategory) OR (CONTROLLER_NAME eq Haotype) OR (CONTROLLER_NAME eq Haoprice)">class="active open"</if>>
+                    <a href="" class="dropdown-toggle" >
+                        <i class="icon-linux"></i>
+                        <span class="menu-text">豪车俱乐部</span>
+                        <b class="arrow icon-angle-down"></b>
+                    </a>
+                    <ul class="submenu">
+
+                        <li <if condition="CONTROLLER_NAME eq Haoche">class="active"</if>> <a href="{:U('Haoche/showlist')}"><i class="icon-double-angle-right"></i>豪车管理</a></li>
+                        <li <if condition="CONTROLLER_NAME eq Haobrand">class="active"</if>> <a href="{:U('Haobrand/showlist')}"><i class="icon-double-angle-right"></i>品牌管理</a></li>
+                        <li <if condition="CONTROLLER_NAME eq Haocategory">class="active"</if>> <a href="{:U('Haocategory/showlist')}"><i class="icon-double-angle-right"></i>分类管理</a></li>
+
+                        <li <if condition="CONTROLLER_NAME eq Haotype">class="active"</if>> <a href="{:U('Haotype/showlist')}"> <i class="icon-double-angle-right"></i> 类型管理</a> </li>
+                        <li <if condition="CONTROLLER_NAME eq Haoprice">class="active"</if>> <a href="{:U('Haoprice/showlist')}"> <i class="icon-double-angle-right"></i> 价格区间列表</a> </li>
+                    </ul>
+                </li>
+                <li <if condition="(CONTROLLER_NAME eq Goods) OR (CONTROLLER_NAME eq Gobrand) OR (CONTROLLER_NAME eq Gocategory) OR (CONTROLLER_NAME eq Gotype) OR (CONTROLLER_NAME eq Goattribute)">class="active open"</if>>
+                    <a href="" class="dropdown-toggle" >
+                        <i class="icon-shopping-cart"></i>
+                        <span class="menu-text">乐购商城</span>
+                        <b class="arrow icon-angle-down"></b>
+                    </a>
+                    <ul class="submenu">
+
+                        <li <if condition="CONTROLLER_NAME eq Goods">class="active"</if>> <a href="{:U('Goods/showlist')}"><i class="icon-double-angle-right"></i>商品管理</a></li>
+                        <li <if condition="CONTROLLER_NAME eq Gobrand">class="active"</if>> <a href="{:U('Gobrand/showlist')}"><i class="icon-double-angle-right"></i>品牌管理</a></li>
+                        <li <if condition="CONTROLLER_NAME eq Gocategory">class="active"</if>> <a href="{:U('Gocategory/showlist')}"><i class="icon-double-angle-right"></i>分类管理</a></li>
+
+                        <li <if condition="CONTROLLER_NAME eq Gotype">class="active"</if>> <a href="{:U('Gotype/showlist')}"> <i class="icon-double-angle-right"></i> 类型管理</a> </li>
+                        <li <if condition="CONTROLLER_NAME eq Goattribute">class="active"</if>> <a href="{:U('Goattribute/showlist')}"> <i class="icon-double-angle-right"></i> 属性管理</a> </li>
+                    </ul>
+                </li>
+
+                <li <if condition="(CONTROLLER_NAME eq News) OR (CONTROLLER_NAME eq Newstype)">class=" open active"</if>>
+                    <a href="" class="dropdown-toggle" >
+                        <i class="icon-list-alt"></i>
+                        <span class="menu-text">新闻管理</span>
+                        <b class="arrow icon-angle-down"></b>
+                    </a>
+                    <ul class="submenu">
+
+                        <li <if condition="(CONTROLLER_NAME eq News) AND (ACTION_NAME == showlist)">class="active"</if>> <a href="{:U('News/showlist')}"><i class="icon-double-angle-right"></i>新闻列表</a></li>
+                        <li <if condition="(CONTROLLER_NAME eq News) AND (ACTION_NAME == tianjia)">class="active"</if>> <a href="{:U('News/tianjia')}"><i class="icon-double-angle-right"></i>新闻发布</a></li>
+                        <li <if condition="CONTROLLER_NAME eq Newstype">class="active"</if>> <a href="{:U('Newstype/showlist')}"><i class="icon-double-angle-right"></i>新闻类别</a></li>
+
+                    </ul>
+                </li>
+   <li <if condition="(CONTROLLER_NAME eq Seller) OR (CONTROLLER_NAME eq Sellercat) OR (CONTROLLER_NAME eq Quanyi)">class="open active"</if>>
+    <a href="" class="dropdown-toggle"> <i class="icon-dropbox"></i> <span class="menu-text">商家联盟</span> <b class="arrow icon-angle-down"></b> </a>
+          <ul class="submenu">
+
+          <li <if condition="(CONTROLLER_NAME eq Seller) AND (ACTION_NAME == lianmengxieyi)">class="active"</if>> <a href="{:U('Seller/lianmengxieyi')}"><i class="icon-double-angle-right"></i>商家联盟协议</a></li>
+              <li <if condition="(CONTROLLER_NAME eq Seller) AND (ACTION_NAME == userlist)">class="active"</if>> <a href="{:U('Seller/userlist')}"><i class="icon-double-angle-right"></i>商家管理</a></li>
+              <li <if condition="(CONTROLLER_NAME eq Sellercat) AND (ACTION_NAME == showlist)">class="active"</if>> <a href="{:U('Sellercat/showlist')}"><i class="icon-double-angle-right"></i>商家行业管理</a></li>
+            <li <if condition="(CONTROLLER_NAME eq Seller) AND (ACTION_NAME == quanyixieyi)">class="active"</if> ><a href="{:U('Seller/quanyixieyi')}"><i class="icon-double-angle-right"></i>商家权益协议</a></li>
+              <li <if condition="(CONTROLLER_NAME eq Quanyi) AND (ACTION_NAME == showlist)">class="active"</if> ><a href="{:U('Quanyi/showlist')}"><i class="icon-double-angle-right"></i>权益商品管理</a></li>
+              <li <if condition="(CONTROLLER_NAME eq Seller) AND (ACTION_NAME == goodslist)">class="active"</if> ><a href="{:U('Seller/goodslist')}"><i class="icon-double-angle-right"></i>商品管理</a></li>
+              <li <if condition="(CONTROLLER_NAME eq Seller) AND (ACTION_NAME == freelist)">class="active"</if> ><a href="{:U('Seller/freelist')}"><i class="icon-double-angle-right"></i>1P管理</a></li>
+            <li <if condition="(CONTROLLER_NAME eq Seller) AND (ACTION_NAME == need)">class="active"</if>> <a href="{:U('Seller/need')}"><i class="icon-double-angle-right"></i>财务管理</a></li>
+              <li <if condition="(CONTROLLER_NAME eq Seller) AND (ACTION_NAME == need)">class="active"</if>> <a href="{:U('Seller/need')}"><i class="icon-double-angle-right"></i>提现管理</a></li>
+          </ul>
+        </li>
+
+
+
+
+                <li <if condition="CONTROLLER_NAME eq Banner">class="active"</if>>
+                    <a href="{:U('Banner/showlist')}" >
+                        <i class="icon-film"></i>
+                        <span class="menu-text">Banner管理</span>
+                    </a>
+                </li>
+                <li <if condition="CONTROLLER_NAME eq House">class="active"</if>>
+                    <a href="{:U('House/showlist')}" >
+                        <i class="icon-edit"></i>
+                        <span class="menu-text">房天下申请管理</span>
+                    </a>
+                </li>
+
+
+
+
+				<li <if condition="CONTROLLER_NAME eq User">class="open active"</if>>
+                    <a href="" class="dropdown-toggle">
+                        <i class="icon-download-alt"></i>
+                        <span class="menu-text">会员管理</span>
+                        <b class="arrow icon-angle-down"></b>
+                    </a>
+                    <ul class="submenu">
+
+                        <li <if condition="(CONTROLLER_NAME eq User) AND (ACTION_NAME == userlist)">class="active"</if>> <a href="__MODULE__/User/userlist"><i class="icon-double-angle-right"></i>会员列表</a></li>
+                        <li <if condition="(CONTROLLER_NAME eq User) AND (ACTION_NAME == aplaylist)">class="active"</if>> <a href="__MODULE__/User/aplaylist"><i class="icon-double-angle-right"></i>代理申请</a></li>
+                    </ul>
+
+                </li>
+                <li <if condition="(CONTROLLER_NAME eq Order) OR (CONTROLLER_NAME == Booking)">class="open active"</if>>
+                    <a href="" class="dropdown-toggle">
+                        <i class="icon-download-alt"></i>
+                        <span class="menu-text">订单管理</span>
+                        <b class="arrow icon-angle-down"></b>
+                    </a>
+                    <ul class="submenu">
+
+                        <li <if condition="(CONTROLLER_NAME eq Order) AND (ACTION_NAME == showlist)">class="active"</if>> <a href="__MODULE__/Order/showlist"><i class="icon-double-angle-right"></i>乐购订单</a></li>
+                        <li <if condition="(CONTROLLER_NAME eq Booking) AND (ACTION_NAME == showlist)">class="active"</if>> <a href="__MODULE__/Booking/showlist"><i class="icon-double-angle-right"></i>豪车订单</a></li>
+                    </ul>
+
+                </li>
+
+
+
+
+
+                <li <if condition="CONTROLLER_NAME eq Finance">class="active"</if>>
+                    <a href="__MODULE__/Finance/legou">
+                        <i class="icon-key"></i>
+                        <span class="menu-text">财务管理</span>
+                    </a>
+                </li>
+                <li <if condition="CONTROLLER_NAME eq Exchange">class="active"</if>>
+                    <a href="__MODULE__/Exchange/showlist" >
+                        <i class="icon-credit-card"></i>
+                        <span class="menu-text">提现管理</span>
+
+                    </a>
+                </li>
+                <li <if condition="CONTROLLER_NAME eq Cishan">class="active open"</if>>
+                    <a href="" class="dropdown-toggle" >
+                        <i class="icon-money"></i>
+                        <span class="menu-text">慈善资金管理</span>
+                        <b class="arrow icon-angle-down"></b>
+                    </a>
+                    <ul class="submenu">
+
+                        <li <if condition="(CONTROLLER_NAME eq Cishan) AND (ACTION_NAME == showlist)">class="active"</if>> <a href="{:U('Cishan/showlist')}"><i class="icon-double-angle-right"></i>慈善项目</a></li>
+                        <li <if condition="ACTION_NAME == cimoney">class="active"</if>> <a href="{:U('Cishan/cimoney')}"><i class="icon-double-angle-right"></i>捐款记录</a></li>
+                    </ul>
+                </li>
+                 <li <if condition="(CONTROLLER_NAME eq Caiclub) OR (CONTROLLER_NAME == Caidetail)">class="active open"</if>> <a href="#" class="dropdown-toggle"> <i class="icon-strikethrough"></i> <span class="menu-text">财商俱乐部</span> <b class="arrow icon-angle-down"></b> </a>
+          <ul class="submenu">
+            <li <if condition="(CONTROLLER_NAME eq Caiclub) AND (ACTION_NAME == showlist)">class="active"</if>> <a href="{:U('Caiclub/showlist')}"><i class="icon-double-angle-right"></i>办卡申请列表</a></li>
+<li <if condition="(CONTROLLER_NAME eq Caidetail) AND (ACTION_NAME == showlist)">class="active"</if>> <a href="{:U('Caidetail/showlist')}"><i class="icon-double-angle-right"></i>办卡详情管理</a></li>
+          </ul>
+        </li>
+                <li <if condition="CONTROLLER_NAME eq Manager">class="active open"</if>>
+                    <a href="" class="dropdown-toggle" >
+                        <i class="icon-sitemap"></i>
+                        <span class="menu-text">管理员管理</span>
+                        <b class="arrow icon-angle-down"></b>
+                    </a>
+                    <ul class="submenu">
+
+                        <li <if condition="(CONTROLLER_NAME eq Manager) AND (ACTION_NAME == showlist)">class="active"</if>> <a href="{:U('Manager/showlist')}"><i class="icon-double-angle-right"></i>管理员列表</a></li>
+                        <li <if condition="(CONTROLLER_NAME eq Manager) AND (ACTION_NAME == tianjia)">class="active"</if>> <a href="{:U('Manager/tianjia')}"><i class="icon-double-angle-right"></i>新增管理员</a></li>
+                    </ul>
+                </li>
+                <li <if condition="CONTROLLER_NAME eq Role">class="open active"</if>>
+                    <a href="" class="dropdown-toggle" >
+                        <i class="icon-text-width"></i>
+                        <span class="menu-text">角色管理</span>
+                        <b class="arrow icon-angle-down"></b>
+                    </a>
+                    <ul class="submenu">
+
+                        <li <if condition="(CONTROLLER_NAME eq Role) AND (ACTION_NAME == showlist)">class="active"</if>> <a href="{:U('Role/showlist')}"><i class="icon-double-angle-right"></i>角色列表</a></li>
+                        <li <if condition="(CONTROLLER_NAME eq Role) AND (ACTION_NAME eq tianjia)">class="active"</if>> <a href="{:U('Role/tianjia')}"><i class="icon-double-angle-right"></i>新增角色</a></li>
+                    </ul>
+                </li>
+                <li <if condition="CONTROLLER_NAME eq Setting">class="active open"</if>>
+                    <a href="#"  class="dropdown-toggle">
+                        <i class="icon-cogs"></i>
+                        <span class="menu-text">平台设置 </span>
+                        <b class="arrow icon-angle-down"></b>
+                    </a>
+                    <ul class="submenu">
+                        <li <if condition="ACTION_NAME eq base">class="active"</if>> <a href="__MODULE__/Setting/base"> <i class="icon-double-angle-right"></i> 基本设置 </a> </li>
+                        <li <if condition="ACTION_NAME eq weixin">class="active"</if>> <a href="__MODULE__/Setting/weixin"> <i class="icon-double-angle-right"></i> 微信设置 </a> </li>
+
+                    </ul>
+                </li>
+            </ul>
+            <!-- /.nav-list -->
+            <div class="sidebar-collapse" id="sidebar-collapse">
+                <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+            </div>
+            <script type="text/javascript">
+                try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+            </script>
+        </div>
+
+
+
+
+
+
+        {__CONTENT__}
+
+    </div><!-- /.main-container-inner -->
+</div><!-- /.main-container -->
+
+
+
+<script type="text/javascript" src='{$Think.const.JS_URL}jquery-1.7.2.min.js'></script>
+<script type="text/javascript" src="{$Think.const.JS_URL}ace-extra.min.js"></script>
+<script type="text/javascript" src="{$Think.const.JS_URL}daterangepicker.min.js"></script>
+<script type="text/javascript" src="{$Think.const.JS_URL}moment.min.js"></script>
+<script type="text/javascript" src="{$Think.const.JS_URL}bootstrap.min.js"></script>
+<script type="text/javascript" src="{$Think.const.JS_URL}ace.min.js"></script>
+<script type="text/javascript" src="{$Think.const.JS_URL}pulic.js"></script>
+</body>
+</html>

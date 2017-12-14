@@ -1,0 +1,135 @@
+<script type="text/javascript" src='{$Think.const.JS_URL}jquery-1.7.2.min.js'></script>
+<div class="main-content">
+    <div class="page-content">
+        <div class="row">
+            <div class="page-content box">
+    <div class="box-title margin_bot_20">
+        <div class="span10">
+            <h3><i class="icon-cogs"></i>会员资料</h3>
+        </div>
+    </div>
+<form action="__MODULE__/Patient/upd" method="post" class="form-horizontal">
+    <div class="form-group">
+        <label class="control-label">姓名 : </label>
+        <div class="controls pull-left">
+            <input type="text" class="input-large" name="username" value="{$userinfo.username}">
+            <span class="help-inline red"> * </span>
+        </div>
+    </div>
+     <div class="form-group">
+        <label class="control-label">电话 : </label>
+        <div class="controls pull-left">
+            <input type="text" class="input-large" name="iphone" value="{$userinfo.iphone}">
+            <span class="help-inline red"> * </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label">城市 : </label>
+        <div class="controls pull-left">
+            <select name="province_id" class="province selectarea">
+                <option value=''><if condition="$userinfo.city eq ''">省<else />{$userinfo.city}</if></option>
+                <foreach name="provincelist" item="provinceinfo">
+                <option value="{$provinceinfo.id}">{$provinceinfo.name}</option>
+                </foreach>
+            </select>
+            <select name="city_id" class="city selectarea" style="visibility:hidden">
+            </select>
+            <select name="country_id" class="country selectarea" style="visibility:hidden">
+            </select>
+            <input type="hidden" name="city" value="{$userinfo.city}"> 
+            <span class="help-inline red"> * </span>
+        </div>
+    </div>
+    <script type="text/javascript">
+            $(function(){
+                    var provinceid,cityid,countryid; 
+                    var provincename,cityname,countryname;
+                    var areaname;
+                    $(".province").change(function(){
+                        var index = $(this).get(0).selectedIndex;
+                        if(index == 0){
+                            $(this).siblings('.selectarea').css("visibility","hidden");
+                            return;
+                        }else{
+                            $(".city").css("visibility","visible");
+                            provinceid = $(this).val();
+                            provincename = $(".province option:selected").text();
+                            //alert(provincename);
+                            $.post("__MODULE__/Patient/getcity",{'upid':provinceid},function(data){
+                                if(data.error ==  1){
+
+                                }else{
+                                    var cityhtml = "<option value=''>市</option>";
+                                    var datalist = data.content;
+                                    for(var i in datalist){
+                                        cityhtml+="<option value='"+datalist[i].id+"'>"+datalist[i].name+"</option>";
+                                    }
+                                    $(".city").eq(0).html(cityhtml);
+                                }
+                            })
+                        }
+                        //计算出选择省在数组中的下标
+                    })
+                    $(".city").change(function(){
+                        var index = $(this).get(0).selectedIndex;
+                        if(index == 0){
+                            $(".country").css("visibility","hidden");
+                            return;
+                        }else{
+                            $(".country").css("visibility","visible");
+                            cityid = $(this).val();
+                            cityname = $(".city option:selected").text();
+                            //alert(cityid);
+                            $.post("__MODULE__/Patient/getcity",{'upid':cityid},function(data){
+                                if(data.error ==  1){
+
+                                }else{
+                                    var countryhtml = "<option value=''>县/区</option>";
+                                    var datalist = data.content;
+                                    for(var i in datalist){
+                                        countryhtml+="<option value='"+datalist[i].id+"'>"+datalist[i].name+"</option>";
+                                    }
+                                    $(".country").eq(0).html(countryhtml);
+                                }
+                            })
+                        }
+                        //计算出选择省在数组中的下标
+                    })
+                    $(".country").change(function(){
+                        var index = $(this).get(0).selectedIndex;
+                        if(index == 0){
+                            return;
+                        }else{
+                            countryid = $(this).val();
+                            countryname = $(".country option:selected").text();
+                            areaname = provincename+cityname+'市'+countryname;
+                            //$(".country option:selected").text(areaname);
+                            $("input[name='city']").val(areaname);
+                        }
+                    })
+                })
+        </script>
+    <div class="form-group">
+        <label class="control-label">详细地址 : </label>
+        <div class="controls pull-left">
+            <input type="text" class="input-large" name="area" value="{$userinfo.area}">
+            <span class="help-inline red"> * </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label">充值 : </label>
+        <div class="controls pull-left">
+            <input type="text" class="input-large" name="money" value="{$userinfo.money}">
+            <span class="help-inline red"> * </span>
+        </div>
+    </div>
+                    <div class="form-actions">
+                        <input type="hidden" name="userid" value="{$Think.get.userid}">
+                        <button id="bsubmit" type="submit"  class="btn btn-sm btn-primary">保存</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--/.box-->
+    </div><!-- /.page-content -->
+</div><!-- /.main-content -->

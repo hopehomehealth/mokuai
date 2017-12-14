@@ -1,0 +1,164 @@
+<style type="text/css">
+.btn { -webkit-border-radius: 3px; -moz-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; background-color: #dd0045; color: #fff; display: inline-block; height: 28px; line-height: 28px; text-align: center; padding: 0 12px; transition: background-color .2s linear 0s; border: 0; cursor: pointer; }
+.btn:hover { background-color: #dd0045; text-decoration: none; }
+.btn.loading { opacity: .5; }
+.disabled { opacity: .6; filter: alpha(opacity=60) }
+</style>
+<div class="main">
+  <section>
+    <div class="navbj fl">
+    <form action="" method="post" id="form">
+      <ul class="login fl">
+        <!-- <li>
+            <input name="reg_phone" id="username" type="text" class="login_a" value="" placeholder="请输入用户名">
+          </li> -->
+        <li>
+
+          <!--  <input name="reg_phone" id="username" type="text" class="login_a" value="" placeholder="请输入手机号">-->
+          <input type="text" style="width:45%;
+    background: url(/Public/Home/images/ren.png) no-repeat left;
+    background-size:11%;
+    color: #909090;
+    font-size: 1.500rem;
+    height: 2.750rem;
+    line-height: 2.750rem;
+    padding-left: 10%;
+    border: none;
+}"  name="reg_phone" id="phone" placeholder="请输入手机号" autocomplete="off"/>
+          <input type="button" value="获取验证码" class="btn" id="sendPhoneCode" onclick="send_phone_code()" autocomplete="off"/>
+        </li>
+        <li>
+          <input type="text" style=" width:100%; color: #909090;
+    font-size: 1.500rem;
+    height: 2.750rem;
+    line-height: 2.750rem;
+    border: none;" placeholder="请输入手机验证码" name="code" autocomplete="off"/>
+        </li>
+        <li>
+          <input id="password" name="password" type="password" class="password" value="" placeholder="请输入新密码">
+        </li>  <script type="text/javascript">
+                        var wait = 120;//倒计时120秒
+                        var intervalId;//定时
+                        var i = wait;//倒计时递减 1
+                        function exit() {
+                            $("#sendPhoneCode").val(i + "秒后重新发送").addClass("disabled");
+                            i = i - 1;
+                            if (i <= -1) {
+                                clearInterval(intervalId);
+                                $("#sendPhoneCode").removeAttr("disabled");
+                                $("#sendPhoneCode").val("发送验证码").removeClass("disabled");
+                            }
+                        }
+                        function send_phone_code() {
+                            var phone = $("input[name='reg_phone']").val();
+							var myreg = /^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d{8}$/i;
+                            if (phone == '') {
+                                $("input[name='reg_phone']").val("请输入手机号");
+								$("input[name='reg_phone']").css('color','red');
+								$("input[name='reg_phone']").attr('readonly','readonly');
+								setTimeout(function(){$("input[name='reg_phone']").val('');$("input[name='reg_phone']").css('color','');$("input[name='reg_phone']").removeAttr('readonly')},1000);
+                                return false;
+                            }
+                            if (!myreg.test(phone)) {
+                                $("input[name='reg_phone']").val("非法的手机号");
+								$("input[name='reg_phone']").css('color','red');
+								$("input[name='reg_phone']").attr('readonly','readonly');
+								setTimeout(function(){$("input[name='reg_phone']").val('');$("input[name='reg_phone']").css('color','');$("input[name='reg_phone']").removeAttr('readonly')},1000);
+                                return false;
+                            }
+
+                            i = wait;
+                            $.post("__MODULE__/User/sendsms", {
+                                "phone": phone
+                            }, function(data) {
+                                if (data == 'success') {
+                                    $("#sendPhoneCode").attr("disabled", "disabled");
+                                    $("#sendPhoneCode").val("发送成功");
+                                    intervalId = setInterval("exit()", 1000);
+                                }else{
+									$("input[name='reg_phone']").val("无效手机号码");
+									$("input[name='reg_phone']").css('color','red');
+									$("input[name='reg_phone']").attr('readonly','readonly');
+									setTimeout(function(){$("input[name='reg_phone']").val('');$("input[name='reg_phone']").css('color','');$("input[name='reg_phone']").removeAttr('readonly')},1000);
+									return false;
+								}
+                            })
+                        }
+        </script>
+
+
+      </ul>
+      </div>
+
+      <p class="login_b fl" style="padding-top:0;">
+        <if condition="$Think.get.pid neq ''">
+          <input type="hidden" name="pid" value="{$Think.get.pid}">
+        </if>
+        <button class="submit loginBtn" type="button">提&nbsp;&nbsp;交</button>
+      </p>
+    </form>
+  </section>
+</div>
+<script type="text/javascript">
+	$(function(){
+		 $(".loginBtn").click(function(){
+			$("#form").submit(function(){return false});
+			$(".loginBtn").attr('disabled',true);
+			if($("input[name='reg_phone']").val() == ''){
+				$(".loginBtn").attr('disabled',false);
+				$("input[name='reg_phone']").val("请输入手机号");
+				$("input[name='reg_phone']").css('color','red');
+				$("input[name='reg_phone']").attr('readonly','readonly');
+				setTimeout(function(){$("input[name='reg_phone']").val('');$("input[name='reg_phone']").css('color','');$("input[name='reg_phone']").removeAttr('readonly')},1000);
+				return false;
+			}
+			if($("input[name='code']").val() == ''){
+				$(".loginBtn").attr('disabled',false);
+				$("input[name='code']").val("请输入手机验证码");
+				$("input[name='code']").css('color','red');
+				$("input[name='code']").attr('readonly','readonly');
+				setTimeout(function(){$("input[name='code']").val('');$("input[name='code']").css('color','');$("input[name='code']").removeAttr('readonly')},1000);
+				return false;
+			}
+			if($("input[name='password']").val() == ''){
+				$(".loginBtn").attr('disabled',false);
+				$("input[name='password']").get(0).type='text';
+				$("input[name='password']").attr('readonly','readonly');
+				$("input[name='password']").val('请输入新密码');
+				$("input[name='password']").css('color','red');
+				setTimeout(function(){$("input[name='password']").val('');$("input[name='password']").css('color','');$("input[name='password']").removeAttr('readonly');$("input[name='password']").get(0).type='password';$("input[name='password']").removeAttr('readonly')},1000);
+				return false;
+			}
+			$.post("__MODULE__/User/mmzh",$("#form").serialize(),function(data){
+				if(data.error == 1){
+					$(".loginBtn").attr('disabled',false);
+					$("input[name='reg_phone']").val('该手机号未注册');
+					$("input[name='reg_phone']").css('color','red');
+					$("input[name='reg_phone']").attr('readonly','readonly');
+					setTimeout(function(){$("input[name='reg_phone']").val('');$("input[name='reg_phone']").css('color','');$("input[name='reg_phone']").removeAttr('readonly')},1000);
+				}else if(data.error == 2){
+					$(".loginBtn").attr('disabled',false);
+					$("input[name='code']").val("验证码错误");
+					$("input[name='code']").css('color','red');
+					$("input[name='code']").attr('readonly','readonly');
+					setTimeout(function(){$("input[name='code']").val('');$("input[name='code']").css('color','');$("input[name='code']").removeAttr('readonly')},1000);
+				}else if(data.error == 3){
+					$(".loginBtn").attr('disabled',false);
+					$("input[name='code']").val("验证码已失效");
+					$("input[name='code']").css('color','red');
+					$("input[name='code']").attr('readonly','readonly');
+					setTimeout(function(){$("input[name='code']").val('');$("input[name='code']").css('color','');$("input[name='code']").removeAttr('readonly')},1000);
+				}else if(data.error == 4){
+					$(".loginBtn").attr('disabled',false);
+					$("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:10rem;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'密码重置失败'+"</div>");
+					$("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);setTimeout(function(){$("#errormsg").remove();},2000);
+				}else if(data.error == 0){
+					$(".loginBtn").attr('disabled',false);
+					$("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:10rem;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'密码重置成功'+"</div>");
+					$("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);setTimeout(function(){$("#errormsg").remove();location.href="__MODULE__/User/login"},2000);
+				}
+			})
+		 });
+	})
+</script>
+

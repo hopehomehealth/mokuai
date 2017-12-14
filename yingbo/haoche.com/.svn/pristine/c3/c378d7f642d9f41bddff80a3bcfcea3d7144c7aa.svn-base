@@ -1,0 +1,47 @@
+<ul class="dj_xhk fr">
+    <p class="arrow-up fl"></p>
+    <li><a href="{:U('Union/index')}">369商家联盟</a></li>
+</ul>
+<script type="text/javascript">
+    $(".head_back2").click(function(){
+        $(".dj_xhk").slideToggle("1000");
+    });
+</script>
+<div class="main">
+    <section>
+        <div class="union-tu fl" >
+            <div class="union-tu-lsit">
+                <p class="fs1-6 fwb pl3-8">新农缘天下/<span class="fwn fs1-1"><span class="fwb fso pr0-2"></span>&nbsp;商家权益</span></p>
+                <p class="w60 fl xj-union-l pt1-4"><a href="{:U('Union/quanyixieyi')}"><img src="{$Think.const.HIMG_URL}xj_images_41.png"></a></p>
+                <p class="w30 fl xj-union-r pt2-4"><img src="{$Think.const.HIMG_URL}xj_images_34.png"></p>
+                <p class="w100 union-tu_xtb pl2-2 fl pt_6"><img src="{$Think.const.HIMG_URL}xj_images_35.png">&nbsp;北京新农缘天下农业科技有限责任公司</p>
+                <p class="w100 union-tu_xtb pl2-2 fl pt0-2"><img src="{$Think.const.HIMG_URL}xj_images_11.png">&nbsp;010-5622 9268</span></p>
+            </div>
+        </div>
+    </section>
+
+
+    <section>
+        <div class="navbj fl pb0 mt0">
+            <ul class="union-list fl">
+                <foreach name="info" item="v">
+                    <li><a href="{:U('Quanyi/detail',array('quanyi_id'=>$v['quanyi_id']))}">
+                        <dl class="union-pic">
+                            <dt><img src="{$Think.const.SITE_URL}{$v.pic}"></dt>
+                            <dd>
+                                <p><span class="fso crimson fs2-4 pr0-2">商家</span><span class="fso crimson fs1-1 pr1 fr">  免费领</span>
+                                   <span class="fs1-4 fwb fl">{$v.name}</span>
+                                    <span class="fs1-1 fr pr0-2">原价: {$v.price}</span>
+                                </p>
+                                <p class="fs1">现价: {$v.nowprice}</p>
+                                <p class="mt0-5 w20 union-an-a d-red fs1-2 crimson">预约</p>
+                            </dd>
+                        </dl>
+                    </a></li>
+                </foreach>
+
+
+            </ul>
+        </div>
+    </section>
+</div>

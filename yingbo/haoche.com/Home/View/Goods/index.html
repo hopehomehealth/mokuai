@@ -1,0 +1,179 @@
+    <script type="text/javascript" src="{$Think.const.HJS_URL}refresh.js"></script>
+    <script type="text/javascript" src="{$Think.const.HJS_URL}jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="{$Think.const.HJS_URL}L_slide.js"></script>
+
+
+<div class="main">
+    <section>
+        <div class="tesco fl pt_6 pb_6">
+            <p class="tesco_left fl"><a href="{:U('Cart/showlist')}"><img src="{$Think.const.HIMG_URL}tb_26.png"><span class="tesco_gwsz1">{$number}</span></a> </p>
+            <p class="tesco_right fl">
+               <form action="{:U('search')}" method="post">
+                    <input type="text" class="tesco_rgt_k fl" name="searchname" id="searchname" placeholder="请输入商品名称/类型">
+                    <input id="submit"  class="tesco_rgt_an" type="submit" value="">
+                </form>
+                     <script type="text/jscript">
+ $('#submit').click(function(){
+ var searchname = $('#searchname').val();
+     if(searchname == ''){
+        return false;
+    }
+        });
+</script> 
+            </p>
+        </div>
+    </section>
+    <section>
+        <input type='hidden' id='goods_id' value='{$info.goods_id}'>
+        <div class="navbj fl m0 pb0">
+            <div class="swipe">
+                <ul id="slider">
+                    <foreach name="bannerinfo" item="v">
+                        <li><a href="{$v.url}" ><img src="{$Think.const.SITE_URL}{$v.pic}" alt="" /></a></li>
+
+                    </foreach>
+
+                </ul>
+                <div id="pagenavi"> <a href="javascript:void(0);" class="active">1</a> <a href="javascript:void(0);">2</a> <a href="javascript:void(0);">3</a> <a href="javascript:void(0);">4</a> </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <ul class="navbj navBox navOne fl pb0">
+            <foreach name="catinfo1" item="v">
+                <li> <a href="{:U('catlist',array('cat_id'=>1))}"> <img src="{$Think.const.HIMG_URL}images_39.jpg">
+                    <p>{$v.cat_name}</p>
+                </a> </li>
+            </foreach>
+            <foreach name="catinfo2" item="v">
+                <li> <a href="{:U('catlist',array('cat_id'=>2))}"> <img src="{$Think.const.HIMG_URL}images_40.jpg">
+                    <p>{$v.cat_name}</p>
+                </a> </li>
+            </foreach>
+            <foreach name="catinfo3" item="v">
+                <li> <a href="{:U('catlist',array('cat_id'=>3))}"> <img src="{$Think.const.HIMG_URL}images_41.jpg">
+                    <p>{$v.cat_name}</p>
+                </a> </li>
+            </foreach>
+            <foreach name="catinfo4" item="v">
+                <li> <a href="{:U('catlist',array('cat_id'=>4))}"> <img src="{$Think.const.HIMG_URL}images_42.jpg">
+                    <p>{$v.cat_name}</p>
+                </a> </li>
+            </foreach>
+            <foreach name="catinfo5" item="v">
+                <li> <a href="{:U('catlist',array('cat_id'=>5))}"> <img src="{$Think.const.HIMG_URL}images_43.jpg">
+                    <p>{$v.cat_name}</p>
+                </a> </li>
+            </foreach>
+            <foreach name="catinfo6" item="v">
+                <li> <a href="{:U('catlist',array('cat_id'=>6))}"> <img src="{$Think.const.HIMG_URL}images_44.jpg">
+                    <p>{$v.cat_name}</p>
+                </a> </li>
+            </foreach>
+            <foreach name="catinfo7" item="v">
+                <li> <a href="{:U('catlist',array('cat_id'=>7))}"> <img src="{$Think.const.HIMG_URL}images_45.jpg">
+                    <p>{$v.cat_name}</p>
+                </a> </li>
+            </foreach>
+
+
+            <li> <a href="{:U('allcatlist')}"> <img src="{$Think.const.HIMG_URL}images_46.jpg">
+                <p>全部</p>
+            </a> </li>
+        </ul>
+    </section>
+    <section>
+        <p class="tesco fl">手机 / <span class="fso gray">Mobile phone</span><span class="car_tit_gd fr"><a href="{:U('catlist',array('cat_id'=>1))}">更多</a></span></p>
+        <foreach name="goodsinfo1" item="v">
+        <div class="navbj fl">
+
+                <dl class="tesco_pic fl">
+                    <dt><a href="{:U('detail',array('goods_id'=>$v['goods_id']))}"><img src="{$Think.const.SITE_URL}{$v.big_logo}"></a></dt>
+                    <dd>
+                        <p class="car_xzsz">
+                            <a href="{:U('detail',array('goods_id'=>$v['goods_id']))}">
+                            <span class="gray">{$v.goods_name}</span>
+
+
+                            </a></p>
+                        <p class="car_z crimson fwb fl">￥{$v.price}元&nbsp;&bull;&nbsp;积分</p>
+                        <p class="car_f fl crimson pt_6 pb_6 car_f_awm"><span class="car_yj">首付</span>&nbsp;{$v['price']*$setinfo[0]['pct_cash']/100}元</p>
+                        <p class="tesco_thzc fl">提货周期：{$v.cycle}<img src="{$Think.const.HIMG_URL}tb_22.png"></p>
+                        <p class="tesco_gm fl"><img id="cart1" src="{$Think.const.HIMG_URL}tb_21.png"></p>
+                    </dd>
+                </dl>
+
+        </div>
+    </foreach>
+
+    </section>
+    <section>
+        <p class="tesco fl">家电 / <span class="fso gray">Household appliances</span><span class="car_tit_gd fr"><a href="{:U('catlist',array('cat_id'=>2))}">更多</a></span></p>
+        <foreach name="goodsinfo2" item="v">
+            <div class="navbj fl">
+
+                <dl class="tesco_pic fl">
+                    <dt><a href="{:U('detail',array('goods_id'=>$v['goods_id']))}"><img src="{$Think.const.SITE_URL}{$v.big_logo}"></a></dt>
+                    <dd>
+                        <p class="car_xzsz">
+                            <a href="{:U('detail',array('goods_id'=>$v['goods_id']))}">
+                            <span class="gray">{$v.goods_name}</span></a></p>
+                        <p class="car_z crimson fwb fl">￥{$v.price}元&nbsp;&bull;&nbsp;积分</p>
+                        <p class="car_f fl crimson pt_6 pb_6 car_f_awm"><span class="car_yj">首付</span>&nbsp;{$v['price']*$setinfo[0]['pct_cash']/100}元</p>
+                        <p class="tesco_thzc fl">提货周期：{$v.cycle}<img src="{$Think.const.HIMG_URL}tb_22.png"></p>
+                        <p class="tesco_gm fl"><img id="cart" src="{$Think.const.HIMG_URL}tb_21.png"></p>
+                    </dd>
+                </dl>
+
+            </div>
+        </foreach>
+
+    </section>
+</div>
+    <script type="text/javascript">
+        $(function(){
+            $("#cart").click(function(){
+                //获得被添加到购物车的商品id信息
+                var goods_id = $('#goods_id').val();
+
+                $.ajax({
+                    url:"__MODULE__/Cart/addCart",
+                    data:{'goods_id':goods_id},
+                    dataType:'json',
+                    type:'get',
+                    success:function(msg){
+                        $("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1rem;opacity:0.7;background:#666'>"+"加入购物车成功"+"</div>");
+
+                        $("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);$("#cart").attr('disabled',true);setTimeout(function(){$("#errormsg").remove();$("#cart").attr('disabled',false);},2000);
+                    }
+                });
+            })
+
+
+        })
+    </script>
+<script type="text/javascript" src="{$Think.const.HJS_URL}touchScroll.js"></script>
+<script type="text/javascript" src="{$Think.const.HJS_URL}touchslider.dev.js"></script>
+<script type="text/javascript">
+    var active=0,
+            as=document.getElementById('pagenavi').getElementsByTagName('a');
+
+    for(var i=0;i<as.length;i++){
+        (function(){
+            var j=i;
+            as[i].onclick=function(){
+                t2.slide(j);
+                return false;
+            }
+        })();
+    }
+    var t1=new TouchScroll({id:'wrapper','width':5,'opacity':0.7,color:'#555',minLength:20});
+
+    var t2=new TouchSlider({id:'slider', speed:600, timeout:6000, before:function(index){
+        as[active].className='';
+        active=index;
+        as[active].className='active';
+    }});
+</script>
+

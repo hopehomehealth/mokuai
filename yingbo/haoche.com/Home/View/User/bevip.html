@@ -1,0 +1,27 @@
+<div class="main">
+  <section>
+    <div class="navbj fl">
+        <ul class="login fl" style="text-align:center;height:16rem;color:#ab3838">
+          <li style="border:none;margin-top:2rem">
+            缴纳<i style="font-size:1.5rem;font-weight:bolder;color:#DD0045"> {$bevip['amount']} </i>元
+          </li>
+          <li style="border:none;">
+            立即成为商家联盟<i style="font-size:1.5rem;font-weight:bolder;color:#e23406"> Vip</i>
+          </li>
+          <li>
+            开启<i style="font-size:1.5rem;font-weight:bolder;color:#e23406"> Vip </i>享超值特权
+          </li>
+        </ul>
+    </div>
+    <p class="login_b fl">
+        <input type="hidden" name="restatus" value="{$Think.get.restatus}">
+        <!-- <input type="hidden" name="back_reg" value="{$set['back_reg']}"> -->
+      <a href="{$url}"><button id="paybtn" class="submit loginBtn" type="button">立即支付</button></a>
+    </p>
+  </section>
+</div>
+<script type="text/javascript">
+	$(function(){
+		
+	})
+</script>

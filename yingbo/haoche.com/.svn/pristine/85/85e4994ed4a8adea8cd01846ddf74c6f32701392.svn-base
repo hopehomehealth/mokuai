@@ -1,0 +1,37 @@
+<ul class="dj_xhk fr">
+    <p class="arrow-up fl"></p>
+    <li><a href="{:U('Union/index')}">369商家联盟</a></li>
+</ul>
+<script type="text/javascript">
+    $(".head_back2").click(function(){
+        $(".dj_xhk").slideToggle("1000");
+    });
+</script>
+<div class="main">
+    <section>
+        <div class="navbj fl pt_6 pb_6">
+            <dl class="uni-pic fl">
+                <dt><img src="{$Think.const.SITE_URL}{$goodsinfo[0]['logo']}"></dt>
+                <dd> <span class="fs1-4 fwb dtwo w75 fl">{$goodsinfo[0]['goods_name']}</span>
+                    <span class="crimson fs1-4 fr">库存:{$goodsinfo[0]['number']}</span>
+                <br>
+                    <p class="fl">市场价:&nbsp;&nbsp;<span class="fso crimson fs1-1 pr1" style="text-decoration: line-through;">￥{$goodsinfo[0]['price']}</span><br/>联盟价:&nbsp;&nbsp;<span class="fso crimson fs2-4" style="font-size: 2.0rem;">￥{$goodsinfo[0]['nowprice']}</span></p>
+                    <p class="mt0-5 union-an-a d-red fs1-2 crimson fr fwb w20" style="margin-top:2.5rem;">立即购买</p></dd>
+            </dl>
+        </div>
+    </section>
+    <style type="text/css">
+        .f2 {float: none;}
+        #content p img { max-width: 100%; margin:0 0.250rem; }
+    </style>
+    <section>
+        <div class="navbj fl pt_6 pb_6">
+            <div class="uni-cpsm fl">
+                <p class="fwb uni-cpsm-t fl">产品说明</p>
+                <div id="content" class="tesco_fin_con fl">
+                  {$content}
+                </div>
+            </div>
+            </div>
+    </section>
+</div>

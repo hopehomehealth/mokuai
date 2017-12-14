@@ -1,0 +1,1449 @@
+[ 2017-08-21T09:15:35+08:00 ] 127.0.0.1 /?login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined offset: 1 D:\WWW\zghnj.com\Common\Common\HomeController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `hnj_slide` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hnj_slide` WHERE ( is_show = '0' AND cat_id = 0 ) ORDER BY sort,upd_time desc LIMIT 3   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hnj_news` [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `hnj_category` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND cat_id = 0 ) ORDER BY upd_time desc LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND (cat_id = 6 or cat_id = 7) ) ORDER BY sort,upd_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `introduce` FROM `hnj_category` WHERE `cat_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND (cat_id = 3 or cat_id = 4) ) ORDER BY sort,upd_time desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT `introduce` FROM `hnj_category` WHERE `cat_id` = 8 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_type` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hnj_type` WHERE ( is_show = '0' ) ORDER BY sort,type_id LIMIT 5   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `hnj_product` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 2 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 4 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 5 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 6 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 7 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_link` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hnj_link` WHERE ( is_show = 1 ) ORDER BY sort,ctime desc  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( cat_id = 23 AND is_show = '0' ) ORDER BY sort,upd_time desc LIMIT 4   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: keywords D:\WWW\zghnj.com\Runtime\Cache\Home\afa534d7c0102a99796a92b991c63212.php 第 39 行.
+NOTIC: [8] Undefined index: loginstatus D:\WWW\zghnj.com\Runtime\Cache\Home\afa534d7c0102a99796a92b991c63212.php 第 65 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.027002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.027002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004000s ]
+
+[ 2017-08-21T09:30:07+08:00 ] 127.0.0.1 /?login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8] Undefined offset: 1 D:\WWW\zghnj.com\Common\Common\HomeController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `hnj_slide` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hnj_slide` WHERE ( is_show = '0' AND cat_id = 0 ) ORDER BY sort,upd_time desc LIMIT 3   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `hnj_news` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `hnj_category` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND cat_id = 0 ) ORDER BY upd_time desc LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND (cat_id = 6 or cat_id = 7) ) ORDER BY sort,upd_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SELECT `introduce` FROM `hnj_category` WHERE `cat_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND (cat_id = 3 or cat_id = 4) ) ORDER BY sort,upd_time desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT `introduce` FROM `hnj_category` WHERE `cat_id` = 8 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hnj_type` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hnj_type` WHERE ( is_show = '0' ) ORDER BY sort,type_id LIMIT 5   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_product` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 2 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 4 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 5 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 6 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 7 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_link` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hnj_link` WHERE ( is_show = 1 ) ORDER BY sort,ctime desc  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( cat_id = 23 AND is_show = '0' ) ORDER BY sort,upd_time desc LIMIT 4   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: keywords D:\WWW\zghnj.com\Runtime\Cache\Home\afa534d7c0102a99796a92b991c63212.php 第 39 行.
+NOTIC: [8] Undefined index: loginstatus D:\WWW\zghnj.com\Runtime\Cache\Home\afa534d7c0102a99796a92b991c63212.php 第 65 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.031002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.031002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.010000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.010000s ]
+
+[ 2017-08-21T09:30:14+08:00 ] 127.0.0.1 /index.php/Home/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `hnj_slide` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `hnj_slide` WHERE ( is_show = '0' AND cat_id = 0 ) ORDER BY sort,upd_time desc LIMIT 3   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hnj_news` [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `hnj_category` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND cat_id = 0 ) ORDER BY upd_time desc LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND (cat_id = 6 or cat_id = 7) ) ORDER BY sort,upd_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SELECT `introduce` FROM `hnj_category` WHERE `cat_id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND (cat_id = 3 or cat_id = 4) ) ORDER BY sort,upd_time desc LIMIT 3   [ RunTime:0.0020s ]
+SQL: SELECT `introduce` FROM `hnj_category` WHERE `cat_id` = 8 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_type` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `hnj_type` WHERE ( is_show = '0' ) ORDER BY sort,type_id LIMIT 5   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_product` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 2 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 4 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 5 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 6 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 7 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hnj_link` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hnj_link` WHERE ( is_show = 1 ) ORDER BY sort,ctime desc  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( cat_id = 23 AND is_show = '0' ) ORDER BY sort,upd_time desc LIMIT 4   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: keywords D:\WWW\zghnj.com\Runtime\Cache\Home\afa534d7c0102a99796a92b991c63212.php 第 39 行.
+NOTIC: [8] Undefined index: loginstatus D:\WWW\zghnj.com\Runtime\Cache\Home\afa534d7c0102a99796a92b991c63212.php 第 65 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.032002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.032002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-08-21T09:30:23+08:00 ] 127.0.0.1 /index.php/Home/News/detail/id/4
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `hnj_slide` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hnj_slide` WHERE ( is_show = '0' AND cat_id = 5 ) ORDER BY sort,upd_time desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hnj_category` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hnj_category` WHERE ( pid = 5 AND is_show = 1 ) ORDER BY sort,cat_id  [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `hnj_news` [ RunTime:0.0070s ]
+SQL: SELECT n.news_id,n.cat_id,n.title,n.content,n.upd_time,n.author FROM hnj_news n left join hnj_category as c on c.cat_id = n.cat_id  WHERE ( n.news_id = 4 AND (n.cat_id = 6 OR n.cat_id = 7 OR n.cat_id = 0) AND n.is_show = '0' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `news_id`,`title` FROM `hnj_news` WHERE ( cat_id = 0 AND news_id < 4 ) ORDER BY news_id desc LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `news_id`,`title` FROM `hnj_news` WHERE ( cat_id = 0 AND news_id > 4 ) ORDER BY news_id LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined offset: 0 D:\WWW\zghnj.com\Home\Controller\NewsController.class.php 第 67 行.
+NOTIC: [8] Undefined offset: 0 D:\WWW\zghnj.com\Home\Controller\NewsController.class.php 第 68 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: keywords D:\WWW\zghnj.com\Runtime\Cache\Home\0839b8b5bca488bfd51e3e2f1c37f275.php 第 39 行.
+NOTIC: [8] Undefined index: loginstatus D:\WWW\zghnj.com\Runtime\Cache\Home\0839b8b5bca488bfd51e3e2f1c37f275.php 第 65 行.
+NOTIC: [8] Undefined variable: author D:\WWW\zghnj.com\Runtime\Cache\Home\0839b8b5bca488bfd51e3e2f1c37f275.php 第 134 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.021001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-08-21T11:24:34+08:00 ] 127.0.0.1 /index.php/Home/Technology/overview
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+ERR: SQLSTATE[28000] [1045] Access denied for user 'ruanwengb'@'localhost' (using password: YES)
+
+[ 2017-08-21T11:25:35+08:00 ] 127.0.0.1 /index.php/Home/Technology/overview
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2] PDO::__construct() [<a href='pdo.--construct'>pdo.--construct</a>]: [2002] �������ӷ���һ��ʱ���û����ȷ�𸴻����ӵ�����û�з�Ӧ�����ӳ���ʧ�ܡ�
+ (trying to connect via tcp://203.171.229.137:3306) D:\WWW\zghnj.com\ThinkPHP\Library\Think\Db\Driver.class.php 第 103 行.
+ERR: SQLSTATE[HY000] [2002] �������ӷ���һ��ʱ���û����ȷ�𸴻����ӵ�����û�з�Ӧ�����ӳ���ʧ�ܡ�
+
+
+[ 2017-08-21T11:25:59+08:00 ] 127.0.0.1 /index.php/Home/Technology/overview
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: SQLSTATE[28000] [1045] Access denied for user 'ruanwengb'@'localhost' (using password: YES)
+
+[ 2017-08-21T11:27:06+08:00 ] 127.0.0.1 /index.php/Home/Technology/overview
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: SQLSTATE[28000] [1045] Access denied for user 'ruanwengb'@'localhost' (using password: YES)
+
+[ 2017-08-21T11:29:38+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+NOTIC: [8] Undefined offset: 1 D:\WWW\zghnj.com\Common\Common\HomeController.class.php 第 18 行.
+ERR: SQLSTATE[28000] [1045] Access denied for user 'ruanwengb'@'localhost' (using password: YES)
+
+[ 2017-08-21T11:30:25+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined offset: 1 D:\WWW\zghnj.com\Common\Common\HomeController.class.php 第 18 行.
+ERR: SQLSTATE[28000] [1045] Access denied for user 'ruanwengb'@'localhost' (using password: YES)
+
+[ 2017-08-21T11:30:41+08:00 ] 127.0.0.1 /index.php/Home/Technology/overview
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: SQLSTATE[28000] [1045] Access denied for user 'ruanwengb'@'localhost' (using password: YES)
+
+[ 2017-08-21T11:44:19+08:00 ] 127.0.0.1 /index.php/Home/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: SQLSTATE[28000] [1045] Access denied for user 'ruanwengb'@'localhost' (using password: YES)
+
+[ 2017-08-21T11:44:55+08:00 ] 127.0.0.1 /index.php/Home/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `hnj_slide` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hnj_slide` WHERE ( is_show = '0' AND cat_id = 0 ) ORDER BY sort,upd_time desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_news` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `hnj_category` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND cat_id = 0 ) ORDER BY upd_time desc LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND (cat_id = 6 or cat_id = 7) ) ORDER BY sort,upd_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SELECT `introduce` FROM `hnj_category` WHERE `cat_id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND (cat_id = 3 or cat_id = 4) ) ORDER BY sort,upd_time desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT `introduce` FROM `hnj_category` WHERE `cat_id` = 8 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hnj_type` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hnj_type` WHERE ( is_show = '0' ) ORDER BY sort,type_id LIMIT 5   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_product` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 2 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 4 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 5 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 6 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 7 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_link` [ RunTime:0.0250s ]
+SQL: SELECT * FROM `hnj_link` WHERE ( is_show = 1 ) ORDER BY sort,ctime desc  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( cat_id = 23 AND is_show = '0' ) ORDER BY sort,upd_time desc LIMIT 4   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: keywords D:\WWW\zghnj.com\Runtime\Cache\Home\afa534d7c0102a99796a92b991c63212.php 第 39 行.
+NOTIC: [8] Undefined index: loginstatus D:\WWW\zghnj.com\Runtime\Cache\Home\afa534d7c0102a99796a92b991c63212.php 第 65 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.029001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.029001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-08-21T11:52:06+08:00 ] 127.0.0.1 /index.php/Home/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `hnj_slide` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hnj_slide` WHERE ( is_show = '0' AND cat_id = 0 ) ORDER BY sort,upd_time desc LIMIT 3   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hnj_news` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `hnj_category` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND cat_id = 0 ) ORDER BY upd_time desc LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND (cat_id = 6 or cat_id = 7) ) ORDER BY sort,upd_time desc LIMIT 4   [ RunTime:0.0020s ]
+SQL: SELECT `introduce` FROM `hnj_category` WHERE `cat_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND (cat_id = 3 or cat_id = 4) ) ORDER BY sort,upd_time desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT `introduce` FROM `hnj_category` WHERE `cat_id` = 8 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hnj_type` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hnj_type` WHERE ( is_show = '0' ) ORDER BY sort,type_id LIMIT 5   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_product` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 2 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 4 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 5 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 6 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 7 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hnj_link` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hnj_link` WHERE ( is_show = 1 ) ORDER BY sort,ctime desc  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( cat_id = 23 AND is_show = '0' ) ORDER BY sort,upd_time desc LIMIT 4   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: keywords D:\WWW\zghnj.com\Runtime\Cache\Home\afa534d7c0102a99796a92b991c63212.php 第 39 行.
+NOTIC: [8] Undefined index: loginstatus D:\WWW\zghnj.com\Runtime\Cache\Home\afa534d7c0102a99796a92b991c63212.php 第 65 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.030001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.030001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004001s ]
+
+[ 2017-08-21T11:52:38+08:00 ] 127.0.0.1 /index.php/Home/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.009001s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `hnj_slide` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `hnj_slide` WHERE ( is_show = '0' AND cat_id = 0 ) ORDER BY sort,upd_time desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_news` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `hnj_category` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND cat_id = 0 ) ORDER BY upd_time desc LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND (cat_id = 6 or cat_id = 7) ) ORDER BY sort,upd_time desc LIMIT 4   [ RunTime:0.0020s ]
+SQL: SELECT `introduce` FROM `hnj_category` WHERE `cat_id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND (cat_id = 3 or cat_id = 4) ) ORDER BY sort,upd_time desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT `introduce` FROM `hnj_category` WHERE `cat_id` = 8 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hnj_type` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hnj_type` WHERE ( is_show = '0' ) ORDER BY sort,type_id LIMIT 5   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_product` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 2 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0260s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 4 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 5 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0030s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 6 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0070s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 7 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_link` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hnj_link` WHERE ( is_show = 1 ) ORDER BY sort,ctime desc  [ RunTime:0.0060s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( cat_id = 23 AND is_show = '0' ) ORDER BY sort,upd_time desc LIMIT 4   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: keywords D:\WWW\zghnj.com\Runtime\Cache\Home\afa534d7c0102a99796a92b991c63212.php 第 39 行.
+NOTIC: [8] Undefined index: loginstatus D:\WWW\zghnj.com\Runtime\Cache\Home\afa534d7c0102a99796a92b991c63212.php 第 65 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.032002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.032002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-08-21T15:08:24+08:00 ] 127.0.0.1 /index.php/Home/News/industries
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `hnj_slide` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `hnj_slide` WHERE ( is_show = '0' AND cat_id = 5 ) ORDER BY sort,upd_time desc LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_category` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `hnj_category` WHERE ( pid = 5 AND is_show = 1 ) ORDER BY sort,cat_id  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_news` [ RunTime:0.0080s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hnj_news` WHERE ( cat_id = 6 AND is_show = '0' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( cat_id = 6 AND is_show = '0' ) ORDER BY sort,upd_time desc LIMIT 0,10   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: keywords D:\WWW\zghnj.com\Runtime\Cache\Home\6900b7d2e2b25ae92c2d37d31113a239.php 第 39 行.
+NOTIC: [8] Undefined index: loginstatus D:\WWW\zghnj.com\Runtime\Cache\Home\6900b7d2e2b25ae92c2d37d31113a239.php 第 65 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.038002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.038002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-08-21T15:08:27+08:00 ] 127.0.0.1 /index.php/Home/News/activities
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `hnj_slide` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hnj_slide` WHERE ( is_show = '0' AND cat_id = 5 ) ORDER BY sort,upd_time desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hnj_category` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hnj_category` WHERE ( pid = 5 AND is_show = 1 ) ORDER BY sort,cat_id  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hnj_news` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( cat_id = 7 AND is_show = '0' AND datetime > '2017-08-21' ) ORDER BY sort,datetime  [ RunTime:0.0010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hnj_news` WHERE ( cat_id = 7 AND is_show = '0' AND datetime < '2017-08-21' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( cat_id = 7 AND is_show = '0' AND datetime < '2017-08-21' ) ORDER BY sort,datetime desc LIMIT 0,10   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: keywords D:\WWW\zghnj.com\Runtime\Cache\Home\f8f815514b53931cd06cd8af86340bab.php 第 39 行.
+NOTIC: [8] Undefined index: loginstatus D:\WWW\zghnj.com\Runtime\Cache\Home\f8f815514b53931cd06cd8af86340bab.php 第 65 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.020001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.020001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-08-21T15:08:30+08:00 ] 127.0.0.1 /index.php/Home/News/industries
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `hnj_slide` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `hnj_slide` WHERE ( is_show = '0' AND cat_id = 5 ) ORDER BY sort,upd_time desc LIMIT 1   [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `hnj_category` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hnj_category` WHERE ( pid = 5 AND is_show = 1 ) ORDER BY sort,cat_id  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hnj_news` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hnj_news` WHERE ( cat_id = 6 AND is_show = '0' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( cat_id = 6 AND is_show = '0' ) ORDER BY sort,upd_time desc LIMIT 0,10   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: keywords D:\WWW\zghnj.com\Runtime\Cache\Home\6900b7d2e2b25ae92c2d37d31113a239.php 第 39 行.
+NOTIC: [8] Undefined index: loginstatus D:\WWW\zghnj.com\Runtime\Cache\Home\6900b7d2e2b25ae92c2d37d31113a239.php 第 65 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.022001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004000s ]
+
+[ 2017-08-21T15:10:50+08:00 ] 127.0.0.1 /index.php/Home/News/industries
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `hnj_slide` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `hnj_slide` WHERE ( is_show = '0' AND cat_id = 5 ) ORDER BY sort,upd_time desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hnj_category` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `hnj_category` WHERE ( pid = 5 AND is_show = 1 ) ORDER BY sort,cat_id  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_news` [ RunTime:0.0060s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hnj_news` WHERE ( cat_id = 6 AND is_show = '0' ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( cat_id = 6 AND is_show = '0' ) ORDER BY sort,upd_time desc LIMIT 0,10   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: keywords D:\WWW\zghnj.com\Runtime\Cache\Home\6900b7d2e2b25ae92c2d37d31113a239.php 第 39 行.
+NOTIC: [8] Undefined index: loginstatus D:\WWW\zghnj.com\Runtime\Cache\Home\6900b7d2e2b25ae92c2d37d31113a239.php 第 65 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.021002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-08-21T15:10:54+08:00 ] 127.0.0.1 /index.php/Home/News/activities
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `hnj_slide` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `hnj_slide` WHERE ( is_show = '0' AND cat_id = 5 ) ORDER BY sort,upd_time desc LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_category` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `hnj_category` WHERE ( pid = 5 AND is_show = 1 ) ORDER BY sort,cat_id  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_news` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( cat_id = 7 AND is_show = '0' AND datetime > '2017-08-21' ) ORDER BY sort,datetime  [ RunTime:0.0010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hnj_news` WHERE ( cat_id = 7 AND is_show = '0' AND datetime < '2017-08-21' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( cat_id = 7 AND is_show = '0' AND datetime < '2017-08-21' ) ORDER BY sort,datetime desc LIMIT 0,10   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: keywords D:\WWW\zghnj.com\Runtime\Cache\Home\f8f815514b53931cd06cd8af86340bab.php 第 39 行.
+NOTIC: [8] Undefined index: loginstatus D:\WWW\zghnj.com\Runtime\Cache\Home\f8f815514b53931cd06cd8af86340bab.php 第 65 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.025001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.025001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-08-21T15:10:58+08:00 ] 127.0.0.1 /index.php/Home/News/industries
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `hnj_slide` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `hnj_slide` WHERE ( is_show = '0' AND cat_id = 5 ) ORDER BY sort,upd_time desc LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_category` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hnj_category` WHERE ( pid = 5 AND is_show = 1 ) ORDER BY sort,cat_id  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_news` [ RunTime:0.0060s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hnj_news` WHERE ( cat_id = 6 AND is_show = '0' ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( cat_id = 6 AND is_show = '0' ) ORDER BY sort,upd_time desc LIMIT 0,10   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: keywords D:\WWW\zghnj.com\Runtime\Cache\Home\6900b7d2e2b25ae92c2d37d31113a239.php 第 39 行.
+NOTIC: [8] Undefined index: loginstatus D:\WWW\zghnj.com\Runtime\Cache\Home\6900b7d2e2b25ae92c2d37d31113a239.php 第 65 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.020001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.020001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-08-21T15:11:00+08:00 ] 127.0.0.1 /index.php/Home/News/activities
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `hnj_slide` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `hnj_slide` WHERE ( is_show = '0' AND cat_id = 5 ) ORDER BY sort,upd_time desc LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_category` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `hnj_category` WHERE ( pid = 5 AND is_show = 1 ) ORDER BY sort,cat_id  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hnj_news` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( cat_id = 7 AND is_show = '0' AND datetime > '2017-08-21' ) ORDER BY sort,datetime  [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hnj_news` WHERE ( cat_id = 7 AND is_show = '0' AND datetime < '2017-08-21' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( cat_id = 7 AND is_show = '0' AND datetime < '2017-08-21' ) ORDER BY sort,datetime desc LIMIT 0,10   [ RunTime:0.0030s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: keywords D:\WWW\zghnj.com\Runtime\Cache\Home\f8f815514b53931cd06cd8af86340bab.php 第 39 行.
+NOTIC: [8] Undefined index: loginstatus D:\WWW\zghnj.com\Runtime\Cache\Home\f8f815514b53931cd06cd8af86340bab.php 第 65 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.021002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-08-21T15:11:03+08:00 ] 127.0.0.1 /index.php/Home/News/industries
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `hnj_slide` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `hnj_slide` WHERE ( is_show = '0' AND cat_id = 5 ) ORDER BY sort,upd_time desc LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_category` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `hnj_category` WHERE ( pid = 5 AND is_show = 1 ) ORDER BY sort,cat_id  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_news` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hnj_news` WHERE ( cat_id = 6 AND is_show = '0' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( cat_id = 6 AND is_show = '0' ) ORDER BY sort,upd_time desc LIMIT 0,10   [ RunTime:0.0040s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: keywords D:\WWW\zghnj.com\Runtime\Cache\Home\6900b7d2e2b25ae92c2d37d31113a239.php 第 39 行.
+NOTIC: [8] Undefined index: loginstatus D:\WWW\zghnj.com\Runtime\Cache\Home\6900b7d2e2b25ae92c2d37d31113a239.php 第 65 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.022001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002001s ]
+
+[ 2017-08-21T15:12:59+08:00 ] 127.0.0.1 /index.php/Home/News/industries
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+SQL: SHOW COLUMNS FROM `hnj_slide` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `hnj_slide` WHERE ( is_show = '0' AND cat_id = 5 ) ORDER BY sort,upd_time desc LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_category` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `hnj_category` WHERE ( pid = 5 AND is_show = 1 ) ORDER BY sort,cat_id  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_news` [ RunTime:0.0080s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hnj_news` WHERE ( cat_id = 6 AND is_show = '0' ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( cat_id = 6 AND is_show = '0' ) ORDER BY sort,upd_time desc LIMIT 0,10   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: keywords D:\WWW\zghnj.com\Runtime\Cache\Home\6900b7d2e2b25ae92c2d37d31113a239.php 第 39 行.
+NOTIC: [8] Undefined index: loginstatus D:\WWW\zghnj.com\Runtime\Cache\Home\6900b7d2e2b25ae92c2d37d31113a239.php 第 65 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.023002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-08-21T15:13:02+08:00 ] 127.0.0.1 /index.php/Home/News/activities
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `hnj_slide` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `hnj_slide` WHERE ( is_show = '0' AND cat_id = 5 ) ORDER BY sort,upd_time desc LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_category` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `hnj_category` WHERE ( pid = 5 AND is_show = 1 ) ORDER BY sort,cat_id  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_news` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( cat_id = 7 AND is_show = '0' AND datetime > '2017-08-21' ) ORDER BY sort,datetime  [ RunTime:0.0010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hnj_news` WHERE ( cat_id = 7 AND is_show = '0' AND datetime < '2017-08-21' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( cat_id = 7 AND is_show = '0' AND datetime < '2017-08-21' ) ORDER BY sort,datetime desc LIMIT 0,10   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: keywords D:\WWW\zghnj.com\Runtime\Cache\Home\f8f815514b53931cd06cd8af86340bab.php 第 39 行.
+NOTIC: [8] Undefined index: loginstatus D:\WWW\zghnj.com\Runtime\Cache\Home\f8f815514b53931cd06cd8af86340bab.php 第 65 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.022001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002001s ]
+
+[ 2017-08-21T15:13:05+08:00 ] 127.0.0.1 /index.php/Home/News/industries
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `hnj_slide` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `hnj_slide` WHERE ( is_show = '0' AND cat_id = 5 ) ORDER BY sort,upd_time desc LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_category` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `hnj_category` WHERE ( pid = 5 AND is_show = 1 ) ORDER BY sort,cat_id  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_news` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hnj_news` WHERE ( cat_id = 6 AND is_show = '0' ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( cat_id = 6 AND is_show = '0' ) ORDER BY sort,upd_time desc LIMIT 0,10   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: keywords D:\WWW\zghnj.com\Runtime\Cache\Home\6900b7d2e2b25ae92c2d37d31113a239.php 第 39 行.
+NOTIC: [8] Undefined index: loginstatus D:\WWW\zghnj.com\Runtime\Cache\Home\6900b7d2e2b25ae92c2d37d31113a239.php 第 65 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.020001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.020001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-08-21T15:13:09+08:00 ] 127.0.0.1 /index.php/Home/News/activities
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `hnj_slide` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `hnj_slide` WHERE ( is_show = '0' AND cat_id = 5 ) ORDER BY sort,upd_time desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hnj_category` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `hnj_category` WHERE ( pid = 5 AND is_show = 1 ) ORDER BY sort,cat_id  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hnj_news` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( cat_id = 7 AND is_show = '0' AND datetime > '2017-08-21' ) ORDER BY sort,datetime  [ RunTime:0.0010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hnj_news` WHERE ( cat_id = 7 AND is_show = '0' AND datetime < '2017-08-21' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( cat_id = 7 AND is_show = '0' AND datetime < '2017-08-21' ) ORDER BY sort,datetime desc LIMIT 0,10   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: keywords D:\WWW\zghnj.com\Runtime\Cache\Home\f8f815514b53931cd06cd8af86340bab.php 第 39 行.
+NOTIC: [8] Undefined index: loginstatus D:\WWW\zghnj.com\Runtime\Cache\Home\f8f815514b53931cd06cd8af86340bab.php 第 65 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.020001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.020001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-08-21T16:05:39+08:00 ] 127.0.0.1 /index.php/Home/News/industries
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `hnj_slide` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `hnj_slide` WHERE ( is_show = '0' AND cat_id = 5 ) ORDER BY sort,upd_time desc LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_category` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `hnj_category` WHERE ( pid = 5 AND is_show = 1 ) ORDER BY sort,cat_id  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_news` [ RunTime:0.0110s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hnj_news` WHERE ( cat_id = 6 AND is_show = '0' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( cat_id = 6 AND is_show = '0' ) ORDER BY sort,upd_time desc LIMIT 0,10   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: keywords D:\WWW\zghnj.com\Runtime\Cache\Home\6900b7d2e2b25ae92c2d37d31113a239.php 第 39 行.
+NOTIC: [8] Undefined index: loginstatus D:\WWW\zghnj.com\Runtime\Cache\Home\6900b7d2e2b25ae92c2d37d31113a239.php 第 65 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.022001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2017-08-21T16:07:31+08:00 ] 127.0.0.1 /index.php/Home/Exhibition/product
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+SQL: SHOW COLUMNS FROM `hnj_slide` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `hnj_slide` WHERE ( is_show = '0' AND cat_id = 13 ) ORDER BY sort,upd_time desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hnj_category` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `hnj_category` WHERE ( pid = 13 AND is_show = 1 ) ORDER BY sort,cat_id  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_type` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `hnj_type` WHERE ( is_show = '0' ) ORDER BY sort,type_id  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_product` [ RunTime:0.0090s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hnj_product` WHERE ( type_id = 2 AND is_show = 1 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 2 AND is_show = 1 ) ORDER BY ctime desc LIMIT 0,10   [ RunTime:0.0000s ]
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\ExhibitionController.class.php 第 32 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: keywords D:\WWW\zghnj.com\Runtime\Cache\Home\983eb8d5fd70dd578070cba39b958a85.php 第 39 行.
+NOTIC: [8] Undefined index: loginstatus D:\WWW\zghnj.com\Runtime\Cache\Home\983eb8d5fd70dd578070cba39b958a85.php 第 65 行.
+NOTIC: [8] Undefined index: type_id D:\WWW\zghnj.com\Runtime\Cache\Home\983eb8d5fd70dd578070cba39b958a85.php 第 129 行.
+NOTIC: [8] Undefined index: type_id D:\WWW\zghnj.com\Runtime\Cache\Home\983eb8d5fd70dd578070cba39b958a85.php 第 129 行.
+NOTIC: [8] Undefined index: type_id D:\WWW\zghnj.com\Runtime\Cache\Home\983eb8d5fd70dd578070cba39b958a85.php 第 129 行.
+NOTIC: [8] Undefined index: type_id D:\WWW\zghnj.com\Runtime\Cache\Home\983eb8d5fd70dd578070cba39b958a85.php 第 129 行.
+NOTIC: [8] Undefined index: type_id D:\WWW\zghnj.com\Runtime\Cache\Home\983eb8d5fd70dd578070cba39b958a85.php 第 129 行.
+NOTIC: [8] Undefined index: type_id D:\WWW\zghnj.com\Runtime\Cache\Home\983eb8d5fd70dd578070cba39b958a85.php 第 129 行.
+NOTIC: [8] Undefined index: type_id D:\WWW\zghnj.com\Runtime\Cache\Home\983eb8d5fd70dd578070cba39b958a85.php 第 129 行.
+NOTIC: [8] Undefined index: type_id D:\WWW\zghnj.com\Runtime\Cache\Home\983eb8d5fd70dd578070cba39b958a85.php 第 129 行.
+NOTIC: [8] Undefined index: type_id D:\WWW\zghnj.com\Runtime\Cache\Home\983eb8d5fd70dd578070cba39b958a85.php 第 129 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.021002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-08-21T16:07:35+08:00 ] 127.0.0.1 /index.php/Home/Exhibition/product/type_id/4
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `hnj_slide` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `hnj_slide` WHERE ( is_show = '0' AND cat_id = 13 ) ORDER BY sort,upd_time desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hnj_category` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `hnj_category` WHERE ( pid = 13 AND is_show = 1 ) ORDER BY sort,cat_id  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_type` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `hnj_type` WHERE ( is_show = '0' ) ORDER BY sort,type_id  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hnj_product` [ RunTime:0.0060s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hnj_product` WHERE ( type_id = 4 AND is_show = 1 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 4 AND is_show = 1 ) ORDER BY ctime desc LIMIT 0,10   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: keywords D:\WWW\zghnj.com\Runtime\Cache\Home\983eb8d5fd70dd578070cba39b958a85.php 第 39 行.
+NOTIC: [8] Undefined index: loginstatus D:\WWW\zghnj.com\Runtime\Cache\Home\983eb8d5fd70dd578070cba39b958a85.php 第 65 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.020002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.020002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-08-21T16:35:19+08:00 ] 127.0.0.1 /index.php/Home/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-08-21T16:35:35+08:00 ] 127.0.0.1 /index.php/Home/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `hnj_slide` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `hnj_slide` WHERE ( is_show = '0' AND cat_id = 0 ) ORDER BY sort,upd_time desc LIMIT 3   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hnj_news` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `hnj_category` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND cat_id = 0 ) ORDER BY upd_time desc LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND (cat_id = 6 or cat_id = 7) ) ORDER BY sort,upd_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SELECT `introduce` FROM `hnj_category` WHERE `cat_id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND (cat_id = 3 or cat_id = 4) ) ORDER BY sort,upd_time desc LIMIT 3   [ RunTime:0.0000s ]
+SQL: SELECT `introduce` FROM `hnj_category` WHERE `cat_id` = 8 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hnj_type` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hnj_type` WHERE ( is_show = '0' ) ORDER BY sort,type_id LIMIT 5   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_product` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 2 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 4 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 5 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 6 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 7 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_link` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `hnj_link` WHERE ( is_show = 1 ) ORDER BY sort,ctime desc  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( cat_id = 23 AND is_show = '0' ) ORDER BY sort,upd_time desc LIMIT 4   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: keywords D:\WWW\zghnj.com\Runtime\Cache\Home\afa534d7c0102a99796a92b991c63212.php 第 39 行.
+NOTIC: [8] Undefined index: loginstatus D:\WWW\zghnj.com\Runtime\Cache\Home\afa534d7c0102a99796a92b991c63212.php 第 65 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.043002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.043002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.027001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.027001s ]
+
+[ 2017-08-21T16:36:32+08:00 ] 127.0.0.1 /index.php/Home/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `hnj_slide` [ RunTime:0.0210s ]
+SQL: SELECT * FROM `hnj_slide` WHERE ( is_show = '0' AND cat_id = 0 ) ORDER BY sort,upd_time desc LIMIT 3   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `hnj_news` [ RunTime:0.0120s ]
+SQL: SHOW COLUMNS FROM `hnj_category` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND cat_id = 0 ) ORDER BY upd_time desc LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND (cat_id = 6 or cat_id = 7) ) ORDER BY sort,upd_time desc LIMIT 4   [ RunTime:0.0020s ]
+SQL: SELECT `introduce` FROM `hnj_category` WHERE `cat_id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND (cat_id = 3 or cat_id = 4) ) ORDER BY sort,upd_time desc LIMIT 3   [ RunTime:0.0020s ]
+SQL: SELECT `introduce` FROM `hnj_category` WHERE `cat_id` = 8 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_type` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `hnj_type` WHERE ( is_show = '0' ) ORDER BY sort,type_id LIMIT 5   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_product` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 2 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 4 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 5 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 6 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 7 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_link` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `hnj_link` WHERE ( is_show = 1 ) ORDER BY sort,ctime desc  [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( cat_id = 23 AND is_show = '0' ) ORDER BY sort,upd_time desc LIMIT 4   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: keywords D:\WWW\zghnj.com\Runtime\Cache\Home\afa534d7c0102a99796a92b991c63212.php 第 39 行.
+NOTIC: [8] Undefined index: loginstatus D:\WWW\zghnj.com\Runtime\Cache\Home\afa534d7c0102a99796a92b991c63212.php 第 65 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.034002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.034002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-08-21T16:36:44+08:00 ] 127.0.0.1 /index.php/Home/News/industries
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `hnj_slide` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `hnj_slide` WHERE ( is_show = '0' AND cat_id = 5 ) ORDER BY sort,upd_time desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hnj_category` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hnj_category` WHERE ( pid = 5 AND is_show = 1 ) ORDER BY sort,cat_id  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_news` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hnj_news` WHERE ( cat_id = 6 AND is_show = '0' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( cat_id = 6 AND is_show = '0' ) ORDER BY sort,upd_time desc LIMIT 0,10   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: keywords D:\WWW\zghnj.com\Runtime\Cache\Home\6900b7d2e2b25ae92c2d37d31113a239.php 第 39 行.
+NOTIC: [8] Undefined index: loginstatus D:\WWW\zghnj.com\Runtime\Cache\Home\6900b7d2e2b25ae92c2d37d31113a239.php 第 65 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-08-21T16:38:06+08:00 ] 127.0.0.1 /index.php/Home/News/activities
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+SQL: SHOW COLUMNS FROM `hnj_slide` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `hnj_slide` WHERE ( is_show = '0' AND cat_id = 5 ) ORDER BY sort,upd_time desc LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_category` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `hnj_category` WHERE ( pid = 5 AND is_show = 1 ) ORDER BY sort,cat_id  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_news` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( cat_id = 7 AND is_show = '0' AND datetime > '2017-08-21' ) ORDER BY sort,datetime  [ RunTime:0.0010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hnj_news` WHERE ( cat_id = 7 AND is_show = '0' AND datetime < '2017-08-21' ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( cat_id = 7 AND is_show = '0' AND datetime < '2017-08-21' ) ORDER BY sort,datetime desc LIMIT 0,10   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: keywords D:\WWW\zghnj.com\Runtime\Cache\Home\f8f815514b53931cd06cd8af86340bab.php 第 39 行.
+NOTIC: [8] Undefined index: loginstatus D:\WWW\zghnj.com\Runtime\Cache\Home\f8f815514b53931cd06cd8af86340bab.php 第 65 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.021001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-08-21T16:43:10+08:00 ] 127.0.0.1 /index.php/Home/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `hnj_slide` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `hnj_slide` WHERE ( is_show = '0' AND cat_id = 0 ) ORDER BY sort,upd_time desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_news` [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `hnj_category` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND cat_id = 0 ) ORDER BY upd_time desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND (cat_id = 6 or cat_id = 7) ) ORDER BY sort,upd_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SELECT `introduce` FROM `hnj_category` WHERE `cat_id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND (cat_id = 3 or cat_id = 4) ) ORDER BY sort,upd_time desc LIMIT 3   [ RunTime:0.0000s ]
+SQL: SELECT `introduce` FROM `hnj_category` WHERE `cat_id` = 8 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hnj_type` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hnj_type` WHERE ( is_show = '0' ) ORDER BY sort,type_id LIMIT 5   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hnj_product` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 2 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 4 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 5 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0000s ]
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 6 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 7 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_link` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `hnj_link` WHERE ( is_show = 1 ) ORDER BY sort,ctime desc  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( cat_id = 23 AND is_show = '0' ) ORDER BY sort,upd_time desc LIMIT 4   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: keywords D:\WWW\zghnj.com\Runtime\Cache\Home\afa534d7c0102a99796a92b991c63212.php 第 39 行.
+NOTIC: [8] Undefined index: loginstatus D:\WWW\zghnj.com\Runtime\Cache\Home\afa534d7c0102a99796a92b991c63212.php 第 65 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.033002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.033002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-08-21T16:44:17+08:00 ] 127.0.0.1 /index.php/Home/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `hnj_slide` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `hnj_slide` WHERE ( is_show = '0' AND cat_id = 0 ) ORDER BY sort,upd_time desc LIMIT 3   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `hnj_news` [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `hnj_category` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND cat_id = 0 ) ORDER BY upd_time desc LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND (cat_id = 6 or cat_id = 7) ) ORDER BY sort,upd_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SELECT `introduce` FROM `hnj_category` WHERE `cat_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND (cat_id = 3 or cat_id = 4) ) ORDER BY sort,upd_time desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT `introduce` FROM `hnj_category` WHERE `cat_id` = 8 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_type` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `hnj_type` WHERE ( is_show = '0' ) ORDER BY sort,type_id LIMIT 5   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hnj_product` [ RunTime:0.0280s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 2 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0020s ]
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 4 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 5 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 6 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0050s ]
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 7 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+
+[ 2017-08-21T16:44:33+08:00 ] 127.0.0.1 /index.php/Home/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `hnj_slide` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hnj_slide` WHERE ( is_show = '0' AND cat_id = 0 ) ORDER BY sort,upd_time desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_news` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `hnj_category` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND cat_id = 0 ) ORDER BY upd_time desc LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND (cat_id = 6 or cat_id = 7) ) ORDER BY sort,upd_time desc LIMIT 4   [ RunTime:0.0020s ]
+SQL: SELECT `introduce` FROM `hnj_category` WHERE `cat_id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND (cat_id = 3 or cat_id = 4) ) ORDER BY sort,upd_time desc LIMIT 3   [ RunTime:0.0020s ]
+SQL: SELECT `introduce` FROM `hnj_category` WHERE `cat_id` = 8 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_type` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hnj_type` WHERE ( is_show = '0' ) ORDER BY sort,type_id LIMIT 5   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hnj_product` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 2 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 4 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0020s ]
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 5 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 6 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [8] Undefined variable: _value D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 7 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+
+[ 2017-08-21T16:45:11+08:00 ] 127.0.0.1 /index.php/Home/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `hnj_slide` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `hnj_slide` WHERE ( is_show = '0' AND cat_id = 0 ) ORDER BY sort,upd_time desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_news` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `hnj_category` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND cat_id = 0 ) ORDER BY upd_time desc LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND (cat_id = 6 or cat_id = 7) ) ORDER BY sort,upd_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SELECT `introduce` FROM `hnj_category` WHERE `cat_id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND (cat_id = 3 or cat_id = 4) ) ORDER BY sort,upd_time desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT `introduce` FROM `hnj_category` WHERE `cat_id` = 8 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_type` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `hnj_type` WHERE ( is_show = '0' ) ORDER BY sort,type_id LIMIT 5   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hnj_product` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 2 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 4 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 5 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 6 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 7 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0000s ]
+
+[ 2017-08-21T16:45:21+08:00 ] 127.0.0.1 /index.php/Home/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-08-21T16:45:29+08:00 ] 127.0.0.1 /index.php/Home/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `hnj_slide` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `hnj_slide` WHERE ( is_show = '0' AND cat_id = 0 ) ORDER BY sort,upd_time desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_news` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `hnj_category` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND cat_id = 0 ) ORDER BY upd_time desc LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND (cat_id = 6 or cat_id = 7) ) ORDER BY sort,upd_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SELECT `introduce` FROM `hnj_category` WHERE `cat_id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND (cat_id = 3 or cat_id = 4) ) ORDER BY sort,upd_time desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT `introduce` FROM `hnj_category` WHERE `cat_id` = 8 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_type` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `hnj_type` WHERE ( is_show = '0' ) ORDER BY sort,type_id LIMIT 5   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_product` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 2 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0020s ]
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 4 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 5 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 6 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 7 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0000s ]
+
+[ 2017-08-21T16:45:38+08:00 ] 127.0.0.1 /index.php/Home/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `hnj_slide` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `hnj_slide` WHERE ( is_show = '0' AND cat_id = 0 ) ORDER BY sort,upd_time desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_news` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `hnj_category` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND cat_id = 0 ) ORDER BY upd_time desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND (cat_id = 6 or cat_id = 7) ) ORDER BY sort,upd_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `introduce` FROM `hnj_category` WHERE `cat_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND (cat_id = 3 or cat_id = 4) ) ORDER BY sort,upd_time desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT `introduce` FROM `hnj_category` WHERE `cat_id` = 8 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hnj_type` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hnj_type` WHERE ( is_show = '0' ) ORDER BY sort,type_id LIMIT 5   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_product` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 2 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 4 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 5 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 6 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 7 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hnj_link` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hnj_link` WHERE ( is_show = 1 ) ORDER BY sort,ctime desc  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( cat_id = 23 AND is_show = '0' ) ORDER BY sort,upd_time desc LIMIT 4   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: keywords D:\WWW\zghnj.com\Runtime\Cache\Home\afa534d7c0102a99796a92b991c63212.php 第 39 行.
+NOTIC: [8] Undefined index: loginstatus D:\WWW\zghnj.com\Runtime\Cache\Home\afa534d7c0102a99796a92b991c63212.php 第 65 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.025001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.025001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-08-21T16:48:49+08:00 ] 127.0.0.1 /index.php/Home/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.024002s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.025002s ]
+SQL: SHOW COLUMNS FROM `hnj_slide` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `hnj_slide` WHERE ( is_show = '0' AND cat_id = 0 ) ORDER BY sort,upd_time desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_news` [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `hnj_category` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND cat_id = 0 ) ORDER BY upd_time desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND (cat_id = 6 or cat_id = 7) ) ORDER BY sort,upd_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SELECT `introduce` FROM `hnj_category` WHERE `cat_id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND (cat_id = 3 or cat_id = 4) ) ORDER BY sort,upd_time desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT `introduce` FROM `hnj_category` WHERE `cat_id` = 8 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hnj_type` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `hnj_type` WHERE ( is_show = '0' ) ORDER BY sort,type_id LIMIT 5   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_product` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 2 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0000s ]
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 4 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 5 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0000s ]
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 6 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 7 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_link` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `hnj_link` WHERE ( is_show = 1 ) ORDER BY sort,ctime desc  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( cat_id = 23 AND is_show = '0' ) ORDER BY sort,upd_time desc LIMIT 4   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: keywords D:\WWW\zghnj.com\Runtime\Cache\Home\afa534d7c0102a99796a92b991c63212.php 第 39 行.
+NOTIC: [8] Undefined index: loginstatus D:\WWW\zghnj.com\Runtime\Cache\Home\afa534d7c0102a99796a92b991c63212.php 第 65 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.030002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.030002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-08-21T18:12:50+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' D:\WWW\zghnj.com\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined offset: 1 D:\WWW\zghnj.com\Common\Common\HomeController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `hnj_slide` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `hnj_slide` WHERE ( is_show = '0' AND cat_id = 0 ) ORDER BY sort,upd_time desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_news` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `hnj_category` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND cat_id = 0 ) ORDER BY upd_time desc LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND (cat_id = 6 or cat_id = 7) ) ORDER BY sort,upd_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SELECT `introduce` FROM `hnj_category` WHERE `cat_id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( is_show = '0' AND (cat_id = 3 or cat_id = 4) ) ORDER BY sort,upd_time desc LIMIT 3   [ RunTime:0.0020s ]
+SQL: SELECT `introduce` FROM `hnj_category` WHERE `cat_id` = 8 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_type` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `hnj_type` WHERE ( is_show = '0' ) ORDER BY sort,type_id LIMIT 5   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_product` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 2 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0020s ]
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 4 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0030s ]
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 5 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0000s ]
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 6 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+NOTIC: [2] gzuncompress() [<a href='function.gzuncompress'>function.gzuncompress</a>]: data error D:\WWW\zghnj.com\Home\Controller\IndexController.class.php 第 43 行.
+SQL: SELECT * FROM `hnj_product` WHERE ( type_id = 7 AND is_show = 1 ) ORDER BY ctime desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hnj_link` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `hnj_link` WHERE ( is_show = 1 ) ORDER BY sort,ctime desc  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `hnj_news` WHERE ( cat_id = 23 AND is_show = '0' ) ORDER BY sort,upd_time desc LIMIT 4   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: keywords D:\WWW\zghnj.com\Runtime\Cache\Home\afa534d7c0102a99796a92b991c63212.php 第 39 行.
+NOTIC: [8] Undefined index: loginstatus D:\WWW\zghnj.com\Runtime\Cache\Home\afa534d7c0102a99796a92b991c63212.php 第 65 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.037002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.037002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.005000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004000s ]
+

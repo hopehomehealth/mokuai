@@ -1,0 +1,150 @@
+<!--banner-->
+<!-- <p class="su-banner pt10"><img src="{$Think.const.HIMG_URL}images_43.jpg" /></p>
+ --><!--banner-->
+
+<!--第一通栏-->
+<div class="column-c pt10 ser">
+  <div class="ser-left fl">
+    <!--****左边第一通栏****-->
+    <p class="ser-tit fl"><a href="{:U('Index/index')}" class="bule fwb">首页</a><img src="{$Think.const.HIMG_URL}images_96.jpg" alt="" /><a href="{:U('Bbs/index',array('lan_id'=>7))}">长青论坛</a><img src="{$Think.const.HIMG_URL}images_96.jpg" alt="" /><a href="{:U('Posts/postlist',array('lan_id'=>35))}">巅峰论剑</a><img src="{$Think.const.HIMG_URL}images_96.jpg" alt="" />中国空军大批战机护轰6K突防</p>
+    <p class="ser-tit fl"><a href="__MODULE__/Posts/createpost"><img src="{$Think.const.HIMG_URL}images_113.jpg" /></a></p>
+  </div>
+  <p class="pt30 fr"> <a href="ser_list.html"><img src="{$Think.const.HIMG_URL}images_114.jpg" alt="" /></a> </p>
+</div>
+<!--****左边第二通栏****-->
+<div class="column-c pt10">
+  <div class="set-lis-l fl">
+    <div class="set-fi-t fl">
+      <p class="set-fi-tit fl">{$postinfo.topic}</p>
+      <p class="set-fi-sm fl fs12">作者：<span class="bule pr20">{$postinfo.username}</span> <span class="l-gray pr20">{$postinfo.ctime|date="Y-m-d H:i:s"}</span><span class="set-fi-smsz">{$postinfo.views}</span></p>
+    </div>
+    <div class="set-fi fl pt15">
+      {$postinfo.body}
+    </div>
+    <!--****左边第三通栏****-->
+    <ul class="page">
+      <li><a href="ser_list.html">首页</a></li>
+      <li><a href="">上一页</a></li>
+      <li><a href="">1</a></li>
+      <li><a href="">2</a></li>
+      <li><a href="">3</a></li>
+      <li><a href="">4</a></li>
+      <li><a href="">5</a></li>
+      <li><a href="">下一页</a></li>
+    </ul>
+    <!--****左边第四通栏****-->
+    <div class="set-fi-fx fs12 pt15 pb10 fl"><a href=""><img src="{$Think.const.HIMG_URL}images_116.jpg" /></a><span  class="fl pt5">分享到：</span><span class="fl pt5 pr15"><a href=""><img src="{$Think.const.HIMG_URL}images_117.jpg" />QQ好友</a></span><span class="fl pt5 pr15"><a href=""><img src="{$Think.const.HIMG_URL}images_118.jpg" />QQ空间</a></span><span class="fl pt5 pr15"><a href=""><img src="{$Think.const.HIMG_URL}images_119.jpg" />朋友圈间</a></span><span class="fl pt5 pr15 fxrw"><img src="{$Think.const.HIMG_URL}images_120.jpg" />微信好友</span>
+      <p class="dj_xhk fr"><span class="w100 fl">打微"扫一扫"</span><img src="{$Think.const.HIMG_URL}images_109.jpg"><span class="w100 fl">打开网页后点击屏幕右上角分享按妞</span></p>
+      <script type="text/javascript">
+        $(".fxrw").click(function(){
+          $(".dj_xhk").slideToggle("1000");
+        });
+      </script>
+    </div>
+    <!--****左边第五通栏****-->
+    <div class="set-fi-wy fl" style="margin-top: 20px;">
+      <form action="" method="get">
+        <p class="set-fi-wytt fl pb10">网友评论<span class="l-gray pr20 fs12 pl20">文明上网理性发言</span><span class="fr fs12 bule">323条评论</span></p>
+        <textarea class="set-fi-wyip fl" name="" cols="" rows=""></textarea>
+        <div class="set-fi-wybq fl fs12 pt10"><img src="{$Think.const.HIMG_URL}images_128.jpg" alt="" />表情</div>
+        <p class="fr pt10">
+          <input name="" type="checkbox" value="" />
+          &nbsp;匿名评论<a href="comment.html" class="pl20"><img src="{$Think.const.HIMG_URL}images_129.jpg" /></a></p>
+      </form>
+    </div>
+    <!--****左边第六通栏****-->
+    <ul class="set-fi-wy-lb fl">
+      <li>
+        <form action="" method="get">
+          <dl class="set-fi-wy-lis fl">
+            <dt><img src="{$Think.const.HIMG_URL}images_130.jpg" alt="" /></dt>
+            <dd><span class="fl bule">966466107</span> <span class="fr l-gray">1小时前</span>
+              <p class="fl pt10">如果员工自杀赖富士康，那公务员自杀又赖谁呢？再好的企业都有走极端的人！压力不仅来自企业，
+                也来自生活社会和家庭，更于员工的自身减压能力有关！富士康只是一个企业，中国现在有几个在
+                一个生产区内就能容纳几十万人就业的企业呢！他对社会的贡献是其他企业无法比拟和企及的！</p>
+              <p class="fr"><span class="fl pr20 red">2&nbsp;&nbsp;<img src="{$Think.const.HIMG_URL}images_121.jpg" /></span>0&nbsp;&nbsp;<span class="showMore-t fr"></span></p>
+              <div class="set-fi-wy-yinc fl">
+                <textarea class="set-fi-wy-yinc-k fl" name="" cols="" rows=""></textarea>
+                <div class="set-fi-wybq fl fs12 pt10"><img src="{$Think.const.HIMG_URL}images_128.jpg" alt="" />表情</div>
+                <p class="fr pt10"><a href="" class="pl20"><img src="{$Think.const.HIMG_URL}images_122.jpg" /></a></p>
+              </div>
+            </dd>
+          </dl>
+        </form>
+      </li>
+      <li>
+        <form action="" method="get">
+          <dl class="set-fi-wy-lis fl">
+            <dt><img src="{$Think.const.HIMG_URL}images_130.jpg" alt="" /></dt>
+            <dd><span class="fl bule">966466107</span> <span class="fr l-gray">1小时前</span>
+              <p class="fl pt10">如果员工自杀赖富士康，那公务员自杀又赖谁呢？再好的企业都有走极端的人！压力不仅来自企业，
+                也来自生活社会和家庭，更于员工的自身减压能力有关！富士康只是一个企业，中国现在有几个在
+                一个生产区内就能容纳几十万人就业的企业呢！他对社会的贡献是其他企业无法比拟和企及的！</p>
+              <p class="fr"><span class="fl pr20 red">2&nbsp;&nbsp;<img src="{$Think.const.HIMG_URL}images_121.jpg" /></span>0&nbsp;&nbsp;<span class="showMore-t fr"></span></p>
+              <div class="set-fi-wy-yinc fl">
+                <textarea class="set-fi-wy-yinc-k fl" name="" cols="" rows=""></textarea>
+                <div class="set-fi-wybq fl fs12 pt10"><img src="{$Think.const.HIMG_URL}images_128.jpg" alt="" />表情</div>
+                <p class="fr pt10"><a href="" class="pl20"><img src="{$Think.const.HIMG_URL}images_122.jpg" /></a></p>
+              </div>
+            </dd>
+          </dl>
+        </form>
+      </li>
+      <li>
+        <form action="" method="get">
+          <dl class="set-fi-wy-lis fl">
+            <dt><img src="{$Think.const.HIMG_URL}images_130.jpg" alt="" /></dt>
+            <dd><span class="fl bule">966466107</span> <span class="fr l-gray">1小时前</span>
+              <p class="fl pt10">如果员工自杀赖富士康，那公务员自杀又赖谁呢？再好的企业都有走极端的人！压力不仅来自企业，
+                也来自生活社会和家庭，更于员工的自身减压能力有关！富士康只是一个企业，中国现在有几个在
+                一个生产区内就能容纳几十万人就业的企业呢！他对社会的贡献是其他企业无法比拟和企及的！</p>
+              <p class="fr"><span class="fl pr20 red">2&nbsp;&nbsp;<img src="{$Think.const.HIMG_URL}images_121.jpg" /></span>0&nbsp;&nbsp;<span class="showMore-t fr"></span></p>
+              <div class="set-fi-wy-yinc fl">
+                <textarea class="set-fi-wy-yinc-k fl" name="" cols="" rows=""></textarea>
+                <div class="set-fi-wybq fl fs12 pt10"><img src="{$Think.const.HIMG_URL}images_128.jpg" alt="" />表情</div>
+                <p class="fr pt10"><a href="" class="pl20"><img src="{$Think.const.HIMG_URL}images_122.jpg" /></a></p>
+              </div>
+            </dd>
+          </dl>
+        </form>
+      </li>
+      <a href="">
+      <p class="set-more fl">加载更多</p>
+      </a>
+    </ul>
+  </div>
+  <!--****右边通栏****-->
+  <div class="set-lis-r fr">
+    <!--****右边第一通栏****-->
+    <div class="set-lis-tj fl">
+      <p class="set-lis-tjtt fl"><img src="{$Think.const.HIMG_URL}images_107.jpg" alt="" /></p>
+      <ul class="set-lis-list fl pt15">
+        <li><a href="ser_final.html">打遍世界所有强国的神秘之师</a></li>
+        <li><a href="ser_final.html">古代存在外星人的12铁证</a></li>
+        <li><a href="ser_final.html">地球周围竟存神秘入口</a></li>
+        <li><a href="ser_final.html">82种外星人与地球接触</a></li>
+        <li><a href="ser_final.html">古代存在外星人的12铁证</a></li>
+        <li><a href="ser_final.html">地球周围竟存神秘入口</a></li>
+        <li><a href="ser_final.html">82种外星人与地球接触</a></li>
+        <li><a href="ser_final.html">打遍世界所有强国的神秘之师</a></li>
+        <li><a href="ser_final.html">地球周围竟存神秘入口</a></li>
+        <li><a href="ser_final.html">82种外星人与地球接触</a></li>
+      </ul>
+    </div>
+    <!--****右边第二通栏****-->
+    <div class="set-lis-tj fl">
+      <p class="set-lis-tjtt fl"><img src="{$Think.const.HIMG_URL}images_108.jpg"  alt=""/></p>
+      <ul class="set-lis-list fl pt15">
+        <dl class="set-lis-pic fl pb10">
+          <dt><a href="ser_final.html"><img src="{$Think.const.HIMG_URL}images_112.jpg"  alt=""/></a></dt>
+          <dd><a href="ser_final.html">对电信诈骗受害者进行赔偿，银行会更有动力阻止电信诈骗。</a></dd>
+        </dl>
+        <li><a href="ser_final.html">打遍世界所有强国的神秘之师</a></li>
+        <li><a href="ser_final.html">古代存在外星人的12铁证</a></li>
+        <li><a href="ser_final.html">地球周围竟存神秘入口</a></li>
+        <li><a href="ser_final.html">82种外星人与地球接触</a></li>
+     <!--    <p class="pt15"><img src="{$Think.const.HIMG_URL}images_111.jpg"  alt=""/></p> -->
+      </ul>
+    </div>
+  </div>
+</div>

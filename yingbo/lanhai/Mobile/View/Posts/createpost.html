@@ -1,0 +1,45 @@
+
+<script type="text/javascript" src="{$Think.const.MJS_URL}jquery-2.1.1.min.js"></script>
+<!-- <script type="text/jscript" src="{$Think.const.MJS_URL}banner.js"></script> -->
+<script type="text/javascript" src='{$Think.const.PLUGIN_URL}ueditor/ueditor.config.js' ></script>
+<script type="text/javascript" src='{$Think.const.PLUGIN_URL}ueditor/ueditor.all.min.js' ></script>
+<script type="text/javascript" src='{$Think.const.PLUGIN_URL}ueditor/lang/zh-cn/zh-cn.js' ></script>
+
+<div class="main">
+  <!--*****for*****-->
+   <section>
+   <form action="__SELF__" method="post" id="postform">
+<!-- <div class="post-a fl">
+<a class="post-input fl w50 post-a-img">
+                <input type="file" id="selectpic" name="post_img" onchange="javascript:setImagePreview();">
+                <img src="{$Think.const.MIMG_URL}upload.png"> </a>
+            <a style="float:left;max-width:19rem;margin:1rem;height:5.75rem;overflow:hidden;display:none" id="localImag">
+                <img style="height:5.75rem;width:auto;" id="preview" src="">
+            </a>
+</div> -->
+<div class="post-a-con fl">
+<input name="topic" class="post-a-tit fl" placeholder="请输入帖子标题！" type="text">
+<span style="display:inline-block;width:100%;background:#fafafa;text-align:center;border-bottom:1px solid #ccc;"><select class="post-a-tit" name="board_id" id="classify" style="display:inline-block;outline:none;border:none;text-align:center;color:#aaa;width:auto;margin:0 auto;">
+                    <option style="font-size:1rem;outline:none" value="0">请选择分类</option>
+                    <foreach name="boards" item="boardinfo">
+                    <if condition="$boardinfo.pid eq 0">
+                      <option style="font-size:1rem;outline:none;font-weight:bolder;" disabled="disabled" value="{$boardinfo['board_id']}">{$boardinfo['board_title']}</option>
+                    <else />
+                      <option style="font-size:1rem;outline:none;" value="{$boardinfo['board_id']}">&nbsp;&nbsp;&nbsp;&nbsp;{$boardinfo['board_title']}</option>
+                    </if>
+                    </foreach>
+            </select></span>
+<textarea name="body" id="content" style="height:auto!important;min-height:30rem;width:100%;padding:0;border:0;" class="fl" placeholder="内容"></textarea>
+<div style="clear:both"></div>
+    <button type="button" class="fabu" id="postbtn">完成</button>
+</div>
+<p class="artfoot" style="text-align:center">请遵守 <a style="color:#004084" href="__MODULE__/Sysconfig/gongyue">蓝海长青公约</a> 言论规则，不得违反国家法律法规</p>
+</form>
+<script type="text/javascript">
+        var ue = UE.getEditor('content',{toolbars: [['bold', 'italic', 'underline','justifyleft', 'justifycenter', 'justifyright', 'justifyjustify','simpleupload']],wordCount:false,elementPathEnabled : false,initialFrameHeight:300});
+    </script>
+  </section>
+</div>
+<script type="text/javascript" src="{$Think.const.MJS_URL}msgbox.js"></script>
+<script type="text/javascript" src='{$Think.const.MJS_URL}createposts.js' ></script>
+

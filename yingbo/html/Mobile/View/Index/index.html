@@ -1,0 +1,58 @@
+
+        <div class="main">
+            <section>
+                <div class="banner swiper-container">
+
+                    <ul class="swiper-wrapper">
+                        <foreach name="adinfo" item="v">
+                        <li class="swiper-slide">
+                            <img src="{$Think.const.SITE_URL}{$v.pic|substr=###,2}"/>
+                        </li>
+                        </foreach>
+                    </ul>
+                    <div class="swiper-pagination bannerDote"></div>
+                </div>
+            </section>
+            <section>
+                <ul class="navBox navOne borBot">
+                    <li>
+                        <a href="{:U('Jianjie/jianjie')}">
+                           <img src="{$Think.const.MBIMG_URL}nav1.jpg"> 
+                           <span>乐护简介</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{:U('Example/example')}">
+                           <img src="{$Think.const.MBIMG_URL}nav2.jpg"> 
+                           <span>服务案例</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navBox navTwo borBot">
+                    <li>
+                        <a href="{:U('Medical/medical')}">
+                           <img src="{$Think.const.MBIMG_URL}nav3.jpg"> 
+                           <span>医学知识</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{:U('Gongyi/showlist')}">
+                           <img src="{$Think.const.MBIMG_URL}nav4.jpg"> 
+                           <span>乐护公益</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{:U('Example/liucheng')}">
+                           <img src="{$Think.const.MBIMG_URL}nav5.jpg"> 
+                           <span>服务流程</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="__MODULE__/Product/fuwu">
+                           <img src="{$Think.const.MBIMG_URL}nav6.jpg"> 
+                           <span>选择服务</span>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </div>

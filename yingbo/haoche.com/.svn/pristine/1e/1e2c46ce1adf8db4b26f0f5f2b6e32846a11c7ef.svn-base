@@ -1,0 +1,1609 @@
+*{
+    margin:0;
+    padding:0;
+}
+/*html{
+    font-size:62.5%;
+}*/
+html,body,.container{
+    width:100%;
+    height:100%;
+    background: #FFFFFF;
+}
+.container{
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+}
+
+
+section{
+    width:100%;
+    -webkit-box-flex:1;
+    overflow:hidden;
+    overflow-y:auto;
+}
+.exchang dl {
+    width: 100%;
+    height: 80px;
+    background: #ffffff;
+    border-bottom: 1px solid #D7D7D7;
+    position: relative;
+
+}
+.exchang dl dd {
+    float: left;
+    width: 80px;
+    height: 80px;
+
+}
+.exchang dl dd img {
+    width:75%;
+    margin: 8px; border-radius: 50%;
+}
+.exchang dl dt {
+    float: left;
+    margin-top: 20px;
+}
+.exchang dl dt span {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    color: #DD0045;
+}
+.per_tx {
+    width: 100%;
+    height: 13.5rem;
+    background: url("../images/bj.gif") no-repeat center;
+    background-size:100%  14.750rem;
+}
+.per_tx img {
+    margin-top:2.000rem;
+    margin-left: 40%;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+
+
+}
+.personal ul {
+    width: 90%;
+    margin: 0 auto;
+}
+.personal ul li {
+    line-height: 30px;
+}
+.personal ul li p {
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 3px;
+
+}
+.per_txt {
+    width: 100%;
+    height: 35px;
+	font-size:1.400rem;
+    color:#636363;
+	background:#f2f2f2;
+	border:0;
+	 text-indent:1rem;
+}
+.personal ul li span {
+    color: #B2B2B2;
+}
+.personal ul li h2 {
+    width: 100%;
+    height: 35px;
+    border: 1px solid #c5c5c5;
+    background: url("../images/bj1.gif");
+    background-repeat: no-repeat;
+    background-size: 15%;
+}
+.personal ul li ol li {
+    float: left;
+    margin-right: 10px;
+}
+
+.per_ol {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+.per_ol li{
+    float: left;
+
+
+}
+.per_ol li input {
+    width: 130px;
+    height: 38px;
+    margin-right: 10px;
+    border: 0;
+    border-radius: 5px;
+}
+.exc_nav {
+    width: 100%;
+    height: 45px;
+    border-bottom: 1px solid #DCDCDD;
+}
+.exc_nav p{
+     float: left;
+	 font-size:1.400rem;
+     width: 90px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.exc_nav ul {
+    float: right;
+    padding-right:0.5rem;
+}
+.exc_nav ul li {
+    float: left;
+    width: 75px;
+	font-size:1.400rem;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color:#ffffff;
+    background: #DD0045;
+    margin-top: 5px;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+.exc_main {
+    width: 100%;
+    height: 20rem;
+    line-height:20rem;
+    text-align:center;
+    background: #ffffff;
+}
+.exc_main p {
+    margin-left: 30%;
+    margin-top: 20%;
+}
+.add {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.add_nav h2 {
+    font-size: 15px;
+    line-height: 30px;
+    margin-top: 5px;
+}
+.add_nav h3 {
+    line-height: 30px;
+    color: #DD0045;
+}
+.add_nav p {
+    line-height: 20px;
+}
+.add_main h2 {
+    font-size: 15px;
+    line-height: 30px;
+    margin-top: 5px;
+}
+.add_main p {
+    margin-bottom: 10px;
+}
+.add_main p input {
+    width: 98%;
+    border-radius:2px;
+    height: 30px;
+    border: 1px solid #D6D6D6;
+    color: #6A6A6A;
+}
+.add_main p span {
+    width: 20%;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    display: block;
+    float: right;
+    border: 1px solid #D6D6D6;
+    background: #EFF3F2;
+}
+.add_main h3 {
+    line-height: 30px;
+
+}
+.add_main h4 input {
+    width: 80%;
+    height: 30px;
+    border: 1px solid #D6D6D6;
+    background: #DDDDDD;
+    margin-top: 5px;
+}
+.add_main h4 span {
+    width: 20%;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    display: block;
+    float: right;
+    border: 1px solid #D6D6D6;
+
+}
+.add_main h5 input {
+    width: 100%;
+    height: 40px;
+    background: #DD0045;
+    text-align: center;
+    color: #ffffff;
+    line-height: 40px;
+    margin-top: 15px;
+    border: 0;
+    border-radius: 5px;
+}
+.ord_nav {
+    width: 100%;
+    height: 45px;
+    border-bottom: 1px solid #c5c5c5;
+    margin-bottom: 10px;
+}
+.ord_nav ul {
+    margin-top: 10px;
+}
+.ord_nav ul li{
+   width: 24.5%;
+   height: 25px;
+   text-align: center;
+   float: left;
+}
+.ord_nav .nav{
+    width:0.1rem;
+    height: 25px;
+    background:#D9D9D9;
+    float: left;
+}
+.order {
+    width: 95%;
+    margin: 0 auto 8rem;
+}
+.ord_main {
+    width: 100%;
+    height: 180px;
+    margin-top: 10px;
+    line-height: 20px;
+    border-bottom: 1px solid #D9D9D9;
+}
+.ord_main p{
+    border-bottom: 1px solid #D9D9D9;
+    padding-bottom: 15px;
+}
+.ord_main dl {
+    margin-top: 10px;
+    border-bottom: 1px solid #D9D9D9;
+    padding: 1.000rem 0;
+    margin: 10px 0 5px 0;
+   position: relative;
+
+}
+.ord_main dl dd {
+    float: left;
+    width: 3.750rem;
+    height: 60px;
+
+
+}
+.ord_main dl dd img {
+    width: 100%;
+
+}
+.ord_main dl dt {
+    float: left;
+    width:65%;
+    height:5rem;
+    overflow:hidden;
+    margin-left: 3px;
+}
+.ord_main dl dt span {
+    position: absolute;
+    right: 5px;
+    bottom: 20px;
+}
+.ord_main h2{
+    float: right;
+    margin-top: 5px;
+}
+.ord_main h2 input {
+    width: 65px;
+    height: 30px;
+    background: #DD0045;
+    color: #ffffff;
+   border-radius: 5px;
+    border: 0;
+}
+.or_main p{
+    margin-top: 20%;
+    margin-left: 35%;
+
+}
+.acc {
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+}
+.acc_main h2{
+    line-height: 30px;
+    margin-top: 10px;
+    font-size: 15px;
+}
+.acc_main{
+    border-bottom: 1px solid #B2B2B2;
+    position: relative;
+}
+.acc_main p {
+    font-size: 14px;
+    color: #DD0045;
+}
+
+.acc_main p span {color: #000000;}
+
+.acc_main a {
+    display: block;
+    position: absolute;
+    right: 10px;
+    top: 23%;
+}
+.acc_main a img {
+    width:70%;
+}
+
+.acc h5 input {
+    width: 100%;
+    height: 40px;
+    background: #DD0045;
+    text-align: center;
+    color: #ffffff;
+    line-height: 40px;
+    margin-top: 15px;
+    border: 0;
+    border-radius: 5px;
+}
+.point {
+    width: 90%;
+    margin:  0 auto;
+}
+.point p {
+    height: 45px;
+	font-size:1.400rem;
+    border-bottom: 1px solid #D9D9D9;
+    line-height: 45px;
+    position: relative;
+}
+
+.point p span {
+    position: absolute;
+    right: 2rem;
+    font-size:1.5rem;
+    font-weight:bolder;
+    font-style:italic;
+    color: #DD0045;
+
+}
+
+.cont_nav {
+    width: 100%;
+    height: 5rem;
+    background:#D6D8DC;
+    border-bottom: 1px solid #c5c5c5;
+    margin-bottom: 10px;
+}
+.cont_nav ul {
+
+}
+.cont_nav ul li{
+    width: 50%;
+    height:5rem;
+    text-align: center;
+	font-size:1.300rem;
+    line-height: 3rem;
+    float: left;
+    position: relative;
+
+}
+.cont_nav ul li span {
+    position: absolute;
+    width: 16px;
+    height: 10px;
+    top: 16%;
+    right: 20%;
+}
+.cont_nav ul li span img {
+    width: 100%;
+
+}
+
+.cont_nav ul li i {
+    position: absolute;
+    min-width:2rem;
+    height: 1.8rem;
+    background: #FF516A;
+    color: white;
+    border-radius: 4px;
+    line-height: 1.8rem;
+    top:45%;
+    right: 44%;
+}
+
+.cont_nav ul li i img {
+    width: 100%;
+}
+
+.cont_main dl {
+    width: 100%;
+    height: 80px;
+    background: #ffffff;
+    border-bottom: 1px solid #D7D7D7;
+    position: relative;
+
+}
+.cont_main dl dd {
+    float: left;
+    width: 80px;
+    height: 80px;
+}
+.cont_main dl dd img {
+    width:75%;
+    margin: 8px;
+    border-radius: 50%;
+}
+.cont_main dl dt {
+    float: left;
+	font-size:1.300rem;
+    margin-top: 20px;
+}
+.cont_main dl dt i {
+    display: block;
+    color: white;
+    text-align: center;
+    line-height: 1.563rem;
+    border-radius: 5px;
+    padding-left:0.1rem;
+    padding-right:0.1rem;
+    min-width: 4.688rem;
+    height: 1.563rem;
+    background: #E0901D;
+}
+.cont_main dl dt span {
+    position: absolute;
+    width: 11rem;
+    top: 2.500rem;
+    right: 1rem;
+}
+
+.cont_main dl dt span img {
+    width: 90%;
+}
+
+
+.addre {
+    width: 90%;
+    margin: 0 auto;
+
+}
+.addre_main {
+    height: 70px;
+    border-bottom: 1px solid #B2B2B2;
+    position: relative;
+	padding-left:0.300rem;
+	margin-bottom:0.5rem;
+}
+.addre_main h2{
+    line-height: 30px;
+    margin-top: 10px;
+    font-size: 15px;
+}
+.addre_main p {
+    font-size: 14px;
+    color: #939393;
+    margin-top: 10px;
+}
+
+
+
+.addre_main a {
+    display: block;
+    position: absolute;
+    right: 0.1rem;
+    top: 20%;
+}
+.addre_main a img {
+    width:70%;
+}
+
+.addre h5 input {
+    width: 100%;
+    height: 40px;
+    background: #DD0045;
+    text-align: center;
+    color: #ffffff;
+    line-height: 40px;
+    margin-top: 15px;
+    border: 0;
+    border-radius: 5px;
+}
+.address {
+    width: 100%;
+    height: 52px;
+
+    border-bottom: 1px solid #D6D6D6;
+}
+.address h2 {
+    line-height: 52px;
+    text-indent: 10px;
+}
+.address_main {
+    width: 90%;
+    margin: 0 auto;
+}
+.address_main p{
+    height: 40px;
+    border-bottom: 1px solid #D6D6D6;
+    line-height: 40px;
+}
+.address_main p input {
+    margin-left: 10px;
+    border: 0;
+    color: #939393;
+}
+.address_main p select {
+    border: 0;
+    height: 35px;
+    margin-left: 0.17rem;
+}
+.address_main h5 input {
+    width: 100%;
+    height: 40px;
+    background: #DD0045;
+    text-align: center;
+    color: #ffffff;
+    line-height: 40px;
+    margin-top: 15px;
+    border: 0;
+    border-radius: 5px;
+}
+.kec {
+    width: 100%;
+
+}
+
+.kec_nav dl {
+    width: 100%;
+    height: 80px;
+
+
+    position: relative;
+
+}
+.kec_nav dl dd {
+    float: left;
+    width: 80px;
+    height: 80px;
+}
+.kec_nav dl dd img {
+    width:75%;
+    margin: 8px;
+    border-radius: 50%;
+}
+.kec_nav dl dt {
+	font-size:1.400rem;
+    float: left;
+    margin-top: 20px;
+    color: white;
+}
+.kec_nav dl dt span {
+     margin-left: 5px;
+     color: white;
+}
+.kec_main {
+    width: 100%;
+    height: 160px;
+    position: relative;
+}
+.kec_main img {
+    width: 50%;
+    position: absolute;
+    top: -10px;
+    left: 25%;
+}
+
+
+
+.kec_main1 {
+    width: 100%;
+    height: 170px;
+
+
+}
+.kec_main1 img {
+    display: block;
+    width: 55%;
+    margin: 0 auto;
+}
+
+.kec_fot{
+    width:100%;
+    height:4rem;
+}
+
+.kec_fot{
+    width:100%;
+    height:4rem;
+
+    background: #FCE6EA;
+    display: -webkit-box;
+
+}
+
+.kec_fot dl {
+    -webkit-box-flex:1;
+
+    font-size: 0.75rem;
+    text-align: center;
+
+}
+.kec_fot dl {
+    width: 100%;
+    margin-top: 5px;
+    margin-right: 2px;
+}
+.kec_fot dl dt img{
+    width:20px;
+    height:20px;
+}
+.kec_fot dl dd{
+    line-height:20px;
+    color: #DD0045;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*footer{
+   background: #fff;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 5.000rem;
+    z-index: 100;
+}
+
+
+
+footer dl {
+    -webkit-box-flex:1;
+    font-size: 0.75rem;
+    text-align: center;
+
+}
+footer dl {
+    width: 100%;
+    margin-top: 5px;
+    margin-right: 2px;
+}
+footer dl dt img{
+    width:20px;
+    height:20px;
+}
+footer dl dd{
+    line-height:20px;
+}
+*/
+
+.jour {
+    width: 90%;
+	padding-bottom:2rem;
+    margin:0 auto;
+}
+.jour h2 {
+    font-size: 16px;
+    margin-top: 5px;
+}
+.jour h5 {
+    color: #909090;
+
+}
+.jour p img {
+    max-width: 100%;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.jour p {
+    margin-top: 5px;
+	line-height:2.1rem;
+    font-size: 12px;
+}
+
+.jour ul li {
+    width: 100%;
+    margin-top: 10px;
+
+}
+.jour ul li img {
+    max-width: 100%;
+}
+.banner{
+    width:100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.banner img {
+    width: 100%; height: 10.500rem;
+}
+.inf_main {
+    width: 95%;
+    margin: 0 auto;
+}
+.inf_main dl {
+    width: 100%;
+    height:5.000rem;
+    background: #ffffff;
+
+}
+.inf_main dl dd {
+    float: left;
+    width:20%;
+    height:4.000rem;
+    margin-top: 1rem;
+}
+.inf_main dl dd img {
+
+    width:100%;
+    height:4.000rem;
+
+}
+.inf_main dl dt {
+    margin-top: 1rem;
+    width:75%;
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+     padding-left: 0.7rem;
+    word-break : break-all;
+    font-size: 13px;
+}
+.inf_main dl dt h5 {
+    color: #909090;
+    margin-top: 15px;
+
+}
+.inf_main dl dt h5 img {
+    width: 5%;
+    margin-left: 5px;
+    margin-right: 5px;
+
+}
+
+.info {
+    width: 95%;
+    margin: 0 auto;
+}
+.info h2 {
+    font-size: 14px;
+
+}
+.info h2 span {
+    font-size: 10px;
+    color:#949ea7 ;
+}
+.info p {
+    width: 32%;
+    float: left;
+    margin-right: 4px;
+
+
+}
+.info p img {
+    width: 100%;
+}
+
+/************housing world 房天下开始**************/
+
+.hous_nav {
+    width: 90%;
+    margin: 0 auto;
+    height: 1.188rem;
+    border-bottom: 1px solid #E76A94;
+    margin-top: 1.500rem;
+
+}
+
+.hous_nav p {
+    width: 5rem;
+    height: 1.188rem;
+    line-height:1.188rem;
+    text-align: center;
+    color: #ffffff;
+    background: url("../images/bj5.gif");
+    background-repeat: no-repeat;
+    background-size: 100%;
+
+}
+
+.hous_main {
+
+    width: 90%;
+
+    margin: 0 auto;
+
+}
+.hous_main p {
+    margin-top:1rem;
+    width: 100%;
+    height: 1.875rem;
+    line-height: 1.875rem ;
+
+}
+.hous_main p i {
+    display: block;
+    height: 1.875rem;
+    line-height: 1.875rem;
+    font-size: 1.5rem;
+    color: #DD0045;
+    margin-right: 0.5rem;
+    float: left;
+    padding-top: 0.2rem;
+
+}
+.hous_main p span {
+    display: block;
+    height: 1.875rem;
+    line-height: 1.875rem;
+    font-size: 1.3rem;
+    margin-right: 0.5rem;
+    float: left;
+    color: #656565;
+}
+.hous_main p input {
+    border: 1px solid #D6D6D6;
+    height: 1.8rem;
+}
+
+.hous_main1 {
+
+    width: 90%;
+
+    margin: 0 auto;
+
+}
+.hous_main1 p {
+    margin-top: 1rem;
+    width: 100%;
+    line-height:2rem ;
+
+}
+.hous_main1 p i {
+    display: block;
+    height: 1.875rem;
+    line-height: 1.875rem;
+    font-size: 1.5rem;
+    color: #DD0045;
+    margin-right: 0.5rem;
+    float: left;
+    padding-top: 0.2rem;
+
+}
+.hous_main1 p span {
+    display: block;
+    line-height:2rem;
+    font-size: 1.3rem;
+    margin-right: 0.5rem;
+    float: left;
+    color: #656565;
+}
+.hous_main1 p select {
+    width: 6rem;
+    color: #ABABAB;
+	padding:0.4rem 0.3rem;
+    margin-right: 0.5rem;
+}
+
+.hous_main1 p input {
+    margin-left: 0.2rem;
+	padding:0.4rem 0.3rem;
+    width: 6rem;
+}
+
+.house2 {
+    width: 100%;
+    margin-top: 1rem;
+}
+.house2 p {
+
+    padding-bottom: 0.2rem;
+}
+.house2 h5 input {
+    display: block;
+    width: 90%;
+    height: 3rem;
+    background: #DD0045;
+    text-align: center;
+    color: #ffffff;
+    line-height: 3rem;
+    margin: 0 auto;
+    border: 0;
+    border-radius: 0.5rem;
+}
+/************housing world 房天下结束**************/
+
+/************charitable 慈善资金开始**************/
+.banner{
+    width:100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.banner img {
+    width: 100%;
+
+}
+.char_nav {
+    width: 100%;
+    padding:0.5rem 0rem;
+    background: #fff;
+	overflow:hidden;
+    margin-top: 0.6rem;
+
+}
+.char_nav ul{
+    width: 100%;
+
+}
+.char_nav ul li {
+    width: 33%;
+    float: left;
+	font-size:1.300rem;
+    text-align: center;
+    border-right: 1px solid #c5c5c5;
+}
+
+.char_nav ul li:last-child{ border-right:none;}
+
+.char_nav ul li i img {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.5rem;
+}
+.char_nav ul li span {
+    color: #DD0045;
+}
+
+.char_main {
+    width: 100%;
+    height: 10.000rem;
+}
+.char_main p {
+    text-indent: 2rem;
+	font-size:1.300rem;
+    line-height: 2.5rem;
+    border-bottom: 1px solid #D7D7D9;
+}
+.char_main p input {
+    border: 0;
+    height: 1.5rem;
+    background: #F0F0F0;
+}
+
+.char_main ul {
+    width: 100%;
+    margin-top: 1rem;
+
+}
+.char_main ul li {
+    float: left;
+    width: 25%;
+	font-size:1.300rem;
+    text-align: center;
+    line-height: 2rem;
+
+}
+.char_main ul li span {
+    display: block;
+    width: 80%;
+    height: 2rem;
+    margin-top: 0.5rem;
+    margin-left: 1rem;
+    border: 1px solid #c5c5c5;
+    line-height: 2rem;
+    border-radius: 0.2rem;
+}
+.char_main ol li {
+    float: left;
+    width: 40%;
+	font-size:1.300rem;
+    margin-left: 2rem;
+    margin-top: 1rem;
+}
+.char_main ol li input {
+    width: 100%;
+    height: 2.5rem;
+    border-radius: 0.3rem;
+    border: 0;
+}
+.char_tab {
+    width:100%;
+    padding-bottom:6rem;
+    margin-top: 1rem;
+	font-size:1.300rem;
+    background: #ffffff;
+}
+.char_tab h2 {
+    width: 100%;
+    height: 2rem;
+    border-bottom: 1px solid #c5c5c5;
+    line-height: 2rem;
+    text-align: center;
+
+}
+
+.char_tab p {
+    line-height: 1.9rem;
+    margin-left: 1rem;
+
+}
+.char_tab ul {
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
+}
+.char_tab ul li {
+    width: 100%;
+    height: 100%;
+    margin-top: 0.5rem;
+}
+.char_tab ul li span {
+    float: left;
+
+}
+.char_tab ul li p  {
+    float:left;
+    width: 82%;
+
+}
+
+
+/************charitable 慈善资金结束**************/
+
+
+
+
+/************foud 慈善资金开始**************/
+
+
+
+
+
+
+
+/************foude 慈善资金结束**************/
+
+
+/************order订单详情开始**************/
+
+
+.ord_nav {
+    width: 100%;
+    height: 5rem;
+    margin-top: 1rem;
+    background: #ffffff;
+
+}
+.ord_nav  dl dd {
+    float: left;
+    width: 2rem;
+    height:4rem ;
+    margin-left: 0.5rem;
+}
+.ord_nav  dl dd img {
+    width: 80%;
+    left: 5rem;
+    margin-top: 1rem;
+}
+.ord_nav dl dt {
+    float: left;
+    width: 80%;
+    line-height: 1.5rem;
+    margin-left: 1rem;
+}
+.ord_nav dl dt span {
+    float: right;
+}
+.ord_main {
+    width: 100%;
+    margin-top: 1rem;
+    height: 12rem;
+    background: #fff;
+    padding-top: 1rem;
+}
+.ord_main1 {
+    width: 100%;
+    height: 7rem;
+
+
+}
+.ord_main1 dl dd {
+    float: left;
+    width: 7rem;
+    height: 7rem;
+
+}
+.ord_main1 dl dd img {
+    width:100% ;
+    margin-left: 0.5rem;
+}
+.ord_main1 dl dt {
+    float: left;
+    width: 70%;
+    height: 7rem;
+    margin-left: 1rem;
+
+}
+.ord_main1 dl dt h2 {
+    float: left;
+    text-overflow: ellipsis;
+    padding-top: 1rem;
+}
+.ord_main1 dl dt p {
+    float: right;
+    text-align: right;
+    line-height: 1.5rem;
+    padding-top: 1rem;
+    margin-right: 0.5rem;
+}
+
+.ord_main1 dl dt p span {
+    text-decoration: line-through;
+}
+.ord_main1 h3 {
+    line-height: 2rem;
+    margin-left: 0.5rem;
+}
+.ord_main1 h3 span {
+    float: right;
+    margin-right: 0.5rem;
+}
+.ord_main2 {
+    width: 100%;
+    height: 6rem;
+    background: #fff;
+    margin-top: 1rem;
+}
+.ord_main2 p {
+    line-height: 2rem;
+    margin-left: 0.5rem;
+}
+.ord_main2  ul {
+    width: 100%;
+    display: block;
+    margin-top: 1rem;
+    background: #fff;
+    height: 3rem;
+}
+.ord_main2  ul li {
+    float: right;
+
+
+}
+.ord_main2  ul li input {
+    height: 2.5rem;
+    border-radius: 5px;
+    background: #ffffff;
+    border: 1px solid #ccc;
+    text-align: center;
+    line-height: 2rem;
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+
+}
+
+
+
+
+
+
+
+
+
+/************order订单详情结束**************/
+
+
+
+
+
+/************apply申请资助开始**************/
+
+
+
+.app_nav {
+    width: 90%;
+    margin: 0 auto;
+    height: 1.188rem;
+    border-bottom: 1px solid #E76A94;
+    margin-top: 1.500rem;
+
+}
+
+.app_nav p {
+    width: 5rem;
+    height: 1.188rem;
+    line-height:1.188rem;
+    text-align: center;
+    color: #ffffff;
+    background: url("../images/bj5.gif");
+    background-repeat: no-repeat;
+    background-size: 100%;
+
+}
+
+.app_main {
+    padding-top: 0.5rem;
+    width: 90%;
+
+    margin: 0 auto;
+
+}
+.app_main p {
+
+    width: 100%;
+    height: 1.875rem;
+    line-height: 1.875rem ;
+    margin-top: 1rem;
+
+}
+.app_main p i {
+    display: block;
+    height: 1.875rem;
+    line-height: 1.875rem;
+    font-size: 1.5rem;
+    color: #DD0045;
+    margin-right: 0.5rem;
+    float: left;
+    padding-top: 0.2rem;
+
+}
+.app_main p span {
+    display: block;
+    height: 1.875rem;
+    line-height: 1.875rem;
+    font-size: 1.3rem;
+    margin-right: 0.5rem;
+    padding-left: 0.1rem;
+    float: left;
+    color: #656565;
+}
+.app_main p input {
+    border: 1px solid #D6D6D6;
+	font-size:0.700rem;
+	line-height:0.8rem;
+	padding:0.3rem;
+    width: 60%;
+
+    color: #000000;
+}
+.app_main1 {
+    padding-top: 0.5rem;
+    width: 90%;
+
+    margin: 0 auto;
+
+}
+.app_main1 ul li {
+    float: left;
+    display: block;
+    margin-top: 1rem;
+}
+.app_main1 ul li i {
+    display: block;
+    height: 1.875rem;
+    line-height: 1.875rem;
+    font-size: 1.5rem;
+    color: #DD0045;
+    margin-right: 0.5rem;
+    float: left;
+    padding-top: 0.2rem;
+
+}
+.app_main1 ul li span {
+    display: block;
+    height: 1.875rem;
+    line-height: 1.875rem;
+    font-size: 1.3rem;
+    margin-right: 0.5rem;
+    float: left;
+    color: #656565;
+}
+.app_main1 ul li textarea {
+    border: 1px solid #D6D6D6;
+    width: 100%;
+	outline:none;
+	padding:0.3rem;
+    color: #000000;
+}
+.app_main2 {
+    width: 90%;
+    margin: 0 auto;
+
+}
+.app_main2 input {
+    display: block;
+    width: 100%;
+    height: 2rem;
+    background: #DD0045;
+    text-align: center;
+    color: #ffffff;
+    margin-top:6rem ;
+    /*line-height: 3rem;
+*/
+    border: 0;
+    border-radius: 0.5rem;
+}
+
+.app_pos {
+    background: url("../images/posbj.png");
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size:100% ;
+    width: 6rem;
+    height: 6rem;
+    top:2.3rem;
+    right: 0.8rem;
+    display: none;
+}
+.app_pos ul {
+    width:90%;
+    margin: 0 auto;
+    margin-top: 1rem;
+    line-height: 2rem;
+    color: #ffffff;
+
+}
+.app_pos ul li a {
+    color: #ffffff;
+}
+/************apply申请资助开**************/
+/***********agricu 农业科技部开始***********/
+
+.agr_nav {
+    width: 100%;
+    height: 4rem;
+    background: #fff;
+
+    position: relative;
+
+}
+.agr_pos {
+    position: absolute;
+    top: 1.5rem;
+    left: 52%;
+    color: #DD0045;
+
+}
+.agr_nav ul{
+    width: 100%;
+    height: 3.4rem;
+
+
+}
+.agr_nav ul li {
+    width: 33%;
+    float: left;
+    text-align: center;
+    margin-top:1rem;
+    border-right: 1px solid #c5c5c5;
+}
+
+.agr_nav ul li i img {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 0.5rem;
+}
+
+.agr_main {
+    width: 95%;
+    margin: 0 auto;
+    background: #ffffff;
+}
+.agr_main dl {
+    width: 100%;
+    float: left;
+    background: #ffffff;
+
+}
+.agr_main dl dd {
+    float: left;
+    width: 20%;
+    /*width: 6rem;*/
+    /*height: 5rem;*/
+
+}
+.agr_main dl dd img {
+    width:100%;
+    padding-top: 1rem;
+    margin-left: 0.5rem;
+
+}
+.agr_main dl dt {
+    width: 70%;
+    color: #000000;
+    float: left;
+    margin-top: 0.8rem;
+    margin-left:1.5rem;
+    word-break : break-all;
+    font-size: 1.3rem;
+    text-overflow: ellipsis; white-space: nowrap; overflow: hidden;
+
+}
+.agr_main dl dt h5 {
+    color: #909090;
+    margin-top: 2.5rem;
+
+}
+.agr_main dl dt h5 img {
+    width: 5%;
+    margin-left:0.5rem;
+    margin-right:0.5rem;
+
+}
+.agr_h2 {
+    border-bottom: 1px solid #126F38;
+    width: 100%;
+    height: 3rem;
+    line-height: 4rem;
+    background: #fff;
+    font-size: 1rem;
+    padding-left: 0.5rem;
+    color: black;
+
+}
+.agr_main h2 i {
+    margin-right: 2px;
+    display: block;
+    float: left;
+    width: 0.7rem;
+    height: 1.4rem;
+}
+.agr_main h2 i img {
+    width: 100%;
+}
+/***********agricu 农业科技部结束***********/
+
+/************club 财神俱乐部开始**************/
+.club_main1 ul li input{
+  margin-top: 1rem;
+  margin-left:2rem;
+}
+.club_nav {
+    width: 100%;
+
+}
+
+.club_nav p {
+    width: 100%;
+    height: 1.5rem;
+    background: url("../images/bj00.gif");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.club_yhk {
+    width: 90%;
+    margin: 0 auto;
+    height: 17.5rem;
+    margin-top: 1rem;
+    background: url("../images/yhk.png");
+    background-size: 100% 17.5rem;
+    background-repeat: no-repeat;
+    position: relative;
+}
+.club_yhk p {
+    position: absolute;
+    top:8rem;
+    left: 5rem;
+    color: #000000;
+    font-size:1.9rem;
+}
+.club_yhkk{position: relative; top: 6rem;left: 4rem; width:100%;}
+.club_yhkk h2 {
+    position: absolute;
+    left:-1rem;
+    top:6.5rem;
+    color: #000000;
+    font-size:1.2rem;
+}
+.club_yhkk h3 {
+    position: absolute;
+    top: 7.5rem;
+    right:43%;
+    text-align: center;
+    color: #000000;
+    font-size:0.8rem;
+}
+
+.club_main {
+    width: 100%;
+    height: 5rem;
+    background: #fff;
+    margin-top: 1rem;
+
+}
+.club_main ul{
+    width: 100%;
+    height: 4rem;
+
+}
+.club_main ul li {
+    width: 33%;
+    float: left;
+    text-align: center;
+    margin-top: 1rem;
+    border-right: 1px solid #c5c5c5;
+}
+
+.club_main ul li i img {
+    width: 1.7rem;
+    height: 1.7rem;
+    margin-right: 0.5rem;
+
+}
+.club_main ul li span {
+    color: #323232;
+}
+
+
+.club_main1 {
+    width: 100%;
+    background: #ffffff;
+}
+.club_main1 ul li{
+    display: -webkit-box;
+    width: 100%;
+	height: 3.500rem;
+    -webkit-box-pack: justify;
+
+    margin-top: 0.5rem;
+    border-bottom: 1px solid #ccc;
+}
+.club_main1 ul li img {
+    width:2.000rem;
+    height: 2.000rem;
+    display: block;
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+}
+.club_main1 ul li span img{
+    width: 1rem;
+    height: 1.5rem;
+    margin-right: 1.5rem;
+    margin-top: 1rem;
+
+}
+.club_main1 ul li a{
+    width:80%;
+    display: block;
+    -webkit-box-flex:1;
+    text-align: left;
+    font-size: 1.4rem;
+	color:#000;
+    line-height: 3.500rem;
+	line-height:3.500rem;
+    margin-left: 1rem;
+}
+
+
+/************club 财神俱乐部结束**************/
+

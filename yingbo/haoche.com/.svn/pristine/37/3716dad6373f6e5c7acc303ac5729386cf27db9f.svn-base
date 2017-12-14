@@ -1,0 +1,120 @@
+<script type="text/javascript" src='{$Think.const.JS_URL}jquery-2.1.3.min.js'></script>
+<script type="text/javascript" src='{$Think.const.JS_URL}uploadPreview.js'></script>
+<ul class="dj_xhk fr">
+    <p class="arrow-up fl"></p>
+    <li><a href="{:U('Union/index')}">369商家联盟</a></li>
+</ul>
+<script type="text/javascript">
+    $(".head_back2").click(function(){
+        $(".dj_xhk").slideToggle("1000");
+    });
+</script>
+<div class="main">
+    <section>
+        <form action="__SELF__" method="post" class="form-horizontal" enctype="multipart/form-data" id="form">
+        <div class="navbj fl pb0 b_n mt0">
+            <div class="navbj fl pb0">
+                <dl class="bec-t fl">
+                    <dt><a class="bec-input fr w80 tar">
+                        <input type="file"  id="pic_dian" name="pic_dian">
+                        <div id="pic_div"><img id="pic_img" src="{$Think.const.HIMG_URL}xj_images_18.png"></div>  </a></dt>
+                    <script type='text/javascript'>
+                        $(function(){
+                            new uploadPreview({ UpBtn: "pic_dian", DivShow: "pic_div", ImgShow: "pic_img" });
+                        });
+                    </script>
+                    <dd>点击上传店铺logo<br>
+                        <img src="{$Think.const.HIMG_URL}xj_images_17.png" alt=""><span class="fs1-2 pl0-5 gray">成为商家可享受更多特权</span></dd>
+                </dl>
+            </div>
+
+                <ul class="bec-list fl pb2">
+                    <li>店铺名称
+                        <input class="bec-k w80 fr" name="seller_name" placeholder="请输入店铺名称" type="text">
+                    </li>
+                    <li>联系人
+                        <input class="bec-k w83 fr" name="lianxi_name" placeholder="请输入联系人" type="text">
+                    </li>
+
+                    <li>手机
+                        <input class="bec-k w83 fr" name="phone" placeholder="请输入手机" type="text">
+                    </li>
+                    <li>店铺详细地址
+                        <input class="bec-k w60 fr" name="address" placeholder="请输入店铺详细地址" type="text">
+                    </li>
+                    <li>经营行业
+                        <select class="bec-k w60 fr" id="test" name="cat_id">
+                            <option value='0'>--请选择--</option>
+                            <foreach name='catinfo' item='v'>
+                                <option value='{$v.cat_id}'>{$v.cat_name}</option>
+                            </foreach>
+                        </select>
+                        <span id='error-msg' style="width:7rem;float:right;margin-right:6rem"></span>
+                    </li>
+
+                </ul>
+                 <button class="submit loginBtn" id="bsubmit" type="submit">下一步</button>
+        </div></form>
+    </section>
+    </div>
+<script type="text/javascript">
+    $(function(){
+
+        $("#form").submit(function(){
+            var pic_dian=$("input[name='pic_dian']").val();
+            if($("input[name='pic_dian']").val() == ''){
+                $("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'店铺logo不能为空'+"</div>");
+
+                $("#errormsg").fadeIn(1500);$("#errormsg").fadeOut(1500);$("#bsubmit").attr('disabled',true);setTimeout(function(){$("#errormsg").remove();location.reload()},3000);
+                return false;
+            }
+            var seller_name=$("input[name='seller_name']").val();
+            if($("input[name='seller_name']").val() == ''){
+                $("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'店铺名称不能为空'+"</div>");
+
+                $("#errormsg").fadeIn(1500);$("#errormsg").fadeOut(1500);$("#bsubmit").attr('disabled',true);setTimeout(function(){$("#errormsg").remove();location.reload()},3000);
+                return false;
+            }
+            var lianxi_name=$("input[name='lianxi_name']").val();
+            if($("input[name='lianxi_name']").val() == ''){
+                $("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'联系人不能为空'+"</div>");
+
+                $("#errormsg").fadeIn(1500);$("#errormsg").fadeOut(1500);$("#bsubmit").attr('disabled',true);setTimeout(function(){$("#errormsg").remove();location.reload()},3000);
+                return false;
+            }
+            var phone=$("input[name='phone']").val();
+            if($("input[name='phone']").val() == ''){
+                $("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'手机号不能为空'+"</div>");
+
+                $("#errormsg").fadeIn(1500);$("#errormsg").fadeOut(1500);$("#bsubmit").attr('disabled',true);setTimeout(function(){$("#errormsg").remove();location.reload()},3000);
+                return false;
+            }
+            var address=  $("input[name='address']").val();
+            if($("input[name='address']").val() == ''){
+                $("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'店铺地址不能为空'+"</div>");
+
+                $("#errormsg").fadeIn(1500);$("#errormsg").fadeOut(1500);$("#bsubmit").attr('disabled',true);setTimeout(function(){$("#errormsg").remove();location.reload()},3000);
+                return false;
+            }
+             var cat_id =$("#test option:selected").val();
+            if($("#test option:selected").val() == 0){
+                $("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'请选择行业'+"</div>");
+
+                $("#errormsg").fadeIn(1500);$("#errormsg").fadeOut(1500);$("#bsubmit").attr('disabled',true);setTimeout(function(){$("#errormsg").remove();location.reload()},3000);
+                return false;
+            }
+
+            $.ajax({
+                url:"__MODULE__/Core/become",
+                data:{'pic_dian':pic_dian,'seller_name':seller_name,'lianxi_name':lianxi_name,'iphone':iphone,'address':address,'cat_id':cat_id},
+                dataType:'json',
+                type:'post',
+                success:function(data){
+
+                }
+            });
+        })
+
+
+    })
+</script>

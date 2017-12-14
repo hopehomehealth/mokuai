@@ -1,0 +1,67 @@
+<style>
+    .shuaixuanbtn{border-radius: 0!important;color: #858585;background-color: #fff;border: 1px solid #d5d5d5;padding: 5px 4px;line-height: 1.2;font-size: 14px;height:33px;font-family: inherit;-webkit-box-shadow: none!important;box-shadow: none!important;display:block;float:left;}
+    .danhang{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+</style>
+<div class="main-content">
+
+    <div class="page-content">
+        <div class="row">
+            <div class="page-content box">
+                <div class="box-title margin_bot_20">
+                    <div class="span10">
+                        <h3><i class="icon-user"></i>会员管理</h3>  
+                    </div>
+                </div>
+                <div>
+                    <form action="__MODULE__/User/showlist" method="get">
+                        <!--查询-->
+                        <div>
+                            <div>
+                                <span class="shuaixuanbtn" style="line-height:1.5;color:block;font-weight:bold;border:none">查询：</span>
+                                <input type="text" class="shuaixuanbtn" placeholder="会员名/手机号" value="" name="keywords">
+                                <input type="submit" class="shuaixuanbtn" value="搜索">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div style="margin-top:20px;float:left">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                    <tr><th width="30px" >userid</th>
+                        <th width="50px">图像</th>
+                        <th width="5%">用户名</th>
+                        <th width="5%">密码</th>
+                        <th width="5%">姓名</th>
+						<th width="5%">电话</th>
+                        <th width="5%">性别</th>
+                        <th width="5%">地址</th>
+                        <th width="5%">注册时间</th>
+                    </tr></thead>
+                    <tbody>
+                    <foreach name='userlist' key='k' item='v'>
+                        <tr>
+                            <td>{$v.userid}</td>
+                            <td align="center"><span style="height:50px;width:50px;overflow:hidden"><img style="width:50px" src="{$v.userhead}" />
+                                </span></td>
+                            <td title="{$v.username}" class="danhang">{$v.username}</td>
+                            <td title="{$v.password}" class="danhang">{$v.password}</td>
+                            <td title="{$v.name}" class="danhang">{$v.name}</td>
+                            <td title="{$v.phone}" class="danhang">{$v.phone}</td>
+                            <td><if condition ="$v.sex eq 1"><b class="green">男</b><else/><b class="red">女</b></if></td>
+							<!-- <td><if condition ="$v.is_merch eq 1"><b class="green">是</b><else/><b class="red">否</b></if></td> -->
+                            <td title="{$v.address}" class="danhang">{$v.address}</td>
+                            <td title="{$v.ctime|date='Y-m-d H:i:s',###}" class="danhang">{$v.ctime|date='Y-m-d H:i:s',###}</td>
+                        </tr>
+                    </foreach>
+                    </tbody>
+                </table>
+                </div>
+                <style type="text/css">
+                    .technorati li{float:left;}
+                </style>
+                <div class="technorati">{$page}</div>
+            </div>
+        </div>
+        <!--/.box-->
+    </div><!-- /.page-content -->
+</div><!-- /.main-content -->

@@ -1,0 +1,273 @@
+[ 2016-07-23T10:15:53+08:00 ] 125.39.208.232 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `lh_ad` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=27 ) LIMIT 0,3   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=28 ) LIMIT 0,3   [ RunTime:0.0156s ]
+SQL: SHOW COLUMNS FROM `lh_product` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id desc LIMIT 0,6   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id LIMIT 0,3   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 36 行.
+NOTIC: [8] Use of undefined constant About - assumed 'About' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 37 行.
+NOTIC: [8] Use of undefined constant News - assumed 'News' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 37 行.
+NOTIC: [8] Use of undefined constant Trailer - assumed 'Trailer' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 37 行.
+NOTIC: [8] Use of undefined constant Service - assumed 'Service' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 40 行.
+NOTIC: [8] Use of undefined constant Train - assumed 'Train' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 41 行.
+NOTIC: [8] Use of undefined constant Medical - assumed 'Medical' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 42 行.
+NOTIC: [8] Use of undefined constant Example - assumed 'Example' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 43 行.
+NOTIC: [8] Use of undefined constant TeamAssess - assumed 'TeamAssess' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 44 行.
+NOTIC: [8] Use of undefined constant TeamExpert - assumed 'TeamExpert' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 44 行.
+NOTIC: [8] Use of undefined constant TeamManage - assumed 'TeamManage' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 44 行.
+NOTIC: [8] Use of undefined constant Contact - assumed 'Contact' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 44 行.
+NOTIC: [8] Use of undefined constant Link - assumed 'Link' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 47 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.031250s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.031250s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2016-07-23T10:15:54+08:00 ] 61.49.57.61 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `lh_ad` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=27 ) LIMIT 0,3   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=28 ) LIMIT 0,3   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `lh_product` [ RunTime:0.0156s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id desc LIMIT 0,6   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id LIMIT 0,3   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 36 行.
+NOTIC: [8] Use of undefined constant About - assumed 'About' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 37 行.
+NOTIC: [8] Use of undefined constant News - assumed 'News' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 37 行.
+NOTIC: [8] Use of undefined constant Trailer - assumed 'Trailer' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 37 行.
+NOTIC: [8] Use of undefined constant Service - assumed 'Service' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 40 行.
+NOTIC: [8] Use of undefined constant Train - assumed 'Train' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 41 行.
+NOTIC: [8] Use of undefined constant Medical - assumed 'Medical' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 42 行.
+NOTIC: [8] Use of undefined constant Example - assumed 'Example' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 43 行.
+NOTIC: [8] Use of undefined constant TeamAssess - assumed 'TeamAssess' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 44 行.
+NOTIC: [8] Use of undefined constant TeamExpert - assumed 'TeamExpert' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 44 行.
+NOTIC: [8] Use of undefined constant TeamManage - assumed 'TeamManage' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 44 行.
+NOTIC: [8] Use of undefined constant Contact - assumed 'Contact' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 44 行.
+NOTIC: [8] Use of undefined constant Link - assumed 'Link' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 47 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015625s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2016-07-23T10:15:54+08:00 ] 61.49.56.48 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.015625s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015625s ]
+SQL: SHOW COLUMNS FROM `lh_ad` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=27 ) LIMIT 0,3   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=28 ) LIMIT 0,3   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `lh_product` [ RunTime:0.0156s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id desc LIMIT 0,6   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id LIMIT 0,3   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 36 行.
+NOTIC: [8] Use of undefined constant About - assumed 'About' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 37 行.
+NOTIC: [8] Use of undefined constant News - assumed 'News' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 37 行.
+NOTIC: [8] Use of undefined constant Trailer - assumed 'Trailer' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 37 行.
+NOTIC: [8] Use of undefined constant Service - assumed 'Service' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 40 行.
+NOTIC: [8] Use of undefined constant Train - assumed 'Train' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 41 行.
+NOTIC: [8] Use of undefined constant Medical - assumed 'Medical' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 42 行.
+NOTIC: [8] Use of undefined constant Example - assumed 'Example' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 43 行.
+NOTIC: [8] Use of undefined constant TeamAssess - assumed 'TeamAssess' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 44 行.
+NOTIC: [8] Use of undefined constant TeamExpert - assumed 'TeamExpert' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 44 行.
+NOTIC: [8] Use of undefined constant TeamManage - assumed 'TeamManage' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 44 行.
+NOTIC: [8] Use of undefined constant Contact - assumed 'Contact' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 44 行.
+NOTIC: [8] Use of undefined constant Link - assumed 'Link' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 47 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015625s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2016-07-23T10:15:54+08:00 ] 111.161.62.191 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.015625s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015625s ]
+SQL: SHOW COLUMNS FROM `lh_ad` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=27 ) LIMIT 0,3   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=28 ) LIMIT 0,3   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `lh_product` [ RunTime:0.0156s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id desc LIMIT 0,6   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id LIMIT 0,3   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 36 行.
+NOTIC: [8] Use of undefined constant About - assumed 'About' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 37 行.
+NOTIC: [8] Use of undefined constant News - assumed 'News' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 37 行.
+NOTIC: [8] Use of undefined constant Trailer - assumed 'Trailer' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 37 行.
+NOTIC: [8] Use of undefined constant Service - assumed 'Service' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 40 行.
+NOTIC: [8] Use of undefined constant Train - assumed 'Train' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 41 行.
+NOTIC: [8] Use of undefined constant Medical - assumed 'Medical' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 42 行.
+NOTIC: [8] Use of undefined constant Example - assumed 'Example' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 43 行.
+NOTIC: [8] Use of undefined constant TeamAssess - assumed 'TeamAssess' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 44 行.
+NOTIC: [8] Use of undefined constant TeamExpert - assumed 'TeamExpert' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 44 行.
+NOTIC: [8] Use of undefined constant TeamManage - assumed 'TeamManage' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 44 行.
+NOTIC: [8] Use of undefined constant Contact - assumed 'Contact' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 44 行.
+NOTIC: [8] Use of undefined constant Link - assumed 'Link' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 47 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015625s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2016-07-23T10:41:20+08:00 ] 123.151.139.155 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `lh_ad` [ RunTime:0.0156s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=27 ) LIMIT 0,3   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=28 ) LIMIT 0,3   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `lh_product` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id desc LIMIT 0,6   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id LIMIT 0,3   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 36 行.
+NOTIC: [8] Use of undefined constant About - assumed 'About' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 37 行.
+NOTIC: [8] Use of undefined constant News - assumed 'News' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 37 行.
+NOTIC: [8] Use of undefined constant Trailer - assumed 'Trailer' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 37 行.
+NOTIC: [8] Use of undefined constant Service - assumed 'Service' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 40 行.
+NOTIC: [8] Use of undefined constant Train - assumed 'Train' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 41 行.
+NOTIC: [8] Use of undefined constant Medical - assumed 'Medical' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 42 行.
+NOTIC: [8] Use of undefined constant Example - assumed 'Example' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 43 行.
+NOTIC: [8] Use of undefined constant TeamAssess - assumed 'TeamAssess' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 44 行.
+NOTIC: [8] Use of undefined constant TeamExpert - assumed 'TeamExpert' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 44 行.
+NOTIC: [8] Use of undefined constant TeamManage - assumed 'TeamManage' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 44 行.
+NOTIC: [8] Use of undefined constant Contact - assumed 'Contact' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 44 行.
+NOTIC: [8] Use of undefined constant Link - assumed 'Link' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 47 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.031250s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.031250s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2016-07-23T11:05:14+08:00 ] 123.151.42.52 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `lh_ad` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=27 ) LIMIT 0,3   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=28 ) LIMIT 0,3   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `lh_product` [ RunTime:0.0156s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id desc LIMIT 0,6   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id LIMIT 0,3   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 36 行.
+NOTIC: [8] Use of undefined constant About - assumed 'About' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 37 行.
+NOTIC: [8] Use of undefined constant News - assumed 'News' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 37 行.
+NOTIC: [8] Use of undefined constant Trailer - assumed 'Trailer' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 37 行.
+NOTIC: [8] Use of undefined constant Service - assumed 'Service' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 40 行.
+NOTIC: [8] Use of undefined constant Train - assumed 'Train' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 41 行.
+NOTIC: [8] Use of undefined constant Medical - assumed 'Medical' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 42 行.
+NOTIC: [8] Use of undefined constant Example - assumed 'Example' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 43 行.
+NOTIC: [8] Use of undefined constant TeamAssess - assumed 'TeamAssess' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 44 行.
+NOTIC: [8] Use of undefined constant TeamExpert - assumed 'TeamExpert' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 44 行.
+NOTIC: [8] Use of undefined constant TeamManage - assumed 'TeamManage' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 44 行.
+NOTIC: [8] Use of undefined constant Contact - assumed 'Contact' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 44 行.
+NOTIC: [8] Use of undefined constant Link - assumed 'Link' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 47 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015625s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2016-07-23T12:31:07+08:00 ] 123.151.40.40 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `lh_ad` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=27 ) LIMIT 0,3   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=28 ) LIMIT 0,3   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `lh_product` [ RunTime:0.0156s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id desc LIMIT 0,6   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id LIMIT 0,3   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 36 行.
+NOTIC: [8] Use of undefined constant About - assumed 'About' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 37 行.
+NOTIC: [8] Use of undefined constant News - assumed 'News' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 37 行.
+NOTIC: [8] Use of undefined constant Trailer - assumed 'Trailer' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 37 行.
+NOTIC: [8] Use of undefined constant Service - assumed 'Service' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 40 行.
+NOTIC: [8] Use of undefined constant Train - assumed 'Train' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 41 行.
+NOTIC: [8] Use of undefined constant Medical - assumed 'Medical' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 42 行.
+NOTIC: [8] Use of undefined constant Example - assumed 'Example' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 43 行.
+NOTIC: [8] Use of undefined constant TeamAssess - assumed 'TeamAssess' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 44 行.
+NOTIC: [8] Use of undefined constant TeamExpert - assumed 'TeamExpert' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 44 行.
+NOTIC: [8] Use of undefined constant TeamManage - assumed 'TeamManage' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 44 行.
+NOTIC: [8] Use of undefined constant Contact - assumed 'Contact' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 44 行.
+NOTIC: [8] Use of undefined constant Link - assumed 'Link' E:\web\demo.ew9t.cn\lehu\web\Runtime\Cache\Home\61c79409ce17c2a83f7aeec0601b7864.php 第 47 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015625s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+

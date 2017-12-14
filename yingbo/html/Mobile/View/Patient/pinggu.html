@@ -1,0 +1,59 @@
+
+        <div class="main">
+        <style type="text/css">
+.xj_xjpg{ width:100%;  margin: 0rem auto; height: 4.667rem;}
+.xj_xjpg span{ width: 100%;  float:left; margin-left:0.8rem; padding: 0.4rem 0rem;}
+.xj_xjpg_c{ width:50%; float: left; }
+.xj_xjpg i{ width:20%; float:left; height: 2rem; }
+.xj_xjpg_h{width:100%; background:url({$Think.const.MBIMG_URL}xinxin_0.png) no-repeat center;background-size: 50% 50%;}
+.xj_xjpg_go{width:100%; background:url({$Think.const.MBIMG_URL}xing.jpg) no-repeat center;background-size: 50% 50%;}
+        </style>
+       
+        <form action="" method="post" id="com-form">
+         <div class="xj_xjpg borBot">
+<span>评星：</span>
+        <div class="xj_xjpg_c">
+<i class="star xj_xjpg_h"></i><i class="star xj_xjpg_h"></i><i class="star xj_xjpg_h"></i><i class="star xj_xjpg_h"></i><i class="star xj_xjpg_h"></i>
+        </div>
+
+        
+        </div>
+            <div class="pgTxt">
+                <textarea name="comment" placeholder="欢迎评论"></textarea>
+                <div class="btn">
+                	<input type="hidden" name="suborderid" value="{$Think.get.suborderid}">
+                	<input type="hidden" name="orderid" value="{$Think.get.orderid}">
+                    <input type="hidden" name="preurl" value="{$preurl}">
+                	<input type="hidden" id="com-star" name="star" value="">
+                    <if condition="$is_com eq '1'">
+                        <button type="submit" disabled="disabled" style="background:#8b9aa3" id="com-sub">提 交</button>
+                    <else />
+                        <button type="submit" id="com-sub">提 交</button>
+                    </if>
+                </div>
+            </div>
+		</form>
+        </div>
+    <script type="text/javascript">
+        $(function(){
+            $(".star").click(function(){
+                $(this).addClass("xj_xjpg_go").prevAll().addClass("xj_xjpg_go");
+                $(this).nextAll().removeClass("xj_xjpg_go");
+                $("#com-star").val($(this).index()+1);
+            })
+            $("#com-form").submit(function(){
+            	if($("#com-star").val() == ''){
+            		return false;
+            	}
+            	if($("textarea").val() == ''){
+            		return false;
+            	}
+            	$("#com-sub").attr('disabled',true);
+            	$("#com-sub").css("background","#8b9aa3");
+            	return true;
+            })
+        })
+    </script>
+
+
+ 

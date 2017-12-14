@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>蓝海长青</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/basic.css"/>
+    <!--[if lt IE 9]>
+    　　<script src="js/html5shiv.js"></script>
+    　　<script src="js/respond.js"></script>
+    <![endif]-->
+</head>
+<body>
+<header class="bb-b"> <a class="head_back1" href="Javascript:window.history.go(-1)">&nbsp;</a>
+    <div class="headTit1">开通博客</div>
+</header>
+<div class="main">
+<article>
+    <div class="loding">
+      <p>您已成功开通个人博客！<a href="">进入博客</a>
+          <span id="kkk" class="blue"></span>秒后自动进入个人博客页面！</p>
+    </div>
+</article>
+</div>
+<script>
+    var t = 6;
+    function showTime(){
+        t -= 1;
+        document.getElementById('kkk').innerHTML= t;
+        if(t==0){
+            location.href='myblog.html';
+        }
+        setTimeout("showTime()",1000);
+    }
+    showTime();
+</script>
+</body>
+</html>

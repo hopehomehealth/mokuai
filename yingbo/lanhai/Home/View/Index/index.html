@@ -1,0 +1,533 @@
+
+
+<!--banner-->
+<div class="banner" id="banner" >
+    <foreach name="bannerinfo1" item="v">
+
+        <a target="_blank" href="{$v.url}" class="d1" style="background: url({$Think.const.SITE_URL}{$v.pic}) center no-repeat #fff;
+ background-size:cover;"></a>
+    </foreach>
+
+    <div class="d2" id="banner_id">
+        <ul>
+            <foreach name="bannerinfo1" item="v">
+                <li></li>
+            </foreach>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript">banner()</script>
+<!------banner-->
+ <style type="text/css">
+
+	.hiSlider{
+		overflow: hidden;
+		height: 300px;
+		width: 310px;
+		background: #eee;
+	}
+	.hiSlider-item{
+		float: left;
+		width: 310px; height: 300px;
+	}
+	.hiSlider-item img{
+		width: 310px; height: 300px;
+	}
+	.hiSlider-pages, .hiSlider-title {
+	position: absolute;
+	z-index: 3
+}
+
+
+.hiSlider-title {
+	bottom: 0;
+	width: 100%;
+	padding: 6px 0;
+	color: #fff;
+	text-indent: 10px;
+	background: rgba(0,0,0,.6);
+	z-index: 2;
+	 overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block;
+}
+.hiSlider-pages {
+	bottom:40px;
+	right: 10px;
+	text-align: right
+}
+.hiSlider-pages a {
+	height: 8px;
+	width: 8px;
+	margin: 0 3px;
+	display: inline-block;
+	overflow: hidden;
+	text-indent: -100px;
+	font-size: 0;
+	border-radius: 50%;
+	background: #ddd
+}
+.hiSlider-pages a.active {
+	background: #5472BF
+}
+
+</style>
+<!--第一通栏-->
+<div class="column-c pt22">
+    <!--ad------>
+    <div class="ad fl">
+    <ul class="hiSlider hiSlider1">
+    <foreach name="tuiinfo" item="v">
+                   <li data-title="{$v.news_title}" class="hiSlider-item"><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}"><img <if condition="($v.pic neq '') AND ($v.pic neq './Public/Upl/news/')">src="{$Think.const.SITE_URL}{$v.pic}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq '')"/>src="{$v.picfirst}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq '')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"</if>></a></li>
+                </foreach>
+
+
+	</ul>
+        <!--<div class="container" id="idTransformView2">
+            <ul class="slider slider2" id="idSlider2">
+                <foreach name="tuiinfo" item="v">
+                    <li><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id']))}"><img src="{$Think.const.SITE_URL}{$v.pic}"/></a>
+                        <div class="idSiideer-pos1 ot-wd">{$v.news_title}</div>
+                        <div class="idSiideer-pos3"></div>
+                    </li>
+                </foreach>
+            </ul>
+            <ul class="num" id="idNum2">
+                <foreach name="tuiinfo" item="v">
+                    <li></li>
+                </foreach>
+            </ul>
+        </div>-->
+    </div>
+    <!-------headlines------>
+    <div class="headlines fl pl20">
+        <p class="hlines-t fl"><span class="fr"><a target="_blank" href="{:U('News/newslist',array('lan_id'=>$toutiaoinfo[0]['lan_id']))}">更多》</a></span><img src="{$Think.const.HIMG_URL}images_10.jpg" alt="蓝海头条" /></p>
+        <ul class="hlines-list li">
+            <foreach name="toutiaoinfo" item="v">
+                <li>
+                    <h5><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$toutiaoinfo[0]['lan_id']))}">{$v.news_title}</a></h5>
+                    <span> {$v.content|strip_tags|str_replace=array(" ","　","\t","\n","\r","&bsp;"),array("","","","","",""),###|mb_substr=###,0,53,'utf-8'}...</span>
+                </li>
+            </foreach>
+        </ul>
+    </div>
+    <!-------rank------>
+    <div class="pl20 rank fl">
+        <p class="rank-t"><img src="{$Think.const.HIMG_URL}images_37.jpg" alt="点击排行" /></p>
+        <ul class="rank-list fl">
+            <foreach name="clickinfo" item="v">
+                <li><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.news_title}</a></li>
+            </foreach>
+
+        </ul>
+    </div>
+</div>
+<!-------第二通栏------>
+<div class="column-c pt10">
+    <p class="view"><span class="fr"><a target="_blank" href="{:U('News/lanhaizixun')}">更多》</a></span><img src="{$Think.const.HIMG_URL}images_16.jpg" alt="蓝海资讯" /></p>
+
+    <div class="pt30">
+        <div class="view-a pr20 fl">
+            <p class="view-a-t fl"><span class="fr"><a target="_blank" href="{:U('News/newslist',array('lan_id'=>$shidianinfo1[0]['lan_id']))}">更多》</a></span><img src="{$Think.const.HIMG_URL}images_22.jpg" alt="蓝海视点" /></p>
+            <dl>
+                <foreach name="shidianinfo1" item="v">
+                    <h5><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.news_title}</a></h5>
+                    <dt><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}"><img  <if condition="($v.pic neq '') AND ($v.pic neq './Public/Upl/news/')">src="{$Think.const.SITE_URL}{$v.pic}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq '')"/>src="{$v.picfirst}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq '')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"</if> /></a></dt>
+                    <dd><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.content|strip_tags|str_replace=array(" ","　","\t","\n","\r","&bsp;"),array("","","","","",""),###|mb_substr=###,0,200,'utf-8'}</a></dd>
+                </foreach>
+
+            </dl>
+            <ul>
+                <foreach name="shidianinfo2" item="v">
+                    <li><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.news_title}</a></li>
+                </foreach>
+            </ul>
+        </div>
+        <div class="view-a pr20 fl">
+            <p class="view-a-t fl"><span class="fr"><a target="_blank" href="{:U('News/newslist',array('lan_id'=>$anquanzonghenginfo1[0]['lan_id']))}">更多》</a></span><img src="{$Think.const.HIMG_URL}images_24.jpg" alt="安全纵横" /></p>
+            <dl>
+                <foreach name="anquanzonghenginfo1" item="v">
+                    <h5><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.news_title}</a></h5>
+                    <dt><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}"><img  <if condition="($v.pic neq '') AND ($v.pic neq './Public/Upl/news/')">src="{$Think.const.SITE_URL}{$v.pic}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq '')"/>src="{$v.picfirst}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq '')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"</if> /></a></dt>
+                    <dd><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.content|strip_tags|str_replace=array(" ","　","\t","\n","\r","&bsp;"),array("","","","","",""),###|mb_substr=###,0,200,'utf-8'}</a></dd>
+                </foreach>
+
+            </dl>
+            <ul>
+                <foreach name="anquanzonghenginfo2" item="v">
+                    <li><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.news_title}</a></li>
+                </foreach>
+            </ul>
+        </div>
+        <div class="view-a fl">
+            <p class="view-a-t fl"><span class="fr"><a target="_blank" href="{:U('News/newslist',array('lan_id'=>$sihailanshenginfo1[0]['lan_id']))}">更多》</a></span><img src="{$Think.const.HIMG_URL}images_26.jpg" alt="思海揽胜" /></p>
+            <dl>
+                <foreach name="sihailanshenginfo1" item="v">
+                    <h5><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.news_title}</a></h5>
+                    <dt><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}"><img <if condition="($v.pic neq '') AND ($v.pic neq './Public/Upl/news/')">src="{$Think.const.SITE_URL}{$v.pic}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq '')"/>src="{$v.picfirst}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq '')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"</if> /></a></dt>
+                    <dd><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.content|strip_tags|str_replace=array(" ","　","\t","\n","\r","&bsp;"),array("","","","","",""),###|mb_substr=###,0,200,'utf-8'}</a></dd>
+                </foreach>
+
+            </dl>
+            <ul>
+                <foreach name="sihailanshenginfo2" item="v">
+                    <li><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.news_title}</a></li>
+                </foreach>
+            </ul>
+        </div>
+        <div class="view-a pr20 fl">
+            <p class="view-a-t fl"><span class="fr"><a target="_blank" href="{:U('News/newslist',array('lan_id'=>$junshidongtaiinfo1[0]['lan_id']))}">更多》</a></span><img src="{$Think.const.HIMG_URL}images_40.jpg" alt="军事动态" /></p>
+            <dl>
+                <foreach name="junshidongtaiinfo1" item="v">
+                    <h5><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.news_title}</a></h5>
+                    <dt><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}"><img  <if condition="($v.pic neq '') AND ($v.pic neq './Public/Upl/news/')">src="{$Think.const.SITE_URL}{$v.pic}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq '')"/>src="{$v.picfirst}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq '')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"</if>/></a></dt>
+                    <dd><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.content|strip_tags|str_replace=array(" ","　","\t","\n","\r","&bsp;"),array("","","","","",""),###|mb_substr=###,0,200,'utf-8'}</a></dd>
+                </foreach>
+
+            </dl>
+            <ul>
+                <foreach name="junshidongtaiinfo2" item="v">
+                    <li><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.news_title}</a></li>
+                </foreach>
+            </ul>
+        </div>
+        <div class="view-a pr20 fl">
+            <p class="view-a-t fl"><span class="fr"><a target="_blank" href="{:U('News/newslist',array('lan_id'=>$jianduankejiinfo1[0]['lan_id']))}">更多》</a></span><img src="{$Think.const.HIMG_URL}images_41.jpg" alt="尖端科技" /></p>
+            <dl>
+                <foreach name="jianduankejiinfo1" item="v">
+                    <h5><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.news_title}</a></h5>
+                    <dt><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}"><img  <if condition="($v.pic neq '') AND ($v.pic neq './Public/Upl/news/')">src="{$Think.const.SITE_URL}{$v.pic}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq '')"/>src="{$v.picfirst}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq '')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"</if> /></a></dt>
+                    <dd><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.content|strip_tags|str_replace=array(" ","　","\t","\n","\r","&bsp;"),array("","","","","",""),###|mb_substr=###,0,200,'utf-8'}</a></dd>
+                </foreach>
+
+            </dl>
+            <ul>
+                <foreach name="jianduankejiinfo2" item="v">
+                    <li><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.news_title}</a></li>
+                </foreach>
+            </ul>
+        </div>
+        <div class="view-a fl">
+            <p class="view-a-t fl"><span class="fr"><a target="_blank" href="{:U('News/newslist',array('lan_id'=>$kaixinleyuaninfo1[0]['lan_id']))}">更多》</a></span><img src="{$Think.const.HIMG_URL}images_42.jpg" alt="开心乐园" /></p>
+            <dl>
+                <foreach name="kaixinleyuaninfo1" item="v">
+                    <h5><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.news_title}</a></h5>
+                    <dt><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}"><img  <if condition="($v.pic neq '') AND ($v.pic neq './Public/Upl/news/')">src="{$Think.const.SITE_URL}{$v.pic}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq '')"/>src="{$v.picfirst}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq '')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"</if> /></a></dt>
+                    <dd><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.content|strip_tags|str_replace=array(" ","　","\t","\n","\r","&bsp;"),array("","","","","",""),###|mb_substr=###,0,200,'utf-8'}</a></dd>
+                </foreach>
+
+            </dl>
+            <ul>
+                <foreach name="kaixinleyuaninfo2" item="v">
+                    <li><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.news_title}</a></li>
+                </foreach>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-------第三通栏------>
+<div class="column-c pt10">
+    <p class="view"><span class="fr"><a target="_blank" href="{:U('News/junminronghe')}">更多》</a></span><img src="{$Think.const.HIMG_URL}images_55.jpg" alt="军民融合" /></p>
+    <div class="pt30 view-a fl pr20 ">
+        <div class="view-a fl">
+            <p class="view-a-t fl"><span class="fr"><a target="_blank" href="{:U('News/newslist',array('lan_id'=>$lanhaifabuinfo1[0]['lan_id']))}">更多》</a></span><img src="{$Think.const.HIMG_URL}images_59.jpg" alt="蓝海发布" /></p>
+            <dl>
+                <foreach name="lanhaifabuinfo1" item="v">
+                    <h5><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.news_title}</a></h5>
+                    <dt><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}"><img  <if condition="($v.pic neq '') AND ($v.pic neq './Public/Upl/news/')">src="{$Think.const.SITE_URL}{$v.pic}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq '')"/>src="{$v.picfirst}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq '')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"</if>/></a></dt>
+                    <dd><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.content|strip_tags|str_replace=array(" ","　","\t","\n","\r","&bsp;"),array("","","","","",""),###|mb_substr=###,0,200,'utf-8'}</a></dd>
+                </foreach>
+
+            </dl>
+            <ul>
+                <foreach name="lanhaifabuinfo2" item="v">
+                    <li><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.news_title}</a></li>
+                </foreach>
+            </ul>
+        </div>
+        <div class="view-a fl">
+            <p class="view-a-t fl"><span class="fr"><a target="_blank" href="{:U('News/newslist',array('lan_id'=>$chanyefazhaninfo1[0]['lan_id']))}">更多》</a></span><img src="{$Think.const.HIMG_URL}images_69.jpg" alt="产业发展" /></p>
+            <dl>
+                <foreach name="chanyefazhaninfo1" item="v">
+                    <h5><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.news_title}</a></h5>
+                    <dt><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}"><img  <if condition="($v.pic neq '') AND ($v.pic neq './Public/Upl/news/')">src="{$Think.const.SITE_URL}{$v.pic}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq '')"/>src="{$v.picfirst}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq '')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"</if>/></a></dt>
+                    <dd><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.content|strip_tags|str_replace=array(" ","　","\t","\n","\r","&bsp;"),array("","","","","",""),###|mb_substr=###,0,200,'utf-8'}</a></dd>
+                </foreach>
+
+            </dl>
+            <ul>
+                <foreach name="chanyefazhaninfo2" item="v">
+                    <li><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.news_title}</a></li>
+                </foreach>
+            </ul>
+        </div>
+    </div>
+    <div class="view-b pr20 fl pt30">
+        <p class="view-a-t fl"><span class="fr"><a target="_blank" href="{:U('News/newslist',array('lan_id'=>$jiaoyupeixuninfo[0]['lan_id']))}">更多》</a></span><img src="{$Think.const.HIMG_URL}images_61.jpg" alt="教育培训" /></p>
+        <dl>
+            <foreach name="jiaoyupeixuninfo" item="v">
+                <dt>
+                <p class="view-b-wz">{$v.news_title}</p>   <a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">
+                <img  <if condition="($v.pic neq '') AND ($v.pic neq './Public/Upl/news/')">src="{$Think.const.SITE_URL}{$v.pic}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq '')"/>src="{$v.picfirst}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq '')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"</if>  alt="教育培训" /></a></dt>
+            </foreach>
+        </dl>
+    </div>
+    <div class="pt30 fl view-a">
+        <div class="view-a fl">
+            <p class="view-a-t fl"><span class="fr"><a target="_blank" href="{:U('News/newslist',array('lan_id'=>$wenhuachuanmeiinfo1[0]['lan_id']))}">更多》</a></span><img src="{$Think.const.HIMG_URL}images_62.jpg" alt="文化传媒" /></p>
+            <dl>
+                <foreach name="wenhuachuanmeiinfo1" item="v">
+                    <h5><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.news_title}</a></h5>
+                    <dt><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}"><img   <if condition="($v.pic neq '') AND ($v.pic neq './Public/Upl/news/')">src="{$Think.const.SITE_URL}{$v.pic}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq '')"/>src="{$v.picfirst}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq '')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"</if> /></a></dt>
+                    <dd><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.content|strip_tags|str_replace=array(" ","　","\t","\n","\r","&bsp;"),array("","","","","",""),###|mb_substr=###,0,200,'utf-8'}</a></dd>
+                </foreach>
+
+            </dl>
+            <ul>
+                <foreach name="wenhuachuanmeiinfo2" item="v">
+                    <li><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.news_title}</a></li>
+                </foreach>
+            </ul>
+        </div>
+        <div class="view-a fl">
+            <p class="view-a-t fl"><span class="fr"><a target="_blank" href="{:U('News/newslist',array('lan_id'=>$anquanluntaninfo1[0]['lan_id']))}">更多》</a></span><img src="{$Think.const.HIMG_URL}images_70.jpg" alt="安全论坛" /></p>
+            <dl>
+                <foreach name="anquanluntaninfo1" item="v">
+                    <h5><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.news_title}</a></h5>
+                    <dt><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}"><img  <if condition="($v.pic neq '') AND ($v.pic neq './Public/Upl/news/')">src="{$Think.const.SITE_URL}{$v.pic}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq '')"/>src="{$v.picfirst}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq '')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"</if> /></a></dt>
+                    <dd><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.content|strip_tags|str_replace=array(" ","　","\t","\n","\r","&bsp;"),array("","","","","",""),###|mb_substr=###,0,200,'utf-8'}</a></dd>
+                </foreach>
+
+            </dl>
+            <ul>
+                <foreach name="anquanluntaninfo2" item="v">
+                    <li><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.news_title}</a></li>
+                </foreach>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-------第四通栏------>
+<div class="column-c pt10">
+    <p class="view"><span class="fr"><a target="_blank" href="{:U('News/zixunfuwu')}">更多》</a></span><img src="{$Think.const.HIMG_URL}images_76.jpg" alt="咨询服务" /></p>
+    <div class="pt30 view-a fl pr20 ">
+        <div class="view-a fl">
+            <p class="view-a-t fl"><span class="fr"><a target="_blank" href="{:U('News/newslist',array('lan_id'=>$yuanqujiansheinfo1[0]['lan_id']))}">更多》</a></span><img src="{$Think.const.HIMG_URL}images_80.jpg" alt="园区建设" /></p>
+            <dl>
+                <foreach name="yuanqujiansheinfo1" item="v">
+                    <h5><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.news_title}</a></h5>
+                    <dt><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}"><img  <if condition="($v.pic neq '') AND ($v.pic neq './Public/Upl/news/')">src="{$Think.const.SITE_URL}{$v.pic}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq '')"/>src="{$v.picfirst}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq '')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"</if> /></a></dt>
+                    <dd><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.content|strip_tags|str_replace=array(" ","　","\t","\n","\r","&bsp;"),array("","","","","",""),###|mb_substr=###,0,200,'utf-8'}</a></dd>
+                </foreach>
+
+            </dl>
+            <ul>
+                <foreach name="yuanqujiansheinfo2" item="v">
+                    <li><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.news_title}</a></li>
+                </foreach>
+            </ul>
+        </div>
+        <div class="view-a fl">
+            <p class="view-a-t fl"><span class="fr"><a target="_blank" href="{:U('News/newslist',array('lan_id'=>$kejifuwuinfo1[0]['lan_id']))}">更多》</a></span><img src="{$Think.const.HIMG_URL}images_90.jpg" alt="科技服务" /></p>
+            <dl>
+                <foreach name="kejifuwuinfo1" item="v">
+                    <h5><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.news_title}</a></h5>
+                    <dt><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}"><img  <if condition="($v.pic neq '') AND ($v.pic neq './Public/Upl/news/')">src="{$Think.const.SITE_URL}{$v.pic}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq '')"/>src="{$v.picfirst}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq '')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"</if> /></a></dt>
+                    <dd><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.content|strip_tags|str_replace=array(" ","　","\t","\n","\r","&bsp;"),array("","","","","",""),###|mb_substr=###,0,200,'utf-8'}</a></dd>
+                </foreach>
+
+            </dl>
+            <ul>
+                <foreach name="kejifuwuinfo2" item="v">
+                    <li><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.news_title}</a></li>
+                </foreach>
+            </ul>
+        </div>
+    </div>
+    <div class="view-d pr20 fl pt30">
+        <p class="view-a-t fl"><span class="fr"><a target="_blank" href="{:U('Tushu/tushulist')}">更多》</a></span><img src="{$Think.const.HIMG_URL}images_81.jpg" alt="图书馆" /></p>
+        <dl>
+            <foreach name="tushuguaninfo" item="v">
+                <dt>    <a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">
+                <p class="view-b-wza">{$v.news_title}</p>
+                <img <if condition="($v.pic neq '') AND ($v.pic neq './Public/Upl/news/')">src="{$Think.const.SITE_URL}{$v.pic}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq '')"/>src="{$v.picfirst}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq '')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"</if>  /></a></dt>
+            </foreach>
+        </dl>
+    </div>
+    <div class="pt30 fl view-a"style="width: 305px;">
+        <div class="view-a-a fl">
+            <p class="view-a-t fl"style="width: 305px;"><span class="fr"><a target="_blank" href="{:U('Fagui/falvfagui',array('cat_id'=>1,'lan_id'=>31))}">更多》</a></span><img src="{$Think.const.HIMG_URL}images_83.jpg" alt="法规政策" /></p>
+
+            <ul>
+                <foreach name="faguizhengceinfo2" item="v">
+                    <li><a target="_blank" href="{:U('Fagui/falvfagui',array('cat_id'=>$v['cat_id'],'lan_id'=>31))}"><strong>{$v.name}</strong>{$v.description|strip_tags|str_replace=array(" ","　","\t","\n","\r","&bsp;"),array("","","","","",""),###|mb_substr=###,0,21,'utf-8'}</a></li>
+                </foreach>
+            </ul>
+        </div>
+        <div class="view-a fl" style="width: 305px;">
+            <p class="view-a-t fl" style="width:305px;"><span class="fr"><a target="_blank" href="{:U('News/newslist',array('lan_id'=>$rencaijiaoliuinfo1[0]['lan_id']))}">更多》</a></span><img src="{$Think.const.HIMG_URL}images_91.jpg" alt="人才交流" /></p>
+            <dl style="width:305px;">
+                <foreach name="rencaijiaoliuinfo1" item="v">
+                    <h5><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.news_title}</a></h5>
+                    <dt><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}"><img  <if condition="($v.pic neq '') AND ($v.pic neq './Public/Upl/news/')">src="{$Think.const.SITE_URL}{$v.pic}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq '')"/>src="{$v.picfirst}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq '')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"</if> /></a></dt>
+                    <dd style="width: 195px;"><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.content|strip_tags|str_replace=array(" ","　","\t","\n","\r","&bsp;"),array("","","","","",""),###|mb_substr=###,0,200,'utf-8'}</a></dd>
+                </foreach>
+
+            </dl>
+            <ul style="width:305px;">
+                <foreach name="rencaijiaoliuinfo2" item="v">
+                    <li style="width: 288px;"><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.news_title}</a></li>
+                </foreach>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-------第五通栏------>
+<notempty name="bannerinfo2">
+<p class="column-c pt10 ad1">
+    <foreach name="bannerinfo2" item="v">
+        <img src="{$Think.const.SITE_URL}{$v.pic}" />
+    </foreach>
+</p>
+</notempty>
+<!-------第六通栏------>
+<div class="column-c pt22">
+    <p class="view"><span class="fr"><a target="_blank" href="{:U('Bbs/index',array('lan_id'=>7))}">更多》</a></span><img src="{$Think.const.HIMG_URL}images_34.jpg" alt="" /></p>
+    <ul class="view-c fl">
+        <volist name="boardlist" id="twoinfo">
+        <li <if condition="($i eq count($boardlist)) OR ($i eq count($boardlist)-1)">style="width:480px;border-bottom:0"<else />style="width:480px;"</if>>
+          <dl class="fl">
+            <dt><a style="display:inline-block;width:30px;height:30px;overflow:hidden" href="__MODULE__/Posts/postlist/board_id/{$twoinfo.board_id}/lan_id/35"><if condition="$twoinfo.board_img neq ''"><img style="width:30px" src="{$twoinfo.board_img}" /><else /><img style="width:30px" src="{$Think.const.HIMG_URL}images_36.jpg" /></if></a></dt>
+            <dd>
+              <p class="view-c-t fl"><a target="_blank" href="__MODULE__/Posts/postlist/board_id/{$twoinfo.board_id}/lan_id/35">{$twoinfo.board_title}</a></p>
+              <p class="fl fs12">今日：{$twoinfo.todposts}　帖数：{$twoinfo.posts}</p>
+              <p class="fl fs12" style="clear:right;width:100%"><span class="fl view-c-t1"><a target="_blank" href="__MODULE__/Posts/detail/post_id/{$twoinfo.post_id}">{$twoinfo.topic|cutstr=###,10|str_replace='...','',###}</a></span> <span class="fr gray">{$twoinfo.ctime}</span> &nbsp;&nbsp;{$twoinfo.username}</p>
+            </dd>
+          </dl>
+        </li>
+        </volist>
+    </ul>
+</div>
+<!-------第七通栏------>
+<div class="column-c pt22">
+    <ul class="Links-tit fl">
+        <p class="Links-last fl"><img src="{$Think.const.HIMG_URL}images_106.jpg" alt="友情链接" /></p>
+        <li class="current">合作伙伴</li>
+        <li>政府军方网站</li>
+        <li>知名智库网站</li>
+        <li>知名门户网站</li>
+        <span class="fr"><a target="_blank" href="{:U('Link/linklist')}">更多》</a></span>
+    </ul>
+    <div>
+        <div class="Links-txt fl current">
+            <dl class="links-list fl">
+                <foreach name="linkinfo1" item="v">
+
+                    <if condition="$v.is_no eq 0" >
+                        <dt><a target="_blank" href="{$v.url}" rel="nofollow"><img src="{$Think.const.SITE_URL}{$v.pic}" /></a></dt>
+                        <else/>
+                        <dt><a target="_blank" href="{$v.url}"><img src="{$Think.const.SITE_URL}{$v.pic}" /></a></dt>
+                    </if>
+                </foreach>
+            </dl>
+        </div>
+        <div class="Links-txt fl">
+            <dl class="links-list fl">
+                <foreach name="linkinfo2" item="v">
+                    <if condition="$v.is_no eq 0" >
+                        <dt><a target="_blank" href="{$v.url}" rel="nofollow"><img src="{$Think.const.SITE_URL}{$v.pic}" /></a></dt>
+                        <else/>
+                        <dt><a target="_blank" href="{$v.url}"><img src="{$Think.const.SITE_URL}{$v.pic}" /></a></dt>
+                    </if>
+                </foreach>
+
+            </dl>
+        </div>
+        <div class="Links-txt fl">
+            <dl class="links-list fl">
+                <foreach name="linkinfo3" item="v">
+                    <if condition="$v.is_no eq 0" >
+                        <dt><a target="_blank" href="{$v.url}" rel="nofollow"><img src="{$Think.const.SITE_URL}{$v.pic}" /></a></dt>
+                        <else/>
+                        <dt><a target="_blank" href="{$v.url}"><img src="{$Think.const.SITE_URL}{$v.pic}" /></a></dt>
+                    </if>
+                </foreach>
+
+            </dl>
+        </div>
+        <div class="Links-txt fl">
+            <dl class="links-list fl">
+                <foreach name="linkinfo4" item="v">
+                    <if condition="$v.is_no eq 0" >
+                        <dt><a target="_blank" href="{$v.url}" rel="nofollow"><img src="{$Think.const.SITE_URL}{$v.pic}" /></a></dt>
+                        <else/>
+                        <dt><a target="_blank" href="{$v.url}"><img src="{$Think.const.SITE_URL}{$v.pic}" /></a></dt>
+                    </if>
+                </foreach>
+
+            </dl>
+        </div>
+    </div>
+</div>

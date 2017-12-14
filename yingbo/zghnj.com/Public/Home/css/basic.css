@@ -1,0 +1,493 @@
+﻿@charset "utf-8";
+/* CSS Document */
+body {
+    padding: 0px;
+    margin: 0px;
+    font-family: "微软雅黑", Verdana, Geneva, sans-serif;
+    font-size: 14px;
+    color: #333;
+}
+
+ul, li, dl, dt, dd, p, h1, h2, h3, h4, h5, input, form, span, img, ol, button, table, tr, td, select, option, textarea, div {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    outline: none;
+    border: 0;
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    border: none;
+    vertical-align: top;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+a, button, input, textarea, select {
+    background: none;
+    -webkit-tap-highlight-color: rgba(255, 0, 0, 0);
+    outline: none;
+    border: none;
+    -webkit-appearance: none;
+}
+
+textarea {
+    resize: none;
+    overflow: auto;
+}
+
+input {
+    font-family: "微软雅黑", Arial, Helvetica, sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+/* 文字两端对齐 */
+.text-justify {
+    text-align: justify;
+    text-justify: inter-ideograph;
+}
+
+.tac {
+    text-align: center;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+/****header头部开始*****/
+.header {
+    width: 100%;
+    margin: 0px auto;
+    display: inline-block;
+    background: url("../images/images_01.jpg") no-repeat center;
+    background-size: cover;
+}
+
+.column {
+    width: 1262px;
+    margin: 0px auto;
+}
+
+.logo {
+    width: 615px;
+    display: inline-block;
+    padding: 20px 0px 27px;
+}
+
+.logo img {
+    width: 615px;
+    height: 100px;
+}
+
+.head-r {
+    padding-top: 100px;
+}
+
+.search {
+    width: 150px;
+    display: inline-block;
+    position: relative;
+    padding-right: 20px;
+}
+
+.search-iput {
+    width: 138px;
+    border: 1px #ddd solid;
+    border-radius:3px;
+    height: 30px;
+    display: inline-block;
+    padding: 0px 5px;
+    line-height: 30px;
+}
+
+.search_an {
+    position: absolute;
+    right: 25px;
+    top: 5px;
+}
+
+.head-r-a {
+    width: 125px;
+    display: inline-block;
+    position: relative;
+}
+
+.head-r-tit {
+    width: 125px;
+    color: #909090;
+    font-size: 14px;
+    line-height: 30px;
+    cursor: pointer;
+    background: url("../images/icon_2.png") no-repeat right;
+}
+
+.head-r-list {
+    width: 100%;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    background: #fff;
+    font-size: 14px;
+    color: #999;
+    padding: 5px 0;
+    display: none;
+    z-index: 99;
+}
+
+.head-r-list li {
+    line-height: 28px;
+    text-align:center;
+    cursor: pointer;
+    display:block;
+}
+
+.head-r-list li a {
+    color: #999;
+}
+
+.head-r-list li a:hover {
+    color: #0264bf;
+}
+
+.head-r-b {
+    margin: 10px 0 0 18px;
+    padding-left: 50px;
+    position: relative;
+    background: url("../images/icon_3.png") no-repeat left;
+    z-index: 99;
+}
+
+.head-r-tit1 {
+    width: 46px;
+    color: #999;
+    font-size: 12px;
+    padding-right: 15px;
+    background: url(../images/icon_2.png) no-repeat right center;
+    cursor: pointer;
+    text-align: center;
+}
+
+.head-r-list1 {
+    position: absolute;
+    top: 13px;
+    left: 59px;
+    font-size: 13px;
+    color: #999;
+    text-align: center;
+    background: #fff;
+    display: none;
+    padding: 7px 10px 0;
+    border: 1px solid #efefef;
+}
+
+.head-r-list1 li {
+    text-align: left;
+    cursor: pointer;
+    display:block;
+    margin-bottom:7px;
+
+}
+.head-r-list1 li img{
+    display: block;
+}
+
+/*******menu开始***************/
+.menu-bj {
+    width: 100%;
+    background: #0264bf;
+    margin: 0 auto;
+    height: 46px;
+}
+
+.menu_nr {
+    width:940px;
+    display:inline-block;
+}
+
+.menu_nr li a {
+    color: #FFF;
+}
+
+.menu_nr li a:hover {
+    background: #4785cc;
+    display: block;
+    text-align: center
+}
+
+.menu_nr li.cur {
+    background: #4785cc;
+    display: block;
+}
+
+.menu_nr li {
+    width: 126px;
+    line-height: 46px;
+    text-align: center;
+    float: left;
+    font-size: 16px;
+    position: relative;
+}
+
+.childnavin {
+    display: none;
+    z-index: 201;
+    left: 0px;
+    position: absolute;
+    top: 46px;
+    padding-bottom: 10px;
+    width: 160px;
+    line-height: 30px;
+    height: auto;
+    text-align: center;
+    background: #fff;
+}
+
+.childnavin a {
+    float: left;
+    width: 115px;
+    padding-left:30px;
+    font-size:14px!important;
+    color: #777 !important;
+    line-height:36px!important;
+    text-align:left!important;
+}
+
+.childnavin a:hover {
+    text-align:left!important;
+    color: #0264bf !important;
+    background:none !important;
+}
+
+.menu-r{
+    width:157px;
+    padding-top:9px;
+}
+.login{
+    width:78px;
+    text-align: center;
+    font-size:16px;
+    height:28px;
+    cursor:pointer;
+    color:#0264bf;
+    line-height:28px;
+    background:#fff;
+}
+.tan,.tan-a{
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    position:fixed;
+    left: 0;
+    top: 0;
+    display: none;
+    z-index: 100;
+}
+
+@media (min-width:1440px) {
+    .login-nr{
+        width:405px;
+        height:406px;
+        position: absolute;
+        top:20%;
+        left:32.5%;
+        display:inline-block;
+        padding:50px 0 0 95px;
+        background:url("../images/login.png") no-repeat;
+    }
+    .register-nr{
+        width:405px;
+        height:508px;
+        position: absolute;
+        top:20%;
+        left:32.5%;
+        display:inline-block;
+        padding:50px 0 0 95px;
+        background:url("../images/register.png") no-repeat;
+    }
+}
+
+@media (min-width:1445px) {
+    .login-nr{
+        width:405px;
+        height:406px;
+        position: absolute;
+        top:18%;
+        left:34.3%;
+        display:inline-block;
+        padding:50px 0 0 95px;
+        background:url("../images/login.png") no-repeat;
+    }
+    .register-nr{
+        width:405px;
+        height:508px;
+        position: absolute;
+        top:18%;
+        left:34.3%;
+        display:inline-block;
+        padding:50px 0 0 95px;
+        background:url("../images/register.png") no-repeat;
+    }
+}
+
+
+.login-logo{
+    width:320px;
+    height:80px;
+    overflow:hidden;
+}
+.login-logo img{
+    max-width:320px;
+    max-height:80px;
+}
+
+.login-con{
+    width:100%;
+    display:inline-block;
+    padding-top:48px;
+}
+
+.login-con li{
+    width:318px;
+    float:left;
+    display:inline-block;
+    padding-bottom:20px;
+}
+
+.logo-iput{
+    width:298px;
+    padding:0 10px;
+    background:#fff;
+    height:39px;
+    color:#666;
+    line-height:39px;
+}
+
+.login-an{
+    width:320px;
+    height:38px;
+    line-height:38px;
+    text-align:center;
+    background:#0366c3;
+    margin:18px auto;
+    cursor:pointer;
+}
+.login-text{
+    width:320px;
+    color:#666;
+    text-align:center;
+}
+.login-hover{
+    color:#0366c3;
+    cursor:pointer;
+    text-decoration: underline;
+}
+.register{
+    width:77px;
+    text-align: center;
+    font-size:16px;
+    height:26px;
+    color:#fff;
+    cursor:pointer;
+    line-height:26px;
+    border:1px #fff solid;
+}
+
+.registe-text{
+    width:320px;
+    color:#666;
+    float:left;
+}
+.registe-dui{
+    width:14px;
+    height:15px;
+    display:inline-block;
+    margin:4px 10px 0 0;
+    background:url("../images/icon_7.png") no-repeat;
+}
+.registe-duia{
+    width:14px;
+    height:15px;
+    display:inline-block;
+    margin:4px 10px 0 0;
+    background:url("../images/icon_8.png") no-repeat;
+}
+
+.cuo{
+    position:absolute;
+    top: 20px;
+    right:20px;
+    cursor: pointer;
+}
+/****header头部结束*****/
+
+/*******footer尾部开始***************/
+.footer{
+    width:100%;
+    margin:0 auto;
+    height:343px;
+    background:#3a3a3a;
+}
+.sumenu{
+    width:799px;
+    display:inline-block;
+    padding-top:55px;
+    height:288px;
+    background:url("../images/feg.jpg") no-repeat right;
+}
+.sumenu li{
+    width:155px;
+    display:inline-block;
+    float: left;
+}
+.sumenu li a{
+    width:100%;
+    font-size:12px;
+    display:inline-block;
+    line-height:28px;
+    cursor: pointer;
+    color:#a6a6a6;
+}
+.rwm{
+    width:208px;
+    display:inline-block;
+    font-size:14px;
+    color:#fff;
+    text-align:center;
+    padding:55px 0 0 122px;
+}
+.rwm img{
+    max-width:202px;
+    max-height:202px;
+    padding-bottom:20px;
+}
+.copyright{
+    width:100%;
+    margin:0 auto;
+    line-height:54px;
+    height:54px;
+    font-size:12px;
+    color:#8d8d8d;
+    background:#1a1a1a;
+}
+.copyright a{
+    color:#8d8d8d;
+}
+/*******footer尾部结束***************/

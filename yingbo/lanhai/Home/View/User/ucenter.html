@@ -1,0 +1,330 @@
+<script type="text/jscript" src="{$Think.const.HJS_URL}jquery.range.js"></script>
+<script>
+$(function(){
+	$('.single-slider').jRange({
+		from: 0,
+		to:1000,
+		step: 1,
+		scale: [0,100,200,300,400,500,600,700,800,900,1000],
+		format: '%s',
+		width:695,
+		showLabels: true,
+		showScale: true
+	});
+	$("#g1").click(function(){
+		var aa = $(".single-slider").val();
+		alert(aa);
+	});
+
+});
+</script>
+<style>
+  .mypagestyle{width: 530px;margin: 0px auto;float:left;overflow: hidden;margin-top:20px;}
+  .mypagestyle > li{width:auto;padding-bottom:0;}
+  .zhiding{color:#950909;height:26px;line-height:26px;padding:2px;display:inline-block;border:2px solid #950909;transform:rotate(-7deg);-ms-transform:rotate(-7deg);   /* IE 9 */-moz-transform:rotate(-7deg);  /* Firefox */-webkit-transform:rotate(-7deg); /* Safari 和 Chrome */-o-transform:rotate(-7deg); }
+  .jinghua{color:#c27a4a;height:26px;line-height:26px;padding:2px;display:inline-block;border:2px solid #c27a4a;transform:rotate(-7deg);-ms-transform:rotate(-7deg);   /* IE 9 */-moz-transform:rotate(-7deg);  /* Firefox */-webkit-transform:rotate(-7deg); /* Safari 和 Chrome */-o-transform:rotate(-7deg); }
+  .xintie{color:#eb0909;height:26px;line-height:26px;padding:2px;display:inline-block;border:2px solid #eb0909;transform:rotate(-7deg);-ms-transform:rotate(-7deg);   /* IE 9 */-moz-transform:rotate(-7deg);  /* Firefox */-webkit-transform:rotate(-7deg); /* Safari 和 Chrome */-o-transform:rotate(-7deg); }
+  .putong{color:#999;height:26px;line-height:26px;padding:2px;display:inline-block;border:2px solid #999; }
+</style>
+<link href="{$Think.const.HCSS_URL}lyz.calendar.css" rel="stylesheet" type="text/css" />
+
+
+<!--第一通栏-->
+<div class="column-c pt10 ser">
+  <div class="ser-left fl">
+    <p class="ser-tit fl"><a href="index.html"><img src="{$Think.const.HIMG_URL}images_44.jpg" alt="首页" /></a><a href="__MODULE__/Bbs/index/lan_id/7"><img src="{$Think.const.HIMG_URL}images_96.jpg" alt="" />长青论坛</a><a href="__MODULE__/User/ucenter"><img src="{$Think.const.HIMG_URL}images_96.jpg" alt="" />个人中心</a></p>
+    <p class="ser-tit fl"><img src="{$Think.const.HIMG_URL}images_45.jpg" alt="" /><span class="l-gray">今日：</span>{$today|default=0}&nbsp;<img src="{$Think.const.HIMG_URL}images_104.jpg" />&nbsp;<img src="{$Think.const.HIMG_URL}images_98.jpg" alt="" /><span class="l-gray">昨日：</span>{$yesterday|default=0}&nbsp;<img src="{$Think.const.HIMG_URL}images_104.jpg" />&nbsp;<img src="{$Think.const.HIMG_URL}images_98.jpg" alt="" /><span class="l-gray">主题：</span>{$totalcount|default=0}&nbsp;&nbsp;<img src="{$Think.const.HIMG_URL}images_98.jpg" alt="" /><span class="l-gray">会员：</span>{$members|default=0}</p>
+  </div>
+</div>
+<!--第二通栏-->
+<div class="column-c pt10 pb30">
+  <!--****左边通栏****-->
+  <div class="set-lis-l fl">
+    <!--****左边第一通栏****-->
+    <ul class="core-tit fl">
+      <li class="current"><a href="javascript:void(0)">个人资料</a></li>
+      <li><a href="javascript:void(0)">设置管理</a></li>
+      <li><a href="javascript:void(0)">我的积分</a></li>
+      <li><a href="javascript:void(0)">我的收藏</a></li>
+      <li><a href="javascript:void(0)">我的帖子</a></li>
+      <li><a href="javascript:void(0)">我的关注</a></li>
+      <li><a href="javascript:void(0)">邀请好友</a></li>
+      <li><a href="__MODULE__/Blog/myblog">我的博客</a></li>
+    </ul>
+    <!--****左边第二通栏****-->
+    <ul class="advice fl usertable">
+      <form action="" method="post" id="udataform">
+        <li>
+          <p class="dat-t fl">用户名：</p>
+          {$detail.username}<span class="red pl10" style="line-height:34px;"></span>
+        </li>
+        <li>
+          <p class="dat-t fl">用户级别：</p>
+          <p class="fl lh34"><b style="color:orange">{$detail.level}</b></p>&nbsp;<img src="{$detail.level_img}">
+        </li>
+        <li>
+          <p class="dat-t fl">个性签名：</p>
+          <input name="mysign" class="advice-k w385 fl" value="{$detail.mysign}" onblur="checkmysign(this.value)" placeholder="梦想还是要有的，万一实现了呢！" type="text" />
+          <span class="pl10" style="line-height:34px;">最多不可超过20个字！</span>
+          </p>
+        </li>
+        <li>
+          <p class="dat-t fl">性别：</p>
+          <p class="fl lh34">
+            <label>
+              <input type="radio" name="sex" value="1" {$detail['sex']?"checked":""} id="RadioGroup1_0" />
+              男</label>
+            <label>
+              <input type="radio" name="sex" value="0" {$detail['sex']?"":"checked"} id="RadioGroup1_1" />
+              女</label>
+          </p>
+        </li>
+        <!--<li>
+          <p class="dat-t fl">生日：</p>
+          <p class="fl">
+            <input name="birth" id="txtBeginDate" class="dat-t-k" value="{$detail.birth}" style="padding-left:32px;background:url({$Think.const.HIMG_URL}rili.png) left no-repeat;background-size:15%;width:120px" type="text" />
+          </p>
+        </li>-->
+        <li>
+          <p class="dat-t fl"><span class="red">*</span>&nbsp;居住地：</p>
+          <input name="address" class="advice-k w385 fl" value="{$detail.address}" placeholder="请输入您现在住居地址" type="text" />
+        </li>
+        <li>
+          <p class="dat-t fl">联系方式：</p>
+          <input name="phone" class="logon-list-k fl" value="{$detail.phone}" placeholder="手机/固话" type="text" />
+          </p>
+        </li>
+        <li>
+          <p class="dat-t fl">QQ：</p>
+          <input name="qq" class="logon-list-k fl" value="{$detail.qq}" placeholder="" type="text" />
+          </p>
+        </li>
+        <!-- <li>
+          <p class="dat-t fl">邮箱：</p>
+          <input name="" class="logon-list-k fl" placeholder="" type="text" />
+          <span class="red pl10">请填写正确的邮箱格式</span></li>
+        <li> -->
+        <li>
+          <p class="dat-t fl">上次登录：</p>
+          <p class="fl lh34">{$detail.lastlogin|date="Y-m-d H:i:s",###}</p>
+        </li>
+        <li>
+          <p class="dat-t fl">兴趣爱好：</p>
+          <textarea name="hobby" class="advice-k w385 fl h150" placeholder="">{$detail.hobby}</textarea>
+        </li>
+        <li>
+          <p class="dat-t fl">&nbsp;</p>
+          <p class="advice-an fl"><a onclick="subziliaoform()" href="javascript:void(0)">保&nbsp;存</a></p>
+        </li>
+      </form>
+    </ul>
+    <!--设置-->
+    <ul class="advice fl h445 usertable" style="display:none">
+      <form action="__MODULE__/User/modpsword" method="post" id="modpwdform">
+        <li>
+          <p class="dat-t fl"><span class="red">*</span>旧密码：</p>
+          <input name="oldpwd" class="logon-list-k fl" placeholder="请输入原密码" onblur="checkoldpwd(this.value)" type="password" <if condition="$detail.openid neq ''">disabled=true</if> />
+        </li>
+        <li>
+          <p class="dat-t fl"><span class="red">*</span>新密码：</p>
+          <input name="newpwd" class="logon-list-k fl" placeholder="" onblur="checknewpwd(this.value)" type="password" <if condition="$detail.openid neq ''">disabled=true</if> />
+        </li>
+        <li>
+          <p class="dat-t fl"><span class="red">*</span>确认新密码：</p>
+          <input name="renewpwd" class="logon-list-k fl" placeholder="" onblur="checkrenewpwd(this.value)" type="password" <if condition="$detail.openid neq ''">disabled=true</if> />
+        </li>
+        <!-- <li>
+          <p class="dat-t fl">邮箱：</p>
+          <input name="" class="logon-list-k fl" placeholder="" type="text" />
+          <p class="fl w418 pl10"><span class="red pl10">*</span><span class="l-gray pl10">系统会向您的邮箱发送了一封验证激活邮件，请查收邮件，进行验证激活。如果没有收到验证邮件，您可以更换一个邮箱，或者<br />
+            </span> <a href="" class="bule">重新接收验证邮件</a></p>
+        </li> -->
+        <if condition="$detail.openid eq ''">
+		    <li>
+          <p class="dat-t fl">&nbsp;</p>
+          <p class="advice-an fl"><a href="javascript:void(0)" onclick="subnewpwdform()">提&nbsp;交</a></p>
+        </li>
+        <else />
+          <li>
+          <p style="color:red">（快捷登录不可操作）</p>
+        </li>
+		    </if>
+      </form>
+    </ul>
+    <!--积分-->
+    <ul class="set-lis_lb fl usertable" style="display:none">
+      <li>
+        <table class="int-c fl" width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <th class="red">总积分</th>
+            <th>登录</th>
+            <th>签到</th>
+            <th>发帖</th>
+            <th>回帖</th>
+            <th>点赞</th>
+            <th>博文</th>
+            <th>评论</th>
+            <th>注册</th>
+          </tr>
+          <tr>
+            <td class="bdr red">{$detail.score}</td>
+            <td>{$detail.login}</td>
+            <td>{$detail.signature}</td>
+            <td>{$detail.sendpost}</td>
+            <td>{$detail.replypost}</td>
+            <td>{$detail.giveup}</td>
+            <td>{$detail.sendart}</td>
+            <td>{$detail.comments}</td>
+            <td>{$detail.register}</td>
+          </tr>
+        </table>
+      </li>
+      <li>
+        <table class="int-c-a fl" width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <th colspan="4" align="left">积分规则</th>
+          </tr>
+          <tr class="b-gray" id="tit-scorerule">
+            <th>动作名称</th>
+            <th>周期范围</th>
+            <th>周期内最多奖励范围</th>
+            <th>积分</th>
+          </tr>
+          <tr class="l-gray">
+            <td colspan="4">注：以上事件动作，会得到积分奖励。不过，在一个周期内，您最多得到的奖励次数有限制。</td>
+          </tr>
+        </table>
+      </li>
+      <li>
+        <table class="int-c-b fl" width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+		    <foreach name="ranklist" item="rankinfo">
+            <th>{$rankinfo.rank_name}<br />
+              （{$rankinfo.score}）</th>
+			</foreach>
+          </tr>
+          <tr>
+            <td colspan="11" class="pt30"><div class="demo">
+	<input type="hidden" class="single-slider" value="{$detail.score}" />
+</div></td>
+          </tr>
+        </table>
+      </li>
+    </ul>
+  <!--我的收藏-->
+  <ul class="set-lis_lb fl usertable" style="display:none" id="mycollect-list">
+
+
+  </ul>
+  <!--我的帖子-->
+  <ul class="set-lis_lb fl usertable" id="myposts-list" style="display:none">
+
+  </ul>
+  <!--我的关注-->
+  <ul class="set-lis_lb fl usertable" style="display:none" id="myfollows-list">
+
+  </ul>
+  <!--邀请好友-->
+  <div class="advice inv usertable" style="display:none">
+      <p class="inv-t fs22">邀请好友</p>
+      <p class="inv-c"><img src="{$Think.const.HIMG_URL}inviteregqr.png" /></p>
+      <div class="set-fi-fx fs12 pt15 pb10"><span class="fl pt5">分享到：</span><span class="fl pt5 pr15"><a href="javascript:void(0)" id="sharetoqq"><img src="{$Think.const.HIMG_URL}images_117.jpg" />QQ好友</a></span><span class="fl pt5 pr15"><a href="javascript:void(0)" onclick="window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+encodeURIComponent('http://'+location.host+'/index.php/Home/User/register')+'&title='+encodeURIComponent('蓝海长青注册邀请')+'&pics='+'http://'+location.host+'/Public/Home/images/images_155.jpg');return false;"><img src="{$Think.const.HIMG_URL}images_118.jpg" />QQ空间</a></span><span class="fl pt5 pr15"></span><span class="fl pt5 pr15 fxrw"  style="cursor:pointer"><img src="{$Think.const.HIMG_URL}images_120.jpg" />微信</span>
+	  <p class="dj_xhk fr" style="bottom: 10px; right: 160px;"><span class="w100 fl">打微"扫一扫"</span><img src="{$Think.const.HIMG_URL}inviteqrcode.png"><span class="w100 fl">打开网页后点击屏幕右上角分享按妞</span></p>
+    <script type="text/javascript">
+        $(".fxrw").click(function(){
+            $(".dj_xhk").slideToggle("1000");
+        });
+    </script>
+      </div>
+  </div>
+  <!--编辑图像-->
+  <form action="" method="post" class="userheadedit usertable" id="editimgform" style="display:none">
+     <p class="data-t pt30 fl">当前我的头像<br />如果您还没有设置自己的头像，系统会显示为默认头像，您需要自己上传一张新照片来作为自己的个人头像</p>
+     <p class="fl"><div style="width:168px;height:168px;overflow:hidden" id="localImag"><img style="width:168px;" id="preview" src="{$Think.session.userInfo.userhead}" alt="" /></div></p>
+     <p class="data-t pt30 fl">设置我的新头像<br />请选择一个新照片进行上传编辑。</p>
+     <p class="fl w100"><a class="ace-input">
+              <input type="hidden" name="olduserhead" value="{$Think.session.userInfo.userhead}">
+              <input type="file" id="selectpic" onchange="javascript:setImagePreview();" name="userhead"><img src="{$Think.const.HIMG_URL}images_157.jpg" /></a></p>
+     <p class="advice-an fl mt20"><a href="javascript:void(0)" onclick="edituserhead()">提&nbsp;交</a></p>
+  </form>
+  </div>
+  <!--****右边通栏****-->
+  <div class="set-lis-r fr pt10">
+    <!--****右边第一通栏****-->
+    <dl class="core-r fl">
+      <dt style="position:relative;height:168px;overflow:hidden"><img id="rightuserhead" src="{$Think.session.userInfo.userhead}" alt="" /><div style="position:absolute;right:0;bottom:0;padding:0 10px;font-weight:bolder;height:25px;border-radius:4px;background:rgba(205,55,0,0.7);text-align:center;line-height:25px;color:white;">{$detail.level}</div></dt>
+      <dd>
+        <p class="fs22 pt10" id="rightusername">{$Think.session.userInfo.username}</p>
+        <p class="fl pb10"><span class="fl pt10 pr10"><a id="tit-edit" onclick="userheadedit()" href="javascript:void(0)"><img src="{$Think.const.HIMG_URL}images_149.jpg" alt="编辑头像" />&nbsp;编辑头像</a></span> <span class="fl pt10"><a id="tit-updata" onclick="userdataedit()" href="javascript:void(0)"><img src="{$Think.const.HIMG_URL}images_151.jpg" alt="更新资料" />&nbsp;更新资料</a></span></p>
+        <p class="core-r-q fl ml28"><if condition="$signature.status eq '0'"><a href="javascript:void(0)" id="signatured" style="display:none;background:#ccc">已签到</a><a href="javascript:void(0)" id="signature">签到</a><else /><a href="javascript:void(0)" id="signatured" style="background:#ccc">已签到</a><a href="javascript:void(0)" id="signature" style="display:none">签到</a></if></p>
+      </dd>
+    </dl>
+  </div>
+</div>
+<script type="text/jscript" src="{$Think.const.HJS_URL}ad1.js"></script>
+<script type="text/javascript">
+  $(function(){
+    changetable();
+  })
+</script>
+<script type="text/javascript" src="{$Think.const.HJS_URL}jquery-1.5.1.js"></script>
+<script type="text/javascript">
+  var jQuery151 = jQuery.noConflict(true);
+</script>
+<script src="{$Think.const.HJS_URL}lyz.calendar.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+  jQuery151(function(){
+    jQuery151("#txtBeginDate").calendar({
+        controlId: "divDate",                                 // 弹出的日期控件ID，默认: $(this).attr("id") + "Calendar"
+        speed: 200,                                           // 三种预定速度之一的字符串("slow", "normal", or "fast")或表示动画时长的毫秒数值(如：1000),默认：200
+        complement: true,                                     // 是否显示日期或年空白处的前后月的补充,默认：true
+        readonly: true,                                       // 目标对象是否设为只读，默认：true
+        upperLimit: new Date(),                               // 日期上限，默认：NaN(不限制)
+        lowerLimit: new Date("2011/01/01"),                   // 日期下限，默认：NaN(不限制)
+        callback: function () {                               // 点击选择日期后的回调函数
+            /*alert("您选择的日期是：" + $("#txtBeginDate").val());*/
+        }
+    });
+  })
+</script>
+<script type="text/javascript" src="{$Think.const.HJS_URL}famous.js"></script>
+<script type="text/javascript" src="{$Think.const.HJS_URL}msgbox.js"></script>
+<script type="text/javascript" src='{$Think.const.HJS_URL}ucenter.js' ></script>
+<script src="{$Think.const.HJS_URL}jquery.form.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function(){
+      $("#signature").click(function(){
+        $.get("__MODULE__/User/signature",function(data){
+          if(data == 'success'){
+              $("#signatured").fadeIn();
+              $("#signature").hide();
+              myalertbox('签到成功');
+          }else{
+              myalertbox('签到失败');
+          }
+        })
+      })
+    })
+</script>
+<script type="text/javascript">
+  $(function(){
+    var p = {
+		url:'http://'+location.host+'/index.php/Home/User/register', /*获取URL，可加上来自分享到QQ标识，方便统计*/
+		desc:'', /*分享理由(风格应模拟用户对话),支持多分享语随机展现（使用|分隔）*/
+		title:'蓝海长青注册邀请', /*分享标题(可选)*/
+		summary:'', /*分享摘要(可选)*/
+		pics:'http://'+location.host+'/Public/Home/images/images_155.jpg', /*分享图片(可选)*/
+		flash: '', /*视频地址(可选)*/
+		site:'', /*分享来源(可选) 如：QQ分享*/
+		style:'201',
+		width:32,
+		height:32
+	};
+	var s = [];
+	for(var i in p){
+		s.push(i + '=' + encodeURIComponent(p[i]||''));
+	}
+	$("#sharetoqq").attr('href',"http://connect.qq.com/widget/shareqq/index.html?"+s.join('&'));
+  })
+</script>
+<script src="http://connect.qq.com/widget/loader/loader.js" widget="shareqq" charset="utf-8"></script>

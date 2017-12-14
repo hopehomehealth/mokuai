@@ -1,0 +1,44 @@
+<!--*****header*****-->
+<div class="main">
+    <!--*****banner*****-->
+    <div class="su-banner">
+        <foreach name="slides" item="slide">
+            <img src="{$slide.picmobile|substr=###,1}" alt="">
+        </foreach>
+    </div>
+    <!--*****bannerend*****-->
+
+    <!--*****menu*****-->
+    <section class="su-menu-a b-white">
+        <div class="su-scroll">
+            <foreach name="category" item="cateinfo">
+                <a <if condition="ACTION_NAME eq $cateinfo['action']">class="cur"</if> href="__MODULE__/{$cateinfo['ctrl']}/{$cateinfo['action']}">{$cateinfo.cat_name}</a>
+            </foreach>
+        </div>
+    </section>
+
+    <!--*****menuend*****-->
+    <!--*****su-con*****-->
+    <section class="su-con">
+        <div class="su-fron pb0-25">
+            <div class="su-deve">
+                <h4>引入权威的缓粘结产品应用检测机构</h4>
+            </div>
+            <p>　　缓粘结预应力以产品应用检测为手段，以此验证缓粘结的优异性能，保障缓粘结的技术应用。<br/>　　缓粘结预应力包含钢材、胶粘剂、塑料3类材料性能检测，以及缓粘结预应力混凝土构件性能检测，检测内容项涉及的专业度较高，国内具有上述综合检测资质的机构屈指可数。</p>
+            <p class="fs0-28 c-blue hl0-05 pt0-35">检测项目</p>
+            <p><img src="{$Think.const.WIMG_URL}checkitem.jpg" alt=""></p>
+            <p class="fs0-28 c-blue hl0-05 pt0-35">缓凝粘合剂拉伸剪切强度快速检验方法</p>
+            <div class="w100 pt0-35 b-lgray">
+                <foreach name="news" item="info1">
+                <p class="fs0-28 c-blue hl0-05 plr">{$info1.title}</p>
+                <p class="pb0 dan"><img src="{$info1.pic|substr=###,1}" alt=""></p>
+                <p class="plr">{$info1.content}
+                    <span class="xj-more fl"><a href="__MODULE__/Develop/detail/id/{$info1.news_id}">查看详情</a></span>
+                </p>
+
+                </foreach>
+            </div>
+        </div>
+    </section>
+    <!--*****su-conend*****-->
+</div>

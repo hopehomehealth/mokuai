@@ -1,0 +1,45 @@
+<link href="{$Think.const.HCSS_URL}mypage.css" rel="stylesheet" type="text/css"/>
+<foreach name="adinfofen" key="k" item="v">
+    <div class="su_banner"><a href="{$v.url}"><img src="{$Think.const.SITE_URL}{$v.pic}" /></a>  </div>
+</foreach>
+
+
+<div class="sideBar">
+    <div class="about fl">
+        <p class="about_tit fl">乐护服务</p><p class="about_yw fl">Le&nbsp;Care&nbsp;Products</p>
+    </div>
+    <div class="about_zc fl">
+        <ul class="news_list_tit">
+            <li class="current"><a href="{:U('Product/showlist')}">乐护服务</a></li>
+        </ul>
+
+        <ul class="modpic fl">
+             <foreach name="info" key="k" item="v">
+                 <li><a href="javascript:;" class="modmore"><img src="{$Think.const.SITE_URL}{$v.pic|substr=###,2}" alt="">
+                     <p class="ser">
+                     <p class="ser_zwz"><span class="ser_yw">{$v.english}</span><br />乐护&nbsp;&nbsp;{$v.china}  </p>
+                     </p>
+
+                     <p class="ser_erm">
+                         {$v.introduce|strip_tags|str_replace=array(" ","　","\t","\n","\r"),array("","","","",""),###|mb_substr=###,0,66,'utf-8'}
+                         <span class="er"><img src='{$Think.const.HIMG_URL}erm.jpg' id='' width='120' height='120'></span>
+                     </p>
+                 </a></li>
+            </foreach>
+
+           </ul>
+
+
+        <table width="600" align="center">
+            <tr class="content" align="center">
+                <!--<td colspan="3" bgcolor="#FFFFFF">&nbsp;{$page}</td>-->
+                <td colspan="3" bgcolor="#FFFFFF" align="center"><div class="pages" align="center">
+                    {$page}
+                </div></td>
+            </tr>
+        </table>
+
+
+
+    </div>
+</div>

@@ -1,0 +1,42 @@
+
+<ul class="dj_xhk fr">
+    <p class="arrow-up fl"></p>
+    <li><a href="{:U('Union/index')}">369商家联盟</a></li>
+</ul>
+<script type="text/javascript">
+    $(".head_back2").click(function(){
+        $(".dj_xhk").slideToggle("1000");
+    });
+</script>
+
+<div class="main pb0">
+   
+    <section>
+       <div class="fl mt0 tesco_list">
+
+<empty name="searchinfo">
+<div style="background:white;width:100%;line-height: 9rem;font-size: 15px;color:red;text-align: center;">sorry...没有你想要的, 搜别的试试.....</div>
+
+</empty>
+<notempty name="searchinfo">
+
+             <foreach name="searchinfo" item="v">
+                <dl class="tesco_list_pic fl">
+                    <dt><a href="{:U('goodsdetail',array('goods_id'=>$v['goods_id']))}"><img src="{$Think.const.SITE_URL}{$v.logo}"></a></dt>
+                    <dd>
+
+                        <p class="car_xzsz fl"><a style="text-align: center;" href="{:U('goodsdetail',array('goods_id'=>$v['goods_id']))}">
+                            <span class="gray">{$v.goods_name}</span></a></p>
+                    </dd>
+                </dl>
+            </foreach>
+
+</notempty>
+                                
+                           
+          
+
+        </div>
+    </section>
+</div>
+

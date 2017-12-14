@@ -1,0 +1,80 @@
+    <link href="{$Think.const.HCSS_URL}personal-style.css" type="text/css" rel="stylesheet" />
+    <section style="position:relative">
+        <div class="address_main">
+        <form action="__SELF__" method="post" id="form">
+            <div class="address"><h2>1.信息填写</h2></div>
+            <p>收货人<input type="text" name="consigner" placeholder="真实名字" style="text-indent: 12px;" ></p>
+            <p>手机号码<input type="text" name="phone" placeholder="11位手机号码"></p>
+            <p>固定电话<input type="text" name="tel" placeholder="固定电话（选填）"></p>
+            <p>详细地址<input type="text" name="dl_name" placeholder="具体到街道门牌号">
+            </p>
+
+            <div class="address"><h2>2.是否默认.</h2></div>
+            <p><input type="checkbox" name="setdefault" style="margin-right: 15px;vertical-align:middle;">设为默认地址</p>
+            <h5><input style="background: #DD0045;font-size:1.800rem;height:3.500rem;font-family: '黑体';color: #ffffff;border-radius:0.4rem" type="submit" value="保存地址"/></h5>
+        </form>
+        </div>
+    </section>
+    <script type="text/javascript">
+        $(function(){
+            var flag = false;
+            var myreg = /^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d{8}$/i;
+            $("#form input[type='submit']").click(function(){
+                $("#form").submit(function(){return false})
+                $("#form input[type='submit']").attr('disabled',true);
+                if($("input[name='consigner']").val() == ''){
+                    $("#form input[type='submit']").attr('disabled',false);
+                    flag = false;
+                    $("input[name='consigner']").val("请填写姓名");
+                    $("input[name='consigner']").css('color','red');
+                    $("input[name='consigner']").attr('readonly','readonly');
+                    setTimeout(function(){$("input[name='consigner']").val('');$("input[name='consigner']").css('color','');$("input[name='consigner']").removeAttr('readonly')},1000);
+                    return;
+                }else{
+                    flag = true;
+                }
+                if($("input[name='phone']").val() == ''){
+                    $("#form input[type='submit']").attr('disabled',false);
+                    flag = false;
+                    $("input[name='phone']").val("请填写手机号");
+                    $("input[name='phone']").css('color','red');
+                    $("input[name='phone']").attr('readonly','readonly');
+                    setTimeout(function(){$("input[name='phone']").val('');$("input[name='phone']").css('color','');$("input[name='phone']").removeAttr('readonly')},1000);
+                    return;
+                }else{
+                    flag = true;
+                }
+                if(myreg.test($("input[name='phone']").val())){
+                    flag = true;
+                }else{
+                    $("#form input[type='submit']").attr('disabled',false);
+                    flag = false;
+                    $("input[name='phone']").val("非法的手机号");
+                    $("input[name='phone']").css('color','red');
+                    $("input[name='phone']").attr('readonly','readonly');
+                    setTimeout(function(){$("input[name='phone']").val('');$("input[name='phone']").css('color','');$("input[name='phone']").removeAttr('readonly')},1000);
+                    return;
+                }
+                if($("input[name='dl_name']").val() == ''){
+                    $("#form input[type='submit']").attr('disabled',false);
+                    flag = false;
+                    $("input[name='dl_name']").val("请填写详细地址");
+                    $("input[name='dl_name']").css('color','red');
+                    $("input[name='dl_name']").attr('readonly','readonly');
+                    setTimeout(function(){$("input[name='dl_name']").val('');$("input[name='dl_name']").css('color','');$("input[name='dl_name']").removeAttr('readonly')},1000);
+                    return;
+                }else{
+                    flag = true;
+                }
+                if(flag){
+                    $.post("__MODULE__/Delivery/addaddr",$("#form").serialize(),function(data){
+                        if(data.error == 0){
+                            $("section").append("<div id='errormsg' style='display:none;position:absolute;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1rem;opacity:0.7;background:#666'>"+data.content+"</div>");
+
+                            $("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);$("#bsubmit").attr('disabled',true);setTimeout(function(){$("#errormsg").remove();$("#bsubmit").attr('disabled',false);location.href="__MODULE__/Delivery/address"},2000);
+                        }
+                    })
+                }
+            })
+        })
+    </script>

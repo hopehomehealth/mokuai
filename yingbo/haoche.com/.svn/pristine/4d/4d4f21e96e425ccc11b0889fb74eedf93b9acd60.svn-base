@@ -1,0 +1,99 @@
+<ul class="dj_xhk fr">
+    <p class="arrow-up fl"></p>
+    <li><a href="{:U('Union/index')}">369商家联盟</a></li>
+</ul>
+<script type="text/javascript">
+    $(".head_back2").click(function(){
+        $(".dj_xhk").slideToggle("1000");
+    });
+</script>
+<div class="main">
+    <section>
+        <div class="tesco fl pt_6 pb_6">
+            <p class="tesco_right fl">
+            <form action="{:U('Union/goodsearch')}" method="post">
+            <input type="hidden" name="seller_id" value="{$zenginfo[0]['seller_id']}">
+                <input type="text" class="tesco_rgt_k fl" style="width: 87%;" name="searchname" id="searchname" placeholder="请输入商品名称">
+               <input id="submit"  class="tesco_rgt_an" type="submit" value="">
+            </form>
+            <script type="text/jscript">
+ $('#submit').click(function(){
+ var searchname = $('#searchname').val();
+     if(searchname == ''){
+        return false;
+    }
+        });
+</script>
+            </p>
+        </div>
+    </section>
+    <section>
+        <div class="bus fl">
+            <dl class="bus-tu">
+                <dt><img src="{$Think.const.SITE_URL}{$zenginfo[0]['pic_dian']}"></dt>
+                <dd><span class="dtwo w75 fl">{$zenginfo[0]['seller_name']}</span><br> <a href=""><span class="fl fwn mt0-5 pr2 crimson">收藏</span></a><a href="{:U('Union/gonggao',array('seller_id'=>$zenginfo[0]['seller_id']))}"><span class="fl fwn mt0-5" style="color:#64420c;padding-right: 3rem;">店铺公告</span></a></dd>
+            </dl>
+        </div>
+    </section>
+
+    <section>
+        <div class="bus-list pt_6">
+            <ul class="bus-list-l fl">
+                <li>1P产品</li>
+                <li>热销</li>
+                <foreach name="catinfo" key="kc" item="class">
+                    <li <if condition="$kc eq 0">class="cur"<else /></if>>{$class.cat_name}</li>
+                </foreach>
+            </ul>
+            <div class="bus-list-r fl">
+                <foreach name="zenginfo" item="v">
+                    <dl class="bus-list-pic fl">
+                        <dt><a href="{:U('Union/freedetail',array('zeng_id'=>$v['zeng_id']))}"><img src="{$Think.const.SITE_URL}{$v.pic}"></a></dt>
+                        <dd><a href="union_final.html"><p><span class="fs1-4 fwb">{$v.zeng_name}
+                            <!--<span class="crimson">1000-3000</span>元-->
+                        </span></p>
+                            <p class="fs1 crimson fwb">联盟价:￥{$v.nowprice}</p>
+                            <p class="fs1 td-lt">市场价:￥{$v.price}</p>
+                            <p class="mt0-5 union-an-a1 d-red fs1-2 crimson">预约</p></a></dd>
+                    </dl>
+                </foreach>
+
+            </div>
+            <div class="bus-list-r fl">
+                <foreach name="hotinfo" item="v">
+                    <dl class="bus-list-pic fl">
+                        <dt><a href="{:U('Union/hotdetail',array('goods_id'=>$v['goods_id']))}"><img src="{$Think.const.SITE_URL}{$v.logo}"></a></dt>
+                        <dd><a href="{:U('Union/hotdetail',array('goods_id'=>$v['goods_id']))}"><p><span class="fs1-4 fwb">{$v.goods_name}</span></p>
+                            <p class="fs1 crimson fwb">联盟价:￥{$v.nowprice}</p>
+                            <p class="fs1 td-lt">市场价:￥{$v.price}</p>
+                            <p class="mt0-5 union-an-a1 d-red fs1-2 crimson">立即购买</p></a></dd>
+                    </dl>
+                </foreach>
+            </div>
+            <foreach name="catinfo" key="k" item="v">
+                <div <if condition="$k eq 0">class="bus-list-r fl cur"<else/>class="bus-list-r fl"</if>>
+                <foreach name="v.sgoodsinfo" key="kk" item="vv">
+                    <dl class="bus-list-pic fl" >
+                        <dt><a href="{:U('Union/goodsdetail',array('goods_id'=>$vv['goods_id']))}"><img src="{$Think.const.SITE_URL}{$vv.logo}"></a></dt>
+                        <dd><a href="{:U('Union/goodsdetail',array('goods_id'=>$vv['goods_id']))}"><p><span class="fs1-4 fwb">{$vv.goods_name}</span></p>
+                            <p class="fs1 crimson fwb">联盟价:￥{$vv.nowprice}</p>
+                            <p class="fs1 td-lt">市场价:￥{$vv.price}</p>
+                            <p class="mt0-5 union-an-a1 d-red fs1-2 crimson">立即购买</p></a></dd>
+                    </dl>
+                </foreach>
+        </div>
+        </foreach>
+</div>
+    </section>
+</div>
+
+<script type="text/javascript">
+    $(function(){
+        $(".bus-list-l li").click(function(){
+            $(this).addClass("cur").siblings().removeClass("cur");
+            $(".bus-list-r").eq($(this).index()).addClass("cur").siblings().removeClass("cur");
+        })
+    })
+</script>
+
+

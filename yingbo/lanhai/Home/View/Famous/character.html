@@ -1,0 +1,119 @@
+<!--banner-->
+<p class="com-banner pt10">
+    <foreach name="adinfo" item="v">
+        <if condition="$v.is_area eq 0">
+            <img src="{$Think.const.SITE_URL}{$v.pic}" />
+        </if>
+    </foreach>
+
+</p>
+<!--banner-->
+
+<!--第一通栏-->
+<div class="column-c pt10 ser" style="height:50px">
+  <div class="ser-left fl">
+    <p class="ser-tit fl"><a href="{:U('Index/index')}" class="bule fwb">首页</a><img src="{$Think.const.HIMG_URL}images_96.jpg" alt="" /><a href="{:U('Bbs/index',array('lan_id'=>7))}">长青论坛</a><img src="{$Think.const.HIMG_URL}images_96.jpg" alt="" /><a href="{:U('Famous/character',array('lan_id'=>37))}">蓝海人物</a></p>
+  </div>
+  <if condition="$Think.session.flag eq ''">
+  <p class="fr"><a href="__MODULE__/User/login">登录</a>｜<a href="__MODULE__/User/register">注册</a></p>
+  <else />
+    <dl class="set-lis fr">
+      <dt><a href="__MODULE__/User/ucenter"><img src="{$Think.session.userInfo.userhead}" alt="" /></a></dt>
+      <dd><a href="__MODULE__/User/ucenter" style="line-height:40px">{$Think.session.userInfo.username}</a>&nbsp;|&nbsp;<a href="__MODULE__/User/logout" style="line-height:40px;color:#999;cursor:pointer">退出</a><!-- <br />
+        <span class="l-gray fs12"><img src="{$Think.const.HIMG_URL}images_92.jpg" alt="" />&nbsp;浙江省</span> --></dd>
+    </dl>
+  </if>
+</div>
+<!--第二通栏-->
+<div class="column-c pt10 pb30">
+  <!--****左边通栏****-->
+  <div class="set-lis-l fl">
+    <!--****左边第一通栏****-->
+    <ul class="set-lis_lb fl">
+      <foreach name="famous" item="info">
+      <li>
+        <dl class="nhtt fl pt15">
+          <dt><a href="__MODULE__/Famous/slanders2/f_id/{$info.f_id}"><img src="{$info.f_photo}" alt="" /></a></dt>
+          <dd><a href="__MODULE__/Famous/slanders2/f_id/{$info.f_id}">{$info.f_name}</a><br />
+            <p class="l-gray fs12 fl"><img src="{$Think.const.HIMG_URL}images_92.jpg" alt="" />&nbsp;{$info.f_province}</p>
+            <p class="fs12 fl"><span class="l-gray">发表文章：</span>{$info.f_artnums} <span class="l-gray pl20">粉丝：</span>{$info.f_fans}</p>
+            <p class="fl pt10"><a href="javascript:void(0)" onclick="follow('__MODULE__/Famous/follow/f_id/'+{$info['f_id']})"><img src="{$Think.const.HIMG_URL}images_127.jpg" alt="" /></a></p>
+          </dd>
+        </dl>
+        <ul class="nhtt-list1 fl">
+<foreach name="info.slanders1" item='subinfo1'>
+          <li><a href="__MODULE__/Famous/detail/sland_id/{$subinfo1.sland_id}">{$subinfo1.title}</a></li>
+          </foreach>
+          <foreach name="info.slanders" item='subinfo'>
+          <li><a href="__MODULE__/Famous/detail/sland_id/{$subinfo.sland_id}">{$subinfo.title}</a></li>
+          </foreach>
+          <if condition="$info.more eq 1">
+            <p class="fl nhtt-more"><a href="__MODULE__/Famous/slanders2/f_id/{$info.f_id}">查看他发表的更多文章 >></a></p>
+          </if>
+        </ul>
+      </li>
+      </foreach>
+    </ul>
+    <!--****左边第二通栏****-->
+    <ul class="page">
+      {$page}
+    </ul>
+  </div>
+  <!--****右边通栏****-->
+  <div class="set-lis-r fr">
+    <!--****右边第一通栏****-->
+    <div class="set-lis-tj fl">
+      <p class="set-lis-tjtt fl"><img src="{$Think.const.HIMG_URL}images_107.jpg" alt="" /></p>
+      <foreach name="tuijianlist" item="info">
+      <dl class="nhtt-list fr pt10 pb10">
+        <dt><a href="__MODULE__/Famous/slanders2/f_id/{$info.f_id}"><img src="{$info.f_photo}" alt="" /></a></dt>
+        <dd><a href="__MODULE__/Famous/slanders2/f_id/{$info.f_id}">{$info.f_name}</a><br />
+          <span class="l-gray fs12 pb5 pt5 fl"><img src="{$Think.const.HIMG_URL}images_92.jpg" alt="" />&nbsp;{$info.f_province}</span><br />
+          <a href="javascript:void(0)" onclick="follow('__MODULE__/Famous/follow/f_id/'+{$info['f_id']})"><img src="{$Think.const.HIMG_URL}images_127.jpg" /></a></dd>
+      </dl>
+      </foreach>
+      <!-- <ul class="set-lis-list fl pt15">
+        <li><a href="cha_final.html">打遍世界所有强国的神秘之师</a></li>
+        <li><a href="cha_final.html">古代存在外星人的12铁证</a></li>
+        <li><a href="cha_final.html">地球周围竟存神秘入口</a></li>
+        <li><a href="cha_final.html">82种外星人与地球接触</a></li>
+        <li><a href="cha_final.html">古代存在外星人的12铁证</a></li>
+        <li><a href="cha_final.html">地球周围竟存神秘入口</a></li>
+        <li><a href="cha_final.html">82种外星人与地球接触</a></li>
+        <li><a href="cha_final.html">打遍世界所有强国的神秘之师</a></li>
+        <li><a href="cha_final.html">地球周围竟存神秘入口</a></li>
+        <li><a href="cha_final.html">82种外星人与地球接触</a></li>
+      </ul> -->
+    </div>
+    <!--****右边第一通栏****-->
+    <div class="set-lis-tj fl">
+      <p class="set-lis-tjtt fl"><img src="{$Think.const.HIMG_URL}images_108.jpg"  alt=""/></p>
+      <ul class="set-lis-list fl pt15">
+        <!-- <dl class="set-lis-pic fl pb10">
+          <dt><a href="cha_final.html">><img src="{$Think.const.HIMG_URL}images_112.jpg"  alt=""/></a></dt>
+          <dd><a href="cha_final.html">对电信诈骗受害者进行赔偿，银行会更有动力阻止电信诈骗。</a></dd>
+        </dl> -->
+        <foreach name="hotlist" item="info">
+        <li><a href="__MODULE__/Famous/detail/sland_id/{$info.sland_id}">{$info.title}</a></li>
+        </foreach>
+        <foreach name="adinfo" item="v">
+                    <if condition="$v.is_area eq 3">
+                        <p class="pt15"> <img  src="{$Think.const.SITE_URL}{$v.pic}" />  </p>
+                    </if>
+                </foreach>
+                <foreach name="adinfo" item="v">
+                    <if condition="$v.is_area eq 4">
+                        <p class="pt15"><img src="{$Think.const.SITE_URL}{$v.pic}" /> </p>
+                    </if>
+                </foreach>
+                <foreach name="adinfo" item="v">
+                    <if condition="$v.is_area eq 5">
+                        <p class="pt15"><img src="{$Think.const.SITE_URL}{$v.pic}" /> </p>
+                    </if>
+                </foreach>
+      </ul>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="{$Think.const.HJS_URL}msgbox.js"></script>
+<script type="text/javascript" src="{$Think.const.HJS_URL}famous.js"></script>

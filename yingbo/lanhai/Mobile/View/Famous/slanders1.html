@@ -1,0 +1,77 @@
+<div class="main">
+  <!--*****for*****-->
+  <section>
+    <div class="for fl bb-b">
+      <p class="fl pl0-5 fwb">长青<span class="d-red">论坛</span></p>
+      <p class="fr pr0-5 fs1"><if condition="$Think.session.flag eq ''"><a href="__MODULE__/User/register">注册</a> | <a href="__MODULE__/User/login">登录</a><else /><a href="__MODULE__/User/ucenter">{$Think.session.userInfo.username}</a> | <a href="__MODULE__/User/logout">退出</a></if> |
+        <a href="__MODULE__/Posts/createpost">发帖</a> |
+        <if condition="$Think.session.flag eq ''">
+          <a href="__MODULE__/Blog/openblog">开通博客</a>
+        <else />
+          <if condition="$Think.session.userInfo.is_blog eq '1'">
+            <a href="__MODULE__/Blog/myzone">我的博客</a>
+          <else />
+            <a href="__MODULE__/Blog/openblog">开通博客</a>
+          </if>
+        </if>
+        </p>
+    </div>
+  </section>
+  <!--*****for-c*****-->
+  <div class="for-c fl">
+    <div class="for-con cur" id="recordslist" fid="{$Think.get.f_id}">
+      <foreach name="slanders" item="info">
+      <dl class="for-list fl">
+        <dd style="width:97%;">
+          <p class="w100 t-w" style="padding-bottom:1.5rem"><a href="__MODULE__/Famous/detail/sland_id/{$info.sland_id}">&nbsp;{$info.title}</a></p>
+          <p class="w100 fl"><span class="fl w30 t-w">&nbsp;{$info.f_name}</span><span class="fr pl1">{$info.add_time|date="Y-m-d H:s",###}</span><span class="fr for-list-tb"></span> </p>
+        </dd>
+      </dl>
+      </foreach>
+    </div>
+    <div id="loading" style="display:none;float:left;width:100%;text-align:center;font-size:1.5rem;color:#999;background:#fff;line-height:2rem;height:2rem;margin-bottom:0.5rem;margin-top:0.5rem">没有更多数据</div>
+    </div>
+  </div>
+</div>
+<!-- 滚动加载 -->
+<script type="text/javascript">
+  $(function(){
+    var fid = $("#recordslist").attr('fid');
+    var scrollstatus = false;
+    var haveend = false;
+    var nowpage = 1;
+    function ajax_request(fid,nowpage){
+      var html = '';
+      var recordslist = $("#recordslist");//放数据的容器
+      $.get("__MODULE__/Famous/slanders1/f_id/"+fid,{'p':nowpage},function(data){
+        if(data.error == 0){
+          var status = '';
+          for(var i in data.content){
+            html += "<dl class='for-list fl'><dt></dt><dd style='width:97%'><p class='w100 t-w pb3-5' style='padding-bottom:2.5rem'><a href='__MODULE__/Famous/detail/sland_id/"+data.content[i].sland_id+"'>&nbsp;"+data.content[i].title+"</a></p><p class='w100 fl'><span class='fl w30 t-w'>&nbsp;"+data.content[i].f_name+"</span><span class='fr pl1'>"+data.content[i].nadd_time+"</span><span class='fr for-list-tb'></span> </p></dd></dl>";
+          }
+        }else{
+          if(!haveend){
+            $("#loading").fadeIn(1000);$("#loading").fadeOut(1000);
+          }
+
+          haveend = true;
+        }
+        recordslist.append(html);
+        //$("#loading").css("display",'none');
+        scrollstatus = false;
+      },false);
+    }
+    $(window).scroll(function () {
+      var scrollTop = $(this).scrollTop();
+      var scrollHeight = $(document).height();
+      var windowHeight = $(this).height();
+      if (scrollTop + windowHeight == scrollHeight && scrollstatus == false) {
+        scrollstatus = true;
+        nowpage++;
+        if(!haveend){
+          ajax_request(fid,nowpage);
+        }
+      }
+    });
+   });
+</script>

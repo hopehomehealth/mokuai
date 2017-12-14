@@ -1,0 +1,104 @@
+    <link href="{$Think.const.HCSS_URL}personal-style.css" type="text/css" rel="stylesheet" />
+  <!-- <link href="{$Think.const.HCSS_URL}personal-reset.css" type="text/css" rel="stylesheet" /> -->
+    <section class="personal">
+        <div class="per_tx">
+            <img src="{$userinfo.userhead}" alt=""/>
+        </div>
+        <form action="__SELF__" method="post">
+        <ul style="margin-top:-30px; padding-bottom:8.000rem;">
+            <li>
+                <p>真实姓名</p>
+                <input type="text" name="name" value="{$detail.name}" class="per_txt" <if condition="$detail.edit_name eq 1">style="border:none;" readonly</if> />
+                <br/>  <span>设置后无法修改</span>
+            </li>
+            <li>
+                
+                <p>手机号码</p>
+                <input style="border:none;" type="text" value="{$detail.phone}" class="per_txt" readonly />
+                <br/>  <span>此信息很重要，如手机丢失或手机停机请联系我们！</span>
+            </li>
+            <li>
+                <p>性别</p>
+               
+                    <input type="radio" name="sex" value="1" style="width: 20px;" {$userinfo['sex']?"checked":""} class="per_bj"/>男
+                    <input type="radio" name="sex" value="0" style="width: 20px;" {$userinfo['sex']?"":"checked"} />女
+                
+
+
+            </li>
+            <li>
+            <p>城市</p>
+                <span>
+                    <select name="province_id" class="province selectarea">
+                        <option value="0"><if condition="$userinfo.city eq ''">请选择省<else />{$userinfo.city}</if></option>
+                        <foreach name="province" item="provinceinfo">
+                        <option value="{$provinceinfo.id}">{$provinceinfo.name}</option>
+                        </foreach>
+                    </select>
+                    <select name="city_id" class="city selectarea selectareahd">
+                    </select>
+                    <select name="country_id" class="country selectarea selectareahd">
+                    </select>
+                </span>      
+            <input type="hidden" name="city" value="{$userinfo.city}">  
+            </li>
+            <li>
+
+            <p>地址</p>
+            <input type="text" name="addr" value="{$detail.addr}" class="per_txt"/>
+            </li>
+            <div style="clear: both"></div>
+            <!-- <li>
+                <p>出生日期</p>
+                 <h2></h2>
+            </li> -->
+            <li style="padding-top:0.875rem">
+
+            <input style="background: #DD0045;font-size:1.800rem;height:3.500rem;font-family: '黑体';color: #ffffff;border-radius:0.4rem" value="修改资料" type="submit" class="per_txt"/>
+            </li>
+        </ul>
+    </form>
+
+    </section>
+<script src="js/iscroll4.js"></script>
+<script src="js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var provinceid,cityid,countryid; 
+        var provincename,cityname,countryname;
+        var areaname;
+        $(".province").change(function(){
+            var index = $(this).get(0).selectedIndex;
+            if(index == 0){
+                return;
+            }else{
+                provinceid = $(this).val();
+                provincename = $(".province option:selected").text();
+                //alert(provincename);
+                $.post("__MODULE__/User/getcity",{'pid':provinceid},function(data){
+                    if(data.error ==  1){
+
+                    }else{
+                        var cityhtml = "<option value='0'>请选择市</option>";
+                        var datalist = data.content;
+                        for(var i in datalist){
+                            cityhtml+="<option value='"+datalist[i].id+"'>"+datalist[i].name+"</option>";
+                        }
+                        $(".city").eq(0).html(cityhtml);
+                        $(".city").removeClass("selectareahd").siblings('.selectarea').addClass('selectareahd');
+                    }
+                })
+            }
+            //计算出选择省在数组中的下标
+        })
+        $(".city").change(function(){
+            var index = $(this).get(0).selectedIndex;
+            if(index == 0){
+                return;
+            }else{
+                cityname = $(".city option:selected").text();
+                $("input[name='city']").val(cityname);
+            }
+        })
+    })
+</script>

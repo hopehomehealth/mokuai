@@ -1,0 +1,75 @@
+@charset "utf-8";
+/* CSS Document */
+/*basic*/ 
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video, input, button, select, option { margin: 0; padding: 0; outline: none; }
+body { color: #323232; font-family: "微软雅黑", Arial, Helvetica, sans-serif; background-color: #f0f0f0; font-size: 100%; -webkit-tap-highlight-color: rgba(0,0,0,0); }
+body, html { -webkit-touch-callout: none; -webkit-user-select: none; }
+@media screen and (max-width:479px) {
+html { font-size: 10px; -webkit-text-size-adjust: none; }
+}
+@media screen and (min-width:480px) and (max-width:559px) {
+html { font-size: 15px; -webkit-text-size-adjust: none; }
+}
+@media screen and (min-width:560px) and (max-width:639px) {
+html { font-size: 17px; -webkit-text-size-adjust: none; }
+}
+@media screen and (min-width:640px) and (max-width:719px) {
+html { font-size: 20px; -webkit-text-size-adjust: none; }
+body { max-width: 640px }
+}
+@media screen and (min-width:720px) {
+html { font-size: 22.5px; -webkit-text-size-adjust: none; }
+}
+body { min-width: 320px; margin: 0 auto; position: relative }
+h1, h2, h3, h4, h5, h6 { margin: 0; padding: 0; font-size: 100%; font-weight: normal; }
+ul, li { list-style: none; }
+html { -webkit-text-size-adjust: none; }
+img { border: none; vertical-align: middle; }
+input { font-family: Arial, Helvetica, sans-serif; }
+.fl { float: left; }
+.fr { float: right; }
+.fwb { font-weight: bold; }
+.white { color: #FFF; }
+a { text-decoration: none; color: #888; }
+a:hover { color: #dd0045; }
+.clear { clear: both; font-size: 0; height: 0; line-height: 0; }
+.dnone { display: none; }
+/****header头部开始*****/
+header { width: 100%; background: #dd0045; height: 4.400rem; line-height: 4.400rem; margin: 0rem auto; position: relative; }
+.headTit { height: 4.400rem; text-align: center; line-height: 4.400rem; color: #fff; font-size: 1.700rem; position: absolute; left: 5.583rem; right: 6.583rem; }
+.headTit span { color: #fff; padding-right: 1rem; padding-left: 1rem; }
+.headTit .cur1 { color: #fff100; height: 4.400rem; line-height: 4.400rem; cursor: pointer; }
+.headTit .cur2 { color: #fff; height: 4.400rem; line-height: 4.400rem; cursor: pointer; }
+.headBack { height: 3.200rem; width: 7.000rem; float: left; background: url(../images/back.png) no-repeat; background-position: 2.000rem 0.500rem; background-size: 2.500rem 2.250rem; text-align: center; color: #FFF; font-size: 1.200rem; padding-top: 1.2rem; display: block; }
+header a.headBack { color: #fff; }
+header a:hover.headBack { color: #fff100; }
+.headBack a { color: #fff; display: block; }
+.headlogin { height: 3.200rem; width: 7.000rem; float: right; background: url(../images/login.png) no-repeat; background-position: 2.500rem 0.500rem; background-size: 2.500rem 2.250rem; text-align: center; color: #FFF; font-size: 1.200rem; padding-top: 1.2rem; display: block; }
+.headlogin a { color: #FFF; padding: 0rem 0.5rem; }
+.headlogin a:hover { color: #fff100; }
+/****header头部结束*****/
+
+/*******footer尾部开始***************/
+footer { background: #fff; position: fixed; left: 0; right: 0; bottom: 0; width: 100%; height: 5.000rem; z-index: 100; }
+footer ul { width: 100%; height: 100%; display: -webkit-box; display: flex; display: -webkit-flex; }
+footer ul li { text-align: center; font-size: 100%; color: #909090; position: relative; flex: 1; -webkit-box-flex: 1; width: 100%; }
+footer li a { color: #909090; display: block; width: 100%; height: 100%; font-size: 1.250rem; padding: 0.5rem 0 0; }
+footer li a:hover { color: #dd0045; }
+.shou a i { display: block; background: url(../images/home.png) no-repeat center top; background-size: 35%; height: 2.700rem; }
+.car a i { display: block; background: url(../images/car.png) no-repeat center top; background-size: 100%; height: 2.700rem; }
+.world a i { display: block; background: url(../images/world.png) no-repeat center top; background-size: 35%; height: 2.700rem; }
+.purse a i { display: block; background: url(../images/purse.png) no-repeat center top; background-size: 35%; height: 2.700rem; }
+.my a i { display: block; background: url(../images/my.png) no-repeat center top; background-size: 32%; height: 2.700rem; }
+.car a:hover i { display: block; background: url(../images/car_a.png) no-repeat center top; background-size: 100%; height: 2.700rem; }
+.shou a:hover i { display: block; background: url(../images/home_a.png)no-repeat center top; background-size: 35%; height: 2.700rem; }
+.world a:hover i { display: block; background: url(../images/world_a.png) no-repeat center top; background-size: 35%; height: 2.700rem; }
+.purse a:hover i { display: block; background: url(../images/purse_a.png) no-repeat center top; background-size: 35%; height: 2.700rem; }
+.my a:hover i { display: block; background: url(../images/my_a.png) no-repeat center top; background-size: 32%; height: 2.700rem; }
+.car_a i { display: block; background: url(../images/car_a.png) no-repeat center top; background-size: 100%; height: 2.700rem; }
+.shou_a i { display: block; background: url(../images/home_a.png)no-repeat center top; background-size: 35%; height: 2.700rem; }
+.world_a i { display: block; background: url(../images/world_a.png) no-repeat center top; background-size: 35%; height: 2.700rem; }
+.purse_a i { display: block; background: url(../images/purse_a.png) no-repeat center top; background-size: 35%; height: 2.700rem; }
+.my_a i { display: block; background: url(../images/my_a.png) no-repeat center top; background-size: 32%; height: 2.700rem; }
+.hover a { color: #dd0045; }
+
+/*******footer尾部结束***************/

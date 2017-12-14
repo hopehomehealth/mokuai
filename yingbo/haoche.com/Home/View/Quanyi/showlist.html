@@ -1,0 +1,79 @@
+<ul class="dj_xhk fr">
+    <p class="arrow-up fl"></p>
+    <li><a href="{:U('Union/index')}">369商家联盟</a></li>
+</ul>
+<script type="text/javascript">
+    $(".head_back2").click(function(){
+        $(".dj_xhk").slideToggle("1000");
+    });
+</script>
+<div class="main">
+    <section>
+        <div class="union-tu fl" >
+            <div class="union-tu-lsit">
+                <p class="fs1-6 fwb pl3-8">新农缘天下/<span class="fwn fs1-1"><span class="fwb fso pr0-2"></span>&nbsp;商家权益</span></p>
+                <p class="w60 fl xj-union-l pt1-4"><a href="{:U('Union/quanyixieyi')}"><img src="{$Think.const.HIMG_URL}xj_images_41.png"></a></p>
+                <p class="w30 fl xj-union-r pt2-4"><img src="{$Think.const.HIMG_URL}xj_images_34.png"></p>
+                <p class="w100 union-tu_xtb pl2-2 fl pt_6"><img src="{$Think.const.HIMG_URL}xj_images_35.png">&nbsp;北京新农缘天下农业科技有限责任公司</p>
+                <p class="w100 union-tu_xtb pl2-2 fl pt0-2"><img src="{$Think.const.HIMG_URL}xj_images_11.png">&nbsp;010-5622 9268&nbsp;&nbsp;&nbsp;&nbsp;有效期至：
+                <if condition="$Think.session.userInfo.vipexpire neq ''">
+                    <if condition="$buyvip eq 1">
+                        <b style="color:red">已过期</b>
+                    <else />
+                        {$Think.session.userInfo.vipexpire|date="Y-m-d",###}
+                    </if>
+                <else />
+                0000-00-00
+                </if></span></p>
+            </div>
+        </div>
+    </section>
+
+
+    <section>
+        <div class="navbj fl pb0 mt0">
+            <ul class="union-list fl">
+                <foreach name="info" item="v">
+                    <li><a href="{:U('Quanyi/detail',array('quanyi_id'=>$v['quanyi_id']))}">
+                        <dl class="union-pic">
+                            <dt><img src="{$Think.const.SITE_URL}{$v.pic}"></dt>
+                            <dd>
+                                <p><span class="fso crimson fs2-4 pr0-2">商家</span><span class="fso crimson fs1-1 pr1 fr">  免费领</span>
+                                   <span class="fs1-4 fwb fl">{$v.name}</span>
+                                    <span class="fs1-1 fr pr0-2">原价: {$v.price}</span>
+                                </p>
+                                </a>
+                                <p class="fs1">现价: {$v.nowprice}</p>
+                                <p quanyiid="{$v.quanyi_id}" class="yuyuebtn mt0-5 w20 union-an-a d-red fs1-2 crimson">预约</p>
+                            </dd>
+                        </dl>
+                    </li>
+                </foreach>
+
+
+            </ul>
+        </div>
+    </section>
+</div>
+<script type="text/javascript">
+    $(function(){
+        $(".yuyuebtn").click(function(){
+            $.get("__MODULE__/Sorder/yuyue2/quanyi_id/"+$(this).attr('quanyiid'),function(data){
+                if(data == 'nologin'){
+                    $("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'你还没有登录'+"</div>");
+
+                    $("#errormsg").fadeIn(1500);$("#errormsg").fadeOut(1500);setTimeout(function(){$("#errormsg").remove();},3000);
+                    return false;
+                }
+                if(data.error == 1){
+                    $("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+data.content+"</div>");
+
+                    $("#errormsg").fadeIn(1500);$("#errormsg").fadeOut(1500);setTimeout(function(){$("#errormsg").remove();},3000);
+                    return false;
+                }else if(data.error == 0){
+                    location.href="__MODULE__/Sorder/yuyueinfo2/quanyi_id/"+data.quanyi_id;
+                }
+            })
+        })
+    })
+</script>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>新农缘天下商城</title>
+    <link href="{$Think.const.HCSS_URL}basic.css" type="text/css" rel="stylesheet" />
+    <link href="{$Think.const.HCSS_URL}style.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="{$Think.const.HJS_URL}jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="{$Think.const.HJS_URL}jquery.SuperSlide.2.1.1.js"></script>
+    <script type="text/javascript" src="{$Think.const.HJS_URL}L_slide.js"></script>
+
+</head>
+
+<body>
+<header>
+    <if condition="$daohang.second eq '新农缘天下商城'">
+     <a class="headBack" href="__MODULE__/User/channel">{$daohang.first}</a>
+         <div class="headTit">{$daohang.second}</div>
+		 <if condition="$Think.session.flag eq ''">
+      <div class="headlogin"><a href="{:U('User/login')}">登陆</a>/<a href="{:U('User/register')}">注册</a></div><else />
+	  <span style="position:absolute;float:right;right:0;height:4.4rem;padding-right:0.5rem"><a href="__MODULE__/User/logout" style="height:100%;line-height:4.4rem;color:#fff;font-size:1.5rem;">退出</a></span></if>
+
+
+
+        <elseif condition="$daohang.second neq '新农缘天下商城'"/>
+		<if condition="(CONTROLLER_NAME eq 'Goods') AND (ACTION_NAME eq 'index')">
+
+        <a class="head_back1" href="Javascript:window.history.go(-1)">&nbsp;</a>
+        <div class="headTit">{$daohang.second}</div>
+        {$daohang.third}
+		<span style="position:absolute;float:right;right:0;height:4.4rem;padding-right:0.5rem"><a href="__MODULE__/User/regfee" style="height:100%;line-height:4.4rem;color:#fff;font-size:1.5rem;">积分充值</a></span>
+		<else />
+		<a class="head_back1" href="Javascript:window.history.go(-1)">&nbsp;</a>
+        <div class="headTit">{$daohang.second}</div>
+        {$daohang.third}
+		</if>
+
+    </if>
+
+
+</header>
+
+
+
+    {__CONTENT__}
+
+<footer id="panel_nav">
+    <ul>
+        <li <if condition="CONTROLLER_NAME == Index">class="shou_a hover"</if>class="shou"><a href="{:U('Index/index')}"><i>&nbsp;</i>首页</a></li>
+        <li <if condition="CONTROLLER_NAME == Haoche">class="car_a hover"</if>class="car"><a href="{:U('Haoche/showlist')}"><i>&nbsp;</i>豪车俱乐部</a></li>
+        <li <if condition="CONTROLLER_NAME == Agriculture">class="world_a hover"</if>class="world"><a href="{:U('Agriculture/index')}"><i>&nbsp;</i>商家联盟</a></li>
+        <li <if condition="CONTROLLER_NAME == Goods">class="purse_a hover"</if>class="purse"><a href="{:U('Goods/index')}"><i>&nbsp;</i>乐购商城</a></li>
+        <li <if condition="CONTROLLER_NAME == User">class="my_a hover"</if>class="my"><a href="{:U('User/userindex')}"><i>&nbsp;</i>我的</a></li>
+    </ul>
+</footer>
+
+</body>
+</html>
+

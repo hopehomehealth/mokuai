@@ -1,0 +1,72 @@
+<ul class="dj_xhk fr">
+    <p class="arrow-up fl"></p>
+    <li><a href="{:U('Union/index')}">369商家联盟</a></li>
+</ul>
+<script type="text/javascript">
+    $(".head_back2").click(function(){
+        $(".dj_xhk").slideToggle("1000");
+    });
+</script>
+<div class="main pb0">
+    <section>
+        <div class="tesco fl pt_6 pb_6">
+            <p class="tesco_right fl">
+            <form action="{:U('diansearch')}" method="post">
+                <input type="text" class="tesco_rgt_k fl"style="width: 87%;" name="searchname" id="searchname" placeholder="请输入店家名称">
+                <input id="submit"  class="tesco_rgt_an" type="submit" value="">
+            </form>
+            <script type="text/jscript">
+ $('#submit').click(function(){
+ var searchname = $('#searchname').val();
+     if(searchname == ''){
+        return false;
+    }
+        });
+</script>
+            </p>
+        </div>
+    </section>
+    <section>
+        <div class="navbj fl mt0 pb0 b_n">
+            <div class="bus-a fl">
+                <ul class="bus-a-l fl">
+                    <foreach name="catinfo" key="kc" item="class">
+                        <li <if condition="$kc eq 0">class="curt active"<else /></if>>{$class.cat_name}</li>
+                    </foreach>
+                </ul>
+                <foreach name="catinfo" key="k" item="v">
+                <div <if condition="$k eq 0">class="bus-a-r on tab-acheck"<else />class="bus-a-r"</if>>
+                <foreach name="v.sellerinfo" key="kk" item="vv">
+                <dl class="bus-a-pic fl">
+
+                        <dt><a href="{:U('Union/diandetail',array('seller_id'=>$vv['seller_id']))}"><img src="{$Think.const.SITE_URL}{$vv.pic_dian}"></a></dt>
+                        <dd>
+                            <p class="bus_xzsz fl fwb"><a href="{:U('Union/diandetail',array('seller_id'=>$vv['seller_id']))}">{$vv.seller_name}</a></p>
+                        </dd>
+
+                    </dl>
+                </foreach>
+            </div>
+                </foreach>
+
+            </div>
+        </div>
+
+    </section>
+</div>
+    <script type="text/javascript">
+        $('.bus-a-l').on('click','li',function(){
+            var tabInd=$(this).index();
+            $(this).addClass('active').siblings().removeClass('active');
+            $('.bus-a-r').eq(tabInd).addClass('tab-acheck').siblings().removeClass('tab-acheck');
+        })
+    </script>
+
+    <script>
+        $(function(){
+            $(".bus-a-l li").click(function(){
+                $(this).addClass("curt").siblings().removeClass("curt");
+                $(".bus-a-r").eq($(this).index()).addClass("on").siblings().removeClass("on");
+            });
+        })
+    </script>

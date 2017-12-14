@@ -1,0 +1,463 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Administrator
+ * Date: 2016/6/13
+ * Time: 11:37
+ */
+namespace Home\Controller;
+use Common\Common\ComController;
+class CoreController extends ComController
+{
+    function index()
+    {
+        $daohang = array(
+            'second' => '商家中心',
+            'third'=>"<a class='head_back2'>&nbsp;</a>",
+        );
+        $this->assign('daohang', $daohang);
+
+//        $userid = $_SESSION['userInfo']['userid'];
+        $this->display();
+    }
+    //检查是否是vip
+    function checkvip(){
+        if(IS_GET){
+            echo 'ok';
+        }
+    }
+    function core(){
+        $daohang = array(
+            'second' => '店铺主页',
+            'third'=>"<a class='head_back2'>&nbsp;</a>",
+        );
+        $this->assign('daohang', $daohang);
+
+        $userid = $_SESSION['userInfo']['userid'];
+
+        $sellerinfo = D('Seller')
+            ->where("userid = $userid")
+            ->select();
+        $this->assign('sellerinfo',$sellerinfo);
+
+        $zenginfo = D('Zeng')
+            ->where("is_show='0' AND is_del='0' AND status='1' AND userid = $userid")
+            ->order('add_time desc')
+            ->select();
+//        dump($zenginfo);die;
+        $this->assign('zenginfo',$zenginfo);
+
+        $hotinfo = D('Sgoods')
+            ->where("is_show='0' AND is_del='0' AND is_hot='0' AND userid = $userid")
+            ->order('add_time desc')
+            ->select();
+        $this->assign('hotinfo',$hotinfo);
+
+        $sgoodsinfo = D('Sgoods')->where("is_show='0' AND is_del='0' AND userid = $userid")->select();
+        $catinfo = D('Scategory')->where("userid=$userid")->select();
+        foreach($catinfo as $k =>$v){
+            $catinfo[$k]['sgoodsinfo']= array();
+            foreach($sgoodsinfo as $kk => $vv){
+                if($v['cat_id'] == $vv['cat_id']){
+                    $catinfo[$k]['sgoodsinfo'][] = $vv;
+                }
+            }
+        }
+//dump($catinfo);die;
+        $this->assign('catinfo',$catinfo);
+
+        $this->display();
+    }
+
+    //1p商品详情页
+    function freedetail(){
+        $daohang = array(
+            'second'=>"1P产品详情",
+            'third'=>"<a class='head_back2'>&nbsp;</a>",
+        );
+        $this -> assign('daohang',$daohang);
+        $zeng_id = I('get.zeng_id');
+        $zenginfo = D('Zeng')
+            ->where("zeng_id = $zeng_id")
+            ->select();
+        $content =html_entity_decode($zenginfo[0]['introduce']);
+        $this->assign('content',$content);
+        $this->assign('zenginfo',$zenginfo);
+        $userid = $zenginfo[0]['userid'];
+        $zenginfo2 = D('Zeng')
+            ->where("is_show='0' AND is_del='0' AND zeng_id != $zeng_id AND userid=$userid")
+            ->order('add_time desc')
+            ->select();
+//        dump($zenginfo);die;
+        $this->assign('zenginfo2',$zenginfo2);
+
+        $this->display();
+    }
+
+    //热销详情页
+    function hotdetail(){
+        $daohang = array(
+            'second'=>"热销产品详情",
+            'third'=>"<a class='head_back2'>&nbsp;</a>",
+        );
+        $this -> assign('daohang',$daohang);
+        $goods_id = I('get.goods_id');
+        $hotinfo = D('Sgoods')
+            ->where("goods_id = $goods_id")
+            ->select();
+        $content =html_entity_decode($hotinfo[0]['introduce']);
+        $this->assign('content',$content);
+        $this->assign('hotinfo',$hotinfo);
+        $userid = $hotinfo[0]['userid'];
+        $hotinfo2 = D('Sgoods')
+            ->where("is_show='0' AND is_del='0' AND is_hot='0' AND goods_id != $goods_id AND userid=$userid")
+            ->order('add_time desc')
+            ->select();
+//        dump($zenginfo);die;
+        $this->assign('hotinfo2',$hotinfo2);
+
+        $this->display();
+    }
+
+    //商品详情页
+    function goodsdetail(){
+        $daohang = array(
+            'second'=>"商品详情",
+            'third'=>"<a class='head_back2'>&nbsp;</a>",
+        );
+        $this -> assign('daohang',$daohang);
+        $goods_id = I('get.goods_id');
+        $goodsinfo = D('Sgoods')
+            ->where("goods_id = $goods_id")
+            ->select();
+        $content =html_entity_decode($goodsinfo[0]['introduce']);
+        $this->assign('content',$content);
+        $this->assign('goodsinfo',$goodsinfo);
+
+        $this->display();
+    }
+
+    //商品搜索页
+    function goodsearch(){
+        $daohang = array(
+            'second'=>"商品搜索结果",
+            'third'=>"<a class='head_back2'>&nbsp;</a>",
+        );
+        $this -> assign('daohang',$daohang);
+        if($_POST){
+            $searchname = $_POST;
+            $map['goods_name'] = array('LIKE',"%{$searchname['searchname']}%");
+
+        }else{
+            $map = '';
+
+        }
+        $userid = $_SESSION['userInfo']['userid'];
+//        dump($userid);die;
+        $searchinfo = D('Sgoods')
+            ->order('goods_id desc')
+            ->where($map)
+            ->where("userid=$userid")
+            ->select();
+        $this->assign('searchinfo',$searchinfo);
+
+        $this->display();
+    }
+    //店铺公告
+    function gonggao(){
+        $daohang = array(
+            'second'=>"店铺公告",
+            'third'=>"<a class='head_back2'>&nbsp;</a>",
+        );
+        $this -> assign('daohang',$daohang);
+        $userid = $_SESSION['userInfo']['userid'];
+        $info = D('Seller')->where("userid=$userid")->select();
+
+        $content =html_entity_decode($info[0]['content']);
+        $this->assign('content',$content);
+        $this->display();
+    }
+
+    //成为商家
+    function become(){
+        $daohang = array(
+            'second'=>"成为商家",
+            'third'=>"<a class='head_back2'>&nbsp;</a>",
+        );
+        $this -> assign('daohang',$daohang);
+        $set = M('setting')->find();
+        $userid = $_SESSION['userInfo']['userid'];
+        $thisseller = D('Seller')->where("userid = {$userid}")->find();
+        //$this->assign('userid',$userid);
+        if(IS_POST){
+            $cfg = array(
+                'rootPath'    =>  './Public/Upd/seller/', //保存根路径
+            );
+            $up = new \Think\Upload($cfg);
+            $z = $up -> uploadOne($_FILES['pic_dian']);
+
+            //把上传的图片"路径名"保存到数据库中
+            $picname = $up->rootPath.$z['savepath'].$z['savename'];
+            $arr['pic_dian'] = $picname;
+            $arr['ordersn'] = 'Y'.time().rand(10,99);
+            $arr['amount'] = $set['mchfee'];
+            $arr['userid'] = $userid;
+            $arr['seller_name'] = $_POST['seller_name'];
+            $arr['lianxi_name'] = $_POST['lianxi_name'];
+            $arr['phone'] = $_POST['phone'];
+            $arr['add_time'] = time();
+            $arr['address'] = $_POST['address'];
+            $arr['cat_id'] = $_POST['cat_id'];
+            //dump($arr);exit;
+            if($thisseller){
+                if($arr['pic_dian'] == './Public/Upd/seller/'){
+                    unset($arr['pic_dian']);
+                }
+                //dump($arr);exit;
+                $arr['seller_id'] = $_POST['seller_id'];
+                $data = D('Seller')->create($arr);
+                D('Seller')->save($data);
+                $this->ajaxReturn(array('error'=>0));  
+            }else{
+                if($newid = D('Seller')->add($arr)){
+                    //$arr['seller_id'] = $newid;
+                    $this->ajaxReturn(array('error'=>0));
+                }else{
+                    $this -> error(U('become'));
+                }
+            }
+        }else{
+            $catinfo = D('Sellercat')
+                ->select();
+            if($thisseller){
+                $this->assign('thisseller',$thisseller);
+            }
+            $this->assign('catinfo',$catinfo);
+            $this -> display();
+        }
+    }
+
+    function become1(){
+        $daohang = array(
+            'second'=>"成为商家",
+            'third'=>"<a class='head_back2'>&nbsp;</a>",
+        );
+        $this -> assign('daohang',$daohang);
+        $userid = $_SESSION['userInfo']['userid'];
+        $sellerinfo=D('Seller')->where("userid = $userid")->find();
+//        dump($sellerinfo);die;
+        $seller_id=$sellerinfo['seller_id'];
+        $cat = D('Seller');
+        if(IS_POST){
+            
+            $shuju = $cat-> create();
+            $shuju['seller_id']=$seller_id;
+            if($_FILES['pic_shen']['error']===0) {
+                if (!empty($shuju['seller_id'])) {
+                    $oldinfo = D('Seller')->find($shuju['seller_id']);
+                    if (!empty($oldinfo['pic_shen'])) {
+                        unlink($oldinfo['pic_shen']);
+                    }
+                }
+
+                $cfg = array(
+                    'rootPath'    =>  './Public/Upd/seller/', //保存根路径
+                );
+                $up = new \Think\Upload($cfg);
+                $z = $up -> uploadOne($_FILES['pic_shen']);
+
+                //把上传的图片"路径名"保存到数据库中
+                $picname = $up->rootPath.$z['savepath'].$z['savename'];
+                $shuju['pic_shen'] = $picname;
+            }
+
+            if($sellerinfo['pic_shen'] != ''){
+                if($shuju['pic_shen'] == ''){
+                    unset($shuju['pic_shen']);
+                }else{
+                    $cat->save($shuju);
+                }
+                
+                $this->ajaxReturn(array('error'=>0));
+            }else{
+                
+                if($cat->save($shuju)){
+                    $this->ajaxReturn(array('error'=>0));  
+                }else{
+                    $this -> redirect('become1');
+                }
+            }
+        }else{
+            //$info = D('Seller')->find($seller_id);
+            $this -> assign('info',$sellerinfo);
+            $this -> display();
+        }
+
+    }
+    function become2(){
+        $daohang = array(
+            'second'=>"成为商家",
+            'third'=>"<a class='head_back2'>&nbsp;</a>",
+        );
+        $this -> assign('daohang',$daohang);
+        $userid = $_SESSION['userInfo']['userid'];
+        $thisseller = D('Seller')->where("userid = {$userid}")->find();
+        $seller_id = $thisseller['seller_id'];
+        $cat = D('Seller');
+        if(IS_POST){
+            $shuju['seller_id']=$_POST['seller_id'];
+            
+            if($_FILES['pic_zhi']['error']===0) {
+                if (!empty($shuju['seller_id'])) {
+                    $oldinfo = D('Seller')->find($shuju['seller_id']);
+                    if (!empty($oldinfo['pic_zhi'])) {
+                        unlink($oldinfo['pic_zhi']);
+                    }
+                }
+
+                $cfg = array(
+                    'rootPath'    =>  './Public/Upd/seller/', //保存根路径
+                );
+                $up = new \Think\Upload($cfg);
+                $z = $up -> uploadOne($_FILES['pic_zhi']);
+
+                //把上传的图片"路径名"保存到数据库中
+                $picname = $up->rootPath.$z['savepath'].$z['savename'];
+                $shuju['pic_zhi'] = $picname;
+            }
+            if($thisseller['pic_zhi'] != ''){
+                if($shuju['pic_zhi'] == ''){
+                    unset($shuju['pic_zhi']);
+                }else{
+                    $cat->save($shuju);
+                }   
+                $this->ajaxReturn(array('error'=>0));
+            }else{
+                if($cat->save($shuju)){
+                    $this->ajaxReturn(array('error'=>0));
+                }else{
+                    $this -> redirect('become2');
+                }
+            }
+            
+        }else{
+            $info = $cat->find($seller_id);
+
+            $this -> assign('info',$info);
+            $this -> display();
+        }
+
+    }
+
+    function become3(){
+        $daohang = array(
+            'second'=>"1P商品添加",
+            'third'=>"<a class='head_back2'>&nbsp;</a>",
+        );
+        $this -> assign('daohang',$daohang);
+        $userid = $_SESSION['userInfo']['userid'];
+        $zenginfo = D('zeng')->where("userid = {$userid}")->select();
+        if(IS_POST){
+            $shuju['userid']=$userid;
+            $shuju['add_time'] = time();
+            $shuju['upd_time'] = time();
+            $shuju['zeng_name'] = $_POST['zeng_name'];
+            $shuju['introduce'] = $_POST['introduce'];
+            $shuju['price'] = $_POST['price'];
+            $shuju['nowprice'] = $_POST['nowprice'];
+            $shuju['number'] = $_POST['number'];
+            $shuju['isonlyone'] = $_POST['isonlyone'];
+            if(count($_POST['way']) == 1){
+                $shuju['way'] = "{$_POST['way'][0]}";
+            }else{
+                $shuju['way'] = '3';
+            }
+            $cfg = array(
+                'rootPath'    =>  './Public/Upd/zeng/', //保存根路径
+            );
+            $up = new \Think\Upload($cfg);
+            $z = $up -> uploadOne($_FILES['pic']);
+
+            //把上传的图片"路径名"保存到数据库中
+            $picname = $up->rootPath.$z['savepath'].$z['savename'];
+            $shuju['pic'] = $picname;
+            if($zenginfo){
+                if($shuju['pic'] == './Public/Upd/zeng/'){
+                    unset($shuju['pic']);
+                }
+                //dump($_POST);exit;
+                D('Zeng')->save($shuju);
+
+                $this->ajaxReturn(array('error'=>0));
+            }else{
+                if($newid=D('Zeng')->add($shuju)){
+                    $this->ajaxReturn(array('error'=>0));
+                }else{
+                    $this -> redirect('become3');
+                }
+            }
+            
+        }else{
+            if($zenginfo){
+                $this->assign('zenginfo',$zenginfo[0]);
+            }
+            
+            $this -> display();
+        }
+    }
+    
+    //成为商家缴费
+    function bemerch(){
+        $daohang = array(
+            'second'=>"商家缴费",
+            'third'=>"<a class='head_back2'>&nbsp;</a>"
+        );
+        $this -> assign('daohang',$daohang);
+        $userid = $_SESSION['userInfo']['userid'];
+        $setting_model = M("setting");
+        $set = $setting_model->find();
+        $seller_model = M('seller');
+        $seller = $seller_model->where("userid = {$userid}")->find();
+        if(!$seller){
+            $this->redirect('Core/become');
+        }
+        $this->assign('seller',$seller);
+        $this->display();
+    }
+    //整单购买
+    function single(){
+        $daohang = array(
+            'second'=>"整单购买",
+            'third'=>"<a class='head_back2'>&nbsp;</a>",
+        );
+        $this -> assign('daohang',$daohang);
+        $userid = $_SESSION['userInfo']['userid'];
+        //商铺信息
+        $seller_id = $_GET['seller_id'];
+        $sellerinfo = M('seller')->find($seller_id);
+        $this -> assign('sellerinfo',$sellerinfo);
+        //用户信息
+        $userdetail = M('userdetail')->where("userid = {$userid}")->find();
+        $this->assign('userdetail',$userdetail);
+        //系统设置
+        $set = M('setting')->field("pct_diyong")->find();
+        $this->assign('set',$set);
+        $this->display();
+    }
+    //店铺状态
+    function state(){
+        $daohang = array(
+            'second'=>"店铺状态"
+        );
+        $this -> assign('daohang',$daohang);
+        $this->display();
+    }
+    //店铺名片
+    function name(){
+        $daohang = array(
+            'second'=>"店铺名片"
+        );
+        $this -> assign('daohang',$daohang);
+        $this->display();
+    }
+}

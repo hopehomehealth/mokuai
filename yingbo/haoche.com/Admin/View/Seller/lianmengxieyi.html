@@ -1,0 +1,70 @@
+
+<script type="text/javascript" src='{$Think.const.PLUGIN_URL}ueditor/ueditor.config.js' ></script>
+<script type="text/javascript" src='{$Think.const.PLUGIN_URL}ueditor/ueditor.all.min.js' ></script>
+<script type="text/javascript" src='{$Think.const.PLUGIN_URL}ueditor/lang/zh-cn/zh-cn.js' ></script>
+
+
+
+<div class="main-content">
+    <div class="box-title margin_bot_20">
+        <div class="span10">
+            <h3><i class="icon-magic"></i>联盟协议编辑</h3>
+        </div>
+    </div>
+
+
+    
+
+
+    <div class="page-content">
+        <div class="row">
+            <div class="page-content box">
+
+<form action="__SELF__" method="post" class="form-horizontal" enctype="multipart/form-data">
+    <input type='hidden' name='id' value='{$info.id}' />
+       
+<div class="form-group">
+            <label class="control-label">协议名称 : </label>
+            <div class="controls pull-left">
+                <input type="text" class="input-large" name="title" value="{$info.title}">
+                <span class="help-inline red"> * </span>
+            </div>
+        </div>
+
+    <div class="form-group" id="detail-tab-show">
+
+        <label class="control-label">协议内容 : </label>
+        <div class="controls pull-left">
+            <textarea rows="5" cols="15" id='content' name='content' style='width:650px;height:350px;'>{$info.content}</textarea>
+        </div>
+        <script type="text/javascript">
+            var ue = UE.getEditor('content',{toolbars: [[
+                'fullscreen', 'source', '|', 'undo', 'redo', '|',
+                'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
+                'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
+                'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
+                'directionalityltr', 'directionalityrtl', 'indent', '|',
+                'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase'
+            ]]});
+        </script>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="form-actions" align="center">
+        <button id="bsubmit" type="submit"  class="btn btn-sm btn-primary">保存</button>
+    </div>
+</form>
+            </div>
+        </div>
+        <!--/.box-->
+    </div><!--/.content-->
+    </div>
+
+   

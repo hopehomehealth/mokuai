@@ -1,0 +1,73 @@
+<script type="text/javascript" src="{$Think.const.HJS_URL}jquery-1.7.2.min.js"></script>
+<div class="shousuo fl">
+  <form action="" method="get">
+    <input class="shousuo_l" name="" type="text">
+    <button class="shousuo_r">搜索</button>
+  </form>
+</div>
+<script type="text/jscript">
+ $(".head_login").toggle(function(){
+        $(".shousuo").show("1000");
+		 },function(){
+        $(".shousuo").hide("1000");
+
+		});
+</script>
+<div class="main">
+  <section>
+    <ul class="ord-nav">
+    <li><a class="cur" href="__MODULE__/Scenter/doing">进行中</a></li>
+    <li><a href="__MODULE__/Scenter/finished">已完成</a></li>
+    <li><a href="__MODULE__/Scenter/closed">已关闭</a></li>
+    </ul>
+    <ul class="ord-nav-a mt0-8">
+    <li><form method="get" action="__SELF__"><input type="hidden" name="orderstatus" value="1"><a href="javascript:void(0)" <if condition="$Think.get.orderstatus eq 1">class="search hover"<else />class="search"</if>>{$payings}<br>待付款</a></form></li>
+    <li><form method="get" action="__SELF__"><input type="hidden" name="orderstatus" value="2"><a href="javascript:void(0)" <if condition="$Think.get.orderstatus eq 2">class="search hover"<else />class="search"</if>>{$sendings}<br>待发货</a></form></li>
+    <li><form method="get" action="__SELF__"><input type="hidden" name="orderstatus" value="3"><a href="javascript:void(0)" <if condition="$Think.get.orderstatus eq 3">class="search hover"<else />class="search"</if>>{$sendeds}<br>已发货</a></form></li>       
+    <li><form method="get" action="__SELF__"><input type="hidden" name="orderstatus" value="4"><a href="javascript:void(0)">0<br>退款中</a></form></li>
+    </ul>
+   <!--  <p class="w100 tac lh1_8 pt3 fs1-4">您还没有待付款订单<br>可以尝试以下方法增加订单： </p>
+    <ul class="ord-nav-b li">
+    <li><a href=""> <img src="{$Think.const.HIMG_URL}xj_images_15.png"><br>分享店铺</a></li>
+    <li><a href=""><img src="{$Think.const.HIMG_URL}xj_images_15.png"><br>邀请好友</a></li>
+    </ul>-->
+    <div class="ord-con cur">
+   <ul class="w100 fl ord-list">
+   <foreach name="orderlist" item="info">
+     <li>
+     <a href="__MODULE__/Scenter/orderinfo/orderid/{$info.orderid}">
+     <p class="fs1-4 fl pb_6 ml3">订单编号：{$info.orderno}</p>
+     <p class="fs1-4 fl pb_6 ml3">下单时间：{$info.inputtime|date="Y-m-d H:i:s",###}</p>
+      <dl class="ord-list-pic fl">
+      <dt><img src="{$Think.const.SITE_URL}{$info.logo}" alt=""></dt>
+      <dd><span class="fr pr1" style="clear:both">共{$info.number}件商品</span><span class="fs1-4 fwb">{$info.goods_name}</span>
+      <p class="fr" style="clear:both"><span class="fso crimson fs2-4" style="font-size:1.4rem">￥</span><span class="fso crimson fs1-1 pr1">{$info.orderamount}</span></p><!-- 下单时间：{$info.inputtime|date="Y-m-d H:i:s",###}-->
+      <span class="ord-list-an fr" style="clear:both;margin-right:1rem">
+        <if condition="$info.pay_status eq 0">待付款
+        <else />
+          <if condition="$info.shipping_status eq 0">待发货
+          <elseif condition="$info.shipping_status eq 1" />已发货
+          <else /></if>
+        </if>
+        
+      </span>
+      </dd>
+      </dl>
+      </a>
+     </li>
+   </foreach>
+   </ul>
+    </div>
+   
+  </section>
+  <section>
+    
+  </section>
+</div>
+<script type="text/javascript">
+  $(function(){
+    $(".search").click(function(){
+      $(this).parent('form').submit();
+    })
+  })
+</script>

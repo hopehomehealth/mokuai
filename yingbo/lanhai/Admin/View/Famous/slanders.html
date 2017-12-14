@@ -1,0 +1,147 @@
+<style type="text/css">
+    .technorati li{float:left;}
+</style>
+<script src='{$Think.const.JS_URL}jquery-2.1.3.min.js'></script>
+<div class="main-content">
+
+    <div class="page-content">
+        <div class="row">
+            <div class="page-content box">
+                <div class="box-title margin_bot_20">
+                    <div class="span10">
+                        <a href="{:U('showlist')}"><h3><i class="icon-magic"></i>文章列表</h3></a>
+                    </div>
+                </div>
+
+                <form class="form-horizontal" method="get" action="__MODULE__/Famous/slanders">
+                  <div class="form-group">
+                    <label class="control-label" style="width:auto;line-height:28px;padding-top:0">关键字： </label>
+                    <div class="controls pull-left">
+                      <input type="text" class="input-medium" name="search" value="{$Think.get.serach}" placeholder="文章名/作者">
+                      <button type="submit" class="btn btn-sm btn-primary">搜索</button>
+                    </div>
+                  </div>
+                </form>
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                    <tr><th width="20px"><div align="center"></div></th>
+                    <th width="5%"><div align="center">id</div></th>
+                        <th width="8%"><div align="center">标题</div></th>
+                        <th width="8%"><div align="center">作者</div></th>
+
+                        <th width="8%"><div align="center">版块</div></th>
+                        <th width="8%"><div align="center">浏览</div></th>
+                        <th width="8%"><div align="center">评论</div></th>
+                        <th width="9%"><div align="center">添加时间</div></th>
+                        <!-- <th width="8%"><div align="center">是否显示</div></th> -->
+                        <th width="5%"><div align="center">显示</div></th>
+						<th width="5%"><div align="center">热点</div></th>
+                        <th width="5%"><div align="center">轮播</div></th>
+
+                        <th width="12%"><div align="center">操作</div></th>
+                    </tr></thead>
+                    <tbody>
+                    <form action="" method="post" id="batches">
+                    <foreach name="slanders" key="k" item="v">
+                        <tr>
+                            <td><div align="center"><input type="checkbox" name="sland_id[]" value="{$v.sland_id}"></div></td>
+                            <td><div align="center">{$v.sland_id}</div></td>
+                            <td><div align="center">{$v.title}</div></td>
+                            <td><div align="center">{$v.f_name}</div></td>
+
+                            <td><div align="center"><if condition="$v.f_type eq 1">名家讲坛</if><if condition="$v.f_type eq 2">蓝海人物</if></div></td>
+                            <td><div align="center">{$v.views}</div></td>
+                            <td><div align="center">{$v.comments}</div></td>
+                            <td><div align="center">{$v.add_time|date='Y-m-d H:i',###}</div></td>
+                            <!--<td><div align="center">{$v.sort}</div></td>-->
+                            <if condition="$v.is_show eq 0">
+                                <td><div align="center"><i class="icon-remove bigger-130 red"></i></div> </td>
+                                <else />
+                                <td><div align="center"><i class="icon-ok bigger-130 green"></i></div> </td>
+                            </if>
+							<if condition="$v.is_tui eq 1">
+                                <td><div align="center" class="green">是</div> </td>
+                                <else />
+                                <td><div align="center" class="red">否</div> </td>
+                            </if>
+                            <if condition="$v.is_scroll eq 1">
+                                <td><div align="center" class="green">是</div> </td>
+                                <else />
+                                <td><div align="center" class="red">否</div> </td>
+                            </if>
+
+                            <td> <div align="center">
+                                <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+
+                                    <a class="green" href="{:U('updslander',array('sland_id'=>$v['sland_id']))}"> <i class="icon-pencil bigger-130"></i>&nbsp;编辑 </a>
+                                    <a class="green" href="{:U('comments',array('sland_id'=>$v['sland_id']))}"> <i class="icon-eye-open bigger-130"></i>&nbsp;评论管理 </a>
+
+                                </div>
+                            </div>
+                            </td>
+                        </tr>
+                    </foreach>
+                    <tr>
+
+                        <td style="border-right:none"><input type="checkbox" name="all"></td>
+                        <td style="text-align:left;border-left:none" colspan=10>全选&nbsp;&nbsp;&nbsp;<a id="zhanshi" href="javascript:void(0)">展示</a>&nbsp;&nbsp;&nbsp;<a id="yincang" href="javascript:void(0)" sorttype="2">隐藏</a>&nbsp;&nbsp;&nbsp;<a id="shanchu" class="red detail" href="javascript:void(0)"> <i class="icon-trash bigger-130"></i>&nbsp;删除</a>&nbsp;&nbsp;&nbsp;</td>
+                    </tr>
+                        </form>
+                    </tbody>
+                </table>
+                <div class="technorati">{$page}</div>
+            </div>
+        </div>
+        <!--/.box-->
+    </div><!-- /.page-content -->
+</div><!-- /.main-content -->
+<script type="text/javascript">
+    $(function() {
+        //批量展示操作
+        $("#zhanshi").click(function () {
+            if ($("input[name='sland_id[]']:checked").length >= 1) {
+                $("#batches").attr('action', "__MODULE__/Famous/slandshow");
+                $("#batches").submit();
+            } else {
+                alert('请选择操作对象');
+            }
+        })
+
+        //批量隐藏操作
+        $("#yincang").click(function () {
+            if ($("input[name='sland_id[]']:checked").length >= 1) {
+                $("#batches").attr('action', "__MODULE__/Famous/slandhide");
+                $("#batches").submit();
+            } else {
+                alert('请选择操作对象');
+            }
+        })
+        //批量删除操作
+        $("#shanchu").click(function () {
+            if ($("input[name='sland_id[]']:checked").length >= 1) {
+                if (confirm('你确定要永久删除吗')) {
+                    $("#batches").attr('action', "__MODULE__/Famous/delsland");
+                    $("#batches").submit();
+                }
+            } else {
+                alert('请选择操作对象');
+            }
+        })
+        //全部选中取消选中操作
+        $("input[name='all']").click(function () {
+            var ischeck = $(this).prop('checked');
+
+            if (ischeck) {
+                $("input[name='sland_id[]']").prop('checked', true);
+            } else {
+                $("input[name='sland_id[]']").prop('checked', false);
+            }
+        })
+    })
+
+</script>
+
+
+
+
+

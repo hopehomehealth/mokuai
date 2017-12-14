@@ -1,0 +1,16 @@
+
+    <div class="main gyBox">
+
+            <foreach name="gonginfo" key="k" item="v">
+                <div class="zsBanner" style="padding-bottom: 1rem;">
+            <a href="{:U('Gongyi/gongyi_list',array('trailer_id'=>$v['trailer_id']))}">
+                <img src="{$Think.const.SITE_URL}{$v.pic|substr=###,2}"/>
+                <em></em>
+            </a>
+                </div>
+                </foreach>
+
+
+    </div>
+
+</div>

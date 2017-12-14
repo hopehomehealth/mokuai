@@ -1,0 +1,59 @@
+
+<div class="main-content">
+    <div class="box-title margin_bot_20">
+        <div class="span10">
+            <h3><i class="icon-magic"></i>所需资源修改</h3>
+        </div>
+    </div>
+
+
+    <div class="page-content">
+        <div class="row">
+            <div class="page-content box">
+
+                <form action="__SELF__" method="post" class="form-horizontal" enctype="multipart/form-data">
+                    <input type='hidden' name='id' value='{$info.id}' />
+                    <div class="form-group">
+                        <label class="control-label">标题 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" class="input-large" name="title" value="{$info.title}">
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">所需人 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" class="input-large" name="username" value="{$info.username}">
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">联系方式 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" class="input-large" name="phone" value="{$info.phone}">
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label">描　　述 : </label>
+                        <div class="controls pull-left">
+                            <textarea class="input-large" style="margin: 0px; height: 115px; width: 530px;" name="introduce">{$info.introduce}</textarea>
+                        </div>
+                    </div>
+
+
+                    <div class="form-actions" align="center">
+                        <button id="bsubmit" type="submit"  class="btn btn-sm btn-primary">保存</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--/.box-->
+    </div><!-- /.page-content -->
+</div><!-- /.main-content -->
+
+
+ 

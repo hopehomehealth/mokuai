@@ -1,0 +1,108 @@
+<!--*****header*****-->
+<div class="main">
+    <!--*****banner*****-->
+    <div class="su-banner">
+        <foreach name="slides" item="slide">
+            <img src="{$slide.picmobile|substr=###,1}" alt="">
+        </foreach>
+    </div>
+    <!--*****bannerend*****-->
+
+    <!--*****menu*****-->
+    <section class="su-menu-b b-white">
+        <ul>
+            <foreach name="category" item="cateinfo">
+                <li <if condition="ACTION_NAME eq $cateinfo['action']">class="cur"</if>><a href="__MODULE__/{$cateinfo['ctrl']}/{$cateinfo['action']}">{$cateinfo.cat_name}</a></li>
+            </foreach>
+        </ul>
+    </section>
+    <!--*****menuend*****-->
+    <!--*****su-con*****-->
+    <section  class="w100">
+        <div class="su-serv-fina mb0">
+             <p class="su-news-tit">活动预告</p>
+            <div class="prolist">
+                <div class="proleft"></div>
+                <div class="proright"></div>
+                <div class="probebox swiper-container-horizontal">
+                    <ul class="clearfix swiper-wrapper">
+                        <!--banner-->
+                        <foreach name="foreshow" item="info1">
+                          <li class="swiper-slide">
+                              <a href="__MODULE__/News/detail/id/{$info1.news_id}">
+                                  <img src="{$info1.pic|substr=###,1}" alt="" />
+                                  <h3>{$info1.title}</h3>
+                              </a>
+                          </li>
+                        </foreach>
+                        
+                        <!--banner-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="su-case b-lgray1 pt0-35" id="scrollloading" data-scrollstatus="false" data-end="false">
+        <p class="su-news-hg" style="padding-bottom:0rem">活动回顾</p>
+        <foreach name="review" item="info2">
+          <dl class="su-news-list">
+              <dt><a href="__MODULE__/News/detail/id/{$info2.news_id}"><img src="{$info2.pic|substr=###,1}" alt="" onerror="this.src='/Public/Home/images/baiban.png'"></a></dt>
+              <dd>
+                  <h3>{$info2.title}</h3>
+                  <p>时间：{$info2.datetime}<br>
+                      地点：{$info2.address}</p>
+                  <span class="su-news-more b-bule"><a href="__MODULE__/News/detail/id/{$info2.news_id}">查看详情</a></span>
+              </dd>
+          </dl>
+        </foreach>
+    </section>
+
+    <!--*****su-conend*****-->
+</div>
+<script type="text/javascript">
+  function scrollLoading(scrollloading,nowpage){
+    $.get("__MODULE__/News/activities/p/"+nowpage,function(data){
+      $("#loading").remove();
+      if(data.error == 0){
+        var html = '';
+        for(var i in data.content){
+            html += '\
+              <dl class="su-news-list"><dt><a href="__MODULE__/News/detail/id/'+data.content[i].news_id+'"><img src="'+data.content[i].pic+'" onerror="this.src=\'/Public/Home/images/baiban.png\'"></a></dt>\
+                <dd>\
+                    <h3>'+data.content[i].title+'</h3>\
+                        <p>时间：'+data.content[i].datetime+'<br>\
+                      地点：'+data.content[i].address+'\
+                        <span class="su-news-more b-bule"><a href="__MODULE__/News/detail/id/'+data.content[i].news_id+'">查看详情</a></span>\
+                    </p>\
+                </dd>\
+            </dl>\
+            ';
+        }
+        scrollloading.append(html);
+      }else{
+        scrollloading.data('end',true);
+      }
+      scrollloading.data('scrollstatus',false);
+    });
+  }
+  $(function(){
+    var scrollloading = $("#scrollloading");//放数据的容器
+    var scrollstatus = false;
+    var nowpage = 1;
+    $(".container").scroll(function () {
+      var scrollTop = $(this)[0].scrollTop;
+      var scrollHeight = $(this)[0].scrollHeight;
+      var windowHeight = $(this).height();
+      var scrollstatus = scrollloading.data('scrollstatus');
+      var end = scrollloading.data('end');
+      if ((scrollTop + windowHeight >= scrollHeight - 10) && !scrollstatus && !end) {
+        scrollloading.data('scrollstatus',true);
+        nowpage++;
+        scrollloading.append('<div id="loading" style="height:0.8rem;color:#666;line-height:0.8rem;font-size:0.28rem;text-align:center">数据加载中...</div>');
+        setTimeout(function(){
+            scrollLoading(scrollloading,nowpage);
+        },1000);
+      }
+    });
+  });
+</script>

@@ -1,0 +1,217 @@
+[ 2017-01-10T06:51:10+08:00 ] 58.247.206.144 /index.php/Admin/Weixin/index?signature=de3351f3c8bb1d6fec179ab666ceb7a4832226a9&timestamp=1484002270&nonce=593515738&openid=o6MrWv6D19MA4p6UgJHP6KWrwTtU
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000033s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000142s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000607s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000681s ]
+NOTIC: [8] Undefined index: echostr E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 15 行.
+NOTIC: [8] Undefined index: Content E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 41 行.
+SQL: SHOW COLUMNS FROM `cq_key_n` [ RunTime:0.0018s ]
+SQL: SELECT * FROM `cq_key_n` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_img` [ RunTime:0.0016s ]
+SQL: SELECT * FROM `cq_img` LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index: Content E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 111 行.
+SQL: SHOW COLUMNS FROM `cq_keyword` [ RunTime:0.0015s ]
+SQL: SELECT * FROM `cq_keyword` WHERE (  keyword like '%%' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_img` WHERE (  keyword like '%%' )  [ RunTime:0.0003s ]
+NOTIC: [2] trim() expects parameter 1 to be string, array given E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 45 行.
+
+[ 2017-01-10T07:44:57+08:00 ] 58.247.206.144 /index.php/Admin/Weixin/index?signature=fe8ca734d945cd20aa896e1b7b5731df25b2af32&timestamp=1484005497&nonce=322163973&openid=o6MrWv74kV4kPQfCd2s-mkZ2Dvzg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000020s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000084s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000584s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000661s ]
+NOTIC: [8] Undefined index: echostr E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 15 行.
+NOTIC: [8] Undefined index: Content E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 41 行.
+SQL: SHOW COLUMNS FROM `cq_key_n` [ RunTime:0.0019s ]
+SQL: SELECT * FROM `cq_key_n` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_img` [ RunTime:0.0016s ]
+SQL: SELECT * FROM `cq_img` LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined index: Content E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 111 行.
+SQL: SHOW COLUMNS FROM `cq_keyword` [ RunTime:0.0015s ]
+SQL: SELECT * FROM `cq_keyword` WHERE (  keyword like '%%' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_img` WHERE (  keyword like '%%' )  [ RunTime:0.0003s ]
+NOTIC: [2] trim() expects parameter 1 to be string, array given E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 45 行.
+
+[ 2017-01-10T08:23:38+08:00 ] 42.156.251.187 /index.php/Admin/Manager/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000018s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000084s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000644s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000718s ]
+SQL: SHOW COLUMNS FROM `cq_manager` [ RunTime:0.0020s ]
+SQL: SELECT r.role_auth_ids FROM cq_manager m left join cq_role as r on m.role_id=r.role_id  WHERE m.mg_id = null LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000047s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000112s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005896s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005978s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000329s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000384s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000605s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000663s ]
+
+[ 2017-01-10T14:13:47+08:00 ] 58.247.206.148 /index.php/Admin/Weixin/index?signature=2e6c57854d08321f555477a3bf64cce41732c9ec&timestamp=1484028827&nonce=1261365561&openid=o6MrWv297_rdj8NI1Km_RRLq21QM
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000127s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000620s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000690s ]
+NOTIC: [8] Undefined index: echostr E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 15 行.
+NOTIC: [8] Undefined index: Content E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 41 行.
+SQL: SHOW COLUMNS FROM `cq_key_n` [ RunTime:0.0018s ]
+SQL: SELECT * FROM `cq_key_n` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_img` [ RunTime:0.0016s ]
+SQL: SELECT * FROM `cq_img` LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_key_n` LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [2] trim() expects parameter 1 to be string, array given E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 45 行.
+
+[ 2017-01-10T15:23:55+08:00 ] 58.247.206.143 /index.php/Admin/Weixin/index?signature=00c0541511007705e642aebae53b19e19a634eec&timestamp=1484033035&nonce=354896444&openid=o6MrWv6fRCX9NOotV1uZXVmdYkkU
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000094s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000615s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000687s ]
+NOTIC: [8] Undefined index: echostr E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 15 行.
+NOTIC: [8] Undefined index: Content E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 41 行.
+SQL: SHOW COLUMNS FROM `cq_key_n` [ RunTime:0.0021s ]
+SQL: SELECT * FROM `cq_key_n` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `cq_img` [ RunTime:0.0018s ]
+SQL: SELECT * FROM `cq_img` LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_key_n` LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [2] trim() expects parameter 1 to be string, array given E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 45 行.
+
+[ 2017-01-10T16:21:10+08:00 ] 58.247.206.148 /index.php/Admin/Weixin/index?signature=6618f494f11eb58ca965deea6e956152b317abb4&timestamp=1484036470&nonce=411741310&openid=o6MrWv0hL00NGwn8Wn18iGrR0AyM
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000020s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000086s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000613s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000684s ]
+NOTIC: [8] Undefined index: echostr E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 15 行.
+NOTIC: [8] Undefined index: Content E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 41 行.
+SQL: SHOW COLUMNS FROM `cq_key_n` [ RunTime:0.0021s ]
+SQL: SELECT * FROM `cq_key_n` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_img` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `cq_img` LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index: Content E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 111 行.
+SQL: SHOW COLUMNS FROM `cq_keyword` [ RunTime:0.0017s ]
+SQL: SELECT * FROM `cq_keyword` WHERE (  keyword like '%%' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_img` WHERE (  keyword like '%%' )  [ RunTime:0.0003s ]
+NOTIC: [2] trim() expects parameter 1 to be string, array given E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 45 行.
+
+[ 2017-01-10T16:21:36+08:00 ] 58.247.206.148 /index.php/Admin/Weixin/index?signature=18ac1ee66eb3047c074e3df128faeb26a731c6a0&timestamp=1484036496&nonce=152195108&openid=o6MrWv0hL00NGwn8Wn18iGrR0AyM
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000091s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000677s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000772s ]
+NOTIC: [8] Undefined index: echostr E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 15 行.
+NOTIC: [8] Undefined index: Content E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 41 行.
+SQL: SHOW COLUMNS FROM `cq_key_n` [ RunTime:0.0022s ]
+SQL: SELECT * FROM `cq_key_n` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_img` [ RunTime:0.0019s ]
+SQL: SELECT * FROM `cq_img` LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_img` WHERE ( keyword =  '联系我们' )  [ RunTime:0.0002s ]
+NOTIC: [2] trim() expects parameter 1 to be string, array given E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 45 行.
+
+[ 2017-01-10T16:21:47+08:00 ] 58.247.206.153 /index.php/Admin/Weixin/index?signature=15b28c224d84b1d653d8bd81c01da9ffc00af042&timestamp=1484036506&nonce=960739746&openid=o6MrWv0hL00NGwn8Wn18iGrR0AyM
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000112s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000688s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000762s ]
+NOTIC: [8] Undefined index: echostr E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 15 行.
+NOTIC: [8] Undefined index: Content E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 41 行.
+SQL: SHOW COLUMNS FROM `cq_key_n` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `cq_key_n` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_img` [ RunTime:0.0017s ]
+SQL: SELECT * FROM `cq_img` LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index: Content E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 111 行.
+SQL: SHOW COLUMNS FROM `cq_keyword` [ RunTime:0.0016s ]
+SQL: SELECT * FROM `cq_keyword` WHERE (  keyword like '%%' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_img` WHERE (  keyword like '%%' )  [ RunTime:0.0003s ]
+NOTIC: [2] trim() expects parameter 1 to be string, array given E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 45 行.
+
+[ 2017-01-10T22:11:56+08:00 ] 140.207.54.73 /index.php/Admin/Weixin/index?signature=a558ee1d28ffdc8a0cd5914f3c5ace8fbad0c32d&timestamp=1484057516&nonce=695614928&openid=o6MrWv7swx35cnBu2a32xxZ6hwvg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000020s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000084s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000570s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000642s ]
+NOTIC: [8] Undefined index: echostr E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 15 行.
+NOTIC: [8] Undefined index: Content E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 41 行.
+SQL: SHOW COLUMNS FROM `cq_key_n` [ RunTime:0.0019s ]
+SQL: SELECT * FROM `cq_key_n` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_img` [ RunTime:0.0018s ]
+SQL: SELECT * FROM `cq_img` LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_key_n` LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [2] trim() expects parameter 1 to be string, array given E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 45 行.
+
+[ 2017-01-10T22:12:02+08:00 ] 140.207.54.73 /index.php/Admin/Weixin/index?signature=a355c0854f3363b428482e24320b9ee2eea95ca4&timestamp=1484057521&nonce=1376038871&openid=o6MrWv7swx35cnBu2a32xxZ6hwvg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000110s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000616s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000686s ]
+NOTIC: [8] Undefined index: echostr E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 15 行.
+NOTIC: [8] Undefined index: Content E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 41 行.
+SQL: SHOW COLUMNS FROM `cq_key_n` [ RunTime:0.0019s ]
+SQL: SELECT * FROM `cq_key_n` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_img` [ RunTime:0.0017s ]
+SQL: SELECT * FROM `cq_img` LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined index: Content E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 111 行.
+SQL: SHOW COLUMNS FROM `cq_keyword` [ RunTime:0.0016s ]
+SQL: SELECT * FROM `cq_keyword` WHERE (  keyword like '%%' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_img` WHERE (  keyword like '%%' )  [ RunTime:0.0003s ]
+NOTIC: [2] trim() expects parameter 1 to be string, array given E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 45 行.
+
+[ 2017-01-10T22:12:16+08:00 ] 101.226.33.201 /index.php/Admin/Weixin/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000091s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000667s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000738s ]
+NOTIC: [8] Undefined index: echostr E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 15 行.
+NOTIC: [8] Undefined index: echostr E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 215 行.
+NOTIC: [8] Undefined index: signature E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 227 行.
+NOTIC: [8] Undefined index: timestamp E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 228 行.
+NOTIC: [8] Undefined index: nonce E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 229 行.
+NOTIC: [8] Undefined index: echostr E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 19 行.
+

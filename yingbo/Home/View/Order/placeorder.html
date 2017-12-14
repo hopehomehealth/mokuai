@@ -1,0 +1,124 @@
+<style>
+.orderinfo_nav { width: 100%; margin-top: 1rem; background: #ffffff; }
+.orderinfo_nav dl dd { float: left; width: 2rem; min-height: 4rem; margin-left: 0.5rem; }
+.orderinfo_nav dl dd img { width: 80%; left: 5rem; margin-top: 1rem; }
+.orderinfo_nav dl dt { float: left; width: 80%; font-size: 1.400rem; min-height: 4rem; line-height: 1.5rem; margin-left: 1rem; }
+.orderinfo_nav dl dt span { float: right; }
+.orderinfo_main { width: 100%; margin-top: 1rem; background: #fff; padding-top: 1rem; }
+.orderinfo_main1 { width: 100%; background: #fff; padding-bottom: 1rem; min-height: 7rem; }
+.orderinfo_main1 dl dd { float: left; width: 26%; min-height: 7rem; }
+.orderinfo_main1 dl dd img { width: 100%; margin-left: 0.5rem; }
+.orderinfo_main1 dl dt { float: right; width: 70%; padding-top: 0.9rem; line-height: 2rem; font-size: 1.400rem; min-height: 7rem; margin-left: 1rem; }
+.orderinfo_main1 dl dt h2 { font-size: 1.400rem; float: left; text-overflow: ellipsis; }
+.orderinfo_main1 dl dt p { float: right; text-align: right; line-height: 1.5rem; margin-right: 0.5rem; }
+.orderinfo_main1 dl dt p span { text-decoration: line-through; }
+.orderinfo_main1 h3, .orderinfo_main2 h3 { font-size: 1.400rem; line-height: 2rem; margin-left: 0.5rem; }
+.orderinfo_main1 h3 span { float: right; margin-right: 0.5rem; }
+.orderinfo_main2 { width: 100%; background: #fff; margin-top: 1rem; padding-bottom: 0.5rem; }
+.orderinfo_main2 p { line-height: 2.5rem; margin-left: 0.5rem; }
+.orderinfo_main2 ul { width: 100%; display: block; margin-top: 1rem; background: #fff; }
+.orderinfo_main2 ul li { float: right; padding: 0.700rem 0 0.2rem; }
+.orderinfo_main2 ul li input { padding: 0 0.5rem; font-size: 1.400rem; border-radius: 0.5rem; background: #ffffff; border: 1px solid #ccc; text-align: center; line-height: 2rem; margin-right: 0.5rem; }
+</style>
+
+<section style="margin-bottom:8rem;background:#F0F0F0;font-size:1.250rem; height:auto;">
+  <form action="__MODULE__/Order/addorder" method="post" id="form">
+    <if condition="$delivery neq ''">
+      <div class="orderinfo_nav" style="padding-top:0.5rem;padding-bottom:0.5rem"> <a href="__MODULE__/Delivery/address" style="color:#999">
+        <dl>
+          <dd><img src="{$Think.const.HIMG_URL}dz.gif" alt=""/></dd>
+          <dt>收货人：{$delivery.consigner}<span>{$delivery.phone}</span>
+            <p style="padding-top:0.5rem">收货地址：{$delivery.dl_name}</p>
+          </dt>
+          <div style="clear: both"></div>
+        </dl>
+        </a> </div>
+      <else />
+      <div class="orderinfo_nav" style="padding-top:0.5rem;padding-bottom:0.5rem"> <a href="__MODULE__/Delivery/address" style="color:#999">
+        <dl>
+          <dd><img src="{$Think.const.HIMG_URL}dz.gif" alt=""/></dd>
+          <dt style="height:4rem;line-height:4rem;font-size:2rem">请选择收货地址</dt>
+          <div style="clear: both"></div>
+        </dl>
+        </a> </div>
+    </if>
+    <foreach name="orderList" item="orderinfo">
+      <div class="orderinfo_main">
+        <div class="orderinfo_main1">
+          <dl>
+            <dd><a href="{:U('Goods/detail',array('goods_id'=>$orderinfo['goodsinfo']['goods_id']))}"><img src="{$Think.const.SITE_URL}{$orderinfo.goodsinfo.mid_logo}" alt=""/></a></dd>
+            <dt>
+              <h2 style="width:65%;word-break : break-all;">{$orderinfo.goodsinfo.goods_name}<br />
+                {$orderinfo.spec}</h2>
+              <p style="width:30%;color:#DD0045">￥{$orderinfo.goodsinfo.price}<br>
+                <span></span><br/>
+                ×{$orderinfo.number}</p>
+              <!-- <div style="clear: both"></div>
+                    <span style='float:left;width:100%;'>{$Think.get.spec}</span> -->
+            </dt>
+            <div style="clear: both; padding-top:0.5rem;"></div>
+            <h3>运费<span style="color: #ccc">￥0.00</span></h3>
+            <h3>预付<span style="color: #DD0045">￥{$orderinfo.downpay}</span></h3>
+            <h3 style="color:#DD0045;font-size:2rem;font-weight:bolder">+</h3>
+            <h3>积分<span style="color: #DD0045;">{$orderinfo['score']}</span></h3>
+            <h3>实付款：<span><b>￥{$orderinfo.downpay}</b></span></h3>
+          </dl>
+        </div>
+      </div>
+      <input type="hidden" name="goods_id[]" value="{$orderinfo['goodsinfo']['goods_id']}" />
+      <input type="hidden" name="spec[]" value="{$orderinfo['spec']}" />
+      <input type="hidden" name="downpay[]" value="{$orderinfo['downpay']}" />
+      <input type="hidden" name="score[]" value="{$orderinfo['score']}" />
+      <input type="hidden" name="number[]" value="{$orderinfo['number']}" />
+      <input type="hidden" name="consigner[]" value="{$delivery['consigner']}" />
+      <input type="hidden" name="phone[]" value="{$delivery['phone']}" />
+      <input type="hidden" name="delivery[]" value="{$delivery['dl_name']}" />
+      <input type="hidden" name="goods_name[]" value="{$orderinfo['goodsinfo']['goods_name']}" />
+	  <input type="hidden" name="kucun[]" value="{$orderinfo['goodsinfo']['number']}" />
+    </foreach>
+    <div class="orderinfo_main2">
+      <h3 style="padding-left:0.5rem;padding-top:0.5rem">积分总计<span style="float:right;color: #DD0045;padding-right:0.5rem">{$total_sc}</span></h3>
+      <h3 style="padding-left:0.5rem">预付总计<span style="float:right;color: #DD0045;padding-right:0.5rem">￥{$total_my}</span></h3>
+    </div>
+    <div class="orderinfo_main2">
+      <ul>
+        <input type="hidden" name="total_my" value="{$total_my}" />
+        <input type="hidden" name="total_sc" value="{$total_sc}" />
+        <li>
+          <input id="suborder" type="button" value="提交订单" style="font-size: 1.400rem; background: url(/Public/Home/images/1.png) repeat; color: #ffffff; padding: 0 0.5rem; line-height: 2.5rem; border-radius: 0.500rem; border: 1px #DF0245 solid; "/>
+        </li>
+      </ul>
+      <div style="clear: both"></div>
+    </div>
+  </form>
+</section>
+<script type="text/javascript">
+        $(function(){
+			var flag = true;
+			$("#suborder").click(function(){
+				$("#suborder").attr('disabled',true);
+				if(($("input[name='delivery[]']").val() == '') || ($("input[name='phone[]']").val() == '')){
+					flag = false;
+					$("section").append("<div id='errormsg' style='display:none;position:absolute;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'请选择收货地址'+"</div>");
+
+                    $("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);$("#bsubmit").attr('disabled',true);setTimeout(function(){$("#errormsg").remove();$("#suborder").attr('disabled',false);},2000);
+					return false;
+				}
+				$.post("__MODULE__/Order/checkscore2",$("#form").serialize(),function(data){
+					if(data.error == 0){
+						$("#form").submit();
+					}else if(data.error == 1){
+					    flag = false;
+						$("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;padding-left:0.5rem;padding-right:0.5rem;top:12rem;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'积分不足请先充值'+"</div>");
+
+						$("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(2000);setTimeout(function(){$("#errormsg").remove();$("#suborder").attr('disabled',false);},3000);
+					}
+					if(data.error == 2){
+						$("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;padding-left:0.5rem;padding-right:0.5rem;top:12rem;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'库存不足'+"</div>");
+
+						$("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(2000);setTimeout(function(){$("#errormsg").remove();},3000);
+					}
+				},false);
+			})
+        })
+    </script>

@@ -1,0 +1,185 @@
+<style type="text/css">
+    body, html,#allmap {width: 100%;height: 100%;margin:0;font-family:"微软雅黑";font-size:14px;}
+    #l-map{height:500px;width:100%;}
+    #r-result{width:100%;}
+
+</style>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=frEjyig7HjiA4baxIrZNpxGGKPqaGWFl"></script>
+<foreach name="adinfofen" key="k" item="v">
+    <div class="su_banner"><a href="{$v.url}"><img src="{$Think.const.SITE_URL}{$v.pic}" /></a>  </div>
+</foreach>
+
+
+<div class="sideBar">
+    <div class="about fl">
+        <p class="about_tit fl">加入乐护</p><p class="about_yw fl">Join&nbsp;Le&nbsp;Armor</p>
+    </div>
+
+
+    <div class="about_zc fl">
+        <ul class="news_list_tit">
+            <li><a href="{:U('TeamAssess/showlist')}">服务团队</a></li>
+            <li><a href="{:U('TeamExpert/showlist')}">专家顾问团队</a></li>
+            <li><a href="{:U('TeamManage/showlist')}">管理团队</a></li>
+            <li class="current"><a href="{:U('Contact/showlist')}">联系我们</a></li>
+        </ul>
+
+        <div class="contact">
+            <p><span class="blue">乐护服务平台</span><br />
+                地　址：北京市朝阳区光华路甲8号和乔大厦C座806<br />
+                热　线：010-65811808/806<br />
+                工作日：09:00-18:00<br />
+                官　网：www.1lehu.com</p>
+            <p class="co_ditu fl">
+            <div id="l-map"></div>
+            <div id="r-result"></div>
+            </p>
+            <ul class="zxly fl">
+ <script language="JavaScript" type="text/javascript" src="{$Think.const.HJS_URL}FormValid.js"></script>
+                <script type="text/javascript">
+                    function customFuntion(inp,frms) {
+
+                        if (inp.value || frms['sj'].value) {
+                            return true;
+                        }
+                        return false;
+                    }
+                </script>
+                <form action="" method="post" enctype='multipart/form-data' onsubmit="return validator(this)">
+                    <h1 class='blue'>在线留言 </h1>
+                    <li><span class="fl fw">方便回访时间：</span>
+
+                        <label>
+                            <input type="radio" name="visit" value="0" checked="checked" />
+                            随时</label>
+
+                        <label>
+                            <input type="radio" name="visit" value="1" />
+                            上班时间</label>
+
+                        <label>
+                            <input type="radio" name="visit" value="2"  />
+                            下班时间</label>
+
+                        <label>
+                            <input type="radio" name="visit" value="3"  />
+                            周末</label>
+
+                    </li>
+                    <li><span class="fw">姓名：</span></li>
+                    <li><input name="name" id="xingming" class="kuang w150" type="text"/><em>*</em><label>
+                        <input type="radio" name="sex" value="0" checked="checked" />
+                        先生</label>
+
+                        <label>
+                            <input type="radio" name="sex" value="1" />
+                            女士</label>
+                    </li>
+                    <li><span class="fw">联系电话：</span></li>
+                    <li>
+                        <input name="iphone" id="iphone" class="kuang w204" type="text"/>
+                        <em>*</em>
+                    </li>
+                    <li><span class="fw">你的地址：</span></li>
+                    <li><input name="address" id="address" class="kuang w350" type="text" />
+                    </li>
+                    <li><span class="fw">留言咨询：</span></li>
+                    <li>
+                        <textarea name="content" id="content" class="kuang1 w350"></textarea>
+                    </li>
+
+                    <li ><span id="liuyan1" class="tj_an">
+                         <input id="bsubmit" type="submit"  value="" style="width:72px;height:27px;background:url('{$Think.const.HIMG_URL}tj_an.jpg');color: #ffffff"; />
+                        </span></li>
+                </form>
+            </ul>
+<script type="text/javascript">
+
+$(function(){
+    $('#bsubmit').click(function(){
+
+    var visit = $('input[name=visit]:checked').val();
+    var xingming = $('#xingming').val();
+    if(xingming == ''){
+        alert('姓名不能为空');
+        return false;
+    }
+
+    if(xingming.length>=4 && xingming.length<=2){
+    alert('请输入正确的姓名');
+     return flase;
+    }
+    var sex = $('input[name=sex]:checked').val();
+    var iphone = $('#iphone').val();
+     if(iphone == ''){
+        alert('手机号不能为空');
+        return false;
+    }
+    var reg=/^1[3458]\d{9}$/;
+
+    if(!reg.test(iphone)){
+
+    alert('手机号码格式不正确');
+
+     return false;
+
+    }
+
+    var address = $('#address').val();
+    var content = $('#content').val();
+
+
+    $.ajax({
+        url:"__MODULE__/Contact/liuYan",
+        data:{'visit':visit,'xingming':xingming,'sex':sex,'iphone':iphone,'address':address,'content':content},
+        dataType:'json',
+        type:'post',
+        success:function(data){
+
+            //console.log(data);
+            if(data.name && data.iphone !== 'empty'){
+                // var s = "<div id='bal_err_msg' style='position:relative;width:350px;height:20px;font-size:14px;color:#ff0000;z-index:999;left:50%;top:70%;margin-left:43px;margin-top:-17px'>感谢您的留言，客服会及时与您联系！</div>";
+                // //追加s变量到页面上
+                // $('#liuyan1').append(s);
+alert('感谢您的留言，客服会及时与您联系!');
+
+                $('input[name=visit]').val([0]);
+                $('input[name=sex]').val([0]);
+                $('#xingming').val('', false);
+                $('#iphone').val('', false);
+                $('#address').val('', false);
+                $('#content').val('', false);
+                setTimeout(function(){
+                    $('#bal_err_msg').remove();
+                }, 6000);
+           }
+
+        }
+        });
+
+    });
+
+});
+</script>
+
+ 
+
+
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    // 百度地图API功能
+    var sContent ="<h4 class='blue' style='margin:0 0 5px 0;padding:0.2em 0'>和乔大厦C座806</h4>" +
+    "<img style='float:right;margin:4px' id='imgDemo' src='http://lehu.ew9t.cn/Public/Home/images/ditu.png' width='139' height='104' title='和乔大厦C座806'/>" +
+    "<p style='margin:0;line-height:1.5;font-size:13px;text-indent:2em'>北京市朝阳区光华路甲8号和乔大厦C座806</p>" +
+    "</div>";
+    var map = new BMap.Map("l-map");
+    var point = new BMap.Point(116.478037,39.919096);
+    map.centerAndZoom(point, 15);
+    var infoWindow = new BMap.InfoWindow(sContent);  // 创建信息窗口对象
+    map.openInfoWindow(infoWindow,point); //开启信息窗口
+//    document.getElementById("r-result").innerHTML = "信息窗口的内容是：<br />" + infoWindow.getContent();
+</script>

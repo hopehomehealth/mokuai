@@ -1,0 +1,188 @@
+<style type="text/css">
+    .putong{display:inline-block;border:1px solid gray;color:gray;padding:1px;border-radius:2px}
+    .zhiding{border:1px solid #53f753;color:#53f753;}
+    .jiajing{border:1px solid orange;color:orange;}
+    .tuijian{border:1px solid orange;color:orange;}
+    .technorati li{float:left;}
+</style>
+<div class="main-content">
+    <div class="page-content">
+        <div class="row">
+            <div class="page-content box">
+                <div class="box-title margin_bot_20">
+                    <div class="span10">
+                        <h3><i class="icon-magic"></i>蓝海名家</h3>
+                    </div>
+                    <div align="right">
+                        <a href="{:U('Famous/adduser')}" class="btn btn-primary btn-sm"><i class="icon-plus"></i>添加人物</a>
+                    </div>
+                </div>
+                <form class="form-horizontal" method="get" action="__MODULE__/Famous/showlist">
+                  <div class="form-group">
+                    <label class="control-label" style="width:auto;line-height:28px;padding-top:0">人物名： </label>        
+                    <div class="controls pull-left">
+                      <input type="text" class="input-medium" name="search" value="{$Think.get.serach}">
+                      <button type="submit" class="btn btn-sm btn-primary">搜索</button>
+                    </div>
+                  </div>
+                </form>
+                <div class="breadcrumbs">
+                    <ul>
+                        <li class="active"> <a href="__MODULE__/Famous/showlist">名家讲坛</a> </li>
+                        <li> <a href="__MODULE__/Famous/man">蓝海人物</a> </li>
+                    </ul>
+                </div>
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th width="25px"></th>
+                        <th width="8%">姓名</th>
+                        <th width="8%">图像</th>
+                        <th width="8%">类型</th>
+                        <th width="8%">省份</th>
+                        <th width="8%">文章</th>
+                        <th width="8%">关注</th>
+                        <th width="8%">首页显示</th>
+                        <th width="8%">推荐</th>
+                        <th width="25%">操作</th>
+                    </tr></thead>
+                    <tbody>
+                    <form action="__MODULE__/Posts/dorecycle" method="post" id="batches">
+                    <foreach name="famous" item="info">
+                    <tr>
+                        <td><input type="checkbox" name="f_id[]" value="{$info.f_id}"></td>
+                        <td>{$info.f_name}</td>
+                        <td><div style="width:50px;display:inline-block;height:50px;overflow:hidden"><img style="width:50px;border-radius:50%" src="{$info.f_photo}"></div></td>
+                        <td>名家讲坛</td>
+                        <td>{$info.f_province}</td>
+                        <td>{$info.f_artnums}</td>
+                        <td>{$info.f_fans}</td>
+                        <td class="arttype">
+                            <if condition="$info.is_index eq 1"><span class="green">是</span></if><if condition="$info.is_index eq '0'"><span class="red">否</span></if>
+                        </td>
+                        <td class="arttype2">
+                            <if condition="$info.is_tuijian eq 1"><span class="green">是</span></if><if condition="$info.is_tuijian eq '0'"><span class="red">否</span></if>
+                        </td>
+                        <td>
+                            <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+                                <a class="green opart2" fid="{$info.f_id}" istuijian="{$info.is_tuijian}" href="javascript:void(0)"><if condition="$info.is_tuijian eq '0'"> 设为推荐<else /> 取消推荐</if></a>
+                                <a class="green opart" fid="{$info.f_id}" isindex="{$info.is_index}" href="javascript:void(0)"><if condition="$info.is_index eq '0'"> 首页显示<else /> 取消显示</if></a>
+                                <a href="__MODULE__/Famous/addslander/f_id/{$info.f_id}" class="green detail">&nbsp;发布文章</a>
+                                <a href="__MODULE__/Famous/upduser/f_id/{$info.f_id}" class="green detail"> <i class="icon-pencil bigger-130"></i>&nbsp;编辑</a>
+                                <a class="doremove" onclick="return false" href="__MODULE__/Famous/doremove/f_id/{$info.f_id}" style="color:red" class="red detail"> <i class="icon-remove bigger-130"></i>&nbsp;删除</a>
+                            </div>
+                        </td>
+                    </tr>
+                    </foreach>
+                    <tr>
+                        <input type="hidden" name="optype" value="">
+                        <td style="border-right:none"><input type="checkbox" name="all"></td><td style="text-align:left;border-left:none" colspan=9>全选&nbsp;&nbsp;&nbsp;&nbsp;<a class="batchestui" href="javascript:void(0)" optype="1">设为推荐</a>&nbsp;&nbsp;<a class="batchestui" href="javascript:void(0)" optype="0">取消推荐</a>&nbsp;&nbsp;<a class="batches" href="javascript:void(0)" optype="1">首页显示</a>&nbsp;&nbsp;<a class="batches" href="javascript:void(0)" optype="0">取消显示</a>&nbsp;&nbsp;<a class="batchesdel" href="javascript:void(0)">删除</a>&nbsp;&nbsp;(批量操作)</td>
+                    </tr>
+                    </form>
+                    </tbody>
+                </table>
+                <div class="technorati">{$page}</div>
+            </div>
+        </div>
+        <!--/.box-->
+    </div><!-- /.page-content -->
+</div><!-- /.main-content -->
+<script src='{$Think.const.JS_URL}jquery-2.1.3.min.js'></script>
+<script type="text/javascript">
+    $(function(){
+        //批量删除操作
+        $(".batchesdel").click(function(){
+            if($("input[name='f_id[]']:checked").length >= 1){
+                $("#batches").attr("action","__MODULE__/Famous/doremove");
+                $("#batches").submit();
+            }else{
+                alert('请选择操作对象');
+            }
+        })
+        //批量文章操作
+        $(".batches").click(function(){
+            var thisobj = $(this);
+            if($("input[name='f_id[]']:checked").length >= 1){
+                $("input[name='optype']").val(thisobj.attr('optype'));
+                $("#batches").attr("action","__MODULE__/Famous/isindex");
+                $("#batches").submit();
+            }else{
+                alert('请选择操作对象');
+            }
+        })
+        //批量推荐操作
+        $(".batchestui").click(function(){
+            var thisobj = $(this);
+            if($("input[name='f_id[]']:checked").length >= 1){
+                $("input[name='optype']").val(thisobj.attr('optype'));
+                $("#batches").attr("action","__MODULE__/Famous/istuijian");
+                $("#batches").submit();
+            }else{
+                alert('请选择操作对象');
+            }
+        })
+        //单个删除操作
+        $(".doremove").click(function(){
+            var thisobj = $(this);
+            if(confirm('确定要删除吗')){
+                $.get(thisobj.attr('href'),function(data){
+                    if(data.error == 0){
+                        thisobj.parent().parent().parent().remove();
+                        alert('成功删除一条数据');
+                    }
+                })
+            } 
+        })
+        //单个显示操作
+        $(".opart").click(function(){
+            var thisobj = $(this);
+            var f_id = $(this).attr('fid');
+            var is_index = $(this).attr('isindex');
+            //var sorttype = $(this).attr('sorttype');
+            $.get("__MODULE__/Famous/isindex",{'f_id':f_id,'is_index':is_index},function(data){
+                if(data.error == 0){
+                    if(data.type == 1){
+                        //取消操作
+                        thisobj.attr('isindex',1);
+                        thisobj.text('取消显示');
+                        thisobj.parent().parent().parent().children('.arttype').children('span').attr('class','').addClass('green').text('是');
+                    }else if(data.type == 2){
+                        thisobj.attr('isindex',0);
+                        thisobj.text('首页显示');
+                        thisobj.parent().parent().parent().children('.arttype').children('span').attr('class','').addClass('red').text('否');
+                    }     
+                }
+            })
+        })
+        //单个推荐操作
+        $(".opart2").click(function(){
+            var thisobj = $(this);
+            var f_id = $(this).attr('fid');
+            var istuijian = $(this).attr('istuijian');
+            //var sorttype = $(this).attr('sorttype');
+            $.get("__MODULE__/Famous/istuijian",{'f_id':f_id,'is_tuijian':istuijian},function(data){
+                if(data.error == 0){
+                    if(data.type == 1){
+                        //取消操作
+                        thisobj.attr('istuijian',1);
+                        thisobj.text('取消推荐');
+                        thisobj.parent().parent().parent().children('.arttype2').children('span').attr('class','').addClass('green').text('是');
+                    }else if(data.type == 2){
+                        thisobj.attr('istuijian',0);
+                        thisobj.text('设为推荐');
+                        thisobj.parent().parent().parent().children('.arttype2').children('span').attr('class','').addClass('red').text('否');
+                    }     
+                }
+            })
+        })
+        //全部选中取消选中操作
+        $("input[name='all']").click(function(){
+            var ischeck = $(this).prop('checked');
+            if(ischeck){
+                $("input[name='f_id[]']").prop('checked',true);
+            }else{
+                $("input[name='f_id[]']").prop('checked',false);
+            }
+        })
+    })
+</script>

@@ -1,0 +1,82 @@
+
+<div class="main-content">
+
+    <div class="page-content">
+        <div class="row">
+            <div class="page-content box">
+                <div class="box-title margin_bot_20">
+                    <div class="span10">
+                        <h3><i class="icon-magic"></i>权限修改</h3>
+                    </div>
+                </div>
+                <form action="__SELF__" method="post" enctype='multipart/form-data' class="form-horizontal">
+
+                    <input type='hidden' name='auth_id' value='{$info.auth_id}'/>
+                    <div class="form-group">
+                        <label class="control-label">权限名 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" class="input-large" name="auth_name" value="{$info.auth_name}">
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+                    <if condition="$info['auth_level'] eq 0">
+                        <div class="form-group">
+                            <label class="control-label">左侧栏排序 : </label>
+                            <div class="controls pull-left">
+                                <input type="text" class="input-large" name="auth_sort" value="{$info.auth_sort}">
+                                <span class="help-inline red"> * 请输入整数数字</span>
+                            </div>
+                        </div>
+                    </if>
+
+                    <if condition="$info['auth_level'] neq 0">
+                        <div class="form-group">
+                            <label class="control-label">控制器 : </label>
+                            <div class="controls pull-left">
+                                <input type="text" class="input-medium" name="auth_c" value="{$info.auth_c}">
+                                <span class="help-inline red"> * </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">操作方法 : </label>
+                            <div class="controls pull-left">
+                                <input type="text" class="input-medium" name="auth_a" value="{$info.auth_a}">
+                                <span class="help-inline red"> * </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">权限上级 : </label>
+                            <div class="controls pull-left">
+                                <select id='main_col' name='auth_pid'>
+                                    <option value='0'>-请选择-</option>
+                                    <foreach name='authinfo' item='v'>
+                                        <option value="{$v.auth_id}"
+                                        <eq name='info.now_pid' value='$v.auth_id'>selected='selected'</eq>
+                                        >{:str_repeat('--/',$v['auth_level'])}{$v.auth_name}</option>
+                                    </foreach>
+                                </select>
+                                <span class="help-inline red"> * 请选择顶级权限名称</span>
+                            </div>
+                        </div>
+                    </if>
+
+                    <div class="form-group">
+                        <label class="control-label">显示到菜单栏 : </label>
+                        <div class="controls pull-left">
+                            <label class="control-label">
+                            <label><input type="radio" name="is_menu" value="1" {$info['is_menu']?"checked":""}>&nbsp;&nbsp;是</label>&nbsp;&nbsp;&nbsp;&nbsp;<label><input type="radio" name="is_menu" value="0" {$info['is_menu']?"":"checked"}>&nbsp;&nbsp;否</label>
+                            </label>
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="control-label"></label>
+                        <button id="bsubmit" type="submit"  class="btn btn-sm btn-primary">保存</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--/.box-->
+    </div><!-- /.page-content -->
+</div><!-- /.main-content -->
+

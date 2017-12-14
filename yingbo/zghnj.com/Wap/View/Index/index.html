@@ -1,0 +1,97 @@
+<div class="main">
+    <!--*****banner*****-->
+    <div class="wwindexbanner swiper-container-horizontal">
+        <ul class="swiper-wrapper clearfix">
+            <foreach name="slides" item="slide">
+            <li class="swiper-slide"><a href="{$slide.url|default='#'}"> <img src="{$slide.picmobile|substr=###,1}" alt=""/></a></li>
+            </foreach>
+        </ul>
+        <div class="wwindexbannerbtn"></div>
+    </div>
+    <!--*****bannerend*****-->
+
+    <!--*****menu*****-->
+    <section class="menu">
+        <ul>
+            <li>
+                <foreach name="category" item="info">
+                    <if condition="$info.cat_id eq 1">
+                    <a href="__MODULE__/Technology/overview">
+                        <dl class="menu-list">
+                            <dt><img src="{$Think.const.WIMG_URL}jsqy.png" alt=""></dt>
+                            <dd>
+                                <h3>技术前沿</h3>高效 智能 环保
+                            </dd>
+                        </dl>
+                    </a>
+                    </if>
+                </foreach>
+                <foreach name="category" item="info">
+                    <if condition="$info.cat_id eq 8">
+                    <a href="__MODULE__/Develop/overview">
+                        <dl class="menu-list">
+                            <dt><img src="{$Think.const.WIMG_URL}cyfz.png" alt=""></dt>
+                            <dd>
+                                <h3>产业发展</h3>高效 智能 环保
+                            </dd>
+                        </dl>
+                    </a>
+                    </if>
+                </foreach>
+            </li>
+            <li>
+                <foreach name="category" item="info">
+                    <if condition="$info.cat_id eq 13">
+                    <a href="__MODULE__/Exhibition/product">
+                        <dl class="menu-list">
+                            <dt><img src="{$Think.const.WIMG_URL}cpfw.png" alt=""></dt>
+                            <dd>
+                                <h3>产品与服务</h3>高效 智能 环保
+                            </dd>
+                        </dl>
+                    </a>
+                    </if>
+                </foreach>
+                <foreach name="category" item="info">
+                    <if condition="$info.cat_id eq 21">
+                    <a href="{$info.href|default='#'}">
+                        <dl class="menu-list">
+                            <dt><img src="{$Think.const.WIMG_URL}shop.png" alt=""></dt>
+                            <dd>
+                                <h3>网上商城</h3>高效 智能 环保
+                            </dd>
+                        </dl>
+                    </a>
+                    </if>
+                </foreach>
+            </li>
+            <li>
+                <foreach name="category" item="info">
+                    <if condition="$info.cat_id eq 18">
+                    <a href="__MODULE__/Communicate/knowledge">
+                        <dl class="menu-list">
+                            <dt><img src="{$Think.const.WIMG_URL}jlkj.png" alt=""></dt>
+                            <dd>
+                                <h3>交流空间</h3>高效 智能 环保
+                            </dd>
+                        </dl>
+                    </a>
+                    </if>
+                </foreach>
+                <foreach name="category" item="info">
+                    <if condition="$info.cat_id eq 5">
+                    <a href="__MODULE__/News/industries">
+                        <dl class="menu-list">
+                            <dt><img src="{$Think.const.WIMG_URL}news.png" alt=""></dt>
+                            <dd>
+                                <h3>新闻资讯</h3>高效 智能 环保
+                            </dd>
+                        </dl>
+                    </a>
+                    </if>
+                </foreach>
+            </li>
+        </ul>
+    </section>
+    <!--*****menuend*****-->
+</div>

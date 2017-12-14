@@ -1,0 +1,33 @@
+<!--*****header*****-->
+<div class="main">
+    <!--*****banner*****-->
+    <div class="su-banner">
+        <foreach name="slides" item="slide">
+            <img src="{$slide.picmobile|substr=###,1}" alt="">
+        </foreach>
+    </div>
+    <!--*****bannerend*****-->
+
+    <!--*****menu*****-->
+    <section class="su-menu b-white">
+        <ul>
+            <li><a>　　　　</a></li>
+            <li class="cur"><a>快速检验</a></li>
+            <li><a>　　　　</a></li>
+        </ul>
+    </section>
+    <!--*****menuend*****-->
+    <!--*****su-con*****-->
+    <section class="su-con">
+        <div class="su-fron">
+            <div class="su-news-fina">
+                <h1>{$detail.title}</h1>
+                <p class="su-news-rq">{$detail.upd_time|date="Y年m月d日 H:i",###} {$author}</p>
+            </div>
+            {$detail.content}
+        </div>
+
+    </section>
+
+    <!--*****su-conend*****-->
+</div>

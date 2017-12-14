@@ -1,0 +1,26 @@
+<foreach name="adinfofen" key="k" item="v">
+    <div class="su_banner"><a href="{$v.url}"><img src="{$Think.const.SITE_URL}{$v.pic}" /></a>  </div>
+</foreach>
+
+<div class="sideBar">
+    <div class="about fl">
+        <p class="about_tit fl">医学知识</p><p class="about_yw fl">Medical&nbsp;Knowledge</p>
+    </div>
+    <div class="about_zc fl">
+        <ul class="news_list_tit">
+            <li class="current"><a href="{:U('Medical/showlist')}">护理健康知识</a></li>
+        </ul>
+        <div class="news_list_cn fl">
+            <h1>{$medicalinfo.title}<br /><span>{$medicalinfo.input_time|date='Y-m-d H:i:s',###}</span></h1>
+            <p>{$medicalinfo.content}</p>
+
+        </div>
+        <div class="about_zc fl">
+<span class="tra_c_f">上一篇：
+    <a href="{:U('Medical/med_list',array('medical_id'=>$preshow['medical_id']))}">{$preshow['title']}</a></span><br />
+<span class="tra_c_f">下一篇：
+    <a href="{:U('Medical/med_list',array('medical_id'=>$nextshow['medical_id']))}">{$nextshow['title']}</a></span>
+        </div>
+    </div>
+</div>
+

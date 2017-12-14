@@ -1,0 +1,88 @@
+{__NOLAYOUT__}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>新农缘天下商城</title>
+    <link href="{$Think.const.HCSS_URL}basic.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="{$Think.const.HCSS_URL}personal-reset.css" />
+    <link rel="stylesheet" href="{$Think.const.HCSS_URL}swiper.min.css"/>
+    <script src="{$Think.const.HJS_URL}jquery-1.8.2.min.js"></script>
+    <meta charset="utf-8">
+    <style>
+.banner { width: 100%; overflow: hidden; position: relative;}
+.banner img { width: 100%; }
+.fund_nav { width: 100%; background: #fff; }
+.fund_nav h2 { width: 100%; border-bottom: 0.1rem solid #000000; line-height: 2rem; text-align: center; }
+.lb_tche { width: 100%; margin: 0 auto; }
+.lb_tche tr { width: 100%; }
+.lb_tche td { border-bottom: 1px solid #D6D7DC; color: #888; line-height: 1rem; text-align: center; padding: 3% 0; border-right:1px solid #D6D7DC; }
+.lb_tche td:last-child{border-right: none;}
+
+.dj_xhk { width: 7rem; padding: 0.500rem 0 0.250rem; background: rgba(0,0,0,0.6); font-size: 0.900rem; margin-right: 0.500rem; border-radius: 0.2rem; -webkit-border-radius: 0.2rem; position: absolute; right: 0rem; display: none; z-index: 20; }
+.dj_xhk li { width: 100%; float: left; border-bottom: 1px #CCC solid; line-height: 2.200rem; color: #FFF; }
+.dj_xhk li:last-child { border-bottom: none; }
+.dj_xhk li a { color: #FFF; padding: 0rem 0.500rem; display: block; }
+.dj_xhk li a:hover { color: #dd0045; background: #fff; }
+.arrow-up { width: 0; height: 0; border-left: 0.500rem solid transparent; border-right: 0.500rem solid transparent; border-bottom: 0.500rem solid #000; position: absolute; right: 1rem; top: -0.500rem; z-index: 21; }
+.head_back1 { height: 3.200rem; width: 3.500rem; float: left; background: url("{$Think.const.HIMG_URL}z_sjx1.png") no-repeat center; background-size: 0.800rem 1.300rem; text-align: center; color: #FFF; font-size: 1.300rem; padding-top: 1.2rem; display: block; }
+.head_back2 { height: 3.200rem; width: 3.500rem; float: right; background: url("{$Think.const.HIMG_URL}dian.gif") no-repeat center; background-size: 1.300rem 2.200rem; text-align: center; color: #FFF; font-size: 1.300rem; padding-top: 1.2rem; display: block; position: relative; }
+.lb_tche td { font-size: 0.8rem; }
+</style>
+    </head>
+    <body>
+    <div class="container">
+      <header><a class="head_back1" href="Javascript:window.history.go(-1)">&nbsp;</a>
+    <div class="headTit">慈善基金</div>
+    <a class="head_back2">&nbsp;</a> </header>
+      <ul class="dj_xhk fr">
+        <p class="arrow-up fl"></p>
+        <li><a href="{:U('Index/index')}">首页</a></li>
+      </ul>
+      <script type="text/javascript">
+        $(".head_back2").click(function(){
+            $(".dj_xhk").slideToggle("1000");
+        });
+    </script>
+      <section>
+        <div class="banner">
+          <ul class="swiper-wrapper">
+            <foreach name="cishaninfo" item="v">
+              <li class="swiper-slide"> <img src="{$Think.const.SITE_URL}{$v.big_logo}"> </li>
+            </foreach>
+          </ul>
+          <div class="swiper-pagination"></div>
+        </div>
+        <div class="fund_nav">
+          <h2 style="font-size: 1rem;">捐赠记录</h2>
+          <table class="lb_tche" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td style="width: 18%; font-size: 0.7rem;">捐款人</td>
+              <td style="width: 25%; font-size: 0.7rem;">提车时间</td>
+              <td style="width: 34%; font-size: 0.7rem;">提车名称</td>
+              <td style="width: 23%; font-size: 0.7rem;">捐款金额</td>
+            </tr>
+            <foreach name="info" item="v">
+              <tr>
+                <td style="width: 18%;">{$v.customer}</td>
+                <td style="width: 25%;">{$v.taketime|date='Y-m-d',###} </td>
+                <td style="width: 34%;">{$v.goods_name}</td>
+                <td style="width: 23%;">￥{$v.money}</td>
+              </tr>
+            </foreach>
+          </table>
+        </div>
+        
+      </section>
+    </div>
+</body>
+    <script src="{$Think.const.HJS_URL}iscroll4.js"></script>
+    <script src="{$Think.const.HJS_URL}swiper.min.js"></script>
+    <script src="{$Think.const.HJS_URL}jquery-1.8.2.min.js"></script>
+    <script src="{$Think.const.HJS_URL}lunbo.js"></script>
+</html>

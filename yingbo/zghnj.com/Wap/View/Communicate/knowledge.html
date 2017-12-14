@@ -1,0 +1,81 @@
+<!--*****header*****-->
+<div class="main">
+    <!--*****banner*****-->
+    <div class="su-banner">
+        <foreach name="slides" item="slide">
+            <img src="{$slide.picmobile|substr=###,1}" alt="">
+        </foreach>
+    </div>
+    <!--*****bannerend*****-->
+
+    <!--*****menu*****-->
+    <section class="su-menu b-white">
+        <ul>
+            <foreach name="category" item="cateinfo">
+                <li <if condition="ACTION_NAME eq $cateinfo['action']">class="cur"</if>><a href="__MODULE__/{$cateinfo['ctrl']}/{$cateinfo['action']}">{$cateinfo.cat_name}</a></li>
+            </foreach>
+        </ul>
+    </section>
+    <!--*****menuend*****-->
+    <!--*****su-con*****-->
+    <section class="su-case">
+      <ul class="su-exch" id="scrollloading" data-scrollstatus="false" data-end="false">
+        <foreach name="news" item="info">
+          <li>
+              <div class="su-exch-tit c-lgrey">
+                  <h3>{$info.title}</h3>
+                  <span class="su-exch-rq">{$info.upd_time|date="Y-m-d H:i:s",###}</span>
+              </div>
+              <span class="su-news-more mt0 fr b-bule"><a href="__MODULE__/Communicate/detail/id/{$info.news_id}">查看详情</a></span>
+          </li>
+        </foreach> 
+      </ul>
+
+    </section>
+    <!--*****su-conend*****-->
+</div>
+<script type="text/javascript">
+  function scrollLoading(scrollloading,nowpage){
+    $.get("__MODULE__/Communicate/knowledge/p/"+nowpage,function(data){
+      $("#loading").remove();
+      if(data.error == 0){
+        var html = '';
+        for(var i in data.content){
+            html += '\
+              <li>\
+                  <div class="su-exch-tit c-lgrey">\
+                      <h3>'+data.content[i].title+'</h3>\
+                      <span class="su-exch-rq">'+data.content[i].upd_time+'</span>\
+                  </div>\
+                  <span class="su-news-more mt0 fr b-bule"><a href="__MODULE__/Communicate/detail/id/'+data.content[i].news_id+'">查看详情</a></span>\
+              </li>\
+            ';
+        }
+        scrollloading.append(html);
+      }else{
+        scrollloading.data('end',true);
+      }
+      scrollloading.data('scrollstatus',false);
+    });
+  }
+  $(function(){
+    var scrollloading = $("#scrollloading");//放数据的容器
+    var scrollstatus = false;
+    var nowpage = 1;
+    $(".container").scroll(function () {
+      var scrollTop = $(this)[0].scrollTop;
+      var scrollHeight = $(this)[0].scrollHeight;
+      var windowHeight = $(this).height();
+      var scrollstatus = scrollloading.data('scrollstatus');
+      var end = scrollloading.data('end');
+      if ((scrollTop + windowHeight >= scrollHeight - 10) && !scrollstatus && !end) {
+        scrollloading.data('scrollstatus',true);
+        nowpage++;
+        scrollloading.append('<div id="loading" style="float:left;width:100%;height:0.8rem;color:#666;line-height:0.8rem;font-size:0.28rem;text-align:center">数据加载中...</div>');
+        setTimeout(function(){
+            scrollLoading(scrollloading,nowpage);
+        },1000);
+      }
+    });
+  });
+</script>

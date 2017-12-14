@@ -1,0 +1,44 @@
+<link href="{$Think.const.HCSS_URL}mypage.css" rel="stylesheet" type="text/css"/>
+
+<foreach name="adinfofen" key="k" item="v">
+    <div class="su_banner"><a href="{$v.url}"><img src="{$Think.const.SITE_URL}{$v.pic}" /></a>  </div>
+</foreach>
+
+
+<div class="sideBar">
+    <div class="about fl">
+        <p class="about_tit fl">乐护培训</p><p class="about_yw fl">Music&nbsp;Nursing&nbsp;Training</p>
+    </div>
+    <div class="about_zc fl">
+        <ul class="news_list_tit">
+            <li class="current"><a href="{:U('Train/showlist')}">乐护培训</a></li>
+        </ul>
+
+        <ul class="train fl">
+
+            <li id="bbn">
+                <foreach name="info" key="k" item="v">
+                <div class="tra_pic fl">
+                    <p class="tra_txt fl"><a href="{:U('Train/train_list',array('train_id'=>$v['train_id']))}">{$v.china}</a></p>
+                    <p class="tra_js fl"><a href="{:U('Train/train_list',array('train_id'=>$v['train_id']))}">{$v.content|strip_tags|mb_substr=###,27,75,'utf-8'}...</a></p>
+                    <p class="tra_yw fl"><a href="{:U('Train/train_list',array('train_id'=>$v['train_id']))}">{$v.english}</a></p>
+                    <p class="tra_tu fl"><a href="{:U('Train/train_list',array('train_id'=>$v['train_id']))}"><img src="{$Think.const.SITE_URL}{$v.pic}" width="200" height="100"/></a></p>
+                </div>
+                </foreach>
+            </li>
+        </ul>
+
+        <table width="600" align="center">
+            <tr class="content" align="center">
+                <!--<td colspan="3" bgcolor="#FFFFFF">&nbsp;{$page}</td>-->
+                <td colspan="3" bgcolor="#FFFFFF" align="center"><div class="pages" align="center">
+                    {$page}
+                </div></td>
+            </tr>
+        </table>
+
+
+
+
+    </div>
+</div>

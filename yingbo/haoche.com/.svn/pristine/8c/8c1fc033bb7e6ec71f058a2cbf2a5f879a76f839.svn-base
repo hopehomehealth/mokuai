@@ -1,0 +1,83 @@
+       <div class="main-content">
+          <div class="page-content">
+            <div class="row">
+              <div class="page-content box">
+              	<div class="box-title margin_bot_20">
+                  	<div class="span10">
+                   		<h3><i class="icon-cogs"></i>代理申请 </h3>
+                  	</div>
+                </div>
+                  <!-- <div class="margin_bot_20">
+                      <a href="#" class="btn btn-primary btn-sm"><i class="icon-plus"></i>添加管理员</a>
+
+                  </div> -->
+                <div class="tableHead">
+                    <table class="table table_img table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th style="width:5%;">编号</th>
+                                <th style="width:5%;">头像</th>
+                                <th style="width:5%;">昵称</th>
+                                <th style="width:5%;">意向项目</th>
+								<th style="width:5%;">支付方式</th>
+                                <th style="width:5%;">支付状态</th>
+								<th style="width:5%;">转账截图</th>
+                                <th style="width:5%;">操作</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div id="table_hy">
+                    <foreach name="aplaylist" item="info">
+                    <table class="table table_img table-striped table-bordered  table-hover">
+                        <tr>
+                            <td style="width:5%;">{$firstno++}</td>
+                            <td style="width:5%;">
+                                <img style="border-radius:50%" src="{$info.userhead}" width="50px" hieght="50px">
+                            </td>
+                            <td style="width:5%;">{$info.nikename}</td>
+                            <td style="width:5%;">{$info.project}</td>
+							<td style="width:5%;"><if condition="$info.picscreen neq ''">线下支付<else />微信在线支付</if></td>
+                            <td style="width:5%;">{$info['status']?"<p class='green'>已支付</p>":"<p class='red'>未支付</p>"}</td>
+							<td style="width:5%;"><if condition="$info.picscreen neq ''"><a onclick="javascript:img('/Public/{$info['picscreen']}')" href="#" class="green">查看截图</a></if><if condition="$info.picscreen eq ''"><span style="color:#ccc">无</span></if></td>
+                            <td style="width:5%;"><if condition="$info.status eq '0'"><a onclick="return confirm('确认执行操作吗')" class="green" href="__MODULE__/User/checkout/agentid/{$info.agentid}">确认支付</a><else /><span style="color:#ccc">确认支付</span></if></td>
+                        </tr>
+
+                    </table>
+                    </foreach>
+                </div>
+
+                <div class="technorati">{$page}<div/>
+              </div>
+            </div>
+            <!--/.box-->
+          </div><!-- /.page-content -->
+        </div><!-- /.main-content -->
+        <script type="text/javascript">
+            function img(message){
+              var img = ['<div class="modal fade" id="img" style="overflow: visible;">',
+                                    '<div class="modal-dialog modal-sm">',
+                                      '<div class="modal-content">',
+                                        '<div class="modal-header border_bot detail_header border" style="padding:0">',
+                                    '<h4 class="modal-title" id="mySmallModalLabel">',
+                                    '<img src="'+message+'">',
+                                '</h4>',
+                                '</div>',
+                                /*'<div class="modal-body detail_sm">',
+                                    '<button type="button" class="btn btn-sm btn-default"  id="cancel_img">取消</button>',
+                                        '<button type="button" class="btn btn-sm btn-primary">确定</button>',
+                                '</div>',*/
+                                      '</div>',
+                                    '</div>',
+                                '</div>'].join('\n');
+              $("body").append(img);
+              $('#img').modal()
+              $(".modal-backdrop").live("click",function(){
+                alert(1)
+                $('#img,.modal-backdrop').removeClass("in");
+                setTimeout(function(){
+                  $(".modal-backdrop,#img").remove();
+                  },100);
+              })
+            }
+        </script>

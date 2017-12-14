@@ -1,0 +1,259 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equivmetahttp-equiv="x-ua-compatible"content="IE=7"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta content="北京蓝海长青规划设计研究有限公司,蓝海资讯,蓝海头条,军民融合,长青论坛" name="keywords"/>
+    <meta content="北京蓝海长青规划设计研究有限公司，是一家以军事和安全为主，涉及经济、科技、国际战略、管理科学、社会发展、政策研究等领域的商业化新型高端智库，也是一家军民融合产业发展规划设计、建设运营、战略投资、顾问管理公司。" name="description"/>
+    <title>{$title}</title>
+<!-- <base target="_blank"/> -->
+    <link href="{$Think.const.HCSS_URL}basic.css" rel="stylesheet" type="text/css"/>
+    <link href="{$Think.const.HCSS_URL}style.css" rel="stylesheet" type="text/css"/>
+    <script type="text/jscript" src="{$Think.const.HJS_URL}jquery-1.8.3.min.js"></script>
+    <script type="text/jscript" src="{$Think.const.HJS_URL}banner.js"></script>
+   <script type="text/javascript">
+try {
+var urlhash = window.location.hash;
+var url= "{:U('Mobile/Index/index')}";
+
+if (!urlhash.match("fromapp"))
+{
+if ((navigator.userAgent.match(/(iPhone|iPod|Android|ios|iPad)/i)))
+{
+
+window.location=url;
+}
+}
+}
+catch(err)
+{
+}</script>
+
+
+</head>
+<body>
+<!--header-->
+<div class="header">
+    <div class="column-c">
+        <p class="header-hy fl">蓝海长青—强军梦  中国梦</p>
+        <ul class="header-m fr">
+            <li><a href="">收藏本站</a></li>
+            <li><a href="">设为首页</a></li>
+        </ul>
+    </div>
+</div>
+<div class="column-c">
+    <p class="logo fl"><a href="{:U('Index/index')}"><img src="{$Think.const.HIMG_URL}images_03.jpg" alt="蓝海长青" /></a></p>
+    <form action="__MODULE__/News/searchlist" method="post">
+        <div class="search fr">
+            <p class="search_tp" > <input id="search" name="search" class="search_k fl" type="text" placeholder="请输入您要搜索的内容" />
+            <button type="submit" id="shou" class="search-an"></button></p>
+
+
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+
+$(function(){
+    $('#shou').click(function(){
+    var name = $('#search').val();
+    if(name == ''){
+        alert('搜索内容不能为空');
+        return false;
+    }
+    });
+
+});
+</script>
+
+<!--header-->
+<!--menu-->
+<div class="menu">
+    <ul class="menu_nr">
+        <li <if condition="CONTROLLER_NAME == Index">class="cur"</if>><a href="{:U('Index/index')}">{$shouye[0]['lan_title']}</a></li>
+        <li <if condition="(ACTION_NAME == gongsijianjie) OR (ACTION_NAME == qiyejingshen) OR (ACTION_NAME == yewufanwei) OR (ACTION_NAME == zuzhijiagou) OR (ACTION_NAME == zhuanjiaduiwu) OR (ACTION_NAME == rencaizhaopin)">class="cur"</if>><a href="{:U('News/gongsijianjie')}">{$guanyu1[0]['lan_title']}</a>
+            <div class="childnavin">
+                <img src="{$Think.const.HIMG_URL}images_01.png" />
+<foreach name="guanyu2" item="v">
+				<if condition="($v.url eq '') AND ($v.lan_id eq 10)">
+<a href="{:U('News/gongsijianjie',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a>
+				<elseif condition="($v.url eq '') AND ($v.lan_id eq 11)"/>
+<a href="{:U('News/qiyejingshen',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a>
+				<elseif condition="($v.url eq '') AND ($v.lan_id eq 12)"/>
+<a href="{:U('News/yewufanwei',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a>
+				<elseif condition="($v.url eq '') AND ($v.lan_id eq 13)"/>
+<a href="{:U('News/zuzhijiagou',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a>
+				<elseif condition="($v.url eq '') AND ($v.lan_id eq 14)"/>
+<a href="{:U('News/zhuanjiaduiwu',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a>
+				<elseif condition="($v.url eq '') AND ($v.lan_id eq 15)"/>
+<a href="{:U('News/rencaizhaopin',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a>
+				<elseif condition="($v.url eq '') AND ($v.lan_id gt 40)"/>
+<a href="{:U('News/newslist',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a>
+<elseif condition="$v['url'] neq ''"/>
+<a href="{$v.url}">{$v.lan_title}</a>
+</if>
+				</foreach>
+
+
+
+
+            </div>
+        </li>
+        <li <if condition="(CONTROLLER_NAME == News) AND ($lan_id eq 3)">class="cur"</if>><a href="{:U('News/newslist',array('lan_id'=>3))}">{$toutiao1[0]['lan_title']}</a></li>
+        <li <if condition="(ACTION_NAME == lanhaizixun) OR ($lan_id eq 4) OR ($lan_id eq 18) OR ($lan_id eq 19) OR ($lan_id eq 20) OR ($lan_id eq 21) OR ($lan_id eq 22) OR ($lan_id eq 23)">class="cur"</if>>            <a href="{:U('News/lanhaizixun')}">{$lanhaizixun1[0]['lan_title']}</a>
+            <div class="childnavin">
+                <img src="{$Think.const.HIMG_URL}images_01.png" />
+ <foreach name="lanhaizixun2" item="v">
+                <if condition="$v.url eq ''">
+<a href="{:U('News/newslist',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a>
+<elseif condition="$v['url'] neq ''"/>
+<a href="{$v.url}">{$v.lan_title}</a>
+</if>
+                </foreach>
+                </div>
+        </li>
+        <li <if condition="(ACTION_NAME == junminronghe) OR ($lan_id eq 5) OR ($lan_id eq 24) OR ($lan_id eq 25) OR ($lan_id eq 26) OR ($lan_id eq 27) OR ($lan_id eq 28)">class="cur"</if>><a href="{:U('News/junminronghe')}">{$junminronghe1[0]['lan_title']}</a>
+            <div class="childnavin">
+                <img src="{$Think.const.HIMG_URL}images_01.png" />
+    <foreach name="junminronghe2" item="v">
+                <if condition="$v.url eq ''">
+<a href="{:U('News/newslist',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a>
+<elseif condition="$v['url'] neq ''"/>
+<a href="{$v.url}">{$v.lan_title}</a>
+</if>
+                </foreach>
+
+
+                </div>
+        </li>
+        <li <if condition="(ACTION_NAME == zixunfuwu) OR ($lan_id eq 6) OR ($lan_id eq 29) OR ($lan_id eq 30) OR ($lan_id eq 31) OR ($lan_id eq 32) OR ($lan_id eq 33)  OR ($lan_id eq 38) OR (CONTROLLER_NAME == Tushu) OR (CONTROLLER_NAME == Advice)">class="cur"</if>><a href="{:U('News/zixunfuwu')}">{$zixunfuwu1[0]['lan_title']}</a>
+            <div class="childnavin">
+                <img src="{$Think.const.HIMG_URL}images_01.png" />
+                    <foreach name="zixunfuwu2" item="v">
+                <if condition="($v.url eq '') AND ($v.lan_id eq 29)">
+<a href="{:U('News/newslist',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a>
+<elseif condition="($v['url'] eq '') AND ($v.lan_id eq 30)"/>
+<a href="{:U('News/newslist',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a>
+<elseif condition="($v['url'] eq '') AND ($v.lan_id eq 31)"/>
+<a href="{:U('Fagui/falvfagui',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a>
+<elseif condition="($v['url'] eq '') AND ($v.lan_id eq 32)"/>
+<a href="{:U('News/newslist',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a>
+<elseif condition="($v['url'] eq '') AND ($v.lan_id eq 38)"/>
+<a href="{:U('Tushu/tushulist',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a>
+<elseif condition="($v['url'] eq '') AND ($v.lan_id eq 33)"/>
+<a href="{:U('Advice/showlist',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a>
+<elseif condition="($v['url'] eq '') AND ($v.lan_id gt 40)"/>
+<a href="{:U('News/newslist',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a>
+<elseif condition="$v['url'] neq ''"/>
+<a href="{$v.url}">{$v.lan_title}</a>
+</if>
+                </foreach></div>
+        </li>
+        <li <if condition="(CONTROLLER_NAME == 'Bbs') OR (CONTROLLER_NAME == 'Blog') OR (CONTROLLER_NAME == 'Posts') OR (CONTROLLER_NAME == 'Famous')">class="cur"</if>><a href="{:U('Bbs/index',array('lan_id'=>7))}">{$changqingluntan1[0]['lan_title']}</a>
+            <div class="childnavin">
+                <img src="{$Think.const.HIMG_URL}images_01.png" />
+    <foreach name="changqingluntan2" item="v">
+                <if condition="($v.url eq '') AND ($v.lan_id eq 34)">
+<a href="{:U('Blog/index',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a>
+<elseif condition="($v['url'] eq '') AND ($v.lan_id eq 35)"/>
+<a href="{:U('Posts/postlist',array('lan_id'=>35))}">{$v.lan_title}</a>
+<elseif condition="($v['url'] eq '') AND ($v.lan_id eq 36)"/>
+<a href="{:U('Famous/famousbbs',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a>
+<elseif condition="($v['url'] eq '') AND ($v.lan_id eq 37)"/>
+<a href="{:U('Famous/character',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a>
+<elseif condition="($v['url'] eq '') AND ($v.lan_id gt 40)"/>
+<a href="{:U('News/newslist',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a>
+<elseif condition="$v['url'] neq ''"/>
+<a href="{$v.url}">{$v.lan_title}</a>
+</if>
+                </foreach>
+
+
+            </div>
+        </li>
+        <li <if condition="$lan_id eq 8">class="cur"</if>><a href="{:U('News/newslist',array('lan_id'=>8))}">{$gongyi[0]['lan_title']}</a></li>
+        <li id="zuih" <if condition="$lan_id eq 9">class="cur"</if>><a href="{:U('News/newslist',array('lan_id'=>9))}">{$lanhaifabu[0]['lan_title']}</a></li>
+    </ul>
+</div>
+<!--menu-->
+
+{__CONTENT__}
+
+<!--footer-->
+<div class="footer">
+    <div class="column-c">
+        <p class="rwm fl"><img src="{$Think.const.HIMG_URL}images_109.jpg" alt="二维码" /></p>
+        <div class="fr w848">
+            <ul class="subnav fl w285">
+                <p class="subnav_t fl">{$lanhaizixun1[0]['lan_title']}</p>
+				 <foreach name="lanhaizixun3" item="v">
+                <if condition="$v.url eq ''">
+<li><a href="{:U('News/newslist',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+<elseif condition="$v['url'] neq ''"/>
+<li><a href="{$v.url}">{$v.lan_title}</a></li>
+</if>
+                </foreach>
+
+            </ul>
+            <ul class="subnav fl w285">
+                <p class="subnav_t fl">{$guanyu1[0]['lan_title']}</p>
+             <foreach name="guanyu3" item="v">
+				<if condition="($v.url eq '') AND ($v.lan_id eq 10)">
+<li><a href="{:U('News/gongsijianjie',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+				<elseif condition="($v.url eq '') AND ($v.lan_id eq 11)"/>
+<li><a href="{:U('News/qiyejingshen',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+				<elseif condition="($v.url eq '') AND ($v.lan_id eq 12)"/>
+<li><a href="{:U('News/yewufanwei',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+				<elseif condition="($v.url eq '') AND ($v.lan_id eq 13)"/>
+<li><a href="{:U('News/zuzhijiagou',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+				<elseif condition="($v.url eq '') AND ($v.lan_id eq 14)"/>
+<li><a href="{:U('News/zhuanjiaduiwu',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+				<elseif condition="($v.url eq '') AND ($v.lan_id eq 15)"/>
+<li><a href="{:U('News/rencaizhaopin',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+				<elseif condition="($v.url eq '') AND ($v.lan_id gt 40)"/>
+<li><a href="{:U('News/newslist',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+<elseif condition="$v['url'] neq ''"/>
+<li><a href="{$v.url}">{$v.lan_title}</a></li>
+</if>
+				</foreach>
+            </ul>
+            <ul class="subnav fl w190" id="br-n">
+                <p class="subnav_t fl">{$changqingluntan1[0]['lan_title']}</p>
+
+				    <foreach name="changqingluntan3" item="v">
+                <if condition="($v.url eq '') AND ($v.lan_id eq 34)">
+<li><a href="{:U('Blog/index',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+<elseif condition="($v['url'] eq '') AND ($v.lan_id eq 35)"/>
+<li><a href="{:U('Posts/postlist',array('lan_id'=>35))}">{$v.lan_title}</a></li>
+<elseif condition="($v['url'] eq '') AND ($v.lan_id eq 36)"/>
+<li><a href="{:U('Famous/famousbbs',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+<elseif condition="($v['url'] eq '') AND ($v.lan_id eq 37)"/>
+<li><a href="{:U('Famous/character',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+<elseif condition="($v['url'] eq '') AND ($v.lan_id gt 40)"/>
+<li><a href="{:U('News/newslist',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+<elseif condition="$v['url'] neq ''"/>
+<li><a href="{$v.url}">{$v.lan_title}</a></li>
+</if>
+                </foreach>
+
+            </ul>
+            <p class="copyright fl">Copyright © 2016 {$Think.const.SITE_URL|substr=###,7,50} All Rights Reserved. 蓝海长青 版权所有<br />
+                京ICP备16050700号-1</p>
+        </div>
+    </div>
+</div>
+<div class="izl-rmenu">
+    <a class="consult" target="_blank"><div class="phone" style="display:none;">联系电话：{$webphone}</div></a>
+    <a class="cart"><div class="pic"></div></a>
+    <a href="javascript:void(0)" class="btn_top" style="display: block;"></a>
+</div>
+<!--footer-->
+<script src="{$Think.const.HJS_URL}jquery.hiSlider.min.js"></script>
+<script>
+	$('.hiSlider1').hiSlider();
+</script>
+<script type="text/jscript" src="{$Think.const.HJS_URL}index.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<div class="main">
+  <section>
+    <div class="navbj fl pb0">
+      <dl class="bec-t fl">
+        <dt><img src="{$userinfo.userhead}"></dt>
+        <dd>{$userinfo.nikename}
+          <p class="my_dltq mt0-5">{$userinfo.id_sn}</p>
+        </dd>
+      </dl>
+    </div>
+  </section>
+  <section>
+    <div class="navbj fl pb0 b_n mt0">
+      <form action="" method="get">
+        <ul class="bec-list fl pb2">
+          <li>真实姓名<span class="fr">{$userinfo.nikename}</span> </li>
+          <li>手机号 <span class="fr">{$userinfo.reg_phone}</span> </li>
+          <li>所在地 <span class="fr w80">{$userinfo.area}</span> </li>
+          <!-- <li><span>标注会员</span>
+            <textarea name="" class="mess-k w75 fr h-5" placeholder="可根据交易情况对会员做相应注释。例如：潜力会员。（字数在4-20个,会员管理页面最多显示6个字符。）"></textarea>
+            <p class="fr tar w100 lh1_8"><a class="pr2" style="color: #dd0045;" href="">编辑</a><a href="">完成</a></p>
+          </li> -->
+        </ul>
+       
+      </form>
+    </div>
+  </section>
+</div>

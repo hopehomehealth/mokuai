@@ -1,0 +1,62 @@
+<div class="main-content">
+    <div class="breadcrumbs">
+        <ul>
+            <li > <a href="__MODULE__/Manager/tianjia">添加管理员 </a> </li>
+
+        </ul>
+        <!-- .breadcrumb -->
+    </div>
+
+    <div class="page-content">
+        <div class="row">
+            <div class="page-content box">
+                <form action="__SELF__" method="post" enctype='multipart/form-data' class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label" align="right">姓名 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" class="input-large" name="mg_name">
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" align="right">密码 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" class="input-large" name="mg_pwd">
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" align="right">手机 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" class="input-large" name="iphone">
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                    <label class="control-label">角色 : </label>
+                    <div class="controls pull-left">
+                        <select class="input-medium" id="main_cat0" name="role_id" onchange="show_cat()">
+
+                            <option value='0'>-请选择-</option>
+                            <foreach name='roleinfo' item='v'>
+                                <option value='{$v.role_id}'>{$v.role_name}</option>
+                            </foreach>
+
+                        </select>
+                        <span class="help-inline red"> * </span>
+                    </div>
+                </div>
+
+                    <div class="form-actions">
+                        <input id="bsubmit" type="submit"  class="btn btn-sm btn-primary" value="保存"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--/.box-->
+    </div><!-- /.page-content -->
+</div><!-- /.main-content -->
+
+

@@ -1,0 +1,63 @@
+<div class="logon">
+  <form action="__SELF__" method="post" id="regform">
+    <p class="logon-tit fl">用户注册</p>
+    <ul class="logon-list fl">
+      <li>
+        <p class="logon-list-t fl">用户名：</p>
+        <p class="fl">
+          <input name="username" type="text" onblur="checkname('__MODULE__/User/checkname')" class="logon-list-k" />
+          <span class="pl10">不得小于3个字符</span></p>
+      </li>
+      <li>
+        <p class="logon-list-t fl">密码：</p>
+        <p class="fl">
+          <input name="password" type="password" onblur="checkpwd()" class="logon-list-k" />
+          <span class="pl10">最小长度为6个字符</span></p>
+      </li>
+      <li>
+        <p class="logon-list-t fl">确认密码：</p>
+        <p class="fl">
+          <input name="repwd" type="password" onblur="checkrepwd()" class="logon-list-k" />
+          <span class="pl10">请再次输入密码</span></p>
+      </li>
+      <li>
+        <p class="logon-list-t fl">邮箱：</p>
+        <p class="fl">
+          <input name="email" type="text" onblur="checkemail('__MODULE__/User/checkemail')" class="logon-list-k" />
+          <span class="pl10">请输入正确的邮箱地址</span></p>
+      </li>
+      <!-- <li>
+        <p class="logon-list-t fl">验证问答：</p>
+        <p class="fl">
+          <input name="" type="text" class="logon-list-k" />
+          <span class="pl10"><a href="">换一个</a></span><br />
+          <span class="fl pt3">北京拼音，提示：beijing</span></p>
+      </li> -->
+      <li>
+        <p class="logon-list-t fl">验证码：</p>
+        <p class="fl">
+          <input name="verifycode" type="text" onblur="checkcode('__MODULE__/User/checkcode')" class="logon-list-k1" />
+          <span class="pl10"><a href="javascript:(0)" onclick="document.getElementById('codeimg').src = document.getElementById('codeimg').src+'?'+Math.random()">看不清</a></span></p>
+      </li>
+      <li>
+        <p class="logon-list-t fl">&nbsp;</p>
+        <p class="fl"><img src="__CONTROLLER__/verifyImg" id="codeimg" onclick="this.src=this.src+'?'+Math.random()" /></p>
+      </li>
+      <li>
+        <p class="logon-list-t fl">&nbsp;</p>
+        <p class="fl logon-an"><a id="regbtn" href="javascript:void(0)">注&nbsp;册</a></p>
+        <p class="pl20 fl pt15">
+          <input name="xieyi" type="checkbox"/>
+          &nbsp;我同意网站<a href="__MODULE__/Sysconfig/tiaokuan">《服务条款》</a></p>
+      </li>
+    </ul>
+    <div class="logon-bot fl pb10">
+      <p class="logon-botw pt5"><span style="padding-top:5px" class="fl">快捷登录：</span><span class="fl pt5 pr15"><a href="__MODULE__/User/otherlogin/type/Qq"><img src="{$Think.const.HIMG_URL}images_117.jpg" style="padding:9px 5px 0px" />QQ登录</a></span><span class="fl pt5 pr15"><a href="__MODULE__/User/otherlogin/type/Weixin"><img src="{$Think.const.HIMG_URL}images_120.jpg" style="padding:9px 5px 0px" />微信登录</a></span></p>
+    </div>
+  </form>
+</div>
+
+<script type="text/javascript" src="{$Think.const.HJS_URL}msgbox.js"></script>
+<script type="text/javascript" src="{$Think.const.HJS_URL}register.js"></script>
+
+

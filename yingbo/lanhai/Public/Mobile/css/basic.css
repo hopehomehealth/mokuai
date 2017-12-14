@@ -1,0 +1,198 @@
+@charset "utf-8";
+/* CSS Document */
+/*basic*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video, input, button {
+	margin: 0;
+	padding: 0;
+	outline: none;
+	border: 0;
+}
+body {
+	color: #323232;
+	font-family: "微软雅黑", Arial, Helvetica, sans-serif;
+	background-color: #FFFFFF;
+	font-size: 100%;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+body, html {
+	width: 100%;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	height: 100%;
+}
+@media screen and (max-width:479px) {
+html {
+	font-size: 10px;
+	-webkit-text-size-adjust: none;
+}
+}
+@media screen and (min-width:480px) and (max-width:559px) {
+html {
+	font-size: 15px;
+	-webkit-text-size-adjust: none;
+}
+}
+@media screen and (min-width:560px) and (max-width:639px) {
+html {
+	font-size: 17px;
+	-webkit-text-size-adjust: none;
+}
+}
+@media screen and (min-width:640px) and (max-width:719px) {
+html {
+	font-size: 20px;
+	-webkit-text-size-adjust: none;
+}
+body {
+	max-width: 640px;
+}
+}
+@media screen and (min-width:720px) {
+html {
+	font-size: 22.5px;
+	-webkit-text-size-adjust: none;
+}
+}
+body {
+	min-width: 320px;
+	margin: 0 auto;
+	position: relative;
+}
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
+	font-weight: normal;
+}
+ul, li {
+	list-style: none;
+}
+html {
+	-webkit-text-size-adjust: none;
+}
+img {
+	border: none;
+	vertical-align: middle;
+}
+input {
+	font-family: Arial, Helvetica, sans-serif;
+}
+.fl {
+	float: left;
+}
+.fr {
+	float: right;
+}
+.fwb {
+	font-weight: bold;
+}
+.white {
+	color: #FFF;
+}
+a {
+	text-decoration: none;
+	color: #333;
+}
+a:hover {
+	color: #004084;
+}
+.clear {
+	clear: both;
+	font-size: 0;
+	height: 0;
+	line-height: 0;
+}
+.show { display: block!important;}
+.hide { display: none;}
+.dnone {
+	display: none;
+}
+/****header头部开始*****/
+header {
+	width: 100%;
+	background: #fff;
+	height: 4.400rem;
+	margin: 0rem auto;
+	position: relative;
+}
+.headTit {
+	height: 2.500rem;
+	position: absolute;
+	left: 7.583rem;
+	right: 3.583rem;
+	line-height: 2.300rem;
+	border: 1px #ddd solid;
+	border-radius: 0.2rem;
+	top: 1rem;
+}
+.headTit-k {
+	width: 80%;
+	line-height: 2.500rem;
+	padding: 0 2%;
+	background: #fff;
+	font-size: 1.2rem;
+}
+.headBack {
+	height: 3.200rem;
+	width: 7.000rem;
+	float: left;
+	background: url(../images/images_01.png) no-repeat;
+	background-position: 0.500rem 1.000rem;
+	background-size: 6.500rem 2.550rem;
+	text-align: center;
+	padding-top: 1.2rem;
+	display: block;
+}
+.headlogin {
+	height: 3.200rem;
+	width: 5.000rem;
+	float: right;
+	background: url(../images/images_12.png) no-repeat;
+	background-position: 2.500rem 1.500rem;
+	background-size: 1.800rem 1.550rem;
+	display: block;
+}
+.search-an {
+	width: 1.850rem;
+	height: 1.850rem;
+	position: absolute;
+	right: 0rem;
+	top: 0.6rem;
+	background: url(../images/images_06.png) no-repeat;
+	background-size: 80%;
+}
+/****header头部结束*****/
+
+/****fooer头部开始*****/
+footer {
+	background: #fff;
+	width: 100%;
+	float:left;
+	height: 5.000rem;
+	z-index: 100;
+	border-top: 1px #004084 solid;
+}
+.copyright {
+	width: 100%;
+	float: left;
+	color: #004084;
+	font-size: 1.2rem;
+	text-align: center;
+	padding-top: 0.5rem;
+}
+/****header头部结束*****/
+
+/*******izl-rmenu滚动菜单开始***************/
+.aside_1 {
+	position: fixed;
+	right: 2%;
+	bottom: 10%;
+}
+.ftop {
+	width: 2.5rem;
+	height: 2.5rem;
+}
+.ftop img {
+	width: 100%;
+}
+/*******izl-rmenu滚动菜单结束***************/

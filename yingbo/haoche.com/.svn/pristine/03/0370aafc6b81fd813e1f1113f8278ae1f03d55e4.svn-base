@@ -1,0 +1,55 @@
+<ul class="dj_xhk fr">
+    <p class="arrow-up fl"></p>
+    <li><a href="{:U('Union/index')}">369商家联盟</a></li>
+    <li><a href="{:U('Core/index')}">商家中心</a></li>
+</ul>
+<script type="text/javascript">
+    $(".head_back2").click(function(){
+        $(".dj_xhk").slideToggle("1000");
+    });
+</script>
+
+<div class="main">
+    <section>
+        <div class="navbj fl pt_6 pb_6">
+            <dl class="uni-pic fl">
+                <dt><img src="{$Think.const.SITE_URL}{$zenginfo[0]['pic']}"></dt>
+                <dd> <span class="fs1-4 fwb">{$zenginfo[0]['zeng_name']}
+                    <span class="crimson" style="float: right;">库存:{$zenginfo[0]['number']}</span>
+                </span><br>
+                    <p class="fl"><span class="fso crimson fs2-4">0</span><span class="fso crimson fs1-1 pr1">元购</span></p>
+                    <p class="mt0-5 union-an-a d-red fs1-2 crimson fr fwb w20">立即预约</p></dd>
+            </dl>
+        </div>
+    </section>
+    <style type="text/css">
+        .f2 {float: none;}
+        #content p img { max-width: 100%; margin:0 0.250rem; }
+    </style>
+    <section>
+        <div class="navbj fl pt_6 pb_6">
+            <div class="uni-cpsm fl">
+                <p class="fwb uni-cpsm-t fl">产品说明</p>
+                <div id="content" class="tesco_fin_con fl">
+                  {$content}
+                </div>
+
+
+            </div>
+            <div class="uni-kkly fl"><p class="uni-kkly-n"><span class="uni-xint fl">&nbsp;</span>再看看，<span class="xug-a pr1">其它1P产品</span><span class="uni-xint fr">&nbsp;</span></p></div>
+            <div class="uni-kkly-c fl">
+                <foreach name="zenginfo2" item="v">
+                    <dl class="uni-kkly-pic fl">
+                        <dt><a href="{:U('Union/freedetail',array('zeng_id'=>$v['zeng_id']))}"><img src="{$Think.const.SITE_URL}{$v.pic}"></a></dt>
+                        <dd><p><span class="fs1-2 fwb">{$v.zeng_name}</span></p>
+                            <p><span class="fso c-yellow fs2-4 fl pr0-2">0</span><span class="fso c-yellow fs1-1 pr1 fl">元购</span> <span class="mt0-5 w40 union-an-a d-red fs1-2 crimson fr">立即预约</span></p>
+                        </dd>
+                    </dl>
+                </foreach>
+
+
+            </div>
+        </div>
+    </section>
+
+</div>

@@ -1,0 +1,171 @@
+<div class="main">
+    <!--*****banner*****-->
+    <section>
+        <div class="banner" id="banner" >
+            <foreach name="bannerinfo1" item="v">
+                <a href="{$v.url}" class="d1"><img src="{$Think.const.SITE_URL}{$v.pic_big}" alt=""></a>
+            </foreach>
+
+
+            <div class="d2" id="banner_id">
+                <ul>
+                    <foreach name="bannerinfo1" item="v">
+                    <li></li>
+                    </foreach>
+
+                </ul>
+            </div>
+        </div>
+        <script type="text/javascript">banner()</script>
+    </section>
+    <!--*****banner*****-->
+    <!--*****menu*****-->
+    <section>
+    <ul class="xg-menu fl">
+    <li class="b-bule"><a href="{:U('News/guanyuwomen',array('zilanid'=>10,'lan_id'=>2))}"><span class="nav-k fl"><img src="{$Think.const.MIMG_URL}tb_01.png" alt=""><br />{$guanyu1[0]['lan_title']}</span></a></li>
+    <li class="b-green"><a href="{:U('News/newslist',array('lan_id'=>3))}"><span class="nav-k fl"><img src="{$Think.const.MIMG_URL}tb_02.png" alt=""><br />{$toutiao1[0]['lan_title']}</span></a></li>
+                        <li class="b-bule"><a href="{:U('News/lanhailist',array('pid'=>4))}"><span class="nav-k fl"><img src="{$Think.const.MIMG_URL}tb_03.png" alt=""><br />{$lanhaizixun1[0]['lan_title']}</span></a></li>
+                        <li class="b-green"><a href="{:U('News/lanhailist',array('pid'=>5))}"><span class="nav-k fl"><img src="{$Think.const.MIMG_URL}tb_04.png" alt=""><br />{$junminronghe1[0]['lan_title']}</span></a></li>
+                        <li class="b-green"><a href="{:U('News/lanhailist',array('pid'=>6))}"><span class="nav-k fl"><img src="{$Think.const.MIMG_URL}tb_05.png" alt=""><br />{$zixunfuwu1[0]['lan_title']}</span></a></li>
+                        <li class="b-bule"><a href="{:U('Bbs/blog')}"><span class="nav-k fl"><img src="{$Think.const.MIMG_URL}tb_06.png" alt=""><br />{$changqingluntan1[0]['lan_title']}</span></a></li>
+                        <li class="b-green"><a href="{:U('News/newslist',array('lan_id'=>8))}"><span class="nav-k fl"><img src="{$Think.const.MIMG_URL}tb_07.png" alt=""><br />{$gongyi[0]['lan_title']}</span></a></li>
+                        <li class="b-bule"><a href="{:U('News/newslist',array('lan_id'=>9))}"><span class="nav-k fl"><img src="{$Think.const.MIMG_URL}tb_08.png" alt=""><br />{$lanhaifabu[0]['lan_title']}</span></a></li>
+
+    </ul>
+        <!--<div class="find_nav">
+            <div class="find_nav_left">
+                <div class="find_nav_list">
+                    <ul>
+                        <li class="find_nav_cur"><a href="{:U('News/gongsijianjie')}"><span class="nav-k fl b-bule"><img src="{$Think.const.MIMG_URL}tb_01.png" alt="">{$guanyu1[0]['lan_title']}</span></a></li>
+                        <li><a href="{:U('News/newslist',array('lan_id'=>3))}"><span class="nav-k fl b-green"><img src="{$Think.const.MIMG_URL}tb_02.png" alt="">{$toutiao1[0]['lan_title']}</span></a></li>
+                        <li><a href="{:U('News/newslist',array('lan_id'=>18))}"><span class="nav-k fl b-bule"><img src="{$Think.const.MIMG_URL}tb_03.png" alt="">{$lanhaizixun1[0]['lan_title']}</span></a></li>
+                        <li><a href="{:U('News/newslist',array('lan_id'=>24))}"><span class="nav-k fl b-green"><img src="{$Think.const.MIMG_URL}tb_04.png" alt="">{$junminronghe1[0]['lan_title']}</span></a></li>
+                        <li><a href="{:U('News/newslist',array('lan_id'=>29))}"><span class="nav-k fl b-bule"><img src="{$Think.const.MIMG_URL}tb_05.png" alt="">{$zixunfuwu1[0]['lan_title']}</span></a></li>
+                        <li><a href="{:U('Bbs/blog')}"><span class="nav-k fl b-green"><img src="{$Think.const.MIMG_URL}tb_06.png" alt="">{$changqingluntan1[0]['lan_title']}</span></a></li>
+                        <li><a href="{:U('News/newslist',array('lan_id'=>8))}"><span class="nav-k fl b-bule"><img src="{$Think.const.MIMG_URL}tb_07.png" alt="">{$gongyi[0]['lan_title']}</span></a></li>
+                        <li><a href="{:U('News/newslist',array('lan_id'=>24))}"><span class="nav-k fl b-green"><img src="{$Think.const.MIMG_URL}tb_08.png" alt="">{$lanhaifabu[0]['lan_title']}</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>-->
+    </section>
+    <!--*****menu*****-->
+    <!--*****headline*****-->
+    <section>
+        <div class="h-l pb1 fl">
+            <p class="h-l-tt">蓝海<span class="d-red">头条</span><span class="fr pr2 fs1"><a href="{:U('News/newslist',array('lan_id'=>3))}">更多>></a></span></p>
+            <div class="h-l-ad">
+                <ul class="hiSlider hiSlider3">
+                    <foreach name="toutiaoinfo1" item="v">
+                        <li class="hiSlider-item"><a href="{:U('News/detail',array('news_id'=>$v['news_id']))}"><img <if condition="($v.pic neq '') AND ($v.pic neq './Public/Upl/news/')">src="{$Think.const.SITE_URL}{$v.picmobile}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq '')"/>src="{$v.picfirst}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq '')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"</if>  alt="{$v.news_title}"></a> </li>
+                    </foreach>
+                </ul>
+            </div>
+            <ul class="h-l-list fl">
+                <foreach name="toutiaoinfo2" item="v">
+                    <li><span class="dian fl"></span><a href="{:U('News/detail',array('news_id'=>$v['news_id']))}">{$v.news_title}</a>
+					<!--<span class="fr fs1 l-gray">{$v.add_time}</span>-->
+					</li>
+                </foreach>
+            </ul>
+        </div>
+    </section>
+    <!--*****headline*****-->
+    <!--*****news*****-->
+    <section>
+        <div class="h-l pb1 fl">
+            <p class="h-l-tt">蓝海<span class="d-red">资讯</span><span class="fr pr2 fs1"><a href="{:U('News/lanhailist',array('pid'=>4))}">更多>></a></span></p>
+            <div class="news-list fl">
+                <foreach name="lanhaizixunclickinfo" item="v">
+                    <dl class="news-pic fl">
+                        <dt><a href="{:U('News/detail',array('news_id'=>$v['news_id']))}"><img <if condition="($v.pic neq '') AND ($v.pic neq './Public/Upl/news/')">src="{$Think.const.SITE_URL}{$v.pic}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq '')"/>src="{$v.picfirst}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq '')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"</if>></a></dt>
+                        <dd><a href="{:U('News/detail',array('news_id'=>$v['news_id']))}">{$v.news_title|strip_tags|str_replace=array(" ","　","\t","\n","\r","&bsp;"),array("","","","","",""),###|mb_substr=###,0,60,'utf-8'}</a>
+                            <p class="fl fs1 l-gray rqi">{$v.add_time}</p>
+                        </dd>
+                    </dl>
+
+                </foreach>
+
+            </div>
+        </div>
+    </section>
+    <!--*****news*****-->
+    <!--*****fuse*****-->
+    <section>
+        <div class="h-l pb1 fl">
+            <p class="h-l-tt">军民<span class="d-red">融合</span><span class="fr pr2 fs1"><a href="{:U('News/lanhailist',array('pid'=>5))}">更多>></a></span></p>
+            <div class="news-list fl">
+                <foreach name="junminrongheinfo" item="v">
+                    <dl class="news-pic fl">
+                        <dt><a href="{:U('News/detail',array('news_id'=>$v['news_id']))}"><img <if condition="($v.pic neq '') AND ($v.pic neq './Public/Upl/news/')">src="{$Think.const.SITE_URL}{$v.pic}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq '')"/>src="{$v.picfirst}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq '')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"</if>></a></dt>
+                        <dd><a href="{:U('News/detail',array('news_id'=>$v['news_id']))}">{$v.news_title|strip_tags|str_replace=array(" ","　","\t","\n","\r","&bsp;"),array("","","","","",""),###|mb_substr=###,0,60,'utf-8'}</a>
+                            <p class="fl fs1 l-gray rqi">{$v.add_time}</p>
+                        </dd>
+                    </dl>
+                </foreach>
+            </div>
+        </div>
+    </section>
+    <!--*****fuse*****-->
+    <!--*****advice*****-->
+    <section>
+        <div class="h-l pb1 fl">
+            <p class="h-l-tt">咨询<span class="d-red">服务</span><span class="fr pr2 fs1"><a href="{:U('News/lanhailist',array('pid'=>6))}">更多>></a></span></p>
+            <div class="news-list fl">
+                <foreach name="zixunfuwuinfo" item="v">
+                    <dl class="news-pic fl">
+                        <dt><a href="{:U('News/detail',array('news_id'=>$v['news_id']))}"><img <if condition="($v.pic neq '') AND ($v.pic neq './Public/Upl/news/')">src="{$Think.const.SITE_URL}{$v.pic}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq '')"/>src="{$v.picfirst}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq '')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"</if>></a></dt>
+                        <dd><a href="{:U('News/detail',array('news_id'=>$v['news_id']))}">{$v.news_title|strip_tags|str_replace=array(" ","　","\t","\n","\r","&bsp;"),array("","","","","",""),###|mb_substr=###,0,60,'utf-8'}</a>
+                            <p class="fl fs1 l-gray rqi">{$v.add_time}</p>
+                        </dd>
+                    </dl>
+                </foreach>
+
+
+            </div>
+        </div>
+    </section>
+    <!--*****advice*****-->
+    <!--*****ad*****-->
+    <section>
+        <p class="ad">
+                 <foreach name="bannerinfo2" item="v">
+                     <a href="{$v.url}"><img src="{$Think.const.SITE_URL}{$v.pic}"></a>
+                 </foreach>
+        </p>
+    </section>
+    <!--*****ad*****-->
+    <!--*****forum*****-->
+    <section>
+        <div class="h-l pb1 fl">
+            <p class="h-l-tt">长青<span class="d-red">论坛</span><span class="fr pr2 fs1"> <a href="{:U('Bbs/bbs')}">更多>></a> </span></p>
+            <div class="news-list fl">
+                <volist name="boards" id="info">
+                <dl class="forum-pic fl">
+                    <dt><a href="__MODULE__/Posts/postlist/board_id/{$info.board_id}"><if condition="$info.board_img neq ''"><img src="{$info.board_img}"><else /><img src="{$Think.const.MIMG_URL}images_13.png"></if></a></dt>
+                    <dd><a href="__MODULE__/Posts/postlist/board_id/{$info.board_id}">{$info.board_title}</a>
+                        <p class="w100 fl l-gray fs1">今日：{$info.todposts}　帖数：{$info.posts}</p>
+                        <p class="w100 fl l-gray fs1-2 t-w"><a href="__MODULE__/Posts/detail/post_id/{$info.post_id}">{$info.topic}</a>  {$info.ctime}  {$info.username}</p>
+                    </dd>
+                </dl>
+                </volist>
+            </div>
+        </div>
+    </section>
+    <!--*****forum*****-->

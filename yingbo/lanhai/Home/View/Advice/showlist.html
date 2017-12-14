@@ -1,0 +1,142 @@
+<!-------banner------>
+
+<notempty name="adinfo0">
+<p class="com-banner pt10">
+    <foreach name="adinfo0" item="v">
+            <img src="{$Think.const.SITE_URL}{$v.pic}" />
+    </foreach>
+</p>
+</notempty>
+<!-------banner------->
+
+<!-------第一通栏------->
+
+<div class="column-c pt10 pb30">
+    <!--****左边第一通栏****-->
+    <div class="set-lis-l fl">
+        <p class="nhtt-tit fl"><img src="{$Think.const.HIMG_URL}images_148.jpg" alt="在线咨询" /></p>
+        <ul class="advice fl h590">
+            <script language="JavaScript" type="text/javascript" src="{$Think.const.HJS_URL}FormValid.js"></script>
+            <script type="text/javascript">
+                function customFuntion(inp,frms) {
+
+                    if (inp.value || frms['sj'].value) {
+                        return true;
+                    }
+                    return false;
+                }
+            </script>
+            <form action="" method="post" enctype='multipart/form-data' onsubmit="return validator(this)">
+                <p class="fl pt22">您好，欢迎来到北京蓝海长青规划设计研究有限公司！请您留下联系方式，我们会在第一时间为您反馈。</p>
+                <li><p class="logon-list-t fl"><span class="red">*</span>&nbsp;姓名：</p><p class="fl"><input name="name" id="name" class="logon-list-k" placeholder="请输入您的真实姓名" type="text" /></p></li>
+                <li><p class="logon-list-t fl"><span class="red">*</span>&nbsp;手机号：</p><p class="fl"><input name="iphone" id="iphone" class="logon-list-k" placeholder="请输入您的手机号码" type="text" /></p></li>
+                <li><p class="logon-list-t fl"><span class="red">*</span>&nbsp;邮箱：</p><p class="fl"><input name="email" id="email" class="logon-list-k" placeholder="请输入正确的邮箱" type="text" /></p></li>
+                <li><p class="logon-list-t fl"><span class="red">*</span>&nbsp;地址：</p><p class="fl"><input name="address" id="address" class="advice-k w385" placeholder="请输入您现在住居地址" type="text" /></p></li>
+                <li><p class="logon-list-t fl"><span class="red">*</span>&nbsp;留言：</p><p class="fl">
+                    <textarea name="content" id="content" class="advice-k w385 h150" placeholder="请输入您想对我们说的话"></textarea>
+                </p></li>
+                <li><p class="logon-list-t fl">&nbsp;</p><p class="advice-an fl"><input id="bsubmit" type="submit"  value="提交" style="width:72px;height:27px;background:#004084;color: #ffffff"; /></p></li>
+            </form>
+        </ul>
+    </div>
+    <!--****右边通栏****-->
+    <div class="set-lis-r fr">
+        <!--****右边第一通栏****-->
+        <div class="set-lis-tj fl pb10">
+            <p class="set-lis-tjtt fl"><img src="{$Think.const.HIMG_URL}images_142.jpg" alt="" /></p>
+            <ul class="nhtt-list-a fl pt15">
+                <foreach name="clickinfo" item="v">
+                    <li><a href="{:U('News/detail',array('news_id'=>$v['news_id']))}">{$v.news_title}</a></li>
+                </foreach>
+
+            </ul>
+        </div>
+        <foreach name="adinfo" item="v">
+            <if condition="$v.is_area eq 3">
+                <p class="pt15"> <img width="250px" height="80px" src="{$Think.const.SITE_URL}{$v.pic}" />  </p>
+            </if>
+        </foreach>
+        <foreach name="adinfo" item="v">
+            <if condition="$v.is_area eq 4">
+                <p class="pt15"><img src="{$Think.const.SITE_URL}{$v.pic}" /> </p>
+            </if>
+        </foreach>
+        <foreach name="adinfo" item="v">
+            <if condition="$v.is_area eq 5">
+                <p class="pt15"><img src="{$Think.const.SITE_URL}{$v.pic}" /> </p>
+            </if>
+        </foreach>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+$(function(){
+    $('#bsubmit').click(function(){
+    var name = $('#name').val();
+    if(name == ''){
+        alert('姓名不能为空');
+        return false;
+    }
+    if(name.length>=4 && name.length<=2){
+    alert('请输入正确的姓名');
+     return flase;
+    }
+    var iphone = $('#iphone').val();
+     if(iphone == ''){
+        alert('手机号不能为空');
+        return false;
+    }
+    var reg=/^1[3458]\d{9}$/;
+    if(!reg.test(iphone)){
+    alert('手机号码格式不正确');
+     return false;
+    }
+var email =$('#email').val();
+        if(email == ''){
+            alert('邮箱不能为空');
+            return false;
+        }
+        var ereg=/^[a-z0-9!#$%&\'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&\'*+\/=?^_`{|}~-]+)*@(?:[-_a-z0-9][-_a-z0-9]*\.)*(?:[a-z0-9][-a-z0-9]{0,62})\.(?:(?:[a-z]{2}\.)?[a-z]{2,})$/i;
+        if(!ereg.test(email)){
+            alert('邮箱格式不正确')
+            return false;
+        }
+
+    var address = $('#address').val();
+        if(address == ''){
+            alert('地址不能为空');
+            return false;
+        }
+    var content = $('#content').val();
+        if(content == ''){
+            alert('留言内容不能为空');
+            return false;
+        }
+
+
+    $.ajax({
+        url:"__MODULE__/Advice/liuYan",
+        data:{'name':name,'iphone':iphone,'email':email,'address':address,'content':content},
+        dataType:'json',
+        type:'post',
+        success:function(data){
+            if(data.name && data.iphone && data.email && data.address && data.content !== 'empty'){
+    alert('感谢您的留言，客服会及时与您联系!');
+                $('#name').val('', false);
+                $('#iphone').val('', false);
+                $('#email').val('', false);
+                $('#address').val('', false);
+                $('#content').val('', false);
+           }
+        }
+    });
+
+    });
+
+});
+</script>
+
+
+

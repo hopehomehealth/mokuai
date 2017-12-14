@@ -1,0 +1,27 @@
+
+<ul class="dj_xhk fr">
+    <p class="arrow-up fl"></p>
+    <li><a href="{:U('Union/index')}">369商家联盟</a></li>
+    <li><a href="{:U('Core/index')}">商家中心</a></li>
+</ul>
+<script type="text/javascript">
+    $(".head_back2").click(function(){
+        $(".dj_xhk").slideToggle("1000");
+    });
+</script>
+<div class="main">
+    <section>
+        <ul class="oll-list fl">
+            <foreach name="sellerlist" item="info">
+            <li>
+                <dl>
+                    <dt><a href="__MODULE__/Union/diandetail/seller_id/{$info.seller_id}"><img src="{$Think.const.SITE_URL}{$info.pic_dian}"></a></dt>
+                    <dd><a href="__MODULE__/Union/diandetail/seller_id/{$info.seller_id}"><span class="crimson">店铺名</span>：{$info.seller_name}</a></dd>
+                    <!-- <dd><a href="__MODULE__/Union/diandetail/seller_id/{$seller_id}"><span class="crimson">商家名</span>：{$info.lianxi_name}</a></dd> -->
+                    <p class="oll-cuo"><a href=""><img src="{$Think.const.HIMG_URL}c_c.png"></a></p>
+                </dl>
+            </li>
+            </foreach>
+        </ul>
+    </section>
+</div>

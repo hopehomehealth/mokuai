@@ -1,0 +1,36 @@
+
+        <div class="main">
+            <ul class="pgxq_list">
+                <li>
+                <div class="wmc_list">
+                  <p class="wmc_tp"><if condition="$orderinfo.photo eq ''"><img src="{$Think.const.MBIMG_URL}pgtu.jpg"><else /><img src="__PUBLIC__/{$orderinfo.photo}"></if></p>
+                  <p class="wmc_wz">{$orderinfo.username}<span class="xinxin"><for start="0" end="$orderinfo.credit"><img src="{$Think.const.MBIMG_URL}xing.jpg"></for></span><br>联系电话：{$orderinfo.iphone}<br>联系地址：{$orderinfo.area}</p>
+                  <p class="jxs_hs gray">{$orderinfo.inputtime|date="Y-m-d",###}</p>
+                  </div>
+                </li>
+                 <li>
+                 <p class="ywc_hs">患者自述</p>
+ <p class="pgxq_con borTop">{$orderinfo.casexl}</p>
+                </li>
+              <li>
+                 <p class="ywc_hs">评估师记录（支付看更多评估结果）</p>
+ <p class="pgxq_con borTop">{$orderinfo.evaluate}</p>
+                </li>
+                <!--  <li>
+                <p class="ywc_hs">评估报告</p>
+                 <p class="pgxq_con borTop borBot">针对椎间盘突出、腰肌劳损、坐骨神经损伤等引起的腰背部腿部疼痛不适、活动受限等人群</p>
+                  <ul class="ywc_list">
+                  <li><span>1</span>已选服务时间/小时</li>
+                  <li><span>2</span>已选服务次数</li>
+                  </ul>
+                                </li> -->
+            </ul> 
+            <if condition="$orderinfo.if_say eq '0'">
+            <li><p class="zfan"><a href="__MODULE__/Patient/payassess/orderid/{$orderinfo.orderid}">支&nbsp;付</a></p></li>
+            </if>
+             <if condition="($orderinfo.if_say eq '1') AND ($orderinfo.is_com eq '0')">
+            <li><p class="zfan"><a href="__MODULE__/Patient/comment/orderid/{$orderinfo.orderid}">评&nbsp;价</a></p></li>
+            </if>
+        </div>
+       
+    </div>

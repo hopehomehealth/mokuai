@@ -1,0 +1,95 @@
+<div class="main">
+   <section>
+        <div class="nht-xl fl">
+            <p class="lin-tt">法规<span class="d-red">政策</span><span class="nht-tt fr">&nbsp;</span></p>
+            <ul class="nht-sumenu fr">
+               <foreach name="catinfo" item="v">
+<li><a href="{:U('News/faguilist',array('cat_id'=>$v['cat_id']))}">{$v.name}</a></li>
+                </foreach>
+            </ul>
+        </div>
+    </section>
+    <script type="text/javascript">
+        $(".nht-tt").click(function(){
+            $(".nht-sumenu").slideToggle("1000");
+        });
+    </script>
+
+  <!--*****news*****-->
+  <section>
+
+
+
+    <div class="h-l pb1 fl">
+
+      <p class="h-l-tt">{$info[0]['name']|mb_substr=###,0,21,'utf-8'}</p>
+
+
+ <div class="h-l pb1 fl">
+            <ul class="news-list fl">
+			<div class="news-list fl" id="recordslist" totalPages="{$totalPages}">
+  <foreach name="info" key="k" item="v">
+  <input type='hidden' id='cat_id' value='{$v.cat_id}'>
+                  <li>
+                       <a href="{:U('News/detail',array('news_id'=>$v['news_id']))}">{$v.news_title}</a>
+                            <p class="fl fs1 l-gray w100">{$v.add_time}</p>
+                   </li>
+   </foreach>
+
+            </ul>
+        </div>
+ <div style="text-align:center;display:none;" id="loading"><img src="{$Think.const.MIMG_URL}loader.gif" width="" height="" border="0" alt="" /></div>
+
+    </div>
+
+  </section>
+
+
+
+
+    <!-- 滚动加载 -->
+    <script type="text/javascript">
+
+        $(function(){
+            var cat_id = $('#cat_id').val();
+
+            var scrollstatus = false;
+            var totalPages = $("#recordslist").attr('totalPages');
+            var nowpage = 1;
+            function ajax_request(nowpage){
+                var html = '';
+                var recordslist = $("#recordslist");//放数据的容器
+                $.post("__MODULE__/News/faguilist/p/"+nowpage,{cat_id:cat_id},function(data){
+                    if(data.error == 0){
+
+					var title='';
+
+					var news_title='';
+                        for(var i in data.content){
+						title= data.content[i].news_title;
+
+						news_title = title.slice(0,21);
+
+                            html += "<li><a href='__MODULE__/News/detail/news_id/"+data.content[i].news_id+"'>"+news_title+"</a><p class='fl fs1 l-gray w100'>"+data.content[i].add_time+"</p></li>";
+                        }
+                    }
+                    recordslist.append(html);
+                    $("#loading").css("display",'none');
+                    scrollstatus = false;
+                });
+            }
+            $(window).scroll(function () {
+                var scrollTop = $(this).scrollTop();
+                var scrollHeight = $(document).height();
+                var windowHeight = $(this).height();
+                if (scrollTop + windowHeight == scrollHeight && scrollstatus == false) {
+                    scrollstatus = true;
+                    nowpage++;
+                    if(nowpage <= totalPages){
+                        $("#loading").css("display",'block');
+                        setTimeout(function(){ajax_request(nowpage)},2000);
+                    }
+                }
+            });
+        });
+    </script>

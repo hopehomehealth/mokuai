@@ -1,0 +1,104 @@
+/* CSS Document */
+body{ font: 12px/1.5 Microsoft YaHei,Helvitica,Verdana,Arial,san-serif}
+ul, li, p, dl, dt, dd, input, h1, h2, h3, h4, h5, h6, img, ol, button, table, tr, td, select, option, textarea, div, span,i { margin: 0; padding: 0;  list-style: none; font-style:normal;font-family: "微软雅黑" }
+.box .box-title{border-bottom: 1px solid #ddd;padding: 7px 0 7px 10px;margin-top: 0px; overflow: hidden;}
+.box .box-title h3{float: left;margin: 3px 0 3px 0;line-height: 24px;font-weight: 400;color: #444;font-size: 20px; font-family: Microsoft YaHei}
+.box .box-title h3 i{margin: 0 10px 0 5px;vertical-align: middle;}
+.margin_bot_20{ margin-bottom: 20px;}
+.btn{ border-radius:4px}
+.breadcrumbs ul>li{margin-bottom: -1px; float:left;  font-size: 14px;  }
+.breadcrumbs ul>li>a{ color: #666; padding: 0 10px; display: block;}
+.breadcrumbs ul>li>a:hover{ text-decoration: none;}
+.breadcrumbs ul>li.active>a{ background: #fff}
+/*.form-group{ overflow: hidden;}*/
+.form-horizontal .control-label{ float: left; width: 140px; text-align: left; font-weight: 700}
+.form-horizontal .input-large{ width: 270px;vertical-align: middle;}
+.form-horizontal .help-inline{padding-left: 5px; }
+.form-horizontal textarea{  padding: 4px 8px;  font-size: 13px; line-height: 20px;vertical-align: middle;}
+::-webkit-scrollbar-track-piece {background-color: #f5f5f5;border-left: 1px solid #d2d2d2}
+::-webkit-scrollbar {width: 8px;height: 13px}
+::-webkit-scrollbar-thumb {background-color: #c2c2c2;background-clip: padding-box;border: 1px solid #979797;min-height: 28px}
+::-webkit-scrollbar-thumb:hover {border: 1px solid #636363; background-color: #929292}
+.form-horizontal .form-actions{ padding-left: 140px; border-top: none; background:none;}
+.detail_sm{ text-align: right;overflow:hidden}
+.detail_header{padding: 20px 20px 0 20px;}
+#myAmend .detail_header{ padding-top: 40px;  min-height: 120px;}
+.table_img,.table_img thead th,#product tr th,#product tr td{ text-align:center}
+#product tr th:first-child,#product tr td:first-child{ text-align: left;}
+.table_img .icon-picture,.table_img .icon-text-height{ margin-right:5px;}
+.detail{ cursor:pointer}
+.ico-views{  font-size: 30px;color: #fff;padding: 5px;  background: #368ee0;}
+/*.modal-header{ border-bottom:none;}*/
+.table_nav tbody>tr>td{  padding: 0;}
+.table tr th, .table tr td{  padding-left: 5px !important;padding-right: 5px !important;word-break: break-all;}
+.board {background: url("../images/bg_repno.gif") no-repeat scroll 0 0 transparent;padding-left: 55px;}
+.i-cont {color: #FFF;position: relative;padding: 5px; display: inline-block; vertical-align: middle;}
+.tile-themed {background: #368ee0;}
+.i-cont i, .icon_list li i {font-size: 30px;}
+.i-cont .sel-icon {color: #FFF;}
+.tab-content {position: absolute;top: -110px;left: 80px;border: 1px solid #AAA;padding: 5px;background-color: #FFF;z-index: 10001;padding: 5px;width: 473px;}
+#shortmenuShow li{float: left;margin-right: 10px;margin-bottom: 10px;}
+.icon_list {list-style: none;margin: 0;padding: 0;overflow-y: scroll;height: 100%;max-height: 301px;}
+.icon_list li {float: left;height: 43px;line-height: 37px;text-align: center;padding: 3px;border: 1px solid #FFF;cursor: pointer;width: 41px;}
+#all_Icon{ display: none;}
+.main-content{ overflow: hidden;}
+.icon_color{display: inline-block;vertical-align: middle; }
+.icon_color,.xz_color span{  cursor: pointer;width: 35px;height: 35px;}
+.xz_color span{ float: left;  margin: 0 5px 5px 0;}
+.color_red{ background: #e51400}
+.color_orange{background:#f8a31f}
+.color_green{background:#393}
+.color_brown{background:#a05000}
+.color_blue{background:#368ee0}
+.color_lime{background:#8cbf26}
+.color_teal{background:#00aba9}
+.color_purple{background:#ff0097}
+.color_pink{background:#e671b8}
+.color_magenta{background:#a200ff}
+.color_grey{background:#333}
+.color_darkblue{background:#204e81}
+.color_lightred{background:#e63a3a}
+.color_lightgrey{background:#666}
+.color_satblue{background:#2c5e7b}
+.color_satgreen{background:#56af45}
+.color_white{background:#fff}
+.controls{ position: relative;}
+.xz_color{position: absolute;left:42px;top:0;z-index:100;background: #fff; width: 169px; border: 2px solid #54565d;padding: 5px 0 0 5px; display: none;}
+.pagination{ margin-top: 0;}
+.main-container .none_input{  background: none !important;border: none !important;}
+.table_tr th{ padding: 0 !important; border: 0!important;}
+.td_table{position:relative}
+.td_table>div{width: 100%;position: absolute;left: 0;top: 0;padding: 5px;height: 100%; line-height: 22px;}
+#img img{ width: 100%}
+.shouhuo{ display: inline-block;}
+.information{ cursor: pointer;}
+#weixin,#alipay,#baidu{ display: none;}
+@media (min-width: 768px){
+.modal-sm {width: 300px;}
+}
+
+
+.indexBox .box-title{ border-bottom: none; padding: 0; margin-bottom: 10px;}
+.indexBox .box-title .span10 h3{ font-size: 16px;}
+.indexK li{ width: 24%; height: 110px; float: left; margin-left:1%; color: #fff; text-align: center;  padding-top: 25px;}
+.indexKLeft{font-size: 55px; position: relative; width: 55px !important; height: 55px; line-height: 55px; text-align: center; display: inline-block;}
+.indexKLeft>i{ position: absolute; left: 0; top: 0; font-size: 24px; width: 55px; height: 55px; line-height: 55px; }
+.indexKRight{ display: inline-block; font-size: 15px; text-align: left;  margin-left: 6px;}
+.indexKRight b{ display: block; font-size: 27px;  height: 32px;  margin-bottom: 5px;}
+.blueBg{ background: #27a9e3 !important}
+.blueBg .indexKLeft>i{ color: #27a9e3}
+.greenBg{ background: #28b779 !important}
+.greenBg .indexKLeft>i{ color: #28b779}
+.redBg{ background: #fd5f56 !important}
+.redBg .indexKLeft>i{ color: #fd5f56}
+.yellowBg{ background: #ffb748 !important}
+.yellowBg .indexKLeft>i{ color: #ffb748}
+.indexK{ overflow: hidden; width: 100%; margin-bottom: 12px;}
+.indexTable{ width: 100%; overflow: hidden;}
+.indexTableLeft,.indexTableRight{ width:49%; margin-left: 1%; overflow: hidden; float: left;}
+.indexTableTit{ border: 1px solid #cacaca; height: 44px; line-height: 44px; width: 100%; font-size: 15px;padding-left: 22px; color: #3e3e3e; margin-bottom: 12px;}
+.indexTableTit i{ margin-right: 6px; font-size:24px; float: left; height: 42px; line-height: 42px;}
+.indexTableTit span{ float: left;}
+.indexTable table{ width: 100%; background:#cacaca; overflow: hidden;border-spacing:0 1px;border-collapse: inherit;  border: 1px solid #cacaca; border-top: none; border-bottom: none;}
+.indexTable tr{ background: #fff;}
+.indexTable td,.indexTable th{padding: 10px 0; text-align: center;}

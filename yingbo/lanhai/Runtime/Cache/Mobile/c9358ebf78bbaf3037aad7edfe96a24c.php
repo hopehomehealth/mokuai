@@ -1,0 +1,128 @@
+<?php if (!defined('THINK_PATH')) exit();?>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<title>蓝海长青</title>
+<script type="text/javascript" src="<?php echo (MJS_URL); ?>jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="<?php echo (MJS_URL); ?>jquery.form.js"></script>
+<link href="<?php echo (MCSS_URL); ?>basic.css" type="text/css" rel="stylesheet" />
+<link href="<?php echo (MCSS_URL); ?>style.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+<!--*****header*****-->
+<header class="bb-b"> <a class="head_back1" href="Javascript:window.history.go(-1)">&nbsp;</a>
+  <div class="headTit1">个人资料</div>
+</header>
+
+<!--*****header*****-->
+<div class="main b-n">
+  <!--*****for*****-->
+   <section>
+<ul class="per-list fl">
+<form action="/index.php/Mobile/User/personal/upstatus/success" method="post" id="form" enctype="multipart/form-data">
+<li>
+<p class="fl w10 pt1-5">头像</p><p class="fr w90"><span class="fr per-sjia pt1-5"><img src="<?php echo (MIMG_URL); ?>/tb_46.png"></span><a style="overflow:hidden" class="per-input fr w50 tar per-img" id="localImag">
+              <input type="file" id="selectpic" name="userhead" onchange="javascript:setImagePreview();">
+              <?php if($detail["userhead"] != ''): ?><img style="border-radius:50%" id="preview" src="<?php echo ($detail["userhead"]); ?>"><?php else: ?><img style="border-radius:50%" id="preview" src="<?php echo (MIMG_URL); ?>/images_26.jpg"><?php endif; ?> </a></p>
+
+</li>
+<li>
+<p class="fl w20">用户名</p><p class="fr w78 tar pr0-5"><span class="fr per-sjia"><img src="<?php echo (MIMG_URL); ?>/tb_46.png"></span><?php echo ($detail["username"]); ?>&nbsp;&nbsp;</p>
+</li>
+<li>
+<p class="fl w20">用户级别</p><p class="fr w78 tar pr0-5"><span class="fr per-sjia"><img src="<?php echo (MIMG_URL); ?>/tb_46.png"></span><!-- <input class="per-k w89" placeholder="少尉" name="" type="text"> --><?php echo ($detail["level"]); ?>&nbsp;&nbsp</p>
+</li>
+<li>
+<p class="fl w10">签名</p><p class="fr w90"><span class="fr per-sjia"><img src="<?php echo (MIMG_URL); ?>/tb_46.png"></span><input class="per-k w90" value="<?php echo ($detail["mysign"]); ?>" onblur="checkmysign(this.value)" name="mysign" type="text"></p>
+</li>
+<li>
+<p class="fl w10">性别</p><p class="fr w78 tar pr0-5"><span class="fr per-sjia"><img src="<?php echo (MIMG_URL); ?>/tb_46.png"></span><input style="width:5rem" value="1" <?php echo ($detail['sex']?"checked":""); ?> name="sex" type="radio">男&nbsp;<input style="width:5rem" <?php echo ($detail['sex']?"":"checked"); ?> value="0" name="sex" type="radio">女&nbsp;&nbsp</p>
+</li>
+<!--<li>
+<p class="fl w20">出生日期</p><p class="fr w80"><span class="fr per-sjia"><img src="<?php echo (MIMG_URL); ?>/tb_46.png"></span><input class="per-k w89" value="<?php echo ($detail["birth"]); ?>" name="birth" type="text"></p>
+</li>-->
+<li>
+<p class="fl w20">居住地</p><p class="fr w80"><span class="fr per-sjia"><img src="<?php echo (MIMG_URL); ?>/tb_46.png"></span><input class="per-k w89" name="address" value="<?php echo ($detail["address"]); ?>" type="text"></p>
+</li>
+<li>
+<p class="fl w20">联系方式</p><p class="fr w80"><span class="fr per-sjia"><img src="<?php echo (MIMG_URL); ?>/tb_46.png"></span><input class="per-k w89" name="phone" value="<?php echo ($detail["phone"]); ?>" type="text"></p>
+</li>
+<li>
+<p class="fl w10">QQ</p><p class="fr w90"><span class="fr per-sjia"><img src="<?php echo (MIMG_URL); ?>/tb_46.png"></span><input class="per-k w90" name="qq" value="<?php echo ($detail["qq"]); ?>" type="text"></p>
+</li>
+<li>
+<p class="fl w20">上次登录</p><p class="fr w78 tar pr0-5"><span class="fr per-sjia"><img src="<?php echo (MIMG_URL); ?>/tb_46.png"></span><?php echo (date("Y-m-d H:i:s",$detail["lastlogin"])); ?>&nbsp;&nbsp</p>
+</li>
+<li style="border-bottom:0;">
+<p class="fl">兴趣爱好</p><p class="fr w80"><textarea class="fl" name="hobby" style="resize: none;outline:none;height:5rem;margin-top:1rem;width:90%; margin-left:4%;" value="<?php echo ($detail["hobby"]); ?>" webkitinput=""></textarea></p>
+</li>
+<li>
+	<button type="button" class="fabu" onclick="subziliaoform()">确认修改</button>
+</li>
+</form>
+</ul>
+  </section>
+</div>
+<script type="text/javascript" src="<?php echo (MJS_URL); ?>msgbox.js"></script>
+<script type="text/javascript" src='<?php echo (MJS_URL); ?>ucenter.js' ></script>
+<script type="text/javascript">
+    function setImagePreview(avalue) {
+      var docObj=document.getElementById("selectpic");
+      var imgObjPreview=document.getElementById("preview");
+      if(docObj.files &&docObj.files[0])
+      {
+      //火狐下，直接设img属性
+      imgObjPreview.style.display = 'block';
+      imgObjPreview.style.width = '4.5rem';
+      //imgObjPreview.style.height = '100px';
+      //imgObjPreview.src = docObj.files[0].getAsDataURL();
+
+      //火狐7以上版本不能用上面的getAsDataURL()方式获取，需要一下方式
+      imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);
+      }
+      else
+      {
+      //IE下，使用滤镜
+      docObj.select();
+      var imgSrc = document.selection.createRange().text;
+      var localImagId = document.getElementById("localImag");
+      //必须设置初始大小
+      localImagId.style.width = "4.5rem";
+      //localImagId.style.height = "4.5rem";
+      //图片异常的捕捉，防止用户修改后缀来伪造图片
+      try{
+      localImagId.style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+      localImagId.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;
+      }
+      catch(e)
+      {
+      alert("您上传的图片格式不正确，请重新选择!");
+      return false;
+      }
+      imgObjPreview.style.display = 'none';
+      document.selection.empty();
+      }
+      $("#localImag").show();
+      return true;
+    }
+</script>
+<script type="text/javascript">
+	$(function(){
+		var upstatus = "<?php echo ($_GET['upstatus']); ?>";
+		if(upstatus == 'success'){
+			myalertbox('资料修改成功');
+		}
+		if(upstatus == 'fail'){
+			myalertbox('资料修改失败');
+		}
+	})
+</script>
+</body>
+</html>

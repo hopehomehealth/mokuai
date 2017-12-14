@@ -1,0 +1,270 @@
+   
+<script type="text/javascript" src='{$Think.const.JS_URL}jquery-2.1.3.min.js'></script>
+<script type="text/javascript" src='{$Think.const.JS_URL}uploadPreview.js'></script>
+<script type="text/javascript" src='{$Think.const.PLUGIN_URL}ueditor/ueditor.config.js' ></script>
+<script type="text/javascript" src='{$Think.const.PLUGIN_URL}ueditor/ueditor.all.min.js' ></script>
+<script type="text/javascript" src='{$Think.const.PLUGIN_URL}ueditor/lang/zh-cn/zh-cn.js' ></script>
+
+
+
+<style type="text/css">
+    .tab-back {
+        color: #000000;
+        background: none repeat scroll 0 0 #d5e4f1;
+        cursor: pointer;
+        font-weight: bold;
+        height:40px;
+        line-height: 40px;
+        padding: 4px 15px 4px 18px;
+    }
+    .tab-front {
+        cursor: pointer;
+        height:40px;
+        line-height: 40px;
+        padding: 4px 15px 4px 18px;
+    }
+</style>
+<div class="main-content">
+    <div class="box-title margin_bot_20">
+        <div class="span10">
+            <h3><i class="icon-magic"></i>商品修改</h3>
+        </div>
+    </div>
+
+
+    <div class="breadcrumbs">
+        <ul>
+            <li id="general-tab" class="tab-back"> 通用信息 </li>
+            <li id="detail-tab" class="tab-front"> 详细参数 </li>
+            <li id="gallery-tab" class="tab-front"> 商品相册 </li>
+        </ul>
+        <!-- .breadcrumb -->
+    </div>
+    <!-- .breadcrumb -->
+    <script type='text/javascript'>
+        $(function(){
+            $('#detail-tab-show').hide();
+            $('#gallery-tab-show').hide();
+            $('.breadcrumbs li').click(function(){
+                $('.breadcrumbs li').attr('class','tab-front')//全部标签变暗
+                $(this).attr('class','tab-back');//当前点击的标签高亮
+
+                $('div[id$=-show]').hide();
+                var idflag = $(this).attr('id');
+                $('#'+idflag+'-show').show();
+            });
+        });
+    </script>
+
+
+    <div class="page-content">
+        <div class="row">
+            <div class="page-content box">
+
+<form action="__SELF__" method="post" class="form-horizontal" enctype="multipart/form-data">
+    <input type='hidden' name='goods_id' value='{$info.goods_id}' />
+    <div id="general-tab-show" class="form-group">
+        <div class="form-group">
+            <label class="control-label">名　　称 : </label>
+            <div class="controls pull-left">
+                <input type="text" class="input-large" name="goods_name" value="{$info.goods_name}">
+                <span class="help-inline red"> * </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">让利 : </label>
+            <div class="controls pull-left">
+                <input style="border:none" type="text" class="input-medium" name="discount" value="{$info.discount}" readonly>&nbsp;%
+                <span class="help-inline red"> * 不可更改</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">市场价格 : </label>
+            <div class="controls pull-left">
+                <input type="text" class="input-medium" name="price" value="{$info.price}">
+                <span class="help-inline red"> * </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">联盟价格 : </label>
+            <div class="controls pull-left">
+                <input type="text" class="input-medium" name="nowprice" value="{$info.nowprice}">
+                <span class="help-inline red"> * </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">是否上架 : </label>
+            <div class="controls pull-left">
+                <label>
+                    <input type="radio" class="ace" name="is_show" <if condition="$v.is_show eq 0">checked="checked"</if> value="0">
+                    <span class="lbl">是</span>
+                </label>
+                <label>
+                    <input type="radio" class="ace" name="is_show" <if condition="$v.is_show eq 1">checked="checked"</if> value="1">
+                    <span class="lbl">否</span>
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">是否热卖 : </label>
+            <div class="controls pull-left">
+                <label>
+                    <input type="radio" class="ace" name="is_hot" <if condition="$v.is_hot eq 0">checked="checked"</if> value="0">
+                    <span class="lbl">是</span>
+                </label>
+                <label>
+                    <input type="radio" class="ace" name="is_hot" <if condition="$v.is_hot eq 1">checked="checked"</if> value="1">
+                    <span class="lbl">否</span>
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">配送方式 : </label>
+            <div class="controls pull-left">
+                <label>
+                    <input type="checkbox" class="ace" name="way" <if condition="($info.way eq 1) OR ($info.way eq 3)">checked</if> value="1">
+                    <span class="lbl">快递配送</span>
+                </label>
+                <label>
+                    <input type="checkbox" class="ace" name="way" <if condition="($info.way eq 2) OR ($info.way eq 3)">checked</if> value="2">
+                    <span class="lbl">上门自提</span>
+                </label>
+                <label>
+                    <span class="lbl">(多选)</span>
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label"> 商品图片 : </label>
+            <div class="controls pull-left">
+                <span class="help-inline red" > * 建议尺寸540px*590px</span>
+                <input type="file" class="input-large" id="logo" name="logo" >
+                <div id="pic_div"><img id='pic_img' src='{$Think.const.SITE_URL}{$info.logo|substr=###,2}'  alt='没有图片' width='100' height='100'></div>
+            </div>
+        </div>
+        <script type='text/javascript'>
+            $(function(){
+                new uploadPreview({ UpBtn: "logo", DivShow: "pic_div", ImgShow: "pic_img" });
+            });
+        </script>
+
+
+        <div class="form-group">
+            <label class="control-label">发货周期 : </label>
+            <div class="controls pull-left">
+                <input type="text" class="input-small" name="cycle" value="{$info.cycle}">&nbsp;天
+                <span class="help-inline red" > * 请输入数字 </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">库　　存 : </label>
+            <div class="controls pull-left">
+                <input type="text" class="input-small" name="number" value="{$info.number}">
+                <span class="help-inline red" > * 请输入数字 </span>
+            </div>
+        </div>
+        <div class="form-group">
+        <label class="control-label">商品分类 : </label>
+        <div class="controls pull-left">
+            <select class="input-medium" name='cat_id'>
+                <option value='0'>-请选择-</option>
+                <foreach name='catinfo' item='v'>
+                    <option value='{$v.cat_id}' <eq name='info.cat_id' value='$v.cat_id'>selected='selected'</eq>>{$v.cat_name}</option>
+                </foreach>
+            </select>
+            <span class="help-inline red"> * </span>
+        </div>
+    </div>
+
+    </div>
+
+
+    <div class="form-group" id="detail-tab-show">
+
+        <label class="control-label">详细参数 : </label>
+        <div class="controls pull-left">
+            <span class="help-inline red"> * 参数格式(参数名:参数值),每行一条参数信息</span>
+            <span class="help-inline red"> * 图片建议尺寸640px*430px</span>
+            <textarea rows="5" cols="15" id='introduce' name='introduce' style='width:500px;height:350px;'>{$info.introduce}</textarea>
+        </div>
+        <script type="text/javascript">
+            var ue = UE.getEditor('introduce',{toolbars: [[
+                'fullscreen', 'source', '|', 'undo', 'redo', '|',
+                'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
+                'simpleupload', 'insertimage','|',
+                'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
+                'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
+                'directionalityltr', 'directionalityrtl', 'indent', '|',
+                'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase'
+            ]]});
+        </script>
+    </div>
+
+
+
+    <script type="text/javascript">
+        var pics_num = 1;
+        function add_pics(){
+
+            $('#gallery-tab-show').append('<div class="form-group" style="float:left;"><label class="control-label" onclick="$(this).parent().remove()">[-]商品相册 : </label><div class="controls pull-left"><input type="file" name="goods_pics[]" class="input-medium" id="goods_pics_'+pics_num+'"/><div id="goods_pics_div_'+pics_num+'"><img id="goods_pics_img_'+pics_num+'" width="100" height="100"></div></div></div>');
+            new uploadPreview({ UpBtn: "goods_pics_"+pics_num, DivShow: "goods_pics_div_"+pics_num, ImgShow: "goods_pics_img_"+pics_num });
+            pics_num++;
+        }
+
+        $(function(){
+            new uploadPreview({ UpBtn: "goods_pics_0", DivShow: "goods_pics_div_0", ImgShow: "goods_pics_img_0" });
+        });
+
+        //删除单个的相册图片
+        function del_pics(pics_id){
+            if(confirm('确认要删除该相册么？')){
+                $.ajax({
+                    url:"__CONTROLLER__/delPics",
+                    data:{'pics_id':pics_id},
+                    dataType:'json',
+                    type:'get',
+                    success:function(msg){
+                        if(msg.flag==1){
+                            //通过dom方式去除页面上的相册图片
+                            $('#pics_'+pics_id).remove();
+                        }
+                    }
+                });
+            }
+        }
+    </script>
+
+
+    <div class="form-group" id="gallery-tab-show">
+
+        <div>
+            <foreach name='picsinfo' key='k' item='v'>
+                <div id='pics_{$v.pics_id}' style="float:left;"><img src='{$Think.const.SITE_URL}{$v.pics_mid|substr=###,2}' alt='' width='100' /><span style='cursor:pointer;' onclick="del_pics({$v.pics_id})">[-]</span></div>
+            </foreach>
+        </div>
+
+
+        <label class="control-label" onclick="add_pics()">[+]商品相册 : </label>
+        <div class="controls pull-left">
+            <input type='file' class="input-medium" id='goods_pics_0' name='goods_pics[]' />
+            <div id="goods_pics_div_0"><img id="goods_pics_img_0" width="100" height="100"></div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="form-actions" align="center">
+        <button id="bsubmit" type="submit"  class="btn btn-sm btn-primary">保存</button>
+    </div>
+</form>
+            </div>
+        </div>
+        <!--/.box-->
+    </div><!--/.content-->
+    </div>
+
+   

@@ -1,0 +1,135 @@
+        <div class="main">
+            <div class="zxsj">
+            <p>{$datestr}</p>
+            <ul class="zxsj_tit">
+            <li>周一</li>
+            <li>周二</li>
+            <li>周三</li>
+            <li>周四</li>
+            <li>周五</li>
+            <li>周六</li>
+            <li>周日</li>
+            </ul>
+            {$dateList}
+            {$nextDateList}
+            </div>
+            <div class="updateBox">
+                <button class="submit updateBtn" id="selectdate">保 存</button>
+            </div>
+            <div style="padding-left:1.583rem !important;padding-top:1.583rem !important;padding-right:1.583rem !important;"><p style="color:red;line-height:1.1rem">(说明：1 蓝色标记表示当天可预约。 2 白色未标记表示当天休息。 3 点击白色数字标记为可预约。 4 点击蓝色数字取消标记。)</p></div>
+        </div>   
+    </div>
+    <script type="text/javascript" src="{$Think.const.MBJS_URL}/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="{$Think.const.MBJS_URL}/base.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var date = new Date();
+            var text;
+            var month = $('.zxsj button').eq(0).text();
+            var thismonth = date.getMonth()+1;
+            var day;
+            var year = date.getFullYear();
+            var thisyear = date.getFullYear();
+            var flag;
+            var count= new Array();
+            var datapacket = new Array();
+            
+            $(".zxsj button").click(function(){
+                $(this).attr("disabled",true).siblings().attr("disabled",false);
+                month = $(this).text();
+                if(thismonth > month){
+                    year = year + 1;
+                }
+                $(this).addClass('selectmonth').siblings().removeClass('selectmonth');
+                $(".zxsj_list").eq($(this).index()).css("display","block").siblings('.zxsj_list').css('display',"none");
+
+            })
+            $(".selectdate").toggle(
+                    function(){
+                        //alert($(this).children(".zxsj_ls").length() > 0);
+                        if($(this).children(".zxsj_ls").length > 0){
+                            //count++;
+                            text = $(this).children(".zxsj_ls").eq(0).text();
+                            day = text;
+                            flag = false;//false代表删除标记
+                            $(this).empty();
+                            $(this).text(text);
+                            var key = month+day;
+                            if(count[key] == "" || typeof(count[key]) == "undefined"){
+                                count[key] = 1;
+                            }else{
+                                count[key]++;
+                            }
+                            datapacket[key] = {"year":year,"month":month,"day":day,"flag":flag,"count":count[key]};
+                                                
+                        }else{
+                            //count++;
+                            flag = true;
+                            text = $(this).text();
+                            day = text;
+                            $(this).text('');
+                            $(this).append("<span class='zxsj_ls'>"+text+"</span>");
+                            var key = month+day;
+                            if(count[key] == "" || typeof(count[key]) == "undefined"){
+                                count[key] = 1;
+                            }else{
+                                count[key]++;
+                            }
+                            datapacket[key] = {"year":year,"month":month,"day":day,"flag":flag,"count":count[key]};
+                        }
+                    },
+                    function(){
+
+                        if($(this).children(".zxsj_ls").length > 0){
+                            //count++;
+                            text = $(this).children(".zxsj_ls").eq(0).text();
+                            day = text;
+                            flag = false;//false代表删除标记
+                            $(this).empty();
+                            $(this).text(text);
+                            var key = month+day;
+                            if(count[key] == "" || typeof(count[key]) == "undefined"){
+                                count[key] = 1;
+                            }else{
+                                count[key]++;
+                            }
+                            datapacket[key] = {"year":year,"month":month,"day":day,"flag":flag,"count":count[key]};
+                                                
+                        }else{
+                            //count++;
+                            flag = true;
+                            text = $(this).text();
+                            day = text;
+                            $(this).text('');
+                            $(this).append("<span class='zxsj_ls'>"+text+"</span>");
+                            var key = month+day;
+                            if(count[key] == "" || typeof(count[key]) == "undefined"){
+                                count[key] = 1;
+                            }else{
+                                count[key]++;
+                            }
+                            datapacket[key] = {"year":year,"month":month,"day":day,"flag":flag,"count":count[key]};
+                        }
+                    }
+                )
+            $("#selectdate").click(function(){
+                //清楚自动生成的空值
+                for(var i=0;i<datapacket.length;i++){ 
+                     if(datapacket[i] == "" || typeof(datapacket[i]) == "undefined"){
+                      datapacket.splice(i,1);
+                      i= i-1;
+                }
+                } 
+                $.post("__MODULE__/Schedule/mark",{"datapacket":datapacket},function(data){
+                    if(data.error == 1){
+
+                    }else{
+                        $("#selectdate").attr('disabled',true);
+                        $("#selectdate").css('background',"#ccc");
+                        setTimeout(function(){history.go(-1)},1000);
+                    }
+                })
+            })
+            
+        })
+    </script>

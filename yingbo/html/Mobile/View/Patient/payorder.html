@@ -1,0 +1,131 @@
+﻿    <div id="box">
+        <div class="main">
+            <ul class="caseBox">
+                <li>
+                订单信息
+                   <ul class="pgdet_xq borTop">
+                   <li>订单编号：{$orderinfo.ordernumber}</li>
+                   <li>下单时间：{$orderinfo.inputtime|date="Y-m-d H:i:s",###}</li>
+                   </ul>
+                </li>
+                <li class="pgdet">
+                   <a href="#">
+                        {$orderinfo.china}
+                        <span>￥{$orderinfo.price}/小时</span>                      
+                    </a>
+                </li>
+                <li class="pgdet">
+                   <a href="#">
+                        已选服务次数
+                        <span>{$orderinfo.number}</span>                      
+                    </a>
+                </li>
+                <li class="pgdet">
+                   <a href="#">
+                        总额
+                        <span>￥{$orderinfo.ssum}</span>                      
+                    </a>
+                </li>
+                <form method="get" id="payform" action="">
+                <li class="pgdet">
+                  <label>支付方式</label>
+                  <label>
+                   &nbsp;&nbsp;&nbsp;<input type="radio" name="payType" value="balance" checked />
+                   余额支付&nbsp;&nbsp;&nbsp;</label>
+                   <foreach name="payList" item="payinfo">
+                  <label>
+                   <input type="radio" name="payType" value="{$payinfo.type}"  />
+                   {$payinfo.name}&nbsp;&nbsp;&nbsp;</label>
+                   </foreach>
+                   <label>     
+                </li>
+                <if condition="$orderinfo.if_say eq '0'">
+                  <input type="hidden" name="orderid" value="{$orderinfo.orderid}">
+                  <input type="hidden" name="china" value="{$orderinfo.china}">
+                  <li><button class="submit updateBtn" type="submit">立即支付</button></li>
+                </if>
+               </form>
+            </ul> 
+        </div>
+        <script type="text/javascript">
+           $(function(){
+              var url="__MODULE__/Balance/pay";
+              var payType="balance";
+              var flag = true;
+              $("#payform input[name=payType]").click(function(){
+
+                if($(this).val() == 'wxpay'){
+                  $('#payform button').unbind("click")
+                  payType = 'wxpay';
+                  url="__MODULE__/Wxpay/js_api_call";
+                  flag = true;
+                  $("#payform").submit(function(){
+                    return flag;
+                  })
+                }else if($(this).val() == "baidu"){
+                  $('#payform button').unbind("click")
+                  payType = 'baidu';
+                  url="__MODULE__/Baidu/pay";
+                   flag = true;
+                  $("#payform").submit(function(){
+                    return flag;
+                  })
+                }else if($(this).val() == "balance"){
+                  $('#payform button').unbind("click")
+                  payType = 'balance';
+                  url ="__MODULE__/Balance/pay";
+                  flag = false;
+                  $("#payform").submit(function(){
+                  return flag;
+                  })
+                  var parameters = $('#payform').serialize();
+                  $("#payform button").click(function(){
+                      if(confirm("确认支付")){
+                      }else{
+                        return false;
+                      }
+                      $.post(url,parameters,function(data){
+                        if(data.error == 1){
+                          alert(data.content);
+                        }else{
+                          alert(data.content);
+                          location.href=data.url;
+                          $("#payform button").parent().css("display","none");
+                        }
+                      },"json",false);
+                  })
+                }else{
+                  url="";
+                }
+                if(url == ""){
+                }else{
+                  //$("#payform button").attr("disabled",false);
+                  $("#payform").attr("action",url);
+                }
+              })
+              if(payType == "balance"){
+                flag = false;
+                $("#payform").submit(function(){
+                  return flag;
+                  })
+                var parameters = $('#payform').serialize();
+                $("#payform button").click(function(){
+                    if(confirm("确认支付")){
+                      }else{
+                        return false;
+                      }
+                    $.post(url,parameters,function(data){
+                      if(data.error == 1){
+                        alert(data.content);
+                      }else{
+                        alert(data.content);
+                        location.href=data.url;
+                        $("#payform button").parent().css("display","none");
+                      }
+                    },"json",false);
+                })
+              }
+           })
+        </script>
+    </div>
+ 

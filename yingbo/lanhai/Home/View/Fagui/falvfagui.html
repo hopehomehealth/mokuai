@@ -1,0 +1,84 @@
+
+<!-----banner------>
+<notempty name="adinfo0">
+<p class="com-banner">
+    <foreach name="adinfo0" item="v">
+            <img src="{$Think.const.SITE_URL}{$v.pic}" />
+    </foreach>
+</p>
+</notempty>
+<!-------banner---->
+
+<div class="column-c pt10 ser pb30">
+  <p class="com-tit fl">法规<span class="red">政策</span></p>
+  <ul class="bus-a-l fl">
+  <foreach name="catinfo" key="k" item="v">
+   <li <if condition="$cat_id eq $v['cat_id']">class="cur"</if>href="{:U('falvfagui',array('cat_id'=>$v['cat_id']))}">{$v.name}</li>
+  </foreach>
+  </ul>
+    <foreach name="catinfo" key="k" item="v">
+  <ul <if condition="$cat_id eq $v['cat_id']">class="bus-a-r tab-acheck fr setting"<else />class="bus-a-r fr setting" style="display:none;"</if>>
+
+  </ul>
+
+</foreach>
+        <!--****左边第二通栏****-->
+      <!--   <ul class="page">
+        {$page}
+        </ul> -->
+    </div>
+    <!--****右边通栏****-->
+<style type="text/css">
+     .set-lis-wz{ padding-top: 0px; width: 65%; font-size: 13px; line-height: 30px;}
+     .set-lis-wz a{color: #004084;}
+     .set-lis-plgz{ line-height: 30px; }
+     .ser{ min-height: 410px;}
+     .page{ padding-top: 20px;}
+     .page li{ line-height: normal;}
+     .bus-a-l{ padding-top: 15px;}
+     .bus-a-l li{ font-size: 18px;overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+</style>
+<script type="text/javascript">
+var firsturl = $(".bus-a-l li").eq(0).attr('href');
+falvfagui(firsturl,0);
+var index;
+    $(".bus-a-l li").click(function(){
+        var url = $(this).attr('href');
+        index = $(this).index();
+        $(this).addClass("cur").siblings().removeClass("cur")
+      $(".setting").eq($(this).index()).show().siblings('.setting').hide();
+
+        falvfagui(url,index);
+
+    })
+function falvfagui(url,index){
+    $.get(url,function(data){
+        if(data.error == 0){
+            var posthtml = '';
+            //var url = '../../Home/User/nofollow/f_id/';
+            for(var i in data.fagui){
+
+                posthtml +="<li><p class='set-lis-wz fl' style='width:75%;'><a href='{$Think.const.SITE_URL}/index.php/Home/News/detail/news_id/"+data.fagui[i]['news_id']+"/lan_id/"+data.fagui[i]['lan_id']+"'>"+data.fagui[i]['news_title']+"</a></p><span class='set-lis-plgz fr fs12'>"+data.fagui[i]['add_time']+"</span></li>";
+            }
+            posthtml += "<li><ul class='page mypagestyle'>"+data.page+"</ul></li>";
+            $('.setting').eq(index).html(posthtml);
+            $(".setting").on('click','.page a',function(){
+                var url = $(this).attr('href');
+                falvfagui(url,index);
+                return false;
+            })
+        }
+    })
+}
+</script>
+
+<script type="text/javascript">
+  $(function(){
+    $(".bus-a-l li").click(function(){
+
+    });
+  })
+</script>
+
+    </div>
+</div>

@@ -1,0 +1,158 @@
+<div class="main">
+    <!--*****banner*****-->
+    <section>
+        <div class="nht-xl fl">
+            <p class="lin-tt">在线<span class="d-red">咨询</span><span class="nht-tt fr">&nbsp;</span></p>
+            <ul class="nht-sumenu fr">
+                <foreach name="zixunfuwu2" item="v">
+                <if condition="($v.url eq '') AND ($v.lan_id eq 29)">
+<li><a href="{:U('News/newslist',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+<elseif condition="($v['url'] eq '') AND ($v.lan_id eq 30)"/>
+<li><a href="{:U('News/newslist',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+<elseif condition="($v['url'] eq '') AND ($v.lan_id eq 31)"/>
+<li><a href="{:U('News/falvfagui',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+<elseif condition="($v['url'] eq '') AND ($v.lan_id eq 32)"/>
+<li><a href="{:U('News/newslist',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+<elseif condition="($v['url'] eq '') AND ($v.lan_id eq 38)"/>
+<li><a href="{:U('Tushu/tushulist',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+<elseif condition="($v['url'] eq '') AND ($v.lan_id eq 33)"/>
+<li><a href="{:U('Advice/showlist',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+<elseif condition="($v['url'] eq '') AND ($v.lan_id gt 40)"/>
+<li><a href="{:U('News/newslist',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+<elseif condition="$v['url'] neq ''"/>
+<li><a href="{$v.url}">{$v.lan_title}</a></li>
+</if>
+                </foreach>
+            </ul>
+        </div>
+    </section>
+    <script type="text/javascript">
+        $(".nht-tt").click(function(){
+            $(".nht-sumenu").slideToggle("1000");
+        });
+    </script>
+    <!--*****banner*****-->
+    <section>
+        <p class="abo-banner fl">
+            <foreach name="adinfo" item="v">
+                <img src="{$Think.const.SITE_URL}{$v.pic}">
+            </foreach>
+
+        </p>
+    </section>
+    <!--*****h-l*****-->
+    <section>
+        <div class="h-l pb1 fl">
+            <!--<p class="h-l-tt">在线咨询</p>-->
+            <p class="adv-nr-tit fl">您好，欢迎来到北京蓝海长青规划设计研究有限公司！请您留下联系方式，我们会在第一时间为您反馈。</p>
+            <ul class="adv-nr fl">
+                <form action="__SELF__" method="post" class="form-horizontal" enctype="multipart/form-data" id="form">
+                    <li><img src="{$Think.const.MIMG_URL}tb_16.png">
+                        <input class="adv-nr-k fl w65 h3-3" name="name" placeholder="请输入您的姓名" type="text">
+                    </li>
+                    <li><img src="{$Think.const.MIMG_URL}tb_17.png">
+                        <input class="adv-nr-k fl w65 h3-3" name="iphone" placeholder="请输入您的手机号" type="text">
+                    </li>
+                    <li><img src="{$Think.const.MIMG_URL}tb_18.png">
+                        <input class="adv-nr-k fl w65 h3-3" name="email" placeholder="请输入您的邮箱" type="text">
+                    </li>
+                    <li><img src="{$Think.const.MIMG_URL}tb_19.png">
+                        <input class="adv-nr-k fl w75 h3-3" name="address" placeholder="请输入您的地址" type="text">
+                    </li>
+                    <li><img src="{$Think.const.MIMG_URL}tb_20.png">
+                        <textarea name="content" id="content" class="adv-nr-k fl w75 h7" placeholder="请输入您想了解的内容"></textarea>
+                    </li>
+                        <li>
+                            <button type="button" id="bsubmit" class="adv-nr-tj">提交</button>
+
+                        </li>
+
+                </form>
+            </ul>
+        </div>
+    </section>
+
+    <script type="text/javascript">
+        $(function(){
+
+            $("#bsubmit").click(function(){
+
+                var name=$("input[name='name']").val();
+                if($("input[name='name']").val() == ''){
+                    $("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'姓名不能为空'+"</div>");
+
+                    $("#errormsg").fadeIn(1500);$("#errormsg").fadeOut(1500);$("#bsubmit").attr('disabled',true);setTimeout(function(){$("#errormsg").remove();location.reload()},3000);
+                    return false;
+                }
+                if(name.length>=4 && name.length<=2){
+                    $("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'请输入正确的姓名'+"</div>");
+
+                    $("#errormsg").fadeIn(1500);$("#errormsg").fadeOut(1500);$("#bsubmit").attr('disabled',true);setTimeout(function(){$("#errormsg").remove();location.reload()},3000);
+                    return flase;
+                }
+                var iphone=$("input[name='iphone']").val();
+                var myreg = /^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d{8}$/i;
+                if($("input[name='iphone']").val() == ''){
+                    $("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'手机号不能为空'+"</div>");
+
+                    $("#errormsg").fadeIn(1500);$("#errormsg").fadeOut(1500);$("#bsubmit").attr('disabled',true);setTimeout(function(){$("#errormsg").remove();location.reload()},3000);
+                    return false;
+                }
+                if(!myreg.test(iphone)){
+                    $("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'手机号非法'+"</div>");
+
+                    $("#errormsg").fadeIn(1500);$("#errormsg").fadeOut(1500);$("#bsubmit").attr('disabled',true);setTimeout(function(){$("#errormsg").remove();location.reload()},3000);
+                    return false;
+                }
+
+                var email=$("input[name='email']").val();
+                if($("input[name='email']").val() == ''){
+                    $("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'邮箱不能为空'+"</div>");
+
+                    $("#errormsg").fadeIn(1500);$("#errormsg").fadeOut(1500);$("#bsubmit").attr('disabled',true);setTimeout(function(){$("#errormsg").remove();location.reload()},3000);
+                    return false;
+                }
+                var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+                if(!reg.test(email)){
+                    $("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'邮箱格式不正确'+"</div>");
+
+                    $("#errormsg").fadeIn(1500);$("#errormsg").fadeOut(1500);$("#bsubmit").attr('disabled',true);setTimeout(function(){$("#errormsg").remove();location.reload()},3000);
+                    return false;
+                }
+
+                var address=$("input[name='address']").val();
+                if($("input[name='phone']").val() == ''){
+                    $("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'地址不能为空'+"</div>");
+
+                    $("#errormsg").fadeIn(1500);$("#errormsg").fadeOut(1500);$("#bsubmit").attr('disabled',true);setTimeout(function(){$("#errormsg").remove();location.reload()},3000);
+                    return false;
+                }
+                var content=  $('#content').val();
+                if($("input[name='content']").val() == ''){
+                    $("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'内容不能为空'+"</div>");
+
+                    $("#errormsg").fadeIn(1500);$("#errormsg").fadeOut(1500);$("#bsubmit").attr('disabled',true);setTimeout(function(){$("#errormsg").remove();location.reload()},3000);
+                    return false;
+                }
+
+
+                $.ajax({
+                    url:"__MODULE__/Advice/liuyan",
+                    data:{'name':name,'iphone':iphone,'email':email,'address':address,'content':content},
+                    dataType:'json',
+                    type:'post',
+                    success:function(data) {
+
+                            $("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>" + '感谢您的留言!' + "</div>");
+
+                            $("#errormsg").fadeIn(1500);$("#errormsg").fadeOut(1500);$("#bsubmit").attr('disabled',true);setTimeout(function(){$("#errormsg").remove();location.reload()},3000);
+                        }
+
+                });
+            })
+
+
+        })
+    </script>
+
+

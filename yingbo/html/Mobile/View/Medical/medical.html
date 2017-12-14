@@ -1,0 +1,30 @@
+
+    <div class="main">
+        <div class="zsBanner">
+            <foreach name="adinfo" item="v">
+                    <img src="{$Think.const.SITE_URL}{$v.pic|substr=###,2}"/>
+            </foreach>
+        </div>
+        <ul class="jjNav">
+            <li>
+                <a href="{:U('Medical/huli')}">
+                    <img src="{$Think.const.MBIMG_URL}zs_nav1.jpg">
+                    <span>护理健康知识</span>
+                </a>
+            </li>
+            <!--<li>-->
+                <!--<a href="{:U('Medical/yiliao')}">-->
+                    <!--<img src="{$Think.const.MBIMG_URL}zs_nav2.jpg">-->
+                    <!--<span>相关医疗信息/政策</span>-->
+                <!--</a>-->
+            <!--</li>-->
+            <li>
+                <a href="{:U('Example/example')}">
+                    <img src="{$Think.const.MBIMG_URL}zs_nav3.jpg">
+                    <span>服务案例（往期回顾）</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+

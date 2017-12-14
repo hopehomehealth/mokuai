@@ -1,0 +1,31 @@
+
+    <div class="main">
+        <div>
+            <foreach name="adinfo" item="v">
+                <img src="{$Think.const.SITE_URL}{$v.pic|substr=###,2}">
+            </foreach>
+
+        </div>
+        <ul class="jjNav">
+            <li>
+                <a href="{:U('Company/company')}">
+                    <img src="{$Think.const.MBIMG_URL}jj_nav1.jpg">
+                    <span>公司介绍</span>
+                </a>
+            </li>
+            <li>
+                <a href="{:U('Culture/culture')}">
+                    <img src="{$Think.const.MBIMG_URL}jj_nav2.jpg">
+                    <span>企业文化介绍</span>
+                </a>
+            </li>
+            <li>
+                <a href="{:U('Team/team')}">
+                    <img src="{$Think.const.MBIMG_URL}jj_nav3.jpg">
+                    <span>团队介绍</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+

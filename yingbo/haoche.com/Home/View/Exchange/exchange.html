@@ -1,0 +1,107 @@
+    <link href="{$Think.const.HCSS_URL}personal-style.css" type="text/css" rel="stylesheet" />
+    <section class="add" style="position:relative">
+       <div class="add_nav">
+            <h2>可兑换积分:</h2>
+            <h3><b style="font-style:italic;font-size:120%" id="cash_sc">{$cash_sc}</b></h3>
+            <p>兑换说明：每周一统一处理兑换申请；兑换积分额必须100起，
+                均按100的倍数兑换否则无法通过审核。</p>
+       </div>
+       <div class="add_main">
+        <form action="" method="post" id="form">
+           <h2>申请兑换:</h2>
+            <p><input style="width:78%" name="amount" type="text" placeholder="0.00"/><span>元</span></p>
+            <h3>即日起将统一收取5%服务费</h3>
+            <h4><select name="count_id" style="height:30px;border:1px solid #D6D6D6;color: #6A6A6A;outline:none">
+                <option value="">请选择账户</option>
+                <foreach name="account" item="info">
+                    <if condition="$info.count_type eq '支付宝'">
+                        <option value="{$info.count_id}">{$info.count_no}</option>
+                    </if>
+                    <if condition="$info.count_type eq '银行卡'">
+                        <option value="{$info.count_id}">{$info.bankname}:{$info.card_no}</option>
+                    </if>
+                </foreach>
+            </select></h4>
+            <h5><input style="background: #DD0045;font-size:1.800rem;height:3.500rem;font-family: '黑体';color: #ffffff;border-radius:0.4rem" type="button" value="提交申请"/></h5>
+        </form>
+       </div>
+    </section>
+    <script type="text/javascript">
+        $(function(){
+            var flag = false;
+            $("#form input[type='button']").click(function(){
+                $("#form").submit(function(){});
+                $("#form input[type='button']").attr('disabled',false);
+                var amount = $("input[name='amount']").val();
+                var newamount = '';
+                if(isNaN(amount)){
+                    amount = '0.00';
+                }else{
+                    amount = Math.abs(amount)+'';
+                    if(amount.indexOf('.') == -1){
+                        amount += '.00'; 
+                    }else{
+                        for(var i=0;i<amount.length;i++){
+                            if(amount[i] == '.'){
+                                newamount += '.';
+                                newamount += '00';
+                                break;
+                            }
+                            newamount += amount[i]; 
+                        }
+                        amount = newamount;
+                    }
+                }
+                $("input[name='amount']").val(amount);
+                //alert($("input[name='balance']").val());
+                if($("input[name='amount']").val() == '0.00'){
+                    flag = false;
+                    $("#form input[type='button']").attr('disabled',false);
+                    $("input[name='amount']").val("请输入100的整倍");
+                    $("input[name='amount']").css('color','red');
+                    $("input[name='amount']").attr('readonly','readonly');
+                    setTimeout(function(){$("input[name='amount']").val('');$("input[name='amount']").css('color','');$("input[name='amount']").removeAttr('readonly')},1000);
+                    return;
+                }else{
+                    flag = true;
+                }
+                if((Math.abs(amount)%100) != 0){
+                    flag = false;
+                    $("#form input[type='button']").attr('disabled',false);
+                    $("input[name='amount']").val("请输入100的整倍");
+                    $("input[name='amount']").css('color','red');
+                    $("input[name='amount']").attr('readonly','readonly');
+                    setTimeout(function(){$("input[name='amount']").val('');$("input[name='amount']").css('color','');$("input[name='amount']").removeAttr('readonly')},1000);
+                    return;
+                }else{
+                    flag = true;
+                }
+                if($("select[name='count_id']").val() == ''){
+                    flag = false;
+                    $("#form input[type='button']").attr('disabled',false);
+                    $("select[name='count_id']").css("color",'red');
+                    $("select[name='count_id']").attr('disabled',true);
+                    setTimeout(function(){$("select[name='count_id']").css('color','');$("select[name='count_id']").attr('disabled',false);},1000);
+                    return;
+                }else{
+                    flag = true;
+                }
+                if(flag){
+                    $.post("__MODULE__/Exchange/exchange",$("#form").serialize(),function(data){
+                        if(data.error == 0){
+                            $("#cash_sc").text(data.cash_sc);
+                            $("section").append("<div id='errormsg' style='display:none;position:absolute;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1rem;opacity:0.7;background:#666'>"+data.content+"</div>");
+
+                            $("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);$("#bsubmit").attr('disabled',true);setTimeout(function(){$("#errormsg").remove();$("#bsubmit").attr('disabled',false);history.go(-1)},2000);
+                        }else if(data.error == 1){
+                            flag = false;
+                            $("#form input[type='button']").attr('disabled',false);
+                            $("section").append("<div id='errormsg' style='display:none;position:absolute;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1rem;opacity:0.7;background:#666'>"+data.content+"</div>");
+
+                            $("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);$("#bsubmit").attr('disabled',true);setTimeout(function(){$("#errormsg").remove();$("#bsubmit").attr('disabled',false);},2000);
+                        }
+                    })
+                }
+            })
+        })
+    </script>

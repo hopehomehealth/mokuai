@@ -1,0 +1,52 @@
+
+    
+
+
+<div class="main-content">
+    <div class="box-title margin_bot_20">
+        <div class="span10">
+            <h3><i class="icon-magic"></i>分类添加</h3>
+        </div>
+    </div>
+
+        <!-- .breadcrumb -->
+
+
+    <div class="page-content">
+        <div class="row">
+            <div class="page-content box">
+
+<form action="__SELF__" method="post" class="form-horizontal" enctype="multipart/form-data">
+    <div id="general-tab-show" class="form-group">
+        <div class="form-group">
+            <label class="control-label">分类名称 : </label>
+            <div class="controls pull-left">
+                <input type="text" class="input-large" name="cat_name">
+                <span class="help-inline red"> * </span>
+            </div>
+        </div>
+
+       <!--  <div class="form-group">
+            <label class="control-label">上级分类 : </label>
+            <div class="controls pull-left">
+                <select name='pid'>
+                    <option value='0'>-请选择-</option>
+                    <foreach name='catinfo' item='v'>
+                        <option value='{$v.cat_id}'>{:str_repeat('--/',$v['level'])}{$v.cat_name}</option>
+                    </foreach>
+                </select>
+            </div>
+        </div> -->
+
+                    <div class="form-actions" align="center">
+                        <button id="bsubmit" type="submit"  class="btn btn-sm btn-primary">保存</button>
+                    </div>
+        </div>
+                </form>
+            </div>
+        </div>
+        <!--/.box-->
+    </div><!-- /.page-content -->
+</div><!-- /.main-content -->
+
+ 

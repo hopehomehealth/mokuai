@@ -1,0 +1,984 @@
+[ 2016-07-31T01:19:07+08:00 ] 5.9.89.170 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000109s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000047s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000088s ]
+SQL: SHOW COLUMNS FROM `lh_basic` [ RunTime:0.0022s ]
+SQL: SELECT `id`,`name`,`description`,`keyword` FROM `lh_basic`  [ RunTime:0.0028s ]
+SQL: SHOW COLUMNS FROM `lh_ad` [ RunTime:0.0063s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=27 ) LIMIT 0,3   [ RunTime:0.0017s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=28 ) LIMIT 0,3   [ RunTime:0.0017s ]
+SQL: SHOW COLUMNS FROM `lh_product` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id desc LIMIT 0,6   [ RunTime:0.0018s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id LIMIT 0,3   [ RunTime:0.0018s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000062s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000099s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 38 行.
+NOTIC: [8] Use of undefined constant About - assumed 'About' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant News - assumed 'News' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Trailer - assumed 'Trailer' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Service - assumed 'Service' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 42 行.
+NOTIC: [8] Use of undefined constant Train - assumed 'Train' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 43 行.
+NOTIC: [8] Use of undefined constant Medical - assumed 'Medical' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 44 行.
+NOTIC: [8] Use of undefined constant Example - assumed 'Example' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 45 行.
+NOTIC: [8] Use of undefined constant TeamAssess - assumed 'TeamAssess' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamExpert - assumed 'TeamExpert' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamManage - assumed 'TeamManage' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Contact - assumed 'Contact' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Link - assumed 'Link' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009666s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009702s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000037s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000064s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000043s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000074s ]
+
+[ 2016-07-31T01:44:12+08:00 ] 191.216.180.55 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000085s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000035s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000068s ]
+SQL: SHOW COLUMNS FROM `lh_basic` [ RunTime:0.0023s ]
+SQL: SELECT `id`,`name`,`description`,`keyword` FROM `lh_basic`  [ RunTime:0.0017s ]
+SQL: SHOW COLUMNS FROM `lh_ad` [ RunTime:0.0019s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=27 ) LIMIT 0,3   [ RunTime:0.0018s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=28 ) LIMIT 0,3   [ RunTime:0.0016s ]
+SQL: SHOW COLUMNS FROM `lh_product` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id desc LIMIT 0,6   [ RunTime:0.0018s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id LIMIT 0,3   [ RunTime:0.0019s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000060s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000096s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 38 行.
+NOTIC: [8] Use of undefined constant About - assumed 'About' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant News - assumed 'News' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Trailer - assumed 'Trailer' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Service - assumed 'Service' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 42 行.
+NOTIC: [8] Use of undefined constant Train - assumed 'Train' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 43 行.
+NOTIC: [8] Use of undefined constant Medical - assumed 'Medical' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 44 行.
+NOTIC: [8] Use of undefined constant Example - assumed 'Example' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 45 行.
+NOTIC: [8] Use of undefined constant TeamAssess - assumed 'TeamAssess' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamExpert - assumed 'TeamExpert' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamManage - assumed 'TeamManage' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Contact - assumed 'Contact' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Link - assumed 'Link' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009676s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009711s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000037s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000064s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000039s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000071s ]
+
+[ 2016-07-31T02:00:48+08:00 ] 191.251.99.213 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000087s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000035s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000071s ]
+SQL: SHOW COLUMNS FROM `lh_basic` [ RunTime:0.0022s ]
+SQL: SELECT `id`,`name`,`description`,`keyword` FROM `lh_basic`  [ RunTime:0.0019s ]
+SQL: SHOW COLUMNS FROM `lh_ad` [ RunTime:0.0021s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=27 ) LIMIT 0,3   [ RunTime:0.0017s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=28 ) LIMIT 0,3   [ RunTime:0.0019s ]
+SQL: SHOW COLUMNS FROM `lh_product` [ RunTime:0.0021s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id desc LIMIT 0,6   [ RunTime:0.0021s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id LIMIT 0,3   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000071s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000109s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 38 行.
+NOTIC: [8] Use of undefined constant About - assumed 'About' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant News - assumed 'News' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Trailer - assumed 'Trailer' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Service - assumed 'Service' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 42 行.
+NOTIC: [8] Use of undefined constant Train - assumed 'Train' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 43 行.
+NOTIC: [8] Use of undefined constant Medical - assumed 'Medical' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 44 行.
+NOTIC: [8] Use of undefined constant Example - assumed 'Example' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 45 行.
+NOTIC: [8] Use of undefined constant TeamAssess - assumed 'TeamAssess' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamExpert - assumed 'TeamExpert' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamManage - assumed 'TeamManage' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Contact - assumed 'Contact' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Link - assumed 'Link' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009920s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009959s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000037s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000064s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000053s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000115s ]
+
+[ 2016-07-31T02:10:07+08:00 ] 123.151.42.61 http://www.baidu.com/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000094s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000035s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000070s ]
+SQL: SHOW COLUMNS FROM `lh_basic` [ RunTime:0.0022s ]
+SQL: SELECT `id`,`name`,`description`,`keyword` FROM `lh_basic`  [ RunTime:0.0015s ]
+SQL: SHOW COLUMNS FROM `lh_ad` [ RunTime:0.0019s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=27 ) LIMIT 0,3   [ RunTime:0.0016s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=28 ) LIMIT 0,3   [ RunTime:0.0015s ]
+SQL: SHOW COLUMNS FROM `lh_product` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id desc LIMIT 0,6   [ RunTime:0.0018s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id LIMIT 0,3   [ RunTime:0.0016s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000081s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000122s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 38 行.
+NOTIC: [8] Use of undefined constant About - assumed 'About' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant News - assumed 'News' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Trailer - assumed 'Trailer' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Service - assumed 'Service' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 42 行.
+NOTIC: [8] Use of undefined constant Train - assumed 'Train' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 43 行.
+NOTIC: [8] Use of undefined constant Medical - assumed 'Medical' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 44 行.
+NOTIC: [8] Use of undefined constant Example - assumed 'Example' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 45 行.
+NOTIC: [8] Use of undefined constant TeamAssess - assumed 'TeamAssess' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamExpert - assumed 'TeamExpert' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamManage - assumed 'TeamManage' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Contact - assumed 'Contact' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Link - assumed 'Link' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010367s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010405s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000043s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000070s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000049s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000089s ]
+
+[ 2016-07-31T03:36:54+08:00 ] 123.125.71.60 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000133s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000047s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000084s ]
+SQL: SHOW COLUMNS FROM `lh_basic` [ RunTime:0.0022s ]
+SQL: SELECT `id`,`name`,`description`,`keyword` FROM `lh_basic`  [ RunTime:0.0017s ]
+SQL: SHOW COLUMNS FROM `lh_ad` [ RunTime:0.0019s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=27 ) LIMIT 0,3   [ RunTime:0.0016s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=28 ) LIMIT 0,3   [ RunTime:0.0017s ]
+SQL: SHOW COLUMNS FROM `lh_product` [ RunTime:0.0019s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id desc LIMIT 0,6   [ RunTime:0.0017s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id LIMIT 0,3   [ RunTime:0.0017s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000076s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000114s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 38 行.
+NOTIC: [8] Use of undefined constant About - assumed 'About' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant News - assumed 'News' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Trailer - assumed 'Trailer' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Service - assumed 'Service' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 42 行.
+NOTIC: [8] Use of undefined constant Train - assumed 'Train' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 43 行.
+NOTIC: [8] Use of undefined constant Medical - assumed 'Medical' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 44 行.
+NOTIC: [8] Use of undefined constant Example - assumed 'Example' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 45 行.
+NOTIC: [8] Use of undefined constant TeamAssess - assumed 'TeamAssess' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamExpert - assumed 'TeamExpert' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamManage - assumed 'TeamManage' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Contact - assumed 'Contact' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Link - assumed 'Link' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010417s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010458s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000042s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000069s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000051s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000083s ]
+
+[ 2016-07-31T04:52:00+08:00 ] 121.42.0.56 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000055s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000026s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000056s ]
+SQL: SHOW COLUMNS FROM `lh_basic` [ RunTime:0.0023s ]
+SQL: SELECT `id`,`name`,`description`,`keyword` FROM `lh_basic`  [ RunTime:0.0017s ]
+SQL: SHOW COLUMNS FROM `lh_ad` [ RunTime:0.0022s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=27 ) LIMIT 0,3   [ RunTime:0.0017s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=28 ) LIMIT 0,3   [ RunTime:0.0018s ]
+SQL: SHOW COLUMNS FROM `lh_product` [ RunTime:0.0022s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id desc LIMIT 0,6   [ RunTime:0.0019s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id LIMIT 0,3   [ RunTime:0.0018s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000082s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000134s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 38 行.
+NOTIC: [8] Use of undefined constant About - assumed 'About' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant News - assumed 'News' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Trailer - assumed 'Trailer' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Service - assumed 'Service' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 42 行.
+NOTIC: [8] Use of undefined constant Train - assumed 'Train' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 43 行.
+NOTIC: [8] Use of undefined constant Medical - assumed 'Medical' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 44 行.
+NOTIC: [8] Use of undefined constant Example - assumed 'Example' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 45 行.
+NOTIC: [8] Use of undefined constant TeamAssess - assumed 'TeamAssess' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamExpert - assumed 'TeamExpert' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamManage - assumed 'TeamManage' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Contact - assumed 'Contact' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Link - assumed 'Link' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010616s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010653s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000049s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000075s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000039s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000079s ]
+
+[ 2016-07-31T04:52:00+08:00 ] 121.42.0.64 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000085s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000034s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000067s ]
+SQL: SHOW COLUMNS FROM `lh_basic` [ RunTime:0.0022s ]
+SQL: SELECT `id`,`name`,`description`,`keyword` FROM `lh_basic`  [ RunTime:0.0018s ]
+SQL: SHOW COLUMNS FROM `lh_ad` [ RunTime:0.0027s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=27 ) LIMIT 0,3   [ RunTime:0.0017s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=28 ) LIMIT 0,3   [ RunTime:0.0017s ]
+SQL: SHOW COLUMNS FROM `lh_product` [ RunTime:0.0021s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id desc LIMIT 0,6   [ RunTime:0.0019s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id LIMIT 0,3   [ RunTime:0.0051s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000073s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000121s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 38 行.
+NOTIC: [8] Use of undefined constant About - assumed 'About' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant News - assumed 'News' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Trailer - assumed 'Trailer' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Service - assumed 'Service' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 42 行.
+NOTIC: [8] Use of undefined constant Train - assumed 'Train' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 43 行.
+NOTIC: [8] Use of undefined constant Medical - assumed 'Medical' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 44 行.
+NOTIC: [8] Use of undefined constant Example - assumed 'Example' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 45 行.
+NOTIC: [8] Use of undefined constant TeamAssess - assumed 'TeamAssess' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamExpert - assumed 'TeamExpert' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamManage - assumed 'TeamManage' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Contact - assumed 'Contact' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Link - assumed 'Link' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.023090s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.023133s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000033s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000059s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000050s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000083s ]
+
+[ 2016-07-31T05:00:33+08:00 ] 42.156.251.187 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000133s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000048s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000084s ]
+SQL: SHOW COLUMNS FROM `lh_basic` [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name`,`description`,`keyword` FROM `lh_basic`  [ RunTime:0.0015s ]
+SQL: SHOW COLUMNS FROM `lh_ad` [ RunTime:0.0018s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=27 ) LIMIT 0,3   [ RunTime:0.0017s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=28 ) LIMIT 0,3   [ RunTime:0.0016s ]
+SQL: SHOW COLUMNS FROM `lh_product` [ RunTime:0.0018s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id desc LIMIT 0,6   [ RunTime:0.0017s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id LIMIT 0,3   [ RunTime:0.0018s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000090s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000130s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 38 行.
+NOTIC: [8] Use of undefined constant About - assumed 'About' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant News - assumed 'News' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Trailer - assumed 'Trailer' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Service - assumed 'Service' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 42 行.
+NOTIC: [8] Use of undefined constant Train - assumed 'Train' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 43 行.
+NOTIC: [8] Use of undefined constant Medical - assumed 'Medical' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 44 行.
+NOTIC: [8] Use of undefined constant Example - assumed 'Example' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 45 行.
+NOTIC: [8] Use of undefined constant TeamAssess - assumed 'TeamAssess' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamExpert - assumed 'TeamExpert' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamManage - assumed 'TeamManage' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Contact - assumed 'Contact' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Link - assumed 'Link' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010686s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010725s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000043s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000070s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000048s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000079s ]
+
+[ 2016-07-31T05:18:15+08:00 ] 186.210.24.4 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000087s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000036s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000068s ]
+SQL: SHOW COLUMNS FROM `lh_basic` [ RunTime:0.0024s ]
+SQL: SELECT `id`,`name`,`description`,`keyword` FROM `lh_basic`  [ RunTime:0.0016s ]
+SQL: SHOW COLUMNS FROM `lh_ad` [ RunTime:0.0022s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=27 ) LIMIT 0,3   [ RunTime:0.0017s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=28 ) LIMIT 0,3   [ RunTime:0.0022s ]
+SQL: SHOW COLUMNS FROM `lh_product` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id desc LIMIT 0,6   [ RunTime:0.0017s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id LIMIT 0,3   [ RunTime:0.0017s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000062s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000098s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 38 行.
+NOTIC: [8] Use of undefined constant About - assumed 'About' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant News - assumed 'News' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Trailer - assumed 'Trailer' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Service - assumed 'Service' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 42 行.
+NOTIC: [8] Use of undefined constant Train - assumed 'Train' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 43 行.
+NOTIC: [8] Use of undefined constant Medical - assumed 'Medical' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 44 行.
+NOTIC: [8] Use of undefined constant Example - assumed 'Example' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 45 行.
+NOTIC: [8] Use of undefined constant TeamAssess - assumed 'TeamAssess' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamExpert - assumed 'TeamExpert' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamManage - assumed 'TeamManage' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Contact - assumed 'Contact' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Link - assumed 'Link' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009599s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009638s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000038s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000069s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000039s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000072s ]
+
+[ 2016-07-31T05:21:21+08:00 ] 177.74.156.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000020s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000131s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000048s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000084s ]
+SQL: SHOW COLUMNS FROM `lh_basic` [ RunTime:0.0024s ]
+SQL: SELECT `id`,`name`,`description`,`keyword` FROM `lh_basic`  [ RunTime:0.0018s ]
+SQL: SHOW COLUMNS FROM `lh_ad` [ RunTime:0.0022s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=27 ) LIMIT 0,3   [ RunTime:0.0019s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=28 ) LIMIT 0,3   [ RunTime:0.0018s ]
+SQL: SHOW COLUMNS FROM `lh_product` [ RunTime:0.0021s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id desc LIMIT 0,6   [ RunTime:0.0019s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id LIMIT 0,3   [ RunTime:0.0019s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000086s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000144s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 38 行.
+NOTIC: [8] Use of undefined constant About - assumed 'About' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant News - assumed 'News' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Trailer - assumed 'Trailer' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Service - assumed 'Service' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 42 行.
+NOTIC: [8] Use of undefined constant Train - assumed 'Train' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 43 行.
+NOTIC: [8] Use of undefined constant Medical - assumed 'Medical' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 44 行.
+NOTIC: [8] Use of undefined constant Example - assumed 'Example' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 45 行.
+NOTIC: [8] Use of undefined constant TeamAssess - assumed 'TeamAssess' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamExpert - assumed 'TeamExpert' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamManage - assumed 'TeamManage' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Contact - assumed 'Contact' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Link - assumed 'Link' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010953s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010992s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000050s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000077s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000060s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000092s ]
+
+[ 2016-07-31T06:34:40+08:00 ] 42.156.251.185 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000437s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000567s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000623s ]
+SQL: SHOW COLUMNS FROM `lh_basic` [ RunTime:0.0021s ]
+SQL: SELECT `id`,`name`,`description`,`keyword` FROM `lh_basic`  [ RunTime:0.0018s ]
+SQL: SHOW COLUMNS FROM `lh_ad` [ RunTime:0.0018s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=27 ) LIMIT 0,3   [ RunTime:0.0016s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=28 ) LIMIT 0,3   [ RunTime:0.0016s ]
+SQL: SHOW COLUMNS FROM `lh_product` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id desc LIMIT 0,6   [ RunTime:0.0022s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id LIMIT 0,3   [ RunTime:0.0017s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000065s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000105s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 38 行.
+NOTIC: [8] Use of undefined constant About - assumed 'About' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant News - assumed 'News' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Trailer - assumed 'Trailer' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Service - assumed 'Service' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 42 行.
+NOTIC: [8] Use of undefined constant Train - assumed 'Train' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 43 行.
+NOTIC: [8] Use of undefined constant Medical - assumed 'Medical' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 44 行.
+NOTIC: [8] Use of undefined constant Example - assumed 'Example' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 45 行.
+NOTIC: [8] Use of undefined constant TeamAssess - assumed 'TeamAssess' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamExpert - assumed 'TeamExpert' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamManage - assumed 'TeamManage' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Contact - assumed 'Contact' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Link - assumed 'Link' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014561s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014595s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000181s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000215s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000600s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000638s ]
+
+[ 2016-07-31T06:35:03+08:00 ] 42.156.251.185 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000129s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000056s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000092s ]
+SQL: SHOW COLUMNS FROM `lh_basic` [ RunTime:0.0021s ]
+SQL: SELECT `id`,`name`,`description`,`keyword` FROM `lh_basic`  [ RunTime:0.0016s ]
+SQL: SHOW COLUMNS FROM `lh_ad` [ RunTime:0.0019s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=27 ) LIMIT 0,3   [ RunTime:0.0019s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=28 ) LIMIT 0,3   [ RunTime:0.0017s ]
+SQL: SHOW COLUMNS FROM `lh_product` [ RunTime:0.0018s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id desc LIMIT 0,6   [ RunTime:0.0018s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id LIMIT 0,3   [ RunTime:0.0021s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000072s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000110s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 38 行.
+NOTIC: [8] Use of undefined constant About - assumed 'About' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant News - assumed 'News' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Trailer - assumed 'Trailer' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Service - assumed 'Service' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 42 行.
+NOTIC: [8] Use of undefined constant Train - assumed 'Train' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 43 行.
+NOTIC: [8] Use of undefined constant Medical - assumed 'Medical' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 44 行.
+NOTIC: [8] Use of undefined constant Example - assumed 'Example' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 45 行.
+NOTIC: [8] Use of undefined constant TeamAssess - assumed 'TeamAssess' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamExpert - assumed 'TeamExpert' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamManage - assumed 'TeamManage' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Contact - assumed 'Contact' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Link - assumed 'Link' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010365s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010404s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000039s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000066s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000052s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000088s ]
+
+[ 2016-07-31T07:16:58+08:00 ] 190.38.51.20 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000138s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000055s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000091s ]
+SQL: SHOW COLUMNS FROM `lh_basic` [ RunTime:0.0019s ]
+SQL: SELECT `id`,`name`,`description`,`keyword` FROM `lh_basic`  [ RunTime:0.0015s ]
+SQL: SHOW COLUMNS FROM `lh_ad` [ RunTime:0.0018s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=27 ) LIMIT 0,3   [ RunTime:0.0015s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=28 ) LIMIT 0,3   [ RunTime:0.0016s ]
+SQL: SHOW COLUMNS FROM `lh_product` [ RunTime:0.0018s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id desc LIMIT 0,6   [ RunTime:0.0021s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id LIMIT 0,3   [ RunTime:0.0016s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000077s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000115s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 38 行.
+NOTIC: [8] Use of undefined constant About - assumed 'About' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant News - assumed 'News' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Trailer - assumed 'Trailer' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Service - assumed 'Service' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 42 行.
+NOTIC: [8] Use of undefined constant Train - assumed 'Train' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 43 行.
+NOTIC: [8] Use of undefined constant Medical - assumed 'Medical' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 44 行.
+NOTIC: [8] Use of undefined constant Example - assumed 'Example' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 45 行.
+NOTIC: [8] Use of undefined constant TeamAssess - assumed 'TeamAssess' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamExpert - assumed 'TeamExpert' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamManage - assumed 'TeamManage' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Contact - assumed 'Contact' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Link - assumed 'Link' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010328s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010367s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000042s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000069s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000050s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000085s ]
+
+[ 2016-07-31T08:00:09+08:00 ] 179.35.99.70 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000083s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000036s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000067s ]
+SQL: SHOW COLUMNS FROM `lh_basic` [ RunTime:0.0022s ]
+SQL: SELECT `id`,`name`,`description`,`keyword` FROM `lh_basic`  [ RunTime:0.0019s ]
+SQL: SHOW COLUMNS FROM `lh_ad` [ RunTime:0.0023s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=27 ) LIMIT 0,3   [ RunTime:0.0018s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=28 ) LIMIT 0,3   [ RunTime:0.0018s ]
+SQL: SHOW COLUMNS FROM `lh_product` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id desc LIMIT 0,6   [ RunTime:0.0018s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id LIMIT 0,3   [ RunTime:0.0017s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000068s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000126s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 38 行.
+NOTIC: [8] Use of undefined constant About - assumed 'About' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant News - assumed 'News' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Trailer - assumed 'Trailer' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Service - assumed 'Service' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 42 行.
+NOTIC: [8] Use of undefined constant Train - assumed 'Train' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 43 行.
+NOTIC: [8] Use of undefined constant Medical - assumed 'Medical' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 44 行.
+NOTIC: [8] Use of undefined constant Example - assumed 'Example' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 45 行.
+NOTIC: [8] Use of undefined constant TeamAssess - assumed 'TeamAssess' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamExpert - assumed 'TeamExpert' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamManage - assumed 'TeamManage' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Contact - assumed 'Contact' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Link - assumed 'Link' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009913s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009950s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000055s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000083s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000039s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000069s ]
+
+[ 2016-07-31T11:15:08+08:00 ] 120.25.103.140 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000144s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000061s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000094s ]
+SQL: SHOW COLUMNS FROM `lh_basic` [ RunTime:0.0024s ]
+SQL: SELECT `id`,`name`,`description`,`keyword` FROM `lh_basic`  [ RunTime:0.0017s ]
+SQL: SHOW COLUMNS FROM `lh_ad` [ RunTime:0.0021s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=27 ) LIMIT 0,3   [ RunTime:0.0018s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=28 ) LIMIT 0,3   [ RunTime:0.0018s ]
+SQL: SHOW COLUMNS FROM `lh_product` [ RunTime:0.0023s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id desc LIMIT 0,6   [ RunTime:0.0018s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id LIMIT 0,3   [ RunTime:0.0018s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000075s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000117s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 38 行.
+NOTIC: [8] Use of undefined constant About - assumed 'About' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant News - assumed 'News' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Trailer - assumed 'Trailer' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Service - assumed 'Service' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 42 行.
+NOTIC: [8] Use of undefined constant Train - assumed 'Train' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 43 行.
+NOTIC: [8] Use of undefined constant Medical - assumed 'Medical' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 44 行.
+NOTIC: [8] Use of undefined constant Example - assumed 'Example' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 45 行.
+NOTIC: [8] Use of undefined constant TeamAssess - assumed 'TeamAssess' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamExpert - assumed 'TeamExpert' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamManage - assumed 'TeamManage' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Contact - assumed 'Contact' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Link - assumed 'Link' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010403s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010442s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000040s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000067s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000066s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000098s ]
+
+[ 2016-07-31T13:51:17+08:00 ] 122.97.172.28 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000086s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000035s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000067s ]
+SQL: SHOW COLUMNS FROM `lh_basic` [ RunTime:0.0026s ]
+SQL: SELECT `id`,`name`,`description`,`keyword` FROM `lh_basic`  [ RunTime:0.0014s ]
+SQL: SHOW COLUMNS FROM `lh_ad` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=27 ) LIMIT 0,3   [ RunTime:0.0017s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=28 ) LIMIT 0,3   [ RunTime:0.0016s ]
+SQL: SHOW COLUMNS FROM `lh_product` [ RunTime:0.0026s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id desc LIMIT 0,6   [ RunTime:0.0017s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id LIMIT 0,3   [ RunTime:0.0016s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000059s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000096s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 38 行.
+NOTIC: [8] Use of undefined constant About - assumed 'About' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant News - assumed 'News' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Trailer - assumed 'Trailer' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Service - assumed 'Service' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 42 行.
+NOTIC: [8] Use of undefined constant Train - assumed 'Train' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 43 行.
+NOTIC: [8] Use of undefined constant Medical - assumed 'Medical' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 44 行.
+NOTIC: [8] Use of undefined constant Example - assumed 'Example' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 45 行.
+NOTIC: [8] Use of undefined constant TeamAssess - assumed 'TeamAssess' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamExpert - assumed 'TeamExpert' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamManage - assumed 'TeamManage' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Contact - assumed 'Contact' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Link - assumed 'Link' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009421s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009456s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000036s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000063s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000038s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000068s ]
+
+[ 2016-07-31T14:10:03+08:00 ] 123.151.42.61 http://www.baidu.com/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000088s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000035s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000066s ]
+SQL: SHOW COLUMNS FROM `lh_basic` [ RunTime:0.0027s ]
+SQL: SELECT `id`,`name`,`description`,`keyword` FROM `lh_basic`  [ RunTime:0.0035s ]
+SQL: SHOW COLUMNS FROM `lh_ad` [ RunTime:0.0029s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=27 ) LIMIT 0,3   [ RunTime:0.0019s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=28 ) LIMIT 0,3   [ RunTime:0.0018s ]
+SQL: SHOW COLUMNS FROM `lh_product` [ RunTime:0.0022s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id desc LIMIT 0,6   [ RunTime:0.0019s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id LIMIT 0,3   [ RunTime:0.0019s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000057s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000094s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 38 行.
+NOTIC: [8] Use of undefined constant About - assumed 'About' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant News - assumed 'News' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Trailer - assumed 'Trailer' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Service - assumed 'Service' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 42 行.
+NOTIC: [8] Use of undefined constant Train - assumed 'Train' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 43 行.
+NOTIC: [8] Use of undefined constant Medical - assumed 'Medical' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 44 行.
+NOTIC: [8] Use of undefined constant Example - assumed 'Example' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 45 行.
+NOTIC: [8] Use of undefined constant TeamAssess - assumed 'TeamAssess' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamExpert - assumed 'TeamExpert' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamManage - assumed 'TeamManage' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Contact - assumed 'Contact' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Link - assumed 'Link' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009605s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009640s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000036s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000063s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000046s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000092s ]
+
+[ 2016-07-31T14:10:19+08:00 ] 222.128.97.114 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000129s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000056s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000089s ]
+SQL: SHOW COLUMNS FROM `lh_basic` [ RunTime:0.0027s ]
+SQL: SELECT `id`,`name`,`description`,`keyword` FROM `lh_basic`  [ RunTime:0.0017s ]
+SQL: SHOW COLUMNS FROM `lh_ad` [ RunTime:0.0028s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=27 ) LIMIT 0,3   [ RunTime:0.0031s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=28 ) LIMIT 0,3   [ RunTime:0.0024s ]
+SQL: SHOW COLUMNS FROM `lh_product` [ RunTime:0.0023s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id desc LIMIT 0,6   [ RunTime:0.0018s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id LIMIT 0,3   [ RunTime:0.0019s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000118s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000157s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 38 行.
+NOTIC: [8] Use of undefined constant About - assumed 'About' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant News - assumed 'News' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Trailer - assumed 'Trailer' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Service - assumed 'Service' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 42 行.
+NOTIC: [8] Use of undefined constant Train - assumed 'Train' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 43 行.
+NOTIC: [8] Use of undefined constant Medical - assumed 'Medical' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 44 行.
+NOTIC: [8] Use of undefined constant Example - assumed 'Example' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 45 行.
+NOTIC: [8] Use of undefined constant TeamAssess - assumed 'TeamAssess' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamExpert - assumed 'TeamExpert' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamManage - assumed 'TeamManage' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Contact - assumed 'Contact' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Link - assumed 'Link' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010548s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010585s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000039s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000066s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000049s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000080s ]
+
+[ 2016-07-31T17:06:47+08:00 ] 208.73.20.90 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000087s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000036s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000067s ]
+SQL: SHOW COLUMNS FROM `lh_basic` [ RunTime:0.0023s ]
+SQL: SELECT `id`,`name`,`description`,`keyword` FROM `lh_basic`  [ RunTime:0.0016s ]
+SQL: SHOW COLUMNS FROM `lh_ad` [ RunTime:0.0022s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=27 ) LIMIT 0,3   [ RunTime:0.0017s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=28 ) LIMIT 0,3   [ RunTime:0.0019s ]
+SQL: SHOW COLUMNS FROM `lh_product` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id desc LIMIT 0,6   [ RunTime:0.0019s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id LIMIT 0,3   [ RunTime:0.0018s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000063s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000102s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 38 行.
+NOTIC: [8] Use of undefined constant About - assumed 'About' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant News - assumed 'News' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Trailer - assumed 'Trailer' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Service - assumed 'Service' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 42 行.
+NOTIC: [8] Use of undefined constant Train - assumed 'Train' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 43 行.
+NOTIC: [8] Use of undefined constant Medical - assumed 'Medical' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 44 行.
+NOTIC: [8] Use of undefined constant Example - assumed 'Example' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 45 行.
+NOTIC: [8] Use of undefined constant TeamAssess - assumed 'TeamAssess' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamExpert - assumed 'TeamExpert' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamManage - assumed 'TeamManage' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Contact - assumed 'Contact' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Link - assumed 'Link' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009539s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009575s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000039s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000067s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000039s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000069s ]
+
+[ 2016-07-31T17:48:44+08:00 ] 218.75.70.3 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000087s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000036s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000067s ]
+SQL: SHOW COLUMNS FROM `lh_basic` [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name`,`description`,`keyword` FROM `lh_basic`  [ RunTime:0.0016s ]
+SQL: SHOW COLUMNS FROM `lh_ad` [ RunTime:0.0018s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=27 ) LIMIT 0,3   [ RunTime:0.1683s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=28 ) LIMIT 0,3   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `lh_product` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id desc LIMIT 0,6   [ RunTime:0.0018s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id LIMIT 0,3   [ RunTime:0.0021s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000063s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000100s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 38 行.
+NOTIC: [8] Use of undefined constant About - assumed 'About' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant News - assumed 'News' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Trailer - assumed 'Trailer' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Service - assumed 'Service' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 42 行.
+NOTIC: [8] Use of undefined constant Train - assumed 'Train' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 43 行.
+NOTIC: [8] Use of undefined constant Medical - assumed 'Medical' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 44 行.
+NOTIC: [8] Use of undefined constant Example - assumed 'Example' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 45 行.
+NOTIC: [8] Use of undefined constant TeamAssess - assumed 'TeamAssess' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamExpert - assumed 'TeamExpert' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamManage - assumed 'TeamManage' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Contact - assumed 'Contact' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Link - assumed 'Link' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009791s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009828s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000052s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000085s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000055s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000106s ]
+
+[ 2016-07-31T20:15:51+08:00 ] 123.57.27.63 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000086s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000035s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000065s ]
+SQL: SHOW COLUMNS FROM `lh_basic` [ RunTime:0.0023s ]
+SQL: SELECT `id`,`name`,`description`,`keyword` FROM `lh_basic`  [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `lh_ad` [ RunTime:0.0021s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=27 ) LIMIT 0,3   [ RunTime:0.0018s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=28 ) LIMIT 0,3   [ RunTime:0.0017s ]
+SQL: SHOW COLUMNS FROM `lh_product` [ RunTime:0.0162s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id desc LIMIT 0,6   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id LIMIT 0,3   [ RunTime:0.0018s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000063s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000102s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 38 行.
+NOTIC: [8] Use of undefined constant About - assumed 'About' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant News - assumed 'News' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Trailer - assumed 'Trailer' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Service - assumed 'Service' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 42 行.
+NOTIC: [8] Use of undefined constant Train - assumed 'Train' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 43 行.
+NOTIC: [8] Use of undefined constant Medical - assumed 'Medical' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 44 行.
+NOTIC: [8] Use of undefined constant Example - assumed 'Example' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 45 行.
+NOTIC: [8] Use of undefined constant TeamAssess - assumed 'TeamAssess' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamExpert - assumed 'TeamExpert' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamManage - assumed 'TeamManage' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Contact - assumed 'Contact' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Link - assumed 'Link' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009636s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009672s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000037s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000065s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000037s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000069s ]
+
+[ 2016-07-31T20:29:48+08:00 ] 121.199.70.200 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000088s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000036s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000067s ]
+SQL: SHOW COLUMNS FROM `lh_basic` [ RunTime:0.0023s ]
+SQL: SELECT `id`,`name`,`description`,`keyword` FROM `lh_basic`  [ RunTime:0.0016s ]
+SQL: SHOW COLUMNS FROM `lh_ad` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=27 ) LIMIT 0,3   [ RunTime:0.0017s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=28 ) LIMIT 0,3   [ RunTime:0.0017s ]
+SQL: SHOW COLUMNS FROM `lh_product` [ RunTime:0.0022s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id desc LIMIT 0,6   [ RunTime:0.0018s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id LIMIT 0,3   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000060s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000098s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 38 行.
+NOTIC: [8] Use of undefined constant About - assumed 'About' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant News - assumed 'News' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Trailer - assumed 'Trailer' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Service - assumed 'Service' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 42 行.
+NOTIC: [8] Use of undefined constant Train - assumed 'Train' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 43 行.
+NOTIC: [8] Use of undefined constant Medical - assumed 'Medical' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 44 行.
+NOTIC: [8] Use of undefined constant Example - assumed 'Example' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 45 行.
+NOTIC: [8] Use of undefined constant TeamAssess - assumed 'TeamAssess' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamExpert - assumed 'TeamExpert' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamManage - assumed 'TeamManage' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Contact - assumed 'Contact' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Link - assumed 'Link' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010218s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010254s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000039s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000066s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000043s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000087s ]
+
+[ 2016-07-31T20:32:48+08:00 ] 101.200.126.64 http://www.izhongsai.com/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000085s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000035s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000066s ]
+SQL: SHOW COLUMNS FROM `lh_basic` [ RunTime:0.0021s ]
+SQL: SELECT `id`,`name`,`description`,`keyword` FROM `lh_basic`  [ RunTime:0.0027s ]
+SQL: SHOW COLUMNS FROM `lh_ad` [ RunTime:0.0024s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=27 ) LIMIT 0,3   [ RunTime:0.0027s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=28 ) LIMIT 0,3   [ RunTime:0.0033s ]
+SQL: SHOW COLUMNS FROM `lh_product` [ RunTime:0.0046s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id desc LIMIT 0,6   [ RunTime:0.0033s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id LIMIT 0,3   [ RunTime:0.0038s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000060s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000096s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 38 行.
+NOTIC: [8] Use of undefined constant About - assumed 'About' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant News - assumed 'News' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Trailer - assumed 'Trailer' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Service - assumed 'Service' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 42 行.
+NOTIC: [8] Use of undefined constant Train - assumed 'Train' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 43 行.
+NOTIC: [8] Use of undefined constant Medical - assumed 'Medical' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 44 行.
+NOTIC: [8] Use of undefined constant Example - assumed 'Example' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 45 行.
+NOTIC: [8] Use of undefined constant TeamAssess - assumed 'TeamAssess' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamExpert - assumed 'TeamExpert' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamManage - assumed 'TeamManage' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Contact - assumed 'Contact' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Link - assumed 'Link' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009545s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009580s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000036s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000064s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000037s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000069s ]
+
+[ 2016-07-31T22:11:37+08:00 ] 220.181.108.185 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000088s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000034s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000066s ]
+SQL: SHOW COLUMNS FROM `lh_basic` [ RunTime:0.0026s ]
+SQL: SELECT `id`,`name`,`description`,`keyword` FROM `lh_basic`  [ RunTime:0.0017s ]
+SQL: SHOW COLUMNS FROM `lh_ad` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=27 ) LIMIT 0,3   [ RunTime:0.0021s ]
+SQL: SELECT * FROM `lh_ad` WHERE ( col_id=28 ) LIMIT 0,3   [ RunTime:0.0017s ]
+SQL: SHOW COLUMNS FROM `lh_product` [ RunTime:0.0021s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id desc LIMIT 0,6   [ RunTime:0.0019s ]
+SQL: SELECT * FROM `lh_product` ORDER BY pro_id LIMIT 0,3   [ RunTime:0.0018s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000063s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000104s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 38 行.
+NOTIC: [8] Use of undefined constant About - assumed 'About' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant News - assumed 'News' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Trailer - assumed 'Trailer' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 39 行.
+NOTIC: [8] Use of undefined constant Service - assumed 'Service' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 42 行.
+NOTIC: [8] Use of undefined constant Train - assumed 'Train' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 43 行.
+NOTIC: [8] Use of undefined constant Medical - assumed 'Medical' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 44 行.
+NOTIC: [8] Use of undefined constant Example - assumed 'Example' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 45 行.
+NOTIC: [8] Use of undefined constant TeamAssess - assumed 'TeamAssess' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamExpert - assumed 'TeamExpert' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant TeamManage - assumed 'TeamManage' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Contact - assumed 'Contact' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 46 行.
+NOTIC: [8] Use of undefined constant Link - assumed 'Link' /var/www/html/Runtime/Cache/Home/9d8f307ab87b09448a0c31c48e9c85c1.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009924s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009970s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000049s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000077s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000040s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000072s ]
+

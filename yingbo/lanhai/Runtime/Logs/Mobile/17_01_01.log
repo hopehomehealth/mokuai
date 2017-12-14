@@ -1,0 +1,955 @@
+[ 2017-01-01T08:44:37+08:00 ] 123.125.71.115 /index.php/Mobile/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000083s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000594s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000671s ]
+SQL: SHOW COLUMNS FROM `cq_lanmu` [ RunTime:0.0021s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=1 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=2 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=3 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=4 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=5 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=5 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=6 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=6 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=7 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort LIMIT 0,4   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=8 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=9 )  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `cq_banner` [ RunTime:0.0019s ]
+SQL: SELECT * FROM `cq_banner` WHERE ( is_show='0' AND is_area='0' AND lan_id=1 AND is_del='0' ) ORDER BY add_time desc LIMIT 0,5   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_banner` WHERE ( is_show='0' AND is_area='1' AND lan_id=1 AND is_del='0' ) ORDER BY add_time desc LIMIT 0,1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_news` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `cq_news` WHERE ( is_show='0' AND lan_id='3' AND is_del='0' ) ORDER BY add_time desc LIMIT 0,5   [ RunTime:0.0017s ]
+SQL: SELECT * FROM `cq_news` WHERE ( is_show='0' AND lan_id='3' AND is_del='0' ) ORDER BY add_time desc LIMIT 5,4   [ RunTime:0.0011s ]
+SQL: SELECT * FROM cq_news n INNER JOIN cq_lanmu l on n.lan_id=l.lan_id  WHERE ( n.is_show='0' AND n.is_del='0' AND l.pid=4 ) ORDER BY click desc LIMIT 0,3   [ RunTime:0.0012s ]
+SQL: SELECT * FROM cq_news n INNER JOIN cq_lanmu l on n.lan_id=l.lan_id  WHERE ( n.is_show='0' AND n.is_del='0' AND l.pid=5 ) ORDER BY click desc LIMIT 0,3   [ RunTime:0.0013s ]
+SQL: SELECT * FROM `cq_news` WHERE ( is_show='0' AND is_del='0' AND lan_id=29 OR lan_id=30 OR lan_id=32 ) ORDER BY click desc LIMIT 0,3   [ RunTime:0.0011s ]
+SQL: select p1.*,b.board_id,b.board_title,b.todposts,b.posts,b.board_img,u.username from (select p.* from cq_posts as p where p.ctime = (select max(ctime) from cq_posts where board_id = p.board_id)) as p1 right join cq_boards as b on b.board_id = p1.board_id left join cq_user as u on u.user_id = p1.user_id where b.pid <> 0 order by b.sort [ RunTime:0.0032s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000171s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000236s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.032676s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.032748s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000399s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000454s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000594s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000670s ]
+
+[ 2017-01-01T10:04:01+08:00 ] 123.125.71.19 /index.php/Mobile/Posts/detail/post_id/70
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000083s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000596s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000666s ]
+SQL: SHOW COLUMNS FROM `cq_lanmu` [ RunTime:0.0021s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=1 )  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=2 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=3 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=4 )  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=5 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=5 ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=6 )  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=6 ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=7 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort LIMIT 0,4   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=8 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=9 )  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_posts` [ RunTime:0.0021s ]
+SQL: SHOW COLUMNS FROM `cq_reply` [ RunTime:0.0017s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `cq_reply` WHERE ( post_id = 70 AND display = '1' ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT r.*,r1.reply_body as reply_body1,r1.ctime as ctime1,u.username,u.score,u.posts,u.userhead,u1.username as username1 FROM cq_reply r INNER JOIN cq_user as u on u.user_id = r.user_id left join cq_reply as r1 on r1.reply_id = r.pid left join cq_user as u1 on u1.user_id = r1.user_id  WHERE ( r.post_id = 70 AND r.display = '1' ) ORDER BY r.ctime LIMIT 0,8   [ RunTime:0.0017s ]
+NOTIC: [8] Undefined index: p E:\web\lanhai\www\Mobile\Controller\PostsController.class.php 第 125 行.
+SQL: SELECT p.*,u.username,u.score,u.posts,u.userhead FROM cq_posts p INNER JOIN cq_user as u on u.user_id = p.user_id  WHERE ( p.post_id = 70 )  [ RunTime:0.0003s ]
+NOTIC: [8] Undefined offset: 0 E:\web\lanhai\www\Mobile\Controller\PostsController.class.php 第 168 行.
+NOTIC: [8] Undefined offset: 0 E:\web\lanhai\www\Mobile\Controller\PostsController.class.php 第 168 行.
+NOTIC: [8] Undefined offset: 0 E:\web\lanhai\www\Mobile\Controller\PostsController.class.php 第 168 行.
+NOTIC: [8] Undefined offset: 0 E:\web\lanhai\www\Mobile\Controller\PostsController.class.php 第 168 行.
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND ctime > '' order by ctime limit 1) as t1 union all select * from(select post' at line 1
+ [ SQL语句 ] : select * from (select post_id,topic from cq_posts as t1 where board_id =  AND ctime > '' order by ctime limit 1) as t1 union all select * from(select post_id,topic from cq_posts as t2 where board_id =  AND ctime < '' order by ctime desc limit 1) as t2
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND ctime > '' order by ctime limit 1) as t1 union all select * from(select post' at line 1
+ [ SQL语句 ] : select * from (select post_id,topic from cq_posts as t1 where board_id =  AND ctime > '' order by ctime limit 1) as t1 union all select * from(select post_id,topic from cq_posts as t2 where board_id =  AND ctime < '' order by ctime desc limit 1) as t2
+
+[ 2017-01-01T18:23:27+08:00 ] 220.181.108.149 /index.php/Mobile/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000127s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000643s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000722s ]
+SQL: SHOW COLUMNS FROM `cq_lanmu` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=1 )  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=2 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=3 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=4 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=5 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=5 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=6 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=6 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=7 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort LIMIT 0,4   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=8 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=9 )  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `cq_banner` [ RunTime:0.0018s ]
+SQL: SELECT * FROM `cq_banner` WHERE ( is_show='0' AND is_area='0' AND lan_id=1 AND is_del='0' ) ORDER BY add_time desc LIMIT 0,5   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_banner` WHERE ( is_show='0' AND is_area='1' AND lan_id=1 AND is_del='0' ) ORDER BY add_time desc LIMIT 0,1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_news` [ RunTime:0.0021s ]
+SQL: SELECT * FROM `cq_news` WHERE ( is_show='0' AND lan_id='3' AND is_del='0' ) ORDER BY add_time desc LIMIT 0,5   [ RunTime:0.0018s ]
+SQL: SELECT * FROM `cq_news` WHERE ( is_show='0' AND lan_id='3' AND is_del='0' ) ORDER BY add_time desc LIMIT 5,4   [ RunTime:0.0012s ]
+SQL: SELECT * FROM cq_news n INNER JOIN cq_lanmu l on n.lan_id=l.lan_id  WHERE ( n.is_show='0' AND n.is_del='0' AND l.pid=4 ) ORDER BY click desc LIMIT 0,3   [ RunTime:0.0013s ]
+SQL: SELECT * FROM cq_news n INNER JOIN cq_lanmu l on n.lan_id=l.lan_id  WHERE ( n.is_show='0' AND n.is_del='0' AND l.pid=5 ) ORDER BY click desc LIMIT 0,3   [ RunTime:0.0014s ]
+SQL: SELECT * FROM `cq_news` WHERE ( is_show='0' AND is_del='0' AND lan_id=29 OR lan_id=30 OR lan_id=32 ) ORDER BY click desc LIMIT 0,3   [ RunTime:0.0011s ]
+SQL: select p1.*,b.board_id,b.board_title,b.todposts,b.posts,b.board_img,u.username from (select p.* from cq_posts as p where p.ctime = (select max(ctime) from cq_posts where board_id = p.board_id)) as p1 right join cq_boards as b on b.board_id = p1.board_id left join cq_user as u on u.user_id = p1.user_id where b.pid <> 0 order by b.sort [ RunTime:0.0034s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000174s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000241s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.035999s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.036096s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000452s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000536s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000592s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000670s ]
+
+[ 2017-01-01T21:11:02+08:00 ] 101.38.213.166 /index.php/Mobile
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000107s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000535s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000619s ]
+SQL: SHOW COLUMNS FROM `cq_lanmu` [ RunTime:0.0021s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=1 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=2 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=3 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=4 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=5 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=5 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=6 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=6 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=7 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort LIMIT 0,4   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=8 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=9 )  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `cq_banner` [ RunTime:0.0018s ]
+SQL: SELECT * FROM `cq_banner` WHERE ( is_show='0' AND is_area='0' AND lan_id=1 AND is_del='0' ) ORDER BY add_time desc LIMIT 0,5   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_banner` WHERE ( is_show='0' AND is_area='1' AND lan_id=1 AND is_del='0' ) ORDER BY add_time desc LIMIT 0,1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_news` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `cq_news` WHERE ( is_show='0' AND lan_id='3' AND is_del='0' ) ORDER BY add_time desc LIMIT 0,5   [ RunTime:0.0017s ]
+SQL: SELECT * FROM `cq_news` WHERE ( is_show='0' AND lan_id='3' AND is_del='0' ) ORDER BY add_time desc LIMIT 5,4   [ RunTime:0.0011s ]
+SQL: SELECT * FROM cq_news n INNER JOIN cq_lanmu l on n.lan_id=l.lan_id  WHERE ( n.is_show='0' AND n.is_del='0' AND l.pid=4 ) ORDER BY click desc LIMIT 0,3   [ RunTime:0.0012s ]
+SQL: SELECT * FROM cq_news n INNER JOIN cq_lanmu l on n.lan_id=l.lan_id  WHERE ( n.is_show='0' AND n.is_del='0' AND l.pid=5 ) ORDER BY click desc LIMIT 0,3   [ RunTime:0.0013s ]
+SQL: SELECT * FROM `cq_news` WHERE ( is_show='0' AND is_del='0' AND lan_id=29 OR lan_id=30 OR lan_id=32 ) ORDER BY click desc LIMIT 0,3   [ RunTime:0.0011s ]
+SQL: select p1.*,b.board_id,b.board_title,b.todposts,b.posts,b.board_img,u.username from (select p.* from cq_posts as p where p.ctime = (select max(ctime) from cq_posts where board_id = p.board_id)) as p1 right join cq_boards as b on b.board_id = p1.board_id left join cq_user as u on u.user_id = p1.user_id where b.pid <> 0 order by b.sort [ RunTime:0.0034s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000194s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000263s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.032959s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.033049s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000304s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000374s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000809s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000906s ]
+
+[ 2017-01-01T21:11:10+08:00 ] 101.226.68.200 /index.php/Mobile
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000020s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000083s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000638s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000723s ]
+SQL: SHOW COLUMNS FROM `cq_lanmu` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=1 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=2 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=3 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=4 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=5 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=5 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=6 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=6 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=7 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort LIMIT 0,4   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=8 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=9 )  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `cq_banner` [ RunTime:0.0018s ]
+SQL: SELECT * FROM `cq_banner` WHERE ( is_show='0' AND is_area='0' AND lan_id=1 AND is_del='0' ) ORDER BY add_time desc LIMIT 0,5   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_banner` WHERE ( is_show='0' AND is_area='1' AND lan_id=1 AND is_del='0' ) ORDER BY add_time desc LIMIT 0,1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_news` [ RunTime:0.0019s ]
+SQL: SELECT * FROM `cq_news` WHERE ( is_show='0' AND lan_id='3' AND is_del='0' ) ORDER BY add_time desc LIMIT 0,5   [ RunTime:0.0016s ]
+SQL: SELECT * FROM `cq_news` WHERE ( is_show='0' AND lan_id='3' AND is_del='0' ) ORDER BY add_time desc LIMIT 5,4   [ RunTime:0.0011s ]
+SQL: SELECT * FROM cq_news n INNER JOIN cq_lanmu l on n.lan_id=l.lan_id  WHERE ( n.is_show='0' AND n.is_del='0' AND l.pid=4 ) ORDER BY click desc LIMIT 0,3   [ RunTime:0.0012s ]
+SQL: SELECT * FROM cq_news n INNER JOIN cq_lanmu l on n.lan_id=l.lan_id  WHERE ( n.is_show='0' AND n.is_del='0' AND l.pid=5 ) ORDER BY click desc LIMIT 0,3   [ RunTime:0.0012s ]
+SQL: SELECT * FROM `cq_news` WHERE ( is_show='0' AND is_del='0' AND lan_id=29 OR lan_id=30 OR lan_id=32 ) ORDER BY click desc LIMIT 0,3   [ RunTime:0.0011s ]
+SQL: select p1.*,b.board_id,b.board_title,b.todposts,b.posts,b.board_img,u.username from (select p.* from cq_posts as p where p.ctime = (select max(ctime) from cq_posts where board_id = p.board_id)) as p1 right join cq_boards as b on b.board_id = p1.board_id left join cq_user as u on u.user_id = p1.user_id where b.pid <> 0 order by b.sort [ RunTime:0.0027s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000180s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000244s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.032600s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.032670s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000375s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000431s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000667s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000731s ]
+
+[ 2017-01-01T21:11:11+08:00 ] 180.153.81.203 /index.php/Mobile
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000082s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000483s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000551s ]
+SQL: SHOW COLUMNS FROM `cq_lanmu` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=1 )  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=2 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=3 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=4 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=5 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=5 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=6 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=6 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=7 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort LIMIT 0,4   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=8 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=9 )  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `cq_banner` [ RunTime:0.0017s ]
+SQL: SELECT * FROM `cq_banner` WHERE ( is_show='0' AND is_area='0' AND lan_id=1 AND is_del='0' ) ORDER BY add_time desc LIMIT 0,5   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_banner` WHERE ( is_show='0' AND is_area='1' AND lan_id=1 AND is_del='0' ) ORDER BY add_time desc LIMIT 0,1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_news` [ RunTime:0.0019s ]
+SQL: SELECT * FROM `cq_news` WHERE ( is_show='0' AND lan_id='3' AND is_del='0' ) ORDER BY add_time desc LIMIT 0,5   [ RunTime:0.0016s ]
+SQL: SELECT * FROM `cq_news` WHERE ( is_show='0' AND lan_id='3' AND is_del='0' ) ORDER BY add_time desc LIMIT 5,4   [ RunTime:0.0011s ]
+SQL: SELECT * FROM cq_news n INNER JOIN cq_lanmu l on n.lan_id=l.lan_id  WHERE ( n.is_show='0' AND n.is_del='0' AND l.pid=4 ) ORDER BY click desc LIMIT 0,3   [ RunTime:0.0011s ]
+SQL: SELECT * FROM cq_news n INNER JOIN cq_lanmu l on n.lan_id=l.lan_id  WHERE ( n.is_show='0' AND n.is_del='0' AND l.pid=5 ) ORDER BY click desc LIMIT 0,3   [ RunTime:0.0012s ]
+SQL: SELECT * FROM `cq_news` WHERE ( is_show='0' AND is_del='0' AND lan_id=29 OR lan_id=30 OR lan_id=32 ) ORDER BY click desc LIMIT 0,3   [ RunTime:0.0010s ]
+SQL: select p1.*,b.board_id,b.board_title,b.todposts,b.posts,b.board_img,u.username from (select p.* from cq_posts as p where p.ctime = (select max(ctime) from cq_posts where board_id = p.board_id)) as p1 right join cq_boards as b on b.board_id = p1.board_id left join cq_user as u on u.user_id = p1.user_id where b.pid <> 0 order by b.sort [ RunTime:0.0028s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000188s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000269s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.032458s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.032539s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000218s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000271s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000488s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000562s ]
+
+[ 2017-01-01T21:11:11+08:00 ] 101.38.213.166 /index.php/Mobile/News/guanyuwomen/zilanid/10/lan_id/2.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000105s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000622s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000702s ]
+SQL: SHOW COLUMNS FROM `cq_lanmu` [ RunTime:0.0021s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=1 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=2 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=3 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=4 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=5 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=5 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=6 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=6 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=7 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort LIMIT 0,4   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=8 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=9 )  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `cq_banner` [ RunTime:0.0019s ]
+SQL: SELECT * FROM `cq_banner` WHERE ( lan_id=2 AND is_area='0' AND is_show='0' ) ORDER BY add_time desc LIMIT 0,1   [ RunTime:0.0003s ]
+SQL: SELECT `lan_id`,`lan_title` FROM `cq_lanmu` WHERE ( pid=2 AND is_show='0' )  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `cq_news` [ RunTime:0.0020s ]
+SQL: SELECT n.*,f.* FROM cq_news n INNER JOIN cq_lanmu as f on n.lan_id=f.lan_id  WHERE ( f.pid=2 AND n.is_show='0' AND f.is_show='0' AND is_del='0' )  [ RunTime:0.0047s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000129s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000195s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.021183s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021253s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000315s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000369s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000527s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000588s ]
+
+[ 2017-01-01T21:11:27+08:00 ] 101.226.33.205 /index.php/Mobile/News/guanyuwomen/zilanid/10/lan_id/2.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000021s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000093s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000598s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000668s ]
+SQL: SHOW COLUMNS FROM `cq_lanmu` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=1 )  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=2 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=3 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=4 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=5 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=5 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=6 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=6 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=7 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort LIMIT 0,4   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=8 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=9 )  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `cq_banner` [ RunTime:0.0018s ]
+SQL: SELECT * FROM `cq_banner` WHERE ( lan_id=2 AND is_area='0' AND is_show='0' ) ORDER BY add_time desc LIMIT 0,1   [ RunTime:0.0003s ]
+SQL: SELECT `lan_id`,`lan_title` FROM `cq_lanmu` WHERE ( pid=2 AND is_show='0' )  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `cq_news` [ RunTime:0.0020s ]
+SQL: SELECT n.*,f.* FROM cq_news n INNER JOIN cq_lanmu as f on n.lan_id=f.lan_id  WHERE ( f.pid=2 AND n.is_show='0' AND f.is_show='0' AND is_del='0' )  [ RunTime:0.0045s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000152s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000238s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.023712s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.023783s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000347s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000401s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000594s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000657s ]
+
+[ 2017-01-01T21:12:40+08:00 ] 101.38.213.166 /index.php/Mobile
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000092s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000583s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000658s ]
+SQL: SHOW COLUMNS FROM `cq_lanmu` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=1 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=2 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=3 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=4 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=5 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=5 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=6 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=6 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=7 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort LIMIT 0,4   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=8 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=9 )  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_banner` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `cq_banner` WHERE ( is_show='0' AND is_area='0' AND lan_id=1 AND is_del='0' ) ORDER BY add_time desc LIMIT 0,5   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_banner` WHERE ( is_show='0' AND is_area='1' AND lan_id=1 AND is_del='0' ) ORDER BY add_time desc LIMIT 0,1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_news` [ RunTime:0.0026s ]
+SQL: SELECT * FROM `cq_news` WHERE ( is_show='0' AND lan_id='3' AND is_del='0' ) ORDER BY add_time desc LIMIT 0,5   [ RunTime:0.0017s ]
+SQL: SELECT * FROM `cq_news` WHERE ( is_show='0' AND lan_id='3' AND is_del='0' ) ORDER BY add_time desc LIMIT 5,4   [ RunTime:0.0012s ]
+SQL: SELECT * FROM cq_news n INNER JOIN cq_lanmu l on n.lan_id=l.lan_id  WHERE ( n.is_show='0' AND n.is_del='0' AND l.pid=4 ) ORDER BY click desc LIMIT 0,3   [ RunTime:0.0015s ]
+SQL: SELECT * FROM cq_news n INNER JOIN cq_lanmu l on n.lan_id=l.lan_id  WHERE ( n.is_show='0' AND n.is_del='0' AND l.pid=5 ) ORDER BY click desc LIMIT 0,3   [ RunTime:0.0014s ]
+SQL: SELECT * FROM `cq_news` WHERE ( is_show='0' AND is_del='0' AND lan_id=29 OR lan_id=30 OR lan_id=32 ) ORDER BY click desc LIMIT 0,3   [ RunTime:0.0014s ]
+SQL: select p1.*,b.board_id,b.board_title,b.todposts,b.posts,b.board_img,u.username from (select p.* from cq_posts as p where p.ctime = (select max(ctime) from cq_posts where board_id = p.board_id)) as p1 right join cq_boards as b on b.board_id = p1.board_id left join cq_user as u on u.user_id = p1.user_id where b.pid <> 0 order by b.sort [ RunTime:0.0033s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000174s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000241s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.032110s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.032181s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000299s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000353s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000483s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000544s ]
+
+[ 2017-01-01T21:12:56+08:00 ] 101.226.33.238 /index.php/Mobile
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000089s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000537s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000604s ]
+SQL: SHOW COLUMNS FROM `cq_lanmu` [ RunTime:0.0021s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=1 )  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=2 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=3 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=4 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=5 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=5 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=6 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=6 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=7 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort LIMIT 0,4   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=8 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=9 )  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `cq_banner` [ RunTime:0.0019s ]
+SQL: SELECT * FROM `cq_banner` WHERE ( is_show='0' AND is_area='0' AND lan_id=1 AND is_del='0' ) ORDER BY add_time desc LIMIT 0,5   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_banner` WHERE ( is_show='0' AND is_area='1' AND lan_id=1 AND is_del='0' ) ORDER BY add_time desc LIMIT 0,1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_news` [ RunTime:0.0022s ]
+SQL: SELECT * FROM `cq_news` WHERE ( is_show='0' AND lan_id='3' AND is_del='0' ) ORDER BY add_time desc LIMIT 0,5   [ RunTime:0.0018s ]
+SQL: SELECT * FROM `cq_news` WHERE ( is_show='0' AND lan_id='3' AND is_del='0' ) ORDER BY add_time desc LIMIT 5,4   [ RunTime:0.0011s ]
+SQL: SELECT * FROM cq_news n INNER JOIN cq_lanmu l on n.lan_id=l.lan_id  WHERE ( n.is_show='0' AND n.is_del='0' AND l.pid=4 ) ORDER BY click desc LIMIT 0,3   [ RunTime:0.0012s ]
+SQL: SELECT * FROM cq_news n INNER JOIN cq_lanmu l on n.lan_id=l.lan_id  WHERE ( n.is_show='0' AND n.is_del='0' AND l.pid=5 ) ORDER BY click desc LIMIT 0,3   [ RunTime:0.0013s ]
+SQL: SELECT * FROM `cq_news` WHERE ( is_show='0' AND is_del='0' AND lan_id=29 OR lan_id=30 OR lan_id=32 ) ORDER BY click desc LIMIT 0,3   [ RunTime:0.0011s ]
+SQL: select p1.*,b.board_id,b.board_title,b.todposts,b.posts,b.board_img,u.username from (select p.* from cq_posts as p where p.ctime = (select max(ctime) from cq_posts where board_id = p.board_id)) as p1 right join cq_boards as b on b.board_id = p1.board_id left join cq_user as u on u.user_id = p1.user_id where b.pid <> 0 order by b.sort [ RunTime:0.0029s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000174s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000254s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.035014s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.035086s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000320s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000373s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000563s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000650s ]
+
+[ 2017-01-01T21:12:56+08:00 ] 101.38.213.166 /index.php/Mobile/News/guanyuwomen/zilanid/10/lan_id/2.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000083s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000574s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000657s ]
+SQL: SHOW COLUMNS FROM `cq_lanmu` [ RunTime:0.0021s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=1 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=2 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=3 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=4 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=5 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=5 ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=6 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=6 ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=7 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort LIMIT 0,4   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=8 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=9 )  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_banner` [ RunTime:0.0018s ]
+SQL: SELECT * FROM `cq_banner` WHERE ( lan_id=2 AND is_area='0' AND is_show='0' ) ORDER BY add_time desc LIMIT 0,1   [ RunTime:0.0003s ]
+SQL: SELECT `lan_id`,`lan_title` FROM `cq_lanmu` WHERE ( pid=2 AND is_show='0' )  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_news` [ RunTime:0.0023s ]
+SQL: SELECT n.*,f.* FROM cq_news n INNER JOIN cq_lanmu as f on n.lan_id=f.lan_id  WHERE ( f.pid=2 AND n.is_show='0' AND f.is_show='0' AND is_del='0' )  [ RunTime:0.0047s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000126s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000193s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.023292s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.023361s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000337s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000392s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000583s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000649s ]
+
+[ 2017-01-01T21:20:52+08:00 ] 119.147.146.60 /index.php/Mobile
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000020s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000085s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000550s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000619s ]
+SQL: SHOW COLUMNS FROM `cq_lanmu` [ RunTime:0.0021s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=1 )  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=2 )  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=3 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=4 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=5 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=5 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=6 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=6 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=7 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort LIMIT 0,4   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=8 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=9 )  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `cq_banner` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `cq_banner` WHERE ( is_show='0' AND is_area='0' AND lan_id=1 AND is_del='0' ) ORDER BY add_time desc LIMIT 0,5   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_banner` WHERE ( is_show='0' AND is_area='1' AND lan_id=1 AND is_del='0' ) ORDER BY add_time desc LIMIT 0,1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_news` [ RunTime:0.0028s ]
+SQL: SELECT * FROM `cq_news` WHERE ( is_show='0' AND lan_id='3' AND is_del='0' ) ORDER BY add_time desc LIMIT 0,5   [ RunTime:0.0019s ]
+SQL: SELECT * FROM `cq_news` WHERE ( is_show='0' AND lan_id='3' AND is_del='0' ) ORDER BY add_time desc LIMIT 5,4   [ RunTime:0.0013s ]
+SQL: SELECT * FROM cq_news n INNER JOIN cq_lanmu l on n.lan_id=l.lan_id  WHERE ( n.is_show='0' AND n.is_del='0' AND l.pid=4 ) ORDER BY click desc LIMIT 0,3   [ RunTime:0.0013s ]
+SQL: SELECT * FROM cq_news n INNER JOIN cq_lanmu l on n.lan_id=l.lan_id  WHERE ( n.is_show='0' AND n.is_del='0' AND l.pid=5 ) ORDER BY click desc LIMIT 0,3   [ RunTime:0.0014s ]
+SQL: SELECT * FROM `cq_news` WHERE ( is_show='0' AND is_del='0' AND lan_id=29 OR lan_id=30 OR lan_id=32 ) ORDER BY click desc LIMIT 0,3   [ RunTime:0.0012s ]
+SQL: select p1.*,b.board_id,b.board_title,b.todposts,b.posts,b.board_img,u.username from (select p.* from cq_posts as p where p.ctime = (select max(ctime) from cq_posts where board_id = p.board_id)) as p1 right join cq_boards as b on b.board_id = p1.board_id left join cq_user as u on u.user_id = p1.user_id where b.pid <> 0 order by b.sort [ RunTime:0.0030s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000172s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000237s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.031152s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.031222s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000326s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000380s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000546s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000609s ]
+
+[ 2017-01-01T21:35:46+08:00 ] 123.151.138.100 /index.php/Mobile/News/moban/id/18.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000083s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000552s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000624s ]
+SQL: SHOW COLUMNS FROM `cq_lanmu` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=1 )  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=2 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=3 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=4 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=5 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=5 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=6 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=6 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=7 )  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort LIMIT 0,4   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=8 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=9 )  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_img` [ RunTime:0.0016s ]
+SQL: SELECT * FROM `cq_img` WHERE `id` = 18 LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000048s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000111s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005743s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005816s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000309s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000365s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000557s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000616s ]
+
+[ 2017-01-01T21:37:52+08:00 ] 123.151.138.100 /index.php/Mobile/News/moban/id/19.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000086s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000651s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000742s ]
+SQL: SHOW COLUMNS FROM `cq_lanmu` [ RunTime:0.0022s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=1 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=2 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=3 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=4 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=5 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=5 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=6 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=6 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=7 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort LIMIT 0,4   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=8 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=9 )  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `cq_img` [ RunTime:0.0017s ]
+SQL: SELECT * FROM `cq_img` WHERE `id` = 19 LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000052s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000117s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006021s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006095s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000296s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000349s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000554s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000613s ]
+
+[ 2017-01-01T21:38:01+08:00 ] 140.207.185.112 /index.php/Mobile/News/moban/id/19.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000091s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000566s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000635s ]
+SQL: SHOW COLUMNS FROM `cq_lanmu` [ RunTime:0.0021s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=1 )  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=2 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=3 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=4 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=5 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=5 ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=6 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=6 ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=7 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort LIMIT 0,4   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=8 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=9 )  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_img` [ RunTime:0.0018s ]
+SQL: SELECT * FROM `cq_img` WHERE `id` = 19 LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000057s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000125s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006488s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006565s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000327s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000384s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000537s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000596s ]
+
+[ 2017-01-01T21:38:01+08:00 ] 180.153.206.20 /index.php/Mobile/News/moban/id/19.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000020s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000083s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000495s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000565s ]
+SQL: SHOW COLUMNS FROM `cq_lanmu` [ RunTime:0.0023s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=1 )  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=2 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=3 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=4 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=5 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=5 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=6 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=6 ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=7 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort LIMIT 0,4   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=8 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=9 )  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `cq_img` [ RunTime:0.0017s ]
+SQL: SELECT * FROM `cq_img` WHERE `id` = 19 LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000070s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000137s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006108s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006196s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000283s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000341s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000565s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000624s ]
+
+[ 2017-01-01T21:38:05+08:00 ] 123.151.138.100 /index.php/Mobile/News/moban/id/23.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000082s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000612s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000684s ]
+SQL: SHOW COLUMNS FROM `cq_lanmu` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=1 )  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=2 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=3 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=4 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=5 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=5 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=6 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=6 ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=7 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort LIMIT 0,4   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=8 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=9 )  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_img` [ RunTime:0.0019s ]
+SQL: SELECT * FROM `cq_img` WHERE `id` = 23 LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000051s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000117s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006017s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006109s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000395s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000470s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000712s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000782s ]
+
+[ 2017-01-01T21:38:10+08:00 ] 180.153.205.254 /index.php/Mobile/News/moban/id/19.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000082s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000569s ]
+SQL: SHOW COLUMNS FROM `cq_lanmu` [ RunTime:0.0022s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=1 )  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=2 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=3 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=4 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=5 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=5 ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=6 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=6 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=7 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort LIMIT 0,4   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=8 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=9 )  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `cq_img` [ RunTime:0.0018s ]
+SQL: SELECT * FROM `cq_img` WHERE `id` = 19 LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000052s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000132s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005950s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006021s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000315s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000372s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000524s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000595s ]
+
+[ 2017-01-01T21:38:15+08:00 ] 140.207.124.105 /index.php/Mobile/News/moban/id/23.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000018s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000082s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000592s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000660s ]
+SQL: SHOW COLUMNS FROM `cq_lanmu` [ RunTime:0.0021s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=1 )  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=2 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=3 )  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=4 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=5 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=5 ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=6 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=6 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=7 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort LIMIT 0,4   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=8 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=9 )  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `cq_img` [ RunTime:0.0017s ]
+SQL: SELECT * FROM `cq_img` WHERE `id` = 23 LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000049s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000115s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006090s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006165s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000306s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000360s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000611s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000669s ]
+
+[ 2017-01-01T21:38:19+08:00 ] 123.151.138.100 /index.php/Mobile/News/moban/id/17.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000034s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000139s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000632s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000715s ]
+SQL: SHOW COLUMNS FROM `cq_lanmu` [ RunTime:0.0022s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=1 )  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=2 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=3 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=4 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=5 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=5 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=6 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=6 ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=7 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort LIMIT 0,4   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=8 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=9 )  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_img` [ RunTime:0.0018s ]
+SQL: SELECT * FROM `cq_img` WHERE `id` = 17 LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000052s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000118s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006249s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006349s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000380s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000455s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000527s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000587s ]
+
+[ 2017-01-01T21:38:29+08:00 ] 101.226.65.102 /index.php/Mobile/News/moban/id/17.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000108s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000534s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000605s ]
+SQL: SHOW COLUMNS FROM `cq_lanmu` [ RunTime:0.0021s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=1 )  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=2 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=2  ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=3 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=4 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=4 ) ORDER BY sort LIMIT 0,6   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=5 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=5 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=6 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=6 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=7 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( (is_show = '0') AND pid=7 ) ORDER BY sort LIMIT 0,4   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=8 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE ( is_show='0' AND lan_id=9 )  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `cq_img` [ RunTime:0.0017s ]
+SQL: SELECT * FROM `cq_img` WHERE `id` = 17 LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000051s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000129s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005917s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006007s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000322s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000387s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000521s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000594s ]
+

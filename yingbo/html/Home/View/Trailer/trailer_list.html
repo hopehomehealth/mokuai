@@ -1,0 +1,36 @@
+<foreach name="adinfofen" key="k" item="v">
+    <div class="su_banner"><a href="{$v.url}"><img src="{$Think.const.SITE_URL}{$v.pic}" /></a>  </div>
+</foreach>
+
+<div class="sideBar">
+<div class="about fl">
+<p class="about_tit fl">关于乐护</p><p class="about_yw fl">about&nbsp;us</p>
+</div>
+
+
+<div class="about_zc fl">
+    <ul class="news_list_tit">
+        <li ><a href="{:U('News/news')}">新闻中心</a></li>
+        <li><a href="{:U('About/about')}">公司简介</a></li>
+        <li><a href="{:U('About/qywh')}">企业文化</a></li>
+        <li class="current"><a href="{:U('Trailer/showlist')}">宣传片</a></li>
+    </ul>
+
+<div class="news_list_cn fl">
+
+<h1>{$info.title}<br /><span>{$info.input_time|date='Y-m-d H:i:s',###} </span></h1>
+   
+    <iframe height=675 width=800 src="{$info.url}" frameborder=0 allowfullscreen></iframe>
+
+</div>
+    <div class="about_zc fl">
+<span class="tra_c_f">上一篇：
+    <a href="{:U('Trailer/trailer_list',array('trailer_id'=>$preshow['trailer_id']))}">{$preshow['title']}</a></span><br />
+<span class="tra_c_f">下一篇：
+    <a href="{:U('Trailer/trailer_list',array('trailer_id'=>$nextshow['trailer_id']))}">{$nextshow['title']}</a></span>
+    </div>
+
+
+</div>
+</div>
+

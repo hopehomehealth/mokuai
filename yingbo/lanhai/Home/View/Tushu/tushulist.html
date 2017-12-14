@@ -1,0 +1,114 @@
+
+<!-------banner------->
+<notempty name="adinfo0">
+<p class="com-banner pt10">
+    <foreach name="adinfo0" item="v">
+            <img src="{$Think.const.SITE_URL}{$v.pic}" />
+    </foreach>
+</p>
+</notempty>
+<!-------第一通栏------->
+
+<div class="column-c pt10 pb30">
+    <!--****左边第一通栏****-->
+    <div class="set-lis-l fl">
+        <p class="nhtt-tit fl"><img src="{$Think.const.HIMG_URL}images_145.jpg" alt="网上图书馆" /></p>
+        <ul class="lib-list fl">
+            <li>
+                <dl class="lib-con fl pt15">
+                    <foreach name="info1" item="v">
+                        <dd>
+                            <p class="fl fs22 w100">{$v.news_title}</p>
+                            <p class="w100 set-lis-plgz fl fs12 pt10">{$v.add_time}<span class="pl20"><img src="{$Think.const.HIMG_URL}images_07.png" alt="" />{$v.click}</span></p>
+                            <p>{$v.description|strip_tags|str_replace=array(" ","　","\t","\n","\r","&bsp;"),array("","","","","",""),###|mb_substr=###,0,230,'utf-8'}...</p>
+                            <p class="lib-con-an fl mr20"><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">在线阅读</a></p>
+                            <p class="lib-con-an fl"><a target="_blank" href="{:U('Tushu/downFile',array('news_id'=>$v['news_id']))}">PDF文件下载</a></p>
+                        </dd>
+                        <dt><img <if condition="($v.pic neq '') AND ($v.pic neq './Public/Upl/news/')">src="{$Think.const.SITE_URL}{$v.pic}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq '')"/>src="{$v.picfirst}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq '')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"</if>/></dt>
+                    </foreach>
+
+                </dl>
+            </li>
+
+            <foreach name="info" item="v">
+            <li>
+
+                    <dl class="lib-con-a fl">
+                        <dt><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}"><img <if condition="($v.pic neq '') AND ($v.pic neq './Public/Upl/news/')">src="{$Think.const.SITE_URL}{$v.pic}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq '')"/>src="{$v.picfirst}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq '')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"</if> /></a></dt>
+                        <dd>
+                            <a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}"><p class="fs20 tion-wz fl pb10">{$v.news_title}</p></a>
+                            <p class="fr"><a target="_blank" href="{:U('Tushu/downFile',array('news_id'=>$v['news_id']))}"><img src="{$Think.const.HIMG_URL}images_09.png" /><br />
+                                下载文件</a></p>
+                            <p class="w485"> {$v.description|strip_tags|str_replace=array(" ","　","\t","\n","\r","&bsp;"),array("","","","","",""),###|mb_substr=###,0,66,'utf-8'}... <span class="w100 fl fs12 pt25 l-gray">{$v.add_time}<span class="pl20 fr l-gray"><img src="{$Think.const.HIMG_URL}images_07.png" alt="" />&nbsp;{$v.click}</span></span> </p>
+                        </dd>
+                    </dl>
+
+
+            </li>
+            </foreach>
+            <style type="text/css">
+                .page { width: 365px; margin: 0px auto; overflow: hidden; padding-top:20px;}
+                .page li { border: 1px #ddd solid; float: left; color: #004084; text-align: center; margin-right: 10px; }
+                .page li a { color: #004084; padding: 5px 10px; display: block; }
+                .page li a:hover { background: #004084; color: #fff; display: block; text-decoration: none; }
+            </style>
+
+        </ul>
+        <ul class="page">
+            {$page}
+        </ul>
+    </div>
+    <!--****右边通栏****-->
+    <div class="set-lis-r fr">
+        <!--****右边第一通栏****-->
+
+        <!--****右边第三通栏****-->
+        <div class="set-lis-tj fl">
+            <p class="set-lis-tjtt fl"><img src="{$Think.const.HIMG_URL}images_108.jpg"  alt=""/></p>
+            <ul class="set-lis-list fl pt15">  <foreach name="clickinfo1" item="v">
+                <dl class="set-lis-pic fl pb10">
+
+                        <dt><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}"><img <if condition="($v.pic neq '') AND ($v.pic neq './Public/Upl/news/')">src="{$Think.const.SITE_URL}{$v.pic}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq '')"/>src="{$v.picfirst}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq '')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"</if>   alt=""/></a></dt>
+                        <dd><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.description|strip_tags|str_replace=array(" ","　","\t","\n","\r"),array("","","","",""),###|mb_substr=###,0,33,'utf-8'}...</a></dd>
+
+
+                </dl>  </foreach>
+                <foreach name="clickinfo2" item="v">
+                    <li><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.news_title}</a></li>
+                </foreach>
+
+
+
+
+
+                <notempty name='adinfo3'>
+        <foreach name="adinfo3" item="v">
+                <p class="pt15"> <img src="{$Think.const.SITE_URL}{$v.pic}" />  </p>
+        </foreach>
+		</notempty>
+		<notempty name='adinfo4'>
+        <foreach name="adinfo4" item="v">
+                <p class="pt15"><img src="{$Think.const.SITE_URL}{$v.pic}" /> </p>
+        </foreach>
+		</notempty>
+		<notempty name='adinfo5'>
+        <foreach name="adinfo5" item="v">
+                <p class="pt15"><img src="{$Think.const.SITE_URL}{$v.pic}" /> </p>
+        </foreach>
+		</notempty>
+            </ul>
+        </div>
+    </div>
+</div>

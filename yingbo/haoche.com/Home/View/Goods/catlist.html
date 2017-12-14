@@ -1,0 +1,72 @@
+{__NOLAYOUT__}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>新农缘天下商城</title>
+    <link href="{$Think.const.HCSS_URL}basic.css" type="text/css" rel="stylesheet" />
+    <link href="{$Think.const.HCSS_URL}style.css" type="text/css" rel="stylesheet" />
+    <link href="{$Think.const.HCSS_URL}swiper-3.3.0.min.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="{$Think.const.HJS_URL}jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="{$Think.const.HJS_URL}swiper-3.3.0.jquery.min.js"></script>
+    <script type="text/javascript" src="{$Think.const.HJS_URL}refresh.js"></script>
+</head>
+
+<body>
+<header> <a class="head_back1" href="Javascript:window.history.go(-1)">&nbsp;</a>
+    <div class="headTit">{$catinfo[0]['cat_name']}</div>
+    <a class="head_back2">&nbsp;</a> </header>
+
+<ul class="dj_xhk fr">
+    <p class="arrow-up fl"></p>
+    <li><a href="{:U('Goods/index')}">商城首页</a></li>
+    <li><a href="{:U('Goods/allcatlist')}">商品分类</a></li>
+</ul>
+<script type="text/javascript">
+    $(".head_back2").click(function(){
+        $(".dj_xhk").slideToggle("1000");
+    });
+</script>
+<div class="main pb0">
+    <section>
+        <div class="tesco fl pt_6 pb_6">
+            <p class="tesco_left fl"><a href="{:U('Cart/showlist')}"> <img src="{$Think.const.HIMG_URL}tb_26.png"><span class="tesco_gwsz1">{$number}</span></a></p>
+            <p class="tesco_right fl">
+                 <form action="{:U('search')}" method="post">
+                    <input type="text" class="tesco_rgt_k fl" name="searchname" id="searchname" placeholder="请输入商品名称/类型">
+                    <input id="submit"  class="tesco_rgt_an" type="submit" value="">
+                </form>
+                     <script type="text/jscript">
+ $('#submit').click(function(){
+ var searchname = $('#searchname').val();
+     if(searchname == ''){
+        return false;
+    }
+        });
+</script> 
+            </p>
+        </div>
+        <div class="fl mt0 tesco_list">
+            <foreach name="goodsinfo" item="v">
+                <dl class="tesco_list_pic fl">
+                    <dt><a href="{:U('detail',array('goods_id'=>$v['goods_id']))}"><img src="{$Think.const.SITE_URL}{$v.mid_logo}"></a></dt>
+                    <dd>
+                        <p class="car_z crimson fwb fl tac car_f_awm">￥{$v.price}元&nbsp;&bull;&nbsp;积分</p>
+                        <p class="car_f fl crimson pt_6 pb_6 car_f_awm tac"><span class="car_yj">首付</span>&nbsp;{$v['price']*$setinfo[0]['pct_cash']/100}元</p>
+                        <p class="car_xzsz fl"><a style="text-align: center;" href="{:U('detail',array('goods_id'=>$v['goods_id']))}">
+                            <span class="gray">{$v.goods_name}</span></a></p>
+                    </dd>
+                </dl>
+            </foreach>
+
+
+        </div>
+    </section>
+</div>
+</body>
+</html>

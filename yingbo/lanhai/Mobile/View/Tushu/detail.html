@@ -1,0 +1,91 @@
+<div class="main pb4">
+    <!--*****内容*****-->
+    <div class="fin-nr">
+        <h1>{$info.news_title}</h1>
+        <p class="w100 fl t-w l-gray fs1-2 pt0-5 pb1">{$info.author}</p>
+       <p> &nbsp;&nbsp;{$info.add_time}<span class="fin-nr-img"><img src="{$Think.const.MIMG_URL}tb_15.png">{$info.click}</span></p>
+        <div class="fin-twnr fl">
+            {$info.content|mb_substr=###,0,2500,'utf-8'}
+            <br/><e style="color: #000088;">......已经到底了....喜欢的话...下载看完整版...</e>
+        </div>
+    </div>
+    <input type='hidden' id='news_id' value='{$info.news_id}'>
+    <div class="fin-zxpl fl">
+        <p class="fin-zxpl-t fl">最新评论 </p> <p class="fr fin-npl"><span>{$info.talk}</span>条评论</p>
+        <div class="fin-zxpl-c fl" id="recordslist" totalPages="{$totalPages}">
+            <foreach name="cominfo" item="v">
+                <dl class="fin-zxpl-pic fl">
+                    <dt><img src="{$Think.const.MIMG_URL}images_03.jpg"></dt>
+                    <dd><span class="fl l-gray fs1-2">{$v.add_time}</span>
+                        <p class="w100 fl">{$v.content}</p>
+                    </dd>
+                </dl>
+            </foreach>
+        </div>
+
+    </div> <div style="text-align:center;display:none;" id="loading"><img src="{$Think.const.MIMG_URL}loader.gif" width="" height="" border="0" alt="" /></div>
+
+    <!-- 滚动加载 -->
+    <script type="text/javascript">
+
+        $(function(){
+            var news_id = $('#news_id').val();
+            var scrollstatus = false;
+            var totalPages = $("#recordslist").attr('totalPages');
+            var nowpage = 1;
+            function ajax_request(nowpage){
+                var html = '';
+                var recordslist = $("#recordslist");//放数据的容器
+                $.post("__MODULE__/News/detail/p/"+nowpage,{news_id:news_id},function(data){
+                    if(data.error == 0){
+                        for(var i in data.content){
+                            html += "<dl class='fin-zxpl-pic fl'><dt><img src='{$Think.const.MIMG_URL}images_03.jpg'></dt><dd><span class='fl l-gray fs1-2'>"+data.content[i].add_time+"</span><p class='w100 fl'>"+data.content[i].content+"</p></dd></dl>";
+                        }
+                    }
+                    recordslist.append(html);
+                    $("#loading").css("display",'none');
+                    scrollstatus = false;
+                });
+            }
+            $(window).scroll(function () {
+                var scrollTop = $(this).scrollTop();
+                var scrollHeight = $(document).height();
+                var windowHeight = $(this).height();
+                if (scrollTop + windowHeight == scrollHeight && scrollstatus == false) {
+                    scrollstatus = true;
+                    nowpage++;
+                    if(nowpage <= totalPages){
+                        $("#loading").css("display",'block');
+                        setTimeout(function(){ajax_request(nowpage)},2000);
+                    }
+                }
+            });
+        });
+    </script>
+    <!--*****news*****-->
+    <div class="fin-pbpl">
+        <a class="fin-pbpl-an1 fl"><img src="{$Think.const.MIMG_URL}tb_14.png"></a>
+        <input class="fin-pbpl-k fl" name="content" type="text" >
+        <a class="fin-pbpl-an fl" onclick="send_comment()"><img src="{$Think.const.MIMG_URL}tb_11.png"></a>
+    </div>
+    <script style="text/javascript">
+        function send_comment(){
+            var content= $("input[name='content']").val();
+            if(content==''){
+                alert('评论内容不能为空!');
+                return;
+            }
+            var news_id = $('#news_id').val();
+            $.ajax({
+                url:"__MODULE__/Ncomment/sendComment",
+                data:{'content':content,'news_id':news_id},
+                dataType:'json',
+                type:'post',
+                success:function(data){
+                    var s = '<dl class="fin-zxpl-pic fl"><dt><img src="{$Think.const.MIMG_URL}images_03.jpg"></dt><dd><span class="fl l-gray fs1-2">'+data.add_time+'</span><p class="w100 fl">'+data.content+'</p></dd></dl>';
+                    $('.fin-zxpl-c').prepend(s);
+                    $("input[name='content']").val('',false);
+                }
+            });
+        }
+    </script>

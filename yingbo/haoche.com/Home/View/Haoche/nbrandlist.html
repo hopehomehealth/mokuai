@@ -1,0 +1,70 @@
+{__NOLAYOUT__}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>新农缘天下商城</title>
+    <link href="{$Think.const.HCSS_URL}basic.css" type="text/css" rel="stylesheet" />
+    <link href="{$Think.const.HCSS_URL}style.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="{$Think.const.HJS_URL}jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="{$Think.const.HJS_URL}L_slide.js"></script>
+
+</head>
+
+<body>
+<header>
+
+        <a class="head_back1" href="Javascript:window.history.go(-1)">&nbsp;</a>
+        <div class="headTit">
+
+            <a  class="cur2">{$brandinfo.brand_name}</a>
+        </div>
+    <a class="head_back2">&nbsp;</a> </header>
+
+<ul class="dj_xhk fr">
+    <p class="arrow-up fl"></p>
+    <li><a href="{:U('Haoche/showlist')}">豪车首页</a></li>
+    <!--<li><a href="{:U('Goods/allcatlist')}">商品分类</a></li>-->
+</ul>
+<script type="text/javascript">
+    $(".head_back2").click(function(){
+        $(".dj_xhk").slideToggle("1000");
+    });
+</script>
+
+    <section>
+        <div class="navbj fl">
+            <foreach name="haocheinfo" item="v">
+                <dl class="car_pic borBot fl">
+                    <dt><a href="{:U('detail',array('goods_id'=>$v['goods_id']))}"><img src="{$Think.const.SITE_URL}{$v.logo}"></a></dt>
+                    <dd><p class="car_z crimson fwb">￥{$v['price']/10000}万<span class="gray fr pr1">{$v.cat_name}</span></p>
+                        <p class="car_xzsz"><a href="{:U('detail',array('goods_id'=>$v['goods_id']))}">
+                            {$v.goods_name}
+                        </a></p>
+                        <p class="car_f fl crimson"><span class="car_yj">首付</span>&nbsp;{$v['price']*$setinfo[0]['pct_supvip']/10000/100}万</p>
+                        <p class="car_f fl bule"><span class="car_yj1">返赠</span>&nbsp;{$v['price']*$setinfo[0]['pct_supvip']*$setinfo[0]['backme']/10000/100/100}万积分</p>
+                    </dd>
+                </dl>
+            </foreach>
+
+        </div>
+    </section>
+</div>
+
+<footer>
+    <ul>
+        <li <if condition="CONTROLLER_NAME == Index">class="shou_a hover"</if>class="shou"><a href="{:U('Index/index')}"><i>&nbsp;</i>首页</a></li>
+        <li <if condition="CONTROLLER_NAME == Haoche">class="car_a hover"</if>class="car"><a href="{:U('Haoche/showlist')}"><i>&nbsp;</i>豪车俱乐部</a></li>
+        <li class="world"><a href=""><i>&nbsp;</i>新农缘天下</a></li>
+          <li <if condition="CONTROLLER_NAME == Caiclub">class="purse_a hover"</if>class="purse"><a href="{:U('Caiclub/index')}"><i>&nbsp;</i>财商俱乐部</a></li>
+        <li <if condition="CONTROLLER_NAME == User">class="my_a hover"</if>class="my"><a href="{:U('User/userindex')}"><i>&nbsp;</i>我的</a></li>
+    </ul>
+</footer>
+
+</body>
+</html>

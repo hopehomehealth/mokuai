@@ -1,0 +1,337 @@
+        <div class="main-content">
+          <div class="page-content">
+              <div class="row">
+                  <div class="page-content box">
+                      <div class="box-title margin_bot_20">
+                          <div class="span10">
+                              <h3><i class="icon-cogs"></i>平台设置</h3>
+                          </div>
+                      </div>
+                      <div class="breadcrumbs">
+                        <ul>
+                          <li class="active"> <a href="#">基本设置 </a></li>
+
+                          <li> <a href="#">平台缴费 </a></li>
+
+                          <li> <a href="#">豪车分销 </a></li>
+
+                          <li> <a href="#">乐购分销 </a></li>
+
+                          <li> <a href="#">财神分销 </a></li>
+
+                          <li> <a href="#">对公账号 </a></li>
+                        </ul>
+                        <!-- .breadcrumb -->
+                      </div>
+                      <div style="margin-top:15px">
+                      <form action="__MODULE__/Setting/base" method="post" enctype="multipart/form-data" class="form-horizontal">
+                          <div class="form-group">
+                              <label class="control-label">商城名称 : </label>
+                              <div class="controls pull-left">
+                                  <input type="text" name="name" value="{$set.name}" class="input-large">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="control-label">关键词 : </label>
+                              <div class="controls pull-left">
+                                  <input type="text" name="keywords" value="{$set.keywords}" class="input-large">
+                                  <span class="help-inline"> 多个关键字请用空格分开 </span> </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="control-label">联系人 : </label>
+                              <div class="controls pull-left">
+                                  <input type="text" name="linkman" value="{$set.linkman}" class="input-large">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="control-label">联系电话 : </label>
+                              <div class="controls pull-left">
+                                  <input type="text" name="linkphone" value="{$set.linkphone}" class="input-large">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="control-label">地址 : </label>
+                              <div class="controls pull-left">
+                                  <input type="text" name="address" value="{$set.address}" class="input-large">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="control-label">二维码: </label>
+                              <div class="controls pull-left"> <div id="localImag"><if condition="$set.qrcode neq ''"><img id="preview" src="/Public/{$set.qrcode}"  style="max-height: 100px;"><else /><img id="preview" src="{$Think.const.IMG_URL}qr.png"  style="max-height: 100px;"></if></div> <span class="help-inline">
+                              <input type="file" name="qrcode" id="doc" style="width:150px;" onchange="javascript:setImagePreview();">
+                              <input type="hidden" name="oldqrcode" value="{$set.qrcode}">
+                      <!-- <button class="btn btn-sm btn-success" type="button">上传二维码</button> -->
+                      <!-- <input type="file" name="qrcode"> -->
+                      <span class="help-inline" style="padding-left:0px">建议尺寸：宽100像素，高100像素</span> </span> </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="control-label">商城描述 : </label>
+                              <div class="controls pull-left">
+                                  <textarea class="input-large" name="description" style="margin: 0px; height: 115px; width: 530px;">{$set.description}</textarea>
+                                  <span class="help-inline"> 请输入不超过 20 字符. </span> </div>
+                          </div>
+                          <div class="form-actions">
+                              <label class="control-label"> </label>
+                              <input type="hidden" name="setid" value="{$set.id}">
+                              <button id="bsubmit1" type="submit"  class="btn btn-sm btn-primary">保存</button>
+                          </div>
+                      </form>
+                      <form action="__MODULE__/Setting/percent" method="post" class="form-horizontal" style="display:none">
+                    <div class="form-group">
+                      <label class="control-label" style="width:170px">注册返积分数量 : </label>
+                      <div class="controls pull-left">
+                        <input type="text" name="reg_sc" value="{$set.reg_sc}" class="input-small">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="green">(乐购积分)</span>
+                      </div>
+                    </div>
+					<div class="form-group">
+                      <label class="control-label" style="width:170px">冲值金额 : </label>
+                      <div class="controls pull-left">
+                        <input type="text" name="regfee" value="{$set.regfee}" class="input-small">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="green">(单位：元)</span>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label" style="width:170px">冲值积分数量 : </label>
+                      <div class="controls pull-left">
+                        <input type="text" name="back_reg" value="{$set.back_reg}" class="input-small">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="green">(乐购积分)</span>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label" style="width:170px">房天下申请意向金 : </label>
+                      <div class="controls pull-left">
+                        <input type="text" name="houseprice" value="{$set.houseprice}" class="input-small">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="green">(单位：元)</span>
+                      </div>
+                    </div>
+                    <div class="form-actions">
+                      <label class="control-label" style="width:170px"> </label>
+                      <input type="hidden" name="setid" value="{$set.id}">
+                      <button id="bsubmit2" type="submit"  class="btn btn-sm btn-primary">保存</button>
+                    </div>
+                  </form>
+                  <form action="__MODULE__/Setting/percent" method="post" class="form-horizontal" style="display:none">
+					<div class="form-group">
+                      <label class="control-label" style="width:170px">每日退款比例 : </label>
+                      <div class="controls pull-left">
+                        <input type="text" name="pct_refunds" value="{$set.pct_refunds}" class="input-small">‱万分 &nbsp;&nbsp;&nbsp;&nbsp;<span class="green">(兑现积分)</span>
+                      </div>
+                    </div>
+					<div class="form-group">
+                      <label class="control-label" style="width:170px">退款周期 : </label>
+                      <div class="controls pull-left">
+                        <input type="text" name="refunds" value="{$set.refunds}" class="input-small"> &nbsp;&nbsp;&nbsp;&nbsp;<span class="green">(请输入数字 单位：天)</span>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label" style="width:170px">成为代理缴纳费用 : </label>
+                      <div class="controls pull-left">
+                        <input type="text" name="agentfee" value="{$set.agentfee}" class="input-small">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="green">(单位：元)</span>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label" style="width:170px">顶级会员首付比例 : </label>
+                      <div class="controls pull-left">
+                        <input type="text" name="pct_supvip" value="{$set.pct_supvip}" class="input-small">%
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label" style="width:170px">普通会员首付比例 : </label>
+                      <div class="controls pull-left">
+                        <input type="text" name="pct_vip" value="{$set.pct_vip}" class="input-small">%
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label" style="width:170px">首付返上级比例 : </label>
+                      <div class="controls pull-left">
+                        <input type="text" name="pct_backprev" value="{$set.pct_backprev}" class="input-small">%
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="green">(兑现积分)</span>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label" style="width:170px">首付返顶级比例 : </label>
+                      <div class="controls pull-left">
+                        <input type="text" name="pct_backpprev" value="{$set.pct_backpprev}" class="input-small">%
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="green">(消费积分)</span>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label" style="width:170px">提车返上级比例 : </label>
+                      <div class="controls pull-left">
+                        <input type="text" name="pct_takepre" value="{$set.pct_takepre}" class="input-small">%
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="green">(兑现积分)</span>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label" style="width:170px">提车返上级代理比例 : </label>
+                      <div class="controls pull-left">
+                        <input type="text" name="pct_takeagent" value="{$set.pct_takeagent}" class="input-small">‰千分 &nbsp;&nbsp;&nbsp;&nbsp;<span class="green">(兑现积分)</span>
+                      </div>
+                    </div>
+                    <!--<div class="form-group">
+                      <label class="control-label" style="width:170px">代理费返代理比例 : </label>
+                      <div class="controls pull-left">
+                        <input type="text" name="pct_agentpre" value="{$set.pct_agentpre}" class="input-small">% &nbsp;&nbsp;&nbsp;&nbsp;<span class="green">(兑现积分)</span>
+                      </div>
+                    </div>-->
+                    <div class="form-actions">
+                      <label class="control-label" style="width:170px"> </label>
+                      <input type="hidden" name="setid" value="{$set.id}">
+                      <button id="bsubmit2" type="submit"  class="btn btn-sm btn-primary">保存</button>
+                    </div>
+                  </form>
+                  <form action="__MODULE__/Setting/percent" method="post" class="form-horizontal" style="display:none">
+                    <div class="form-group">
+                      <label class="control-label" style="width:170px">乐购商品首付比例 : </label>
+                      <div class="controls pull-left">
+                        <input type="text" name="pct_cash" value="{$set.pct_cash}" class="input-small">%
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label" style="width:170px">乐购商品返积分比例 : </label>
+                      <div class="controls pull-left">
+                        <input type="text" name="legou" value="{$set.legou}" class="input-small">%
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="green">(乐购积分)</span>
+                      </div>
+                    </div>
+                    <div class="form-actions">
+                      <label class="control-label" style="width:170px"> </label>
+                      <input type="hidden" name="setid" value="{$set.id}">
+                      <button id="bsubmit2" type="submit"  class="btn btn-sm btn-primary">保存</button>
+                    </div>
+                  </form>
+                  <form action="" method="post" class="form-horizontal" style="display:none">
+                    <div class="form-group">
+                      <label class="control-label" style="width:170px">财神俱乐部分销比例 : </label>
+                      <div class="controls pull-left">
+                        <input type="text" name="caishen" value="{$set.caishen}" class="input-small">%
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="green">(兑现积分)</span>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label" style="width:170px">办卡费用 : </label>
+                      <div class="controls pull-left">
+                        <input type="text" name="banka" value="{$set.banka}" class="input-small">
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="green">(单位：元)</span>
+                      </div>
+                    </div>
+					<div class="form-group">
+                      <label class="control-label" style="width:170px">养卡费用 : </label>
+                      <div class="controls pull-left">
+                        <input type="text" name="yangka" value="{$set.yangka}" class="input-small">
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="green">(单位：元)</span>
+                      </div>
+                    </div>
+					<div class="form-group">
+                      <label class="control-label" style="width:170px">提额费用 : </label>
+                      <div class="controls pull-left">
+                        <input type="text" name="tie" value="{$set.tie}" class="input-small">
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="green">(单位：元)</span>
+                      </div>
+                    </div>
+					<div class="form-group">
+                      <label class="control-label" style="width:170px">贷款费用 : </label>
+                      <div class="controls pull-left">
+                        <input type="text" name="daikuan" value="{$set.daikuan}" class="input-small">
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="green">(单位：元)</span>
+                      </div>
+                    </div>
+					<div class="form-group">
+                      <label class="control-label" style="width:170px">托管价 : </label>
+                      <div class="controls pull-left">
+                        <input type="text" name="tuoguan" value="{$set.tuoguan}" class="input-small">
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="green">(单位：元)</span>
+                      </div>
+                    </div>
+                    <div class="form-actions">
+                      <label class="control-label" style="width:170px"> </label>
+                      <input type="hidden" name="setid" value="{$set.id}">
+                      <button id="bsubmit2" type="submit"  class="btn btn-sm btn-primary">保存</button>
+                    </div>
+                  </form>
+                  <form action="__MODULE__/Setting/setcount" method="post" class="form-horizontal" style="display:none">
+                    <div class="form-group">
+                        <label class="control-label">对公账号 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" name="account" value="{$set.account}" class="input-large">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">开户银行详细信息 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" name="accountinfo" value="{$set.accountinfo}" class="input-large">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">联系人 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" name="contacts" value="{$set.contacts}" class="input-large">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">联系电话 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" name="phone" value="{$set.phone}" class="input-large">
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                      <label class="control-label" style="width:170px"> </label>
+                      <input type="hidden" name="setid" value="{$set.id}">
+                      <button id="bsubmit2" type="submit"  class="btn btn-sm btn-primary">保存</button>
+                    </div>
+                  </form>
+                  </div>
+                  </div>
+              </div>
+            <!--/.box-->
+          </div><!-- /.page-content -->
+        </div><!-- /.main-content -->
+        <script type="text/javascript">
+        $(function(){
+            $(".breadcrumbs ul li").click(function(){
+                $(this).addClass("active").siblings().removeClass('active');
+                $("form").eq($(this).index()).css("display","block").siblings().css("display","none");
+            })
+        })
+        function setImagePreview(avalue) {
+          var docObj=document.getElementById("doc");
+
+          var imgObjPreview=document.getElementById("preview");
+          if(docObj.files &&docObj.files[0])
+          {
+          //火狐下，直接设img属性
+          imgObjPreview.style.display = 'block';
+          imgObjPreview.style.width = '100px';
+          imgObjPreview.style.height = '100px';
+          //imgObjPreview.src = docObj.files[0].getAsDataURL();
+
+          //火狐7以上版本不能用上面的getAsDataURL()方式获取，需要一下方式
+          imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);
+          }
+          else
+          {
+          //IE下，使用滤镜
+          docObj.select();
+          var imgSrc = document.selection.createRange().text;
+          var localImagId = document.getElementById("localImag");
+          //必须设置初始大小
+          localImagId.style.width = "100px";
+          localImagId.style.height = "100px";
+          //图片异常的捕捉，防止用户修改后缀来伪造图片
+          try{
+          localImagId.style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+          localImagId.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;
+          }
+          catch(e)
+          {
+          alert("您上传的图片格式不正确，请重新选择!");
+          return false;
+          }
+          imgObjPreview.style.display = 'none';
+          document.selection.empty();
+          }
+          return true;
+        }
+      </script>

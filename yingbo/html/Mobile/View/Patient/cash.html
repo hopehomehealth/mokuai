@@ -1,0 +1,92 @@
+        <div class="main">
+            <form action="__MODULE__/Patient/cash" id="form-cash" method="post" class="cash_z">
+                    <div class="form1 cash">
+                        <div class="borBot" id="pos-error-msg" style="position:relative;">
+                                <span>可提现金额：</span>
+                                <p>{$money}元</p>
+                                <span style="position:absolute;right:2rem;top:0.875rem"><a style="color:green;font-size:0.875rem" href="__MODULE__/Patient/records">历史提现记录</a></span>
+                        </div>
+                        <div class="borBot">
+                            <span>金额(元)：</span>
+                            <input name="balance" type="text" placeholder="请输入提现金额">
+                        </div>
+                        <div class="borBot">
+                            <span>账户：</span>
+                            <select class="shenfen" name="count_id" style='font-size:0.875rem;margin-left:0.5rem' id="countType">
+                                <option value='0'>请选择提现账户</option>
+                                <foreach name="accountList" item="info">
+                                    <option value='{$info.count_id}'><empty name="info.bankname">{$info.count_no}</empty><empty name="info.count_no">{$info.bankname}</empty></option>
+                                </foreach>
+                            </select>
+                        </div>
+                        <div class="borBot">
+                            <span></span>
+                            <a style="margin-left:0.5rem;color:green" href="__MODULE__/Patient/addCount">添加提现账户</a>
+                        </div>
+                        <div class="cashBtnbox">
+                            <button class="submit cashBtn" id="sub-cash" type="submit">确定提交</button>
+                        </div>
+                    </div>
+               </form>
+        </div>   
+    </div>
+    <script type="text/javascript" src="{$Think.const.MBJS_URL}/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $("#form-cash").submit(function(){
+                return false;
+            })
+            $("#sub-cash").click(function(){
+                var psum = $("input[name='balance']").val();
+                //alert(psum);
+                var newpsum = '';
+                if(isNaN(psum)){
+                    psum = '0.00';
+                }else{
+                    psum = Math.abs(psum)+'';
+                    if(psum.indexOf('.') == -1){
+                        psum += '.00'; 
+                    }else{
+                        for(var i=0;i<psum.length;i++){
+                            if(psum[i] == '.'){
+                                newpsum += '.';
+                                if(psum[i+1] != 'Undefined'){
+                                    newpsum += psum[i+1];
+                                }else{
+                                    newpsum += psum[i];
+                                }
+                                if(psum[i+2] != 'Undefined'){
+                                    newpsum += psum[i+2];
+                                }else{
+                                    newpsum += psum[i];
+                                }
+                                    break;
+                                }
+                                    newpsum += psum[i]; 
+                            }
+                            psum = newpsum;
+                        }
+                }
+                $("input[name='balance']").val(psum);
+                //alert($("input[name='balance']").val());
+                if($("input[name='balance']").val() == '0.00'){
+                    return false;
+                }
+                $.post("__MODULE__/Patient/cash",$("#form-cash").serialize(),function(data){
+                    if(data.error == 1){
+                        $("#pos-error-msg").append("<span id='error-msg' style='position:absolute;right:10rem;top:0.875rem;color:red;font-size:0.875rem'>"+data.content+"</span>");
+                    }else{
+                        $("#pos-error-msg").append("<span id='error-msg' style='position:absolute;right:10rem;top:0.875rem;color:green;font-size:0.875rem'>"+data.content+"</span>");
+                        $("#pos-error-msg").children("p").text(data.money+"元");
+                    }
+                },'json');
+                setTimeout(function(){$("#error-msg").remove()},1000);
+                /*if($("#countType").val()==0){
+                    $(this).append("<div style='position:absolute;width:60%;height:30%;margin:auto;z-index:9999'>请选择账户类型</div>");
+                    return false;
+                }*/
+            })
+        })
+    </script>
+    <script type="text/javascript" src="{$Think.const.MBJS_URL}/base.js"></script>
+

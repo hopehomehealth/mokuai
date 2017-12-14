@@ -1,0 +1,110 @@
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=xsbTAHuQOToG04ZiQazeMPwcVHqV6CxP"></script>
+
+<div class="main">
+    <!--*****banner*****-->
+    <section>
+        <div class="nht-xl fl">
+            <p class="lin-tt">关于<span class="d-red">我们</span><span class="nht-tt fr">&nbsp;</span></p>
+            <ul class="nht-sumenu fr">
+              <foreach name="guanyu2" item="v">
+				<if condition="($v.url eq '') AND ($v.lan_id eq 10)">
+<li><a href="{:U('News/guanyuwomen',array('lan_id'=>2,'zilanid'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+
+				<elseif condition="($v.url eq '') AND ($v.lan_id eq 12)"/>
+<li><a href="{:U('News/guanyuwomen',array('lan_id'=>2,'zilanid'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+				<elseif condition="($v.url eq '') AND ($v.lan_id eq 13)"/>
+<li><a href="{:U('News/guanyuwomen',array('lan_id'=>2,'zilanid'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+				<elseif condition="($v.url eq '') AND ($v.lan_id eq 14)"/>
+<li><a href="{:U('News/guanyuwomen',array('lan_id'=>2,'zilanid'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+				<elseif condition="($v.url eq '') AND ($v.lan_id eq 15)"/>
+<li><a href="{:U('News/guanyuwomen',array('lan_id'=>2,'zilanid'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+				<elseif condition="($v.url eq '') AND ($v.lan_id gt 40)"/>
+<li><a href="{:U('News/newslist',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+<elseif condition="$v['url'] neq ''"/>
+<li><a href="{$v.url}">{$v.lan_title}</a></li>
+</if>
+				</foreach>
+            </ul>
+        </div>
+    <script type="text/javascript">
+        $(".nht-tt").click(function(){
+            $(".nht-sumenu").slideToggle("1000");
+        });
+    </script>
+    </section>
+    <!--*****banner*****-->
+    <section>
+        <p class="abo-banner fl">   <foreach name="adinfo" item="v">
+                <img src="{$Think.const.SITE_URL}{$v.pic_big}">
+            </foreach></p>
+    </section>
+    <!--*****h-l内容*****-->
+    <style>
+        #allmap {width: 100%;height: 100%;margin:0;font-family:"微软雅黑";font-size:14px;}
+        #l-map{height:200px;width:100%;}
+        #r-result{width:100%;}
+
+        .v01{float:right;width:1.4rem;height:1.4rem;overflow:hidden;display:inline-block;margin-top:-0.5rem;margin-bottom:-0.5rem;background:url("{$Think.const.MIMG_URL}vicon.png") no-repeat right;background-size:30%;}
+        .v02{float:right;width:1.4rem;height:1.4rem;overflow:hidden;display:inline-block;margin-top:-0.5rem;margin-bottom:-0.5rem;background:url("{$Think.const.MIMG_URL}vicon1.png")no-repeat right;background-size:60%;}
+        .vtitle{width:100%;height:3.5rem;line-height:3.5rem;margin-top:-1px; border-bottom: 1px #004084  solid;font-size:1.5rem;color:#4d4d4d;;cursor:pointer;}
+        .vtitle em{margin:15px 10px 0 0;}
+        .vconlist{background:#9cc;}
+        .vconlist li a{height:30px;line-height:30px;padding-left:30px;display:block;font-size:14px;color:#866f67;}
+        .vconlist li.select a,.vconlist li a:hover{color:#ed4948;text-decoration:none;}
+    </style>
+    <section>
+        <script type="text/javascript">
+            $(function(){
+                //菜单隐藏展开
+                var tabs_i=0
+                $('.vtitle').click(function(){
+                    var _self = $(this);
+                    var j = $('.vtitle').index(_self);
+                    if( tabs_i == j ) return false; tabs_i = j;
+                    $('.vtitle em').each(function(e){
+                        if(e==tabs_i){
+                            $('em',_self).removeClass('v01').addClass('v02');
+                        }else{
+                            $(this).removeClass('v02').addClass('v01');
+                        }
+                    });
+                    $('.vcon').slideUp().eq(tabs_i).slideDown();
+                });
+            })
+        </script>
+        <div class="h-l pb1 fl">
+		<foreach name="catinfo" key="k" item="v">
+					<input type="hidden" id="{$v.lan_id}" value="{$v.lan_id}">
+            <div class="vtitle fl"><em <if condition="$v.lan_id eq $_GET['zilanid']">class="v01 v02"<else/>class="v01"</if>></em><span class="lin-tt">{$v.lan_title}</span></div>
+			<foreach name="v.info" key="kk" item="vv">
+
+            <div <if condition="$v.lan_id eq $_GET['zilanid']">class="vcon"<else/>class="vcon" style="display: none;"</if>>
+                <div class="abo-nr fl clearfix">
+                 <p>{$vv.content}</p>
+
+                </div>
+				</foreach>
+
+            </div>
+			</foreach>
+
+			  <span class="fwb fl" style="padding:1rem 0rem;font-size:1.5rem;">公司电话：010-83671790</span><br>
+                    <span class="fwb fl" style="padding:0rem 0rem 1rem 0rem;font-size:1.5rem;">公司地址：北京市海淀区田村北路墨蔬院06号</span>
+          <p>
+                <div id="l-map"></div>
+                <div id="r-result"></div>
+                </p>
+	 <script type="text/javascript">
+        // 百度地图API功能
+         sContent ="公司地址：北京市海淀区田村北路墨蔬院06号";
+
+        var map = new BMap.Map("l-map");
+        var point = new BMap.Point(116.253192,39.940214);
+        map.centerAndZoom(point, 15);
+        var infoWindow = new BMap.InfoWindow(sContent);  // 创建信息窗口对象
+        map.openInfoWindow(infoWindow,point); //开启信息窗口
+
+	</script>
+
+	</section>
+

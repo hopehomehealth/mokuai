@@ -1,0 +1,82 @@
+<div class="main">
+    <if condition="$isme eq '1'">
+    <div class="banner_2">
+      <a href="#"><span>我的</span>博客</a>
+      <div><a href="__MODULE__/Blog/blogset">设置管理</a>&nbsp;|&nbsp;<a href="__MODULE__/Blog/createart">发表博文</a></div>
+    </div>
+    </if>
+<div class="banner_3">
+    <img src="{$Think.const.MIMG_URL}banner.jpg" alt=""/>
+    <dl>
+        <dt></dt>
+        <dd>{$bloginfo.blog_name}</dd>
+        <dd>&nbsp;</dd>
+        <dd>{$bloginfo.blog_desc}</dd>
+    </dl>
+</div>
+<aside>
+    <span class="fr clo"><img src="{$Think.const.MIMG_URL}ion_6.png" alt=""></span>
+    <p>个人信息</p>
+    <div class="nametou"><img src="{$bloginfo.userhead}" alt=""><p>{$bloginfo.username}</p></div>
+    <ul class="geren">
+        <li>今日访问: <span>{$bloginfo.today}</span></li>
+        <li>总访问量: <span>{$bloginfo.counts}</span></li>
+        <li>开博时间: <span>{$bloginfo.ctime|date='Y-m-d',###}</span></li>
+        <li>博客排名: <span>1023</span></li>
+    </ul>
+</aside>
+<div class="clear"></div>
+<section class="tab">
+<p class="xj-hdts fl pl0-5 pt0-5"><img src="{$Think.const.MIMG_URL}qianxleft1.png"></p> <p class="xj-hdts fr pr0-5 pt0-5"><img src="{$Think.const.MIMG_URL}qianxr1.png"></p>
+    <div id="menu">
+    <ul class="slide">
+        <li <if condition="$_GET['class_id'] eq ''">class="txt txtclick current"<else />class="txt"</if>><form action="__SELF__" method="get"><input type="hidden" name="class_id" value="">全部博文</form></li>
+        <foreach name="classlist" item="classinfo">
+            <li <if condition="$_GET['class_id'] eq $classinfo['class_id']">class="txt txtclick current"<else />class="txt"</if>><form action="__SELF__" method="get"><input type="hidden" name="class_id" value="{$classinfo.class_id}">{$classinfo.class_name}</form></li>
+        </foreach>
+    </ul>
+    </div>
+    <div class="tab_box settmain show">
+        <div style="width:94%; margin: 0rem 3%; float: left;">
+            <ul class="ind-list">
+                <foreach name="articlelist" item="info">
+                <li>
+                    <dl class="ind-pic">
+                        <dt></dt>
+                        <dd><p class="w100 two pb5-5 fl fwb" style="padding-bottom:3.5rem"><a href="__MODULE__/Blog/detail/art_id/{$info.art_id}">{$info.title}</a></p>
+                        <p class="w100 fl"><span class="fl fwb"><a href="#">{$info.nikename}</a></span><span class="fl">{$info.add_time|date="Y-m-d H:i",###}</span></p>
+                        </dd>
+                    </dl>
+                </li>
+                </foreach>
+            </ul>
+        </div>
+    </div>
+</section>
+<div class="aside_1">
+    <p class="ftop"><img src="{$Think.const.MIMG_URL}2_3.png" alt=""/></p>
+</div>
+</div>
+<script type="text/javascript">
+$(function () {
+    $(".banner_3").click(function () {
+        if($("aside").css("display")=="none"){
+            $("aside").slideDown(300);
+        }else{
+            $("aside").slideUp(300);
+        }
+    });
+    $("aside .clo").click(function () {
+        $("aside").slideUp(300);
+    });
+    // 滑动菜单
+    $("#menu .slide li").click(function(){
+        var index1 = $("#menu .slide li").index(this);
+        $(this).addClass("current").siblings().removeClass("current");
+        $(".tab .settmain:eq("+index1+")").addClass("show")
+            .siblings().removeClass("show");
+        $(this).children('form').submit();
+    });
+});
+</script>
+<script src="{$Think.const.MJS_URL}slidemenu.js"></script>

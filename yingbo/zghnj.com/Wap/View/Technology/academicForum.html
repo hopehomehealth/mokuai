@@ -1,0 +1,83 @@
+<!--*****header*****-->
+<div class="main">
+    <!--*****banner*****-->
+    <div class="su-banner">
+        <foreach name="slides" item="slide">
+            <img src="{$slide.picmobile|substr=###,1}" alt="">
+        </foreach>
+    </div>
+    <!--*****bannerend*****-->
+
+    <!--*****menu*****-->
+    <section class="su-menu b-white">
+        <ul>
+            <foreach name="category" item="cateinfo">
+                <li <if condition="ACTION_NAME eq $cateinfo['action']">class="cur"</if>><a href="__MODULE__/{$cateinfo['ctrl']}/{$cateinfo['action']}">{$cateinfo.cat_name}</a></li>
+            </foreach>
+        </ul>
+    </section>
+    <!--*****menuend*****-->
+    <!--*****su-con*****-->
+    <section class="su-con" id="scrollloading" data-scrollstatus="false" data-end="false">
+        <foreach name="news" item="info">
+            <dl class="su-lear">
+                <dt><a href="__MODULE__/Technology/detail/id/{$info.news_id}"><img src="{$info.pic|substr=###,1}" alt="" onerror="this.src='/Public/Home/images/baiban.png'"></a></dt>
+                <dd>
+                    <h3>{$info.title}</h3>
+                    {$info.content}
+                    <p class="su-lear-more fl">
+                        <a href="__MODULE__/Technology/detail/id/{$info.news_id}">查看详情</a>
+                    </p>
+                </dd>
+            </dl>
+        </foreach>
+    </section>
+    <!--*****su-conend*****-->
+</div>
+<script type="text/javascript">
+  function scrollLoading(scrollloading,nowpage){
+    $.get("__MODULE__/Technology/academicForum/p/"+nowpage,function(data){
+      $("#loading").remove();
+      if(data.error == 0){
+        var html = '';
+        for(var i in data.content){
+            html += '\
+              <dl class="su-lear"><dt><a href="__MODULE__/Technology/detail/id/'+data.content[i].news_id+'"><img src="'+data.content[i].pic+'" alt="" onerror="this.src=\'/Public/Home/images/baiban.png\'"></a></dt>\
+                <dd>\
+                    <h3>'+data.content[i].title+'</h3>\
+                    '+data.content[i].content+'\
+                    <p class="su-lear-more fl">\
+                        <a href="__MODULE__/Technology/detail/id/'+data.content[i].news_id+'">查看详情</a>\
+                    </p>\
+                </dd>\
+            </dl>\
+            ';
+        }
+        scrollloading.append(html);
+      }else{
+        scrollloading.data('end',true);
+      }
+      scrollloading.data('scrollstatus',false);
+    });
+  }
+  $(function(){
+    var scrollloading = $("#scrollloading");//放数据的容器
+    var scrollstatus = false;
+    var nowpage = 1;
+    $(".container").scroll(function () {
+      var scrollTop = $(this)[0].scrollTop;
+      var scrollHeight = $(this)[0].scrollHeight;
+      var windowHeight = $(this).height();
+      var scrollstatus = scrollloading.data('scrollstatus');
+      var end = scrollloading.data('end');
+      if ((scrollTop + windowHeight >= scrollHeight - 10) && !scrollstatus && !end) {
+        scrollloading.data('scrollstatus',true);
+        nowpage++;
+        scrollloading.append('<div id="loading" style="height:0.8rem;color:#666;line-height:0.8rem;font-size:0.28rem;text-align:center">数据加载中...</div>');
+        setTimeout(function(){
+            scrollLoading(scrollloading,nowpage);
+        },1000);
+      }
+    });
+  });
+</script>

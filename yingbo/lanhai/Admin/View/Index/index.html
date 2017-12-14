@@ -1,0 +1,127 @@
+
+
+<div class="main-content">
+    <div class="page-content">
+        <div class="row indexBox">
+            <div class="page-content box">
+                <div class="box-title margin_bot_20">
+                    <div class="span10">
+                        <h3 class="red">
+                            <i class="icon-volume-down icon-2x green"></i>
+                            欢迎<i class="blue">{$Think.session.admin_name}</i>回家，现在时间：{$Think.now}
+                        </h3>
+
+
+                    </div>
+                </div>
+
+                <div class="indexTable">
+                    <div class="indexTableLeft">
+                        <h4 class="indexTableTit">
+                            <i class="icon-reorder blue"></i>
+                            <span>最新在线咨询留言</span>
+                        </h4>
+                        <table>
+                            <thead>
+                            <tr><th width="90px">ID</th>
+                                <th width="120px">姓名</th>
+                                <th width="100px">手机号</th>
+                                <th width="60px">留言时间</th>
+                                <th width="100px">是否回访</th>
+                            </tr></thead>
+                            <tbody>
+
+
+                            <foreach name="adviceinfo" item="v">
+                                <tr> <td>{$v.advice_id}</td>
+                                <td>{$v.name}</td>
+                                <td>{$v.iphone}</td>
+                                <td>{$v.add_time|date="Y-m-d H:i:s",###}</td>
+
+                                <td><if condition="$v.is_hui eq 0">是<else/>否</if></td> </tr>
+                            </foreach>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="indexTableLeft">
+                        <h4 class="indexTableTit">
+                            <i class="icon-reorder blue"></i>
+                            <span>新加入会员列表</span>
+                        </h4>
+                        <table>
+                            <thead>
+                            <tr><th width="60px">会员ID</th>
+                                <th width="60px">头像</th>
+                                <th width="120px">昵称</th>
+                                <th width="60px">注册时间</th>
+                            </tr></thead>
+                            <tbody>
+							<foreach name="userlist" item="info">
+                            <tr>
+                                <td>{$info.user_id}</td>
+                                <td><img src="{$info.userhead}" width="50px" hieght="50px"></td>
+                                <td>{$info.username}</td>
+                                <td>{$info.add_time|date="Y-m-d H:i:s",###}</td>
+                            </tr>
+							</foreach>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="indexTable">
+				<div class="indexTableRight">
+                        <h4 class="indexTableTit">
+                            <i class="icon-reorder blue"></i>
+                            <span>最新帖子</span>
+                        </h4>
+                        <table>
+                            <thead>
+                            <tr><th width="60px">帖子ID</th>
+                                <th width="60px">标题</th>
+                                <th width="120px">发帖时间</th>
+                            </tr></thead>
+                            <tbody>
+                            <foreach name="postlist" item="postinfo">
+                            <tr>
+                                <td>{$postinfo.post_id}</td>
+                                <td>{$postinfo.topic}</td>
+                                <td>{$postinfo.ctime|date="Y-m-d H:i:s",###}</td>
+                            </tr>
+							</foreach>
+							</tbody>
+                        </table>
+                    </div>
+
+                    <div class="indexTableRight">
+                        <h4 class="indexTableTit">
+                            <i class="icon-reorder blue"></i>
+                            <span>最新博文</span>
+                        </h4>
+                        <table>
+                            <thead>
+                            <tr><th width="60px">博文ID</th>
+                                <th width="60px">标题</th>
+                                <th width="120px">发表时间</th>
+                            </tr></thead>
+                            <tbody>
+							<foreach name="articles" item="articleinfo">
+                            <tr>
+                                <td>{$articleinfo.art_id}</td>
+                                <td>{$articleinfo.title}</td>
+                                <td>{$articleinfo.add_time|date="Y-m-d H:i:s",###}</td>
+                            </tr>
+							</foreach>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/.box-->
+    </div>
+    <!-- /.page-content -->
+</div><!-- /.main-content -->
+
+

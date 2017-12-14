@@ -1,0 +1,57 @@
+
+
+<div class="main-content">
+    <div class="box-title margin_bot_20">
+        <div class="span10">
+            <h3><i class="icon-magic"></i>信用卡添加</h3>
+        </div>
+    </div>
+
+
+    <div class="page-content">
+        <div class="row">
+            <div class="page-content box">
+
+                <form action="__SELF__" method="post" class="form-horizontal" enctype="multipart/form-data">
+
+                    <div class="form-group">
+                        <label class="control-label">持卡人 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" class="input-large" name="username">
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">卡号 : </label>
+                        <div class="controls pull-left">
+                            {$info.num}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">联系方式 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" class="input-large" name="phone">
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">有效期 : </label>
+                        <div class="controls pull-left">
+                            <input type="text"name="longer" style="width: 25px;">&nbsp;年
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="form-actions" align="center">
+                        <button id="bsubmit" type="submit"  class="btn btn-sm btn-primary">保存</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--/.box-->
+    </div><!-- /.page-content -->
+</div><!-- /.main-content -->
+

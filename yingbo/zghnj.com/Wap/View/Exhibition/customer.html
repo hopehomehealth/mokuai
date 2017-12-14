@@ -1,0 +1,31 @@
+<!--*****header*****-->
+<div class="main">
+    <!--*****banner*****-->
+    <div class="su-banner">
+        <foreach name="slides" item="slide">
+            <img src="{$slide.picmobile|substr=###,1}" alt="">
+        </foreach>
+    </div>
+    <!--*****bannerend*****-->
+
+    <!--*****menu*****-->
+    <section class="su-menu-e b-white">
+        <ul>
+            <foreach name="category" item="cateinfo">
+                <li <if condition="ACTION_NAME eq $cateinfo['action']">class="cur"</if>><a href="__MODULE__/{$cateinfo['ctrl']}/{$cateinfo['action']}">{$cateinfo.cat_name}</a></li>
+            </foreach>
+        </ul>
+    </section>
+    <!--*****menuend*****-->
+    <!--*****su-con*****-->
+    <section class="su-case b-white">
+        <ul class="su-cust">
+            <foreach name="customers" item="info">
+                <li>
+                    <img src="{$info.picture}" alt="">
+                </li>
+            </foreach>
+        </ul>
+    </section>
+    <!--*****su-conend*****-->
+</div>

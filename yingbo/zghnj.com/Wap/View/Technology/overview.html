@@ -1,0 +1,104 @@
+<!--*****header*****-->
+<div class="main">
+    <!--*****banner*****-->
+    <div class="su-banner">
+        <foreach name="slides" item="slide">
+            <img src="{$slide.picmobile|substr=###,1}" alt="">
+        </foreach>
+    </div>
+    <!--*****bannerend*****-->
+
+    <!--*****menu*****-->
+    <section class="su-menu b-white">
+        <ul>
+            <foreach name="category" item="cateinfo">
+                <li <if condition="ACTION_NAME eq $cateinfo['action']">class="cur"</if>><a href="__MODULE__/{$cateinfo['ctrl']}/{$cateinfo['action']}">{$cateinfo.cat_name}</a></li>
+            </foreach>
+        </ul>
+    </section>
+    <!--*****menuend*****-->
+    <!--*****su-con*****-->
+    <section class="su-con">
+        <div class="su-fron">
+            <p>　　缓粘结预应力是我国乃至国际预应力技术领域中的一项新兴技术，由上世纪80 年代的日本兴起，因其在秉承无粘结预应力与有粘结预应力技术优点的同时克服了二者的技术弊端而受到业内的广泛关注，发展迅猛。</p>
+            <p class="fs0-28 c-blue">技术原理</p>
+            <section  class="w100 b-lgray1">
+                <div class="su-serv-fina">
+                    <div class="prolist">
+                        <div class="proleft"></div>
+                        <div class="proright"></div>
+                        <div class="probebox swiper-container-horizontal">
+                            <ul class="clearfix swiper-wrapper">
+                                <li class="swiper-slide">
+                                    <a href="services_final.html">
+                                        <img src="{$Think.const.HIMG_URL}theory_01.jpg" alt="" />
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="services_final.html">
+                                        <img src="{$Think.const.HIMG_URL}theory_02.jpg" alt="" />
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="services_final.html">
+                                        <img src="{$Think.const.HIMG_URL}theory_03.jpg" alt="" />
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <p>　　缓粘结预应力技术的核心是缓粘结预应力钢绞线产品，其是由预应力钢绞线、内外层具有一定高度与宽度的对称横肋的护套及一定厚度的填充并紧密封裹于护套和预应力钢绞线之间的缓凝粘合剂构成。缓凝粘合剂初期具有一定流动性及对钢绞线良好的附着性，在工程施工阶段可保障预应力钢绞线自由地伸缩、变形。在工程施工完成后，缓凝粘合剂在预定时间内固化，达到一定强度并与预应力钢绞线、护套粘结为一体，通过缓凝粘合剂与护套共同的横肋与混凝土形成咬合，实现预应力钢绞线与混凝土的一体化，共同受力工作。</p>
+            <p class="fs0-28 c-blue">技术优势</p>
+            <p>　　施工工艺简便： 缓粘结预应力相比有粘结预应力减少埋设波纹管与灌浆工序，施工简便易行，缩短了工期、节省了工程造价。质量易于控制：缓粘结预应力筋工厂化制造、现场人工操作少，可有效避免有粘结预应力孔道塌陷、积水、灌浆不密实等施工缺陷。节点布置灵活：缓粘结预应力钢绞线单根布置，锚具小，使用不受限，节点交汇处混凝土浇注易密实，施工质量有保障。耐久性能优异：缓凝粘合剂具有较高的强度，较好的耐候性、耐水性、耐碱性，整体缓粘结预应力钢绞线的抗腐蚀能力大幅提升。力学性能突出：缓粘结预应力结构具有与有粘结预应力结构相当的抗震延性、抗裂性、承载力，以及更高的抗疲劳性和粘结锚固性能。工程经济性强：缓粘结预应力工程相比有粘结预应力工程减少多道工序，工期缩短近半，用工少、模板周转率高，工程综合经济效益突出。</p>
+            <p><img src="{$Think.const.HIMG_URL}img_youshi.png" alt=""></p>
+            <p class="fs0-28 c-blue">应用领域</p>
+            <p>　　缓粘结预应力技术可使用于铁路与公路桥梁、水利工程、市政工程、海洋工程、核工业燃料储存工程、特种工程及工业与民用建筑工程等各类预应力混凝土结构，如：在民用建筑机场航站楼、铁路站房、大型场馆、广场、办公楼等大跨混凝土结构中应用；在铁路、公路桥梁的桥面筋、T型、箱型梁横向、纵向以及桩体竖向筋进行应用；在水利领域的坝体、地下工厂等大跨重载区域混凝土梁、板进行应用；在特种结构筒仓、水池、抗震试验台等特种结构进行应用。尤其对于动荷载较大、疲劳荷载较高、抗侵蚀性较强的大跨度混凝土结构，具有突出的经济与技术优势。</p>
+            <section  class="w100 b-lgray1">
+                <div class="su-serv-fina">
+                    <div class="prolist">
+                        <div class="proleft"></div>
+                        <div class="proright"></div>
+                        <div class="probebox swiper-container-horizontal">
+                            <ul class="clearfix swiper-wrapper">
+                                <li class="swiper-slide">
+                                    <a href="services_final.html">
+                                        <img src="{$Think.const.HIMG_URL}area_01.jpg" alt="" />
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="services_final.html">
+                                        <img src="{$Think.const.HIMG_URL}area_02.jpg" alt="" />
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="services_final.html">
+                                        <img src="{$Think.const.HIMG_URL}area_03.jpg" alt="" />
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="services_final.html">
+                                        <img src="{$Think.const.HIMG_URL}area_04.jpg" alt="" />
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="services_final.html">
+                                        <img src="{$Think.const.HIMG_URL}area_05.jpg" alt="" />
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="services_final.html">
+                                        <img src="{$Think.const.HIMG_URL}area_06.jpg" alt="" />
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </section>
+    <!--*****su-conend*****-->
+</div>

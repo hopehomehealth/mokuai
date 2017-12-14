@@ -1,0 +1,35 @@
+<ul class="dj_xhk fr">
+    <p class="arrow-up fl"></p>
+    <li><a href="index.html">商城首页</a></li>
+</ul>
+<script type="text/javascript">
+    $(".head_back2").click(function(){
+        $(".dj_xhk").slideToggle("1000");
+    });
+</script>
+<div class="main pb0">
+  <section>
+  <div class="name">
+  <p class="name-t w100 fl"></p>
+  <p class="name-tx"><img src="{$Think.const.HIMG_URL}xj_images_12.png"></p>
+  <p class="name-c fl"><span class="fs1-6">北京新农缘天下农业科技有限公司</span><br><img src="{$Think.const.HIMG_URL}xj_images_15.jpg" alt=""><br>扫此二维码，成为会员可享受更多优惠</p>
+  </div>  
+
+  </section>
+  <script type="text/javascript">
+    $('.bus-a-l').on('click','li',function(){
+        var tabInd=$(this).index();
+        $(this).addClass('active').siblings().removeClass('active');
+        $('.bus-a-r').eq(tabInd).addClass('tab-acheck').siblings().removeClass('tab-acheck');
+    })
+</script> 
+
+<script>
+	 $(function(){
+		$(".bus-a-l li").click(function(){
+			$(this).addClass("curt").siblings().removeClass("curt")	
+			$(".bus-a-r").eq($(this).index()).addClass("on").siblings().removeClass("on")	
+		});
+	})
+</script>
+</div>

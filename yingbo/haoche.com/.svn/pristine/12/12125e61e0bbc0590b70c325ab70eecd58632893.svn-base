@@ -1,0 +1,126 @@
+        <div class="main-content">
+          <div class="page-content">
+            <div class="row">
+              <div class="page-content box">
+              	<div class="box-title margin_bot_20">
+                  	<div class="span10">
+                   		<h3><i class="icon-cogs"></i>财务管理</h3>
+                  	</div>
+                </div>
+                  <div class="margin_bot_20">
+                      <a href="#" class="btn btn-primary btn-sm"><i class=""></i>财务报表说明</a>
+                      <a href="#" class="btn btn-success btn-sm"><i class="icon-plus"></i>添加财务报表说明</a>
+                  </div>
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th width="100px">流水号</th>
+                        <th width="100px">帐户ID</th>
+                        <th width="150px">金额</th>
+                        <th width="150px">收/支</th>
+                        <th width="150px">流水时间</th>
+                        <th width="150px">收支项目</th>
+                        <th>备注</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>332</td>
+                        <td>177</td>
+                        <td style="text-align:right;color:black;font-style:italic;font-weight:bolder;font-size:1.1em">12.80</td>
+                        <td>收入</td>
+                        <td>2016-06-11 16:36:07</td>
+                        <td>佣金</td>
+                        <td>来自订单：172</td>
+                        <td><a href="#" class="green">查看明细</a></td>
+                    </tr><tr>
+                        <td>331</td>
+                        <td>125</td>
+                        <td style="text-align:right;">12.80</td>
+                        <td>收入</td>
+                        <td>2016-06-11 16:36:07</td>
+                        <td>佣金</td>
+                        <td>来自订单：172</td>
+                    </tr><tr>
+                        <td>330</td>
+                        <td>103</td>
+                        <td style="text-align:right;">25.60</td>
+                        <td>收入</td>
+                        <td>2016-06-11 16:36:07</td>
+                        <td>佣金</td>
+                        <td>来自订单：172</td>
+                    </tr><tr>
+                        <td>329</td>
+                        <td>1041</td>
+                        <td style="text-align:right;">128.00</td>
+                        <td>支出</td>
+                        <td>2016-06-11 16:36:06</td>
+                        <td>购物</td>
+                        <td>支付，订单ID：172</td>
+                    </tr><tr>
+                        <td>328</td>
+                        <td>1041</td>
+                        <td style="text-align:right;">128.00</td>
+                        <td>收入</td>
+                        <td>2016-06-11 16:35:58</td>
+                        <td>充值</td>
+                        <td>微信支付充值</td>
+                    </tr><tr>
+                        <td>327</td>
+                        <td>69</td>
+                        <td style="text-align:right;">1.00</td>
+                        <td>收入</td>
+                        <td>2016-05-13 10:27:16</td>
+                        <td>充值</td>
+                        <td>微信支付充值</td>
+                    </tr><tr>
+                        <td>326</td>
+                        <td>63</td>
+                        <td style="text-align:right;">0.01</td>
+                        <td>支出</td>
+                        <td>2016-05-13 10:23:18</td>
+                        <td>购物</td>
+                        <td>支付，订单ID：169</td>
+                    </tr><tr>
+                        <td>325</td>
+                        <td>63</td>
+                        <td style="text-align:right;">0.01</td>
+                        <td>收入</td>
+                        <td>2016-05-13 10:23:12</td>
+                        <td>充值</td>
+                        <td>微信支付充值</td>
+                    </tr><tr>
+                        <td>324</td>
+                        <td>69</td>
+                        <td style="text-align:right;">1.00</td>
+                        <td>收入</td>
+                        <td>2016-05-12 14:18:13</td>
+                        <td>充值</td>
+                        <td>微信支付充值</td>
+                    </tr><tr>
+                        <td>323</td>
+                        <td>48</td>
+                        <td style="text-align:right;">0.20</td>
+                        <td>收入</td>
+                        <td>2016-05-12 14:16:54</td>
+                        <td>佣金</td>
+                        <td>来自订单：167</td>
+                    </tr>              </tbody>
+                 </table>
+              </div>
+                <ul class="pagination pull-right" style="margin-top:20px; margin-bottom:0;">
+                    <li class="disabled"><a href="#">«</a></li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">»</a></li>
+                </ul>
+            </div>
+            <!--/.box-->
+          </div><!-- /.page-content -->
+        </div><!-- /.main-content -->
+    </div><!-- /.main-container-inner -->
+</div><!-- /.main-container -->

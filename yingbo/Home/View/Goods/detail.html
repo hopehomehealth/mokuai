@@ -1,0 +1,275 @@
+
+{__NOLAYOUT__}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>新农缘天下商城</title>
+    <link href="{$Think.const.HCSS_URL}basic.css" type="text/css" rel="stylesheet" />
+    <link href="{$Think.const.HCSS_URL}style.css" type="text/css" rel="stylesheet" />
+    <link href="{$Think.const.HCSS_URL}swiper-3.3.0.min.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="{$Think.const.HJS_URL}jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="{$Think.const.HJS_URL}swiper-3.3.0.jquery.min.js"></script>
+    <script type="text/javascript" src="{$Think.const.HJS_URL}refresh.js"></script>
+</head>
+
+<body>
+<section>
+<header> <a class="head_back1" href="Javascript:window.history.go(-1)">&nbsp;</a>
+    <div class="headTit">商品详情</div>
+    <a class="head_back2">&nbsp;</a> </header>
+<ul class="dj_xhk fr">
+    <p class="arrow-up fl"></p>
+    <li><a href="{:U('Goods/index')}">商城首页</a></li>
+    <li><a href="{:U('Goods/allcatlist')}">商品分类</a></li>
+</ul>
+<script type="text/javascript">
+    $(".head_back2").click(function(){
+        $(".dj_xhk").slideToggle("1000");
+    });
+</script>
+
+    <div class="main">
+        <section>
+            <div class="tesco fl pt_6 pb_6">
+<p class="tesco_left fl"><a href="{:U('Cart/showlist')}"> <img src="{$Think.const.HIMG_URL}tb_26.png">
+    <span class="tesco_gwsz1">{$number}</span></a></p>
+                <p class="tesco_right fl">
+                <form action="{:U('search')}" method="post">
+                    <input type="text" class="tesco_rgt_k fl" name="searchname" id="searchname" placeholder="请输入商品名称/类型">
+                    <input id="submit"  class="tesco_rgt_an" type="submit" value="">
+                </form>
+                </p>
+            </div>
+        </section>
+        <script type="text/jscript">
+ $('#submit').click(function(){
+ var searchname = $('#searchname').val();
+     if(searchname == ''){
+        return false;
+    }
+        });
+</script>
+        <section>
+            <div class="navbj fl m0 pb0">
+                <div class="car_banner">
+                    <div class="car-img-group">
+                        <div class="group-list" style="width:100%;">
+                            <ul class="swiper-wrapper">
+                                <foreach name="picsinfoA" item="v">
+                                    <li class="swiper-slide">
+                                        <a href="javascript:void">
+                                            <div class="img-wrap"> <img width="376px" height="256px" src="{$Think.const.SITE_URL}{$v.pics}" alt=""> </div>
+                                        </a>
+                                    </li>
+
+                                </foreach>
+
+                            </ul>
+                            <div class="group-pointer"> </div>
+                        </div>
+                    </div>
+                    <script>
+                        $(function () {
+
+                            if (1==1)
+                            {
+                                var swiper = new Swiper('.group-list', {
+                                    pagination: '.group-pointer',
+                                    loop: true,
+                                    onInit: function (swiper) {
+                                        $(".car-img-group").find(".group-list").prepend('<span class="yem">' + swiper.activeIndex + "/" + swiper.bullets.length + '</span>');
+                                    },
+                                    onSlideChangeStart: function (swiper) {
+                                        var curIndex = (swiper.activeIndex + swiper.bullets.length) % swiper.bullets.length == 0 ? swiper.bullets.length : (swiper.activeIndex + swiper.bullets.length) % swiper.bullets.length;
+                                        $(".car-img-group").find(".group-list").find(".yem").html(curIndex + "/" + swiper.bullets.length);
+
+                                    }
+                                });
+                            }
+                        });
+
+                    </script>
+                </div>
+            </div>
+        </section>
+
+    <input type='hidden' id='goods_id' value='{$info.goods_id}'>
+<section>
+    <div class="navbj fl pb0">
+        <div class="car_f_pic fl lh1_8">
+            <p class="car_xzsz">{$info.goods_name} <span class="gray fr">库存:&nbsp;{$info.number}</span></p>
+            <p class="car_f fl crimson pt_6 pb_6 su_car_a fwb"><span class="car_yj">乐购价</span>&nbsp;{$info.downpay}元</p>
+            <p class="car_z fl gray">￥{$info.price}元&nbsp;&bull;&nbsp;积分</p>
+            <p class="tesco_thzc fl">提货周期：{$info.cycle}&nbsp;天<img src="{$Think.const.HIMG_URL}tb_22.png"></p>
+        </div>
+    </div>
+</section>
+        <section>
+            <div class="navbj fl pb0">
+
+
+                <foreach name="attrinfo2" item="v">
+					<div style="width:97%;padding-left:3%;padding-top:1rem">
+						<ul>
+							<foreach name='attrinfo1' item='v1'>
+							<li style="list-style:none;padding:0.1rem;height:1.8rem;"><p class="fl"><span style="color: #646464;font-size: 0.900em;display: inline-block;height:1.8rem;line-height:1.8rem;width: 4.100rem;padding-left: 0.200rem;">{$v1.attr_name}：</span></p>
+							<p class="fl">
+							{$v1.attrval}</p>
+							</li>
+							</foreach>
+						</ul>
+					</div>
+                    <div class="yListr">
+                        <form>
+                            <ul>
+                                <li style="list-style:none;padding:0.1rem;height:1.8rem;">
+                                    <p class="fl"><span style="width:">{$v.attr_name}：</span></p>
+                                    <p class="fl">
+                                        <foreach name="v.val" key='k2' item='vv'>
+                                            <em><b>{$vv}</b><i></i></em>
+                                        </foreach>
+                                    </p>
+                                </li>
+
+                            </ul>
+
+                        </form>
+                    </div>
+				</foreach>
+                    <script type="text/javascript">
+                        $(function(){
+                            var lilist = $(".yListr ul li");
+                            var liarray = new Array();
+                            var attrdata = '';
+                            lilist.each(function(){
+                                var i = 0;
+                                liarray[i] = '0';
+                                i++;
+                            })
+                            $(".yListr ul li em").click(function(){
+                                var index = $(this).parent().parent().index();
+                                attrdata = '';
+                                liarray[index] = '';
+                                $(this).addClass("yListrclickem").siblings().removeClass("yListrclickem");
+                                liarray[index] = $(this).parent().prev("p").children("span").text() + $(this).children("b").text() + "";
+                                //alert(attrdata);
+                            })
+                            $("#cart").click(function(){
+								$("#cart").attr('disabled',true);
+                               //获得被添加到购物车的商品id信息
+                                var goods_id = $('#goods_id').val();
+                                for(var i in liarray){
+                                    if(liarray[i] == 0){
+                                        $("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+"请选择属性"+"</div>");
+
+                                        $("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);setTimeout(function(){$("#errormsg").remove();$("#cart").attr('disabled',false);},2000);
+                                        return;
+                                    }
+                                    attrdata += liarray[i];
+                                }
+                                //alert(attrdata);return;
+                                $.ajax({
+                                    url:"__MODULE__/Cart/addCart",
+                                    data:{'goods_id':goods_id,"spec":attrdata},
+                                    dataType:'json',
+                                    type:'get',
+                                    success:function(msg){
+
+									  if(msg.error == '2'){
+
+										$("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+"本周期只能购买一次"+"</div>");
+										$("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);$("#cart").attr('disabled',true);setTimeout(function(){$("#errormsg").remove();},2000);
+										return;
+									  }else if(msg.error == '1'){
+										location.href="__MODULE__/User/login";
+										return;
+									  }
+                                      $("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+"加入购物车成功"+"</div>");
+
+                                      $("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);setTimeout(function(){$("#errormsg").remove();},2000);
+                                      $(".tesco_gwsz").text(msg.number);
+                                      $(".tesco_gwsz1").text(msg.number);
+                                    }
+                                });
+                            })
+                            $(".car_wydc a").click(function(){
+                                var goods_id = $('#goods_id').val();
+                                for(var i in liarray){
+                                    if(liarray[i] == 0){
+                                        $("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+"请选择属性"+"</div>");
+
+                                        $("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);$("#bsubmit").attr('disabled',true);setTimeout(function(){$("#errormsg").remove();$("#bsubmit").attr('disabled',false);},2000);
+                                        return;
+                                    }
+                                    attrdata += liarray[i];
+                                }
+								$.post("__MODULE__/Goods/checkorder",{'goods_id':goods_id},function(data){
+									//console.log(data);
+									if(data.error == '3'){
+										$("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+"库存不足"+"</div>");
+										$("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);setTimeout(function(){$("#errormsg").remove();},2000);
+										return;
+									}else if(data.error == '2'){
+										$("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+"本周期只能购买一次"+"</div>");
+										$("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);setTimeout(function(){$("#errormsg").remove();},2000);
+										return;
+									}else if(data.error == '1'){
+										location.href="__MODULE__/User/login";
+									}else if(data.error == '0'){
+										var url = "__MODULE__/Order/placeorder/goods_id/"+goods_id+"/spec/"+attrdata;
+										location.href = url;
+									}
+								})
+                            })
+                        })
+                    </script>
+            </div>
+        </section>
+                        <style type="text/css">
+                    .f2 {float: none;}
+#content p img { max-width: 100%; margin:0 0.250rem; }
+</style>
+        <section>
+            <div class="navbj fl pb0">
+                <div class="f2">
+                    <p class="tesco_fin_tit fl">商品介绍</p>
+
+                    <div id="content" class="tesco_fin_con fl">
+                        {$info.introduce}
+                    </div>
+
+                <!--     <div class="tesco_fin_con1 fl">
+                        <p class="tesco_twms fl">图文描述</p>
+                        <p class="tesco_twms fl">
+
+                            <foreach name="picsinfoB" item="v">
+                                <a href="{$Think.const.SITE_URL}{$v.pics_mid}"><img src="{$Think.const.SITE_URL}{$v.pics_mid}"></a>
+                            </foreach>
+                        </p>
+                    </div> -->
+                </div>
+            </div>
+        </section>
+    </div>
+    <ul  class="car_f_dc">
+            <li id="ttt" class="car_dhzx">
+                <a href="javascript:void(0)">
+                    <span><img src="{$Think.const.HIMG_URL}tb_23.png"></span>
+    <span class="tesco_gwsz fl">{$number}</span><input id="cart" type="submit" value="加入购物车" name="sub"/>
+                </a>
+            </li>
+            <li class="car_wydc">
+                <a href="javascript:void(0)">
+                    <img src="{$Think.const.HIMG_URL}tb_24.png">立即下单
+                </a>
+            </li>
+        </ul>
+        </section>
+</body>
+</html>

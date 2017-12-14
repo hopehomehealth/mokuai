@@ -1,0 +1,39 @@
+<!-------banner------->
+<p class="su-banner pt10">
+    <foreach name="adinfo" item="v">
+        <img src="{$Think.const.SITE_URL}{$v.pic}" />
+    </foreach>
+
+</p>
+<!-------banner------->
+
+<!-------第一通栏------->
+<div class="column-c pt10 pb30">
+    <p class="com-tit fl"><img src="{$Think.const.HIMG_URL}images_158.jpg" alt="友情链接" /></p>
+    <dl class="links-list fl">
+        <p class="w100 fs16 pt15 pb10">合作伙伴</p>
+         <foreach name="linkinfo1" item="v">
+             <dt><a href="{$v.url}"><img src="{$Think.const.SITE_URL}{$v.pic}" /></a></dt>
+         </foreach>
+    </dl>
+    <dl class="links-list fl">
+        <p class="w100 fs16 pt15 pb10">政府军方网站</p>
+
+        <foreach name="linkinfo2" item="v">
+            <dt><a href="{$v.url}"><img src="{$Think.const.SITE_URL}{$v.pic}" /></a></dt>
+        </foreach>
+    </dl>
+
+    <dl class="links-list fl">
+        <p class="w100 fs16 pt15 pb10">知名智库网站</p>
+        <foreach name="linkinfo3" item="v">
+            <dt><a href="{$v.url}"><img src="{$Think.const.SITE_URL}{$v.pic}" /></a></dt>
+        </foreach>
+    </dl>
+    <dl class="links-list fl">
+        <p class="w100 fs16 pt15 pb10">知名门户网站</p>
+        <foreach name="linkinfo4" item="v">
+            <dt><a href="{$v.url}"><img src="{$Think.const.SITE_URL}{$v.pic}" /></a></dt>
+        </foreach>
+    </dl>
+</div>

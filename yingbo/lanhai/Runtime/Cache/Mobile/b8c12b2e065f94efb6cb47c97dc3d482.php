@@ -1,0 +1,121 @@
+<?php if (!defined('THINK_PATH')) exit();?>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<title>蓝海长青</title>
+<script type="text/javascript" src="<?php echo (MJS_URL); ?>jquery-2.1.1.min.js"></script>
+
+<link href="<?php echo (MCSS_URL); ?>basic.css" type="text/css" rel="stylesheet" />
+<link href="<?php echo (MCSS_URL); ?>style.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+<!--*****header*****-->
+<header class="bb-b"> <a class="head_back1" href="Javascript:window.history.go(-1)">&nbsp;</a>
+  <div class="headTit1">找回密码</div>
+</header>
+
+<!--*****header*****-->
+<div class="main">
+  <section>
+    <div class="navbj fl">
+      <form action="/index.php/Mobile/Email/findpwd" method="post" id="form">
+        <ul class="log fl pb4">
+          <li><span class="red log-qz">*<img src="<?php echo (MIMG_URL); ?>tb_23.png"></span>
+            <input type="text" name="username" class="log-k w85" placeholder="请输入用户名" type="text">
+          </li>
+		  <li><span class="red log-qz">*<img src="<?php echo (MIMG_URL); ?>tb_28.png"></span>
+            <input type="text" name="email" class="log-k w85" placeholder="请输入邮箱" type="text">
+          </li>
+          <li><span class="red">*</span>
+            <input type="text" name="verifycode" class="log-k w30" placeholder="请输入验证码" type="text">
+            <span class="log-yzm"><img style="height:3.1rem;width:auto;border:1px solid #ccc" onclick="this.src=this.src+'?'+Math.random()" src="/index.php/Mobile/Email/verifyImg"></span> </li>
+          <p class="log-an fl">
+            <button class="b-bule loginBtn fl white" id="subform" type="button">发送邮件</button>
+        </ul>
+      </form>
+    </div>
+  </section>
+</div>
+<!--*****footer*****-->
+<footer>
+  <p class="copyright">Copyright © 2016 <?php echo (substr(SITE_URL,7,50)); ?> All Rights Reserved.<br>
+    蓝海长青 版权所有</p>
+</footer>
+<!--*****footer*****-->
+<script type="text/javascript" src="<?php echo (HJS_URL); ?>msgbox.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#subform").click(function(){
+			$('#subform').attr('disabled',true);
+			if($("input[name='username']").val() == ''){
+				$('#subform').attr('disabled',false);
+				$("input[name='username']").val("请输入用户名");
+				$("input[name='username']").css('color','red');
+				$("input[name='username']").attr('readonly','readonly');
+				setTimeout(function(){$("input[name='username']").val('');$("input[name='username']").css('color','');$("input[name='username']").removeAttr('readonly')},2000);
+				return false;
+			}
+			if($("input[name='email']").val() == ''){
+				$('#subform').attr('disabled',false);
+				$("input[name='email']").val("请输入邮箱");
+				$("input[name='email']").css('color','red');
+				$("input[name='email']").attr('readonly','readonly');
+				setTimeout(function(){$("input[name='email']").val('');$("input[name='email']").css('color','');$("input[name='email']").removeAttr('readonly')},2000);
+				return false;
+			}
+			if($("input[name='verifycode']").val() == ''){
+				$('#subform').attr('disabled',false);
+				$("input[name='verifycode']").val("请输入验证码");
+				$("input[name='verifycode']").css('color','red');
+				$("input[name='verifycode']").attr('readonly','readonly');
+				setTimeout(function(){$("input[name='verifycode']").val('');$("input[name='verifycode']").css('color','');$("input[name='verifycode']").removeAttr('readonly')},2000);
+				return false;
+			}
+			var myreg = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+			if(myreg.test($("input[name='email']").val())){
+			}else{
+				$('.loginBtn').attr('disabled',false);
+
+				$("input[name='email']").val("邮箱地址不合法");
+				$("input[name='email']").css('color','red');
+				$("input[name='email']").attr('readonly','readonly');
+				setTimeout(function(){$("input[name='email']").val('');$("input[name='email']").css('color','');$("input[name='email']").removeAttr('readonly')},2000);
+				return false;
+			}
+			$.post($("#form").attr('action'),$("#form").serialize(),function(data){
+				if(data.error == 0){
+					myalertbox(data.content);
+				}else if(data.error == 1){
+					$('#subform').attr('disabled',false);
+					$("input[name='verifycode']").val(data.content);
+					$("input[name='verifycode']").css('color','red');
+					$("input[name='verifycode']").attr('readonly','readonly');
+					setTimeout(function(){$("input[name='verifycode']").val('');$("input[name='verifycode']").css('color','');$("input[name='verifycode']").removeAttr('readonly')},2000);
+				}else if(data.error == 2){
+					$('#subform').attr('disabled',false);
+					$("input[name='username']").val(data.content);
+					$("input[name='username']").css('color','red');
+					$("input[name='username']").attr('readonly','readonly');
+					setTimeout(function(){$("input[name='username']").val('');$("input[name='username']").css('color','');$("input[name='username']").removeAttr('readonly')},2000);
+				}else if(data.error == 3){
+					$('#subform').attr('disabled',false);
+					$("input[name='email']").val(data.content);
+					$("input[name='email']").css('color','red');
+					$("input[name='email']").attr('readonly','readonly');
+					setTimeout(function(){$("input[name='email']").val('');$("input[name='email']").css('color','');$("input[name='email']").removeAttr('readonly')},2000);
+				}else if(data.error == 4){
+					myalertbox(data.content);
+				}
+			})
+		})
+	})
+</script>
+</body>
+</html>

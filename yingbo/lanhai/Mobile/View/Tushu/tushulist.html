@@ -1,0 +1,144 @@
+<div class="main">
+    <!--*****banner*****-->
+    <section>
+        <div class="nht-xl fl">
+            <p class="lin-tt">咨询<span class="d-red">服务</span><span class="nht-tt fr">&nbsp;</span></p>
+            <ul class="nht-sumenu fr">
+               <foreach name="zixunfuwu2" item="v">
+                <if condition="($v.url eq '') AND ($v.lan_id eq 29)">
+<li><a href="{:U('News/newslist',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+<elseif condition="($v['url'] eq '') AND ($v.lan_id eq 30)"/>
+<li><a href="{:U('News/newslist',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+<elseif condition="($v['url'] eq '') AND ($v.lan_id eq 31)"/>
+<li><a href="{:U('News/falvfagui',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+<elseif condition="($v['url'] eq '') AND ($v.lan_id eq 32)"/>
+<li><a href="{:U('News/newslist',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+<elseif condition="($v['url'] eq '') AND ($v.lan_id eq 38)"/>
+<li><a href="{:U('Tushu/tushulist',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+<elseif condition="($v['url'] eq '') AND ($v.lan_id eq 33)"/>
+<li><a href="{:U('Advice/showlist',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+<elseif condition="($v['url'] eq '') AND ($v.lan_id gt 40)"/>
+<li><a href="{:U('News/newslist',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+<elseif condition="$v['url'] neq ''"/>
+<li><a href="{$v.url}">{$v.lan_title}</a></li>
+</if>
+                </foreach>
+            </ul>
+        </div>
+    </section>
+    <script type="text/javascript">
+        $(".nht-tt").click(function(){
+            $(".nht-sumenu").slideToggle("1000");
+        });
+    </script>
+    <!--*****banner*****-->
+    <section>
+        <p class="abo-banner fl">
+            <foreach name="adinfo" item="v">
+                <img src="{$Think.const.SITE_URL}{$v.pic_big}">
+            </foreach>
+
+        </p>
+    </section>
+    <!--*****h-l*****-->
+    <style>
+       .lib-pic-i{ padding-left: 0rem;}
+    </style>
+    <section>
+        <div class="h-l pb1 fl" >
+
+            <p class="h-l-tt">新书<span class="d-red">推荐</span></p>
+            <ul class="lib fl" id="recordslist" totalPages="{$totalPages}">
+                <foreach name="info1" item="v">
+                    <li>
+                        <dl class="lib-pic fl">
+                            <dd>
+                                <h2>{$v.news_title}</h2>
+                                <p class="w100 fs1-2 fl l-gray">{$v.add_time}<span class=" lib-pic-i"><img src="{$Think.const.MIMG_URL}tb_15.png">{$v.click}</span></p>
+                                {$v.description|strip_tags|str_replace=array(" ","　","\t","\n","\r"),array("","","","",""),###|mb_substr=###,0,60,'utf-8'}
+                                <div class="fl pt0-3 lib-pic-k"><span class="lib-pic-an fl"><a href="{:U('Tushu/detail',array('news_id'=>$v['news_id']))}">在线阅读</a></span><span class="lib-pic-an fl"><a href="{:U('Tushu/downFile',array('news_id'=>$v['news_id']))}">PDF文件下载</a></span></div>
+                            </dd>
+                            <dt><img <if condition="$v.picfirst eq ''">src="{$Think.const.SITE_URL}{$v.pic}"<else/>src="{$Think.const.SITE_URL}{$v.picfirst}"</if> ></dt>
+                        </dl>
+                    </li>
+                </foreach>
+
+
+                <foreach name="info" item="v">
+                    <li>
+                        <dl class="lib-list fl w100">
+                            <dt><a href="{:U('Tushu/detail',array('news_id'=>$v['news_id']))}"><img <if condition="$v.picfirst eq ''">src="{$Think.const.SITE_URL}{$v.pic}"<else/>src="{$Think.const.SITE_URL}{$v.picfirst}"</if> ></a> </dt>
+                            <dd>
+                                <div class="w78 fl d-b">
+                                    <h2><a href="{:U('Tushu/detail',array('news_id'=>$v['news_id']))}">{$v.news_title}</a> </h2>
+                                    <p class="t-w fl w100">  {$v.description|strip_tags|str_replace=array(" ","　","\t","\n","\r"),array("","","","",""),###|mb_substr=###,0,60,'utf-8'}</p>
+                                    <span class="w100 fs1-2 fl l-gray">{$v.add_time}<br><span class=" lib-pic-i"><img src="{$Think.const.MIMG_URL}tb_15.png">{$v.click}</span></span> </div>
+                                <a class="w15 fr d-b lib-xz" href="{:U('Tushu/downFile',array('news_id'=>$v['news_id']))}"><img src="{$Think.const.MIMG_URL}tb_21.png"></a> </dd>
+                        </dl>
+                    </li>
+                </foreach>
+
+                </ul>
+            <div style="text-align:center;display:none;" id="loading"><img src="{$Think.const.MIMG_URL}loader.gif" width="" height="" border="0" alt="" /></div>
+        </div>
+    </section>
+
+    <!-- 滚动加载 -->
+    <script type="text/javascript">
+
+        $(function(){
+
+            var scrollstatus = false;
+            var totalPages = $("#recordslist").attr('totalPages');
+            var nowpage = 1;
+            function ajax_request(nowpage){
+                var html = '';
+                var recordslist = $("#recordslist");//放数据的容器
+                $.post("__MODULE__/Tushu/tushulist/p/"+nowpage,function(data){
+                    if(data.error == 0){
+					var imgsrc='';
+					var url = window.location.host;
+					var yuming = 'http://'+url;
+					var title='';
+
+					var news_title='';
+                        for(var i in data.content){
+						title= data.content[i].news_title;
+
+						news_title = title.slice(0,21);
+						if((data.content[i].pic !== '') && (data.content[i].pic !== './Public/Upl/news/')){
+							 imgsrc = yuming+data.content[i].pic;
+
+						}else if(data.content[i].match == 'http' && data.content[i].pic == ''){
+						 imgsrc = data.content[i].picfirst;
+						}else if(data.content[i].match == 'http' && data.content[i].pic == './Public/Upl/news/'){
+						imgsrc = data.content[i].picfirst;
+						}else if(data.content[i].match !== 'http' && data.content[i].pic == ''){
+						 imgsrc = yuming+data.content[i].picfirst;
+						}else if(data.content[i].match !== 'http' &&  data.content[i].pic == './Public/Upl/news/'){
+						imgsrc = yuming+data.content[i].picfirst;
+						}
+
+                            html += "<li><dl class='lib-list fl w100'><dt><a href='__MODULE__/Tushu/detail/news_id/"+data.content[i].news_id+"'><img src='"+imgsrc+"'></a></dt><dd><div class='w78 fl d-b'><h2><a href='__MODULE__/Tushu/detail/news_id/"+data.content[i].news_id+"'>"+data.content[i].news_title+"</a></h2><p class='t-w fl w100'>"+data.content[i].description+"</p><span class='w100 fs1-2 fl l-gray'>"+data.content[i].add_time+"<br/><span class=' lib-pic-i'><img src='{$Think.const.MIMG_URL}tb_15.png'>"+data.content[i].click+"</span></span></div><a class='w15 fr d-b lib-xz' href='__MODULE__/Tushu/downFile/news_id/"+data.content[i].news_id+"'><img src='{$Think.const.MIMG_URL}tb_21.png'></a></dd></dl></li>";
+                        }
+                    }
+                    recordslist.append(html);
+                    $("#loading").css("display",'none');
+                    scrollstatus = false;
+                });
+            }
+            $(window).scroll(function () {
+                var scrollTop = $(this).scrollTop();
+                var scrollHeight = $(document).height();
+                var windowHeight = $(this).height();
+                if (scrollTop + windowHeight == scrollHeight && scrollstatus == false) {
+                    scrollstatus = true;
+                    nowpage++;
+                    if(nowpage <= totalPages){
+                        $("#loading").css("display",'block');
+                        setTimeout(function(){ajax_request(nowpage)},2000);
+                    }
+                }
+            });
+        });
+    </script>

@@ -1,0 +1,67 @@
+<!--*****header*****-->
+<div class="main">
+    <!--*****banner*****-->
+    <div class="su-banner">
+        <foreach name="slides" item="slide">
+            <img src="{$slide.picmobile|substr=###,1}" alt="">
+        </foreach>
+    </div>
+    <!--*****bannerend*****-->
+
+    <!--*****menu*****-->
+    <section class="su-menu-a b-white">
+        <div class="su-scroll">
+            <foreach name="category" item="cateinfo">
+                <a <if condition="ACTION_NAME eq $cateinfo['action']">class="cur"</if> href="__MODULE__/{$cateinfo['ctrl']}/{$cateinfo['action']}">{$cateinfo.cat_name}</a>
+            </foreach>
+        </div>
+    </section>
+    <!--*****menuend*****-->
+    <!--*****su-con*****-->
+    <section class="su-con pb0">
+        <div class="su-fron pb0-25">
+            <div class="su-deve">
+                <h4>凝聚专业的缓粘结设计与施工企业</h4>
+            </div>
+            <p>　　缓粘结预应力技术以设计与施工为表现，以此展现缓粘结的优异性能，推动缓粘结的技术应用。</p>
+        </div>
+    </section>
+    <section class="su-deve-a b-white">
+        <volist name="news" id="info1" mod="2" >
+            <eq name="mod" value="1">{$vo.name}
+                <p class="fs0-28 c-blue hl0-05">{$info1.title}
+                <p><img src="{$info1.pic|substr=###,1}" alt=""></p>
+                </p>
+                <p>{$info1.content}</p>
+            </eq>
+            <eq name="mod" value="0">{$vo.name}
+                <p class="fs0-28 c-blue hl0-05">{$info1.title}
+                </p>
+                <p><img src="{$info1.pic|substr=###,1}" alt=""></p>
+                <p>{$info1.content}</p>
+            </eq>
+        </volist>
+    </section>
+    <section  class="w100 b-lgray1">
+        <div class="su-serv-fina">
+            <div class="prolist">
+                <div class="proleft"></div>
+                <div class="proright"></div>
+                <div class="probebox swiper-container-horizontal">
+                    <ul class="clearfix swiper-wrapper">
+                        <!--banner-->
+                        <foreach name="leaguers" item="info">
+                            <li class="swiper-slide">
+                                <a href="{$info.href|default='#'}">
+                                    <img src="{$info.picture}" alt="" /><p style="text-align:center">{$info.title}</p>
+                                </a>
+                            </li>
+                        </foreach>
+                        <!--banner-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--*****su-conend*****-->
+</div>

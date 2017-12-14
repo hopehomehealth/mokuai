@@ -1,0 +1,175 @@
+
+
+<div class="main-content">
+    <div class="page-content">
+        <div class="row indexBox">
+            <div class="page-content box">
+                <div class="box-title margin_bot_20">
+                    <div class="span10">
+                        <h2>店家: <font color="#31a8ff" size="3px">{$sellerinfo.seller_name}</font></h2>
+                        <h3 class="red">
+                            <i class="icon-volume-down icon-2x green"></i>
+                            欢迎<i class="blue">{$Think.session.reg_phone}</i>回家，现在时间：{$Think.now}
+                        </h3>
+
+
+                    </div>
+                </div>
+                <!--<ul class="indexK">
+                    <li class="blueBg">
+                        <span class="icon-circle indexKLeft">
+                            <i class="icon-calendar"></i>
+                        </span>
+                        <span class="indexKRight">
+                            <b>0</b>
+                            今日订单量
+                        </span>
+                    </li>
+                    <li class="greenBg">
+                        <span class="icon-circle indexKLeft">
+                            <i class="icon-bar-chart"></i>
+                        </span>
+                        <span class="indexKRight">
+                            <b>0</b>
+                            今日销售额
+                        </span>
+                    </li>
+                    <li class="redBg">
+                        <span class="icon-circle indexKLeft">
+                            <i class="icon-group"></i>
+                        </span>
+                        <span class="indexKRight">
+                            <b>0</b>
+                            今日商城访问量
+                        </span>
+                    </li>
+                    <li class="yellowBg">
+                        <span class="icon-circle indexKLeft">
+                            <i class="icon-glass"></i>
+                        </span>
+                        <span class="indexKRight">
+                            <b>0</b>
+                            今日参与活动
+                        </span>
+                    </li>
+                </ul>-->
+                <div class="indexTable">
+                    <div class="indexTableLeft">
+                        <h4 class="indexTableTit">
+                            <i class="icon-reorder blue"></i>
+                            <span>未付款订单列表</span>
+                        </h4>
+                        <table>
+                            <thead>
+                            <tr><th width="90px">会员ID</th>
+                                <th width="120px">订单号</th>
+                                <th width="100px">时间</th>
+                                <th width="60px">总价</th>
+                                <th width="100px">状态</th>
+                            </tr></thead>
+                            <tbody>
+							<foreach name="paying" item="info">
+                            <tr>
+                                <td>{$info.userid}</td>
+                                <td>{$info.orderno}</td>
+                                <td>{$info.paytime|date="Y-m-d H:i:s",###}</td>
+                                <td>￥{$info.downpay}</td>
+                                <td>未付款</td>
+                            </tr>
+							</foreach>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="indexTableRight">
+                        <h4 class="indexTableTit">
+                            <i class="icon-reorder blue"></i>
+                            <span>已付款订单列表</span>
+                        </h4>
+                        <table>
+                            <thead>
+                            <tr><th width="90px">会员ID</th>
+                                <th width="120px">订单号</th>
+                                <th width="100px">时间</th>
+                                <th width="60px">总价</th>
+                                <th width="100px">状态</th>
+                            </tr></thead>
+                            <tbody>
+                            <foreach name="paied" item="info">
+                            <tr>
+                                <td>{$info.userid}</td>
+                                <td>{$info.orderno}</td>
+                                <td>{$info.paytime|date="Y-m-d H:i:s",###}</td>
+                                <td>￥{$info.downpay}</td>
+                                <td>已付款</td>
+                            </tr>
+							</foreach>
+							</tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="indexTable">
+                    <div class="indexTableLeft">
+                        <h4 class="indexTableTit">
+                            <i class="icon-reorder blue"></i>
+                            <span>新加入会员列表</span>
+                        </h4>
+                        <table>
+                            <thead>
+                            <tr><th width="60px">会员ID</th>
+                                <th width="60px">头像</th>
+                                <th width="120px">昵称</th>
+                                <th width="60px">关注</th>
+                                <th width="80px">代理</th>
+                                <th width="60px">推荐人ID</th>
+                            </tr></thead>
+                            <tbody>
+							<foreach name="userList" item="info">
+                            <tr>
+                                <td>{$info.userid}</td>
+                                <td><img src="{$info.userhead}" width="50px" hieght="50px"></td>
+                                <td>{$info.nikename}</td>
+                                <td><font color="#03A92B"><if condition="$info.is_follow eq '1'">是<else /><p class="red">否</p></if></font></td>
+                                <td><font color="#ff0000"><if condition="$info.level eq '1'">是<else />否</if></font><br><if condition="$info.level eq '1'"><a onclick="return confirm('你确定执行该操作吗')" href="__MODULE__/User/cancel/userid/{$info.userid}" class="green">[取消资格]</a></if><if condition="$info.level eq '0'"><a href="__MODULE__/User/beagent/userid/{$info.userid}" class="green">[确认资格]</a></if></td>
+                                <td><if condition="$info.pid neq 0">邀请注册</if><if condition="$info.pid eq 0">后台添加</if></td>
+                            </tr>
+							</foreach>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="indexTableRight">
+                        <h4 class="indexTableTit">
+                            <i class="icon-reorder blue"></i>
+                            <span>申请提现列表</span>
+                        </h4>
+                        <table>
+                            <thead>
+                            <tr><th width="60px">会员ID</th>
+                                <th width="60px">头像</th>
+                                <th width="120px">昵称</th>
+                                <th width="100px">申请提现/可提现</th>
+                                <th width="150px">申请/审核日期</th>
+                                <th width="60px">状态</th>
+                            </tr></thead>
+                            <tbody>
+							<foreach name="exchange" item="info">
+                            <tr>
+                                <td>1</td>
+                                <td><img src="{$info.userhead}" width="50px" height="50px;"></td>
+                                <td>{$info.nikename}</td>
+                                <td>￥{$info.amount}<br></td>
+                                <td>申请:{$info.inputtime|date="Y-m-dH:i:s",###}<br />审核:<if condition="$info.checktime neq ''">{$info.checktime|date="Y-m-d H:i:s",###}</if></td>
+                                <td><div class="visible-md visible-lg hidden-sm hidden-xs action-buttons"> <a href="__MODULE__/Exchange/oppass/ex_id/{$info.ex_id}" onclick="return confirm('你确定通过吗？')" class="green">通过</a><br /><a href="__MODULE__/Exchange/opfail/ex_id/{$info.ex_id}" onclick="return confirm('你确定不通过吗？')" class="green">不通过</a> </div></td>
+                            </tr>
+							</foreach>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/.box-->
+    </div>
+    <!-- /.page-content -->
+</div><!-- /.main-content -->
+
+

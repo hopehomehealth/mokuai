@@ -1,0 +1,33 @@
+<foreach name="adinfofen" key="k" item="v">
+    <div class="su_banner"><a href="{$v.url}"><img src="{$Think.const.SITE_URL}{$v.pic}" /></a>  </div>
+</foreach>
+
+
+<div class="sideBar">
+    <div class="about fl">
+        <p class="about_tit fl">合作单位</p><p class="about_yw fl">The&nbsp;Cooperation&nbsp;Unit</p>
+    </div>
+
+
+    <div class="about_zc fl">
+        <ul class="news_list_tit">
+            <li class="current"><a href="{:U('Link/showlist')}">合作单位</a></li>
+        </ul>
+
+        <ul class="hzdw fl">
+
+            <li>
+                <foreach name="info" key="k" item="v">
+                <dl class="hzdw_pic fl">
+                    <a href="http://{$v.url}" target="_blank">
+                    <dt><img src="{$Think.const.SITE_URL}{$v.pic|substr=###,2}" width='170' height='70'/></dt>
+                    <dd>{$v.name}</dd>
+                    </a>
+                </dl>
+                </foreach>
+            </li>
+
+        </ul>
+
+    </div>
+</div>

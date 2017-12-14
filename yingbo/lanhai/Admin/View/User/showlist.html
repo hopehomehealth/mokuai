@@ -1,0 +1,103 @@
+       <style type="text/css">
+    .technorati li{float:left;}
+</style>
+       <div class="main-content">
+          <div class="page-content">
+            <div class="row">
+              <div class="page-content box">
+              	<div class="box-title margin_bot_20">
+                  	<div class="span10">
+                   		<h3><i class="icon-cogs"></i>会员列表 </h3>
+                  	</div>
+                </div>
+                <form class="form-horizontal" method="get" action="__MODULE__/User/showlist">
+                  <div class="form-group">
+                    <label class="control-label" style="width:auto;line-height:28px;padding-top:0">会员名： </label>
+                    <div class="controls pull-left">
+                      <input type="text" class="input-medium" name="search" value="{$Think.get.serach}" placeholder="">
+                      <button type="submit" class="btn btn-sm btn-primary">搜索</button>
+                    </div>
+                  </div>
+                </form>
+
+                <div class="tableHead">
+                    <table class="table table_img table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th style="width:5%;">会员编号</th>
+                                <th style="width:5%;">头像</th>
+                                <th style="width:5%;">用户名</th>
+                               <!--  <th style="width:5%;">昵称</th> -->
+                                <th style="width:5%;">积分</th>
+                                <th style="width:5%;">等级</th>
+                                <!-- <th style="width:5%;">佣金</th>
+                                <th style="width:5%;">可提现</th>
+                                <th style="width:5%;">积分</th> -->
+                                <!--<th style="width:5%;">状态</th>-->
+                                <th style="width:5%;">注册时间</th>
+                                <th style="width:5%;">城市</th>
+                                <th style="width:5%;">操作</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div id="table_hy">
+                    <foreach name="userList" item="userinfo">
+                    <table class="table table_img table-striped table-bordered  table-hover">
+                        <tr>
+                            <td style="width:5%;">{$No1++}</td>
+                            <td style="width:5%;">
+                                <img src="{$userinfo.userhead}" width="50px" hieght="50px">
+                                <!-- <br /><a href="#" class="green" onclick="javascript:img('{$userinfo['qrcode']|str_replace='.png','',###}')" width="50px" hieght="50px')">[查看二维码]</a> -->
+                            </td>
+                            <td style="width:5%;">{$userinfo.username}</td>
+                            <!-- <td style="width:5%;">{$userinfo.nikename}</td> -->
+                            <td style="width:5%;">{$userinfo['score1']}</td>
+                            <td style="width:5%;"><p style="color:#ff6600;font-weight:bold;font-style:italic">{$userinfo['level']}</p></td>
+                            <!-- <td>0</td>
+                            <td>0</td>
+                            <td>1</td> -->
+                            <!--<td style="width:5%;">{$userinfo['status']?"<p style='color:green;font-weight:bold;'>在线</p>":"<p style='color:#999;font-weight:bold;'>离开</p>"}</td>-->
+                            <td style="width:5%;">{$userinfo.add_time|date='Y-m-d H:i',###}</td>
+                            <td style="width:5%;">{$userinfo['city']}</td>
+                            <td style="width:5%;"><a class="green" href="__MODULE__/User/userdetail/user_id/{$userinfo['user_id']}">查看</a></td>
+                        </tr>
+
+                    </table>
+                    </foreach>
+                </div>
+
+                <div class="technorati">{$page}<div/>
+              </div>
+            </div>
+            <!--/.box-->
+          </div><!-- /.page-content -->
+        </div><!-- /.main-content -->
+        <script type="text/javascript">
+            function img(message){
+              var img = ['<div class="modal fade" id="img" style="overflow: visible;">',
+                                    '<div class="modal-dialog modal-sm">',
+                                      '<div class="modal-content">',
+                                        '<div class="modal-header border_bot detail_header border" style="padding:0">',
+                                    '<h4 class="modal-title" id="mySmallModalLabel">',
+                                    '<img src="'+message+'.png">',
+                                '</h4>',
+                                '</div>',
+                                /*'<div class="modal-body detail_sm">',
+                                    '<button type="button" class="btn btn-sm btn-default"  id="cancel_img">取消</button>',
+                                        '<button type="button" class="btn btn-sm btn-primary">确定</button>',
+                                '</div>',*/
+                                      '</div>',
+                                    '</div>',
+                                '</div>'].join('\n');
+              $("body").append(img);
+              $('#img').modal()
+              $(".modal-backdrop").live("click",function(){
+                alert(1)
+                $('#img,.modal-backdrop').removeClass("in");
+                setTimeout(function(){
+                  $(".modal-backdrop,#img").remove();
+                  },100);
+              })
+            }
+        </script>

@@ -1,0 +1,135 @@
+        <div class="main-content">
+          
+          <div class="page-content">
+            <div class="row indexBox">
+              <div class="page-content box">
+              	<div class="box-title margin_bot_20">
+                  	<div class="span10">
+                   		<h3 class="red">
+                            <i class="icon-volume-down icon-2x green"></i>
+                            欢迎　<i class="blue">{$Think.session.admin_name}</i>　回家，现在时间：{$Think.now}
+                        </h3>
+                  	</div>
+                </div>
+                <ul class="indexK">
+                    <li class="blueBg">
+                        <span class="icon-circle indexKLeft">
+                            <i class="icon-calendar"></i>
+                        </span>
+                        <span class="indexKRight"> 
+                            <b>{$countorder|default=0}</b>
+                            今日订单量
+                        </span> 
+                    </li>
+                    <li class="greenBg">
+                        <span class="icon-circle indexKLeft">
+                            <i class="icon-bar-chart"></i>
+                        </span>
+                        <span class="indexKRight"> 
+                            <b>{$summoney.sum|default=0}</b>
+                            今日销售额
+                        </span> 
+                    </li>
+                    <li class="redBg">
+                        <span class="icon-circle indexKLeft">
+                            <i class="icon-group"></i>
+                        </span>
+                        <span class="indexKRight"> 
+                            <b>{$count|default=0}</b>
+                            官网访问量
+                        </span> 
+                    </li>
+                  <!--   <li class="yellowBg">
+                        <span class="icon-circle indexKLeft">
+                            <i class="icon-glass"></i>
+                        </span>
+                        <span class="indexKRight"> 
+                            <b>39</b>
+                            今日参与活动
+                        </span> 
+                    </li> -->
+                </ul>
+                <div class="indexTable">
+                    <div class="indexTableLeft">
+                        <h4 class="indexTableTit">
+                            <i class="icon-reorder blue"></i>
+                            <span>未付款订单列表</span>
+                        </h4>
+                        <table>
+                            <thead>
+                                <th width="100px">订单号</th>
+                                <th width="100px">时间</th>
+                                <th width="60px">总价</th>
+                                <th width="60px">状态</th>
+                                <th width="60px">详情</th>
+                            </thead>
+                            <tbody>
+                                <foreach name="unorderlist" item="unorder">
+                                <tr>
+                                    <td>{$unorder.ordernumber}</td>
+                                    <td>{$unorder.inputtime|date="Y-m-d",###}</td>
+                                    <td>￥{$unorder.ssum}</td>
+                                    <td>待付款</td>
+                                    <td><a href="__MODULE__/Order/orderinfo/orderid/{$unorder.orderid}">查看</td>
+                                </tr>
+                                </foreach>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="indexTableRight">
+                        <h4 class="indexTableTit">
+                            <i class="icon-reorder blue"></i>
+                            <span>已付款订单列表</span>
+                        </h4>
+                        <table>
+                            <thead>
+                                <th width="100px">订单号</th>
+                                <th width="100px">时间</th>
+                                <th width="60px">总价</th>
+                                <th width="60px">状态</th>
+                                <th width="60px">详情</th>
+                            </thead>
+                            <tbody>
+                                <foreach name="orderlist" item="order">
+                                <tr>
+                                    <td>{$order.ordernumber}</td>
+                                    <td>{$order.inputtime|date="Y-m-d",###}</td>
+                                    <td>￥{$order.ssum}</td>
+                                    <td>交易成功</td>
+                                    <td><a href="__MODULE__/Order/orderinfo/orderid/{$order.orderid}">查看</td>
+                                </tr>
+                                </foreach>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                              </div>
+                            </div>
+
+			<div class="indexTable">
+                    <div class="indexTableLeft">
+                        <h4 class="indexTableTit">
+                            <i class="icon-reorder blue"></i>
+                            <span>微信配置</span>
+                        </h4>
+                        <table>
+                            <thead>
+                                <th width="100px">URL(服务器地址)</th>
+                                <th width="100px">Token(令牌)</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>http://www.1lehu.com/index.php/Admin/Weixin/index</td>
+                                    <td>lhpttoken</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                   
+                </div>
+              </div>
+            </div>
+            <!--/.box-->
+          </div><!-- /.page-content -->
+        </div><!-- /.main-content -->

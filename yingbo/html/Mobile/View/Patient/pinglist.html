@@ -1,0 +1,35 @@
+
+        <div class="main">
+            <div>  
+                <div style="color:blue"> 
+                   <div class="wddd">
+                  <ul class="wmc_con">
+                  <foreach name="assessorder" item="assessinfo">
+                    <li>   
+                      <p class="wmc_tb wmc_bj"></p>
+                      <div class="wmc_list">
+                      <p class="wmc_tp"><if condition="$assessinfo.photo eq ''"><img src="{$Think.const.MBIMG_URL}pgtu.jpg"><else /><img src="__PUBLIC__/{$assessinfo.photo}"></if></p>
+                      <p class="wmc_wz">{$assessinfo.username}<span class="xinxin"><for start="0" end="$assessinfo.credit"><img src="{$Think.const.MBIMG_URL}xing.jpg"></for></span><br>联系电话：{$assessinfo.iphone}<br>联系地址：{$assessinfo.area}</p>
+                      <p class="jxs_hs gray">{$assessinfo.inputtime|date="Y-m-d",###}</p>
+                      <p class="wmc_an"><a href="__MODULE__/Patient/seelist/orderid/{$assessinfo.orderid}">去评价</a></p>
+                      </div>
+                    </li>
+                  </foreach>
+                          
+                  <foreach name="nurseorder" item="nurseinfo">
+                  <li> 
+                    <p class="wmc_tb wmc_bj"></p>
+                    <div class="wmc_list">
+                    <p class="wmc_tp"><if condition="$nurseinfo.photo eq ''"><img src="{$Think.const.MBIMG_URL}pgtu.jpg"><else /><img src="__PUBLIC__/{$nurseinfo.photo}"></if></p>
+                    <p class="wmc_wz">{$nurseinfo.username}<span class="xinxin"><for start="0" end="$nurseinfo.credit"><img src="{$Think.const.MBIMG_URL}xing.jpg"></for></span><br>联系电话：{$nurseinfo.iphone}<br>联系地址：{$nurseinfo.area}</p>
+                    <p class="jxs_hs gray">{$nurseinfo.inputtime|date="Y-m-d",###}</p>
+                    <p class="wmc_an"><a href="__MODULE__/Patient/orderinfo/suborderid/{$nurseinfo.orderid}/orderid/{$nurseinfo.parent_id}">去评价</a></p>
+                    </div>
+                     </li>
+                  </foreach>
+                  </ul>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,157 @@
+<script type="text/javascript" src='{$Think.const.JS_URL}jquery-1.7.2.min.js'></script>
+<script type="text/javascript" src='{$Think.const.JS_URL}uploadPreview.js'></script>
+<div class="main-content">
+    <div class="breadcrumbs">
+        <ul>
+            <li > <a href="__MODULE__/Ad/upd">修改 </a> </li>
+
+        </ul>
+        <!-- .breadcrumb -->
+    </div>
+
+    <div class="page-content">
+        <div class="row">
+            <div class="page-content box">
+                <form action="__SELF__" method="post" enctype='multipart/form-data' class="form-horizontal">
+                    <input type='hidden' id='extcolids' value='{$extcolids}' />
+                    <input type='hidden' name='ad_id' value='{$info.ad_id}' />
+                    <div class="form-group">
+                        <label class="control-label">标题 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" class="input-large" name="title" value="{$info.title}">
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+
+                    <!--<script type="text/javascript">
+    function show_col1(now_colid=""){
+        var col_id = $('#main_col').val();
+        if(col_id==0){
+            $('#ext_col1 option:gt(0)').remove();
+            $('#ext_col2 option:gt(0)').remove();
+        }else{
+            $.ajax({
+                url:"__MODULE__/Column/getColByPid",
+                data:{'col_id':col_id},
+                dataType:'json',
+                type:'get',
+                async:false,
+                success:function(msg){
+                    var s = "";
+                    $.each(msg,function(){
+                        s += "<option value='"+this.col_id+"'";
+                        if(now_colid.indexOf(this.col_id)>=0){
+                            s +=  " selected='selected' ";
+                        }
+                        s += ">-/"+this.name+"</option>";
+                    });
+                    $('#ext_col1 option:gt(0)').remove();
+                    $('#ext_col2 option:gt(0)').remove();
+                    $('#ext_col1').append(s);
+                }
+            });
+        }
+    }
+
+    function show_col2(now_colid=""){
+        var col_id = $('#ext_col1').val();
+        if(col_id==0){
+            $('#ext_col2 option:gt(0)').remove();
+        }else{
+            $.ajax({
+                url:"__MODULE__/Column/getColByPid",
+                data:{'col_id':col_id},
+                dataType:'json',
+                type:'get',
+                async:false,
+                success:function(msg){
+                    var s = "";
+                    $.each(msg,function(){
+                        s += "<option value='"+this.col_id+"'";
+                        if(now_colid.indexOf(this.col_id)>=0){
+                            s +=  " selected='selected' ";
+                        }
+                        s += ">-/"+this.name+"</option>";
+                    });
+                    $('#ext_col2 option:gt(0)').remove();
+                    $('#ext_col2').append(s);
+                }
+            });
+        }
+    }
+
+    $(function(){
+        var extcolids = $('#extcolids').val();
+        show_col1(extcolids);
+        show_col2(extcolids);
+    });
+</script>
+<div class="form-group">
+    <label class="control-label">主栏目 : </label>
+    <div class="controls pull-left">
+        <select id='main_col' name='col_id' onchange='show_col1()'>
+            <option value='0'>-请选择-</option>
+            <foreach name='colinfoA' item='v'>
+                <option value="{$v.col_id}"
+                <eq name='info.col_id' value='$v.col_id'>selected='selected'</eq>
+                >{$v.name}</option>
+            </foreach>
+        </select>
+        <span class="help-inline red"> * </span>
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label">扩展栏目 : </label>
+    <div class="controls pull-left">
+        <select id='ext_col1' name='ext_col[]' onchange='show_col2()'>
+            <option value='0'>-请选择-</option></select>
+        <select id='ext_col2' name='ext_col[]'>
+            <option value='0'>-请选择-</option></select>
+        </select>
+        <span class="help-inline red"> * </span>
+    </div>
+</div> -->
+
+                    <div class="form-group">
+                        <label class="control-label"> 图片 : </label>
+                        <div class="controls pull-left">
+                            <input type="file" class="input-large" id="pic" name="pic" >
+                            <div id="pic_div"><img src='{$Think.const.SITE_URL}{$info.pic|substr=###,2}' alt='没有图片' id='pic_img' width='160' height='100'></div>
+                        </div>
+                    </div>
+                    <script type='text/javascript'>
+                        $(function(){
+                            new uploadPreview({ UpBtn: "pic", DivShow: "pic_div", ImgShow: "pic_img" });
+                        });
+                    </script>
+                    <div class="form-group">
+                        <label class="control-label">链接地址 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" class="input-large" name="url" value="{$info.url}">
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">状态 : </label>
+                        <div class="controls pull-left">
+                            <label>
+                                <input type="radio" class="ace" name="is_show" checked="checked" value="0">
+                                <span class="lbl">显示</span>
+                            </label>
+                            <label>
+                                <input type="radio" class="ace" name="is_show" value="1">
+                                <span class="lbl">隐藏</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <input id="bsubmit" type="submit"  class="btn btn-sm btn-primary" value="保存"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--/.box-->
+    </div><!-- /.page-content -->
+</div><!-- /.main-content -->
+
+

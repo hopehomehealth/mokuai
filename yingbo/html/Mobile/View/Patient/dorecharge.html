@@ -1,0 +1,36 @@
+        <div class="main">
+            <form action="__MODULE__/Recharge/js_api_call" id="recharge-form" method="get" class="cash_z">
+                    <div class="form1 cash">
+                        <ul class="caseBox">
+               
+                            <li>
+                                 <ul class="pgdet_xq borTop">
+                                 <li>充值单号：{$rcinfo.rc_no}</li>
+                                 <li>充值金额：{$rcinfo.amount}元</li>
+                                 <li>充值时间：{$rcinfo.inputtime|date="Y-m-d H:i:s",###}</li>
+                                 </ul>
+                            </li>
+                          
+                        </ul>
+                        <div class="cashBtnbox">
+                            <input type="hidden" name="rc_id" value="{$rcinfo.rc_id}">
+                            <button class="submit cashBtn" type="submit">确认充值</button>
+                        </div>
+                    </div>
+            </form>
+        </div>   
+    </div>
+    <script type="text/javascript" src="{$Think.const.MBJS_URL}/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var ua = navigator.userAgent.toLowerCase();  
+            if(ua.match(/MicroMessenger/i)=="micromessenger") {  
+                $("#recharge-form").attr("action","__MODULE__/Recharge/js_api_call"); 
+            } else {  
+                $("#recharge-form").attr("action","__MODULE__/Recharge/pay"); 
+            }  
+            
+        })
+    </script>
+    <script type="text/javascript" src="{$Think.const.MBJS_URL}/base.js"></script>
+

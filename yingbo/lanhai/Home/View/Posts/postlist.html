@@ -1,0 +1,107 @@
+<style type="text/css">
+  .zhiding{color:#950909;height:26px;line-height:26px;padding:2px;display:inline-block;border:2px solid #950909;transform:rotate(-7deg);-ms-transform:rotate(-7deg);   /* IE 9 */-moz-transform:rotate(-7deg);  /* Firefox */-webkit-transform:rotate(-7deg); /* Safari 和 Chrome */-o-transform:rotate(-7deg); }
+  .jinghua{color:#c27a4a;height:26px;line-height:26px;padding:2px;display:inline-block;border:2px solid #c27a4a;transform:rotate(-7deg);-ms-transform:rotate(-7deg);   /* IE 9 */-moz-transform:rotate(-7deg);  /* Firefox */-webkit-transform:rotate(-7deg); /* Safari 和 Chrome */-o-transform:rotate(-7deg); }
+  .xintie{color:#eb0909;height:26px;line-height:26px;padding:2px;display:inline-block;border:2px solid #eb0909;transform:rotate(-7deg);-ms-transform:rotate(-7deg);   /* IE 9 */-moz-transform:rotate(-7deg);  /* Firefox */-webkit-transform:rotate(-7deg); /* Safari 和 Chrome */-o-transform:rotate(-7deg); }
+  .putong{color:#999;height:26px;line-height:26px;padding:2px;display:inline-block;border:2px solid #999; }
+
+</style>
+<!--banner-->
+<p class="com-banner pt10">
+    <foreach name="adinfo" item="v">
+        <if condition="$v.is_area eq 0">
+            <img src="{$Think.const.SITE_URL}{$v.pic}" />
+        </if>
+    </foreach>
+
+</p>
+<!--banner-->
+
+<!--第一通栏-->
+<div class="column-c pt10 ser">
+  <div class="ser-left fl">
+    <p class="ser-tit fl"><a href="{:U('Index/index')}" class="bule fwb">首页</a><img src="{$Think.const.HIMG_URL}images_96.jpg" alt="" /><a href="{:U('Bbs/index',array('lan_id'=>7))}">长青论坛</a><img src="{$Think.const.HIMG_URL}images_96.jpg" alt="" /><a href="{:U('Posts/postlist',array('lan_id'=>35))}">巅峰论剑</a>
+	<notempty name='boardinfo'>
+		<img src="{$Think.const.HIMG_URL}images_96.jpg" alt="" /><a href="{:U('Posts/postlist',array('board_id'=>$boardinfo['board_id'],'lan_id'=>35))}">{$boardinfo.board_title}</a>
+	</notempty>
+
+	</p>
+    <p class="ser-tit fl"><img src="{$Think.const.HIMG_URL}images_45.jpg" alt="" /><span class="l-gray">今日：</span>{$today|default=0}&nbsp;<img src="{$Think.const.HIMG_URL}images_104.jpg" />&nbsp;<span class="l-gray">昨日：</span>{$yesterday|default=0}&nbsp;<img src="{$Think.const.HIMG_URL}images_104.jpg" />&nbsp;<img src="{$Think.const.HIMG_URL}images_98.jpg" alt="" /><span class="l-gray">主题：</span>{$totalcount|default=0}&nbsp;&nbsp;<img src="{$Think.const.HIMG_URL}images_98.jpg" alt="" /><span class="l-gray">会员：</span>{$members|default=0}&nbsp;<a class="pl20" href="__MODULE__/Posts/createpost"><img src="{$Think.const.HIMG_URL}images_105.jpg" /></a></p>
+  </div>
+  <if condition="$Think.session.flag eq ''">
+  <p class="fr"><a href="__MODULE__/User/login">登录</a>｜<a href="__MODULE__/User/register">注册</a></p>
+  <else />
+    <dl class="set-lis fr">
+      <dt><a href="__MODULE__/User/ucenter"><img src="{$Think.session.userInfo.userhead}" alt="" /></a></dt>
+      <dd><a href="__MODULE__/User/ucenter" style="line-height:40px">{$Think.session.userInfo.username}</a>&nbsp;|&nbsp;<a href="__MODULE__/User/logout" style="line-height:40px;color:#999;cursor:pointer">退出</a><!-- <br />
+        <span class="l-gray fs12"><img src="{$Think.const.HIMG_URL}images_92.jpg" alt="" />&nbsp;浙江省</span> --></dd>
+    </dl>
+  </if>
+</div>
+<!--第二通栏-->
+<div class="column-c pt10 pb30">
+  <!--****左边通栏****-->
+  <div class="set-lis-l fl">
+    <!--****左边第一通栏****-->
+    <ul class="set-lis_lb fl">
+      <foreach name="postlist" item="info">
+      <li>
+        <p class="set-lis-wz fl"><a href="__MODULE__/Posts/detail/post_id/{$info.post_id}"><if condition="$info.sort eq 3"><span class="zhiding">置顶</span><elseif condition="$info.sort eq 2" /><span class="jinghua">精华</span><elseif condition="$info.sort eq 1" /><span class="xintie">新帖</span><elseif condition="$info.sort eq 0" /><span class="putong">普通</span></if>&nbsp;{$info.topic}</a></p>
+        <p class="set-lis-nr fl w100">{$info.body}</p>
+        <p class="set-lis-plgz fl  fs12"><span class="pr15 bule">{$info.username}</span> {$info.ctime|date="Y-m-d H:i:s",###}</p>
+        <p class="set-lis-plgz fr fs12"><span class="pr15"><img src="{$Think.const.HIMG_URL}images_06.png" alt="" />{$info.replys}</span><span class="pr15 fl"><img src="{$Think.const.HIMG_URL}images_07.png" alt="" />{$info.views}</span><!-- <a href=""><img src="{$Think.const.HIMG_URL}images_08.png" /></a> --></p>
+      </li>
+      </foreach>
+    </ul>
+    <!--****左边第二通栏****-->
+    <ul class="page">
+      {$page}
+    </ul>
+  </div>
+  <!--****右边通栏****-->
+  <div class="set-lis-r fr">
+    <!--****右边第一通栏****-->
+    <!-- <div class="set-lis-tj fl">
+      <p class="set-lis-tjtt fl"><img src="{$Think.const.HIMG_URL}images_107.jpg" alt="" /></p>
+      <ul class="set-lis-list fl pt15">
+        <li><a href="ser_final.html">打遍世界所有强国的神秘之师</a></li>
+        <li><a href="ser_final.html">古代存在外星人的12铁证</a></li>
+        <li><a href="ser_final.html">地球周围竟存神秘入口</a></li>
+        <li><a href="ser_final.html">82种外星人与地球接触</a></li>
+        <li><a href="ser_final.html">古代存在外星人的12铁证</a></li>
+        <li><a href="ser_final.html">地球周围竟存神秘入口</a></li>
+        <li><a href="ser_final.html">82种外星人与地球接触</a></li>
+        <li><a href="ser_final.html">打遍世界所有强国的神秘之师</a></li>
+        <li><a href="ser_final.html">地球周围竟存神秘入口</a></li>
+        <li><a href="ser_final.html">82种外星人与地球接触</a></li>
+      </ul>
+    </div> -->
+    <!--****右边第二通栏****-->
+    <div class="set-lis-tj fl">
+      <p class="set-lis-tjtt fl"><img src="{$Think.const.HIMG_URL}images_108.jpg"  alt=""/></p>
+      <ul class="set-lis-list fl pt15">
+        <!-- <dl class="set-lis-pic fl pb10">
+          <dt><a href="ser_final.html"><img src="{$Think.const.HIMG_URL}images_112.jpg"  alt=""/></a></dt>
+          <dd><a href="ser_final.html">对电信诈骗受害者进行赔偿，银行会更有动力阻止电信诈骗。</a></dd>
+        </dl> -->
+        <foreach name="hotposts" item="info">
+        <li><a href="__MODULE__/Posts/detail/post_id/{$info.post_id}">{$info.topic}</a></li>
+        </foreach>
+        <foreach name="adinfo" item="v">
+                    <if condition="$v.is_area eq 3">
+                        <p class="pt15"> <img  src="{$Think.const.SITE_URL}{$v.pic}" />  </p>
+                    </if>
+                </foreach>
+                <foreach name="adinfo" item="v">
+                    <if condition="$v.is_area eq 4">
+                        <p class="pt15"><img src="{$Think.const.SITE_URL}{$v.pic}" /> </p>
+                    </if>
+                </foreach>
+                <foreach name="adinfo" item="v">
+                    <if condition="$v.is_area eq 5">
+                        <p class="pt15"><img src="{$Think.const.SITE_URL}{$v.pic}" /> </p>
+                    </if>
+                </foreach>
+      </ul>
+    </div>
+  </div>
+</div>

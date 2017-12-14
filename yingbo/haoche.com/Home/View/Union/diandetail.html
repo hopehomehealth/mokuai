@@ -1,0 +1,160 @@
+<ul class="dj_xhk fr">
+    <p class="arrow-up fl"></p>
+    <li><a href="{:U('Union/index')}">369商家联盟</a></li>
+</ul>
+<script type="text/javascript">
+    $(".head_back2").click(function(){
+        $(".dj_xhk").slideToggle("1000");
+    });
+</script>
+<div class="main">
+    <section>
+        <div class="tesco fl pt_6 pb_6">
+            <p class="tesco_right fl">
+            <form action="{:U('Core/goodsearch')}" method="post">
+                <input type="text" class="tesco_rgt_k fl" style="width: 87%;" name="searchname" id="searchname" placeholder="请输入商品名称">
+                <input id="submit"  class="tesco_rgt_an" type="submit" value="">
+            </form>
+            <script type="text/javascript">
+             $('#submit').click(function(){
+             var searchname = $('#searchname').val();
+                 if(searchname == ''){
+                    return false;
+                }
+                    });
+            </script>
+            </p>
+        </div>
+        <div style="clear:both"></div>
+    </section>
+    <section>
+        <div class="bus fl">
+            <dl class="bus-tu">
+                <dt><img src="{$Think.const.SITE_URL}{$zenginfo[0]['pic_dian']}"></dt>
+                <dd><span class="dtwo w75 fl">{$zenginfo[0]['seller_name']}</span><br> <a id="collect" href="__MODULE__/User/collect/seller_id/{$zenginfo[0]['seller_id']}"><span style="background-color: #ff248d;" class="fl fwn mt0-5 submit sin-an w23">收藏</span></a><a href="{:U('Union/gonggao',array('seller_id'=>$zenginfo[0]['seller_id']))}"><span class="fl fwn mt0-5 ml3 submit sin-an" style="width:37%;color:#fff; background-color: #aa2dff;">店铺公告</span></a><a style="color:#fff;" class="submit sin-an w35 fr mt0-5" href="{:U('Core/single',array('seller_id'=>$zenginfo[0]['seller_id']))}">整单购买</a></dd>
+            </dl>
+        </div>
+    </section>
+
+    <section>
+        <div class="bus-list pt_6">
+            <ul class="bus-list-l fl">
+                <li>1P产品</li>
+                <li>热销</li>
+                <foreach name="catinfo" key="kc" item="class">
+                    <li <if condition="$kc eq 0">class="cur"<else /></if>>{$class.cat_name}</li>
+                </foreach>
+            </ul>
+            <div class="bus-list-r fl">
+                <foreach name="zenginfo" item="v">
+                    <dl class="bus-list-pic fl">
+                        <dt><a href="{:U('Union/freedetail',array('zeng_id'=>$v['zeng_id']))}"><img src="{$Think.const.SITE_URL}{$v.pic}"></a></dt>
+                        <dd><a href="{:U('Union/freedetail',array('zeng_id'=>$v['zeng_id']))}"><p><span class="fs1-4 fwb">{$v.zeng_name}
+                            <!--<span class="crimson">1000-3000</span>元-->
+                        </span></p></a>
+                            <p class="fs1 crimson fwb">联盟价:￥{$v.nowprice}</p>
+                            <p class="fs1 td-lt">市场价:￥{$v.price}</p>
+                            <a href="javascript:void(0)" zengid="{$v.zeng_id}" class="yuyuebtn">
+                            <p class="mt0-5 union-an-a1 d-red fs1-2 crimson">预约</p></a></dd>
+                    </dl>
+                </foreach>
+
+            </div>
+            <div class="bus-list-r fl">
+                <foreach name="hotinfo" item="v">
+                    <dl class="bus-list-pic fl">
+                        <dt><a href="{:U('Union/hotdetail',array('goods_id'=>$v['goods_id']))}"><img src="{$Think.const.SITE_URL}{$v.logo}"></a></dt>
+                        <dd><a href="{:U('Union/hotdetail',array('goods_id'=>$v['goods_id']))}"><p><span class="fs1-4 fwb">{$v.goods_name}</span></p>
+                            <p class="fs1 crimson fwb">联盟价:￥{$v.nowprice}</p>
+                            <p class="fs1 td-lt">市场价:￥{$v.price}</p></a>
+                            <a class="buyatnow" href="__MODULE__/Sorder/placeorder/goods_id/{$v.goods_id}"><p class="mt0-5 union-an-a1 d-red fs1-2 crimson">立即购买</p></a></dd>
+                    </dl>
+                </foreach>
+            </div>
+            <foreach name="catinfo" key="k" item="v">
+                <div <if condition="$k eq 0">class="bus-list-r fl cur"<else/>class="bus-list-r fl"</if>>
+                <foreach name="v.sgoodsinfo" key="kk" item="vv">
+                    <dl class="bus-list-pic fl" >
+                        <dt><a href="{:U('Union/goodsdetail',array('goods_id'=>$vv['goods_id']))}"><img src="{$Think.const.SITE_URL}{$vv.logo}"></a></dt>
+                        <dd><a href="{:U('Union/goodsdetail',array('goods_id'=>$vv['goods_id']))}"><p><span class="fs1-4 fwb">{$vv.goods_name}</span></p>
+                            <p class="fs1 crimson fwb">联盟价:￥{$vv.nowprice}</p>
+                            <p class="fs1 td-lt">市场价:￥{$vv.price}</p></a>
+                            <a class="buyatnow" href="__MODULE__/Sorder/placeorder/goods_id/{$vv.goods_id}"><p class="mt0-5 union-an-a1 d-red fs1-2 crimson">立即购买</p></a></dd>
+                    </dl>
+                </foreach>
+        </div>
+        </foreach>
+</div>
+    </section>
+</div>
+
+<script type="text/javascript">
+    $(function(){
+        $(".bus-list-l li").click(function(){
+            $(this).addClass("cur").siblings().removeClass("cur");
+            $(".bus-list-r").eq($(this).index()).addClass("cur").siblings().removeClass("cur");
+        })
+        $(".yuyuebtn").click(function(){
+            $.get("__MODULE__/Sorder/yuyue/zeng_id/"+$(this).attr('zengid'),function(data){
+                if(data == 'nologin'){
+                    $("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'你还没有登录'+"</div>");
+
+                    $("#errormsg").fadeIn(1500);$("#errormsg").fadeOut(1500);setTimeout(function(){$("#errormsg").remove();},3000);
+                    return false;
+                }
+                if(data.error == 1){
+                    $("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+data.content+"</div>");
+
+                    $("#errormsg").fadeIn(1500);$("#errormsg").fadeOut(1500);setTimeout(function(){$("#errormsg").remove();},3000);
+                    return false;
+                }else if(data.error == 0){
+                    location.href="__MODULE__/Sorder/yuyueinfo/zeng_id/"+data.zeng_id;
+                }
+            })
+        })
+        $('.buyatnow').click(function(){
+            var url = $(this).attr('href');
+            $.post("__MODULE__/Sorder/checkvip",function(data){
+                if(data == 'nologin'){
+                    $("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'你还没有登录'+"</div>");
+
+                    $("#errormsg").fadeIn(1500);$("#errormsg").fadeOut(1500);setTimeout(function(){$("#errormsg").remove();},3000);
+                    return false;
+                }
+                if(data.error == '1'){
+                    $("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+data.content+"</div>");
+
+                    $("#errormsg").fadeIn(1500);$("#errormsg").fadeOut(1500);setTimeout(function(){$("#errormsg").remove();},3000);
+                    return false;
+                }else if(data.error == '0'){
+                    location.href= url;
+                }
+            })
+            return false;
+        })
+        $("#collect").click(function(){
+            var url = $(this).attr('href');
+            $.get(url,function(data){
+                if(data == 'nologin'){
+                    $("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'你还没有登录'+"</div>");
+
+                    $("#errormsg").fadeIn(1500);$("#errormsg").fadeOut(1500);setTimeout(function(){$("#errormsg").remove();},3000);
+                    return false;
+                }
+                if(data.error == 1){
+                    $("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+data.content+"</div>");
+
+                    $("#errormsg").fadeIn(1500);$("#errormsg").fadeOut(1500);setTimeout(function(){$("#errormsg").remove();},3000);
+                    return false;
+                }else if(data.error == 0){
+                    $("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+data.content+"</div>");
+
+                    $("#errormsg").fadeIn(1500);$("#errormsg").fadeOut(1500);setTimeout(function(){$("#errormsg").remove();},3000);
+                }
+            })
+            return false;
+        })
+    })
+</script>
+
+

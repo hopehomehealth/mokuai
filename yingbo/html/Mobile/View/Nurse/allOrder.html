@@ -1,0 +1,104 @@
+
+        <div class="main">
+            <ul class="orderNav borBot">    
+                <li class="cur">
+                    <span>未完成</span>
+                </li>
+                <li>
+                    <span>进行中</span>
+                </li>
+                <li>
+                    <span>已完成</span>
+                </li>
+            </ul>
+            <div>
+                <div class="orderlist cur"> 
+                   <div class="wddd">
+                      <ul class="wmc_con">
+                        <foreach name="orderList" item="info">
+                        <if condition="$info.status eq '0'">
+                        <a href="__MODULE__/Nurse/orderinfo/orderid/{$info.orderid}">
+                          <li>   
+                          <p class="wmc_tb wmc_bj"></p>
+                          <div class="wmc_list">
+                          <p class="wmc_tp"><if condition="$info.photo eq ''"><img src="{$Think.const.MBIMG_URL}/pgtu.jpg"><else /><img src="{$info.photo}"></if></p>
+                          <p class="wmc_wz">{$info.username}<br>联系电话：{$info.iphone}<br>联系地址：{$info.area}</p>
+                          <p class="jxs_hs gray">{$info.inputtime|date="Y-m-d",###}</p>
+                           </div>
+                         </li>
+                         </a>
+                        </if>
+                       </foreach>
+                      </ul>
+                  </div>
+                </div>
+                <div class="orderlist"> 
+                  <div class="wddd">
+                  <ul class="wmc_con">
+                  <foreach name="orderList" item="info">
+                    <if condition="$info.status eq '1'">
+                    <a href="__MODULE__/Nurse/orderinfo/orderid/{$info.orderid}">
+                    <li>  
+                    <p class="wmc_tb wmc_bj"></p>
+                    <div class="wmc_list">
+                    <p class="wmc_tp"><if condition="$info.photo eq ''"><img src="{$Think.const.MBIMG_URL}/pgtu.jpg"><else /><img src="{$info.photo}"></if></p>
+                    <p class="wmc_wz">{$info.username}<br>联系电话：{$info.iphone}<br>联系地址：{$info.area}</p>
+                    <p class="jxs_hs gray">{$info.inputtime|date="Y-m-d",###}</p>
+                    </div>
+                    </li>
+                    </a>
+                    </if>
+                  </foreach>
+      
+                  </ul>
+                  </div>
+                </div>
+                <div class="orderlist"> 
+                  <div class="wddd">
+                  <ul class="wmc_con">
+                   <foreach name="orderList" item="info">
+                  <if condition="$info.status eq '2'">
+                  <a href="__MODULE__/Nurse/orderinfo/orderid/{$info.orderid}">
+                    <li>   
+                    <p class="wmc_tb wmc_bj"></p>
+                    <div class="wmc_list">
+                    <p class="wmc_tp"><if condition="$info.photo eq ''"><img src="{$Think.const.MBIMG_URL}/pgtu.jpg"><else /><img src="{$info.photo}"></if></p>
+                    <p class="wmc_wz">{$info.username}<br>联系电话：{$info.iphone}<br>联系地址：{$info.area}</p>
+                    <p class="jxs_hs gray">{$info.inputtime|date="Y-m-d",###}</p>
+                   </div>
+                   <p class="ywc_hs">服务内容</p>
+                    
+                    <ul class="ywc_hsc borTop borBot">
+                    <li>{$info.introduce}</li>
+                    </ul>
+                     <ul class="ywc_list">
+                     <li><span>1</span>已选服务时间/小时</li>
+                     <li><span>1</span>已选服务次数</li>
+                     </ul>
+                        <p class="ywc_hs borTop borBot">评价</p>
+                        <ul class="ywc_list1">
+                        <li>
+                        <p class="ywc_list1_n"><span class="ywc_st_xm">{$info.comment.username}</span><span class="ywc_st_dz">{$info.comment.city}</span><span class="ywc_st_dh">{$info.comment.iphone}</span><span class="ywc_st_sj">{$info.comment.inputtime|date="Y-m-d H:i:s",###}</span></p>
+                        <p class="ywc_st_hy">{$info.comment.comment}</p>
+                        </li>
+                        </ul>
+                   </li>
+                   </a>
+                   </if>
+                   </foreach>
+                  </ul>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="{$Think.const.MBJS_URL}jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="{$Think.const.MBJS_URL}base.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $(".orderNav li").click(function(){
+                $(this).addClass("cur").siblings().removeClass("cur");
+                $(".orderlist").eq($(this).index()).addClass("cur").siblings().removeClass("cur");
+            })
+        })
+    </script>

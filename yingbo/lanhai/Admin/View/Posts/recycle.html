@@ -1,0 +1,113 @@
+<style type="text/css">
+    .technorati li{float:left;}
+</style>
+<div class="main-content">
+    <div class="page-content">
+        <div class="row">
+            <div class="page-content box">
+                <div class="box-title margin_bot_20">
+                    <div class="span10">
+                        <h3><i class="icon-trash"></i>回收站</h3>
+                    </div>
+                </div>
+                <form class="form-horizontal" method="get" action="__SELF__">
+                  <div class="form-group">
+                    <label class="control-label"  style="padding-top:0; margin-right:10px;">
+                        <select class="input-medium" name="board_id" style="outline:none;height:34px">
+                                <option value='0'>-请选择板块-</option>
+                                <foreach name='boards' item='bd'>
+                                    <if condition="$bd.pid eq 0">
+                                        <option style="font-weight:bold;color:#ccc" disabled="disabled" value='{$bd.board_id}'>{$bd.board_title}</option>
+                                    <else />
+                                        <option style="color:#333;" value='{$bd.board_id}'>{$bd.board_title}</option>
+                                    </if>
+                                </foreach>
+                        </select>
+                    </label>
+                    <div class="controls pull-left">
+                      <button type="submit" class="btn btn-sm btn-primary">搜索</button>
+                    </div>
+                  </div>
+                </form>
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th width="3%"></th>
+                        <th width="10%">帖子名称</th>
+                        <th width="10%">版块</th>
+                        <th width="10%">发帖人</th>
+                        <th width="5%">回复</th>
+                        <th width="5%">浏览</th>
+                        <th width="10%">发帖日期</th>
+                        <th width="5%">状态</th>
+                        <th width="10%">操作</th>
+                    </tr></thead>
+                    <tbody>
+                    <form action="__MODULE__/Posts/dorecycle" method="post" id="batches">
+                    <foreach name="posts" item="post">
+                    <tr>
+                        <td><input type="checkbox" name="post_id[]" value="{$post.post_id}"></td>
+                        <td>{$post.topic}</td>
+                        <td>{$post.board_title}</td>
+                        <td>{$post.username}</td>
+                        <td>{$post.replys}</td>
+                        <td>{$post.views}</td>
+                        <td>{$post.ctime|date="Y-m-d H:i:s",###}</td>
+                        <td>
+                            <if condition="$post.sort eq '3'"><span style="display:inline-block;border:1px solid #53f753;color:#53f753;padding:1px;border-radius:2px">置顶</span></if><if condition="$post.sort eq '2'"><span style="display:inline-block;border:1px solid orange;color:orange;padding:1px;border-radius:2px">精华</span></if><if condition="$post.sort eq 1"><span style="display:inline-block;border:1px solid red;color:red;padding:1px;border-radius:2px">新帖</span></if><if condition="$post.sort eq '0'"><span style="display:inline-block;border:1px solid gray;color:gray;padding:1px;border-radius:2px">普通</span></if>
+                        </td>
+                        <td>
+                            <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+                            <a href="__MODULE__/Posts/recovery/post_id/{$post.post_id}"><i class="icon-refresh bigger-130"></i>&nbsp;还原</a>
+                                <a onclick="return confirm('确定永久删除吗')" href="__MODULE__/Posts/del/post_id/{$post.post_id}" class="red"><i class="icon-remove bigger-130"></i>&nbsp;删除</a>
+                            </div>
+                        </td>
+                    </tr>
+                    </foreach>
+                    <tr>
+                        <input type="hidden" name="sorttype" value="">
+                        <td style="border-right:none"><input type="checkbox" name="all"></td><td style="text-align:left;border-left:none" colspan=8>全选&nbsp;&nbsp;<a id="recovery" href="javascript:void(0)">还原</a>&nbsp;&nbsp;<a id="delete" href="javascript:void(0)">删除</a>&nbsp;&nbsp;(批量操作)</td>
+                    </tr>
+                    </form>
+                    </tbody>
+                </table>
+                <div class="technorati">{$page}</div>
+            </div>
+        </div>
+        <!--/.box-->
+    </div><!-- /.page-content -->
+</div><!-- /.main-content -->
+<script src='{$Think.const.JS_URL}jquery-2.1.3.min.js'></script>
+<script type="text/javascript">
+    $(function(){
+        //批量还原操作
+        $("#recovery").click(function(){
+            if($("input[name='post_id[]']:checked").length >= 1){
+                $("#batches").attr('action',"__MODULE__/Posts/recovery");
+                $("#batches").submit();
+            }else{
+                alert('请选择操作对象');
+            }
+        })
+        //批量删除操作
+        $("#delete").click(function(){
+            if($("input[name='post_id[]']:checked").length >= 1){
+                if(confirm('你确定要永久删除吗')){
+                    $("#batches").attr('action',"__MODULE__/Posts/del");
+                    $("#batches").submit();
+                }         
+            }else{
+                alert('请选择操作对象');
+            }
+        })
+        //全部选中取消选中操作
+        $("input[name='all']").click(function(){
+            var ischeck = $(this).prop('checked');
+            if(ischeck){
+                $("input[name='post_id[]']").prop('checked',true);
+            }else{
+                $("input[name='post_id[]']").prop('checked',false);
+            }
+        })
+    })
+</script>

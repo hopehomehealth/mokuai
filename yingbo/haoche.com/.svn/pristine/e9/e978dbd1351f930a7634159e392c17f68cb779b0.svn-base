@@ -1,0 +1,58 @@
+    <link href="{$Think.const.HCSS_URL}personal-style.css" type="text/css" rel="stylesheet" />
+    <section style="position:relative">
+        <div class="addre">
+        <foreach name="delivery" item="info">
+            <div class="addre_main" <if condition="$info.dl_id eq $defaultid">style="border-left:3px solid #dd0045"</if>>
+				<!--<a href="__MODULE__/Order/placeorder/dl_id/{$info['dl_id']}">-->
+                <h2><a style="display:inline;position:static;" href="__MODULE__/Order/placeorder/dl_id/{$info['dl_id']}">{$info.consigner}|{$info.phone}</a></h2>
+
+                <p><a style="display:inline;position:static;" href="__MODULE__/Order/placeorder/dl_id/{$info['dl_id']}">{$info.dl_name}</a></p>
+				<!--</a>-->
+                <a style="right:4rem;padding-left:0.8rem" class="deladdr" href="javascript:void(0)" dlid="{$info.dl_id}"><img style="border-radius:50%;background-color:#ccc;opacity:0.5" src="{$Think.const.HIMG_URL}del.png" alt=""/></a>
+                <a class="setaddr" href="javascript:void(0)" dlid="{$info.dl_id}"><img src="{$Think.const.HIMG_URL}jt1.gif" alt=""/></a>
+            </div>
+        </foreach>
+			<empty name="delivery">
+				<div style="text-align:center;width:100%;height:5rem;color:#ccc;line-height:6rem;font-size:1.5rem">
+					你还没有收货地址
+				</div>
+			</empty>
+			<notempty name="delivery">
+            <span style="padding-top:1rem">(点击右方箭头可设为默认地址)</span>
+			</notempty>
+            <h5><a href="__MODULE__/Delivery/addaddr"><input type="button" style="background: #DD0045;font-size:1.800rem;height:3.500rem;font-family: '黑体';color: #ffffff;border-radius:0.4rem" value="添加地址"/></a></h5>
+        </div>
+
+    </section>
+    <script type="text/javascript">
+        $(function(){
+            $(".addre_main .setaddr").click(function(){
+                var dlid = $(this).attr("dlid");
+                var addre_main = $(this).parent('.addre_main');
+                if(confirm('确定设为默认地址吗')){
+                    $.post("__MODULE__/Delivery/setdefault",{"dl_id":dlid},function(data){
+                        if(data.error == 0){
+                            addre_main.css("border-left","3px solid #DD0045").siblings().css('border-left',"none");
+                            $("section").append("<div id='errormsg' style='display:none;position:absolute;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1rem;opacity:0.7;background:#666'>"+data.content+"</div>");
+
+                            $("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);$("#bsubmit").attr('disabled',true);setTimeout(function(){$("#errormsg").remove();$("#bsubmit").attr('disabled',false);},2000);
+                        }
+                    })
+                }
+            })
+            $(".addre_main .deladdr").click(function(){
+                var dlid = $(this).attr("dlid");
+                var addre_main = $(this).parent('.addre_main');
+                if(confirm('确定要删除该地址吗')){
+                    $.post("__MODULE__/Delivery/deladdr",{"dl_id":dlid},function(data){
+                        if(data.error == 0){
+                            addre_main.remove();
+                            $("section").append("<div id='errormsg' style='display:none;position:absolute;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1rem;opacity:0.7;background:#666'>"+data.content+"</div>");
+
+                            $("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);$("#bsubmit").attr('disabled',true);setTimeout(function(){$("#errormsg").remove();$("#bsubmit").attr('disabled',false);},2000);
+                        }
+                    })
+                }
+            })
+        })
+    </script>

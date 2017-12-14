@@ -1,0 +1,65 @@
+<link href="{$Think.const.HCSS_URL}personal-style.css" type="text/css" rel="stylesheet" />
+<style type="text/css">
+.xj_jgjl { width: 100%; background: #ffffff; border-bottom: 1px solid #D7D7D7; float: left; padding:0.400rem 0;}
+.xj_jgjl dd { width: 25%; float: left; }
+.xj_jgjl dd img { width: 80%; margin: 8px; border-radius: 50%; }
+.xj_jgjl dt { width: 75%; float: left; padding-top:1.000rem;line-height: 2.575rem; font-size:1.425rem;}
+.xj_jgjl dt i{ display: block; color: white; text-align: center; line-height: 2.075rem; border-radius:0.400rem; padding:0 0.5rem; background: #E0901D; margin-top:0.200rem;}
+</style>
+
+<section class="pb7_5" >
+  <div class="exc_nav">
+    <p>积分记录</p>
+    <ul>
+      <!--<li><a style="color:#fff" href="__MODULE__/User/regfee">乐购充值</a></li>-->
+    </ul>
+  </div>
+  <div style="padding-bottom: 7.500rem;" id="recordslist" totalPages="{$totalPages}">
+    <foreach name="operates" item="info">
+      <dl class="xj_jgjl">
+        <dd><img src="{$info.userhead}" alt=""/></dd>
+        <dt>
+          <span class="fl pr1">{$info.nikename}</span><span class="fl"><i>编号:{$info.id_sn}</i></span><br />
+         {$info.type}返给你<b style="color: #DD0045;">{$info.amount}</b>{$info.sc_type}积分<br />时间：{$info.time}
+        </dt>
+      </dl>
+    </foreach>
+  </div>
+  <div style="text-align:center;display:none;" id="loading"><img src="/Public/Home/images/loading.jpg" width="36%" height="" border="0" alt="" /></div>
+</section>
+<!-- 滚动加载 -->
+<script type="text/javascript">
+
+	$(function(){
+		var scrollstatus = false;
+		var totalPages = $("#recordslist").attr('totalPages');
+		var nowpage = 1;
+		function ajax_request(nowpage){
+			var html = '';
+			var recordslist = $("#recordslist");//放数据的容器
+			$.post("__MODULE__/User/myscore/p/"+nowpage,function(data){
+				if(data.error == 0){
+					for(var i in data.content){
+						html += "<dl class='xj_jgjl'><dd><img src='"+data.content[i].userhead+"' alt=''/></dd><dt><span class='fl pr1'>"+data.content[i].nikename+"</span><span class='fl'><i>编号:"+data.content[i].id_sn+"</i></span><br />"+data.content[i].type+"返给你<b style='color: #DD0045;'>"+data.content[i].amount+"</b>"+data.content[i].sc_type+"积分<br />时间："+data.content[i].time+"</dt></dl>";
+					}
+				}
+				recordslist.append(html);
+				$("#loading").css("display",'none');
+				scrollstatus = false;
+			});
+		}
+		$(window).scroll(function () {
+			var scrollTop = $(this).scrollTop();
+			var scrollHeight = $(document).height();
+			var windowHeight = $(this).height();
+			if (scrollTop + windowHeight == scrollHeight && scrollstatus == false) {
+			  scrollstatus = true;
+			  nowpage++;
+			  if(nowpage <= totalPages){
+				$("#loading").css("display",'block');
+				setTimeout(function(){ajax_request(nowpage)},2000);
+			  }
+			}
+		});
+	 });
+</script>

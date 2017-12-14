@@ -1,0 +1,73 @@
+
+
+<div class="column-c pt10 ser">
+    <div class="ser-left fl">
+
+
+                <p class="ser-tit fl"><a href="{:U('Index/index')}" class="bule fwb">首页</a><img src="{$Think.const.HIMG_URL}images_96.jpg" alt="" />
+				您当前搜索的是：  <e style="color:red;font-size:18px">{$sou}</e>
+    </p>
+
+
+    </div>
+</div>
+<!-------第一通栏---->
+<div class="column-c pt10 pb30">
+    <!--****左边边通栏****-->
+    <div class="set-lis-l fl">
+
+        <!--****左边第一通栏****-->
+        <ul class="set-lis_lb fl">
+        <empty name="info">
+<li>
+                    <dl class="set-lis-twjh fl pt15">
+
+                        <dd>
+
+                            <p class="set-lis-nr fl">sorry, 没有您想要的, 搜别的试试......</p>
+
+                        </dd>
+                    </dl>
+                </li>
+        </empty>
+        <notempty name="info">
+            <foreach name="info" key="k" item="v">
+                <li>
+                    <dl class="set-lis-twjh fl pt15">
+                        <dt><a href="{:U('News/detail',array('news_id'=>$v['news_id']))}"><img <if condition="($v.pic neq '') AND ($v.pic neq './Public/Upl/news/')">src="{$Think.const.SITE_URL}{$v.pic}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq '')"/>src="{$v.picfirst}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq '')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"</if> alt="" /></a></dt>
+                        <dd>
+                            <p class="set-lis-wz fl"><a href="{:U('News/detail',array('news_id'=>$v['news_id']))}">{$v.news_title}</a></p>
+                            <p class="set-lis-nr fl">{$v.content|strip_tags|str_replace=array(" ","　","\t","\n","\r"),array("","","","",""),###|mb_substr=###,0,88,'utf-8'}</p>
+                            <p class="set-lis-plgz fl  fs12">{$v.add_time}</p>
+                            <p class="set-lis-plgz fr fs12"><span class="pr15"><img src="{$Think.const.HIMG_URL}images_06.png" alt="" />{$v.talk}</span><span class="pr15 fl"><img src="{$Think.const.HIMG_URL}images_07.png" alt="" />{$v.click}</span></p>
+                        </dd>
+                    </dl>
+                </li>
+            </foreach>
+            </notempty>
+        </ul>
+        <!--****左边第二通栏****-->
+        <ul class="page">
+        {$page}
+        </ul>
+    </div>
+    <!--****右边通栏****-->
+    <div class="set-lis-r fr">
+        <!--****右边第二通栏****-->
+        <div class="set-lis-tj fl pb10">
+            <p class="set-lis-tjtt fl"><img src="{$Think.const.HIMG_URL}images_142.jpg" alt="" /></p>
+            <ul class="nhtt-list-a fl pt15">
+                <foreach name="clickinfo" item="v">
+                    <li><a href="{:U('News/detail',array('news_id'=>$v['news_id']))}">{$v.news_title}</a></li>
+                </foreach>
+            </ul>
+        </div>
+
+
+
+    </div>
+</div>

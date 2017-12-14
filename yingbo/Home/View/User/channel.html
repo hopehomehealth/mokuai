@@ -1,0 +1,117 @@
+  <script type="text/javascript" src="{$Think.const.HJS_URL}jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="{$Think.const.HJS_URL}jquery.form.js"></script>
+  <section style="height:100%;position:relative">
+    <div class="navbj fl m0 pb7_5">
+      <p class="cha_tit"><span class="cha_tit_t">渠道申请</span></p>
+      <form action="" method="post" id="form" enctype="multipart/form-data">
+        <ul class="login fl bbn pb0_5 pt_6">
+          <li><p class="fl w20 tar"><span class="crimson pr5">*</span>真实姓名</p>
+            <p class="fl w80"><if condition="$userdetail.name neq ''"><span class="login_i w60">&nbsp;&nbsp;{$userdetail.name}</span></if><p>
+          </li>
+          <li><p class="fl w20 tar"><span class="crimson pr5">*</span>手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机</p>
+            <p class="fl w80"><if condition="$userdetail.phone neq ''"><span class="login_i w60">&nbsp;&nbsp;{$userdetail.phone}</span></if></p>
+          </li>
+          <li><p class="fl w20 tar"><span class="crimson pr5">*</span>详细地址</p>
+            <p class="fl w80"><if condition="$userdetail.addr neq ''"><span class="login_i w60">&nbsp;&nbsp;{$userdetail.addr}</span></if></p>
+          </li>
+          <li><p class="fl w20 tar">意向项目</p>
+           <p class="fl w80"> <input name="project" id="username" type="text" class="login_d" value="" placeholder="请输入你的意向项目">
+          </li>
+
+  <li><p class="fl w20 tar">代理费用</p>
+            <p class="fl w80"><span class="login_g w60">{$set.agentfee}&nbsp;元</span></p>
+          </li>
+
+<li><span class="fl">&nbsp;&nbsp;您还可以转账</span></li>
+          <li><p class="fl w20 tar">对公账户</p>
+            <p class="fl w80"><span class="login_g w60">{$set.account}</span></p>
+          </li>
+           <li><p class="fl w20 tar">开户银行</p>
+            <p class="fl w80"><span class="login_g w60">{$set.accountinfo}</span></p>
+          </li>
+           <li><p class="fl w20 tar">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;联系人</p>
+           <p class="fl w80"> <span class="login_g w20">{$set.contacts}</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;联系电话
+            <span class="login_g w30">{$set.phone}</span></p>
+          </li>
+		  <li><p class="fl w20 tar">转账截图</p>
+            <p class="fl w80">
+            <a class="ace-input btn btn-success btn-sm">
+              <input type="file" id="selectpic" name="picscreen">
+              转账截图 </a></p>
+          </li>
+           <li><span class="fl">&nbsp;&nbsp;您还可以点击</span>
+         <button class="login_h w30 fl" id="payagentfee" type="button">微信支付</button>
+          </li>
+        </ul>
+      <button class="submit loginBtn" id="subaplay" type="button" style="width:90%">提交</button>
+	  </form>
+    </div>
+  </section>
+  <script type="text/javascript">
+	$(function(){
+		$("#subaplay").click(function(){
+			$("#subaplay").attr('disabled',true);
+			if($("input[name='project']").val() == ''){
+				$("section").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'请输入意向的项目'+"</div>");
+
+				$("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);setTimeout(function(){$("#errormsg").remove();$("#subaplay").attr('disabled',false);},2000);
+				return;
+			}
+			if($("input[name='picscreen']").val() == ''){
+				$("section").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'请选择转账截图'+"</div>");
+
+				$("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);setTimeout(function(){$("#errormsg").remove();$("#subaplay").attr('disabled',false);},2000);
+				return;
+			}
+
+			$("#form").ajaxSubmit({
+				type:'post',
+				url:'__MODULE__/User/channel',
+				success:function(data){
+					if(data.error == 0){
+						$("section").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'申请成功'+"</div>");
+
+						$("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);setTimeout(function(){$("#errormsg").remove();},2000);
+					}
+					if(data.error == 1){
+						$("section").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+data.content+"</div>");
+
+						$("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);setTimeout(function(){$("#errormsg").remove();location.href="__MODULE__/User/personal";},2000);
+					}
+				},
+				error:function(XmlHttpRequest,textStatus,errorThrown){
+					console.log(XmlHttpRequest);
+					console.log(textStatus);
+					console.log(errorThrown);
+				}
+			});
+
+		})
+		$("#payagentfee").click(function(){
+			$("#payagentfee").attr('disabled',true);
+			if($("input[name='project']").val() == ''){
+				$("section").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'请输入意向的项目'+"</div>");
+
+				$("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);setTimeout(function(){$("#errormsg").remove();$("#payagentfee").attr('disabled',false);},2000);
+				return;
+			}
+			$.post("__MODULE__/User/agentfee",function(data){
+				$("#payagentfee").attr('disabled',true);
+				if(data.error == 1){
+					$("section").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+data.content+"</div>");
+
+                    $("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);setTimeout(function(){$("#errormsg").remove();location.href="__MODULE__/User/personal";},2000);
+				}else if(data.error == 2){
+					$("section").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+data.content+"</div>");
+
+                    $("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);setTimeout(function(){$("#errormsg").remove();$("#payagentfee").attr('disabled',false);},2000);
+				}else if(data.error == 0){
+					location.href="__MODULE__/Wxpay/pay/type/agentfee/id/"+data.content;
+				}
+			})
+		})
+	})
+  </script>
+
+

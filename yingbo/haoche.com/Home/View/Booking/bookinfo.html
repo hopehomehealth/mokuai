@@ -1,0 +1,117 @@
+    <link href="{$Think.const.HCSS_URL}liyue-style.css" type="text/css" rel="stylesheet" />
+	<script type="text/javascript" src="{$Think.const.HJS_URL}jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="{$Think.const.HJS_URL}jquery.form.js"></script>
+    <section style="font-size:1.5rem;background:#F0F0F0;height:100%">
+        <div class="orderinfo_main" style="background:#F0F0F0;padding-top:0">
+            <notempty name="bookinfo">
+            <div class="orderinfo_main1" style="background:#fff">
+                   <dl>
+                    <dd style="vertical-align:middle;margin-top:1rem"><a href="__MODULE__/Haoche/detail/goods_id/{$haocheinfo.goods_id}"><img src="{$Think.const.SITE_URL}{$haocheinfo.logo}" alt=""/></a></dd>
+                    <dt style="float:right">
+                        <h2 id="goodsname" goodsname="{$haocheinfo.goods_name}">型号：{$haocheinfo.goods_name}</h2>
+                        <p>售价：<b style="color:#DD0045;">{$haocheinfo['price']/100/100}</b>万元</p>
+                        <br/><br/><h2>颜色：{$bookinfo.attr}</h2>
+
+                    </dt>
+                       <div style="clear: both"></div>
+                       <h3>首付<span><b id="downpay" downpay="{$bookinfo['downpay']}" style="color: #DD0045;">{$bookinfo['downpay']/100/100}</b>万元</span></h3>
+                       <h3 style="color:#DD0045;font-size:2rem;font-weight:bolder">+<span style="color: #DD0045;"></h3>
+                       <h3>积分<span style="color: #DD0045;"><b>{$bookinfo['score']}</b></span></h3>
+                </dl>
+            </div>
+           <div class="orderinfo_main2" style="margin-top:1rem;padding-top:1rem">
+               <p>姓名电话：&nbsp;&nbsp;&nbsp;{$bookinfo.customer}&nbsp;&nbsp;&nbsp;{$bookinfo.phone}</p>
+               <p id="booksn" booksn="{$bookinfo.book_sn}">订车编号：&nbsp;&nbsp;&nbsp;{$bookinfo.book_sn}</p>
+               <p id="inputtime" inputtime="{$bookinfo.inputtime}">订车日期：&nbsp;&nbsp;&nbsp;{$bookinfo.inputtime|date="Y-m-d H:i:s",###}</p>
+
+               <p>支付方式：&nbsp;&nbsp;&nbsp;{$bookinfo['paytype']?"微信在线支付":"线下支付"}</p>
+               <p>支付状态：&nbsp;&nbsp;&nbsp;{$bookinfo['is_paydown']?"<span style='color:green'>已支付</span>":"<span style='color:red'>未支付</span>"}</p>
+               <if condition="$bookinfo.paytime neq ''">
+                  <p>支付日期：&nbsp;&nbsp;&nbsp;{$bookinfo.paytime|date="Y-m-d H:i:s",###}</p>
+                  <if condition="$bookinfo.is_takecar eq '0'">
+                    <p>是否提车：&nbsp;&nbsp;&nbsp;<span style='color:red'>未提车</span></p>
+                  </if>
+                  <if condition="$bookinfo.is_takecar eq '1'">
+                    <p>是否提车：&nbsp;&nbsp;&nbsp;<span style='color:green'>已提车</span></p>
+                    <p>提车日期：&nbsp;&nbsp;&nbsp;{$bookinfo.taketime|date="Y-m-d H:i:s",###}</p>
+                  </if>
+               </if>
+               <if condition="$bookinfo.aplay_refunds eq '1'">
+                  <p>退款申请：&nbsp;&nbsp;&nbsp;<span style='color:green'>已申请</span></p>
+                  <p>申请日期：&nbsp;&nbsp;&nbsp;{$bookinfo.aplaytime|date="Y-m-d H:i:s",###}</p>
+                  <if condition="$bookinfo.is_refunds eq '0'">
+                    <p>是否退款：&nbsp;&nbsp;&nbsp;<span style='color:red'>未退款</span></p>
+                  </if>
+               </if>
+               <if condition="$bookinfo.is_refunds eq '1'">
+                  <p>是否退款：&nbsp;&nbsp;&nbsp;<span style='color:green'>已退款</span></p>
+                  <p>退款日期：&nbsp;&nbsp;&nbsp;{$bookinfo.refundstime|date="Y-m-d H:i:s",###}</p>
+               </if>
+           </div>
+           <div class="orderinfo_main2" style="background:#fff">
+              <ul>
+              <if condition="$bookinfo.is_refunds eq '1'">
+                <li><a href="__MODULE__/Booking/cancel/book_id/{$bookinfo.book_id}"><input style="border-color:#DD0045;" type="button" value="取消预定" /></a></li>
+              </if>
+              <if condition="$bookinfo.is_paydown eq '0'">
+                <if condition="$bookinfo.paytype eq '1'">
+                  <li><a href="{:U('Wxpay/pay',array('type'=>'downpay','id'=>$bookinfo['book_id']))}"><input style="background-color: #DD0045;color:white" type="button" name="checkout" value="立即付款" style="width: 6rem; background-color: #DD0045;color:white"/></a></li>
+                </if>
+				<if condition="$bookinfo.paytype eq '0'">
+					<li>
+					<form action="__MODULE__/Booking/upscreen" method="post" enctype="multipart/form-data" id="upform">
+						<input type="hidden" name="book_id" value="{$bookinfo['book_id']}">
+						<input type="hidden" name="picscreen" value="{$bookinfo['picscreen']}">
+						<input type="file" name="picscreen" id="selectpic">
+					</form>
+					</li>
+				</if>
+				<if>
+              <elseif condition="($bookinfo.is_paydown eq '1') AND ($bookinfo.is_takecar eq '0') AND ($bookinfo.aplay_refunds eq '0')" />
+                <li><input type="button" name="aplayrefunds" value="申请退款" style="background-color: #DD0045;color:white"/></li>
+              </if>
+              <if condition="$bookinfo.is_paydown eq '0'">
+                <li><a href="__MODULE__/Booking/cancel/book_id/{$bookinfo.book_id}"><input type="button" value="取消预定"  style="border-color:#DD0045;"/></a></li>
+              </if>
+            </ul>
+            <div style="clear: both"></div>
+           </div>
+         </notempty>
+         <empty name="bookinfo">
+         <div class="exc_main" style="background:#F0F0F0">
+          您当前没有预定
+         </div>
+        </empty>
+        </div>
+    </section>
+    <script type="text/javascript">
+
+    </script>
+    <script type="text/javascript">
+      $(function(){
+        $("input[name='aplayrefunds']").click(function(){
+            $("input[name='aplayrefunds']").attr('disabled',true);
+            $.post("__MODULE__/Booking/aplayrefunds",{"inputtime":$("#inputtime").attr("inputtime")},function(data){
+
+                $("section").append("<div id='errormsg' style='display:none;position:absolute;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1rem;opacity:0.7;background:#666'>"+data.content+"</div>");
+
+                $("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);$("#bsubmit").attr('disabled',true);setTimeout(function(){$("#errormsg").remove();},2000);
+                $("input[name='aplayrefunds']").attr('disabled',false);
+            })
+        })
+		$("#selectpic").change(function(){
+			$("#upform").ajaxSubmit({
+				type:'post',
+				url:'__MODULE__/Booking/upscreen',
+				success:function(data){
+					console.log(data);
+				},
+				error:function(XmlHttpRequest,textStatus,errorThrown){
+					console.log(XmlHttpRequest);
+					console.log(textStatus);
+					console.log(errorThrown);
+				}
+			});
+		});
+      })
+    </script>

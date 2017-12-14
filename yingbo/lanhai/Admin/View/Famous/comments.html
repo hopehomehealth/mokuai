@@ -1,0 +1,90 @@
+<style type="text/css">
+    .technorati li{float:left;}
+</style>
+<div class="main-content">
+    <div class="page-content">
+        <div class="row">
+            <div class="page-content box">
+                <div class="box-title margin_bot_20">
+                    <div class="span10">
+                        <h3><i class="icon-magic"></i>评论列表</h3>
+                    </div>
+                </div>
+                <form class="form-horizontal" method="get" action="__MODULE__/Famous/comments/sland_id/{$Think.get.sland_id}">
+                  <div class="form-group">
+                    <label class="control-label" style="width:auto;line-height:28px;padding-top:0">评论人： </label>        
+                    <div class="controls pull-left">
+                      <input type="text" class="input-medium" name="search" value="{$Think.get.serach}">
+                      <button type="submit" class="btn btn-sm btn-primary">搜索</button>
+                    </div>
+                  </div>
+                </form>
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                    <tr><th width="5%">序号</th>
+                        <th width="8%">文章标题</th>
+                        <th width="8%">评论人</th>
+                        <th width="100px">图像</th>
+                        <th width="20%">评论内容</th>
+                        <th width="8%">评论时间</th>
+                        <th width="5%">显示</th>
+                        <th width="8%">操作</th>
+                    </tr></thead>
+                    <tbody>
+                    <foreach name="comments" item="info">
+                    <tr>
+                        <td>{$No1++}</td>
+                        <td>{$info.title}</td>
+                        <td>{$info.username}</td>
+                        <td><div style="display:inline-block;width:50px;height:50px;overflow:hidden"><img style="width:50px" src="{$info.userhead}"></div></td>
+                        <td>{$info.content}</td>
+                        <td>{$info.add_time|date="Y-m-d H:i",###}</td>
+                        <td class="display-status">
+                        <if condition="$info.display eq '1'">
+                            <i class="icon-ok bigger-130 green"></i>
+                        <else />
+                            <i class="icon-remove bigger-130 red"></i>
+                        </if>
+                        </td>
+                        <td>
+                            <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+                                <a href="javascript:void(0)" class="display" comid="{$info.com_id}" isdisplay="{$info.display}" class="green"><if condition="$info.display eq '1'">隐藏<else />显示</if> </a>
+                                
+                                <a href="__MODULE__/Famous/del/com_id/{$info.com_id}" class="red detail" onclick="return confirm('确定要删除吗')"> <i class="icon-remove bigger-130"></i>&nbsp;删除 </a>
+                            </div>
+                        </td>
+                    </tr>
+                    </foreach>
+                    </tbody>
+                </table>
+                <div class="technorati">{$page}</div>
+            </div>
+        </div>
+        <!--/.box-->
+    </div>
+    <!-- /.page-content -->
+</div><!-- /.main-content -->
+<script src='{$Think.const.JS_URL}jquery-2.1.3.min.js'></script>
+<script type="text/javascript">
+$(function(){
+    $(".display").click(function(){
+        var thisobj = $(this);
+        var display = $(this).attr('isdisplay');
+        var comid = $(this).attr('comid');
+        $.post("__MODULE__/Famous/isdisplay",{'display':display,'com_id':comid},function(data){
+            if(data == 'success'){
+                if(display == 1){
+                    thisobj.text('显示');
+                    thisobj.attr('isdisplay',0);
+                    thisobj.parent().parent().parent().children('.display-status').children('i').attr('class','').addClass("icon-remove bigger-130 red");
+                }
+                if(display == 0){
+                    thisobj.text('隐藏');
+                    thisobj.attr('isdisplay',1);
+                    thisobj.parent().parent().parent().children('.display-status').children('i').attr('class','').addClass("icon-ok bigger-130 green");
+                }
+            }
+        })
+    })
+})
+</script>

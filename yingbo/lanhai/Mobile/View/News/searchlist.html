@@ -1,0 +1,100 @@
+<div class="main">
+
+
+
+    <!--*****news*****-->
+    <section>
+        <div class="h-l pb1 fl">
+
+                   <p class="h-l-tt">您当前搜索的是：<span class="d-red">{$sou}</span></p>
+
+<empty name="info">
+<div class="news-list fl">
+ <dl class="news-pic fl">
+
+                        <dd>
+                           sorry, 没有您想要的，搜别的试试......
+                        </dd>
+                    </dl></div>
+			</empty>
+
+            <div class="news-list fl" id="recordslist" totalPages="{$totalPages}">
+
+			<notempty name="info">
+                <foreach name="info" item="v">
+                    <input type='hidden' id='lan_id' value='{$v.lan_id}'>
+                    <dl class="news-pic fl">
+                        <dt><a href="{:U('News/detail',array('news_id'=>$v['news_id']))}"><img <if condition="($v.pic neq '') AND ($v.pic neq './Public/Upl/news/')">src="{$Think.const.SITE_URL}{$v.pic}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq '')"/>src="{$v.picfirst}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq '')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"</if> ></a></dt>
+                        <dd><a href="{:U('News/detail',array('news_id'=>$v['news_id']))}">{$v.news_title|strip_tags|str_replace=array(" ","　","\t","\n","\r","&bsp;"),array("","","","","",""),###|mb_substr=###,0,21,'utf-8'}...
+                        </a>
+                            <p class="fl fs1 l-gray rqi">{$v.add_time}</p>
+                        </dd>
+                    </dl>
+                </foreach>
+				</notempty>
+            </div>
+            <div style="text-align:center;display:none;" id="loading"><img src="{$Think.const.MIMG_URL}loader.gif" width="" height="" border="0" alt="" /></div>
+        </div>
+    </section>
+    <!--*****news*****-->
+
+    <!-- 滚动加载 -->
+    <script type="text/javascript">
+
+        $(function(){
+            var lan_id = $('#lan_id').val();
+            var scrollstatus = false;
+            var totalPages = $("#recordslist").attr('totalPages');
+            var nowpage = 1;
+            function ajax_request(nowpage){
+                var html = '';
+                var recordslist = $("#recordslist");//放数据的容器
+                $.post("__MODULE__/News/searchlist/p/"+nowpage,{lan_id:lan_id},function(data){
+                    if(data.error == 0){
+						var imgsrc='';
+					var url = window.location.host;
+					var yuming = 'http://'+url;
+					var title='';
+					var news_title='';
+                        for(var i in data.content){
+						title= data.content[i].news_title;
+						news_title = title.substr(0,21);
+						if((data.content[i].pic !== '') && (data.content[i].pic !== './Public/Upl/news/')){
+							 imgsrc = yuming+data.content[i].pic;
+
+						}else if(data.content[i].match == 'http' && data.content[i].pic == ''){
+						 imgsrc = data.content[i].picfirst;
+						}else if(data.content[i].match == 'http' && data.content[i].pic == './Public/Upl/news/'){
+						imgsrc = data.content[i].picfirst;
+						}else if(data.content[i].match !== 'http' && data.content[i].pic == ''){
+						 imgsrc = yuming+data.content[i].picfirst;
+						}else if(data.content[i].match !== 'http' &&  data.content[i].pic == './Public/Upl/news/'){
+						imgsrc = yuming+data.content[i].picfirst;
+						}
+                            html += "<dl class='news-pic fl'><dt><a href='__MODULE__/News/detail/news_id/"+data.content[i].news_id+"'><img src='"+imgsrc+"' alt=''/></a></dt><dd><a href='__MODULE__/News/detail/news_id/"+data.content[i].news_id+"'>"+news_title+"</a><p class='fl fs1 l-gray rqi'>"+data.content[i].add_time+"</p></dd></dl>";
+                        }
+                    }
+                    recordslist.append(html);
+                    $("#loading").css("display",'none');
+                    scrollstatus = false;
+                });
+            }
+            $(window).scroll(function () {
+                var scrollTop = $(this).scrollTop();
+                var scrollHeight = $(document).height();
+                var windowHeight = $(this).height();
+                if (scrollTop + windowHeight == scrollHeight && scrollstatus == false) {
+                    scrollstatus = true;
+                    nowpage++;
+                    if(nowpage <= totalPages){
+                        $("#loading").css("display",'block');
+                        setTimeout(function(){ajax_request(nowpage)},2000);
+                    }
+                }
+            });
+        });
+    </script>

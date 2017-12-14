@@ -1,0 +1,137 @@
+<style>
+.ord_nav { width: 100%; height: 3.500rem; border-bottom: 1px solid #c5c5c5; margin-bottom: 0.500rem; }
+.ord_nav ul { margin-top: 10px; }
+.ord_nav ul li { width: 24.5%; height: 1.500rem; font-size: 1.400rem; text-align: center; float: left; }
+.ord_nav .nav { width: 0.1rem; height: 1.500rem; background: #D9D9D9; float: left; }
+.order { width: 95%; margin: 0 auto; }
+.ord_main { width: 100%; padding: 1rem 0rem 4.8rem; line-height: 1rem; border-bottom: 1px solid #D9D9D9; }
+.ord_main p { font-size: 1.400rem; border-bottom: 1px solid #D9D9D9; padding-bottom: 0.800rem; }
+.ord_main dl { padding: 1rem 0rem; border-bottom: 1px solid #D9D9D9; position: relative; }
+.ord_main dl dd { float: left; width: 20%; }
+.ord_main dl dd img { width: 100%; height: 5.5rem; }
+.ord_main dl dt { float: left; width: 65%; font-size: 1.400rem; overflow: hidden; margin-left: 0.3rem; line-height: 2rem; }
+.ord_main dl dt span { position: absolute; right: 0.500rem; bottom: 1rem; }
+.ord_main h2 { float: right; padding: 1rem 0rem; }
+.xj_ljzf { font-size: 1.400rem; background: url(/Public/Home/images/1.png) repeat; color: #ffffff; padding: 0 0.5rem; line-height: 2.5rem; border-radius: 0.500rem; border: 1px #DF0245 solid; }
+.xj_cxdd { font-size: 1.400rem; background: url(/Public/Home/images/white.png) repeat; color: #DF0245; padding: 0 0.5rem; line-height: 2.5rem; border-radius: 0.500rem; border: 1px #DF0245 solid; margin-right: 0.700rem; }
+.or_main p { margin-top: 20%; margin-left: 35%; }
+</style>
+<div class="navbj pb7_5 mt0 fl">
+  <div class="ord_nav">
+    <ul>
+      <li ><a href="#" style="display: inline-block;height:2.5rem;border-bottom: 2px solid #DF0245;color:#DF0245; ">待付款</a></li>
+      <div class="nav"></div>
+      <li><a href="__MODULE__/Order/sending">待发货</a></li>
+      <div class="nav"></div>
+      <li><a href="__MODULE__/Order/receiving">待收货</a></li>
+      <div class="nav"></div>
+      <li><a href="__MODULE__/Order/received">已收货</a></li>
+    </ul>
+  </div>
+  <section style="margin-bottom:8rem">
+    <div class="order" id="recordslist" totalPages="{$totalPages}">
+      <notempty name="orderlist">
+        <foreach name="orderlist" item="info">
+          <div class="ord_main">
+            <p>订单编号：{$info.orderno}</p>
+            <dl>
+              <a href="__MODULE__/Order/orderinfo/orderid/{$info.orderid}" style="color:#333">
+              <dd><img src="{$info.logo}" alt=""/></dd>
+              <dt>下单时间：{$info.inputtime}<br/>
+                {$info.goods_name}<br />
+                {$info.spec}<span>共{$info.number}件商品<br>
+                <i style="color: #DD0045">￥{$info.price}</i></span></dt>
+              <div style="clear: both"></div>
+              </a>
+            </dl>
+            <h2><a href="__MODULE__/Order/delorder/orderid/{$info.orderid}">
+              <input class="xj_cxdd" type="button" value="取消订单"/>
+              </a><a class="checkout" onclick="return false" href="{:U('Order/checkscore',array('type'=>'orderpay','id'=>$info['orderid']))}">
+              <input class="xj_ljzf" type="button" value="立即付款"/>
+              </a></h2>
+          </div>
+        </foreach>
+      </notempty>
+      <empty name="orderlist">
+        <div class="order">
+          <div class="or_main" style='text-align:center;height:20rem;line-height:20rem;font-size:1.5rem'> 您没有待付款订单哦！ </div>
+        </div>
+      </empty>
+    </div>
+	<div style="text-align:center;display:none;" id="loading"><img src="/Public/Home/images/loading.jpg" width="36%" height="" border="0" alt="" /></div>
+  </section>
+</div>
+<script type="text/javascript">
+		$(function(){
+			if($("section").attr('errormsg') == 'errorscore'){
+				$("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;padding-left:0.5rem;padding-right:0.5rem;top:12rem;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'积分不足请先充值'+"</div>");
+
+				$("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(2000);setTimeout(function(){$("#errormsg").remove();},3000);
+			}
+			$(".checkout").click(function(){
+				$.get($(this).attr("href"),function(data){
+					if(data.error == 0){
+						location.href="__MODULE__"+data.url;
+					}
+					if(data.error == 1){
+						$("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;padding-left:0.5rem;padding-right:0.5rem;top:12rem;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'积分不足请先充值'+"</div>");
+
+						$("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(2000);setTimeout(function(){$("#errormsg").remove();},3000);
+					}
+					if(data.error == 2){
+						$("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;padding-left:0.5rem;padding-right:0.5rem;top:12rem;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'库存不足'+"</div>");
+
+						$("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(2000);setTimeout(function(){$("#errormsg").remove();},3000);
+					}
+				})
+			})
+		})
+</script>
+<!-- 滚动加载 -->
+<script type="text/javascript">
+
+	$(function(){
+		var scrollstatus = false;
+		var totalPages = $("#recordslist").attr('totalPages');
+		var nowpage = 1;
+		function ajax_request(nowpage){
+			var html = '';
+			var recordslist = $("#recordslist");//放数据的容器
+			$.post("__MODULE__/Order/paying/p/"+nowpage,function(data){
+				if(data.error == 0){
+					for(var i in data.content){
+						html += "<div class='ord_main'><p>订单编号："+data.content[i].orderno+"</p><dl><a href='__MODULE__/Order/orderinfo/orderid/"+data.content[i].orderid+"' style='color:#333'><dd><img src='"+data.content[i].logo+"' alt=''/></dd><dt>下单时间："+data.content[i].inputtime+"<br/>"+data.content[i].goods_name+"<br />"+data.content[i].spec+"<span>共"+data.content[i].number+"件商品<br><i style='color: #DD0045'>￥"+data.content[i].price+"</i></span></dt><div style='clear: both'></div></a></dl><h2><a href='__MODULE__/Order/delorder/orderid/"+data.content[i].orderid+"'><input class='xj_cxdd' type='button' value='取消订单'/></a><a class='checkout' id='checkout' onclick='return false' href='__MODULE__/Order/checkscore/type/orderpay/id/"+data.content[i].orderid+"'><input class='xj_ljzf' type='button' value='立即付款'/></a></h2></div>";
+					}
+				}
+				$("#recordslist").on('click','#checkout',function(){
+					$.get($(this).attr("href"),function(data){
+						if(data.error == 0){
+							location.href="__MODULE__"+data.url;
+						}
+						if(data.error == 1){
+							$("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;padding-left:0.5rem;padding-right:0.5rem;top:12rem;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'积分不足请先充值'+"</div>");
+
+							$("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(2000);setTimeout(function(){$("#errormsg").remove();},3000);
+						}
+					})
+				});
+				recordslist.append(html);
+				$("#loading").css("display",'none');
+				scrollstatus = false;
+			});
+		}
+		$(window).scroll(function () {
+			var scrollTop = $(this).scrollTop();
+			var scrollHeight = $(document).height();
+			var windowHeight = $(this).height();
+			if (scrollTop + windowHeight == scrollHeight && scrollstatus == false) {
+			  scrollstatus = true;
+			  nowpage++;
+			  if(nowpage <= totalPages){
+				$("#loading").css("display",'block');
+				setTimeout(function(){ajax_request(nowpage)},2000);
+			  }
+			}
+		});
+	 });
+</script>

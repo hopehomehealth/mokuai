@@ -1,0 +1,164 @@
+        <div class="main">
+            <ul class="orderNav borBot">    
+                <li class="cur">
+                    <span>待评估</span>
+                </li>
+                <li>
+                    <span>评估中</span>
+                </li>
+                <li>
+                    <span>已评估</span>
+                </li>
+            </ul>
+            
+         <div>
+                <div class="orderlist cur"> 
+                    <div class="wddd">
+                  <ul class="wmc_con">
+                  <foreach name="orderList" item="info">
+                    <empty name="info.pingctime">
+                    <li>   
+                    <p class="wmc_tb wmc_bj"></p>
+                    <div class="wmc_list">
+                    <p class="wmc_tp"><if condition="$info.photo eq ''"><img src="{$Think.const.MBIMG_URL}/pgtu.jpg"><else /><img src="{$info.photo}"></if></p>
+                    <p class="wmc_wz">{$info.username}<br>联系电话：{$info.iphone}<br>联系地址：{$info.area}</p>
+                    <p class="jxs_hs gray">{$info.inputtime|date="Y-m-d",###}</p>
+                    <p class="wmc_an doAssess">去评估</p><input type="hidden" class="orderid" name="orderid" value="{$info.orderid}">
+                    </div>
+                    </li>
+                    </empty>
+                  </foreach>
+                <!-- <li>   
+                  <p class="wmc_tb wmc_bj1"></p>
+                  <div class="wmc_list">
+                  <p class="wmc_tp"><img src="{$Think.const.MBIMG_URL}/tx.jpg"></p>
+                  <p class="wmc_wz">孙女士<br>联系电话：13552899898<br>联系地址：北京市海淀区中关村</p>
+                  <p class="wmc_an">去评估</p>
+                  </div>
+                 </li>    -->
+      
+                  </ul>
+                  </div>
+                </div>
+                <div class="orderlist"> 
+                   <div class="wddd">
+                  <ul class="wmc_con">
+                  <foreach name="orderList" item="info">
+                    <if condition="$info.pingctime AND ($info.pingwtime eq null)">
+                    <li>   
+                    <p class="wmc_tb wmc_bj"></p>
+                    <div class="wmc_list">
+                    <p class="wmc_tp"><if condition="$info.photo eq ''"><img src="{$Think.const.MBIMG_URL}/pgtu.jpg"><else /><img src="{$info.photo}"></if></p>
+                    <p class="wmc_wz">{$info.username}<br>联系电话：{$info.iphone}<br>联系地址：{$info.area}</p>
+                    <p class="jxs_hs gray">{$info.inputtime|date="Y-m-d",###}</p>
+                    </div>
+                      <p class="ypg_con borTop borBot">
+                   <span>患者自述：</span>{$info.casexl|default="脊柱康复（胸、腰）针对椎间盘突出、腰肌劳损、坐骨神经损伤等
+  引起的腰背部腿部疼痛不适..."}
+                    </p>
+                    <div class="jxz_con">
+                  
+                    <form action="__MODULE__/Assess/submitReport" method="post">
+  <textarea name="evaluate" placeholder="输入评估内容..."></textarea>
+  <input type="hidden" name="odrid" value="{$info.orderid}">
+  <span class="jxz_an"><a href="javascript:void(0);" class="subAssess">提&nbsp;交</a></span>
+
+                    </form>
+                    </div>
+                   </li>
+                  </if>
+                  </foreach>
+                  <!-- <li>   
+                  <p class="wmc_tb wmc_bj1"></p>
+                  <div class="wmc_list">
+                  <p class="wmc_tp"><img src="{$Think.const.MBIMG_URL}/tx.jpg"></p>
+                  <p class="wmc_wz">孙女士<br>联系电话：13552899898<br>联系地址：北京市海淀区中关村</p>
+                  </div>
+                    <p class="ypg_con borTop borBot">
+                                   <span>患者自述：</span>脊柱康复（胸、腰）针对椎间盘突出、腰肌劳损、坐骨神经损伤等
+                  引起的腰背部腿部疼痛不适...
+                  </p>
+                  <div class="jxz_con">
+                  <form action="" method="get">
+                  <textarea name="username" placeholder="输入评估内容..."></textarea>
+                  <span class="jxz_an"><a href="">提&nbsp;交</a></span>
+                  </form>
+                  </div>
+                                   </li> -->
+                  </ul>
+                  </div>
+                </div>
+                <div class="orderlist"> 
+                   <div class="wddd">
+                  <ul class="wmc_con">
+                  <foreach name="orderList" item="info">
+                    <notempty name="info.pingwtime">
+                    <li>   
+                    <p class="wmc_tb wmc_bj"></p>
+                    <div class="wmc_list">
+                    <p class="wmc_tp"><if condition="$info.photo eq ''"><img src="{$Think.const.MBIMG_URL}/pgtu.jpg"><else /><img src="{$info.photo}"></if></p>
+                    <p class="wmc_wz">{$info.username}<br>联系电话：{$info.iphone}<br>联系地址：{$info.area}</p>
+                    <p class="jxs_hs gray">{$info.inputtime|date="Y-m-d",###}</p>
+                    </div>
+                    <p class="ypg_con borTop">
+                   <span>患者自述：</span>{$info.casexl|default="脊柱康复（胸、腰）针对椎间盘突出、腰肌劳损、坐骨神经损伤等
+  引起的腰背部腿部疼痛不适..."}
+                    </p>
+                    <p class="ypg_con wmc_bj2"><span>评估结果：</span>{$info.evaluate}</p>
+                   </li>
+                   </notempty>
+                  </foreach>
+                  <!-- <li>   
+                  <p class="wmc_tb wmc_bj1"></p>
+                  <div class="wmc_list">
+                  <p class="wmc_tp"><img src="{$Think.const.MBIMG_URL}/tx.jpg"></p>
+                  <p class="wmc_wz">孙女士<br>联系电话：13552899898<br>联系地址：北京市海淀区中关村</p>
+                  </div>
+                   <p class="ypg_con borTop">
+                                   <span>患者自述：</span>脊柱康复（胸、腰）针对椎间盘突出、腰肌劳损、坐骨神经损伤等
+                  引起的腰背部腿部疼痛不适...
+                  </p>
+                  <p class="ypg_con wmc_bj2"><span>评估结果：</span>脊柱康复（胸、腰）针对椎间盘突出、腰肌劳损、坐骨
+                  神经损伤等引起的腰背部腿部疼痛不适...</p>
+                                   </li> -->
+                  </ul>
+                  </div>
+                </div>
+            </div>       
+                
+        
+        </div>
+    </div>
+    <script type="text/javascript" src="{$Think.const.MBJS_URL}jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="{$Think.const.MBJS_URL}base.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $(".orderNav li").click(function(){
+                $(this).addClass("cur").siblings().removeClass("cur");
+                $(".orderlist").eq($(this).index()).addClass("cur").siblings().removeClass("cur");
+            })
+            $(".doAssess").click(function(){
+                $.post("__MODULE__/Assess/doAssess",{"step":"doAssess","orderid":$(this).siblings('.orderid').val()},function(data){
+                      if(data.error == 1){
+                      }else{
+                          $(".orderNav li:nth-child(2)").addClass('cur').siblings().removeClass('cur');
+                          $(".orderlist").eq(1).addClass("cur").siblings().removeClass('cur');
+                          $(".orderlist").eq(1).html(data.content);
+                      }
+                },"json")
+            })
+            $(".subAssess").click(function(){
+              //alert(111);
+                //alert($(this).parent().parent().serialize());
+                $.post("__MODULE__/Assess/submitReport",$(this).parent().parent().serialize(),function(data){
+                    if(data.error == 1){
+                    }else{
+                        $(".orderNav li:nth-child(3)").addClass('cur').siblings().removeClass('cur');
+                        $(".orderlist").eq(2).addClass("cur").siblings().removeClass('cur');
+                        $(".orderlist").eq(2).html(data.content);
+                        $(".orderlist").eq(1).html('');
+                    }
+                })
+            })
+        })
+    </script>

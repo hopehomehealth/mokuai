@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>农缘天下商家后台登录</title>
+    <link rel="stylesheet" href="{$Think.const.SCSS_URL}reset.css">
+    <link rel="stylesheet" href="{$Think.const.SCSS_URL}dl-dl.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #banner_list{
+            width:100%;
+            height:400px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+        #banner_list .box a{
+            display: block;
+            width:100%;
+            height:400px;
+        }
+        #box img{
+            width:100%;
+            height:400px;
+        }
+    </style>
+</head>
+<body>
+<div class="con">
+    <div class="nav">
+        <ul>
+
+            <li class="logo2"><img src="{$Think.const.SIMG_URL}logo.jpg" style="width: 51px;height: 51px;"></li>
+        </ul>
+    </div>
+    <div id="banner">
+        <div id="banner_list">
+            <div class="box">
+                <a href="#" target="_blank"><img src="{$Think.const.SIMG_URL}banner1.jpg" title="" alt="" style="width:100%;height: 100%;" /></a>
+                <a href="#" target="_blank"><img src="{$Think.const.SIMG_URL}banner2.jpg" title="" alt="" style="width:100%;height: 100%;"/></a>
+                <a href="#" target="_blank"><img src="{$Think.const.SIMG_URL}banner3.jpg" title="" alt="" style="width:100%;height: 100%;"/></a>
+            </div>
+        </div>
+    </div>
+    <script language="JavaScript" type="text/javascript" src="{$Think.const.SJS_URL}FormValid.js"></script>
+    <script type="text/javascript">
+        function customFuntion(inp,frms) {
+
+            if (inp.value || frms['sj'].value) {
+                return true;
+            }
+            return false;
+        }
+    </script>
+
+    <form name="login" action="__MODULE__/User/login" method="post" onsubmit="return validator(this)">
+        <div class="dl">
+            <h2>
+                商家后台登录
+            </h2>
+            <p>手机号：
+                <input name="reg_phone" id="admin_name" class="kuang w150" type="text" valid='required' errmsg="手机号必填"/>
+            </p>
+            <p>密&nbsp&nbsp&nbsp码：
+                <input name="password" id="admin_pwd" class="kuang w150" type="password" valid='required' errmsg="密码必填"/>
+            </p>
+
+            <input id="submit" name="submit" value="登录" class="btn btn-primary btn-lg" onclick="login()" type="submit"/>
+
+        </div>
+    </form>
+    <div class="footer">
+        <ul>
+            <li>农缘天下后台管理平台　|</li>
+            <li>北京市石景山区实兴大街30号院</li>
+        </ul>
+        <br/>
+        <p>Copyright @2015 www.xnytx168.com All Right Reserved.　版权所有 京ICP备16032945号</p>
+    </div>
+
+
+</div>
+
+<script src="{$Think.const.SJS_URL}jquery-2.1.3.min.js"></script>
+<script type="text/javascript">
+    var w=400;
+    var s=0;
+    function autoPlay(){
+        s++;
+        if(s>2){
+            s=0
+        }
+
+        $(".box").animate({"marginTop":-w*s+"px"},1000);
+        ;
+    }
+    setInterval(autoPlay,3000)
+</script>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+<div class="main">
+<div class="banner_2">
+	<a href="#"><span>设置</span>管理</a>
+	<div><a href="__MODULE__/Blog/myzone">博客主页</a> | <a href="__MODULE__/Blog/createart">发表博文</a></div>
+</div>
+<aside>
+	<span class="fr clo"><img src="{$Think.const.MIMG_URL}ion_6.png" alt=""></span>
+	<p>个人信息</p>
+	<div class="nametou"><img src="{$bloginfo.userhead}" alt=""><p>{$bloginfo.username}</p></div>
+	<ul class="geren">
+		<li>今日访问: <span>{$bloginfo.today}</span></li>
+        <li>总访问量: <span>{$bloginfo.counts}</span></li>
+        <li>开博时间: <span>{$bloginfo.ctime|date='Y-m-d',###}</span></li>
+        <li>博客排名: <span>1023</span></li>
+	</ul>
+</aside>
+<div class="banner_3">
+	<img src="{$Think.const.MIMG_URL}banner.jpg" alt=""/>
+	<dl>
+		<dt></dt>
+        <dd>{$bloginfo.blog_name}</dd>
+        <dd>&nbsp;</dd>
+        <dd>{$bloginfo.blog_desc}</dd>
+	</dl>
+</div>
+
+<div class="tab">
+<p class="xj-hdts fl pl0-5 pt0-5"><img src="{$Think.const.MIMG_URL}qianxleft1.png"></p> <p class="xj-hdts fr pr0-5 pt0-5"><img src="{$Think.const.MIMG_URL}qianxr1.png"></p>
+	<div id="menu">
+		<ul class="slide">
+			<li><a href="__MODULE__/Blog/blogset">博客设置</a></li>
+			<li><a href="__MODULE__/Blog/myarticles">博文管理</a></li>
+			<li><a href="__MODULE__/Blog/mycomments">评论管理</a></li>
+			<li><a href="__MODULE__/Blog/myclass">分类管理</a></li>
+			<li class="current"><a href="__MODULE__/Blog/mycollect">收藏博文</a></li>
+			<li><a href="__MODULE__/User/ucenter">个人中心</a></li>
+			<li></li>
+		</ul>
+	</div>
+	<div class="settmain collect show" id="recordslist">
+		<volist name="articlelist" id="artinfo">
+		  <dl class="for-list fl">
+			<dt><a href="__MODULE__/Blog/myzone/user_id/{$artinfo.user_id}"><img src="{$artinfo.userhead}"></a></dt>
+			<dd style="width:66%">
+			  <p class="w100" style="padding-bottom:1.5rem"><a style="float:left;overflow:hidden;width:84%;text-overflow: ellipsis;" href="__MODULE__/Blog/detail/art_id/{$artinfo.art_id}">{$artinfo.title}</a><a class='fr cancelcoll' style='height:3rem;width:2.5rem;margin-top:0.3rem;background:url(/Public/Home/images/images_165.jpg) no-repeat top right' href="__MODULE__/Blog/cancelcoll/art_id/{$artinfo.art_id}"></a></p>
+			  <p class="w100 fl"><span class="fl w35 t-w"><a href="__MODULE__/Blog/myzone/user_id/{$artinfo.user_id}" style="color:#004084">{$artinfo.username}</a></span><span class="fl pl1 fs1">{$artinfo.add_time}</span><span class="fr for-list-tb"></span> </p>
+			</dd>
+		  </dl>
+		</volist>
+	</div>
+	<div id="loading" style="display:none;float:left;width:100%;text-align:center;font-size:1.5rem;color:#999;background:#fff;line-height:2rem;height:2rem;margin-bottom:0.5rem;margin-top:0.5rem">没有更多数据</div>
+</div>
+</div>
+<script src="{$Think.const.MJS_URL}jquery-2.1.1.min.js"></script>
+<script src="{$Think.const.MJS_URL}slidemenu.js"></script>
+<script type="text/javascript" src="{$Think.const.MJS_URL}msgbox.js"></script>
+<script type="text/javascript" src="{$Think.const.MJS_URL}myblog.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$(".banner_3").click(function () {
+		    if($("aside").css("display")=="none"){
+		        $("aside").slideDown(300);
+		    }else{
+		        $("aside").slideUp(300);
+		    }
+		});
+    });
+</script>
+<!-- 滚动加载 -->
+<script type="text/javascript">
+  $(function(){
+    var scrollstatus = false;
+    var haveend = false;
+    var nowpage = 1;
+    function ajax_request(nowpage){
+      var html = '';
+      var recordslist = $("#recordslist");//放数据的容器
+      $.get("__MODULE__/Blog/mycollect",{'p':nowpage},function(data){
+        if(data.error == 0){
+		for(var i in data.content){
+            html += "<dl class='for-list fl'><dt><a href='__MODULE__/Blog/myzone/user_id/"+data.content[i].user_id+"'><img src='"+data.content[i].userhead+"'></a></dt><dd style='width:66%'><p class='w100' style='padding-bottom:1.5rem'><a style='float:left;overflow:hidden;width:84%;text-overflow: ellipsis;' href='__MODULE__/Blog/detail/art_id/"+data.content[i].art_id+"'>"+data.content[i].title+"</a><a class='fr cancelcoll' style='height:3rem;width:2.5rem;margin-top:0.3rem;background:url(/Public/Home/images/images_165.jpg) no-repeat top right' href='__MODULE__/Blog/cancelcoll/art_id/"+data.content[i].art_id+"'></a></p><p class='w100 fl'><span class='fl w35 t-w'><a href='__MODULE__/Blog/myzone/user_id/"+data.content[i].user_id+"' style='color:#004084'>"+data.content[i].username+"</a></span><span class='fl pl1 fs1'>"+data.content[i].add_time+"</span><span class='fr for-list-tb'></span> </p></dd></dl>";
+          }
+        }else{
+          if(!haveend){
+            $("#loading").fadeIn(1000);$("#loading").fadeOut(1000);
+          }
+
+          haveend = true;
+        }
+        recordslist.append(html);
+        //$("#loading").css("display",'none');
+        scrollstatus = false;
+		//取消收藏的博文
+		$("#recordslist").on('click','.cancelcoll',function(){
+			var url = $(this).attr('href');
+			var thisobj = $(this).parents('dl');
+			$.get(url,function(data){
+				if(data == 'success'){
+					thisobj.remove();
+				}
+			})
+			return false;
+		})
+      },false);
+    }
+    $(window).scroll(function () {
+      var scrollTop = $(this).scrollTop();
+      var scrollHeight = $(document).height();
+      var windowHeight = $(this).height();
+      if (scrollTop + windowHeight == scrollHeight && scrollstatus == false) {
+        scrollstatus = true;
+        nowpage++;
+        if(!haveend){
+          ajax_request(nowpage);
+        }
+      }
+    });
+	//取消收藏帖子
+	$("#recordslist").on('click','.cancelcoll',function(){
+		var url = $(this).attr('href');
+		var thisobj = $(this).parents('dl');
+		$.get(url,function(data){
+			if(data == 'success'){
+				thisobj.remove();
+			}
+		})
+		return false;
+	})
+   });
+</script>
+

@@ -1,0 +1,125 @@
+
+<div class="main">
+    <section>
+        <div class="banner af1">
+            <ul class="slidebox">
+<foreach name="bannerinfo" item="v">
+    <li><a href="{$v.url}"><img src="{$Think.const.SITE_URL}{$v.pic}" /></a></li>
+</foreach>
+
+
+            </ul>
+        </div>
+        <script type="text/javascript">
+            $(function(){
+                //affect:4
+                $(".af1").slide({
+                    affect:4,
+                    time:3000,
+                    speed:400,
+                });
+            })
+        </script>
+    </section>
+    <section>
+        <ul class="navbj navBox navOne fl">
+            <foreach name="attr_duo_info" item="v">
+                <!--当前属性条件不在选取的列表中就显示-->
+                <notin name='v.attr_id' value='$select_attr_ids'>
+                    <dl>
+                        <dt>{$v.attr_name}：</dt>
+                        <dd class="cur"><a href="">不限</a></dd>
+                        <foreach name='v.attrval_arr' item='vv'>
+                            <dd><a href="__SELF__/cdtattrid_{$v.attr_id}/{$vv}">{$vv}</a></dd>
+                        </foreach>
+                    </dl>
+                </notin>
+            </foreach>
+            <li> <a href="{:U('Haoche/showlist')}"> <img src="{$Think.const.HIMG_URL}images_12.jpg">
+                <p>豪车俱乐部</p>
+            </a> </li>
+            <li> <a href="{:U('Caiclub/index')}"> <img src="{$Think.const.HIMG_URL}images_14.jpg">
+                <p>财商俱乐部</p>
+            </a> </li>
+            <li> <a href="{:U('Union/index')}"> <img src="{$Think.const.HIMG_URL}images_16.jpg">
+                <p><span class="xug">0元购</span>商家联盟</p>
+            </a> </li>
+            <li> <a href="{:U('Goods/index')}"> <img src="{$Think.const.HIMG_URL}images_27.jpg">
+                <p>乐购商城</p>
+            </a> </li>
+            <li id="zuche"> <a 
+            href="{:U('Zuche/showlist')}"> <img src="{$Think.const.HIMG_URL}images_25.jpg">
+                <p>我要租车</p>
+            </a> </li>
+            <li> <a href="{:U('House/showlist')}"> <img src="{$Think.const.HIMG_URL}images_24.jpg">
+                <p>房天下</p>
+            </a> </li>
+
+            <li> <a href=""> <img src="{$Think.const.HIMG_URL}images_26.jpg">
+                <p>互动视频</p>
+            </a> </li>
+             <li> <a href="{:U('Cishan/index')}"> <img src="{$Think.const.HIMG_URL}images_18.jpg">
+                <p>慈善基金</p>
+            </a> </li>
+           
+        </ul>
+    </section>
+    <script type="text/javascript">
+    	$('#zuche').click(function(){
+    		alert('Sorry, 服务正在升级中......');
+    		return;
+    	})
+    </script>
+    <section>
+        <div class="navbj fl" id="pb0">
+            <div class="news">
+                <a href="{:U('News/showlist')}"> <p class="news_tit fl">快讯：</p></a>
+                <div class="apple">
+                    <ul>
+                        <foreach name="newsinfo" item="v">
+                            <li><a href="{:U('News/detail',array('news_id'=>$v['news_id']))}">{$v.title}</a></li>
+                        </foreach>
+
+                    </ul>
+                </div>
+                <script type="text/javascript">
+                    function autoScroll(obj){
+                        $(obj).find("ul").animate({
+                            marginTop : "-2.000rem"
+                        },500,function(){
+                            $(this).css({marginTop : "0px"}).find("li:first").appendTo(this);
+                        })
+                    }
+                    $(function(){
+                        setInterval('autoScroll(".apple")',2000);
+                    })
+                </script>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="navbj fl">
+            <p class="car_tit"><span class="car_tit_gd fr"><a href="{:U('Haoche/showlist')}">更多</a></span><span class="car_tit_t">豪车俱乐部</span></p>
+
+            <foreach name="haocheinfo" item="v">
+                <dl class="car_pic borBot fl">
+                    <dt><a href="{:U('Haoche/detail',array('goods_id'=>$v['goods_id']))}"><img src="{$Think.const.SITE_URL}{$v.logo}"></a></dt>
+                    <dd>
+                        <a href="{:U('Haoche/detail',array('goods_id'=>$v['goods_id']))}">
+                        <p class="car_z crimson fwb">￥{$v['price']/10000}万<span class="gray fr pr1">{$v.cat_name}</span></p>
+                        <p class="car_xzsz">
+                             {$v.goods_name}
+                           </p></a>
+                        <p class="car_f fl crimson"><span class="car_yj">首付</span>&nbsp;{$v['price']*$setinfo[0]['pct_supvip']/10000/100}万</p>
+                        <p class="car_f fl bule"><span class="car_yj1">返赠</span>&nbsp;{$v['price']*$setinfo[0]['pct_supvip']*$setinfo[0]['backme']/10000/100/100}万积分</p>
+                    </dd>
+                </dl>
+            </foreach>
+
+
+
+
+        </div>
+    </section>
+</div>

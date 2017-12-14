@@ -1,0 +1,38 @@
+    <link href="{$Think.const.HCSS_URL}personal-style.css" type="text/css" rel="stylesheet" />
+    <section style="position:relative">
+      <div class="acc">
+         <foreach name="account" item="info">
+         <div class="acc_main">
+                 <h2>账号类型：　{$info.count_type}</h2>
+                 <if condition="$info.count_type eq '支付宝'">
+                    <p style="line-height:2rem">支付宝账号：<span>&nbsp;{$info.count_no}</span></p>
+                 </if>
+                 <if condition="$info.count_type eq '银行卡'">
+                    <p style="line-height:2rem">银行名：<span>　&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$info.bankname}</span></p>
+                    <p style="line-height:2rem">银行卡号：<span>&nbsp;&nbsp;&nbsp;&nbsp;{$info.card_no}</span></p>
+                 </if>
+                 <p style="line-height:2rem">预留手机号：<span>&nbsp;{$info.bindphone}</span></p>
+                 <a class="delaccount" countid="{$info.count_id}" href="javascript:void(0)"><img style="border-radius:50%;background-color:#ccc;opacity:0.5" src="{$Think.const.HIMG_URL}del.png" alt=""/></a>
+         </div>
+         </foreach>
+          <h5><a href="__MODULE__/Exchange/addaccount"><input style="background: #DD0045;font-size:1.800rem;height:3.500rem;font-family: '黑体';color: #ffffff;border-radius:0.4rem" type="button" value="添加账户"/></a></h5>
+      </div>
+    </section>
+    <script type="text/javascript">
+        $(function(){
+            $(".acc_main .delaccount").click(function(){
+                var countid = $(this).attr("countid");
+                var acc_main = $(this).parent('.acc_main');
+                if(confirm('确定要删除该账户吗')){
+                    $.post("__MODULE__/Exchange/delaccount",{"count_id":countid},function(data){
+                        if(data.error == 0){
+                            acc_main.remove();
+                            $("section").append("<div id='errormsg' style='display:none;position:absolute;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1rem;opacity:0.7;background:#666'>"+data.content+"</div>");
+
+                            $("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);$("#bsubmit").attr('disabled',true);setTimeout(function(){$("#errormsg").remove();$("#bsubmit").attr('disabled',false);},2000);
+                        }
+                    })
+                }
+            })
+        })
+    </script>

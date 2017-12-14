@@ -1,0 +1,255 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Administrator
+ * Date: 2016/6/13
+ * Time: 11:37
+ */
+namespace Home\Controller;
+use Think\Controller;
+class SuserController extends Controller {
+    function logout(){
+        unset($_SESSION['userInfo']);
+        unset($_SESSION['flag']);
+    }
+    function optable(){
+        echo substr_replace('1218317722781','',-11);
+    }
+    //会员注册
+    function register(){
+        $daohang = array(
+            'second'=>'注　册',
+        );
+        $setting_model = M('setting');
+        $set = $setting_model->find();
+        $user_model = M('suser');
+        $detail_model = M('userdetail');
+        $regfee_model = M('regfee');
+        if($_POST){
+            //验证注册内容是否为空
+            $errorno = 1;
+            foreach($_POST as $value){
+                if(empty($value)){
+                    $this->ajaxReturn(array(
+                        'error' => $errorno
+                    ));
+                }
+                $errorno++;
+            }
+            //验证两次密码是否一致
+            //echo $_POST['password'];echo $_POST['repassword'];exit;
+            if($_POST['password'] != $_POST['repassword']){
+                $this->ajaxReturn(array(
+                        'error' => $errorno
+                    ));
+            }
+            //验证手机号是否合法
+            $myreg = "/^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d{8}$/";
+            if(!preg_match($myreg,trim($_POST['reg_phone']))){
+                $this->ajaxReturn(array(
+                        'error' => $errorno + 1
+                    ));
+            }else{
+                $errorno = $errorno + 1;
+            }
+            $_POST['reg_phone'] = trim($_POST['reg_phone']);
+            //验证手机号是否已注册
+            $userinfo = $user_model -> where("reg_phone = {$_POST['reg_phone']}")->select();
+            //var_dump($_POST);var_dump($_POST);
+            if($userinfo && $userinfo[0]['is_vipfee'] == '1'){
+                $this->ajaxReturn(array(
+                        'error' => $errorno + 1,
+                    ));
+            }else{
+                $errorno = $errorno + 1;
+            }
+            //验证通过则存储注册信息
+
+
+            //判断邀请码是否存在并获取该邀请码的会员id
+            $_POST['invitecode'] = trim($_POST['invitecode']);
+            $pinfo = $user_model -> where("invitecode = '{$_POST['invitecode']}'")->select();
+            if($pinfo){
+                if(!isset($_POST['pid'])){
+                    $_POST['pid'] = $pinfo[0]['userid'];
+                    //商家ID（sid）
+                    if($pinfo[0]['is_merch'] == '1'){
+                        $_POST['sid'] = $pinfo[0]['userid'];
+                    }else{
+                        $_POST['sid'] = $pinfo[0]['sid'];  
+                    }
+                }
+                $errorno = $errorno + 1;
+            }else{
+                $this->ajaxReturn(array(
+                        'error' => $errorno + 1,
+                    ));
+            }
+
+			//邀请者手机号
+            $_POST['invitecode'] = $pinfo[0]['reg_phone'];
+            /*//生成会员唯一编号
+            $_POST['id_sn'] = '68'.substr("{$_POST['reg_phone']}",5,6);*/
+            
+            
+            $_POST['password'] = md5(trim($_POST['password']));
+			$_POST['userhead'] = $_SESSION['weixin']['headimgurl'];
+            if($userinfo && $userinfo[0]['is_vipfee'] == '0'){
+                $_POST['add_time'] = time();
+                if($user_model ->create()){
+                    $user_model->where("userid = {$userinfo[0]['userid']}")->save($_POST);
+                }
+                $this->ajaxReturn(array(
+                    'error' => 0,
+                    'content' => $userinfo[0]['userid'].trim($_POST['reg_phone'])
+                ));
+            }else{
+                $_POST['add_time'] = time();
+                if($user_model ->create()){
+                    $lastId = $user_model ->add();
+                    if($lastId){
+                        $this->ajaxReturn(array(
+                            'error' => 0,
+                            'content' => $lastId.trim($_POST['reg_phone'])
+                        ));
+                    }
+                }
+            } 
+        }
+        $this->assign('daohang',$daohang);
+        $this ->display();
+    }
+
+
+    //用户登陆
+    function login(){
+        $daohang = array(
+            'second'=>'登　录',
+        );
+        $user_model = M('suser');
+        if($_POST){
+
+            //验证登陆内容是否为空
+            $errorno = 2;
+            foreach($_POST as $value){
+                if(empty($value)){
+                    $this->ajaxReturn(array(
+                        'error' => $errorno
+                    ));
+                }
+                $errorno++;
+            }
+            //验证手机号是否合法
+            $myreg = "/^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d{8}$/";
+            if(!preg_match($myreg,trim($_POST['reg_phone']))){
+                $this->ajaxReturn(array(
+                        'error' => $errorno
+                    ));
+            }
+
+            //判断用户名密码
+            $map['reg_phone'] = trim($_POST['reg_phone']);
+            $map['password'] = md5(trim($_POST['password']));
+            $userInfo = $user_model -> where("reg_phone = {$map['reg_phone']}") ->select();
+            if(!$userInfo){
+                $this->ajaxReturn(array(
+                        'error' => $errorno + 1
+                    ));
+            }else{
+                $errorno = $errorno + 1;
+                if($map['password'] != $userInfo[0]['password']){
+                    $this->ajaxReturn(array(
+                        'error' => $errorno + 1,
+                    ));
+                }else{
+                    //登陆成功将信息存入session
+                    $_SESSION['userInfo']=$userInfo[0];
+                    //现在做一个唯一的标识号，用来判断用户是否登陆
+                    $_SESSION['flag']=md5($userInfo[0]['userid']);
+
+                    $this->ajaxReturn(array(
+                        'error' => 0,
+                    ));
+                }
+            }
+        }
+        $this->assign('daohang',$daohang);
+        $this ->display();
+    }
+    
+    //我的二维码
+    function myQRcode(){
+        $daohang = array(
+            'second'=>'我要结缘',
+        );
+        $userid = $_SESSION['userInfo']['userid'];
+        $user_model = M('user');
+        $userinfo = $user_model->find($userid);
+        if(empty($userinfo['qrcode'])){
+            $data = SITE_URL."index.php/Home/User/register/userid/{$userid}";
+            $filename = time().substr(md5(rand(0,999)),0,8).'.png';
+            $code = $this->qrcode($data,$filename);
+            if($code){
+                $user_model->where("userid = {$userid}")->setField('qrcode',$code);
+                $userinfo['qrcode'] = $code;
+            }
+        }
+
+        $this->assign('userinfo',$userinfo);
+        $this->assign('daohang',$daohang);
+        $this->display();
+    }
+    
+    private function qrcode($data,$filename,$picPath=false,$logo=false,$size='4',$level='L',$padding=2,$saveandprint=false){
+         vendor("phpqrcode.phpqrcode");//引入工具包
+         $object = new \QRcode();
+         // 下面注释了把二维码图片保存到本地的代码,如果要保存图片,用$fileName替换第二个参数false
+
+          $path = "./Public/Upl/user/qrcode"; //图片输出路径
+          //使用 “$path = $picPath?$picPath:SITE_PATH."\\Uploads\\Picture\\QRcode"; //图片输出路径” 的方式是有问题的。
+          //如果路径不存在可以创建 mkdir($path);
+         //在二维码上面添加LOGO
+
+        if ($filename==false){
+             //$filename=tempnam('','').'.png';//生成临时文件
+            die('参数错误');
+         }else {
+             //生成二维码,保存到文件
+             $filename = $path . '/' . $filename; //合成路径
+         }
+         $object::png($data, $filename, $level, $size, $padding);
+         $QR = imagecreatefromstring(file_get_contents($filename));
+         $logo = imagecreatefromstring(file_get_contents($logo));
+         $QR_width = imagesx($QR);
+         $QR_height = imagesy($QR);
+         $logo_width = imagesx($logo);
+         $logo_height = imagesy($logo);
+         $logo_qr_width = $QR_width / 5;
+         $scale = $logo_width / $logo_qr_width;
+         $logo_qr_height = $logo_height / $scale;
+         $from_width = ($QR_width - $logo_qr_width) / 2;
+         imagecopyresampled($QR, $logo, $from_width, $from_width, 0, 0, $logo_qr_width, $logo_qr_height, $logo_width, $logo_height);
+         if ($filename === false) {
+             Header("Content-type: image/png");
+             imagepng($QR);
+         } else {
+             if ($saveandprint === true) {
+                 imagepng($QR, $filename);
+                 header("Content-type: image/png");//输出到浏览器
+                 imagepng($QR);
+             } else {
+                imagepng($QR, $filename);
+             }
+        }
+        return str_replace('./','/',$filename); //输出时加上前面的/
+  }
+  
+  function upload(){
+        $upload=new \Think\Upload();
+        $upload->exts=array("jpg","gif","png","jpeg");
+        $upload->rootPath="./Public/";
+        $upload->savePath="Upl/payscreen/";
+        $info=$upload->uploadOne($_FILES['picscreen']);
+        return $info['savepath'].$info['savename'];
+  }
+}

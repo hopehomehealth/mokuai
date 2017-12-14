@@ -1,0 +1,71 @@
+
+
+
+<div class="main-content">
+    <div class="box-title margin_bot_20">
+        <div class="span10">
+            <h3><i class="icon-magic"></i>信用卡编辑</h3>
+        </div>
+    </div>
+
+    <div class="page-content">
+        <div class="row">
+            <div class="page-content box">
+                <form action="__SELF__" method="post" enctype='multipart/form-data' class="form-horizontal">
+                    <input type='hidden' name='cai_id' value='{$info.cai_id}' />
+                    <div class="form-group">
+                        <label class="control-label">持卡人 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" class="input-large" name="username" value="{$info.username}">
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">卡号 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" class="input-large" name="num" value="{$info.num}">
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">联系方式 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" class="input-large" name="phone" value="{$info.phone}">
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+					<div class="form-group">
+                        <label class="control-label">办卡成功 : </label>
+                        <div class="controls pull-left">
+							<label class="control-label" style="width:90px;margin-left:-18px">
+							<input type="radio" class="input-radio" name="status" value="0" {$info['status']?"":"checked"}>否
+							</label>
+							<label class="control-label" style="width:90px;margin-left:-18px">
+                            <input type="radio" class="input-radio" name="status" value="1" {$info['status']?"checked":""}>是
+							</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">有效期 : </label>
+                        <div class="controls pull-left">
+                            <input type="text"name="longer" style="width: 25px;" value="{$info.longer}">&nbsp;年
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label"> </label>
+                        <div class="controls pull-left">
+                            <button type="submit" class="btn btn-sm btn-primary">保存</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--/.box-->
+    </div><!-- /.page-content -->
+</div><!-- /.main-content -->
+
+
+
+

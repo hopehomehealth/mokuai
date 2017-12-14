@@ -1,0 +1,58 @@
+
+
+<div class="main-content">
+
+    <div class="page-content">
+        <div class="row">
+            <div class="page-content box">
+                <div class="box-title margin_bot_20">
+                    <div class="span10">
+                        <h3><i class="icon-magic"></i>权限添加</h3>
+                    </div>
+                </div>
+
+                <form action="__SELF__" method="post" enctype='multipart/form-data' class="form-horizontal">
+    <div class="form-group">
+        <label class="control-label">权限名 : </label>
+        <div class="controls pull-left">
+            <input type="text" class="input-large" name="auth_name">
+            <span class="help-inline red"> * </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label">权限上级 : </label>
+        <div class="controls pull-left">
+            <select name='auth_pid'>
+                <option value='0'>-请选择-</option>
+                <foreach name='authinfo' item='v'>
+                    <option value='{$v.auth_id}'>{:str_repeat('--/',$v['auth_level'])}{$v.auth_name}</option>
+                </foreach>
+            </select>
+            <span class="help-inline red"> * 添加顶级权限,此处不选; 添加子级权限, 请选择顶级权限名</span>
+        </div>
+    </div>
+
+     <div class="form-group">
+        <label class="control-label">控制器 : </label>
+        <div class="controls pull-left">
+            <input type="text" class="input-medium" name="auth_c">
+            <span class="help-inline red"> * 添加顶级权限,此处不填</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label">操作方法 : </label>
+        <div class="controls pull-left">
+            <input type="text" class="input-medium" name="auth_a">
+            <span class="help-inline red"> * 添加顶级权限,此处不填</span>
+        </div>
+    </div>
+                    <div>
+                        <label class="control-label"></label>
+                        <button id="bsubmit" type="submit"  class="btn btn-sm btn-primary">添加</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--/.box-->
+    </div><!-- /.page-content -->
+</div><!-- /.main-content -->

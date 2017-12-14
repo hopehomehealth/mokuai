@@ -1,0 +1,39 @@
+
+        <div class="main">
+        <form action="__MODULE__/Patient/yuyue" method="post" id="apoint-form">
+            <div class="pgTxt">
+                <textarea name="casexl" placeholder="描述你的病情"></textarea>
+                <div class="btn">
+                        <button type="submit" id="apointment">提 交</button>
+                </div>
+            </div>
+		</form>
+        </div>
+    <script type="text/javascript">
+        $(function(){
+            $("#apoint-form").submit(function(){
+                return false;
+            })
+            $("#apointment").click(function(){
+                if($("textarea").val() == ''){
+                    $("textarea").css('color','red');
+                    $("textarea").attr('readonly','readonly');
+                    $("textarea").val('请输入病情描述');
+                    setTimeout(function(){$("textarea").removeAttr('readonly');$("textarea").css('color','');$("textarea").val('');},1000);
+                    return false;
+                }
+                $.post("__MODULE__/Patient/yuyue",{"casexl":$("textarea").val()},function(data){
+                    if(data.error == 1){
+
+                    }else{
+                        $("#apointment").text("预约成功");
+                        setTimeout(function(){history.go(-1)},1000);
+                    }
+                },"json");
+            })
+           
+        })
+    </script>
+
+
+ 

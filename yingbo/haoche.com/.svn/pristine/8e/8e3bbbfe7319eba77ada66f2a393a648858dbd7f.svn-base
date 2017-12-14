@@ -1,0 +1,62 @@
+<script type="text/javascript" src='{$Think.const.JS_URL}jquery-2.1.3.min.js'></script>
+<script type="text/javascript" src='{$Think.const.JS_URL}uploadPreview.js'></script>
+<ul class="dj_xhk fr">
+    <p class="arrow-up fl"></p>
+    <li><a href="{:U('Union/index')}">369商家联盟</a></li>
+    <li><a href="{:U('Core/index')}">商家中心</a></li>
+</ul>
+<script type="text/javascript">
+    $(".head_back2").click(function(){
+        $(".dj_xhk").slideToggle("1000");
+    });
+</script>
+<div class="main">
+    <section>
+        <form action="__SELF__" method="post" class="form-horizontal" enctype="multipart/form-data" id="form">
+            <input type='hidden' name='seller_id' value='{$info.seller_id}' />
+            <div class="navbj fl pb0 b_n mt0">
+
+                <div class="navbj fl pb0">
+                    <dl class="bec-t fl">
+                        <dt style="width:65%;padding-left: 3rem;"><a class="bec-input fr w80 tar">
+                            <input type="file"  id="pic_zhi" name="pic_zhi">
+                            <div id="pic_div"><img style="height: 7.5rem;" id="pic_img" src="{$Think.const.HIMG_URL}xj_images_18.png"></div>  </a></dt>
+                        <script type='text/javascript'>
+                            $(function(){
+                                new uploadPreview({ UpBtn: "pic_zhi", DivShow: "pic_div", ImgShow: "pic_img" });
+                            });
+                        </script>
+                        <dd>
+                            <span class="fs1-2 gray" style="padding-left: 9.5rem;">点击上传营业执照</span></dd>
+                    </dl>
+                </div>
+               <button class="submit loginBtn" id="subaplay" type="submit">下一步</button>
+
+            </div></form>
+    </section>
+</div><script type="text/javascript">
+    $(function(){
+
+        $("#form").submit(function(){
+            var pic_zhi=$("input[name='pic_zhi']").val();
+            if($("input[name='pic_zhi']").val() == ''){
+                $("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'店主身份证不能为空'+"</div>");
+
+                $("#errormsg").fadeIn(1500);$("#errormsg").fadeOut(1500);$("#bsubmit").attr('disabled',true);setTimeout(function(){$("#errormsg").remove();location.reload()},3000);
+                return false;
+            }
+
+            $.ajax({
+                url:"__MODULE__/Core/become2",
+                data:{'pic_zhi':pic_zhi},
+                dataType:'json',
+                type:'post',
+                success:function(data){
+
+                }
+            });
+        })
+
+
+    })
+</script>

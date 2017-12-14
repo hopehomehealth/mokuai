@@ -1,0 +1,185 @@
+
+<script type="text/javascript" src='{$Think.const.JS_URL}jquery-1.7.2.min.js'></script>
+<script type="text/javascript" src='{$Think.const.JS_URL}uploadPreview.js'></script>
+<script type="text/javascript" src='{$Think.const.PLUGIN_URL}ueditor/ueditor.config.js' ></script>
+<script type="text/javascript" src='{$Think.const.PLUGIN_URL}ueditor/ueditor.all.min.js' ></script>
+<script type="text/javascript" src='{$Think.const.PLUGIN_URL}ueditor/lang/zh-cn/zh-cn.js' ></script>
+
+<div class="main-content">
+
+    <div class="page-content">
+        <div class="row">
+            <div class="page-content box">
+                <div class="box-title margin_bot_20">
+                    <div class="span10">
+                        <h3><i class="icon-magic"></i>发布文章</h3>
+                    </div>
+                </div>
+
+<form action="__SELF__" method="post" class="form-horizontal" enctype="multipart/form-data">
+
+        <div class="form-group">
+            <label class="control-label">标题 : </label>
+            <div class="controls pull-left">
+                <input type="text" class="input-large" name="title">
+                <span class="help-inline red"> * </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">作者 : </label>
+            <div class="controls pull-left">
+                <input type="text" class="input-large" name="author">
+                <span class="help-inline red"> * </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">活动日期 : </label>
+            <div class="controls pull-left">
+                <input type="date" class="input-large" name="datetime">-><input type="date" class="input-large" name="endtime">
+                <span class="help-inline red"> 活动公告必填 </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">活动地址 : </label>
+            <div class="controls pull-left">
+                <input type="text" class="input-large" name="address">
+                <span class="help-inline red"> * </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">显示顺序 : </label>
+            <div class="controls pull-left">
+                <input type="text" class="input-large" name="sort">
+                <span class="help-inline red"> * 请输入数字, 数字越大越靠前,不填默认时间倒序</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">阅读权限 : </label>
+            <div class="controls pull-left">
+                <label>
+                    <input type="radio" class="ace" name="auth" checked="checked" value="0">
+                    <span class="lbl">所有人</span>
+                </label>
+                <label>
+                    <input type="radio" class="ace" name="auth" value="1">
+                    <span class="lbl">会员</span>
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">是否显示 : </label>
+            <div class="controls pull-left">
+                <label>
+                    <input type="radio" class="ace" name="is_show" checked="checked" value="0">
+                    <span class="lbl">是</span>
+                </label>
+                <label>
+                    <input type="radio" class="ace" name="is_show" value="1">
+                    <span class="lbl">否</span>
+                </label>
+            </div>
+        </div>
+        <!-- <div class="form-group">
+            <label class="control-label">首页推荐 : </label>
+            <div class="controls pull-left">
+                <label>
+                    <input type="radio" class="ace" name="is_tui" checked="checked" value="0">
+                    <span class="lbl">否</span>
+                </label>
+                <label>
+                    <input type="radio" class="ace" name="is_tui" value="1">
+                    <span class="lbl">是</span>
+                </label>
+                <span class="help-inline red"> * 首页推荐只显示一条, 按排序显示第一条</span>
+            </div>
+        </div> -->
+        <div class="form-group">
+            <label class="control-label">展示图片 : </label>
+            <div class="controls pull-left">
+                <input type="file" class="input-large" id="pic" name="pic" >
+                <div id="pic_div"><img id='pic_img' onerror="this.src='{$Think.const.IMG_URL}imgerror.png'" width='250' height='100'></div>
+            </div>
+        </div>
+        <script type='text/javascript'>
+            $(function(){
+                new uploadPreview({ UpBtn: "pic", DivShow: "pic_div", ImgShow: "pic_img" });
+            });
+        </script>
+    <div class="form-group">
+        <label class="control-label">发布栏目 : </label>
+        <div class="controls pull-left">
+            <select class="input-medium" name="cat_id">
+                <option value='0' style="color:black">　　关注热点</option>
+                <foreach name='catlist' item='v'>
+                    <if condition="$v.pid eq 0">
+                        <option value='{$v.cat_id}' disabled style="color:#999">{$v.cat_name}</option>
+                    <else/>
+                        <option value='{$v.cat_id}' style="color:black">　　{$v.cat_name}</option>
+                    </if>
+                </foreach>
+            </select>
+            <span class="help-inline red"> * </span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">内容 : </label>
+        <div class="controls pull-left">
+            <span class="help-inline red"> * 文章里的图片宽度不能超过:320px</span>
+            <textarea rows="5" cols="30" id='content' name='content' style='width:850px;height:350px;'></textarea>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        var ue = UE.getEditor('content',{toolbars: [[
+                    'fullscreen', 'source', '|', 'undo', 'redo', '|',
+            'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'pasteplain', '|', 'forecolor', 'backcolor', 'selectall', 'cleardoc', '|',
+            'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
+            'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
+            'directionalityltr', 'directionalityrtl', 'indent', '|',
+            'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase', '|',
+            'link', 'unlink', '|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
+            'simpleupload', 'insertimage','insertvideo', 'insertframe',  'attachment', 'map', 'pagebreak', '|',
+            'horizontal', 'date', 'time', 'spechars', '|',
+            'inserttable', 'deletetable', 'insertparagraphbeforetable', 'insertrow', 'deleterow', 'insertcol', 'deletecol', 'mergecells', 'mergeright', 'mergedown', 'splittocells', 'splittorows', 'splittocols', 'charts', '|',
+             'preview', 'searchreplace', 'drafts'
+        ]]});
+    </script>
+   <!-- <div class="form-group">
+        <label class="control-label">是否轮播 : </label>
+        <div class="controls pull-left">
+            <label>
+                <input type="radio" class="ace" name="is_lunbo" value="0">
+                <span class="lbl">是</span>
+            </label>
+            <label>
+                <input type="radio" class="ace" name="is_lunbo" checked="checked" value="1">
+                <span class="lbl">否</span>
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label">轮播图片 : </label>
+        <div class="controls pull-left">
+            <input type="file" class="input-large" id="pic1" name="pic_lunbo" >
+            <div id="pic_div1"><img id='pic_lunbo' width='100' height='100'></div>
+        </div>
+    </div>
+    <script type='text/javascript'>
+        $(function(){
+            new uploadPreview({ UpBtn: "pic1", DivShow: "pic_div1", ImgShow: "pic_lunbo" });
+        });
+    </script>-->
+    <div>
+        <label class="control-label"></label>
+        <button id="bsubmit" type="submit"  class="btn btn-sm btn-primary">添加</button>
+    </div>
+                </form>
+            </div>
+        </div>
+        <!--/.box-->
+    </div><!-- /.page-content -->
+</div><!-- /.main-content -->
+
+

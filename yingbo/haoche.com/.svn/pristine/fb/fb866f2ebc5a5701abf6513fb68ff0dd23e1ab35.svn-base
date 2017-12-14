@@ -1,0 +1,214 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Administrator
+ * Date: 2016/8/9 0009
+ * Time: 11:35
+ */
+
+namespace Sadmin\Controller;
+use Think\Controller;
+
+class SgoodsController extends Controller
+{
+    function showlist(){
+        $userid = $_SESSION['userInfo']['userid'];
+        if($_POST){
+            $search = $_POST;
+            $map['goods_name'] = array('LIKE',"%{$search['search']}%");
+             $map['is_del'] = '0';
+
+        }else{
+            $map['is_del'] = '0';
+
+        }
+
+        $count = D('Sgoods') 
+            ->where($map)
+            -> count();
+        $p = new \Think\Page($count,10);
+
+        $info = D('Sgoods')
+            ->alias('g')
+            ->join('__SCATEGORY__ as c on g.cat_id=c.cat_id')
+            ->field('g.*,c.cat_name')
+            ->order('goods_id desc')
+            ->where("g.userid=$userid")
+            ->limit($p->firstRow.','.$p->listRows)
+            ->where($map)
+            ->select();
+
+        $page = $p->show();
+        $this -> assign('page',$page);
+//        dump($info);die;
+        $this -> assign('info',$info);
+
+        $this -> display();
+    }
+
+    function tianjia(){
+        if(IS_POST){
+            $goods = D('Sgoods');
+            $userid = $_SESSION['userInfo']['userid'];
+            $shuju = $goods -> create();
+             $shuju['userid'] = $userid;
+             $shuju['nowprice'] = (100 - $shuju['discount']) / 100 * $shuju['price'];
+            $shuju['add_time'] = time();
+            $shuju['upd_time'] = time();
+            $this -> deal_logo($shuju);
+            if(empty($shuju['price'])){
+                $this->error("价格不能为空");
+                exit;
+            }
+            if(empty($shuju['goods_name'])){
+                $this->error("商品名称不能为空");
+                exit;
+            }
+            if(empty($shuju['cycle'])){
+               $this->error("周期不能为空");
+               exit;
+           }
+
+            if($newid = $goods->add($shuju)){
+                $this -> deal_pics($newid);
+                //dump($shuju);die;
+                $this -> success('添加商品成功',U('showlist'),1);
+            }else{
+                $this -> error('添加商品失败',U('tianjia'),1);
+            }
+        }else{
+            $userid = $_SESSION['userInfo']['userid'];
+              $catinfo = D('Scategory')->where("userid={$userid}")->select();
+            $this->assign('catinfo',$catinfo);
+            $this -> display();
+        }
+    }
+
+    private function deal_logo(&$data){
+        if($_FILES['logo']['error']===0){
+            if(!empty($data['goods_id'])){
+                $oldinfo = D('Sgoods')->find($data['goods_id']);
+                if(!empty($oldinfo['logo'])){
+                    unlink($oldinfo['logo']);
+                }
+            }
+
+            $cfg = array(
+                'rootPath'    =>  './Public/Upd/sgoods/', //保存根路径
+            );
+            $up = new \Think\Upload($cfg);
+            $z = $up -> uploadOne($_FILES['logo']);
+
+            $picname = $up->rootPath.$z['savepath'].$z['savename'];
+            $data['logo'] = $picname;
+        }
+    }
+
+    //实现商品相册图片的上传处理
+    private function deal_pics($goods_id)
+    {
+        $cfg = array(
+            'rootPath' => './Public/Upd/sgoods/',
+        );
+        $up = new \Think\Upload($cfg);
+
+        $z = $up->upload(array($_FILES['goods_pics']));
+        $im = new \Think\Image();
+        foreach ($z as $k => $v) {
+            $yuanname = $up->rootPath . $v['savepath'] . $v['savename'];
+            $im->open($yuanname);
+            //3个缩略图同时制作，必须按照大、中、小的顺序制作
+            $im->thumb(376, 252, 6); //大图 缩略图
+            $bigname = $up->rootPath . $v['savepath'] . 'b_' . $v['savename'];
+            $im->save($bigname);
+
+            $im->thumb(353, 214, 6); //中图 缩略图
+            $midname = $up->rootPath . $v['savepath'] . 'm_' . $v['savename'];
+            $im->save($midname);
+
+            $im->thumb(50, 50, 6); //小图 缩略图
+            $smaname = $up->rootPath . $v['savepath'] . 's_' . $v['savename'];
+            $im->save($smaname);
+
+            $arr = array(
+                'goods_id' => $goods_id,
+                'pics' => $yuanname,
+                'pics_big' => $bigname,
+                'pics_mid' => $midname,
+                'pics_sma' => $smaname,
+            );
+            D('SgoodsPics')->add($arr);
+        }
+
+    }
+
+
+    function upd(){
+        $goods_id = I('get.goods_id');
+        $userid = $_SESSION['userInfo']['userid'];
+        $goods = D('Sgoods');
+        if(IS_POST){
+            $shuju = $goods -> create();
+            $shuju['nowprice'] = (100 - $shuju['discount']) / 100 * $shuju['price'];
+            $shuju['upd_time'] = time();
+            $this -> deal_logo($shuju);
+            $this -> deal_pics($shuju['goods_id']);
+            if(empty($shuju['price'])){
+                $this->error("价格不能为空");
+                exit;
+            }
+            if(empty($shuju['goods_name'])){
+                $this->error("商品名称不能为空");
+                exit;
+            }
+             if(empty($shuju['cycle'])){
+                $this->error("周期不能为空");
+                exit;
+            }
+            if($goods->save($shuju)){
+                $this -> success('修改商品成功',U('showlist'),1);
+                exit;
+            }else{
+                $this -> error('修改商品失败',U('upd',array('goods_id'=>$goods_id)),1);
+                exit;
+            }
+        }else{
+            $info = $goods->find($goods_id);
+
+            $catinfo = D('Scategory')->where("userid={$userid}")->select();
+            $this->assign('catinfo',$catinfo);
+            /****相册图片信息goods_pics****/
+            $picsinfo = D('SgoodsPics')
+                ->where(array('goods_id'=>$goods_id))
+                ->select();
+//            dump($picsinfo);die;
+        $this -> assign('picsinfo',$picsinfo);
+            /****相册图片信息****/
+
+            $this -> assign('info',$info);
+            $this -> display();
+        }
+    }
+
+
+    function delPics(){
+        $pics_id = I('get.pics_id');
+        $picsinfo = D('SgoodsPics')->find($pics_id);
+
+        unlink($picsinfo['pics']);
+        D('SgoodsPics')->delete($pics_id);
+
+        echo json_encode(array('flag'=>1));
+    }
+
+    function del(){
+        $goods_id = I('get.goods_id');
+        $sql="update hc_goods set is_del='1' where goods_id=$goods_id";
+        if(D('Sgoods')->execute($sql)){
+            $this->success('删除成功');
+        }else{
+
+            $this->error('删除失败');
+        }
+    }
+}

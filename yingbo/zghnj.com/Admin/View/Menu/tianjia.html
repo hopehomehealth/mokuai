@@ -1,0 +1,78 @@
+
+        <div class="main-content"><!-- InstanceBeginEditable name="内容" -->
+            <div class="page-content">
+                <div class="row">
+                    <div class="page-content box">
+                        <div class="box-title margin_bot_20">
+                            <div class="span10">
+                                <h3><i class="icon-magic"></i>自定义菜单</h3>
+                            </div>
+                        </div>
+                        <form action="__SELF__" method="post" enctype='multipart/form-data' class="form-horizontal">
+                            <div class="form-group">
+                                <label class="control-label">菜单名称 : </label>
+                                <div class="controls pull-left">
+                                    <input type="text" class="input-medium" name="title">
+                                    <span class="help-inline red"> * 必填项</span>
+                                </div>
+                            </div>
+
+							<div class="form-group">
+                                <label class="control-label">父级菜单 : </label>
+                                <div class="controls pull-left">
+                                    <select name="pid" id="pid">
+										<option selected="selected" value="0">请选择菜单</option>
+										<foreach name="list" item="v">
+										<option value="{$v.id}">{$v.title}</option>
+										</foreach>
+									</select>
+                                    <span class="help-inline red"> * 必填项</span>
+                                </div>
+                            </div>
+
+							
+                            <div class="form-group">
+                                <label class="control-label">关键字 : </label>
+                                <div class="controls pull-left">
+                                    <input type="text" class="input-large" name="keyword">
+                                    <span class="help-inline red"> * 必填项</span>  </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">排序 : </label>
+                                <div class="controls pull-left">
+                                    <input type="text" class="input-mini" name="sort">
+                                    <span class="help-inline red"> * 必填项</span>  </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">菜单Url : </label>
+                                <div class="controls pull-left">
+                                    <input type="text" class="input-large" name="url">
+                                    <span class="help-inline red"> * 注：url必须以http://或https:// 例如：http://www.hlnv.com</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">是否显示 : </label>
+                                <div class="controls pull-left">
+                                    <label>
+                                        <input type="radio" class="ace" name="is_show" value='0' checked="checked">
+                                        <span class="lbl">是</span>
+                                    </label>
+                                    <label>
+                                        <input type="radio" class="ace" name="is_show" value='1'>
+                                        <span class="lbl">否</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <label class="control-label"></label>
+                                <button id="bsubmit" type="submit"  class="btn btn-sm btn-primary">保存</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--/.box-->
+            </div>
+            <!-- /.page-content -->
+        </div><!-- /.main-content -->
+    </div><!-- /.main-container-inner -->
+</div><!-- /.main-container -->

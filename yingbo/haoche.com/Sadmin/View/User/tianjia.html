@@ -1,0 +1,68 @@
+
+
+<div class="main-content">
+    <div class="box-title margin_bot_20">
+        <div class="span10">
+            <h3><i class="icon-magic"></i>添加会员</h3>
+        </div>
+    </div>
+
+
+    <div class="page-content">
+        <div class="row">
+            <div class="page-content box">
+
+                <form action="__MODULE__/User/tianjia" method="post" class="form-horizontal" enctype="multipart/form-data">
+
+                    <div class="form-group">
+                        <label class="control-label">手机号: </label>
+                        <div class="controls pull-left">
+                            <input type="text" class="input-large" name="reg_phone">
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">密码 : </label>
+                        <div class="controls pull-left">
+                            <input type="password" class="input-large" name="password">
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">确认密码 : </label>
+                        <div class="controls pull-left">
+                            <input type="password" class="input-large" name="repassword">
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+					<div class="form-group">
+                        <label class="control-label">级别 : </label>
+                        <div class="controls pull-left">
+							<label class="control-label" style="width:90px;margin-left:-18px">
+							<input type="radio" class="input-radio" name="is_vip" value="0">普通用户
+							</label>
+							<label class="control-label" style="width:90px;margin-left:-18px">
+                            <input type="radio" class="input-radio" name="is_vip" value="1">vip会员
+							</label>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="form-group">
+                        <label class="control-label"> </label>
+                        <div class="controls pull-left">
+                            <button type="submit" class="btn btn-sm btn-primary">确认添加</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--/.box-->
+    </div><!-- /.page-content -->
+</div><!-- /.main-content -->
+
+

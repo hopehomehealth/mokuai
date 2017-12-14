@@ -1,0 +1,149 @@
+
+
+{__NOLAYOUT__}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>新农缘天下商城</title>
+    <meta name="viewport" content="width=device-width,
+    initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link href="{$Think.const.HCSS_URL}basic.css" type="text/css" rel="stylesheet" />
+    <link href="{$Think.const.HCSS_URL}style.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="{$Think.const.HCSS_URL}personal-style.css" />
+    <script src="{$Think.const.HJS_URL}jquery-1.8.2.min.js"></script>
+
+    <meta charset="utf-8">
+    <style>
+
+
+        /*.dj_xhk{ width:7rem; padding:0.500rem 0 0.250rem; background: rgba(0,0,0,0.6); font-size:0.900rem; margin-right:0.500rem;border-radius: 0.2rem; -webkit-border-radius: 0.2rem; position:absolute; right:0rem; display:none; z-index:20;}
+        .dj_xhk li{ width:100%; float:left; border-bottom:1px #CCC solid;height:3.500rem; line-height:3.500rem; color:#FFF;}
+        .dj_xhk li:last-child{border-bottom: none;}
+        .dj_xhk li a{ color:#FFF; padding:0rem 0.500rem; display:block;}
+        .dj_xhk li a:hover{ color:#dd0045; background:#fff;}
+        .arrow-up {
+            width:0;
+            height:0;
+            border-left:0.500rem solid transparent;
+            border-right:0.500rem solid transparent;
+            border-bottom:0.500rem solid #000;
+            position:absolute;
+            right:1rem;
+            top:-0.500rem;
+            z-index:21;
+        }*/
+        .head_back2 {  width:3.500rem;height:3.2rem; float: right;  background-size: 1.300rem 2.200rem; text-align: center; color: #FFF; font-size: 1.300rem; padding-top: 1.200rem;display: block; position: relative; }
+    </style>
+
+</head>
+<body>
+<div class="container">
+	<header>
+		<a class="head_back1" href="Javascript:window.history.go(-1)">&nbsp;</a>
+		<div class="headTit">支付定金</div>
+		<a class="head_back2">&nbsp;</a>
+	</header>
+    <ul class="dj_xhk fr">
+        <p class="arrow-up fl"></p>
+        <li><a href="{:U('Caiclub/index')}">首页</a></li>
+
+    </ul>
+    <script type="text/javascript">
+        $(".head_back2").click(function(){
+            $(".dj_xhk").slideToggle("1000");
+        });
+    </script>
+    <section style="position:relative">
+       <div class="club_nav">
+            <p></p>
+        </div>
+        <form action="" method="post" id="payform">
+                <div class="club_main1">
+                    <ul style="width:95%;">
+                        <li>
+                            <input type="radio" value="1" name="type"> <img src="{$Think.const.HIMG_URL}c1.gif"><a href="">办卡&nbsp;<span>￥{$set.banka|default="0.00"}</span></a>
+                        </li>
+                        <li>
+                            <input type="radio" value="2" name="type"> <img src="{$Think.const.HIMG_URL}c2.gif"><a href="">养卡&nbsp;<span>￥{$set.yangka|default="0.00"}</span></a>
+                        </li>
+                        <li>
+                            <input type="radio" value="3" name="type"><img src="{$Think.const.HIMG_URL}c3.gif"><a href="">提额&nbsp;<span>￥{$set.tie|default="0.00"}</span></a>
+                        </li>
+                        <li>
+                            <input type="radio" value="4" name="type"><img src="{$Think.const.HIMG_URL}c4.gif"><a href="">贷款&nbsp;<span>￥{$set.daikuan|default="0.00"}</span></a>
+                        </li>
+						<li>
+                            <input type="radio" value="5" name="type"><img src="{$Think.const.HIMG_URL}c5.gif"><a href="">托管(办卡+养卡+提额+贷款)&nbsp;<span>￥{$set.daikuan|default="0.00"}</span></a>
+                        </li>
+                    </ul>
+                </div>
+            <div class="app_main2"><input errormsg="{$Think.get.errormsg}" style="background: url(/Public/Home/images/1.png) repeat;font-size:1.800rem;height:3.500rem;font-family: '黑体';color: #ffffff;border-radius:0.4rem;outline:none;" id="paybtn" type="button" value="立即支付"></div>
+       </form>
+    </section>
+
+</div>
+</body>
+<script src="{$Think.const.HJS_URL}iscroll4.js"></script>
+<script src="{$Think.const.HJS_URL}jquery-1.8.2.min.js"></script>
+<script>
+    $("span").click(function(){
+        $(".app_pos").slideToggle();
+    });
+	$(function(){
+		var errormsg = $("#paybtn").attr('errormsg');
+		if(errormsg == 'OK1'){
+			$("section").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'办卡申请成功'+"</div>");
+
+			$("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);setTimeout(function(){$("#errormsg").remove();},2000);
+		}
+		if(errormsg == 'OK2'){
+			$("section").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'养卡申请成功'+"</div>");
+
+			$("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);setTimeout(function(){$("#errormsg").remove();},2000);
+		}
+		if(errormsg == 'OK3'){
+			$("section").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'提额申请成功'+"</div>");
+
+			$("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);setTimeout(function(){$("#errormsg").remove();},2000);
+		}
+		if(errormsg == 'OK4'){
+			$("section").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'贷款申请成功'+"</div>");
+
+			$("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);setTimeout(function(){$("#errormsg").remove();},2000);
+		}
+		$("#paybtn").click(function(){
+			$.post("__MODULE__/Caiclub/apply",$("#payform").serialize(),function(data){
+				if(data.error == 1){
+					$("section").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+data.content+"</div>");
+
+					$("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);setTimeout(function(){$("#errormsg").remove();location.href="__MODULE__/User/personal"},2000);
+				}else if(data.error == 2){
+					$("section").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+data.content+"</div>");
+
+					$("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);setTimeout(function(){$("#errormsg").remove();},2000);
+				}else if(data.error == 3){
+
+					location.href="__MODULE__/User/login";
+				}else if(data.error == 0){
+					if(data.type == 1){
+						location.href = "__MODULE__/Wxpay/pay/type/banka/id/"+data.content;
+					}else if(data.type == 2){
+						location.href = "__MODULE__/Wxpay/pay/type/yangka/id/"+data.content;
+					}else if(data.type == 3){
+						location.href = "__MODULE__/Wxpay/pay/type/tie/id/"+data.content;
+					}else if(data.type == 4){
+						location.href = "__MODULE__/Wxpay/pay/type/daikuan/id/"+data.content;
+					}
+				}
+			})
+		})
+	})
+
+</script>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,42 @@
+<!--*****header*****-->
+<div class="main">
+    <!--*****banner*****-->
+    <div class="su-banner">
+        <foreach name="slides" item="slide">
+            <img src="{$slide.picmobile|substr=###,1}" alt="">
+        </foreach>
+    </div>
+    <!--*****bannerend*****-->
+
+    <!--*****menu*****-->
+    <section class="su-menu b-white">
+        <ul>
+            <foreach name="category" item="cateinfo">
+                <li <if condition="$detail['cat_id'] eq $cateinfo['cat_id']">class="cur"</if>><a href="__MODULE__/{$cateinfo['ctrl']}/{$cateinfo['action']}">{$cateinfo.cat_name}</a></li>
+            </foreach>
+        </ul>
+    </section>
+    <!--*****menuend*****-->
+    <!--*****su-con*****-->
+    <section class="su-con">
+        <div class="su-fron">
+            <div class="su-news-fina">
+                <h1>{$detail.title}</h1>
+                <p class="su-news-rq">{$detail.upd_time|date="Y年m月d日 H:i",###} {$author}</p>
+            </div>
+            {$detail.content}
+
+            <div class="su-news-sx">
+                <notempty name="prenews">
+                <p><a href="__MODULE__/Technology/detail/id/{$prenews.news_id}"><span class="c-blue">上一篇：</span>{$prenews.title}</a></p>
+                </notempty>
+                <notempty name="nextnews">
+                <p><a href="__MODULE__/Technology/detail/id/{$nextnews.news_id}"><span class="c-blue">下一篇：</span>{$nextnews.title}</a></p>
+                </notempty>
+            </div>
+        </div>
+
+    </section>
+
+    <!--*****su-conend*****-->
+</div>

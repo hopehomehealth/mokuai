@@ -1,0 +1,19 @@
+    <link href="{$Think.const.HCSS_URL}personal-style.css" type="text/css" rel="stylesheet" />
+
+    <section >
+	 <div class="exc_nav">
+            <p>积分记录</p>
+             <ul>
+                 <li><a style="color:#fff" href="__MODULE__/User/regfee">乐购冲值</a></li>
+             </ul>
+        </div>
+     <div class="cont_main" style="padding-bottom: 7.500rem;">
+		 <foreach name="operates" item="info">
+         <dl>
+             <dd><img src="{$info.userhead}" alt=""/></dd>
+             <dt><p style="font-weight:bold">{$info.nikename}<br/><i style="margin-top:0.500rem">编号:{$info.id_sn}</i><span>{$info.type}返给你<b style="color: #DD0045;">{$info.amount}</b>{$info.sc_type}积分</span></dt>
+         </dl>
+		 </foreach>
+     </div>
+
+    </section>

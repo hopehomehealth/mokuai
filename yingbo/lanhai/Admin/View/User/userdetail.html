@@ -1,0 +1,76 @@
+        <div class="main-content">
+            <div class="page-content">
+                <div class="row">
+                    <div class="page-content box">
+                        <div class="box-title margin_bot_20">
+                            <div class="span10">
+                                <h3><i class="icon-cogs"></i>会员资料</h3>
+                            </div>
+                        </div>
+                        <form action="" method="post" class="form-horizontal" style="margin-left:80px">
+                            <div class="form-group">
+                                <label class="control-label pull-left">用户图像 : </label>
+                                <div class="controls pull-left">
+                                    <span class="input-large" style="display:inline-block;width:100px;height:100px;overflow:hidden"><img style="width:100px" src="{$detail.userhead}"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label pull-left">用户名 : </label>
+                                <div class="controls pull-left">
+                                    <span class="input-large" style="line-height:28px">{$detail.username}</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label pull-left">用户等级 : </label>
+                                <div class="controls pull-left">
+                                    <span class="input-large" style="line-height:28px;font-weight:bolder"><i style="color:#fab22e;font-weight:bolder;font-style:italic;font-size:1.2em">Lv </i>{$detail.level}</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label pull-left">性别 : </label>
+                                <div class="controls pull-left">
+                                    <span class="input-large" style="line-height:28px">{$detail['sex']?"<p style='color:#87b6e7'>♂ 男</p>":"<p style='color:#dd0045'>♀ 女</p>"}</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label pull-left">生日 : </label>
+                                <div class="controls pull-left">
+                                    <span class="input-large" style="line-height:28px">{$detail.birth}</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label pull-left">居住地 : </label>
+                                <div class="controls pull-left">
+                                    <span class="input-large" style="line-height:28px">{$detail.address}</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label pull-left">电话 : </label>
+                                <div class="controls pull-left">
+                                    <span class="input-large" style="line-height:28px">{$detail.phone}</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label pull-left">QQ : </label>
+                                <div class="controls pull-left">
+                                    <span class="input-large" style="line-height:28px">{$detail.qq}</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label pull-left">兴趣爱好 : </label>
+                                <div class="controls pull-left">
+                                    <span class="input-large" style="line-height:28px">{$detail.hobby}</span>
+                                </div>
+                            </div>
+
+                            <!-- <div class="btnBox">
+                                <button class="btn btn-sm btn-primary">保存</button>
+                                <a href="#" class="btn btn-sm">取消</a>
+                            </div> -->
+                        </form>
+                    </div>
+                </div>
+                <!--/.box-->
+            </div>
+       <!-- /.page-content -->
+        </div><!-- /.main-content -->

@@ -1,0 +1,49 @@
+
+        <div class="main">
+            <ul class="caseBox">
+                <li class="pgdet">
+                   <a href="__MODULE__/Product/detail/pro_id/{$orderinfo.pro_id}">
+                        {$orderinfo.china}
+                        <span>￥{$orderinfo.price}/小时</span>                      
+                    </a>
+                </li>
+                <li>
+                  进度
+                  <div class="pgdet_jd borTop borBot">
+                  <notempty name="suborderInfo">
+                  <p <if condition="($suborderInfo.nurseid neq '') and ($suborderInfo.status eq '0')">class="list"</if><if condition="($suborderInfo.status eq '1') and ($suborderInfo.is_com eq '0')">class="list1"</if><if condition="($suborderInfo.status eq '2') and ($suborderInfo.is_com eq '0')">class="list2"</if><if condition="$suborderInfo.is_com eq 1">class="list3"</if>></p>
+                  </notempty>
+                  <empty name="suborderInfo">
+                    <p></p>
+                  </empty>
+                  <ul class="pgdet_list">
+                  <li>已下单</li>
+                  <li>今日护士</li>
+                  <li>上门护理</li>
+                  <li>护理结束</li>
+                  <li>已评价</li>
+                  </ul>
+                  </div>
+                   <ul class="pgdet_list1">
+                   <li><span>1</span>已选服务时间/小时</li>
+                   <li><span>{$orderinfo.number}</span>已选服务次数</li>
+                   </ul>
+                   <li>
+                   订单信息
+                   <ul class="pgdet_xq borTop">
+                   <li>订单编号：{$orderinfo.ordernumber}</li>
+                   <li>下单时间：{$orderinfo.inputtime|date="Y-m-d H:i:s",###}</li>
+                   <li>订单总额：￥{$orderinfo.ssum}</li>
+                   </ul>
+                   </li>
+                   </li>
+                   <if condition="$orderinfo.if_say eq '0'">
+                   <li><a href="__MODULE__/Patient/payorder/orderid/{$orderinfo.orderid}"><button class="submit updateBtn">去支付</button></a></li>
+                   <elseif condition="($orderinfo.if_say eq '1') AND ($suborderInfo.status eq '2') AND ($suborderInfo.if_nay eq '0')" />
+                    <li><a href="__MODULE__/Patient/confirm/suborderid/{$suborderInfo.orderid}/orderid/{$orderinfo.orderid}"><button class="submit updateBtn">确认服务</button></a></li>
+                   <elseif condition="($orderinfo.if_say eq '1') AND ($suborderInfo.status eq '2') AND ($suborderInfo.if_nay eq '1') AND ($suborderInfo.is_com eq '0')" />
+                   <li><a href="__MODULE__/Patient/comment/suborderid/{$suborderInfo.orderid}/orderid/{$orderinfo.orderid}"><button class="submit updateBtn">评价服务</button></a></li>
+                   <else /></if>
+            </ul>
+        </div>
+    </div>

@@ -1,0 +1,35 @@
+
+<div class="main-content">
+    <div class="breadcrumbs">
+        <ul>
+            <li > <a href="__MODULE__/Role/upd">角色修改 </a> </li>
+
+        </ul>
+        <!-- .breadcrumb -->
+    </div>
+
+    <div class="page-content">
+        <div class="row">
+            <div class="page-content box">
+                <form action="__SELF__" method="post" enctype='multipart/form-data' class="form-horizontal">
+                    <input type='hidden' name='role_id' value='{$info.role_id}' />
+                    <div class="form-group">
+                        <label class="control-label">角色名称 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" class="input-large" name="role_name" value="{$info.role_name}">
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="form-actions">
+                        <input id="bsubmit" type="submit"  class="btn btn-sm btn-primary" value="保存"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--/.box-->
+    </div><!-- /.page-content -->
+</div><!-- /.main-content -->
+
+

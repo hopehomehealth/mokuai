@@ -1,0 +1,57 @@
+<!--*****header*****-->
+<div class="main">
+    <!--*****banner*****-->
+    <div class="su-banner">
+        <foreach name="slides" item="slide">
+            <img src="{$slide.picmobile|substr=###,1}" alt="">
+        </foreach>
+    </div>
+    <!--*****bannerend*****-->
+
+    <!--*****menu*****-->
+    <section class="su-menu-a b-white">
+        <div class="su-scroll">
+            <foreach name="category" item="cateinfo">
+                <a <if condition="ACTION_NAME eq $cateinfo['action']">class="cur"</if> href="__MODULE__/{$cateinfo['ctrl']}/{$cateinfo['action']}">{$cateinfo.cat_name}</a>
+            </foreach>
+        </div>
+    </section>
+    <!--*****menuend*****-->
+    <!--*****su-con*****-->
+    <section class="su-con">
+        <div class="su-fron">
+            <div class="su-deve">
+                <h4>汇集优质的缓粘结材料与机具供应商</h4>
+            </div>
+            <foreach name="news" item="info1">
+                <p class="fs0-28 c-blue">{$info1.title}</p>
+                <p>{$info1.content}</p>
+                <p><img src="{$info1.pic|substr=###,1}" alt=""></p>
+            </foreach>
+            <p class="fs0-28 c-blue pb0-1">成员企业</p>
+            <section  class="w100 b-lgray1">
+                <div class="su-serv-fina">
+                    <div class="prolist">
+                        <div class="proleft"></div>
+                        <div class="proright"></div>
+                        <div class="probebox swiper-container-horizontal">
+                            <ul class="clearfix swiper-wrapper">
+                                <!--banner-->
+                                <foreach name="leaguers" item="info">
+                                    <li class="swiper-slide">
+                                        <a href="{$info.href|default='#'}">
+                                            <img src="{$info.picture}" alt="" /><p style="text-align:center">{$info.title}</p>
+                                        </a>
+                                    </li>
+                                </foreach>
+                                <!--banner-->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </section>
+    <!--*****su-conend*****-->
+</div>

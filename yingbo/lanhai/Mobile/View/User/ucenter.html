@@ -1,0 +1,83 @@
+{__NOLAYOUT__}
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<title>蓝海长青</title>
+<script type="text/javascript" src="{$Think.const.MJS_URL}jquery-2.1.1.min.js"></script>
+
+<link href="{$Think.const.MCSS_URL}basic.css" type="text/css" rel="stylesheet" />
+<link href="{$Think.const.MCSS_URL}style.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+<!--*****header*****-->
+<header class="bb-b"> <a class="head_back1" href="Javascript:window.history.go(-1)">&nbsp;</a>
+  <div class="headTit1">我的</div>
+   <if condition="$signature.status eq '0'"><span class="headqd" id="signatured" style="display:none;background:#ccc">已签到</span><span class="headqd" id="signature">签到</span><else /><span class="headqd" id="signatured" style="background:#ccc">已签到</span><span class="headqd" id="signature" style="display:none">签到</span></if>
+</header>
+
+<!--*****header*****-->
+<div class="main">
+  <!--*****for*****-->
+  <section>
+  <div class="my-top">
+  <div class="my-bj fl">
+  <p class="my-img"><img src="{$detail.userhead}"></p>
+  <p class="my-txt fl"><img src="{$Think.const.MIMG_URL}tb_45.png">{$detail.username}<br><span class="l-gray">{$detail.mysign}</span></p>
+  </div>
+  <div class="my-menu fl">
+  <ul class="my-list">
+  <li><a href="__MODULE__/User/myposts"><img src="{$Think.const.MIMG_URL}tb_36.png"><br>我的帖子</a></li>
+  <li><a href="__MODULE__/User/myfollows"><img src="{$Think.const.MIMG_URL}tb_37.png"><br>我的关注</a></li>
+    <li><a href="__MODULE__/User/mycollect"><img src="{$Think.const.MIMG_URL}tb_38.png"><br>我的收藏</a></li>
+  <li><a href="__MODULE__/User/myscore"><img src="{$Think.const.MIMG_URL}tb_39.png"><br>我的积分</a></li>
+  </ul>
+</div>
+  </div>
+
+  </section>
+  <!--*****for-c*****-->
+   <section>
+<ul class="my-list-a fl pb6">
+<li><a href="__MODULE__/Blog/myzone"><span class="fl my-list-img pl1 w50"><img src="{$Think.const.MIMG_URL}tb_40.png">我的博客</span><span class="fr my-list-more"><img src="{$Think.const.MIMG_URL}tb_46.png"></span></a></li>
+<li><a href="__MODULE__/User/invite"><span class="fl my-list-img pl1 w50"><img src="{$Think.const.MIMG_URL}tb_41.png">邀请好友</span><span class="fr my-list-more"><img src="{$Think.const.MIMG_URL}tb_46.png"></span></a></li>
+<li><a href="__MODULE__/User/personal"><span class="fl my-list-img pl1 w50"><img src="{$Think.const.MIMG_URL}tb_42.png">个人资料</span><span class="fr my-list-more"><img src="{$Think.const.MIMG_URL}tb_46.png"></span></a></li>
+<li><a href="__MODULE__/User/set"><span class="fl my-list-img pl1 w50"><img src="{$Think.const.MIMG_URL}tb_43.png">设置管理</span><span class="fr my-list-more"><img src="{$Think.const.MIMG_URL}tb_46.png"></span></a></li>
+</ul>
+  </section>
+
+</div>
+<script src="{$Think.const.MJS_URL}jquery.hiSlider.min.js"></script>
+<script type="text/javascript" src="{$Think.const.MJS_URL}msgbox.js"></script>
+<script>
+	$('.hiSlider3').hiSlider({
+		isFlexible: true,
+		isSupportTouch: true,
+		titleAttr: function(curIdx){
+			return $('img', this).attr('alt');
+		}
+	});
+</script>
+<script type="text/javascript">
+    $(function(){
+      $("#signature").click(function(){
+        $.get("__MODULE__/User/signature",function(data){
+          if(data == 'success'){
+              $("#signatured").fadeIn();
+              $("#signature").hide();
+              myalertbox('签到成功');
+          }else{
+              myalertbox('签到失败');
+          }
+        })
+      })
+    })
+</script>
+</body>
+</html>

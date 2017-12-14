@@ -1,0 +1,16 @@
+
+    <div class="main detailBox">
+        <ul class="zsBox">
+            <foreach name="yiliaoinfo" item="v">
+                <li>
+                    <a href="{:U('Medical/medical_list',array('medical_id'=>$v['medical_id']))}">
+                        <img src="{$Think.const.SITE_URL}{$v.pic}">
+                        <span>{$v.title}</span>
+                    </a>
+                </li>
+            </foreach>
+
+        </ul>
+    </div>
+</div>
+

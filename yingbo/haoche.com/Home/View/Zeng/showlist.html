@@ -1,0 +1,51 @@
+
+<ul class="dj_xhk fr">
+    <p class="arrow-up fl"></p>
+    <li><a href="{:U('Union/index')}">369商家联盟</a></li>
+    <li><a href="{:U('Core/index')}">商家中心</a></li>
+</ul>
+<script type="text/javascript">
+    $(".head_back2").click(function(){
+        $(".dj_xhk").slideToggle("1000");
+    });
+</script>
+
+<div class="main">
+    <section>
+        <div class="navbj fl pb0 mt0 ip-t">
+            <p class="w100 fl tac fs1-4"><a href="{:U('Zeng/tianjia')}"> 添加1P产品</a></p>
+        </div>
+    </section>
+    <section>
+        <div class="navbj fl pb0 pb2 mt0 b_n">
+            <ul class="w100 fl ord-list">
+               <foreach name="zenginfo" item="v">
+                   <li>
+                       <dl class="bl-list fl">
+                           <dt><img src="{$Think.const.SITE_URL}{$v.pic}" alt=""></dt>
+                           <dd>
+                               <p class="fl w100"><span class="fwb fl">{$v.zeng_name}</span><span class="crimson fwb fr"><if condition="$v.is_show eq 0">
+                                   上架<else />下架
+                               </if></span></p>
+                               <p class="fl w100">状态：<if condition="$v.status eq 0">
+                                   <i style="color: #ff30dc;">审核中...</i>
+                                   <else />
+                                   <i style="color: red;">审核通过</i>
+                               </if></p>
+                               <p class="fl w100">库存：<span class="crimson fwb">{$v.number}</span>
+                                   <a href="{:U('del',array('zeng_id'=>$v['zeng_id']))}"><span class="bl-list-an submit fr">删除</span></a>  <a href="{:U('upd',array('zeng_id'=>$v['zeng_id']))}"><span class="bl-list-an submit fr mr1">编辑</span></a> </p>
+
+                           </dd>
+                       </dl>
+                   </li>
+               </foreach>
+
+            </ul>
+        </div>
+    </section>
+</div>
+
+
+
+
+

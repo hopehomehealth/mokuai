@@ -1,0 +1,53 @@
+<div class="main">
+    <!--*****banner*****-->
+    <section>
+        <div class="nht-xl fl">
+            <p class="lin-tt">关于<span class="d-red">我们</span><span class="nht-tt fr">&nbsp;</span></p>
+            <ul class="nht-sumenu fr">
+                <foreach name="guanyu2" item="v">
+				<if condition="($v.url eq '') AND ($v.lan_id eq 10)">
+<li><a href="{:U('News/gongsijianjie',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+				<elseif condition="($v.url eq '') AND ($v.lan_id eq 11)"/>
+<li><a href="{:U('News/qiyejingshen',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+				<elseif condition="($v.url eq '') AND ($v.lan_id eq 12)"/>
+<li><a href="{:U('News/yewufanwei',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+				<elseif condition="($v.url eq '') AND ($v.lan_id eq 13)"/>
+<li><a href="{:U('News/zuzhijiagou',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+				<elseif condition="($v.url eq '') AND ($v.lan_id eq 14)"/>
+<li><a href="{:U('News/zhuanjiaduiwu',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+				<elseif condition="($v.url eq '') AND ($v.lan_id eq 15)"/>
+<li><a href="{:U('News/rencaizhaopin',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+				<elseif condition="($v.url eq '') AND ($v.lan_id gt 40)"/>
+<li><a href="{:U('News/newslist',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+<elseif condition="$v['url'] neq ''"/>
+<li><a href="{$v.url}">{$v.lan_title}</a></li>
+</if>
+				</foreach>
+            </ul>
+        </div>
+    </section>
+    <script type="text/javascript">
+        $(".nht-tt").click(function(){
+            $(".nht-sumenu").slideToggle("1000");
+        });
+    </script>
+    <!--*****banner*****-->
+    <section>
+        <p class="abo-banner fl">
+            <foreach name="adinfo" item="v">
+                <img src="{$Think.const.SITE_URL}{$v.pic_big}">
+            </foreach></p>
+    </section>
+    <!--*****h-l*****-->
+    <section>
+        <div class="h-l pb1 fl">
+            <p class="h-l-tt">人才<span  class="d-red">招聘</span></p>
+            <foreach name="info" item="v">
+                <div class="rec-nr fl"><span class="fs1-5 fwb">{$v.news_title}</span><br>
+                   {$v.content}
+                </div>
+            </foreach>
+
+
+        </div>
+    </section>

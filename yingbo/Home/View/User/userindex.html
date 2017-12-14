@@ -1,0 +1,91 @@
+<div class="main">
+ <section>
+ <div class="my_bj">
+ <dl class="my_txq fl">
+ <dt><img src="{$userinfo.userhead}"></dt>
+ <dd><p>{$userinfo.nikename}</p>
+     <p class="fso">编码:{$userinfo.id_sn}</p>
+     <p <if condition="$userinfo.level eq 0"> class="my_dltq_a"<else /> class="my_dltq"</if> >代理特权</p>
+ </dd>
+ </dl>
+ <ul class="my_flcd fl">
+ <li><a href=""><span class="fl my_d_tw"><img src="{$Think.const.HIMG_URL}tb_10.png">兑现积分</span><span class="my_d_sz fl">{$userdetail.cash_sc|default=0}</span> </a></li>
+ <li style="border-right:none;"><a href=""><span class="fl my_d_tw"><img src="{$Think.const.HIMG_URL}tb_11.png">消费积分</span><span class="my_d_sz fl">{$userdetail.consume_sc|default=0}</span></a></li>
+ <li><a href=""><span class="fl my_d_tw"><img src="{$Think.const.HIMG_URL}tb_12.png">信用积分</span><span class="my_d_sz fl">{$userdetail.credit_sc|default=0}</span></a></li>
+ <li style="border-right:none;"><a href=""><span class="fl my_d_tw"><img src="{$Think.const.HIMG_URL}tb_13.png">乐购积分</span><span class="my_d_sz fl">{$userdetail.shop_sc|default=0}</span></a></li>
+ </ul>
+</div>
+ </section>
+
+  <section>
+    <div class="navbj fl">
+      <ul class="login fl bbn">
+        <li><a href="__MODULE__/User/onelevel/onelevel/{$onelevel}/twolevel/{$twolevel}">
+          <p class="fl w12 my_b"><img src="{$Think.const.HIMG_URL}tb_01.png"></p>
+          <p class="fl w88 my_c">我的人脉<span class="my_d">{$friends}</span></p>
+          </a></li>
+        <li><a href="__MODULE__/User/myscore">
+          <p class="fl w12 my_b"><img src="{$Think.const.HIMG_URL}tb_02.png"></p>
+          <p class="fl w88 my_c">我的积分</p>
+          </a></li>
+            <li><a href="__MODULE__/Order/paying">
+          <p class="fl w12 my_b"><img src="{$Think.const.HIMG_URL}tb_03.png"></p>
+          <p class="fl w88 my_c">我的订单</p>
+          </a></li>
+        <li><a href="__MODULE__/Exchange/index">
+          <p class="fl w12 my_b"><img src="{$Think.const.HIMG_URL}tb_04.png"></p>
+          <p class="fl w88 my_c">积分兑现</p>
+          </a></li>
+      </ul>
+    </div>
+  </section>
+   <section>
+    <div class="navbj fl">
+      <ul class="login fl bbn">
+        <li><a href="__MODULE__/Goods/index">
+          <p class="fl w12 my_b"><img src="{$Think.const.HIMG_URL}tb_05.png"></p>
+          <p class="fl w88 my_c">乐购商城</p>
+          </a></li>
+        <li><a href="__MODULE__/Booking/bookinfo">
+          <p class="fl w12 my_b"><img src="{$Think.const.HIMG_URL}bookcar.png"></p>
+          <p class="fl w88 my_c">豪车预定</p>
+          </a></li>
+        <li><a href="__MODULE__/User/myQRcode">
+          <p class="fl w12 my_b"><img src="{$Think.const.HIMG_URL}tb_06.png"></p>
+          <p class="fl w88 my_c">我要结缘</p>
+          </a></li>
+      </ul>
+    </div>
+  </section>
+   <section>
+    <div class="navbj fl">
+      <ul class="login fl bbn">
+        <li><a href="">
+          <p class="fl w12 my_b"><img src="{$Think.const.HIMG_URL}tb_07.png"></p>
+          <p class="fl w88 my_c" id="wxdata">同步微信资料</p>
+          </a></li>
+        <li><a href="__MODULE__/User/personal">
+          <p class="fl w12 my_b"><img src="{$Think.const.HIMG_URL}tb_08.png"></p>
+          <p class="fl w88 my_c">个人资料</p>
+          </a></li>
+            <li><a href="__MODULE__/Delivery/address">
+          <p class="fl w12 my_b"><img src="{$Think.const.HIMG_URL}tb_09.png"></p>
+          <p class="fl w88 my_c">收货地址</p>
+          </a></li>
+      </ul>
+    </div>
+  </section>
+</div>
+<script type="text/javascript">
+  $(function(){
+    var flag1=false;
+    $("#wxdata").click(function(){
+        $.post("__MODULE__/User/wxdata",{"wxdata":"wxdata"},function(data){
+          $("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+data.content+"</div>");
+
+          $("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);$("#bsubmit").attr('disabled',true);setTimeout(function(){$("#errormsg").remove();$("#bsubmit").attr('disabled',false);},2000);
+        })
+        return flag1;
+    });
+  })
+</script>

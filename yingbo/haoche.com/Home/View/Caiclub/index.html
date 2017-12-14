@@ -1,0 +1,95 @@
+
+<link rel="stylesheet" href="{$Think.const.HCSS_URL}personal-reset.css" />
+<link rel="stylesheet" href="{$Think.const.HCSS_URL}personal-style.css" />
+<link rel="stylesheet" href="{$Think.const.HCSS_URL}swiper.min.css"/>
+
+<style type="text/css">
+    .club_main1 ul li{
+    display: -webkit-box;
+    width: 100%;
+    height: 3.5rem;
+    -webkit-box-pack: justify;
+    margin-top: 0.5rem;
+    border-bottom: 1px solid #ccc;
+}
+.club_main1 ul li img {
+    width:9%;
+    height: 2rem;
+    display: block;
+    margin-left: 3rem;
+    margin-top: 0.5rem;
+}
+.club_main1 ul li a{
+    width:80%;
+    display: block;
+    -webkit-box-flex:1;
+    text-align: left;
+    font-size:1.4rem;
+    line-height: 3.5rem;
+    margin-left: 1.5rem;
+}
+</style>
+
+
+<section >
+    <div class="club_nav">
+        <p></p>
+
+    </div>
+    <div class="club_yhk">
+        <p>N0.{$userinfo.id_sn} </p>
+        <div class="club_yhkk">
+            <h2>NAME:<br/>&nbsp;{$userdetail.name}</h2>
+            <h3>有效期<br><span><if condition="$userinfo.powerdate neq ''">{$userinfo['powerdate']|date='Y-m-d',###}<else />20xx-xx-xx</if></span></h3>
+        </div>
+
+
+    </div>
+
+
+
+    <div class="club_main">
+        <ul>
+            <li><a href="{:U('apply')}" style="color: #DD0045;"><i><img src="{$Think.const.HIMG_URL}fen.gif" alt=""/><br></i>支付定金</a></li>
+            <li><a href="" style="color: #7E2481;"><i><img src="{$Think.const.HIMG_URL}club2.gif" alt=""/><br></i>财商俱乐部</a></li>
+            <li style="border-right: 0;"><a href="" style="color: #14538B;"><i><img src="{$Think.const.HIMG_URL}lan.gif" alt=""/><br></i>信用积分&nbsp;{$userdetail.cash_sc|default=0}</a></li>
+
+        </ul>
+
+    </div>
+
+    <div class="club_main1" style="padding-bottom:7rem; background:none;">
+        <ul>
+            <li>
+                <img src="{$Think.const.HIMG_URL}c1.gif"><a href="{:U('Caidetail/detail',array('id'=>'1'))}">办卡详情</a><span><img src="{$Think.const.HIMG_URL}jt1.gif"/></span>
+            </li>
+
+            <li>
+                <img src="{$Think.const.HIMG_URL}c2.gif"><a href="{:U('Caidetail/detail',array('id'=>'2'))}">养卡详情</a><span><img src="{$Think.const.HIMG_URL}jt1.gif"/></span>
+            </li>
+
+            <li>
+                <img src="{$Think.const.HIMG_URL}c3.gif"><a href="{:U('Caidetail/detail',array('id'=>'3'))}">提额详情</a><span><img src="{$Think.const.HIMG_URL}jt1.gif"/></span>
+            </li>
+
+            <li>
+                <img src="{$Think.const.HIMG_URL}c4.gif"><a href="{:U('Caidetail/detail',array('id'=>'4'))}">贷款详情</a><span><img src="{$Think.const.HIMG_URL}jt1.gif"/></span>
+            </li>
+
+
+
+        </ul>
+
+
+    </div>
+</section>
+
+
+<script src="{$Think.const.HJS_URL}swiper.min.js"></script>
+<script src="{$Think.const.HJS_URL}lunbo.js"></script>
+<script src="{$Think.const.HJS_URL}zepto.min.js"></script>
+
+<script src="{$Think.const.HJS_URL}iscroll4.js"></script>
+<script src="{$Think.const.HJS_URL}jquery-1.8.2.min.js"></script>
+
+

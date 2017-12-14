@@ -1,0 +1,1070 @@
+cont_nav*{
+    margin:0;
+    padding:0;
+}
+html{
+    font-size:62.5%;
+}
+html,body,.container{
+    width:100%;
+    height:100%;
+    background: #FFFFFF;
+}
+.container{
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+}
+
+
+section{
+    width:100%;
+    -webkit-box-flex:1;
+    overflow:hidden;
+    overflow-y:auto;
+}
+.exchang dl {
+    width: 100%;
+    height: 80px;
+    background: #ffffff;
+    border-bottom: 1px solid #D7D7D7;
+    position: relative;
+
+}
+.exchang dl dd {
+    float: left;
+    width: 80px;
+    height: 80px;
+
+}
+.exchang dl dd img {
+    width:75%;
+    margin: 8px; border-radius: 50%;
+}
+.exchang dl dt {
+    float: left;
+    margin-top: 20px;
+}
+.exchang dl dt span {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    color: #DD0045;
+}
+.per_tx {
+    width: 100%;
+    height: 13.5rem;
+    background: url("../images/bj.gif") no-repeat center;
+    background-size:100%  14.750rem;
+}
+.per_tx img {
+    margin-top:2.000rem;
+    margin-left: 40%;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+
+
+}
+.personal ul {
+    width: 90%;
+    margin: 0 auto;
+}
+.personal ul li {
+    line-height: 30px;
+}
+.personal ul li p {
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 3px;
+
+}
+.per_txt {
+    width: 100%;
+    height: 35px;
+    border: 1px solid #c5c5c5;
+    color:#636363;
+    border-radius: 0.6rem; -webkit-border-radius: 0.6rem;
+    text-indent: 1em;
+}
+.personal ul li span {
+    color: #B2B2B2;
+}
+.personal ul li h2 {
+    width: 100%;
+    height: 35px;
+    border: 1px solid #c5c5c5;
+    background: url("../images/bj1.gif");
+    background-repeat: no-repeat;
+    background-size: 15%;
+}
+.personal ul li ol li {
+    float: left;
+    margin-right: 10px;
+}
+
+.per_ol {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+.per_ol li{
+    float: left;
+
+
+}
+.per_ol li input {
+    width: 130px;
+    height: 38px;
+    margin-right: 10px;
+    border: 0;
+    border-radius: 5px;
+}
+.exc_nav {
+    width: 100%;
+    height: 45px;
+    border-bottom: 1px solid #DCDCDD;
+}
+.exc_nav p{
+     float: left;
+     width: 90px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.exc_nav ul {
+    float: right;
+    padding-right:0.5rem;
+}
+.exc_nav ul li {
+    float: left;
+    width: 75px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color:#ffffff;
+    background: #DD0045;
+    margin-top: 5px;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+.exc_main {
+    width: 100%;
+    height: 20rem;
+    line-height:20rem;
+    text-align:center;
+    background: #ffffff;
+}
+.exc_main p {
+    margin-left: 30%;
+    margin-top: 20%;
+}
+.add {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.add_nav h2 {
+    font-size: 15px;
+    line-height: 30px;
+    margin-top: 5px;
+}
+.add_nav h3 {
+    line-height: 30px;
+    color: #DD0045;
+}
+.add_nav p {
+    line-height: 20px;
+}
+.add_main h2 {
+    font-size: 15px;
+    line-height: 30px;
+    margin-top: 5px;
+}
+.add_main p {
+    margin-bottom: 10px;
+}
+.add_main p input {
+    width: 98%;
+    border-radius:2px;
+    height: 30px;
+    border: 1px solid #D6D6D6;
+    color: #6A6A6A;
+}
+.add_main p span {
+    width: 20%;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    display: block;
+    float: right;
+    border: 1px solid #D6D6D6;
+    background: #EFF3F2;
+}
+.add_main h3 {
+    line-height: 30px;
+
+}
+.add_main h4 input {
+    width: 80%;
+    height: 30px;
+    border: 1px solid #D6D6D6;
+    background: #DDDDDD;
+    margin-top: 5px;
+}
+.add_main h4 span {
+    width: 20%;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    display: block;
+    float: right;
+    border: 1px solid #D6D6D6;
+
+}
+.add_main h5 input {
+    width: 100%;
+    height: 40px;
+    background: #DD0045;
+    text-align: center;
+    color: #ffffff;
+    line-height: 40px;
+    margin-top: 15px;
+    border: 0;
+    border-radius: 5px;
+}
+.ord_nav {
+    width: 100%;
+    height: 45px;
+    border-bottom: 1px solid #c5c5c5;
+    margin-bottom: 10px;
+}
+.ord_nav ul {
+    margin-top: 10px;
+}
+.ord_nav ul li{
+   width: 24.5%;
+   height: 25px;
+   font-size:1.400rem;
+   text-align: center;
+   float: left;
+}
+.ord_nav .nav{
+    width:0.1rem;
+    height: 25px;
+    background:#D9D9D9;
+    float: left;
+}
+.order {
+    width: 95%;
+    margin: 0 auto;
+}
+.ord_main {
+    width: 100%;
+	padding:1rem 0rem 4.8rem;
+    line-height: 20px;
+    border-bottom: 1px solid #D9D9D9;
+}
+.ord_main p{
+	font-size:1.400rem;
+    border-bottom: 1px solid #D9D9D9;
+    padding-bottom: 15px;
+}
+.ord_main dl {
+	padding:1rem 0rem;
+    border-bottom: 1px solid #D9D9D9;
+   position: relative;
+
+}
+.ord_main dl dd {
+    float: left;
+    width:20%;
+
+
+
+}
+.ord_main dl dd img {
+    width: 100%;
+	height:5.3rem;
+
+}
+.ord_main dl dt {
+    float: left;
+    width:65%;
+	font-size:1.400rem;
+    overflow:hidden;
+    margin-left: 3px;
+}
+.ord_main dl dt span {
+    position: absolute;
+    right: 5px;
+    bottom: 20px;
+}
+.ord_main h2{
+    float: right;
+	padding:1rem 0rem;
+}
+.ord_main h2 input {
+    width: 65px;
+    height: 30px;
+	font-size:1.400rem;
+    background: #DD0045;
+    color: #ffffff;
+   border-radius: 5px;
+    border: 0;
+}
+.or_main p{
+    margin-top: 20%;
+    margin-left: 35%;
+
+}
+.acc {
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+}
+.acc_main h2{
+    line-height: 30px;
+    margin-top: 10px;
+    font-size: 15px;
+}
+.acc_main{
+    border-bottom: 1px solid #B2B2B2;
+    position: relative;
+}
+.acc_main p {
+    font-size: 14px;
+    color: #DD0045;
+}
+
+.acc_main p span {color: #000000;}
+
+.acc_main a {
+    display: block;
+    position: absolute;
+    right: 10px;
+    top: 23%;
+}
+.acc_main a img {
+    width:70%;
+}
+
+.acc h5 input {
+    width: 100%;
+    height: 40px;
+    background: #DD0045;
+    text-align: center;
+    color: #ffffff;
+    line-height: 40px;
+    margin-top: 15px;
+    border: 0;
+    border-radius: 5px;
+}
+.point {
+    width: 90%;
+    margin:  0 auto;
+}
+.point p {
+    height: 45px;
+    border-bottom: 1px solid #D9D9D9;
+    line-height: 45px;
+    position: relative;
+}
+
+.point p span {
+    position: absolute;
+    right: 2rem;
+    font-size:1.5rem;
+    font-weight:bolder;
+    font-style:italic;
+    color: #DD0045;
+
+}
+
+.cont_nav {
+    width: 100%;
+    height: 5rem;
+    background:#D6D8DC;
+    border-bottom: 1px solid #c5c5c5;
+    margin-bottom: 10px;
+}
+.cont_nav ul {
+
+}
+.cont_nav ul li{
+    width: 50%;
+    height:5rem;
+    text-align: center;
+    line-height: 3rem;
+    float: left;
+    position: relative;
+
+}
+.cont_nav ul li span {
+    position: absolute;
+    width: 16px;
+    height: 10px;
+    top: 16%;
+    right: 20%;
+}
+.cont_nav ul li span img {
+    width: 100%;
+
+}
+
+.cont_nav ul li i {
+    position: absolute;
+    min-width:2rem;
+    height: 1.8rem;
+    background: #FF516A;
+    color: white;
+    border-radius: 4px;
+    line-height: 1.8rem;
+    top:45%;
+    right: 44%;
+}
+
+.cont_nav ul li i img {
+    width: 100%;
+}
+
+.cont_main dl {
+    width: 100%;
+    height: 80px;
+    background: #ffffff;
+    border-bottom: 1px solid #D7D7D7;
+    position: relative;
+
+}
+.cont_main dl dd {
+    float: left;
+    width: 80px;
+    height: 80px;
+}
+.cont_main dl dd img {
+    width:75%;
+    margin: 8px;
+    border-radius: 50%;
+}
+.cont_main dl dt {
+    float: left;
+    margin-top: 20px;
+}
+.cont_main dl dt i {
+    display: block;
+    color: white;
+    text-align: center;
+    line-height: 25px;
+    border-radius: 5px;
+    padding-left:0.1rem;
+    padding-right:0.1rem;
+    min-width: 4.688rem;
+    height: 25px;
+    background: #E0901D;
+}
+.cont_main dl dt span {
+    position: absolute;
+    width: 30px;
+    height: 25px;
+    top: 30px;
+    right: 30px;
+    color: #DD0045;
+}
+
+.cont_main dl dt span img {
+    width: 90%;
+}
+
+
+.addre {
+    width: 90%;
+    margin: 0 auto;
+
+}
+.addre_main {
+    height: 70px;
+    border-bottom: 1px solid #B2B2B2;
+    position: relative;
+}
+.addre_main h2{
+    line-height: 30px;
+    margin-top: 10px;
+    font-size: 15px;
+}
+.addre_main p {
+    font-size: 14px;
+    color: #939393;
+    margin-top: 10px;
+}
+
+
+
+.addre_main a {
+    display: block;
+    position: absolute;
+    right: 0.1rem;
+    top: 20%;
+}
+.addre_main a img {
+    width:70%;
+}
+
+.addre h5 input {
+    width: 100%;
+    height: 40px;
+    background: #DD0045;
+    text-align: center;
+    color: #ffffff;
+    line-height: 40px;
+    margin-top: 15px;
+    border: 0;
+    border-radius: 5px;
+}
+.address {
+    width: 100%;
+    height: 52px;
+
+    border-bottom: 1px solid #D6D6D6;
+}
+.address h2 {
+    line-height: 52px;
+    text-indent: 10px;
+}
+.address_main {
+    width: 90%;
+    margin: 0 auto;
+}
+.address_main p{
+    height: 40px;
+    border-bottom: 1px solid #D6D6D6;
+    line-height: 40px;
+}
+.address_main p input {
+    margin-left: 10px;
+    border: 0;
+    color: #939393;
+}
+.address_main p select {
+    border: 0;
+    height: 35px;
+    margin-left: 0.17rem;
+}
+.address_main h5 input {
+    width: 100%;
+    height: 40px;
+    background: #DD0045;
+    text-align: center;
+    color: #ffffff;
+    line-height: 40px;
+    margin-top: 15px;
+    border: 0;
+    border-radius: 5px;
+}
+.kec {
+    width: 100%;
+
+}
+
+.kec_nav dl {
+    width: 100%;
+    height: 80px;
+
+
+    position: relative;
+
+}
+.kec_nav dl dd {
+    float: left;
+    width: 80px;
+    height: 80px;
+}
+.kec_nav dl dd img {
+    width:75%;
+    margin: 8px;
+    border-radius: 50%;
+}
+.kec_nav dl dt {
+    float: left;
+    margin-top: 20px;
+    color: white;
+}
+.kec_nav dl dt span {
+     margin-left: 5px;
+     color: white;
+}
+.kec_main {
+    width: 100%;
+    height: 160px;
+    position: relative;
+}
+.kec_main img {
+    width: 50%;
+    position: absolute;
+    top: -10px;
+    left: 25%;
+}
+
+
+
+.kec_main1 {
+    width: 100%;
+    height: 170px;
+
+
+}
+.kec_main1 img {
+    display: block;
+    width: 55%;
+    margin: 0 auto;
+}
+
+.kec_fot{
+    width:100%;
+    height:4rem;
+}
+
+.kec_fot{
+    width:100%;
+    height:4rem;
+
+    background: #FCE6EA;
+    display: -webkit-box;
+
+}
+
+.kec_fot dl {
+    -webkit-box-flex:1;
+   
+    font-size: 0.75rem;
+    text-align: center;
+
+}
+.kec_fot dl {
+    width: 100%;
+    margin-top: 5px;
+    margin-right: 2px;
+}
+.kec_fot dl dt img{
+    width:20px;
+    height:20px;
+}
+.kec_fot dl dd{
+    line-height:20px;
+    color: #DD0045;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+footer{
+    width:100%;
+    height:5rem;
+}
+
+footer{
+    width:100%;
+    height:5rem;
+    margin-top: 5px;
+    background: #ffffff;
+    display: -webkit-box;
+
+}
+
+footer dl {
+    -webkit-box-flex:1;
+    position: relative;
+    font-size: 0.75rem;
+    text-align: center;
+
+}
+footer dl {
+    width: 100%;
+    margin-top: 5px;
+    margin-right: 2px;
+}
+footer dl dt img{
+    width:20px;
+    height:20px;
+}
+footer dl dd{
+    line-height:20px;
+}
+
+
+.jour {
+    width: 90%;
+    margin:  0 auto;
+}
+.jour h2 {
+    font-size: 16px;
+    margin-top: 5px;
+}
+.jour h5 {
+    color: #909090;
+
+}
+.jour p img {
+    width: 100%;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.jour p {
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+.jour ul li {
+    width: 100%;
+    margin-top: 10px;
+
+}
+.jour ul li img {
+    width: 100%;
+}
+.banner{
+    width:100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.banner img {
+    width: 100%; height: 10.500rem;
+}
+.inf_main {
+    width: 95%;
+    margin: 0 auto;
+}
+.inf_main dl {
+    width: 100%;
+    height:5.000rem;
+    background: #ffffff;
+
+}
+.inf_main dl dd {
+    float: left;
+    width:20%;
+    height:4.000rem;
+    margin-top: 1rem;
+}
+.inf_main dl dd img {
+
+    width:100%;
+    height:4.000rem;
+
+}
+.inf_main dl dt {
+    margin-top: 1rem;
+    width:75%;
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+     padding-left: 0.7rem;
+    word-break : break-all;
+    font-size: 13px;
+}
+.inf_main dl dt h5 {
+    color: #909090;
+    margin-top: 15px;
+
+}
+.inf_main dl dt h5 img {
+    width: 5%;
+    margin-left: 5px;
+    margin-right: 5px;
+
+}
+
+.info {
+    width: 95%;
+    margin: 0 auto;
+}
+.info h2 {
+    font-size: 14px;
+
+}
+.info h2 span {
+    font-size: 10px;
+    color:#949ea7 ;
+}
+.info p {
+    width: 32%;
+    float: left;
+    margin-right: 4px;
+
+
+}
+.info p img {
+    width: 100%;
+}
+
+/************housing world 房天下开始**************/
+
+.hous_nav {
+    width: 90%;
+    margin: 0 auto;
+    height: 1.188rem;
+    border-bottom: 1px solid #E76A94;
+    margin-top: 1.500rem;
+
+}
+
+.hous_nav p {
+    width: 5rem;
+    height: 1.188rem;
+    line-height:1.188rem;
+    text-align: center;
+    color: #ffffff;
+    background: url("../images/bj5.gif");
+    background-repeat: no-repeat;
+    background-size: 100%;
+
+}
+
+.hous_main {
+
+    width: 90%;
+
+    margin: 0 auto;
+
+}
+.hous_main p {
+    margin-top:1rem;
+    width: 100%;
+    height: 1.875rem;
+    line-height: 1.875rem ;
+
+}
+.hous_main p i {
+    display: block;
+    height: 1.875rem;
+    line-height: 1.875rem;
+    font-size: 1.5rem;
+    color: #DD0045;
+    margin-right: 0.5rem;
+    float: left;
+    padding-top: 0.2rem;
+
+}
+.hous_main p span {
+    display: block;
+    height: 1.875rem;
+    line-height: 1.875rem;
+    font-size: 1.3rem;
+    margin-right: 0.5rem;
+    float: left;
+    color: #656565;
+}
+.hous_main p input {
+    border: 1px solid #D6D6D6;
+    height: 1.8rem;
+}
+
+.hous_main1 {
+
+    width: 90%;
+
+    margin: 0 auto;
+
+}
+.hous_main1 p {
+    margin-top: 1rem;
+    width: 100%;
+    height: 1.875rem;
+    line-height: 1.875rem ;
+
+}
+.hous_main1 p i {
+    display: block;
+    height: 1.875rem;
+    line-height: 1.875rem;
+    font-size: 1.5rem;
+    color: #DD0045;
+    margin-right: 0.5rem;
+    float: left;
+    padding-top: 0.2rem;
+
+}
+.hous_main1 p span {
+    display: block;
+    height: 1.875rem;
+    line-height: 1.875rem;
+    font-size: 1.3rem;
+    margin-right: 0.5rem;
+    float: left;
+    color: #656565;
+}
+.hous_main1 p select {
+    width: 6rem;
+    color: #ABABAB;
+    margin-right: 0.5rem;
+}
+
+.hous_main1 p input {
+    margin-left: 0.2rem;
+    width: 6rem;
+}
+
+.house2 {
+    width: 100%;
+    margin-top: 1rem;
+}
+.house2 p {
+
+    padding-bottom: 0.2rem;
+}
+.house2 h5 input {
+    display: block;
+    width: 90%;
+    height: 3rem;
+    background: #DD0045;
+    text-align: center;
+    color: #ffffff;
+    line-height: 3rem;
+    margin: 0 auto;
+    border: 0;
+    border-radius: 0.5rem;
+}
+/************housing world 房天下结束**************/
+
+
+/************order订单详情开始**************/
+
+
+.orderinfo_nav {
+    width: 100%;
+    margin-top: 1rem;
+    background: #ffffff;
+
+}
+.orderinfo_nav  dl dd {
+    float: left;
+    width: 2rem;
+    min-height:4rem ;
+    margin-left: 0.5rem;
+}
+.orderinfo_nav  dl dd img {
+    width: 80%;
+    left: 5rem;
+    margin-top: 1rem;
+}
+.orderinfo_nav dl dt {
+    float: left;
+    width: 80%;
+	font-size:1.400rem;
+    min-height:4rem;
+    line-height: 1.5rem;
+    margin-left: 1rem;
+}
+.orderinfo_nav dl dt span {
+    float: right;
+}
+.orderinfo_main {
+    width: 100%;
+    margin-top: 1rem;
+    background: #fff;
+    padding-top: 1rem;
+}
+.orderinfo_main1 {
+    width: 100%;
+    background: #fff;
+	padding-bottom:1rem;
+    min-height: 7rem;
+
+
+}
+.orderinfo_main1 dl dd {
+    float: left;
+    width:26%;
+    min-height: 7rem;
+}
+.orderinfo_main1 dl dd img {
+    width:100% ;
+    margin-left: 0.5rem;
+}
+.orderinfo_main1 dl dt {
+    float: right;
+    width: 70%;
+	padding-top:0.9rem;
+	line-height:2rem;
+	font-size:1.400rem;
+    min-height: 7rem;
+    margin-left: 1rem;
+
+}
+.orderinfo_main1 dl dt h2 {
+	font-size:1.400rem;
+    float: left;
+    text-overflow: ellipsis;
+
+}
+.orderinfo_main1 dl dt p {
+    float: right;
+    text-align: right;
+    line-height: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+.orderinfo_main1 dl dt p span {
+    text-decoration: line-through;
+}
+.orderinfo_main1 h3 {
+	font-size:1.400rem;
+    line-height: 2rem;
+    margin-left: 0.5rem;
+}
+.orderinfo_main1 h3 span {
+    float: right;
+    margin-right: 0.5rem;
+}
+.orderinfo_main2 {
+    width: 100%;
+    background: #fff;
+    margin-top: 1rem;
+    padding-bottom:0.5rem;
+}
+.orderinfo_main2 p {
+    line-height: 2.5rem;
+    margin-left: 0.5rem;
+}
+.orderinfo_main2  ul {
+    width: 100%;
+    display: block;
+    margin-top: 1rem;
+    background: #fff;
+}
+.orderinfo_main2  ul li {
+    float: right;
+}
+.orderinfo_main2  ul li input {
+     width:7rem;
+    height: 30px;
+	font-size:1.400rem;
+    border-radius: 5px;
+    background: #ffffff;
+    border: 1px solid #ccc;
+    text-align: center;
+    line-height: 2rem;
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+
+}
+
+
+
+
+
+
+
+
+
+/************order订单详情结束**************/

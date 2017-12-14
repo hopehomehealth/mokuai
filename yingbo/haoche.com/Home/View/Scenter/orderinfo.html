@@ -1,0 +1,94 @@
+<link href="{$Think.const.HCSS_URL}liyue-style.css" type="text/css" rel="stylesheet" />
+<section style="margin-bottom:8rem;background:#F0F0F0;font-size:1.250rem;height:100%">
+<form action="__MODULE__/Scenter/orderinfo" method="post" id="form">
+  <div class="orderinfo_nav" style="padding-top:0.5rem;padding-bottom:0.5rem">
+    
+          <p style="padding-top:0.5rem;line-height:2rem;margin-left:0.5rem">收货人：<input style="border:none" type="text" name="consigner" value="{$orderinfo.consigner}"></p><p style="padding-top:0.5rem;line-height:2rem;margin-left:0.5rem">收货人电话：<input style="border:none" style="width:8rem" type="text" name="phone" value="{$orderinfo.phone}"></p><p style="padding-top:0.5rem;line-height:2rem;margin-left:0.5rem">收货地址：<input style="border:none" type="text" name="delivery" value="{$orderinfo.delivery}"></p>
+
+  </div>
+  <div class="orderinfo_nav" style="padding-top:0.5rem;padding-bottom:0.5rem">
+    
+          <p style="padding-top:0.5rem;line-height:2rem;margin-left:0.5rem">快递方式：<input style="border:none" style="width:8rem" type="text" name="express" value="{$orderinfo.express}" placeholder="请输入快递公司"></p><p style="padding-top:0.5rem;line-height:2rem;margin-left:0.5rem">运单号：<input style="border:none" style="width:8rem" type="text" name="expressno" value="{$orderinfo.expressno}" placeholder="请输入运单号"></p>
+
+  </div>
+  <div class="orderinfo_main">
+      <div class="orderinfo_main1">
+          <dl>
+            <dd><a href="{:U('Union/goodsdetail',array('goods_id'=>$goodsinfo['goods_id']))}"><img src="{$Think.const.SITE_URL}{$orderinfo.logo}" alt=""/></a></dd>
+            <dt style="padding-top:0">
+                <h2 style="width:65%;word-break : break-all;"><h3><span> <span style="min-width:2rem">{$orderinfo['goods_name']}</span></span></h3></h2>
+                <h2 style="width:100%;word-break : break-all;"><h3><span>市场价：<span style="color: #DD0045;text-decoration:line-through">￥{$orderinfo['price']}</span><br />联盟价：<span style="color: #DD0045;">￥<b id="price">{$orderinfo['nowprice']}</b></span></span></h3></h2>
+                <h2 style="width:65%;word-break : break-all;"><h3><span>×<span style="color: #DD0045;font-weight:bold" id="number">1</span></span></h3></h2>
+                <!-- <div style="clear: both"></div>
+                <span style='float:left;width:100%;'>{$Think.get.spec}</span> -->
+            </dt>
+              <div style="clear: both"></div>
+              <h3 style="padding:1rem 0;padding-right:0.5rem">数量：<span style="height:2rem;display:inline-block;border:1px solid #dd0045;"><span id="addnum" style="margin-right:0;display:inline-block;width:2rem;background:#DD0045;color:white;text-align:center;font-weight:bolder;height:2rem">+</span><input style="float:right;width:6rem;text-align:center;font-weight:bolder;border:none;height:2rem!important;" type="text" name="number" value="1"><span id="subnum" style="display:inline-block;width:2rem;background:#DD0045;color:white;text-align:center;font-weight:bolder;height:2rem;margin-right:0">-</span></span></h3>
+              <h3>运费<span style="color: #ccc;margin-right:1rem">￥0.00</span></h3>
+              <h3>实付款：<span style="margin-right:1rem;color:#DD0045">￥<b id="totalfee">{$orderinfo['orderamount']}</b></span></h3>
+          </dl>
+      </div>
+  </div>
+  <div class="orderinfo_main2">
+    <ul>
+          <li><input id="suborder" type="button" value="确认收货" style="padding:0.200rem;color:white; background: #DD0045"/></li>
+          <li><input id="suborder" type="button" value="确认发货" style="padding:0.200rem;color:white; background: #DD0045"/></li>
+    </ul>
+    <div style="clear: both"></div>
+  </div>
+ </form>
+</section>
+<script type="text/javascript">
+    $(function(){
+      $("#addnum").click(function(){
+        var number = parseInt($("input[name='number']").val());
+        $("input[name='number']").val(number + 1);
+        if($("input[name='number']").val() >= 11){
+          $("input[name='number']").val(10)
+          return false;
+        }
+        $("#number").text($("input[name='number']").val());
+        var totalfee = Math.round($("input[name='number']").val() * parseFloat($("#price").text()));
+        $("#totalfee").text(totalfee);
+      })
+      $("#subnum").click(function(){
+        var number = parseInt($("input[name='number']").val());
+        if(number == 1){
+          return false;
+        }
+        $("input[name='number']").val(number - 1);
+        $("#number").text($("input[name='number']").val());
+        var totalfee = Math.round($("input[name='number']").val() * parseFloat($("#price").text()));
+        $("#totalfee").text(totalfee);
+      })
+      $("input[name='number']").blur(function(){
+        if($(this).val() >= 11){
+          $(this).val(10);
+        }
+        if(isNaN($(this).val())){
+          $(this).val(1);
+        }else{
+          $(this).val(Math.floor(Math.abs($(this).val())));
+        }
+        if($(this).val() <= 0){
+          $(this).val(1);
+        }
+
+        $("#number").text($(this).val());
+        var totalfee = Math.round($(this).val() * parseFloat($("#price").text()));
+        $("#totalfee").text(totalfee);
+      })
+    	$("#suborder").click(function(){
+    		$("#suborder").attr('disabled',true);
+    		if(($("input[name='delivery']").val() == '') || ($("input[name='phone']").val() == '')){
+    			flag = false;
+    			$("section").append("<div id='errormsg' style='display:none;position:absolute;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1rem;opacity:0.7;background:#666'>"+'请选择收货地址'+"</div>");
+
+                    $("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);$("#bsubmit").attr('disabled',true);setTimeout(function(){$("#errormsg").remove();$("#suborder").attr('disabled',false);},2000);
+    			return false;
+    		}else{
+    			$("#form").submit();
+    		}
+    	})
+    })
+</script>

@@ -1,0 +1,45 @@
+<!--*****header*****-->
+<div class="main">
+    <!--*****banner*****-->
+    <div class="su-banner">
+        <foreach name="slides" item="slide">
+            <img src="{$slide.picmobile|substr=###,1}" alt="">
+        </foreach>
+    </div>
+    <!--*****bannerend*****-->
+
+
+    <!--*****su-con*****-->
+    <section class="su-con pb0">
+        <div class="su-product pb0-25">
+            <div class="su-deve">
+                <h4><strong>{$detail.pdt_name}</strong></h4>
+            </div>
+            {$detail.introduce}
+        </div>
+    </section>
+    <notempty name="photos">
+    <section  class="w100 b-lgray1">
+        <div class="su-serv-fina">
+            <div class="prolist">
+                <div class="proleft"></div>
+                <div class="proright"></div>
+                <div class="probebox swiper-container-horizontal">
+                    <ul class="clearfix swiper-wrapper">
+                        <!--banner-->
+                        <foreach name="photos" item="info">
+                            <li class="swiper-slide">
+                                <a>
+                                    <img src="{$info.url}" alt="" />
+                                </a>
+                            </li>
+                        </foreach>
+                        <!--banner-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    </notempty>
+    <!--*****su-conend*****-->
+</div>

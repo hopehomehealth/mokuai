@@ -1,0 +1,127 @@
+{__NOLAYOUT__}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>新农缘天下商城</title>
+    <link href="{$Think.const.HCSS_URL}basic.css" type="text/css" rel="stylesheet" />
+    <link href="{$Think.const.HCSS_URL}style.css" type="text/css" rel="stylesheet" />
+    <link href="{$Think.const.HCSS_URL}swiper-3.3.0.min.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="{$Think.const.HJS_URL}jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="{$Think.const.HJS_URL}swiper-3.3.0.jquery.min.js"></script>
+    <script type="text/javascript" src="{$Think.const.HJS_URL}refresh.js"></script>
+</head>
+
+<body>
+<section>
+<header>
+    <if condition="$catinfo[0]['cat_id'] eq '1'">
+<a class="head_back1" href="Javascript:window.history.go(-1)">&nbsp;</a>
+    <div class="headTit">{$catinfo[0]['cat_name']}
+
+    <a href="" class="xj_jyk">油卡充值</a>
+    </div>
+    <a class="head_back2">&nbsp;</a>
+<else />
+<a class="head_back1" href="Javascript:window.history.go(-1)">&nbsp;</a>
+    <div class="headTit">{$catinfo[0]['cat_name']}
+    </div>
+    <a class="head_back2">&nbsp;</a>
+
+
+</if>
+
+</header>
+
+
+<ul class="dj_xhk fr">
+    <p class="arrow-up fl"></p>
+    <li><a href="{:U('Goods/index')}">商城首页</a></li>
+    <li><a href="{:U('Goods/allcatlist')}">商品分类</a></li>
+</ul>
+<script type="text/javascript">
+    $(".head_back2").click(function(){
+        $(".dj_xhk").slideToggle("1000");
+    });
+</script>
+<div class="main pb0">
+    <section>
+        <div class="tesco fl pt_6 pb_6">
+            <p class="tesco_left fl"><a href="{:U('Cart/showlist')}"> <img src="{$Think.const.HIMG_URL}tb_26.png"><span class="tesco_gwsz1">{$number}</span></a></p>
+            <p class="tesco_right fl">
+                 <form action="{:U('search')}" method="post">
+                    <input type="text" class="tesco_rgt_k fl" name="searchname" id="searchname" placeholder="请输入商品名称/类型">
+                    <input id="submit"  class="tesco_rgt_an" type="submit" value="">
+                </form>
+                     <script type="text/jscript">
+ $('#submit').click(function(){
+ var searchname = $('#searchname').val();
+     if(searchname == ''){
+        return false;
+    }
+        });
+</script>
+            </p>
+        </div>
+        <div class="fl mt0 tesco_list_a" id="recordslist" totalPages="{$totalPages}" catid="{$Think.get.cat_id}">
+            <foreach name="goodsinfo" item="v">
+                <dl class="tesco_list_pic fl">
+                    <dt><a href="{:U('detail',array('goods_id'=>$v['goods_id']))}"><img width="90px" height="120px" src="{$v.logo}"></a></dt>
+                    <dd>
+                        <p class="car_f fl crimson car_f_awm pt_6 pb_6 tac fwb"><span class="car_yj">乐购价</span>&nbsp;{$v['downpay']}元</p>
+                        <p class="car_z fl tac car_f_awm">￥{$v.price}元&nbsp;&bull;&nbsp;积分</p>
+                        <p class="car_xzsz fl"><a style="text-align: center;" href="{:U('detail',array('goods_id'=>$v['goods_id']))}">
+                            <span class="gray">{$v.goods_name}</span></a></p>
+                    </dd>
+                </dl>
+            </foreach>
+
+
+        </div>
+		<div style="text-align:center;display:none;background-color:#f0f0f0;width:100%;background:#fff;" id="loading"><img src="/Public/Home/images/loading.jpg" width="36%" height="" border="0" alt="" /></div>
+    </section>
+</div>
+</section>
+</body>
+<!-- 滚动加载 -->
+<script type="text/javascript">
+
+	$(function(){
+		var scrollstatus = false;
+		var totalPages = $("#recordslist").attr('totalPages');
+		var nowpage = 1;
+		function ajax_request(nowpage){
+			var html = '';
+			var recordslist = $("#recordslist");//放数据的容器
+			$.post("__MODULE__/Goods/catlist/p/"+nowpage,{"cat_id":recordslist.attr('catid')},function(data){
+				if(data.error == 0){
+					for(var i in data.content){
+						html += "<dl class='tesco_list_pic fl'><dt><a href='__MODULE__/Goods/detail/goods_id/"+data.content[i].goods_id+"'><img width='90px' height='120px' src='"+data.content[i].logo+"'></a></dt><dd><p class='car_z crimson fwb fl tac car_f_awm'>￥"+data.content[i].price+"元&nbsp;&bull;&nbsp;积分</p><p class='car_f fl crimson pt_6 pb_6 car_f_awm tac'><span class='car_yj'>首付</span>&nbsp;"+data.content[i].downpay+"元</p><p class='car_xzsz fl'><a style='text-align: center;' href='__MODULE__/Goods/detail/goods_id/"+data.content[i].goods_id+"'><span class='gray'>"+data.content[i].goods_name+"</span></a></p></dd></dl>";
+					}
+				}
+				recordslist.append(html);
+				$("#loading").css("display",'none');
+				scrollstatus = false;
+			});
+		}
+		$(window).scroll(function () {
+			var scrollTop = $(this).scrollTop();
+			var scrollHeight = $(document).height();
+			var windowHeight = $(this).height();
+			if (scrollTop + windowHeight == scrollHeight && scrollstatus == false) {
+			  scrollstatus = true;
+			  nowpage++;
+			  if(nowpage <= totalPages){
+				$("#loading").css("display",'block');
+				setTimeout(function(){ajax_request(nowpage)},2000);
+			  }
+			}
+		});
+	 });
+</script>
+</html>

@@ -1,0 +1,103 @@
+{__NOLAYOUT__}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>新农缘天下商城</title>
+    <link href="{$Think.const.HCSS_URL}basic.css" type="text/css" rel="stylesheet" />
+    <link href="{$Think.const.HCSS_URL}style.css" type="text/css" rel="stylesheet" />
+    <link href="{$Think.const.HCSS_URL}swiper-3.3.0.min.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="{$Think.const.HJS_URL}jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="{$Think.const.HJS_URL}swiper-3.3.0.jquery.min.js"></script>
+</head>
+
+<body>
+<header><a class="head_back1" href="Javascript:window.history.go(-1)">&nbsp;</a>
+    <div class="headTit">我要租车</div>
+</header>
+<div class="main pb0">
+    <section>
+        <div class="navbj fl pb0">
+            <ul class="rental fl">
+                <form action="" method="get">
+                    <li>
+                        <p class="w5 rental_a fl"><img src="{$Think.const.HIMG_URL}tb_42.png"></p>
+                        <div class="w95 rental_c fl">
+                            <p class="w25 fl rental_b">取车城市</p>
+                            <select class="rental_d fl w50" name="">
+                                <option>北京</option>
+                                <option>上海</option>
+                                <option>南京</option>
+                            </select>
+                            <p class="w25 fl rental_e"><span>上门送车</span>
+                            <p class="rental_f w25 fl">&nbsp;</p>
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="w5 rental_a fl">&nbsp;</p>
+                        <div class="w95 rental_c fl">
+                            <p class="w25 fl rental_b">取车门店</p>
+                            <select class="rental_d fl w75 brn" name="">
+                                <option>北京</option>
+                                <option>上海</option>
+                                <option>南京</option>
+                            </select>
+
+                        </div>
+                    </li>
+                    <li>
+                        <p class="w5 rental_a fl"><img src="{$Think.const.HIMG_URL}tb_43.png"></p>
+                        <div class="w95 rental_c fl">
+                            <p class="w25 fl rental_b">还车城市</p>
+                            <select class="rental_d fl w50" name="">
+                                <option>北京</option>
+                                <option>上海</option>
+                                <option>南京</option>
+                            </select>
+                            <p class="w25 fl rental_e"><span>上门取车</span>
+                            <p class="rental_f_a w25 fl">&nbsp;</p>
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="w5 rental_a fl">&nbsp;</p>
+                        <div class="w95 rental_c fl" style="border-bottom:none;">
+                            <p class="w25 fl rental_b">还车门店</p>
+                            <select class="rental_d fl w75 brn" name="">
+                                <option>北京</option>
+                                <option>上海</option>
+                                <option>南京</option>
+                            </select>
+
+                        </div>
+                    </li>
+                </form>
+            </ul>
+            <div class="rental_g fl">
+                <p class="w25 fl rental_h">取车时间<br><span class="rental_i">10:00</span><br>08-24 周三</p>
+                <p class="w50 fl rental_j"><span class="rental_k fwb">29</span><br>天</p>
+                <p class="w25 fl rental_h">还车时间<br><span class="rental_i">10:00</span><br>09-22 周四</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="navbj fl pb0 b_n tac rental_m"><img src="{$Think.const.HIMG_URL}tb_47.png">全国范围内，上门送取车服务费全免！</div>
+        <input id="xuanche" name="" type="button" class="navbj fl pb0 b_n tac rental_n" value="立即去选车">
+    </section>
+    <script type="text/javascript">
+        $('#xuanche').click(function(){
+            alert("服务正在升级中......") ;
+        });
+    </script>
+</div>
+
+</body>
+</html>

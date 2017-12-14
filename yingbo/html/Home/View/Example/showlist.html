@@ -1,0 +1,41 @@
+<link href="{$Think.const.HCSS_URL}mypage.css" rel="stylesheet" type="text/css"/>
+<foreach name="adinfofen" key="k" item="v">
+    <div class="su_banner"><a href="{$v.url}"><img src="{$Think.const.SITE_URL}{$v.pic}" /></a>  </div>
+</foreach>
+
+
+<div class="sideBar">
+    <div class="about fl">
+        <p class="about_tit fl">服务案例</p><p class="about_yw fl">Service&nbsp;Case</p>
+    </div>
+
+
+    <div class="about_zc fl">
+        <ul class="news_list_tit">
+            <li class="current"><a href="{:U('Example/showlist')}">服务案例</a></li>
+        </ul>
+        <ul class="case fl">
+
+        <foreach name="exampleinfo" key="k" item="v">
+            <li>
+                <p class="case_tit fl">{$v.name}</p>
+                <dl class="case_pic fl">
+                    <dt><a href="{:U('Example/example_list',array('example_id'=>$v['example_id']))}"><img src="{$Think.const.SITE_URL}{$v.pic}" width="174" height="104" /></a></dt>
+                    <dd>{$v.content|strip_tags|mb_substr=###,0,21,'utf-8'}...<br /><br /><span><a href="{:U('Example/example_list',array('example_id'=>$v['example_id']))}">查看详情 >></a></span></dd>
+                </dl>
+            </li>
+            </foreach>
+
+
+        </ul>
+        <table width="600" align="center">
+            <tr class="content" align="center">
+                <!--<td colspan="3" bgcolor="#FFFFFF">&nbsp;{$page}</td>-->
+                <td colspan="3" bgcolor="#FFFFFF" align="center"><div class="pages" align="center">
+                    {$page}
+                </div></td>
+            </tr>
+        </table>
+
+    </div>
+</div>

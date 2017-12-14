@@ -1,0 +1,71 @@
+
+<div class="main-content">
+    <div class="box-title margin_bot_20">
+        <div class="span10">
+            <h3><i class="icon-magic"></i>属性修改</h3>
+        </div>
+    </div>
+
+
+    <div class="page-content">
+        <div class="row">
+            <div class="page-content box">
+
+                <form action="__SELF__" method="post" class="form-horizontal" enctype="multipart/form-data">
+                    <input type="hidden" name="attr_id" value="{$info.attr_id}">
+                    <div class="form-group">
+                        <label class="control-label">名　　称 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" class="input-large" name="attr_name" value="{$info.attr_name}">
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">类　　型 : </label>
+                        <div class="controls pull-left">
+                            <select name='attr_id'>
+                                <option value='0'>-请选择-</option>
+                                <foreach name='typeinfo' item='v'>
+                                    <option value='{$v.type_id}' <if condition="$v['type_id'] eq $info['type_id']">selected</if> >{$v.type_name}</option>
+                                </foreach>
+                            </select>
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">单选多选 : </label>
+                        <div class="controls pull-left">
+<input type="radio" name="attr_sel" <if condition="$info['attr_sel'] eq 0">checked</if> value='0'/>单选
+<input type="radio" name="attr_sel" <if condition="$info['attr_sel'] eq 1">checked</if> value='1' />多选
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">录入方式 : </label>
+                        <div class="controls pull-left">
+<input type="radio" name="attr_write" value='0' <if condition="$info['attr_write'] eq 0">checked</if>/>手工录入
+<input type="radio" name="attr_write" value='1' <if condition="$info['attr_write'] eq 1">checked</if>/>从列表中选择
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">多选项目可选值 : </label>
+                        <div class="controls pull-left">
+                            <textarea style='width:360px;height:130px;' name='attr_vals'>{$info.attr_vals}</textarea>
+                            <span class="help-inline red"> * 多个值彼此通过","逗号分隔</span>
+                        </div>
+                    </div>
+
+
+                    <div class="form-actions" align="center">
+                        <button id="bsubmit" type="submit"  class="btn btn-sm btn-primary">保存</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--/.box-->
+    </div><!-- /.page-content -->
+</div><!-- /.main-content -->
+

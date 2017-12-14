@@ -1,0 +1,43 @@
+
+        <div class="main">
+        <form action="__MODULE__/User/perfectData" method="post">
+            <ul class="userList zrXx">
+                <li class="borBot">
+                    <a href="#">
+                        姓名  
+                        <span><input style="text-align:right" type="text" name="user" value=""></span>                      
+                        <i class="moreUser"></i>
+                    </a>
+                </li>
+                <li class="borBot">
+                    <a href="#">
+                        联系电话   
+                        <span><input style="text-align:right" type="text" name="iphone" value=""></span>                        
+                        <i class="moreUser"></i>
+                    </a>
+                </li>
+                <li class="borBot">
+                    <a href="#">
+                        身份 
+                        <span><select class="shenfen" name="shenfen">
+                        <option value="">请选择</option>
+                        <option value="1">普通用户</option>
+                        <option value="2">评估师</option>
+                        <option value="3">护士</option>
+                    </select></span>                        
+                        <i class="moreUser"></i>
+                    </a>
+                </li>
+            </ul>
+            <div class="updateBox">
+                <foreach name="userInfo" key="k" item="v">
+                    <input type="hidden" name="old{$k}" value="{$v}">
+                </foreach>
+                <input type="hidden" name="itemNum" value="{$itemNum}">
+                <button class="submit updateBtn">保 存 资 料</button>
+            </div>
+        </form>
+        </div>
+    </div>
+
+ 

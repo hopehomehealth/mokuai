@@ -1,0 +1,194 @@
+<script type="text/jscript" src="{$Think.const.HJS_URL}jquery-1.8.3.min.js"></script>
+
+<script type="text/javascript" src='{$Think.const.SITE_URL}/Public/Home/ueditor/ueditor.config.js' ></script>
+<script type="text/javascript" src='{$Think.const.SITE_URL}/Public/Home/ueditor/ueditor.all.min.js' ></script>
+<script type="text/javascript" src='{$Think.const.SITE_URL}/Public/Home/ueditor/lang/zh-cn/zh-cn.js' ></script>
+
+
+
+
+<script type="text/javascript">
+    var pageCount = 1;//总页数
+    var regExp = /_ueditor_page_break_tag_/;//根据某处字符来分页
+    var saveContent;//用于保存分页数据
+    var content, pageList;//保存全局ID
+
+    $(document).ready(function(){
+        UeInitialize("#content-box","#page");
+    });
+    UeInitialize = function (id,page) {
+        var cTxt = $(id).html();
+        content = $(id);
+        pageList = $(page);
+        if (cTxt != null && regExp.test(cTxt)) {
+
+            saveContent = cTxt.split(regExp);
+
+            pageCount = saveContent.length;
+
+        }
+        window.UePageContent(1);
+    };
+
+    UePageContent = function (pageIndex) {
+        if (pageIndex >= 1 && pageIndex <= pageCount && saveContent != null && saveContent.length >= 0) {
+            var pageHtml = pageList;
+            if ((parseInt(pageIndex) - 1) <= saveContent.length) {
+                content.html(saveContent[parseInt(pageIndex) - 1]);
+            }
+
+            pageHtml.html("");
+            var innHtml = "<li><a>页数：" +pageIndex +"/"+pageCount+"</a></li>";
+            innHtml += "<li><a target='_self' href='javascript:UePageContent(1)'>首页</a></li>";
+            if (pageIndex > 1) {
+                innHtml += "<li><a target='_self' href='javascript:UePageContent(" + (parseInt(pageIndex) - 1) + ")'>上一页</a></li>";
+            }
+            if (pageIndex < pageCount) {
+                innHtml += "<li><a target='_self' href='javascript:UePageContent(" + (parseInt(pageIndex) + 1) + ")'>下一页</a></li>";
+            }
+            innHtml += "<li><a target='_self' href='javascript:UePageContent(" + pageCount + ")'>末页</a></li>";
+            pageHtml.html(innHtml);
+        }
+    }
+</script>
+
+
+<!-------banner------>
+<p class="su-banner pt10">
+    <foreach name="adinfo" item="v">
+        <if condition="$v.is_area eq 0">
+            <img src="{$Think.const.SITE_URL}{$v.pic}" />
+        </if>
+    </foreach>
+</p>
+<!-------banner---->
+<div class="column-c pt10 ser">
+    <div class="ser-left fl">
+        <if condition="$pid eq 0">
+            <p class="ser-tit fl"><a target="_blank" href="{:U('Index/index')}"><img src="{$Think.const.HIMG_URL}images_44.jpg" alt="首页" /></a><img src="{$Think.const.HIMG_URL}images_96.jpg" alt="" />
+                {$daohang.first} </p>
+            <else/>
+            <p class="ser-tit fl"><a target="_blank" href="{:U('Index/index')}"><img src="{$Think.const.HIMG_URL}images_44.jpg" alt="首页" /></a><img src="{$Think.const.HIMG_URL}images_96.jpg" alt="" />
+                {$daohang.second}
+                <img src="{$Think.const.HIMG_URL}images_96.jpg" alt="" />
+                {$daohang.first}</p>
+        </if>
+    </div>
+</div>
+<!-------第一通栏------->
+<div class="column-c pt10 pb30">
+    <!--****左边边通栏****-->
+    <div class="set-lis-l fl">
+        <!--****左边第一通栏****-->
+
+
+        <!--****左边第二通栏****-->
+        <div  id="content-box" class="set-fi fl pt15">
+            <p>{$laninfo[0]['content1']}</p>
+        </div>
+
+        <!--****左边第三通栏****-->
+        <ul class="page" id="page">
+        </ul>
+
+
+
+
+        <!--****左边第六通栏****-->
+        <foreach name="cominfo" item="v">
+            <ul class="set-fi-wy-lb fl">
+                <li><dl class="set-fi-wy-lis fl"><dt><img src="{$Think.const.HIMG_URL}images_130.jpg" alt="" /></dt><dd><span class="fr l-gray">{$v.add_time}</span><p class="fl pt10">{$v.content}</p></dd></dl></li>
+            </ul>
+        </foreach>
+
+
+        <input type='hidden' id='commenttotal' value='{$commenttotal}' />
+        <script type="text/javascript">
+            $(function(){
+                (function() {
+
+                    //获得记录的总条数
+                    var num_entries = $("#commenttotal").val();
+                    if(num_entries == 0){
+                        $('#Pagination').hide();
+                    } else{
+                        // 创建分页,并显示到#Pagination所在的元素中
+                        $("#Pagination").pagination(num_entries, {
+                            num_edge_entries: 1, //边缘页数
+                            num_display_entries: 4, //主体页数
+                            callback: pageselectCallback,
+                            items_per_page:3//每页显示1项
+                        });
+                    }
+
+                })();
+
+                //点击“页码列表”时的回调函数
+                function pageselectCallback(page_index, jq){
+                    var news_id = $('#news_id').val();
+                    //page_index:"当前页码-1"后的数据
+                    //console.log(page_index);
+                    //Ajax根据page_index获得分页的数据
+                    //在CommentController::getCommentInfo里边获得数据
+                    $.ajax({
+                        url:"__MODULE__/Ncomment/getCommentInfo",
+                        data:{'news_id':news_id,'page':page_index},
+                        dataType:'json',
+                        type:'get',
+                        success:function(data){
+                            //console.log(data);
+                            //data 与 html标签 做结合 并显示给页面
+                            var s = "";
+                            $.each(data,function(m,n){
+                                //console.log(n.cmt_content);
+                                //m:是遍历出来元素的各个下标
+                                //n:是遍历出来各个元素对象
+                                s += '<ul class="set-fi-wy-lb fl"><li><dl class="set-fi-wy-lis fl"><dt><img src="http://www.lanhai.com/Public/Home/images/images_130.jpg" alt="" /></dt><dd><span class="fr l-gray">'+n.add_time+'</span><p class="fl pt10">'+n.content+'</p></dd></dl></li></ul>';
+                            });
+                            $('.set-fi-wy-lb').remove();//清除之前旧数据
+                            $('.set-fi-wy').after(s);//追加
+                        }
+                    });
+                }
+            });
+        </script>
+
+        <!-- 分页信息 start -->
+        <div id="Pagination" class="pagination">
+        </div>
+    </div>
+
+
+    <div class="set-lis-r fr">
+        <!--****右边第一通栏****-->
+        <div class="set-lis-tj fl pb10">
+            <p class="set-lis-tjtt fl"><img src="{$Think.const.HIMG_URL}images_142.jpg" alt="" /></p>
+            <ul class="nhtt-list-a fl pt15">
+                <foreach name="clickinfo" item="v">
+                    <li><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id']))}">{$v.news_title}</a></li>
+                </foreach>
+
+            </ul>
+        </div>
+        <foreach name="adinfo" item="v">
+            <if condition="$v.is_area eq 3">
+                <p class="pt15"> <img width="250px" height="80px" src="{$Think.const.SITE_URL}{$v.pic}" />  </p>
+            </if>
+        </foreach>
+        <foreach name="adinfo" item="v">
+            <if condition="$v.is_area eq 4">
+                <p class="pt15"><img src="{$Think.const.SITE_URL}{$v.pic}" /> </p>
+            </if>
+        </foreach>
+        <foreach name="adinfo" item="v">
+            <if condition="$v.is_area eq 5">
+                <p class="pt15"><img src="{$Think.const.SITE_URL}{$v.pic}" /> </p>
+            </if>
+        </foreach>
+    </div>
+</div>
+
+
+
+
+

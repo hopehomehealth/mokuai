@@ -1,0 +1,44 @@
+
+<script type="text/javascript" src="{$Think.const.HJS_URL}jquery-1.7.2.min.js"></script>
+<div class="shousuo fl">
+  <form action="" method="get">
+    <input class="shousuo_l" name="" placeholder="请输入关键字" type="text">
+    <button class="shousuo_r">搜索</button>
+  </form>
+</div>
+<script type="text/javascript">
+ $(".head_login").toggle(function(){
+        $(".shousuo").show("1000");
+		 },function(){
+        $(".shousuo").hide("1000");
+
+		});
+</script>
+<div class="main">
+  <section>
+    <ul class="ord-nav">
+      <li><a class="cur" href="member.html">总成交额</a></li>
+      <li><a href="lately.html">最近成交</a></li>
+      <li><a href="deal.html">成交次数</a></li>
+    </ul>
+  </section>
+  <section>
+    <div class="navbj fl pt_6 pb_6">
+      <ul class="fl mem">
+        <foreach name="userlist" item="info">
+        <li>
+          <a href="__MODULE__/Scenter/detail/userid/{$info.userid}">
+          <dl class="mem-pic fl">
+            <dt><img src="{$info.userhead}"></dt>
+            <dd>
+              <p class="pb0_5"><span class="fs1-6">{$info.nikename}</span><if condition="$info.sex eq 0"><span class="fr crimson fs1-4">♀ 女</span><else /><span class="fr crimson fs1-4" style="color:#999">♂ 男</span></if></p>
+              <i>金币：{$info.coin|default=0}</i><span class="fr gray"></span> </dd>
+          </dl>
+          </a>
+        </li>
+        </foreach>
+      </ul>
+    </div>
+  </section>
+</div>
+

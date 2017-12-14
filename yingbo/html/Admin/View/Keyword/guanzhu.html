@@ -1,0 +1,48 @@
+<script type="text/javascript" src='{$Think.const.JS_URL}jquery-1.7.2.min.js'></script>
+<script type="text/javascript" src='{$Think.const.JS_URL}uploadPreview.js'></script>
+<script type="text/javascript" src='{$Think.const.PLUGIN_URL}ueditor/ueditor.config.js' ></script>
+<script type="text/javascript" src='{$Think.const.PLUGIN_URL}ueditor/ueditor.all.min.js' ></script>
+<script type="text/javascript" src='{$Think.const.PLUGIN_URL}ueditor/lang/zh-cn/zh-cn.js' ></script>
+<div class="main-content">
+    <div class="breadcrumbs">
+        <ul>
+            <li > <a href="#">关注时回复设置 </a> </li>
+
+        </ul>
+        <!-- .breadcrumb -->
+    </div>
+
+    <div class="page-content">
+        <div class="row">
+            <div class="page-content box">
+                <form action="" method="post" enctype='multipart/form-data' class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label">关注时回复语 : </label>
+                        <div class="controls pull-left">
+                            <textarea class="input-large" style="margin: 0px; height: 115px; width: 530px;" name="content" >{$guanzhu.content}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <input id="bsubmit" type="submit"  class="btn btn-sm btn-primary" value="保存"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--/.box-->
+    </div><!-- /.page-content -->
+</div><!-- /.main-content -->
+
+
+<script type="text/javascript">
+    var ue = UE.getEditor('content',{toolbars: [[
+        'fullscreen', 'source', '|', 'undo', 'redo', '|',
+        'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
+        'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
+        'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
+        'directionalityltr', 'directionalityrtl', 'indent', '|',
+        'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase', '|',
+        'link', 'unlink', 'anchor', '|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
+        'simpleupload', 'insertimage'
+    ]]});
+</script>

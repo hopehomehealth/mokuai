@@ -1,0 +1,61 @@
+
+
+
+
+<div class="main-content">
+    <div class="page-content">
+        <div class="row">
+            <div class="page-content box">
+                <div class="box-title margin_bot_20">
+                    <div class="span10">
+                        <h3><i class="icon-magic"></i>新增管理员</h3>
+                    </div>
+                </div>
+                <form action="__SELF__" method="post" class="form-horizontal" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label class="control-label">名　　称 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" class="input-large" name="mg_name">
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">密码 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" class="input-large" name="mg_pwd">
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">手机号 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" class="input-large" name="iphone">
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group" id="brand-tab-show">
+                        <label class="control-label">角色 : </label>
+                        <div class="controls pull-left">
+                            <select class="input-medium" name='role_id'>
+                                <option value='0'>-请选择-</option>
+                                <foreach name='roleinfo' item='v'>
+                                    <option value='{$v.role_id}'>{$v.role_name}</option>
+                                </foreach>
+                            </select>
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="control-label"></label>
+                        <button id="bsubmit" type="submit"  class="btn btn-sm btn-primary">添加</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--/.box-->
+    </div><!-- /.page-content -->
+</div><!-- /.main-content -->

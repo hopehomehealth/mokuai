@@ -1,0 +1,92 @@
+       <div class="main-content">
+          <div class="page-content">
+            <div class="row">
+              <div class="page-content box">
+              	<div class="box-title margin_bot_20">
+                  	<div class="span10">
+                   		<h3><i class="icon-cogs"></i>会员列表 </h3>
+                  	</div>
+                </div>
+                <form class="form-horizontal" action="__MODULE__/User/userlist" method="get">
+                    <div class="form-group">
+                        <label class="control-label" style="width:80px;">会员名 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" class="input-medium" name="keywords">
+                            <button type="submit" class="btn btn-sm btn-primary">搜索</button>
+                        </div>
+						<!-- <div class="margin_bot_20" align="right">
+                                        <a href="{:U('User/tianjia')}" class="btn btn-primary btn-sm"><i class="icon-plus"></i>添加会员</a>
+                                    </div> -->
+                    </div>
+                </form>
+                  <!-- <div class="margin_bot_20">
+                      <a href="#" class="btn btn-primary btn-sm"><i class="icon-plus"></i>添加管理员</a>
+
+                  </div> -->
+                <div class="tableHead">
+                    <table class="table table_img table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th style="width:5%;">会员编号</th>
+                                <th style="width:5%;">头像</th>
+                                <th style="width:5%;">昵称</th>
+                                <th style="width:5%;">是否成为商家</th>
+                                <th style="width:5%;">兑现积分</th>
+                                <th style="width:5%;">操作</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div id="table_hy">
+                    <foreach name="userList" item="userinfo">
+                    <table class="table table_img table-striped table-bordered  table-hover">
+                        <tr>
+                            <td style="width:5%;">{$firstno++}</td>
+                            <td style="width:5%;">
+                                <img src="{$userinfo.userhead}" width="50px" hieght="50px">
+                                <br /><a href="#" class="green" onclick="javascript:img('{$userinfo['qrcode']|str_replace='.png','',###}')" width="50px" hieght="50px')">[查看二维码]</a>
+                            </td>
+                            <td style="width:5%;">{$userinfo.nikename}</td>
+                            <td style="width:5%;">{$userinfo['is_merch']?"是":"否"}</td>
+                            <td style="width:5%;">{$userinfo.cash_sc}</td>
+                            <td style="width:5%;"><a class="green" href="__MODULE__/Suser/userdetail">查看</a></td>
+                        </tr>
+
+                    </table>
+                    </foreach>
+                </div>
+
+                <div class="technorati">{$page}<div/>
+              </div>
+            </div>
+            <!--/.box-->
+          </div><!-- /.page-content -->
+        </div><!-- /.main-content -->
+        <script type="text/javascript">
+            function img(message){
+              var img = ['<div class="modal fade" id="img" style="overflow: visible;">',
+                                    '<div class="modal-dialog modal-sm">',
+                                      '<div class="modal-content">',
+                                        '<div class="modal-header border_bot detail_header border" style="padding:0">',
+                                    '<h4 class="modal-title" id="mySmallModalLabel">',
+                                    '<img src="'+message+'.png">',
+                                '</h4>',
+                                '</div>',
+                                /*'<div class="modal-body detail_sm">',
+                                    '<button type="button" class="btn btn-sm btn-default"  id="cancel_img">取消</button>',
+                                        '<button type="button" class="btn btn-sm btn-primary">确定</button>',
+                                '</div>',*/
+                                      '</div>',
+                                    '</div>',
+                                '</div>'].join('\n');
+              $("body").append(img);
+              $('#img').modal()
+              $(".modal-backdrop").live("click",function(){
+                alert(1)
+                $('#img,.modal-backdrop').removeClass("in");
+                setTimeout(function(){
+                  $(".modal-backdrop,#img").remove();
+                  },100);
+              })
+            }
+        </script>

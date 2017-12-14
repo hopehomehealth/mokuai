@@ -1,0 +1,50 @@
+
+    <div class="main detailBox">
+        <ul class="teamList">
+            <foreach name="teaminfo1" item="v">
+                <li class="borBot">
+                    <div class="teamListH">
+                        <span class="tx">
+                            <img src="{$Think.const.MBIMG_URL}teamTu.jpg">
+                        </span>
+                        <div class="teamListR">
+                            <div class="subTit">
+                                <span>{$v.username}</span>
+                                <em>{$v.school}</em>
+                            </div>
+                            <p>{$v.company}专家</p>
+                        </div>
+                    </div>
+                    <!--<p>-->
+                        <!--<span>擅长：</span>-->
+                        <!--神经阻治疗各种神经痛、癌痛骨关节痛-->
+                    <!--</p>-->
+                </li> 
+            </foreach>
+            <foreach name="teaminfo2" item="v">
+                <li class="borBot">
+                    <div class="teamListH">
+                        <span class="tx">
+                            <img src="{$Think.const.MBIMG_URL}teamTu.jpg">
+                        </span>
+                        <div class="teamListR">
+                            <div class="subTit">
+                                <span>{$v.username}</span>
+                                <em>{$v.departments}</em>
+                                <em>{$v.type}</em>
+                            </div>
+                            <p>毕业于{$v.school}</p>
+                            <p>{$v.company}专家</p>
+                        </div>
+                    </div>
+                    <p>
+                        <span>擅长：</span>
+                        {$v.experience}
+                    </p>
+                </li>
+            </foreach>
+           
+        </ul>
+    </div>
+</div>
+

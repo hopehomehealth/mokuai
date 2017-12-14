@@ -1,0 +1,66 @@
+@charset "utf-8";
+/* CSS Document */
+body { padding: 0px; margin: 0px; font-family: "微软雅黑", Verdana, Geneva, sans-serif; font-size: 14px; color: #333; background: #fff; }
+ul, li, dl, dt, dd, p, h1, h2, h3, h4, h5, input, form, span, img, ol, button, table, tr, td, select, option, textarea, div { margin: 0px; padding: 0px; list-style: none; outline: none; border: 0; }
+html { width: 100%; height: 100%; }
+a { color: #333; text-decoration: none; }
+a:hover { color:#af1e25; text-decoration: underline; }
+.fl { float: left; }
+.fr { float: right; }
+.tac { text-align: center; }
+#br-n{ border-right:none;}
+.fwb{font-weight: bold;}
+/****header头部开始*****/
+.header{ width:100%; margin:0px auto; line-height:30px; height:30px; border-bottom:1px #f2f2f2 solid; background:#fbfbfb;}
+.column-c{ width:1000px; margin:0px auto; display:block; overflow:hidden;}
+.header-hy{width:50%; color:#666;font-size:12px;}
+.header-m li{ width:75px; float:left; line-height:30px; background:url(../images/images_32.jpg) no-repeat right; text-align:center;font-size:12px;}
+.header-m li:last-child{ background:none;}
+.logo{ width:330px; height:70px; padding:15px 0px;}
+.logo img{ width:330px; height:70px;}
+.search{ width:315px; padding-top:32px; position:relative;}
+.search_k{ width:305px; border:1px #ddd solid; height:34px; line-height:34px; padding-left:8px; background:#fff;}
+.search_tp{ width:316px; height:25px; position:absolute; right:10px; top:38px;}
+/****header头部结束*****/
+
+/**********menu菜单开始*****************/
+.menu { width: 100%; background: #004084; height: 40px; }
+.menu_nr { width: 1000px; margin: 0px auto; }
+.menu_nr li a { color: #FFF; }
+.menu_nr li a:hover {background:#265c96; display: block; text-align:center; text-decoration:none; }
+.menu_nr li.cur { background: #265c96; display: block; }
+#zuih { background-image: none; }
+.menu_nr li:last-child { background-image: none; }
+.menu_nr li { width: 110px; line-height: 40px; text-align: center; float: left; font-size: 16px; position: relative; }
+.childnavin {display: none;z-index: 9990; left: 0px; position: absolute; top:40px; padding-bottom: 10px; width: 110px; line-height: 30px; height: auto; text-align: center; }
+.childnavin img{ width:110px; height:6px;}
+.childnavin a { float: left; width: 110px; color: #fff!important; line-height:30px; text-align: center; font-size:14px; display:block;background:#004084;text-overflow: ellipsis; white-space: nowrap; overflow: hidden;}
+.childnavin a:hover { color: #fff!important; text-decoration:none; }
+/**********menu菜单结束*****************/
+
+/*******footer尾部开始***************/
+.footer{ width:100%; background:#004084; padding:20px 0px; margin:0px auto;}
+.rwm{ width:137px; height:137px; padding-left:15px;}
+.rwm img{ width:137px; height:137px;}
+.w285{ width:285px;}
+.w190{ width:190px;}
+.w848{ width:848px;}
+.subnav{ border-right:1px #80a0c2 solid; padding-left:28px;}
+.subnav_t{ font-size:16px; color:#fff; width:100%; line-height:40px;}
+.subnav li{ width:80px; float:left; line-height:24px; background:url(../images/images_38.jpg) no-repeat left; font-size:12px; padding-left:15px;}
+.subnav li a{ color:#8ea0bc;}
+.copyright{ width:100%; line-height:21px; padding:7px 0px 0px 28px; font-size:12px; color:#8ea0bc;}
+/*******footer尾部结束***************/
+/*******izl-rmenu滚动菜单开始***************/
+.izl-rmenu { margin-right: 0; width: 82px; position: fixed; right: 2px; top: 65%; z-index: 999; }
+.izl-rmenu .consult { background:url(../images/images_03.png) no-repeat; display: block; height: 50px; width: 50px; }
+.izl-rmenu .consult .phone { background-color:#ccc; position: absolute; width: 160px; left: -160px; top: 0px; line-height:50px; color: #000; font-size: 12px; text-align: center; display: none; }
+.izl-rmenu a.consult:hover .phone { display: inline !important; }
+.izl-rmenu .cart {  background:url(../images/images_04.png) no-repeat; display: block; height: 50px; width: 50px; margin:10px 0px; }
+.izl-rmenu a.cart:hover .pic { display: block; }
+.izl-rmenu .cart .pic { display: none; position: absolute; left: -160px; top: 65px; width: 137px; height: 137px; background: url(../images/images_109.jpg); }
+.izl-rmenu .btn_top { background:url(../images/images_05.png) no-repeat; display: block; height:50px; width:50px; -webkit-transition: all 0s ease-in-out; -moz-transition: all 0s ease-in-out; -o-transition: all 0s ease-in-out; transition: all 0s ease-in-out; }
+.izl-rmenu .btn_top:hover { background:url(../images/images_05.png) no-repeat; background-position: center bottom; }
+
+/*******izl-rmenu滚动菜单结束***************/
+

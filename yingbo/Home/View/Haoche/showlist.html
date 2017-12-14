@@ -1,0 +1,309 @@
+{__NOLAYOUT__}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>新农缘天下商城</title>
+    <link href="{$Think.const.HCSS_URL}basic.css" type="text/css" rel="stylesheet" />
+    <link href="{$Think.const.HCSS_URL}style.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="{$Think.const.HJS_URL}jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="{$Think.const.HJS_URL}L_slide.js"></script>
+
+</head>
+
+<body>
+<section style="width: 100%; padding-bottom: 6.000rem; position:fixed; top:0; bottom:0; left:0; overflow: scroll; height:auto;-webkit-overflow-scrolling: touch; ">
+<header>
+
+        <a class="head_back1" href="Javascript:window.history.go(-1)">&nbsp;</a>
+        <div class="headTit">
+            <a  id="new-tab" class="cur1">新车</a>
+            <span>|</span>
+            <a  id="old-tab" class="cur2">二手车</a>
+        </div>
+    <a class="head_login" href="">&nbsp;</a>
+
+</header>
+<div class="shousuo fl">
+    <form action="{:U('search')}" method="post">
+        <input class="shousuo_l" placeholder="请输入车名" name="searchname" id="searchname" type="text">
+        <button id="submit" type="submit" class="shousuo_r">搜索</button>
+    </form>
+</div>
+
+
+<script type="text/jscript">
+ $('.head_login').toggle(function(){
+        $('.shousuo').show('1000');
+         },function(){
+        $('.shousuo').hide('1000');
+
+        });
+</script>
+<script type="text/jscript">
+ $('#submit').click(function(){
+ var searchname = $('#searchname').val();
+     if(searchname == ''){
+        return false;
+    }
+        });
+</script>
+<script type='text/javascript'>
+    $(function(){
+        $('#old-tab-show').hide();
+        $('.headTit a').click(function(){
+           $('.headTit a').attr('class','cur2');
+            $(this).attr('class','cur1');
+
+            $('div[id$=-show]').hide();
+            var idflag = $(this).attr('id');
+            $('#'+idflag+'-show').show();
+        });
+    });
+</script>
+
+<div id="new-tab-show">
+    <section>
+        <div class="navbj fl">
+            <div class="su_car"><p class="su_car_gd fr"><span class="hide">&nbsp;&nbsp;&nbsp;</span></p>品牌</div>
+            <div class="su_car_c fl">
+                <p class="su_car_bx fl"><a href="">不限</a></p>
+                <div class="su_car_lbie fl">
+                    <ul class="su_car_a fl">
+                        <foreach name="brandinfoA" item="v">
+                            <li>
+                                <a href="{:U('Haoche/nbrandlist',array('brand_id'=>$v['brand_id']))}"><img src="{$Think.const.SITE_URL}{$v.logo}"><br>{$v.brand_name}</a>
+                            </li>
+                        </foreach>
+
+
+                    </ul>
+                </div>
+             </div>
+        </div>
+    </section>
+<script type="text/javascript">
+ $(document).ready(function(){
+    var $category = $('.su_car_a li:gt(4)');
+	$category.hide();
+	var $toggleBtn = $('.su_car_gd');
+	$toggleBtn.toggle(function(){
+		$category.show();
+		$(this).find('span').removeClass('hide').addClass('show');
+	},function(){
+		$category.hide();
+		$(this).find('span').removeClass('show').addClass('hide');
+	});
+});
+ </script>
+ <!--    <section>
+        <div class="navbj fl pb0">
+            <div class="su_car"><p class="su_car_gd1 fr"><span class="hide">&nbsp;&nbsp;&nbsp;</span></p>车系</div>
+            <div class="su_car_c fl">
+                <p class="su_car_bx1 fl"><a href="">不限</a></p>
+                <div class="su_car_lbie fl">
+                    <ul class="su_car_list1 li">
+                        <foreach name="haocheinfoA" item="v">
+                            <li><a href="{:U('Haoche/detail',array('goods_id'=>$v['goods_id']))}">{$v.goods_name}</a></li>
+                        </foreach>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    <script type="text/javascript">
+ $(document).ready(function(){
+    var $category = $('.su_car_list1 li:gt(3)');
+	$category.hide();
+	var $toggleBtn = $('.su_car_gd1');
+	$toggleBtn.toggle(function(){
+		$category.show();
+		$(this).find('span').removeClass('hide').addClass('show');
+	},function(){
+		$category.hide();
+		$(this).find('span').removeClass('show').addClass('hide');
+	});
+});
+ </script>
+    <section>
+        <div class="navbj fl pb0">
+            <div class="su_car"><p class="su_car_gd2 fr"><span class="hide">&nbsp;&nbsp;&nbsp;</span></p>价格</div>
+            <div class="su_car_c fl">
+                <p class="su_car_bx1 fl"><a href="">不限</a></p>
+                <div class="su_car_lbie fl">
+                    <ul class="su_car_list2 li su_car_list2">
+                        <foreach name="priceinfoA" item="v">
+                            <li><a href="{:U('Haoche/price',array('price_id'=>$v['price_id']))}">{$v.price_name}</a></li>
+                        </foreach>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script type="text/javascript">
+ $(document).ready(function(){
+    var $category = $('.su_car_list2 li:gt(4)');
+	$category.hide();
+	var $toggleBtn = $('.su_car_gd2');
+	$toggleBtn.toggle(function(){
+		$category.show();
+		$(this).find('span').removeClass('hide').addClass('show');
+	},function(){
+		$category.hide();
+		$(this).find('span').removeClass('show').addClass('hide');
+	});
+});
+ </script>
+    <section>
+        <div class="navbj fl">
+            <foreach name="haocheinfoA" item="v">
+                <dl class="car_pic borBot fl">
+                    <dt><a href="{:U('Haoche/detail',array('goods_id'=>$v['goods_id']))}"><img src="{$Think.const.SITE_URL}{$v.logo}"></a></dt>
+                    <dd>
+                        <a href="{:U('detail',array('goods_id'=>$v['goods_id']))}">
+                        <p class="car_z crimson fwb">￥{$v['price']/10000}&nbsp;万元&middot;积分<span class="gray fr pr1">{$v.cat_name}</span></p>
+                        <p class="car_xzsz">
+                            {$v.goods_name}
+                        </p></a>
+                        <p class="pt0_6 fl crimson car_f_awm"><span class="car_yj">预付</span>&nbsp;{$v['downpay']}万</p>
+                        <p class="car_f fl bule pl0 car_f_awm"><span class="car_yj1">广告赠送</span>&nbsp;{$v['fanzeng']}万积分</p>
+                    </dd>
+                </dl>
+            </foreach>
+
+        </div>
+    </section>
+</div>
+<div id="old-tab-show">
+    <section>
+        <div class="navbj fl">
+            <div class="su_car"><p class="su_car_gdxs fr"><span class="hide">&nbsp;&nbsp;&nbsp;</span></p>品牌</div>
+            <div class="su_car_c fl">
+                <p class="su_car_bx fl"><a href="">不限</a></p>
+                <div class="su_car_lbie fl">
+                    <ul class="su_car_axs fl">
+                        <foreach name="brandinfoB" item="v">
+                            <li>
+                                <a href="{:U('Haoche/obrandlist',array('brand_id'=>$v['brand_id']))}"><img src="{$Think.const.SITE_URL}{$v.logo}"><br>{$v.brand_name}</a>
+                            </li>
+                        </foreach>
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var $category = $('.su_car_axs li:gt(4)');
+            $category.hide();
+            var $toggleBtn = $('.su_car_gdxs');
+            $toggleBtn.toggle(function(){
+                $category.show();
+                $(this).find('span').removeClass('hide').addClass('show');
+            },function(){
+                $category.hide();
+                $(this).find('span').removeClass('show').addClass('hide');
+            });
+        });
+    </script>
+ <!--    <section>
+        <div class="navbj fl pb0">
+            <div class="su_car"><p class="su_car_gd1xs fr"><span class="hide">&nbsp;&nbsp;&nbsp;</span></p>车系</div>
+            <div class="su_car_c fl">
+                <p class="su_car_bx1 fl"><a href="">不限</a></p>
+                <div class="su_car_lbie fl">
+                    <ul class="su_car_list1xs li">
+                        <foreach name="haocheinfoB" item="v">
+                            <li><a href="{:U('Haoche/detail',array('goods_id'=>$v['goods_id']))}">{$v.goods_name}</a></li>
+                        </foreach>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var $category = $('.su_car_list1xs li:gt(3)');
+            $category.hide();
+            var $toggleBtn = $('.su_car_gd1xs');
+            $toggleBtn.toggle(function(){
+                $category.show();
+                $(this).find('span').removeClass('hide').addClass('show');
+            },function(){
+                $category.hide();
+                $(this).find('span').removeClass('show').addClass('hide');
+            });
+        });
+    </script>
+    <section>
+        <div class="navbj fl pb0">
+            <div class="su_car"><p class="su_car_gd2xs fr"><span class="hide">&nbsp;&nbsp;&nbsp;</span></p>价格</div>
+            <div class="su_car_c fl">
+                <p class="su_car_bx1 fl"><a href="">不限</a></p>
+                <div class="su_car_lbie fl">
+                    <ul class="su_car_list2xs li su_car_list2xs">
+                        <foreach name="priceinfoB" item="v">
+                            <li><a href="{:U('Haoche/price',array('price_id'=>$v['price_id']))}">{$v.price_name}</a></li>
+                        </foreach>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var $category = $('.su_car_list2xs li:gt(4)');
+            $category.hide();
+            var $toggleBtn = $('.su_car_gd2xs');
+            $toggleBtn.toggle(function(){
+                $category.show();
+                $(this).find('span').removeClass('hide').addClass('show');
+            },function(){
+                $category.hide();
+                $(this).find('span').removeClass('show').addClass('hide');
+            });
+        });
+    </script>
+    <section>
+        <div class="navbj fl">
+            <foreach name="haocheinfoB" item="v">
+                <dl class="car_pic borBot fl">
+                    <dt><a href="{:U('Haoche/detail',array('goods_id'=>$v['goods_id']))}"><img src="{$Think.const.SITE_URL}{$v.logo}"></a></dt>
+                    <dd>
+                        <a href="{:U('detail',array('goods_id'=>$v['goods_id']))}">
+                            <p class="car_z crimson fwb">￥{$v['price']/10000}&nbsp;万元&middot;积分<span class="gray fr pr1">{$v.cat_name}</span></p>
+                            <p class="car_xzsz">
+                                {$v.goods_name}
+                            </p></a>
+                        <p class="pt0_6 fl crimson car_f_awm"><span class="car_yj">预付</span>&nbsp;{$v['downpay']}万</p>
+                        <p class="car_f fl bule pl0 car_f_awm"><span class="car_yj1">广告赠送</span>&nbsp;{$v['fanzeng']}万积分</p>
+                    </dd>
+                </dl>
+            </foreach>
+
+        </div>
+    </section>
+</div>
+</section>
+
+<footer>
+    <ul>
+         <li <if condition="CONTROLLER_NAME == Index">class="shou_a hover"</if>class="shou"><a href="{:U('Index/index')}"><i>&nbsp;</i>首页</a></li>
+        <li <if condition="CONTROLLER_NAME == Haoche">class="car_a hover"</if>class="car"><a href="{:U('Haoche/showlist')}"><i>&nbsp;</i>豪车俱乐部</a></li>
+        <li <if condition="CONTROLLER_NAME == Agriculture">class="world_a hover"</if>class="world"><a href="{:U('Agriculture/index')}"><i>&nbsp;</i>商家联盟</a></li>
+        <li <if condition="CONTROLLER_NAME == Goods">class="purse_a hover"</if>class="purse"><a href="{:U('Goods/index')}"><i>&nbsp;</i>乐购商城</a></li>
+        <li <if condition="CONTROLLER_NAME == User">class="my_a hover"</if>class="my"><a href="{:U('User/userindex')}"><i>&nbsp;</i>我的</a></li>
+    </ul>
+</footer>
+
+
+
+</body>
+</html>

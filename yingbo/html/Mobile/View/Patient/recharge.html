@@ -1,0 +1,77 @@
+        <div class="main">
+            <form action="__MODULE__/Patient/recharge" id="recharge-form" method="post" class="cash_z">
+                    <div class="form1 cash">
+                        <div class="borBot">
+                            <span>充值金额(元)：</span>
+                            <input name="amount" id="input-amount" type="text" placeholder="请输入金额">
+                        </div>
+                        <div class="cashBtnbox">
+                            <button class="submit cashBtn" type="submit">提&nbsp;交</button>
+                        </div>
+                    </div>
+            </form>
+        </div>   
+    </div>
+    <script type="text/javascript" src="{$Think.const.MBJS_URL}/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $("#recharge-form").submit(function(){
+                var amount = $("input[name='amount']").val();
+                //alert(amount);
+                var newamount = '';
+                if(isNaN(amount)){
+                    amount = '0.00';
+                }else{
+                    amount = Math.abs(amount)+'';
+                    if(amount.indexOf('.') == -1){
+                        amount += '.00'; 
+                    }else{
+                        for(var i=0;i<amount.length;i++){
+                            newamount += amount[i];
+                            if(amount[i] == '.'){
+                                if(typeof(amount[i+1]) == 'undefined'){
+                                    newamount += '0';
+                                    break;
+                                }else{
+                                    newamount += amount[i+1];
+                                }
+                                if(typeof(amount[i+2]) == 'undefined'){
+                                    newamount += '0';
+                                }else{
+                                    newamount += amount[i+2];
+                                }
+                                break;
+                            }
+                                //newamount += newamount; 
+                        }
+                        amount = newamount;
+                    }
+                }
+                $("input[name='amount']").val(amount);
+                //alert($("input[name='balance']").val());
+                if($("#input-amount").val() == '0.00'){
+                    $("#input-amount").val("请输入金额");
+                    $("#input-amount").attr('readonly','readonly');
+                    $("#input-amount").css('color','red');
+                    setTimeout(function(){
+                        $("#input-amount").val("");
+                        $("#input-amount").removeAttr('readonly');
+                        $("#input-amount").css('color','');
+                    },1300);
+                    return false;
+                }else{
+                    $("#recharge-form button").attr("disabled",true);
+                    $("#recharge-form button").css("background","#ccc");
+                    return true;
+                }
+            })
+        })
+      /* window.onload=function(){ 
+
+        var userName="xiaoming"; 
+
+        alert(userName); 
+      } */
+    </script>
+    <script type="text/javascript" src="{$Think.const.MBJS_URL}/base.js"></script>
+

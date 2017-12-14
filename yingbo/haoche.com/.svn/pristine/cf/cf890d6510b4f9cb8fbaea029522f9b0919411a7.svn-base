@@ -1,0 +1,49 @@
+
+<ul class="dj_xhk fr">
+    <p class="arrow-up fl"></p>
+    <li><a href="{:U('Union/index')}">369商家联盟</a></li>
+    <li><a href="{:U('Core/index')}">商家中心</a></li>
+</ul>
+<script type="text/javascript">
+    $(".head_back2").click(function(){
+        $(".dj_xhk").slideToggle("1000");
+    });
+</script>
+<div class="main">
+    <section>
+        <ul class="oll-list fl">
+            <li>
+                <dl>
+                    <dt><a href=""><img src="{$Think.const.HIMG_URL}xj_images_05.jpg"></a></dt>
+                    <dd><a href=""><span class="crimson">店铺名</span>：粤虹霞服装商城粤虹霞服装商城粤虹霞服装商城</a></dd>
+                    <dd><a href=""><span class="crimson">商家名</span>：中国好店铺商家：中国好店铺商家：中国好店铺</a></dd>
+                    <p class="oll-cuo"><a href=""><img src="{$Think.const.HIMG_URL}c_c.png"></a></p>
+                </dl>
+            </li>
+            <li>
+                <dl>
+                    <dt><a href=""><img src="{$Think.const.HIMG_URL}xj_images_05.jpg"></a></dt>
+                    <dd><a href=""><span class="crimson">店铺名</span>：粤虹霞服装商城粤虹霞服装商城粤虹霞服装商城</a></dd>
+                    <dd><a href=""><span class="crimson">商家名</span>：中国好店铺商家：中国好店铺商家：中国好店铺</a></dd>
+                    <p class="oll-cuo"><a href=""><img src="{$Think.const.HIMG_URL}c_c.png"></a></p>
+                </dl>
+            </li>
+            <li>
+                <dl>
+                    <dt><a href=""><img src="{$Think.const.HIMG_URL}xj_images_05.jpg"></a></dt>
+                    <dd><a href=""><span class="crimson">店铺名</span>：粤虹霞服装商城粤虹霞服装商城粤虹霞服装商城</a></dd>
+                    <dd><a href=""><span class="crimson">商家名</span>：中国好店铺商家：中国好店铺商家：中国好店铺</a></dd>
+                    <p class="oll-cuo"><a href=""><img src="{$Think.const.HIMG_URL}c_c.png"></a></p>
+                </dl>
+            </li>
+            <li>
+                <dl>
+                    <dt><a href=""><img src="{$Think.const.HIMG_URL}xj_images_05.jpg"></a></dt>
+                    <dd><a href=""><span class="crimson">店铺名</span>：粤虹霞服装商城粤虹霞服装商城粤虹霞服装商城</a></dd>
+                    <dd><a href=""><span class="crimson">商家名</span>：中国好店铺商家：中国好店铺商家：中国好店铺</a></dd>
+                    <p class="oll-cuo"><a href=""><img src="{$Think.const.HIMG_URL}c_c.png"></a></p>
+                </dl>
+            </li>
+        </ul>
+    </section>
+</div>

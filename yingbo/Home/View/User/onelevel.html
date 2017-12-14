@@ -1,0 +1,24 @@
+    <link href="{$Think.const.HCSS_URL}personal-style.css" type="text/css" rel="stylesheet" />
+    <section class="pb7_5">
+    <div class="cont_nav">
+        <ul>
+            <li><a href="__MODULE__/User/onelevel/onelevel/{$_GET['onelevel']}/twolevel/{$_GET['twolevel']}" style="display:inline-block;width:100%;height:5rem;background: #F2F2F2;">一级<span><img
+                    src="{$Think.const.HIMG_URL}yj.gif" alt=""/></span><i style="left:44%;background: #FF516A;padding-left:0.1rem;padding-right:0.1rem">{$_GET['onelevel']}</i></a></li>
+            <li><a style="display:inline-block;height:5rem;width:100%" href="__MODULE__/User/twolevel/onelevel/{$_GET['onelevel']}/twolevel/{$_GET['twolevel']}">二级<span><img
+                    src="{$Think.const.HIMG_URL}yj.gif" alt=""/></span><i style=" background: #E0901D;padding-left:0.1rem;padding-right:0.1rem">{$_GET['twolevel']}</i></a></li>
+        </ul>
+
+
+    </div>
+
+    <section>
+     <div class="cont_main">
+        <foreach name="myconnect" item="info">
+         <dl>
+             <dd><img src="{$info.userhead}" alt=""/></dd>
+             <dt>{$info.nikename|default='未设置昵称'}<br/><i style="margin-top:0.5rem">编号:{$info.id_sn}</i><span style="width:30px;height:30px;margin-right:1rem"><img src="{$Think.const.HIMG_URL}ax.gif" alt=""/></span></dt>
+         </dl>
+        </foreach>
+     </div>
+    </section>
+    </section>

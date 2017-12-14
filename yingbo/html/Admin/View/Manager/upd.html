@@ -1,0 +1,62 @@
+
+<div class="main-content">
+    <div class="breadcrumbs">
+        <ul>
+            <li > <a href="__MODULE__/Manager/upd">管理员修改 </a> </li>
+
+        </ul>
+        <!-- .breadcrumb -->
+    </div>
+
+    <div class="page-content">
+        <div class="row">
+            <div class="page-content box">
+                <form action="__SELF__" method="post" enctype='multipart/form-data' class="form-horizontal">
+                    <input type='hidden' name='mg_id' value='{$info.mg_id}' />
+                    <div class="form-group">
+                        <label class="control-label">名称 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" class="input-large" name="mg_name" value="{$info.mg_name}">
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label">密码 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" class="input-large" name="mg_pwd" value="{$info.mg_pwd}">
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">手机 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" class="input-large" name="iphone" value="{$info.iphone}">
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">角色 :</label>
+                        <div class="controls pull-left">
+                            <select class="input-medium" name="role_id" >
+
+                                <option value='0'>-请选择-</option>
+                                <foreach name='roleinfo' item='v'>
+                                    <option value="{$v.role_id}" <if condition="$v['role_id'] eq $info['role_id']">selected<else /></if> >{$v.role_name}</option>
+                                </foreach>
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <input id="bsubmit" type="submit"  class="btn btn-sm btn-primary" value="保存"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--/.box-->
+    </div><!-- /.page-content -->
+</div><!-- /.main-content -->
+
+

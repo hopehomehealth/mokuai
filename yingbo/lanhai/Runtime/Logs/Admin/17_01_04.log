@@ -1,0 +1,941 @@
+[ 2017-01-04T16:06:34+08:00 ] 114.113.21.2 /index.php/Admin/Fagui/showlist
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000021s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000090s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000532s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000607s ]
+SQL: SHOW COLUMNS FROM `cq_manager` [ RunTime:0.0020s ]
+SQL: SELECT r.role_auth_ac FROM cq_manager m left join cq_role r on m.role_id=r.role_id  WHERE m.mg_id = '1' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_auth` [ RunTime:0.0018s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 0  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_news` [ RunTime:0.0021s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `cq_news` WHERE `lan_id` = 31 LIMIT 1   [ RunTime:0.0009s ]
+SQL: SELECT n.*,f.cat_id,f.name FROM cq_news n INNER JOIN cq_faguicat f on n.cat_id = f.cat_id  WHERE `lan_id` = 31 ORDER BY news_id desc LIMIT 0,10   [ RunTime:0.0025s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000118s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000186s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014441s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014510s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000318s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000372s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000518s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000589s ]
+
+[ 2017-01-04T16:06:36+08:00 ] 114.113.21.2 /index.php/Admin/Fagui/tianjia.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000093s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000583s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000659s ]
+SQL: SHOW COLUMNS FROM `cq_manager` [ RunTime:0.0020s ]
+SQL: SELECT r.role_auth_ac FROM cq_manager m left join cq_role r on m.role_id=r.role_id  WHERE m.mg_id = '1' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `cq_auth` [ RunTime:0.0017s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 0  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 1  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `cq_faguicat` [ RunTime:0.0016s ]
+SQL: SELECT * FROM `cq_faguicat` WHERE ( is_show='0' ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_bannerx` [ RunTime:0.0019s ]
+SQL: SELECT * FROM `cq_bannerx` WHERE ( is_show='0' AND is_del='0' AND is_area='0' )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_bannerx` WHERE ( is_show='0' AND is_del='0' AND is_area='1' )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_bannerx` WHERE ( is_show='0' AND is_del='0' AND is_area='2' )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_bannerx` WHERE ( is_show='0' AND is_del='0' AND is_area='3' )  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000125s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000198s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014389s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014465s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000283s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000343s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000577s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000649s ]
+
+[ 2017-01-04T16:08:43+08:00 ] 114.113.21.2 /index.php/Admin/Fagui/tianjia.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000081s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000514s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000582s ]
+SQL: SHOW COLUMNS FROM `cq_manager` [ RunTime:0.0019s ]
+SQL: SELECT r.role_auth_ac FROM cq_manager m left join cq_role r on m.role_id=r.role_id  WHERE m.mg_id = '1' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_auth` [ RunTime:0.0016s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 0  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_news` [ RunTime:0.0019s ]
+NOTIC: [8] Undefined index: validate E:\web\lanhai\www\ThinkPHP\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto E:\web\lanhai\www\ThinkPHP\Library\Think\Model.class.php 第 1128 行.
+SQL: INSERT INTO `cq_news` (`lan_id`,`news_title`,`author`,`keyword`,`url`,`cat_id`,`is_show`,`is_tui`,`add_time`,`description`,`content`,`ding`,`youyi`,`youer`,`yousan`,`upd_time`) VALUES ('31','关于加快吸纳优势民营企业进入武器装备科研生产和维修领域的措施意见','作者：总装备部、国防科技工业局、国家保密局','','','1','0','1','2017-01-04 16:08:27','','<p style=\"white-space: normal; text-indent: 2em;\"><span style=\"text-indent: 2em;\">颁布单位：总装备部、国防科技工业局、国家保密局 发文字号：装计〔2014〕809号 颁布时间：2014-05-20</span><br/></p><p style=\"white-space: normal; text-indent: 2em;\">近年来，随着我国国防科技工业管理和武器装备采购制度不断完善，武器装备科研生产和维修领域准入制度逐步健全，国务院和军队有关部门从不同管理角度，开展了武器装备科研生产单位保密资格审查认证（以下简称保密资格认证）和武器装备质量体系认证（以下简称质量体系认证），建立了武器装备科研生产许可制度（以下简称许可审查）和装备承制单位资格审查制度（以下简称资格审查）。这些管理制度的建立，对于提升武器装备科研生产能力、提高武器装备建设质量效益、确保国家秘密安全发挥了重要作用。</p><p style=\"white-space: normal; text-indent: 2em;\">随着我国社会主义市场经济体制不断完善和国民经济快速发展，民营企业规模和能力不断发展壮大，在一些行业和领域已经走在前列。积极吸纳优势民营企业进入武器装备科研生产和维修领域，对于打破行业垄断、激发创新活力、提高装备采购效益具有重要意义。党的十八届三中全会明确要求“推动军民融合深度发展”，“引导优势民营企业进入军品科研生产和维修领域”。面对新形势、新要求，现行准入制度和管理工作存在着制度衔接不畅、审查程序繁琐、审批周期过长、准入“门槛”偏高等问题。把武器装备建设植根于国家最先进的科学技术和工业体系基础之上，迫切需要改进现行准入管理制度。</p><p style=\"white-space: normal; text-indent: 2em;\"><strong>一、总体思路和目标要求</strong></p><p style=\"white-space: normal; text-indent: 2em;\">加快吸纳优势民营企业进入武器装备科研生产和维修领域，要以党的十八届三中全会精神和习主席关于推进军民融合深度发展的一系列重要指示为指导，以武器装备建设需求为牵引，坚持问题导向，消除准入壁垒，建立准入协调机制，畅通受理渠道，简化工作程序，降低进入“门槛”，强化监督管理，提高武器装备建设资源配置效率和公平性，构建协调顺畅、简明规范、高效有序、安全保密的武器装备科研生产和维修领域准入管理制度。</p><p style=\"white-space: normal; text-indent: 2em;\">2014年底前，建立分类审查制度，完善跨部门审查工作协调机制，减少重复审查，统一设立资格审查申请受理点，修订完善相关管理规章；2015年底前，建立相关配套制度机制，完善联合监督管理和退出机制，承担武器装备科研生产和维修任务的民营企业数量和任务级别显著提升。</p><p style=\"white-space: normal; text-indent: 2em;\"><strong>二、改进工作的主要举措</strong></p><p style=\"white-space: normal; text-indent: 2em;\">（一）实施分类审查准入</p><p style=\"white-space: normal; text-indent: 2em;\">根据装备重要和涉密程度，将装备承制（含承研、承修，下同）单位分为三类。</p><p style=\"white-space: normal; text-indent: 2em;\">第一类是武器装备的总体，关键、重要分系统和核心配套产品（即列入国防科工局、总装备部发布的武器装备科研生产许可目录内的专业或产品）的承制单位。在通过保密资格认证和质量体系认证基础上对申请企业进行许可审查、资格审查。</p><p style=\"white-space: normal; text-indent: 2em;\">第二类是武器装备科研生产许可目录之外的专用装备和一般配套产品的承制单位。只对申请企业进行资格审查，不再进行许可审查和强制性武器装备质量体系认证（需建立武器装备质量管理体系，在资格审查时一并进行审核）。对本类承制单位的保密要求：产品本身不涉密但背景、用途等涉密的，由采购方与承制方签订保密协议；应急或短期生产秘密级产品的，由采购方按照有关保密标准和程序对承制方进行保密审查，签订保密协议，提出保密要求；生产机密级（含）以上的产品或长期承担涉密武器装备科研生产任务的，实行保密资格认证。</p><p style=\"white-space: normal; text-indent: 2em;\">第三类是军选民用产品的承制单位。申请企业需建立国家标准质量管理体系，只进行资格审查（以文件审查形式为主）。对参与军选民用产品招标竞争的企业不设特别资格限制，凡产品及服务符合招标要求的企业均可参加投标，中标企业经资格审查后，可注册第三类装备承制单位资格。</p><p style=\"white-space: normal; text-indent: 2em;\">积极鼓励企业自主创新研究，承担装备预研计划中应用基础研究、应用开发研究任务的单位，不需进行资格审查。</p><p style=\"white-space: normal; text-indent: 2em;\">（二）建立跨部门审查工作协调机制</p><p style=\"white-space: normal; text-indent: 2em;\">建立保密资格认证、质量体系认证、许可审查和资格审查工作协调机制，明确工作协调组织形式和内容。建立定期协调制度，保证各部门在受理、审查等方面相互协调、同步推进。严格各类审查工作节点时限要求，确保按期完成审查和审批。对于确因程序原因无法及时取得保密资格的第二类装备承制单位,可先行注册装备承制单位资格，并要求企业在签订涉密合同前取得相应的保密资格。</p><p style=\"white-space: normal; text-indent: 2em;\">（三）改进质量体系认证工作</p><p style=\"white-space: normal; text-indent: 2em;\">对第一类装备承制单位实施强制性武器装备质量体系认证，第二、三类装备承制单位可自愿申请武器装备质量体系认证。简化质量体系认证流程，取消认证申请推荐环节，精简认证审批程序，将认证注册周期控制在6个月以内。扩充认证机构数量，吸收通过保密审查、具备良好信誉和较高审核能力的认证机构参与认证。逐步推行质量体系分级认证。</p><p style=\"white-space: normal; text-indent: 2em;\">（四）逐步推进许可与承制资格的联合审查</p><p style=\"white-space: normal; text-indent: 2em;\">国防科工局和总装备部修订《武器装备科研生产许可专业（产品）目录》，进一步精简优化许可审查管理范围，经降密处理后向社会公开发布。建立许可审查和资格审查联合审查机制，修订完善相关规章，推进“两证”联合审查。</p><p style=\"white-space: normal; text-indent: 2em;\">（五）统一设立资格审查申请受理点</p><p style=\"white-space: normal; text-indent: 2em;\">按照专业类别和地域分布，依托全军各军事代表局或总部有关部门授权的机构，设立军队资格审查申请受理点，并向社会公布。各申请受理点负责对企业承制资格申请材料进行形式审查，明确承制单位类别及受理意见，对企业是否需开展许可审查、质量体系认证、保密资格认证及其认证等级提供相关政策法规咨询服务。</p><p style=\"white-space: normal; text-indent: 2em;\">（六）规范保密资格认证等级审核工作</p><p style=\"white-space: normal; text-indent: 2em;\">省级国防科技工业管理部门、各军工集团公司总部和军队各资格审查申请受理点，在各自职责范围内，根据企业承担或拟承担项目的密级，依照定密管理有关规定，审核企业保密资格认证级别。其中，军队下达的装备采购计划、组织签订的装备采购合同（含配套合同）涉及的保密资格认证申请单位，由申请企业持军队资格审查申请受理点出具的保密资格认证级别建议，到相关保密资格认证机构申请认证。</p><p style=\"white-space: normal; text-indent: 2em;\">（七）建立承制单位资质联合监管机制</p><p style=\"white-space: normal; text-indent: 2em;\">构建保密资格认证、质量体系认证、许可审查和资格审查工作联合监管机制，在各管理部门之间建立重大问题、重大情况通报制度。加大军事代表机构对民营企业监管力度，完善合同履约信誉等级评价和年度资格监督报告制度，健全退出管理机制。</p><p style=\"white-space: normal; text-indent: 2em;\">（八）取消各类收费制度</p><p style=\"white-space: normal; text-indent: 2em;\">各类审查认证和监督检查均不得收取企业任何费用。加强审查认证从业人员教育和监督，严格控制现场审查人数，严禁变相收费，严禁向企业推销指定的设施设备及培训资料。各主管部门应向社会公开投诉渠道，加强纪律监督和责任追究。</p><p style=\"white-space: normal; text-indent: 2em;\"><strong>三、有关要求</strong></p><p style=\"white-space: normal; text-indent: 2em;\">各部门各系统要加强组织领导，统一思想认识，进一步认清改进武器装备科研生产和维修领域准入制度和管理工作，对于推动军民融合深度发展、加速优势民营企业参与装备建设的重要意义，切实做好对各项举措的学习理解和宣贯落实工作。要切实履行职责，按照工作任务要求，及时调整工作程序，完善工作制度，确保各项举措落实到位。要进一步转变工作作风，强化服务意识，牢固树立一盘棋思想，切实做好各项工作的衔接配合。</p>','0','0','0','0','1483517323') [ RunTime:0.0027s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000047s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000108s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005186s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005252s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000280s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000335s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000483s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000542s ]
+
+[ 2017-01-04T16:08:45+08:00 ] 114.113.21.2 /index.php/Admin/Fagui/showlist
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000082s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000663s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000747s ]
+SQL: SHOW COLUMNS FROM `cq_manager` [ RunTime:0.0019s ]
+SQL: SELECT r.role_auth_ac FROM cq_manager m left join cq_role r on m.role_id=r.role_id  WHERE m.mg_id = '1' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_auth` [ RunTime:0.0016s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 0  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_news` [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `cq_news` WHERE `lan_id` = 31 LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT n.*,f.cat_id,f.name FROM cq_news n INNER JOIN cq_faguicat f on n.cat_id = f.cat_id  WHERE `lan_id` = 31 ORDER BY news_id desc LIMIT 0,10   [ RunTime:0.0023s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000119s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000190s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013388s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013458s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000294s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000348s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000477s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000545s ]
+
+[ 2017-01-04T16:09:28+08:00 ] 114.113.21.2 /index.php/Admin/Fagui/showlist
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000020s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000105s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000654s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000724s ]
+SQL: SHOW COLUMNS FROM `cq_manager` [ RunTime:0.0019s ]
+SQL: SELECT r.role_auth_ac FROM cq_manager m left join cq_role r on m.role_id=r.role_id  WHERE m.mg_id = '1' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_auth` [ RunTime:0.0016s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 0  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 1  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `cq_news` [ RunTime:0.0019s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `cq_news` WHERE `lan_id` = 31 LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT n.*,f.cat_id,f.name FROM cq_news n INNER JOIN cq_faguicat f on n.cat_id = f.cat_id  WHERE `lan_id` = 31 ORDER BY news_id desc LIMIT 0,10   [ RunTime:0.0022s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000119s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000185s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014483s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014552s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000341s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000398s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000636s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000703s ]
+
+[ 2017-01-04T16:09:30+08:00 ] 114.113.21.2 /index.php/Admin/Fagui/tianjia.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000109s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000614s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000682s ]
+SQL: SHOW COLUMNS FROM `cq_manager` [ RunTime:0.0020s ]
+SQL: SELECT r.role_auth_ac FROM cq_manager m left join cq_role r on m.role_id=r.role_id  WHERE m.mg_id = '1' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_auth` [ RunTime:0.0017s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 0  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_faguicat` [ RunTime:0.0016s ]
+SQL: SELECT * FROM `cq_faguicat` WHERE ( is_show='0' ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_bannerx` [ RunTime:0.0018s ]
+SQL: SELECT * FROM `cq_bannerx` WHERE ( is_show='0' AND is_del='0' AND is_area='0' )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_bannerx` WHERE ( is_show='0' AND is_del='0' AND is_area='1' )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_bannerx` WHERE ( is_show='0' AND is_del='0' AND is_area='2' )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_bannerx` WHERE ( is_show='0' AND is_del='0' AND is_area='3' )  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000113s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000194s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015345s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015421s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000336s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000398s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000617s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000681s ]
+
+[ 2017-01-04T16:10:57+08:00 ] 114.113.21.2 /index.php/Admin/Fagui/tianjia.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000021s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000098s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000646s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000724s ]
+SQL: SHOW COLUMNS FROM `cq_manager` [ RunTime:0.0021s ]
+SQL: SELECT r.role_auth_ac FROM cq_manager m left join cq_role r on m.role_id=r.role_id  WHERE m.mg_id = '1' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `cq_auth` [ RunTime:0.0018s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 0  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_news` [ RunTime:0.0021s ]
+NOTIC: [8] Undefined index: validate E:\web\lanhai\www\ThinkPHP\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto E:\web\lanhai\www\ThinkPHP\Library\Think\Model.class.php 第 1128 行.
+SQL: INSERT INTO `cq_news` (`lan_id`,`news_title`,`author`,`keyword`,`url`,`cat_id`,`is_show`,`is_tui`,`add_time`,`description`,`content`,`ding`,`youyi`,`youer`,`yousan`,`upd_time`) VALUES ('31','国务院、中央军委关于建立和完善军民结合、寓军于民武器装备科研生产体系的若干意见','作者：国务院、中央军委 发文字','','','1','0','1','2017-01-04 16:10:20','','<p></p><p style=\"text-indent: 2em;\">颁布单位：国务院、中央军委 发文字号：国发〔2010〕37号 颁布时间：2010-10-24</p><p style=\"text-indent: 2em;\">建立和完善军民结合、寓军于民的武器装备科研生产体系，是国防现代化建设的必然选择，是中国特色军民融合式发展的重要组成部分，是走新型工业化道路的战略性任务。改革开放以来，我国武器装备科研生产领域的军民结合取得了显著进展，军工行业完成了由比较单一的军民结构向军民品复合结构的战略性转变，军民结合产业快速发展，民用工业参与武器装备科研生产建设的范围不断扩大，军民结合、寓军于民的发展格局基本形成。但还存在军工相对封闭、军民结合产业支撑不足、资源共享程度不高、机制运行不畅、政策法规不健全等问题，不适应新时期武器装备发展和社会主义市场经济要求。</p><p style=\"text-indent: 2em;\">为贯彻落实党的十七大提出的建立和完善军民结合、寓军于民的武器装备科研生产体系的战略部署，推进军民融合式发展，提出以下意见：</p><p style=\"text-indent: 2em;\"><strong>一、明确基本要求，确立发展目标</strong></p><p style=\"text-indent: 2em;\">（一）基本要求。适应武器装备发展和社会主义市场经济规律，深入贯彻落实科学发展观，着眼提高武器装备现代化水平，着力精干军工主体、扩大协作配套范围，着力完善以自主创新为主导的国防科技创新体系，着力建立科学合理的产业组织结构，着力培育符合现代企业制度和现代科研院所制度要求的市场主体，着力健全有机协调、运转高效的管理机制，推动武器装备科研生产体系的不断完善。</p><p style=\"text-indent: 2em;\">（二）发展目标。建立起分工协作、有机衔接、运转高效的军民结合部际协调机制，用三至五年的时间，基本实现国防科技与民用科技、国防科技工业与民用工业的互通、互动、互补；基本实现从事武器装备科研生产的各类企事业单位在财政投入、税收政策、市场准入、军工固定资产投资方面的公平化，军品市场推出制度健全完善，军民资源开放共享；培育合格的市场竞争主体，军工企业股份制改造基本完成，军工科研院所改革取得积极进展；装备竞争性采购、集中采购、一体化采购工作稳步推进；军民结合产业快速发展，武器装备发展的产业基础明显增强。</p><p style=\"text-indent: 2em;\"><strong>二、推动军工开放，引导社会资源进入武器装备科研生产领域</strong></p><p style=\"text-indent: 2em;\">（三）着力健全开放式发展的武器装备科研生产格局。根据武器装备发展战略和规划，立足国家工业基础，坚持军品优先，精干军工主体、扩大协作配套范围，通过动态调整优化，加强科研生产条件建设，提升武器装备科研生产核心能力。引导社会资源进入军品能力建设领域，进一步放开一般能力，使其寓于民用工业中发展，形成面向全国、分类管理、有序竞争的开放式能力发展格局。</p><p style=\"text-indent: 2em;\">（四）改进军品市场准入和退出制度。修订武器装备科研生产许可目录，并面向全社会公开发布，为各类企事业单位参与武器装备科研生产创造条件。建立健全武器装备科研生产推出制度，解决企事业单位退出武器装备科研生产体系时的安全保密、能力保持、任务接转等问题。加强武器装备科研生产许可制度、武器装备承制单位资格审查管理制度和武器装备科研生产单位保密资格审查认证制度的协调衔接。</p><p style=\"text-indent: 2em;\">（五）完善有利于公平竞争的政策。按照《国务院关于深化国防科技工业投资体制改革若干意见的批复》（国函〔2007〕9号）和军队装备采购制度改革的要求，加快出台国防科技工业投资体制改革的配套措施和办法。改革现行军品税收政策，按照公平、高效的原则，对从事武器装备科研生产的各类企事业单位执行统一的税收政策。进一步完善政府投资管理，对承担同类武器装备科研生产任务的企事业单位实行同等投资政策。</p><p style=\"text-indent: 2em;\"><strong>三、加快军转民步伐，增强武器装备发展的产业基础</strong></p><p style=\"text-indent: 2em;\">（六）大力发展军民结合产业和军工优势产业。结合武器装备发展和军品能力建设，加快推进民用核能、民用航天、民用飞机、民用船舶、电子信息和民爆器材等军民结合型产业发展，壮大武器装备发展的产业基础；依据国家产业政策和国民经济发展的急需，发挥军工技术优势，通过成果交易和面向社会发布军工技术转民用项目指南等形式，引导与军工技术同源或工艺相近的节能环保、新材料、新能源、电子信息、装备制造、安防产品等新兴产业发展，推动民用工业机构调整和产业升级。</p><p style=\"text-indent: 2em;\">（七）促进军民结合产业与国家相关产业基地融合发展。充分调动各部门、各地方的积极性，在军工和民用科研生产资源相对集中的地区，鼓励军民结合项目进入国家相关产业基地集聚发展，并按国家相关政策给予优先安排和支持。做好军工与国家有关部门及地方发展规划衔接和政策接轨，重大军民结合建设项目要纳入地方工业发展布局，促进军工经济与地方经济融合发展。</p><p style=\"text-indent: 2em;\">（八）加强国际合作与交流。充分发挥现有合作渠道和平台作用，推进对外经济技术合作与交流。充分利用国际与国内两个市场、两种资源，遵守国家最终用户管理规定，努力促使西方发达国家放宽对华高技术出口限制。注重引进消化吸收国外先进技术和管理经验，支持利用军工成熟技术开发国内外市场适销的产品。鼓励军工与民用企事业单位联合开拓国际市场，增强产业竞争力。</p><p style=\"text-indent: 2em;\"><strong>四、推进军民互动共享，提高资源利用效率</strong></p><p style=\"text-indent: 2em;\">（九）加速军工和民用技术相互转化。改进国防知识产权管理，推动军工技术成果向民用转化。建立和完善国防科研成果和技术解密制度，为军工技术转民用创造有力条件。对于可以直接用于武器装备科研生产的电子信息等民用高新技术及产品，建立动态推荐目录，支持二次开发，为武器装备发展服务。立足国防与民用产业发展的双重需要，研究制定军民两用技术发展规划，加速推进军民两用技术相互转化。</p><p style=\"text-indent: 2em;\">（十）促进科研条件和频谱资源的军民共享。进一步推动军工与民用科研机构的开放共享与双向服务。以军科技创新的需要，建立高等学校、民用科研机构与国防科研机构的协作机制，组织重大科研项目的联合公关，加强重要技术储备，实现科技资源的共享。推动现有军民大型科研设施的相互开放，新建项目兼顾军民两用，加强统筹规划，面向全国合理布局和建设。统筹军民需求，进一步提高无线电频谱资源使用的科学性和有效性。</p><p style=\"text-indent: 2em;\">（十一）推动国防科技工业与民用工业基础融合发展。促进军民通用设计、制造等先进工业技术的合作开发与成果共享；加强国防和民用基础技术、产品的统筹和一体化发展。立足民用工业基础，结合国家科技重大专项及重大装备研制项目的实施，促进重要机电产品、材料、器件、高端测试仪器、关键加工制造设备、科研生产软件等制约武器装备发展和军工能力建设瓶颈问题的解决。</p><p style=\"text-indent: 2em;\">（十二）积极采用先进适用的民用标准。充分利用民用科技工业成果，推广先进的生产组织方式和生产技术，积极采用先进民用标准，提高武器装备生产标准化和专业化协作水平。制定军用标准化管理条例，深入研究军用与民用标准之间的关系，加强军民共用标准的制定与修订。</p><p style=\"text-indent: 2em;\">（十三）加大人才培养和吸引力度。以武器装备和国防科技工业发展需要为导向，拓展人才培养渠道，完善人才成长和使用机制，保持并不断壮大武器装备科研生产人才队伍。推进产学研结合，加强型号总指挥、总设计师及其后备人才队伍建设，加强国防科技高层次人才管理，实施国防科技创新团队计划。制定管理办法，鼓励和吸引高技术人才进入国防科技工业领域。</p><p style=\"text-indent: 2em;\"><strong>五、深化体制机制改革，增强军工发展动力和活力</strong></p><p style=\"text-indent: 2em;\">（十四）深化军工企业改革。按照既有利于公平竞争，又有利于保持和增强军工核心能力的原则，加快军工企业改革。除关系国家战略安全的少数企业外，要以调整和优化产权结构为重点，通过资产重组、上市、相互参股、兼并收购等多种途径推进股份制改造，依法妥善安置职工。鼓励符合条件的社会资本参与军工企业股份制改造。按照现代企业制度的要求，完善公司法人治理结构。</p><p style=\"text-indent: 2em;\">（十五）积极稳妥推进军工科研院所改革。按照有利于提升自主创新能力、增强公益服务职能、保障军品任务完成的原则，稳步推进军工科研院所改革，加强改革配套政策的衔接与分类指导。对于应用型科研院所，积极推进企业化转制，建立现代企业制度，或转为大企业的研发中心;对于面向国防科技工业全行业服务的公益性、基础性科研院所，建立现代科研院所制度，创新管理模式，加强公益服务。对于少数关系国家战略安全的科研院所，重在创新机制，积极探索有效的管理方式。按照国家创新体系建设的总体部署和要求，积极推进军民结合、寓军于民的国防科技创新体系建设。</p><p style=\"text-indent: 2em;\"><strong>六、加强引导与协调，营造有利的宏观环境</strong></p><p style=\"text-indent: 2em;\">（十六）加强宏观协调和指导。依托中央专委办公室，建立国务院有关部门和军队有关部门参加的部际协调机制。加强国防科技与民用科技、国防科技工业与民用工业在发展规划、计划、重大项目和政策及军工集团公司重组等方面的统筹协调。制定军民结合发展规划，做好与其他行业规划的衔接。</p><p style=\"text-indent: 2em;\">（十七）加强财政金融引导。发挥政府资金对建立和完善军民结合、寓军于民武器装备科研生产体系的引导和推动作用，引入社会资金，形成多元化投资格局。中央和地方财政要积极支持军民两用技术开发和军民结合服务平台建设。加大对技术开发和改造的支持力度，推动军民结合产业化发展。加快推进金融产品和服务方式创新，积极拓宽融资渠道，为军民结合产业发展提供金融支持。探索建立国防科技工业、军民结合产业投资基金，推动社会资本参与武器装备科研生产和建设。</p><p style=\"text-indent: 2em;\">（十八）强化信息共享服务。在符合国家安全保密规定的前提下，拓宽信息发布渠道。分类、分级发布武器装备发展需求和任务信息，为民用企事业单位参与武器装备科研生产及时提供信息服务。建立政府公共信息服务平台，为政府、军队、军工及民用企事业单位的信息交流合作提供支撑。</p><p style=\"text-indent: 2em;\">（十九）加强能力评估和监管。制定军工设备设施监督管理条例，确保军工设备设施安全、完整、有效地用于武器装备科研生产。建立与武器装备发展相适应的能力评估制度，完善军民结合运行评价体系，为制定宏观政策提供依据。完善从事国家秘密业务的武器装备科研生产单位保密审查制度，加强保密管理，确保国家秘密安全。</p><p style=\"text-indent: 2em;\">国务院及军队有关部门要按照本意见的要求，根据职责分工，抓紧制定具体办法和措施，密切协同，搞好统筹衔接，切实加以贯彻落实。各级地方人民政府、军队各级装备管理部门要积极配合，落实配套措施，确保军民结合、寓军于民武器装备科研生产体系建设的顺利推进。</p>','0','0','0','0','1483517457') [ RunTime:0.0033s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000058s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000141s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005878s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005965s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000375s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000454s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000630s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000703s ]
+
+[ 2017-01-04T16:10:58+08:00 ] 114.113.21.2 /index.php/Admin/Fagui/showlist
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000083s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000687s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000771s ]
+SQL: SHOW COLUMNS FROM `cq_manager` [ RunTime:0.0020s ]
+SQL: SELECT r.role_auth_ac FROM cq_manager m left join cq_role r on m.role_id=r.role_id  WHERE m.mg_id = '1' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `cq_auth` [ RunTime:0.0017s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 0  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_news` [ RunTime:0.0021s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `cq_news` WHERE `lan_id` = 31 LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT n.*,f.cat_id,f.name FROM cq_news n INNER JOIN cq_faguicat f on n.cat_id = f.cat_id  WHERE `lan_id` = 31 ORDER BY news_id desc LIMIT 0,10   [ RunTime:0.0027s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000127s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000221s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014880s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014949s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000318s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000373s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000523s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000585s ]
+
+[ 2017-01-04T16:14:02+08:00 ] 114.113.21.2 /index.php/Admin/Fagui/tianjia.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000103s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000661s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000740s ]
+SQL: SHOW COLUMNS FROM `cq_manager` [ RunTime:0.0020s ]
+SQL: SELECT r.role_auth_ac FROM cq_manager m left join cq_role r on m.role_id=r.role_id  WHERE m.mg_id = '1' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_auth` [ RunTime:0.0016s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 0  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 1  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `cq_faguicat` [ RunTime:0.0015s ]
+SQL: SELECT * FROM `cq_faguicat` WHERE ( is_show='0' ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_bannerx` [ RunTime:0.0019s ]
+SQL: SELECT * FROM `cq_bannerx` WHERE ( is_show='0' AND is_del='0' AND is_area='0' )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_bannerx` WHERE ( is_show='0' AND is_del='0' AND is_area='1' )  [ RunTime:0.0005s ]
+SQL: SELECT * FROM `cq_bannerx` WHERE ( is_show='0' AND is_del='0' AND is_area='2' )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_bannerx` WHERE ( is_show='0' AND is_del='0' AND is_area='3' )  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000111s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000179s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014064s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014133s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000305s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000358s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000544s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000606s ]
+
+[ 2017-01-04T16:20:02+08:00 ] 114.113.21.2 /index.php/Admin/Fagui/tianjia.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000020s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000106s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000682s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000763s ]
+SQL: SHOW COLUMNS FROM `cq_manager` [ RunTime:0.0019s ]
+SQL: SELECT r.role_auth_ac FROM cq_manager m left join cq_role r on m.role_id=r.role_id  WHERE m.mg_id = '1' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `cq_auth` [ RunTime:0.0023s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 0  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 1  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `cq_news` [ RunTime:0.0021s ]
+NOTIC: [8] Undefined index: validate E:\web\lanhai\www\ThinkPHP\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto E:\web\lanhai\www\ThinkPHP\Library\Think\Model.class.php 第 1128 行.
+SQL: INSERT INTO `cq_news` (`lan_id`,`news_title`,`author`,`keyword`,`url`,`cat_id`,`is_show`,`is_tui`,`add_time`,`description`,`content`,`ding`,`youyi`,`youer`,`yousan`,`upd_time`) VALUES ('31','军民融合相关政策法规一览表','部委','','','0','0','1','2017-01-04 16:19:40','','<table cellspacing=\"0\" cellpadding=\"0\" width=\"1016\" style=\"width: 818px;\"><thead><tr class=\"firstRow\"><td width=\"935\" colspan=\"5\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\" align=\"center\" valign=\"middle\"><p>部委政策法规</p></td><td style=\"border: none;padding: 0\" width=\"80\"><br/></td></tr><tr><td width=\"48\" style=\"border-right-color: black; border-bottom-color: black; border-left-color: black; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: none; padding: 0px; background: white;\" align=\"center\" valign=\"middle\"><p>序号</p></td><td width=\"296\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" align=\"center\" valign=\"middle\"><p>政策法规名称</p></td><td width=\"351\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" align=\"center\" valign=\"middle\"><p>适用范围</p></td><td width=\"71\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" align=\"center\" valign=\"middle\"><p>发布部门</p></td><td width=\"170\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" align=\"center\" valign=\"middle\"><p>备注</p></td><td style=\"border: none;padding: 0\" width=\"80\"><br/></td></tr></thead><tbody><tr style=\";height:38px\"><td width=\"48\" style=\"border-right-color: black; border-bottom-color: black; border-left-color: black; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: none; padding: 0px; background: white;\" height=\"38\"><p>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>武器装备科研生产协作配套管理办法</p></td><td width=\"351\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>从事武器装备科研生产协作配套单位</p></td><td width=\"71\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>国防科工委</p></td><td width=\"170\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>2007年2月1日起施行</p></td><td style=\"border: none;padding: 0\" width=\"80\"><br/></td></tr><tr style=\";height:38px\"><td width=\"48\" style=\"border-right-color: black; border-bottom-color: black; border-left-color: black; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: none; padding: 0px; background: white;\" height=\"38\"><p>2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>国防科技工业计量标准器具管理办法</p></td><td width=\"351\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>国防科技工业计量标准器具的申请与考核、检定与校准、使用与监督、变更与废除</p></td><td width=\"71\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>国防科工委</p></td><td width=\"170\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>2002年6月1日起施行</p></td><td style=\"border: none;padding: 0\" width=\"80\"><br/></td></tr><tr style=\";height:38px\"><td width=\"48\" style=\"border-right-color: black; border-bottom-color: black; border-left-color: black; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: none; padding: 0px; background: white;\" height=\"38\"><p>3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>国防科学技术成果鉴定管理办法</p></td><td width=\"351\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>国防科学技术成果鉴定管理</p></td><td width=\"71\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>国防科工委</p></td><td width=\"170\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>2004年7月1日起施行</p></td><td style=\"border: none;padding: 0\" width=\"80\"><br/></td></tr><tr style=\";height:38px\"><td width=\"48\" style=\"border-right-color: black; border-bottom-color: black; border-left-color: black; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: none; padding: 0px; background: white;\" height=\"38\"><p>4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>军工涉密业务咨询服务安全保密监督管理办法（试行）</p></td><td width=\"351\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>受军工企事业单位及民口配套单位委托对军工涉密业务提供咨询、审计、法律、评估、评价、招标等服务的企事业单位。</p></td><td width=\"71\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>国防科工委</p></td><td width=\"170\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>2011年10月1日起施行</p></td><td style=\"border: none;padding: 0\" width=\"80\"><br/></td></tr><tr style=\";height:38px\"><td width=\"48\" style=\"border-right-color: black; border-bottom-color: black; border-left-color: black; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: none; padding: 0px; background: white;\" height=\"38\"><p>5.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>武器装备研制生产标准化工作规定</p></td><td width=\"351\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>从事武器装备研制生产标准化工作单位</p></td><td width=\"71\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>国防科工委</p></td><td width=\"170\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>2004年02月19日起施行</p></td><td style=\"border: none;padding: 0\" width=\"80\"><br/></td></tr><tr style=\";height:31px\"><td width=\"48\" style=\"border-right-color: black; border-bottom-color: black; border-left-color: black; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: none; padding: 0px; background: white;\" height=\"31\"><p>6.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"31\"><p>国防科技工业标准化科研管理实施细则</p></td><td width=\"351\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"31\"><p>国家军用标准和核、航天、航空、船舶及兵器行业标准的制修订、标准化技术研究以及标准化技术管理等科研项目的管理。</p></td><td width=\"71\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"31\"><p>国防科工委</p></td><td width=\"170\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"31\"><p>2004年02月20日起施行</p></td><td style=\"border: none;padding: 0\" width=\"80\"><br/></td></tr><tr style=\";height:38px\"><td width=\"48\" style=\"border-right-color: black; border-bottom-color: black; border-left-color: black; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: none; padding: 0px; background: white;\" height=\"38\"><p>7.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>国防科技工业安全生产监督管理规定</p></td><td width=\"351\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>军工单位在武器装备科研生产活动中的安全生产监督管理</p></td><td width=\"71\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>国防科工委</p></td><td width=\"170\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>2010年12月22日起施行</p></td><td style=\"border: none;padding: 0\" width=\"80\"><br/></td></tr><tr style=\";height:38px\"><td width=\"48\" style=\"border-right-color: black; border-bottom-color: black; border-left-color: black; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: none; padding: 0px; background: white;\" height=\"38\"><p>8.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>高新技术企业认定管理办法</p><p>&nbsp;</p></td><td width=\"351\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>拟申请高新技术企业资质的企业和认定机构</p></td><td width=\"71\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>科技部、财政部、国家税务总局</p></td><td width=\"170\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>2016年1月29日起施行</p></td><td style=\"border: none;padding: 0\" width=\"80\"><br/></td></tr><tr style=\";height:38px\"><td width=\"48\" style=\"border-right-color: black; border-bottom-color: black; border-left-color: black; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: none; padding: 0px; background: white;\" height=\"38\"><p>9.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>国家重点新产品计划管理办法</p><p>&nbsp;</p></td><td width=\"351\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>拟申报新产品计划的项目的企业&nbsp;</p></td><td width=\"71\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>国务院、科技部、发改委</p></td><td width=\"170\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>1997年11月29日起施行</p></td><td width=\"80\" style=\"padding: 0px;\" height=\"38\"><br/></td></tr><tr style=\";height:38px\"><td width=\"48\" style=\"border-right-color: black; border-bottom-color: black; border-left-color: black; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: none; padding: 0px; background: white;\" height=\"38\"><p>10.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>高技术产业发展项目</p><p>中央预算内投资（补助）暂行管理办法</p><p>&nbsp;</p></td><td width=\"351\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>拟申请高技术产业发展项目企业</p></td><td width=\"71\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>国家发展改革委</p><p>&nbsp;</p></td><td width=\"170\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>2016年12月6日</p><p>&nbsp;</p></td><td style=\"border: none;padding: 0\" width=\"80\"><br/></td></tr><tr style=\";height:38px\"><td width=\"48\" style=\"border-right-color: black; border-bottom-color: black; border-left-color: black; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: none; padding: 0px; background: white;\" height=\"38\"><p>11.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>科技型中小企业技术创新基金</p><p>项目管理暂行办法</p></td><td width=\"351\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>拟申请创新基金支持的项目的企事业单位</p></td><td width=\"71\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>科技部 &nbsp; 财政部</p></td><td width=\"170\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>2005年3月2日</p></td><td style=\"border: none;padding: 0\" width=\"80\"><br/></td></tr><tr style=\";height:38px\"><td width=\"48\" style=\"border-right-color: black; border-bottom-color: black; border-left-color: black; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: none; padding: 0px; background: white;\" height=\"38\"><p>12.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>中小企业发展专项资金管理暂行办法</p></td><td width=\"351\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>符合办法要求，拟申请中小企业发展专项资金支持的企业</p></td><td width=\"71\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>财政部、工业和信息化部、科技部、商务部</p></td><td width=\"170\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>2015年7月17日</p></td><td style=\"border: none;padding: 0\" width=\"80\"><br/></td></tr><tr style=\";height:38px\"><td width=\"48\" style=\"border-right-color: black; border-bottom-color: black; border-left-color: black; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: none; padding: 0px; background: white;\" height=\"38\"><p>13.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>电子信息产业发展基金管理办法</p></td><td width=\"351\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>拟申请电子信息产业发展基金项目的相关企业</p></td><td width=\"71\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>财政部、工业和信息化部</p></td><td width=\"170\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>&nbsp;</p><p>2007年12月10日</p></td><td style=\"border: none;padding: 0\" width=\"80\"><br/></td></tr><tr style=\";height:38px\"><td width=\"48\" style=\"border-right-color: black; border-bottom-color: black; border-left-color: black; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: none; padding: 0px; background: white;\" height=\"38\"><p>14.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>　集成电路产业研究与开发专项<br/> &nbsp; 资金管理暂行办法</p></td><td width=\"351\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>拟申请专向资金的企业和研究机构</p></td><td width=\"71\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>财政部　信息产业部　国家发展改革委</p></td><td width=\"170\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>2005年4月22日</p></td><td style=\"border: none;padding: 0\" width=\"80\"><br/></td></tr><tr style=\";height:38px\"><td width=\"48\" style=\"border-right-color: black; border-bottom-color: black; border-left-color: black; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: none; padding: 0px; background: white;\" height=\"38\"><p>15.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>国家物联网发展及稀土产业补助资金管理办法</p></td><td width=\"351\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>拟申请国家物联网发展及稀土产业补助资金的企业</p></td><td width=\"71\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>&nbsp;财政部 工业和信息化部</p></td><td width=\"170\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>2014年5月30日</p></td><td style=\"border: none;padding: 0\" width=\"80\"><br/></td></tr><tr style=\";height:38px\"><td width=\"48\" style=\"border-right-color: black; border-bottom-color: black; border-left-color: black; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: none; padding: 0px; background: white;\" height=\"38\"><p>16.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>信息产业重大技术发明评选管理办法</p></td><td width=\"351\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>拟申请重大技术发明的企事业单位</p></td><td width=\"71\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>信息产业部</p></td><td width=\"170\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>2005年4月18日</p></td><td style=\"border: none;padding: 0\" width=\"80\"><br/></td></tr></tbody></table><p><br/></p>','0','0','0','0','1483518002') [ RunTime:0.0044s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000051s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000116s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005570s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005639s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000320s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000373s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000596s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000654s ]
+
+[ 2017-01-04T16:20:03+08:00 ] 114.113.21.2 /index.php/Admin/Fagui/showlist
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000020s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000087s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000643s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000713s ]
+SQL: SHOW COLUMNS FROM `cq_manager` [ RunTime:0.0018s ]
+SQL: SELECT r.role_auth_ac FROM cq_manager m left join cq_role r on m.role_id=r.role_id  WHERE m.mg_id = '1' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_auth` [ RunTime:0.0016s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 0  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_news` [ RunTime:0.0019s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `cq_news` WHERE `lan_id` = 31 LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT n.*,f.cat_id,f.name FROM cq_news n INNER JOIN cq_faguicat f on n.cat_id = f.cat_id  WHERE `lan_id` = 31 ORDER BY news_id desc LIMIT 0,10   [ RunTime:0.0023s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000120s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000187s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013718s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013786s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000329s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000383s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000598s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000661s ]
+
+[ 2017-01-04T16:23:36+08:00 ] 58.247.206.144 /index.php/Admin/Weixin/index?signature=ff8843637541281fab8b807f6bf37f80d1d97856&timestamp=1483518216&nonce=326735577&openid=o6MrWv9MgQ0lMl6iOLo04IKr8iKo
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000081s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000518s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000598s ]
+NOTIC: [8] Undefined index: echostr E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 15 行.
+NOTIC: [8] Undefined index: Content E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 41 行.
+SQL: SHOW COLUMNS FROM `cq_key_n` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `cq_key_n` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_img` [ RunTime:0.0018s ]
+SQL: SELECT * FROM `cq_img` LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined index: Content E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 111 行.
+SQL: SHOW COLUMNS FROM `cq_keyword` [ RunTime:0.0017s ]
+SQL: SELECT * FROM `cq_keyword` WHERE (  keyword like '%%' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_img` WHERE (  keyword like '%%' )  [ RunTime:0.0003s ]
+NOTIC: [2] trim() expects parameter 1 to be string, array given E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 45 行.
+
+[ 2017-01-04T16:24:01+08:00 ] 114.113.21.2 /index.php/Admin/Fagui/tianjia.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000020s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000086s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000669s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000741s ]
+SQL: SHOW COLUMNS FROM `cq_manager` [ RunTime:0.0018s ]
+SQL: SELECT r.role_auth_ac FROM cq_manager m left join cq_role r on m.role_id=r.role_id  WHERE m.mg_id = '1' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_auth` [ RunTime:0.0015s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 0  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_faguicat` [ RunTime:0.0015s ]
+SQL: SELECT * FROM `cq_faguicat` WHERE ( is_show='0' ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_bannerx` [ RunTime:0.0017s ]
+SQL: SELECT * FROM `cq_bannerx` WHERE ( is_show='0' AND is_del='0' AND is_area='0' )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_bannerx` WHERE ( is_show='0' AND is_del='0' AND is_area='1' )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_bannerx` WHERE ( is_show='0' AND is_del='0' AND is_area='2' )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_bannerx` WHERE ( is_show='0' AND is_del='0' AND is_area='3' )  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000124s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000204s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015422s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015493s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000328s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000384s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000711s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000787s ]
+
+[ 2017-01-04T16:24:13+08:00 ] 114.248.148.198 /index.php/Admin/Fagui/tianjia.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000020s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000086s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000639s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000710s ]
+SQL: SHOW COLUMNS FROM `cq_manager` [ RunTime:0.0018s ]
+SQL: SELECT r.role_auth_ac FROM cq_manager m left join cq_role r on m.role_id=r.role_id  WHERE m.mg_id = '1' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `cq_auth` [ RunTime:0.0018s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 0  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 1  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `cq_faguicat` [ RunTime:0.0016s ]
+SQL: SELECT * FROM `cq_faguicat` WHERE ( is_show='0' ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_bannerx` [ RunTime:0.0017s ]
+SQL: SELECT * FROM `cq_bannerx` WHERE ( is_show='0' AND is_del='0' AND is_area='0' )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_bannerx` WHERE ( is_show='0' AND is_del='0' AND is_area='1' )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_bannerx` WHERE ( is_show='0' AND is_del='0' AND is_area='2' )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_bannerx` WHERE ( is_show='0' AND is_del='0' AND is_area='3' )  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000114s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000182s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014367s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014440s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000352s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000409s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000594s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000657s ]
+
+[ 2017-01-04T16:25:10+08:00 ] 114.113.21.2 /index.php/Admin/Fagui/tianjia.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000018s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000084s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000611s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000714s ]
+SQL: SHOW COLUMNS FROM `cq_manager` [ RunTime:0.0020s ]
+SQL: SELECT r.role_auth_ac FROM cq_manager m left join cq_role r on m.role_id=r.role_id  WHERE m.mg_id = '1' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_auth` [ RunTime:0.0016s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 0  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_news` [ RunTime:0.0020s ]
+NOTIC: [8] Undefined index: validate E:\web\lanhai\www\ThinkPHP\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto E:\web\lanhai\www\ThinkPHP\Library\Think\Model.class.php 第 1128 行.
+SQL: INSERT INTO `cq_news` (`lan_id`,`news_title`,`author`,`keyword`,`url`,`cat_id`,`is_show`,`is_tui`,`add_time`,`description`,`content`,`ding`,`youyi`,`youer`,`yousan`,`upd_time`) VALUES ('31','军民融合相关政策法规一览表','','','','1','0','1','2017-01-04 16:25:05','','<table cellspacing=\"0\" cellpadding=\"0\" width=\"1016\" style=\"width: 818px;\"><thead><tr class=\"firstRow\"><td width=\"935\" colspan=\"5\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\" align=\"center\" valign=\"middle\"><p>部委政策法规</p></td><td style=\"border: none;padding: 0\" width=\"80\" align=\"center\" valign=\"middle\"><br/></td></tr><tr><td width=\"48\" style=\"border-right-color: black; border-bottom-color: black; border-left-color: black; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: none; padding: 0px; background: white;\" align=\"center\" valign=\"middle\"><p>序号</p></td><td width=\"296\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" align=\"center\" valign=\"middle\"><p>政策法规名称</p></td><td width=\"351\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" align=\"center\" valign=\"middle\"><p>适用范围</p></td><td width=\"71\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" align=\"center\" valign=\"middle\"><p>发布部门</p></td><td width=\"170\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" align=\"center\" valign=\"middle\"><p>备注</p></td><td style=\"border: none;padding: 0\" width=\"80\" align=\"center\" valign=\"middle\"><br/></td></tr></thead><tbody><tr style=\";height:38px\"><td width=\"48\" style=\"border-right-color: black; border-bottom-color: black; border-left-color: black; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: none; padding: 0px; background: white;\" height=\"38\"><p>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>武器装备科研生产协作配套管理办法</p></td><td width=\"351\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>从事武器装备科研生产协作配套单位</p></td><td width=\"71\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>国防科工委</p></td><td width=\"170\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>2007年2月1日起施行</p></td><td style=\"border: none;padding: 0\" width=\"80\"><br/></td></tr><tr style=\";height:38px\"><td width=\"48\" style=\"border-right-color: black; border-bottom-color: black; border-left-color: black; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: none; padding: 0px; background: white;\" height=\"38\"><p>2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>国防科技工业计量标准器具管理办法</p></td><td width=\"351\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>国防科技工业计量标准器具的申请与考核、检定与校准、使用与监督、变更与废除</p></td><td width=\"71\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>国防科工委</p></td><td width=\"170\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>2002年6月1日起施行</p></td><td style=\"border: none;padding: 0\" width=\"80\"><br/></td></tr><tr style=\";height:38px\"><td width=\"48\" style=\"border-right-color: black; border-bottom-color: black; border-left-color: black; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: none; padding: 0px; background: white;\" height=\"38\"><p>3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>国防科学技术成果鉴定管理办法</p></td><td width=\"351\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>国防科学技术成果鉴定管理</p></td><td width=\"71\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>国防科工委</p></td><td width=\"170\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>2004年7月1日起施行</p></td><td style=\"border: none;padding: 0\" width=\"80\"><br/></td></tr><tr style=\";height:38px\"><td width=\"48\" style=\"border-right-color: black; border-bottom-color: black; border-left-color: black; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: none; padding: 0px; background: white;\" height=\"38\"><p>4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>军工涉密业务咨询服务安全保密监督管理办法（试行）</p></td><td width=\"351\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>受军工企事业单位及民口配套单位委托对军工涉密业务提供咨询、审计、法律、评估、评价、招标等服务的企事业单位。</p></td><td width=\"71\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>国防科工委</p></td><td width=\"170\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>2011年10月1日起施行</p></td><td style=\"border: none;padding: 0\" width=\"80\"><br/></td></tr><tr style=\";height:38px\"><td width=\"48\" style=\"border-right-color: black; border-bottom-color: black; border-left-color: black; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: none; padding: 0px; background: white;\" height=\"38\"><p>5.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>武器装备研制生产标准化工作规定</p></td><td width=\"351\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>从事武器装备研制生产标准化工作单位</p></td><td width=\"71\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>国防科工委</p></td><td width=\"170\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>2004年02月19日起施行</p></td><td style=\"border: none;padding: 0\" width=\"80\"><br/></td></tr><tr style=\";height:31px\"><td width=\"48\" style=\"border-right-color: black; border-bottom-color: black; border-left-color: black; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: none; padding: 0px; background: white;\" height=\"31\"><p>6.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"31\"><p>国防科技工业标准化科研管理实施细则</p></td><td width=\"351\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"31\"><p>国家军用标准和核、航天、航空、船舶及兵器行业标准的制修订、标准化技术研究以及标准化技术管理等科研项目的管理。</p></td><td width=\"71\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"31\"><p>国防科工委</p></td><td width=\"170\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"31\"><p>2004年02月20日起施行</p></td><td style=\"border: none;padding: 0\" width=\"80\"><br/></td></tr><tr style=\";height:38px\"><td width=\"48\" style=\"border-right-color: black; border-bottom-color: black; border-left-color: black; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: none; padding: 0px; background: white;\" height=\"38\"><p>7.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>国防科技工业安全生产监督管理规定</p></td><td width=\"351\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>军工单位在武器装备科研生产活动中的安全生产监督管理</p></td><td width=\"71\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>国防科工委</p></td><td width=\"170\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>2010年12月22日起施行</p></td><td style=\"border: none;padding: 0\" width=\"80\"><br/></td></tr><tr style=\";height:38px\"><td width=\"48\" style=\"border-right-color: black; border-bottom-color: black; border-left-color: black; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: none; padding: 0px; background: white;\" height=\"38\"><p>8.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>高新技术企业认定管理办法</p><p>&nbsp;</p></td><td width=\"351\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>拟申请高新技术企业资质的企业和认定机构</p></td><td width=\"71\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>科技部、财政部、国家税务总局</p></td><td width=\"170\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>2016年1月29日起施行</p></td><td style=\"border: none;padding: 0\" width=\"80\"><br/></td></tr><tr style=\";height:38px\"><td width=\"48\" style=\"border-right-color: black; border-bottom-color: black; border-left-color: black; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: none; padding: 0px; background: white;\" height=\"38\"><p>9.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>国家重点新产品计划管理办法</p><p>&nbsp;</p></td><td width=\"351\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>拟申报新产品计划的项目的企业&nbsp;</p></td><td width=\"71\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>国务院、科技部、发改委</p></td><td width=\"170\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>1997年11月29日起施行</p></td><td width=\"80\" style=\"padding: 0px;\" height=\"38\"><br/></td></tr><tr style=\";height:38px\"><td width=\"48\" style=\"border-right-color: black; border-bottom-color: black; border-left-color: black; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: none; padding: 0px; background: white;\" height=\"38\"><p>10.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>高技术产业发展项目</p><p>中央预算内投资（补助）暂行管理办法</p><p>&nbsp;</p></td><td width=\"351\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>拟申请高技术产业发展项目企业</p></td><td width=\"71\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>国家发展改革委</p><p>&nbsp;</p></td><td width=\"170\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>2016年12月6日</p><p>&nbsp;</p></td><td style=\"border: none;padding: 0\" width=\"80\"><br/></td></tr><tr style=\";height:38px\"><td width=\"48\" style=\"border-right-color: black; border-bottom-color: black; border-left-color: black; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: none; padding: 0px; background: white;\" height=\"38\"><p>11.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>科技型中小企业技术创新基金</p><p>项目管理暂行办法</p></td><td width=\"351\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>拟申请创新基金支持的项目的企事业单位</p></td><td width=\"71\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>科技部 &nbsp; 财政部</p></td><td width=\"170\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>2005年3月2日</p></td><td style=\"border: none;padding: 0\" width=\"80\"><br/></td></tr><tr style=\";height:38px\"><td width=\"48\" style=\"border-right-color: black; border-bottom-color: black; border-left-color: black; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: none; padding: 0px; background: white;\" height=\"38\"><p>12.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>中小企业发展专项资金管理暂行办法</p></td><td width=\"351\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>符合办法要求，拟申请中小企业发展专项资金支持的企业</p></td><td width=\"71\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>财政部、工业和信息化部、科技部、商务部</p></td><td width=\"170\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>2015年7月17日</p></td><td style=\"border: none;padding: 0\" width=\"80\"><br/></td></tr><tr style=\";height:38px\"><td width=\"48\" style=\"border-right-color: black; border-bottom-color: black; border-left-color: black; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: none; padding: 0px; background: white;\" height=\"38\"><p>13.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>电子信息产业发展基金管理办法</p></td><td width=\"351\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>拟申请电子信息产业发展基金项目的相关企业</p></td><td width=\"71\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>财政部、工业和信息化部</p></td><td width=\"170\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>&nbsp;</p><p>2007年12月10日</p></td><td style=\"border: none;padding: 0\" width=\"80\"><br/></td></tr><tr style=\";height:38px\"><td width=\"48\" style=\"border-right-color: black; border-bottom-color: black; border-left-color: black; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: none; padding: 0px; background: white;\" height=\"38\"><p>14.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>　集成电路产业研究与开发专项<br/> &nbsp; 资金管理暂行办法</p></td><td width=\"351\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>拟申请专向资金的企业和研究机构</p></td><td width=\"71\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>财政部　信息产业部　国家发展改革委</p></td><td width=\"170\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>2005年4月22日</p></td><td style=\"border: none;padding: 0\" width=\"80\"><br/></td></tr><tr style=\";height:38px\"><td width=\"48\" style=\"border-right-color: black; border-bottom-color: black; border-left-color: black; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: none; padding: 0px; background: white;\" height=\"38\"><p>15.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>国家物联网发展及稀土产业补助资金管理办法</p></td><td width=\"351\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>拟申请国家物联网发展及稀土产业补助资金的企业</p></td><td width=\"71\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>&nbsp;财政部 工业和信息化部</p></td><td width=\"170\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>2014年5月30日</p></td><td style=\"border: none;padding: 0\" width=\"80\"><br/></td></tr><tr style=\";height:38px\"><td width=\"48\" style=\"border-right-color: black; border-bottom-color: black; border-left-color: black; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: none; padding: 0px; background: white;\" height=\"38\"><p>16.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>信息产业重大技术发明评选管理办法</p></td><td width=\"351\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>拟申请重大技术发明的企事业单位</p></td><td width=\"71\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>信息产业部</p></td><td width=\"170\" style=\"border-top-style: none; border-left-style: none; border-bottom-color: black; border-bottom-width: 1px; border-right-color: black; border-right-width: 1px; padding: 0px; background: white;\" height=\"38\"><p>2005年4月18日</p></td><td style=\"border: none;padding: 0\" width=\"80\"><br/></td></tr></tbody></table><p><br/></p>','0','0','0','0','1483518310') [ RunTime:0.0042s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000058s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000129s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005695s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005761s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000316s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000376s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000574s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000632s ]
+
+[ 2017-01-04T16:25:11+08:00 ] 114.113.21.2 /index.php/Admin/Fagui/showlist
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000084s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000632s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000715s ]
+SQL: SHOW COLUMNS FROM `cq_manager` [ RunTime:0.0019s ]
+SQL: SELECT r.role_auth_ac FROM cq_manager m left join cq_role r on m.role_id=r.role_id  WHERE m.mg_id = '1' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_auth` [ RunTime:0.0016s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 0  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_news` [ RunTime:0.0021s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `cq_news` WHERE `lan_id` = 31 LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT n.*,f.cat_id,f.name FROM cq_news n INNER JOIN cq_faguicat f on n.cat_id = f.cat_id  WHERE `lan_id` = 31 ORDER BY news_id desc LIMIT 0,10   [ RunTime:0.0024s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000120s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000187s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014744s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014842s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000340s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000396s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000647s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000726s ]
+
+[ 2017-01-04T16:25:38+08:00 ] 114.113.21.2 /index.php/Admin/Fagui/upd/news_id/795.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000125s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000540s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000610s ]
+SQL: SHOW COLUMNS FROM `cq_manager` [ RunTime:0.0019s ]
+SQL: SELECT r.role_auth_ac FROM cq_manager m left join cq_role r on m.role_id=r.role_id  WHERE m.mg_id = '1' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_auth` [ RunTime:0.0015s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 0  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_news` [ RunTime:0.0019s ]
+SQL: SELECT * FROM `cq_news` WHERE `news_id` = 795 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `cq_lanmu` [ RunTime:0.0018s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE `lan_id` = 31 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `cq_faguicat` [ RunTime:0.0014s ]
+SQL: SELECT * FROM `cq_faguicat` WHERE ( is_show='0' ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_bannerx` [ RunTime:0.0018s ]
+SQL: SELECT * FROM `cq_bannerx` WHERE ( is_show='0' AND is_del='0' AND is_area='0' )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_bannerx` WHERE ( is_show='0' AND is_del='0' AND is_area='1' )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_bannerx` WHERE ( is_show='0' AND is_del='0' AND is_area='2' )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_bannerx` WHERE ( is_show='0' AND is_del='0' AND is_area='3' )  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000128s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000207s ]
+NOTIC: [8] Undefined variable: extlanids E:\web\lanhai\www\Runtime\Cache\Admin\f604f46d06ec0988ea37509ba777921e.php 第 104 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016596s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016663s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000214s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000270s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000529s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000591s ]
+
+[ 2017-01-04T16:28:35+08:00 ] 114.113.21.2 /index.php/Admin/Fagui/upd/news_id/795.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000020s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000083s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000549s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000620s ]
+SQL: SHOW COLUMNS FROM `cq_manager` [ RunTime:0.0019s ]
+SQL: SELECT r.role_auth_ac FROM cq_manager m left join cq_role r on m.role_id=r.role_id  WHERE m.mg_id = '1' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_auth` [ RunTime:0.0016s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 0  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_news` [ RunTime:0.0021s ]
+NOTIC: [8] Undefined index: validate E:\web\lanhai\www\ThinkPHP\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto E:\web\lanhai\www\ThinkPHP\Library\Think\Model.class.php 第 1128 行.
+SQL: UPDATE `cq_news` SET `lan_id`='31',`news_title`='军民融合相关政策法规一览表',`author`='',`keyword`='',`url`='',`cat_id`='1',`is_show`='0',`is_tui`='1',`add_time`='2017-01-04 16:25:05',`description`='',`content`='<p></p><table data-sort=\"sortDisabled\"><tbody><tr class=\"firstRow\"><td valign=\"middle\" rowspan=\"1\" colspan=\"5\" style=\"word-break: break-all;\" align=\"center\"><span style=\"text-align: -webkit-center; background-color: rgb(255, 255, 255);\">部委政策法规</span></td></tr><tr><td width=\"48\" valign=\"middle\" style=\"border-color: black; border-width: 1px; padding: 0px; word-break: break-all; background: white;\" align=\"center\"><p>序号</p></td><td width=\"296\" valign=\"middle\" align=\"center\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>政策法规名称</p></td><td width=\"351\" valign=\"middle\" align=\"center\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>适用范围</p></td><td width=\"71\" valign=\"middle\" align=\"center\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>发布部门</p></td><td width=\"170\" valign=\"middle\" align=\"center\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>备注</p></td></tr><tr><td width=\"48\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>武器装备科研生产协作配套管理办法</p></td><td width=\"351\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>从事武器装备科研生产协作配套单位</p></td><td width=\"71\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>国防科工委</p></td><td width=\"170\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>2007年2月1日起施行</p></td></tr><tr><td width=\"48\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>国防科技工业计量标准器具管理办法</p></td><td width=\"351\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>国防科技工业计量标准器具的申请与考核、检定与校准、使用与监督、变更与废除</p></td><td width=\"71\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>国防科工委</p></td><td width=\"170\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>2002年6月1日起施行</p></td></tr><tr><td width=\"48\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>国防科学技术成果鉴定管理办法</p></td><td width=\"351\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>国防科学技术成果鉴定管理</p></td><td width=\"71\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>国防科工委</p></td><td width=\"170\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>2004年7月1日起施行</p></td></tr><tr><td width=\"48\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>军工涉密业务咨询服务安全保密监督管理办法（试行）</p></td><td width=\"351\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>受军工企事业单位及民口配套单位委托对军工涉密业务提供咨询、审计、法律、评估、评价、招标等服务的企事业单位。</p></td><td width=\"71\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>国防科工委</p></td><td width=\"170\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>2011年10月1日起施行</p></td></tr><tr><td width=\"48\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>5.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>武器装备研制生产标准化工作规定</p></td><td width=\"351\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>从事武器装备研制生产标准化工作单位</p></td><td width=\"71\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>国防科工委</p></td><td width=\"170\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>2004年02月19日起施行</p></td></tr><tr><td width=\"48\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>6.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>国防科技工业标准化科研管理实施细则</p></td><td width=\"351\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>国家军用标准和核、航天、航空、船舶及兵器行业标准的制修订、标准化技术研究以及标准化技术管理等科研项目的管理。</p></td><td width=\"71\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>国防科工委</p></td><td width=\"170\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>2004年02月20日起施行</p></td></tr><tr><td width=\"48\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>7.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>国防科技工业安全生产监督管理规定</p></td><td width=\"351\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>军工单位在武器装备科研生产活动中的安全生产监督管理</p></td><td width=\"71\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>国防科工委</p></td><td width=\"170\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>2010年12月22日起施行</p></td></tr><tr><td valign=\"top\" colspan=\"1\" rowspan=\"1\" width=\"48\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>8.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td valign=\"top\" colspan=\"1\" rowspan=\"1\" width=\"296\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>高新技术企业认定管理办法</p><p>&nbsp;</p></td><td valign=\"top\" colspan=\"1\" rowspan=\"1\" width=\"351\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>拟申请高新技术企业资质的企业和认定机构</p></td><td valign=\"top\" colspan=\"1\" rowspan=\"1\" width=\"71\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>科技部、财政部、国家税务总局</p></td><td valign=\"top\" colspan=\"1\" rowspan=\"1\" width=\"170\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>2016年1月29日起施行</p></td></tr><tr><td valign=\"top\" colspan=\"1\" rowspan=\"1\" style=\"border-color: black; border-width: 1px; padding: 0px; word-break: break-all; background: white;\" width=\"48\"><p>9.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td valign=\"top\" colspan=\"1\" rowspan=\"1\" width=\"296\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>国家重点新产品计划管理办法</p><p>&nbsp;</p></td><td valign=\"top\" colspan=\"1\" rowspan=\"1\" width=\"351\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>拟申报新产品计划的项目的企业&nbsp;</p></td><td valign=\"top\" colspan=\"1\" rowspan=\"1\" width=\"71\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>国务院、科技部、发改委</p></td><td valign=\"top\" colspan=\"1\" rowspan=\"1\" width=\"170\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>1997年11月29日起施行</p></td></tr><tr><td valign=\"top\" colspan=\"1\" rowspan=\"1\" width=\"48\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>10.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td valign=\"top\" colspan=\"1\" rowspan=\"1\" width=\"296\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>高技术产业发展项目</p><p>中央预算内投资（补助）暂行管理办法</p><p>&nbsp;</p></td><td valign=\"top\" colspan=\"1\" rowspan=\"1\" width=\"351\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>拟申请高技术产业发展项目企业</p></td><td valign=\"top\" colspan=\"1\" rowspan=\"1\" width=\"71\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>国家发展改革委</p><p>&nbsp;</p></td><td valign=\"top\" colspan=\"1\" rowspan=\"1\" width=\"170\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>2016年12月6日</p><p>&nbsp;</p></td></tr><tr><td valign=\"top\" colspan=\"1\" rowspan=\"1\" width=\"48\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>11.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td valign=\"top\" colspan=\"1\" rowspan=\"1\" width=\"296\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>科技型中小企业技术创新基金</p><p>项目管理暂行办法</p></td><td valign=\"top\" colspan=\"1\" rowspan=\"1\" width=\"351\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>拟申请创新基金支持的项目的企事业单位</p></td><td valign=\"top\" colspan=\"1\" rowspan=\"1\" width=\"71\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>科技部 &nbsp; 财政部</p></td><td valign=\"top\" colspan=\"1\" rowspan=\"1\" width=\"170\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>2005年3月2日</p></td></tr><tr><td valign=\"top\" colspan=\"1\" rowspan=\"1\" width=\"48\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>12.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td valign=\"top\" colspan=\"1\" rowspan=\"1\" width=\"296\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>中小企业发展专项资金管理暂行办法</p></td><td valign=\"top\" colspan=\"1\" rowspan=\"1\" width=\"351\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>符合办法要求，拟申请中小企业发展专项资金支持的企业</p></td><td valign=\"top\" colspan=\"1\" rowspan=\"1\" width=\"71\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>财政部、工业和信息化部、科技部、商务部</p></td><td valign=\"top\" colspan=\"1\" rowspan=\"1\" width=\"170\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>2015年7月17日</p></td></tr><tr><td valign=\"top\" colspan=\"1\" rowspan=\"1\" width=\"48\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>13.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td valign=\"top\" colspan=\"1\" rowspan=\"1\" width=\"296\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>电子信息产业发展基金管理办法</p></td><td valign=\"top\" colspan=\"1\" rowspan=\"1\" width=\"351\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>拟申请电子信息产业发展基金项目的相关企业</p></td><td valign=\"top\" colspan=\"1\" rowspan=\"1\" width=\"71\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>财政部、工业和信息化部</p></td><td valign=\"top\" colspan=\"1\" rowspan=\"1\" width=\"170\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>&nbsp;</p><p>2007年12月10日</p></td></tr><tr><td valign=\"top\" colspan=\"1\" rowspan=\"1\" width=\"48\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>14.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td valign=\"top\" colspan=\"1\" rowspan=\"1\" width=\"296\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>　集成电路产业研究与开发专项<br/> &nbsp; 资金管理暂行办法</p></td><td valign=\"top\" colspan=\"1\" rowspan=\"1\" width=\"351\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>拟申请专向资金的企业和研究机构</p></td><td valign=\"top\" colspan=\"1\" rowspan=\"1\" width=\"71\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>财政部　信息产业部　国家发展改革委</p></td><td valign=\"top\" colspan=\"1\" rowspan=\"1\" width=\"170\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>2005年4月22日</p></td></tr><tr><td width=\"48\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; word-break: break-all; background: white;\"><p>15.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td width=\"296\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>国家物联网发展及稀土产业补助资金管理办法</p></td><td width=\"351\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>拟申请国家物联网发展及稀土产业补助资金的企业</p></td><td width=\"71\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>&nbsp;财政部 工业和信息化部</p></td><td width=\"170\" valign=\"top\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\"><p>2014年5月30日</p></td></tr><tr><td valign=\"top\" colspan=\"1\" rowspan=\"1\" style=\"border-color: black; border-width: 1px; padding: 0px; word-break: break-all; background: white;\" width=\"48\"><p>16.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p></td><td valign=\"top\" colspan=\"1\" rowspan=\"1\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\" width=\"296\"><p>信息产业重大技术发明评选管理办法</p></td><td valign=\"top\" colspan=\"1\" rowspan=\"1\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\" width=\"351\"><p>拟申请重大技术发明的企事业单位</p></td><td valign=\"top\" colspan=\"1\" rowspan=\"1\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\" width=\"71\"><p>信息产业部</p></td><td valign=\"top\" colspan=\"1\" rowspan=\"1\" style=\"border-color: black; border-width: 1px; padding: 0px; background: white;\" width=\"170\"><p>2005年4月18日</p></td></tr></tbody></table><p><br/></p>',`ding`='0',`youyi`='0',`youer`='0',`yousan`='0',`upd_time`='1483518515' WHERE `news_id` = 795 [ RunTime:0.0044s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000048s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000114s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005448s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005516s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000291s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000351s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000526s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000586s ]
+
+[ 2017-01-04T16:28:36+08:00 ] 114.113.21.2 /index.php/Admin/Fagui/showlist/news_id/795.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000082s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000491s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000559s ]
+SQL: SHOW COLUMNS FROM `cq_manager` [ RunTime:0.0021s ]
+SQL: SELECT r.role_auth_ac FROM cq_manager m left join cq_role r on m.role_id=r.role_id  WHERE m.mg_id = '1' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_auth` [ RunTime:0.0017s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 0  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_news` [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `cq_news` WHERE `lan_id` = 31 LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT n.*,f.cat_id,f.name FROM cq_news n INNER JOIN cq_faguicat f on n.cat_id = f.cat_id  WHERE `lan_id` = 31 ORDER BY news_id desc LIMIT 0,10   [ RunTime:0.0025s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000119s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000190s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014151s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014220s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000321s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000376s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000475s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000537s ]
+
+[ 2017-01-04T16:28:57+08:00 ] 114.113.21.2 /index.php/Admin/Fagui/upd/news_id/795.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000020s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000086s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000644s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000722s ]
+SQL: SHOW COLUMNS FROM `cq_manager` [ RunTime:0.0022s ]
+SQL: SELECT r.role_auth_ac FROM cq_manager m left join cq_role r on m.role_id=r.role_id  WHERE m.mg_id = '1' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_auth` [ RunTime:0.0018s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 0  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_news` [ RunTime:0.0021s ]
+SQL: SELECT * FROM `cq_news` WHERE `news_id` = 795 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `cq_lanmu` [ RunTime:0.0018s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE `lan_id` = 31 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `cq_faguicat` [ RunTime:0.0016s ]
+SQL: SELECT * FROM `cq_faguicat` WHERE ( is_show='0' ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_bannerx` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `cq_bannerx` WHERE ( is_show='0' AND is_del='0' AND is_area='0' )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_bannerx` WHERE ( is_show='0' AND is_del='0' AND is_area='1' )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_bannerx` WHERE ( is_show='0' AND is_del='0' AND is_area='2' )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_bannerx` WHERE ( is_show='0' AND is_del='0' AND is_area='3' )  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000132s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000203s ]
+NOTIC: [8] Undefined variable: extlanids E:\web\lanhai\www\Runtime\Cache\Admin\f604f46d06ec0988ea37509ba777921e.php 第 104 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016925s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017006s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000336s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000399s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000662s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000729s ]
+
+[ 2017-01-04T16:29:18+08:00 ] 58.247.206.154 /index.php/Admin/Weixin/index?signature=183cc8e8d10024fbd9a82bfa804e7709f7776e72&timestamp=1483518557&nonce=266813398&openid=o6MrWv9MgQ0lMl6iOLo04IKr8iKo
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000096s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000714s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000801s ]
+NOTIC: [8] Undefined index: echostr E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 15 行.
+NOTIC: [8] Undefined index: Content E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 41 行.
+SQL: SHOW COLUMNS FROM `cq_key_n` [ RunTime:0.0019s ]
+SQL: SELECT * FROM `cq_key_n` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_img` [ RunTime:0.0016s ]
+SQL: SELECT * FROM `cq_img` LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index: Content E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 111 行.
+SQL: SHOW COLUMNS FROM `cq_keyword` [ RunTime:0.0015s ]
+SQL: SELECT * FROM `cq_keyword` WHERE (  keyword like '%%' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_img` WHERE (  keyword like '%%' )  [ RunTime:0.0003s ]
+NOTIC: [2] trim() expects parameter 1 to be string, array given E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 45 行.
+
+[ 2017-01-04T16:30:01+08:00 ] 114.113.21.2 /index.php/Admin/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000084s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000560s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000630s ]
+SQL: SHOW COLUMNS FROM `cq_manager` [ RunTime:0.0020s ]
+SQL: SELECT r.role_auth_ac FROM cq_manager m left join cq_role r on m.role_id=r.role_id  WHERE m.mg_id = '1' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_auth` [ RunTime:0.0016s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 0  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_advice` [ RunTime:0.0018s ]
+SQL: SELECT * FROM `cq_advice` ORDER BY add_time desc LIMIT 0,5   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_user` [ RunTime:0.0019s ]
+SQL: SELECT * FROM `cq_user` ORDER BY user_id desc LIMIT 0,4   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `cq_posts` [ RunTime:0.0017s ]
+SQL: SELECT * FROM `cq_posts` ORDER BY ctime desc LIMIT 0,4   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_article` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `cq_article` ORDER BY add_time desc LIMIT 0,4   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000094s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000162s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013858s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013928s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000307s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000369s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000620s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000683s ]
+
+[ 2017-01-04T16:30:34+08:00 ] 114.113.21.2 /index.php/Admin/News/showlist
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000110s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000623s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000693s ]
+SQL: SHOW COLUMNS FROM `cq_manager` [ RunTime:0.0019s ]
+SQL: SELECT r.role_auth_ac FROM cq_manager m left join cq_role r on m.role_id=r.role_id  WHERE m.mg_id = '1' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_auth` [ RunTime:0.0016s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 0  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_news` [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `cq_news` LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT n.*,l.lan_title FROM cq_news n INNER JOIN cq_lanmu l on n.lan_id=l.lan_id  ORDER BY news_id desc LIMIT 0,10   [ RunTime:0.0011s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000145s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000215s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015049s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015137s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000221s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000287s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000518s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000580s ]
+
+[ 2017-01-04T16:30:36+08:00 ] 114.113.21.2 /index.php/Admin/News/showlist
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000084s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000522s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000591s ]
+SQL: SHOW COLUMNS FROM `cq_manager` [ RunTime:0.0019s ]
+SQL: SELECT r.role_auth_ac FROM cq_manager m left join cq_role r on m.role_id=r.role_id  WHERE m.mg_id = '1' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `cq_auth` [ RunTime:0.0016s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 0  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_news` [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `cq_news` WHERE `news_title` LIKE '%军民融合相关政策法规一览表%' LIMIT 1   [ RunTime:0.0011s ]
+SQL: SELECT n.*,l.lan_title FROM cq_news n INNER JOIN cq_lanmu l on n.lan_id=l.lan_id  WHERE `news_title` LIKE '%军民融合相关政策法规一览表%' ORDER BY news_id desc LIMIT 0,10   [ RunTime:0.0054s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000148s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000224s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014868s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015035s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000224s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000288s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000485s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000553s ]
+
+[ 2017-01-04T16:30:46+08:00 ] 114.113.21.2 /index.php/Admin/News/del
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000088s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000568s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000639s ]
+SQL: SHOW COLUMNS FROM `cq_manager` [ RunTime:0.0020s ]
+SQL: SELECT r.role_auth_ac FROM cq_manager m left join cq_role r on m.role_id=r.role_id  WHERE m.mg_id = '1' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `cq_auth` [ RunTime:0.0016s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 0  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_news` [ RunTime:0.0020s ]
+SQL: DELETE FROM `cq_news` WHERE `news_id` IN ('795') [ RunTime:0.0024s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000084s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000188s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007253s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007336s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000307s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000370s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000582s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000642s ]
+
+[ 2017-01-04T16:30:47+08:00 ] 114.113.21.2 /index.php/Admin/News/showlist.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000020s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000084s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000604s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000674s ]
+SQL: SHOW COLUMNS FROM `cq_manager` [ RunTime:0.0021s ]
+SQL: SELECT r.role_auth_ac FROM cq_manager m left join cq_role r on m.role_id=r.role_id  WHERE m.mg_id = '1' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_auth` [ RunTime:0.0018s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 0  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_news` [ RunTime:0.0023s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `cq_news` LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT n.*,l.lan_title FROM cq_news n INNER JOIN cq_lanmu l on n.lan_id=l.lan_id  ORDER BY news_id desc LIMIT 0,10   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000156s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000240s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015952s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016050s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000326s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000380s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000527s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000602s ]
+
+[ 2017-01-04T16:31:04+08:00 ] 114.113.21.2 /index.php/Admin/News/del
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000083s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000587s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000659s ]
+SQL: SHOW COLUMNS FROM `cq_manager` [ RunTime:0.0019s ]
+SQL: SELECT r.role_auth_ac FROM cq_manager m left join cq_role r on m.role_id=r.role_id  WHERE m.mg_id = '1' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_auth` [ RunTime:0.0016s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 0  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_news` [ RunTime:0.0019s ]
+SQL: DELETE FROM `cq_news` WHERE `news_id` IN ('794') [ RunTime:0.0026s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000072s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000144s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005573s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005668s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000301s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000381s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000511s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000573s ]
+
+[ 2017-01-04T16:31:06+08:00 ] 114.113.21.2 /index.php/Admin/News/showlist.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000107s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000538s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000613s ]
+SQL: SHOW COLUMNS FROM `cq_manager` [ RunTime:0.0021s ]
+SQL: SELECT r.role_auth_ac FROM cq_manager m left join cq_role r on m.role_id=r.role_id  WHERE m.mg_id = '1' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_auth` [ RunTime:0.0018s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 0  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_news` [ RunTime:0.0022s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `cq_news` LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT n.*,l.lan_title FROM cq_news n INNER JOIN cq_lanmu l on n.lan_id=l.lan_id  ORDER BY news_id desc LIMIT 0,10   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000176s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000266s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015685s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015762s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000235s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000295s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000489s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000556s ]
+
+[ 2017-01-04T16:40:37+08:00 ] 114.113.21.2 /index.php/Admin/News/tianjia
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000092s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000568s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000638s ]
+SQL: SHOW COLUMNS FROM `cq_manager` [ RunTime:0.0022s ]
+SQL: SELECT r.role_auth_ac FROM cq_manager m left join cq_role r on m.role_id=r.role_id  WHERE m.mg_id = '1' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `cq_auth` [ RunTime:0.0018s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 0  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_auth` WHERE `auth_level` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_lanmu` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `cq_lanmu` WHERE `level` = 0  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_bannerx` [ RunTime:0.0019s ]
+SQL: SELECT * FROM `cq_bannerx` WHERE ( is_show='0' AND is_del='0' AND is_area='0' )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_bannerx` WHERE ( is_show='0' AND is_del='0' AND is_area='1' )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_bannerx` WHERE ( is_show='0' AND is_del='0' AND is_area='2' )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_bannerx` WHERE ( is_show='0' AND is_del='0' AND is_area='3' )  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000127s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000193s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014654s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014726s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000218s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000273s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000559s ]
+
+[ 2017-01-04T16:53:06+08:00 ] 58.247.206.139 /index.php/Admin/Weixin/index?signature=45a3e8c2820504f41e6ee20780d18197ad8b03af&timestamp=1483519986&nonce=402585473&openid=o6MrWv9MgQ0lMl6iOLo04IKr8iKo
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000020s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000083s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000527s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000599s ]
+NOTIC: [8] Undefined index: echostr E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 15 行.
+NOTIC: [8] Undefined index: Content E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 41 行.
+SQL: SHOW COLUMNS FROM `cq_key_n` [ RunTime:0.0019s ]
+SQL: SELECT * FROM `cq_key_n` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_img` [ RunTime:0.0018s ]
+SQL: SELECT * FROM `cq_img` LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined index: Content E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 111 行.
+SQL: SHOW COLUMNS FROM `cq_keyword` [ RunTime:0.0017s ]
+SQL: SELECT * FROM `cq_keyword` WHERE (  keyword like '%%' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `cq_img` WHERE (  keyword like '%%' )  [ RunTime:0.0003s ]
+NOTIC: [2] trim() expects parameter 1 to be string, array given E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 45 行.
+
+[ 2017-01-04T18:53:23+08:00 ] 58.247.206.139 /index.php/Admin/Weixin/index?signature=5edbe4fa40496054b19a7c496df0eb63a8835e43&timestamp=1483527203&nonce=264381755&openid=o6MrWvx7vVNH8dv409SWXRm1A9io
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000020s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000092s ]
+NOTIC: [8] Use of undefined constant URL_COMPAT - assumed 'URL_COMPAT' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 183 行.
+NOTIC: [8] Use of undefined constant URL_REWRITE - assumed 'URL_REWRITE' E:\web\lanhai\www\ThinkPHP\Library\Think\Dispatcher.class.php 第 185 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000593s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000674s ]
+NOTIC: [8] Undefined index: echostr E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 15 行.
+NOTIC: [8] Undefined index: Content E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 41 行.
+SQL: SHOW COLUMNS FROM `cq_key_n` [ RunTime:0.0019s ]
+SQL: SELECT * FROM `cq_key_n` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cq_img` [ RunTime:0.0017s ]
+SQL: SELECT * FROM `cq_img` LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `cq_key_n` LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [2] trim() expects parameter 1 to be string, array given E:\web\lanhai\www\Admin\Controller\WeixinController.class.php 第 45 行.
+

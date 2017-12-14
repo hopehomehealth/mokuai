@@ -1,0 +1,112 @@
+
+
+
+
+<div class="banner" id="banner" >
+    <foreach name="adinfoup" key="k" item="v">
+        <a href="{$v.url}" ><img src="{$Think.const.SITE_URL}{$v.pic}" class="d1" style="background: url({$Think.const.SITE_URL}{$v.pic}) center no-repeat #fff;background-size:cover;"></a>
+
+    </foreach>
+
+    <div class="d2" id="banner_id">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript">banner()</script>
+<div class="sideBar">
+    <p class="xzfw">选择服务<br />
+        <span>乐护服务平台，服务项目</span></p>
+    <div class="xzfw_con fl">
+        <ul class="xzfw_list fl">
+
+                <foreach name="info1" key="k" item="v">
+
+                    <li><a href="javascript:;" class="modmore"><img src="{$Think.const.SITE_URL}{$v.pic|substr=###,2}" alt="">
+                        <p class="ser">
+                            <p class="ser_zwz"><span class="ser_yw">{$v.english}</span><br />乐护&nbsp;&nbsp;{$v.china}  </p>
+                        </p>
+
+                        <p class="ser_erm">
+                            {$v.introduce|strip_tags|str_replace=array(" ","　","\t","\n","\r"),array("","","","",""),###|mb_substr=###,0,66,'utf-8'}
+                            <span class="er"><img src='{$Think.const.HIMG_URL}erm.jpg'  width='120' height='120'></span>
+                        </p>
+                    </a></li>
+            </foreach>
+        </ul>
+        <ul class="xzfw_list1 fl">
+            <foreach name="info2" key="k" item="v">
+                <li><a href="javascript:;" class="modmore"><img src="{$Think.const.SITE_URL}{$v.pic|substr=###,2}" alt="">
+                    <p class="ser">
+                    <p class="ser_zwz"><span class="ser_yw">{$v.english}</span><br />乐护&nbsp;&nbsp;{$v.china}  </p>
+                    </p>
+
+                    <p class="ser_erm">
+                        {$v.introduce|strip_tags|str_replace=array(" ","　","\t","\n","\r"),array("","","","",""),###|mb_substr=###,0,66,'utf-8'}
+                        <span class="er"><img src='{$Think.const.HIMG_URL}erm.jpg' id='' width='120' height='120'></span>
+                    </p>
+                </a></li>
+            </foreach>
+
+        </ul>
+        <p class="showMore"><span class="showMore_t fl"></span> </p>
+    </div>
+</div>
+<div class="fwlc_con">
+    <div class="sideBar">
+        <p class="xzfw">服务流程<br />
+            <span>乐护服务平台，基本工作服务流程</span></p>
+
+        <ul class="lc_con fl">
+            <li class="lc1"><a>客户<br />提出需求</a>
+                <div class="second lc_bd">专业评估<br /><span class="yellow fl">Professional Assessment</span><br /><span class="nr_wz fl">乐护的评估专员会亲临患者及家属的居住地，现场对患者状况、居住环境进行评估，同时针对延续护理服务答疑</span></div>
+            </li>
+            <li class="lc2"><a style="padding-top:58px;" >初始评估</a>
+                <div class="second lc_bd">专业评估<br /><span class="yellow fl">Professional Assessment</span><br /><span class="nr_wz fl">乐护的评估专员会亲临患者及家属的居住地，现场对患者状况、居住环境进行评估，同时针对延续护理服务答疑</span></div>
+            </li>
+            <li class="lc3"><a style="padding-top:58px;" >专业评估</a>
+                <div class="third lc_bd1">专业评估<br /><span class="yellow fl">Professional Assessment</span><br /><span class="nr_wz fl">乐护的评估专员会亲临患者及家属的居住地，现场对患者状况、居住环境进行评估，同时针对延续护理服务答疑</span></div>
+            </li>
+            <li class="lc4"><a >选派专业<br />护理人员</a>
+                <div class="third lc_bd1">专业评估<br /><span class="yellow fl">Professional Assessment</span><br /><span class="nr_wz fl">乐护的评估专员会亲临患者及家属的居住地，现场对患者状况、居住环境进行评估，同时针对延续护理服务答疑</span></div>
+            </li>
+            <li class="lc5"><a >专业延续<br />护理服务</a>
+                <div class="third lc_bd1">专业评估<br /><span class="yellow fl">Professional Assessment</span><br /><span class="nr_wz fl">乐护的评估专员会亲临患者及家属的居住地，现场对患者状况、居住环境进行评估，同时针对延续护理服务答疑</span></div>
+            </li>
+            <li class="lc7" style="float:right;"><a >专业延续<br />护理服务</a>
+                <div class="fourth lc_bd2">专业评估<br /><span class="yellow fl">Professional Assessment</span><br /><span class="nr_wz fl">乐护的评估专员会亲临患者及家属的居住地，现场对患者状况、居住环境进行评估，同时针对延续护理服务答疑</span></div>
+            </li>
+
+        </ul>
+
+    </div>
+</div>
+<div class="sideBar">
+    <p class="xzfw" style="padding-top:0px;">服务案例<br />
+        <span>乐护服务平台，服务案例展示</span></p>
+</div>
+<div class="DB_tab25">
+    <ul class="DB_imgSet">
+        <foreach name="adinfodown" key="k" item="v">
+
+        <li onclick="javascript:window.location.href='';">
+            <a href='{$v.url}' ><img src="{$Think.const.SITE_URL}{$v.pic}" />  </a>
+        </li>
+
+        </foreach>
+    </ul>
+    <div class="DB_menuWrap">
+
+        <div class="DB_next">
+            <img src="{$Think.const.HIMG_URL}nextArrow.png" alt="NEXT" />
+        </div>
+        <div class="DB_prev">
+            <img src="{$Think.const.HIMG_URL}prevArrow.png" alt="PREV" />
+        </div>
+    </div>
+</div>
+
+

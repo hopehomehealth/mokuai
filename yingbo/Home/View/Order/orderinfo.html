@@ -1,0 +1,72 @@
+    <link href="{$Think.const.HCSS_URL}liyue-style.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="{$Think.const.HJS_URL}refresh.js"></script>
+    <section style="background:#F0F0F0;font-size:1.250rem;">
+      <div class="orderinfo_nav" style="padding-top:0.5rem;padding-bottom:0.5rem">
+          <dl>
+             <dd><img src="{$Think.const.HIMG_URL}dz.gif" alt=""/></dd>
+              <dt>收货人：{$orderinfo.consigner}<span>{$orderinfo.phone}</span><p style="padding-top:0.5rem">收货地址：{$orderinfo.delivery}</p></dt>
+              <div style="clear: both"></div>
+          </dl>
+      </div>
+      <div class="orderinfo_main">
+          <div class="orderinfo_main1">
+              <dl>
+                <dd><a href="{:U('Goods/detail',array('goods_id'=>$orderinfo['goods_id']))}"><img src="{$Think.const.SITE_URL}{$orderinfo.logo}" alt=""/></a></dd>
+                <dt>
+                    <h2 style="width:65%;word-break : break-all;">{$orderinfo.goods_name}<br />{$orderinfo.spec}</h2>
+                    <p style="width:30%;color:#DD0045">￥{$orderinfo.price}<br><span></span><br/>×{$orderinfo.number}</p>
+                    <!-- <div style="clear: both"></div>
+                    <span style='float:left;width:100%;'>{$Think.get.spec}</span> -->
+                </dt>
+                   <div style="clear: both"></div>
+				   <if condition="$orderinfo.express neq ''">
+				   <h3>快递公司<span style="color: #999">{$orderinfo.express}</span></h3>
+				   <h3>物流单号<span style="color: #999">{$orderinfo.expressno}</span></h3>
+				   </if>
+                   <h3>运费<span style="color: #ccc">￥0.00</span></h3>
+                   <h3>首付<span style="color: #DD0045">￥{$orderinfo.downpay}</span></h3>
+                       <h3 style="color:#DD0045;font-size:2rem;font-weight:bolder">+<span style="color: #DD0045;"></h3>
+                       <h3>积分<span style="color: #DD0045;">{$orderinfo['score']}</span></h3>
+                    <h3>实付款：<span><b>￥{$orderinfo.downpay}</b></span></h3>
+              </dl>
+          </div>
+      </div>
+      <div class="orderinfo_main2">
+        <ul>
+              <li>
+                <if condition="$orderinfo.pay_status eq '0'">
+                  <a href="__MODULE__/Order/delorder/orderid/{$orderinfo.orderid}"><input style="margin-right:1rem;" type="button" value="取消订单"/></a>
+                  <a id="checkout" onclick="return false" href="{:U('Order/checkscore',array('type'=>'orderpay','id'=>$orderinfo['orderid']))}"><input style="color:white; background: #DD0045" type="button" value="立即付款"/></a>
+                </if>
+                <if condition="$orderinfo.shipping_status eq '1'">
+                  <a href="__MODULE__/Order/confirm/orderid/{$orderinfo.orderid}"><input style="padding:0.200rem;color:white; background: #DD0045" type="button" value="确认收货"/></a>
+                </if>
+                <if condition="$orderinfo.shipping_status eq '2'">
+                  <a href="__MODULE__/Order/delorder/orderid/{$orderinfo.orderid}"><input style="padding:0.200rem;color:white; background: #DD0045" type="button" value="删除订单"/></a>
+                </if>
+              </li>
+        </ul>
+        <div style="clear: both"></div>
+      </div>
+    </section>
+    <script type="text/javascript">
+        $(function(){
+			$("#checkout").click(function(){
+				$.get($(this).attr('href'),function(data){
+					if(data.error == 0){
+						location.href="__MODULE__"+data.url;
+					}
+					if(data.error == 1){
+						$("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;padding-left:0.5rem;padding-right:0.5rem;top:12rem;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'积分不足请先充值'+"</div>");
+
+						$("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(2000);setTimeout(function(){$("#errormsg").remove();},3000);
+					}
+					if(data.error == 2){
+						$("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;padding-left:0.5rem;padding-right:0.5rem;top:12rem;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'库存不足'+"</div>");
+
+						$("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(2000);setTimeout(function(){$("#errormsg").remove();},3000);
+					}
+				})
+			})
+        })
+    </script>

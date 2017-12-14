@@ -1,0 +1,83 @@
+
+<div class="main-content">
+
+    <div class="page-content">
+        <div class="row">
+            <div class="page-content box">
+                <div class="box-title margin_bot_20">
+                    <div class="span10">
+                        <h3><i class="icon-magic"></i>房天下申请列表</h3>
+                    </div>
+                </div>
+
+                <form class="form-horizontal"  action="__SELF__" method="post">
+                    <div class="form-group">
+                        <label class="control-label">名称 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" class="input-medium" name="search">
+                            <button type="submit" class="btn btn-sm btn-primary">搜索</button>
+                        </div>
+                    </div>
+                </form>
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                    <tr><th width="2px"><div align="center">id</div></th>
+                        <th width="25px"><div align="center">姓名</div></th>
+                        <th width="45px"><div align="center">电话</div></th>
+                        <!--<th width="55px"><div align="center">邮箱</div></th>-->
+                        <th width="65px"><div align="center">意向区域</div></th>
+                        <th width="60px"><div align="center">意向楼盘</div></th>
+                        <th width="40px"><div align="center">意向户型</div></th>
+                        <th width="40px"><div align="center">意向面积</div></th>
+                        <th width="40px"><div align="center">交意向金</div></th>
+                        <th width="38px"><div align="center">申请时间</div></th>
+                        <th width="38px"><div align="center">修改时间</div></th>
+                        <th width="45px"><div align="center">操作</div></th>
+                    </tr></thead>
+                    <tbody>
+
+                    <foreach name="info" key="k" item="v">
+                        <tr>
+                            <td><div align="center">{$v.house_id}</div></td>
+                            <td><div align="center">{$v['name']}</div></td>
+                            <td><div align="center">{$v['phone']}</div></td>
+                            <!--<td><div align="center">{$v.email}</div></td>-->
+                            <td><div align="center">{$v.address}</div></td>
+                            <td><div align="center">{$v.building}</div></td>
+                            <td><div align="center">
+                                <if condition='$v.type eq 0'> 不限
+                                    <elseif condition='$v.type eq 1'/>一居
+                                    <elseif condition='$v.type eq 2'/>两居
+                                    <elseif condition='$v.type eq 3'/>三居
+                                    <else /> 其它
+                                </if></div>
+                            </td>
+                            <td><div align="center">
+                                <if condition='$v.size eq 0'> 不限
+                                    <elseif condition='$v.size eq 1'/>≤90平方
+                                    <elseif condition='$v.size eq 2'/>90-120平方
+                                    <else /> 其它
+                                </if></div>
+                            </td>
+                            <td><div align="center">{$setinfo[0]['houseprice']}</div>
+                        </td>
+                            <td><div align="center">{$v.add_time|date='Y-m-d H:i:s',###}</div></td>
+                            <td><div align="center">{$v.upd_time|date='Y-m-d H:i:s',###}</div></td>
+                            <td> <div align="center">
+                                <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+                                    <!--<a href="customize_menus_add.html"> <i class="icon-pencil bigger-130"></i>&nbsp;添加 </a>-->
+                                    <a class="green" href="{:U('upd',array('house_id'=>$v['house_id']))}"> <i class="icon-pencil bigger-130"></i>&nbsp;编辑 </a>
+                                    <a class="red detail" href="{:U('del',array('house_id'=>$v['house_id']))}"> <i class="icon-trash bigger-130"></i>&nbsp;删除 </a>
+                                </div>
+                            </div>
+                            </td>
+                        </tr>
+                    </foreach>
+                    </tbody>
+                </table>
+            <div class="green-black">{$page}</div>
+            </div>
+        </div>
+        <!--/.box-->
+    </div><!-- /.page-content -->
+</div><!-- /.main-content -->

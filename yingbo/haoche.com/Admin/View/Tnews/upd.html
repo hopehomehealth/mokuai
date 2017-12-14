@@ -1,0 +1,110 @@
+<script type="text/javascript" src='{$Think.const.JS_URL}jquery-1.7.2.min.js'></script>
+<script type="text/javascript" src='{$Think.const.JS_URL}uploadPreview.js'></script>
+<script type="text/javascript" src='{$Think.const.PLUGIN_URL}ueditor/ueditor.config.js' ></script>
+<script type="text/javascript" src='{$Think.const.PLUGIN_URL}ueditor/ueditor.all.min.js' ></script>
+<script type="text/javascript" src='{$Think.const.PLUGIN_URL}ueditor/lang/zh-cn/zh-cn.js' ></script>
+<div class="main-content">
+    <div class="breadcrumbs">
+        <ul>
+            <li > <a href="__MODULE__/Keyword/tianjia">图文回复修改 </a> </li>
+
+        </ul>
+        <!-- .breadcrumb -->
+    </div>
+
+    <div class="page-content">
+        <div class="row">
+            <div class="page-content box">
+    <form action="" method="post" id="postF" enctype='multipart/form-data' class="form-horizontal">
+		<input type="hidden" name="t_id" value="{$info.id}">
+        <div class="form-group">
+            <label class="control-label">标题 : </label>
+            <div class="controls pull-left">
+            <input type="text" class="input-large" id="title" value="{$info.title}" name="title">
+            <span class="help-inline red"> * </span>
+            </div>
+        </div>
+		
+        <div class="form-group">
+            <label class="control-label">关键字 : </label>
+			<div class="controls pull-left">
+				<input type="text" class="input-large" name="keyword"  value="{$info.keyword}" id = 'keyword'>
+				<span class="help-inline red"> * </span>
+			</div>
+        </div>
+		
+        <div class="form-group">
+            <label class="control-label"> 展示图片 : </label>
+            <div class="controls pull-left">
+                <input type="file" class="input-large" id="pic" name="pic" >
+                <div id="pic_div"><img id='pic_img' src="{$info.img_url}" width='160' height='100'></div>
+            </div>
+        </div>
+        <script type='text/javascript'>
+            $(function(){
+                new uploadPreview({ UpBtn: "pic", DivShow: "pic_div", ImgShow: "pic_img" });
+            });
+        </script>
+        <div class="form-group">
+        <label class="control-label">图文外链网址: </label>
+        <div class="controls pull-left">
+        <input type="text" class="input-large" id="url" name="url"  value="{$info.url}">
+        <span class="help-inline red"> * URL地址: 必须与http:// 或 https://开始 例如：http://www.hlnv.com</span>
+        </div>
+        </div>
+       
+        <div class="form-group">
+        <label class="control-label">描述 : </label>
+        <div class="controls pull-left">
+        <textarea class="input-large" id="description" style="margin: 0px; height: 115px; width: 530px;" name="description"  >{$info.jianjie}</textarea>
+        </div>
+        </div>
+		
+        <div class="form-group">
+        <label class="control-label">内容 : </label>
+        <div class="controls pull-left">
+            <textarea rows="5" cols="30" id='content' name='content' style='width:550px;height:260px;'>{$info.descs}</textarea>
+        </div>
+        </div>
+	
+        <div class="form-actions">
+        <input id="bsubmit" type="buttom"  class="btn btn-sm btn-primary" value="保存"/>
+        </div>
+    </form>
+            </div>
+        </div>
+        <!--/.box-->
+    </div><!-- /.page-content -->
+</div><!-- /.main-content -->
+
+
+<script type="text/javascript">
+    var ue = UE.getEditor('content',{toolbars: [[
+        'fullscreen', 'source', '|', 'undo', 'redo', '|',
+        'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
+        'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
+        'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
+        'directionalityltr', 'directionalityrtl', 'indent', '|',
+        'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase', '|',
+        'link', 'unlink', 'anchor', '|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
+        'simpleupload', 'insertimage'
+    ]]});
+	$("#bsubmit").click(function(){
+		var keyword = $("#keyword").val();
+		var description = $("#description").val();
+	
+		//alert(content)
+		if(keyword == ''){
+			alert("请输入关键词！");
+			return false;
+		}
+
+		if(description == ''){
+			alert("请输入详情！");
+			return false;
+		}
+		$("#postF").submit();
+
+	})
+
+</script>

@@ -1,0 +1,165 @@
+<div class="main">
+    <section>
+        <div class="nht-xl fl">
+            <p class="lin-tt">{$pidname|mb_substr=###,0,2,'utf-8'}<span class="d-red">{$pidname|mb_substr=###,2,2,'utf-8'}</span> <if condition="$pid neq 0"><span class="nht-tt fr">&nbsp;</span></if></p>
+            <ul class="nht-sumenu fr">
+                <if condition="$pid eq 4">
+                    <li> <a href="{:U('News/newslist',array('lan_id'=>18))}">蓝海视点</a> </li>
+                    <li><a href="{:U('News/newslist',array('lan_id'=>19))}">军事动态</a> </li>
+                    <li><a href="{:U('News/newslist',array('lan_id'=>20))}">安全纵横</a> </li>
+                    <li> <a href="{:U('News/newslist',array('lan_id'=>21))}">尖端科技</a> </li>
+                    <li> <a href="{:U('News/newslist',array('lan_id'=>22))}">思海揽胜</a> </li>
+                    <li> <a href="{:U('News/newslist',array('lan_id'=>23))}">开心乐园</a> </li>
+                      <foreach name="lanhaizixun" item="v">
+                <if condition="($v.url eq '') AND ($v.content1 neq '')"><li>
+<a href="{:U('News/landetail',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+<elseif condition="($v['url'] neq '') AND ($v['content1'] eq '')"/>
+<li><a href="{$v.url}">{$v.lan_title}</a></li>
+</if>
+                </foreach>
+                    <elseif condition="$pid eq 5"/>
+                       <!-- <li> <a href="{:U('News/newslist',array('lan_id'=>24))}">蓝海发布</a> </li>-->
+                        <li> <a href="{:U('News/newslist',array('lan_id'=>25))}">产业发展</a> </li>
+                        <li> <a href="{:U('News/newslist',array('lan_id'=>26))}">教育培训</a> </li>
+                        <li><a href="{:U('News/newslist',array('lan_id'=>27))}">文化传媒</a> </li>
+                        <li><a href="{:U('News/newslist',array('lan_id'=>28))}">安全与发展论坛</a></li>
+                         <foreach name="junminronghe" item="v">
+                <if condition="($v.url eq '') AND ($v.content1 neq '')"><li>
+<a href="{:U('News/landetail',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+<elseif condition="($v['url'] neq '') AND ($v['content1'] eq '')"/>
+<li><a href="{$v.url}">{$v.lan_title}</a></li>
+</if>
+                </foreach>
+                        <elseif condition="$pid eq 6"/>
+                            <li> <a href="{:U('News/newslist',array('lan_id'=>29))}">园区建设</a> </li>
+                            <li><a href="{:U('News/newslist',array('lan_id'=>30))}">科技服务</a> </li>
+                            <li> <a href="{:U('News/falvfagui')}">法规政策</a> </li>
+                            <li><a href="{:U('Tushu/tushulist')}">新书推荐</a> </li>
+                            <li><a href="{:U('News/newslist',array('lan_id'=>32))}">人才交流</a> </li>
+                            <li><a href="{:U('Advice/showlist')}">在线咨询</a></li>
+                              <foreach name="zixunfuwu" item="v">
+                <if condition="($v.url eq '') AND ($v.content1 neq '')"><li>
+<a href="{:U('News/landetail',array('lan_id'=>$v['lan_id']))}">{$v.lan_title}</a></li>
+<elseif condition="($v['url'] neq '') AND ($v['content1'] eq '')"/>
+<li><a href="{$v.url}">{$v.lan_title}</a></li>
+</if>
+                </foreach>
+                    </if>
+            </ul>
+        </div>
+    </section>
+
+    <script type="text/javascript">
+        $(".nht-tt").click(function(){
+            $(".nht-sumenu").slideToggle("1000");
+        });
+    </script>
+    <!--*****banner*****-->
+    <section>
+        <div class="lin-ad mb0">
+            <ul class="hiSlider hiSlider3">
+                <foreach name="info1" item="v">
+                    <li class="hiSlider-item"><a href="{:U('News/detail',array('news_id'=>$v['news_id']))}"><img <if condition="($v.pic neq '') AND ($v.pic neq './Public/Upl/news/')">src="{$Think.const.SITE_URL}{$v.picmobile}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq '')"/>src="{$v.picfirst}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq '')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"</if> alt="{$v.news_title}"></a> </li>
+
+                </foreach>
+
+            </ul>
+        </div>
+    </section>
+    <!--*****banner*****-->
+    <!--*****news*****-->
+    <section>
+        <div class="h-l pb1 fl">
+            <if condition="($pid eq 8) OR ($pid eq 3) OR ($pid eq 0) OR ($pid eq 9)">
+                <p></p>
+                <else/>
+                   <p class="h-l-tt">{$pidname1|mb_substr=###,0,2,'utf-8'}<span class="d-red">{$pidname1|mb_substr=###,2,6,'utf-8'}</span></p>
+            </if>
+
+            <div class="news-list fl" id="recordslist" totalPages="{$totalPages}">
+                <foreach name="info2" item="v">
+                    <input type='hidden' id='lan_id' value='{$v.lan_id}'>
+                    <dl class="news-pic fl">
+                        <dt><a href="{:U('News/detail',array('news_id'=>$v['news_id']))}"><img <if condition="($v.pic neq '') AND ($v.pic neq './Public/Upl/news/')">src="{$Think.const.SITE_URL}{$v.pic}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq '')"/>src="{$v.picfirst}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq '')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"</if>></a></dt>
+                        <dd><a href="{:U('News/detail',array('news_id'=>$v['news_id']))}">{$v.news_title|strip_tags|str_replace=array(" ","　","\t","\n","\r","&bsp;"),array("","","","","",""),###|mb_substr=###,0,200,'utf-8'}</a>
+                            <p class="fl fs1 l-gray rqi">{$v.add_time}</p>
+                        </dd>
+                    </dl>
+                </foreach>
+            </div>
+            <div style="text-align:center;display:none;" id="loading"><img src="{$Think.const.MIMG_URL}loader.gif" width="" height="" border="0" alt="" /></div>
+        </div>
+    </section>
+    <!--*****news*****-->
+
+    <!-- 滚动加载 -->
+    <script type="text/javascript">
+
+        $(function(){
+            var lan_id = $('#lan_id').val();
+            var scrollstatus = false;
+            var totalPages = $("#recordslist").attr('totalPages');
+            var nowpage = 1;
+            function ajax_request(nowpage){
+                var html = '';
+                var recordslist = $("#recordslist");//放数据的容器
+                $.post("__MODULE__/News/newslist/p/"+nowpage,{lan_id:lan_id},function(data){
+                    if(data.error == 0){
+					var imgsrc='';
+					var url = window.location.host;
+					var yuming = 'http://'+url;
+					var title='';
+
+					var news_title='';
+                        for(var i in data.content){
+						title= data.content[i].news_title;
+
+						news_title = title.slice(0,200);
+					var exp = data.content[i].pic;
+						if((exp !== null) && (data.content[i].pic !== '') && (data.content[i].pic !== './Public/Upl/news/')){
+							 imgsrc = yuming+data.content[i].pic;
+
+						}else if(data.content[i].match == 'http' && (!exp && typeof exp != "undefined" && exp != 0)){
+						 imgsrc = data.content[i].picfirst;
+						 }else if(data.content[i].match == 'http' && data.content[i].pic == ''){
+						 imgsrc = data.content[i].picfirst;
+						}else if(data.content[i].match == 'http' && data.content[i].pic == './Public/Upl/news/'){
+						imgsrc = data.content[i].picfirst;
+						}else if(data.content[i].match !== 'http' && (!exp && typeof exp != "undefined" && exp != 0)){
+						 imgsrc = yuming+data.content[i].picfirst;
+						 	}else if(data.content[i].match !== 'http' && data.content[i].pic == ''){
+						 imgsrc = yuming+data.content[i].picfirst;
+						}else if(data.content[i].match !== 'http' &&  data.content[i].pic == './Public/Upl/news/'){
+						imgsrc = yuming+data.content[i].picfirst;
+						}
+                            html += "<dl class='news-pic fl'><dt><a href='__MODULE__/News/detail/news_id/"+data.content[i].news_id+"'><img src='"+imgsrc+"' alt=''/></a></dt><dd><a href='__MODULE__/News/detail/news_id/"+data.content[i].news_id+"'>"+news_title+"</a><p class='fl fs1 l-gray rqi'>"+data.content[i].add_time+"</p></dd></dl>";
+                        }
+                    }
+                    recordslist.append(html);
+                    $("#loading").css("display",'none');
+                    scrollstatus = false;
+                });
+            }
+            $(window).scroll(function () {
+                var scrollTop = $(this).scrollTop();
+                var scrollHeight = $(document).height();
+                var windowHeight = $(this).height();
+                if (scrollTop + windowHeight == scrollHeight && scrollstatus == false) {
+                    scrollstatus = true;
+                    nowpage++;
+                    if(nowpage <= totalPages){
+                        $("#loading").css("display",'block');
+                        setTimeout(function(){ajax_request(nowpage)},2000);
+                    }
+                }
+            });
+        });
+    </script>

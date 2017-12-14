@@ -1,0 +1,87 @@
+
+<!-------banner------->
+<notempty name="adinfo0">
+<p class="com-banner pt10">
+    <foreach name="adinfo0" item="v">
+            <img src="{$Think.const.SITE_URL}{$v.pic}" />
+    </foreach>
+</p>
+</notempty>
+<!-------banner------->
+<div class="column-c pt10 ser">
+    <div class="ser-left fl">
+
+            <if condition="$pid eq 0">
+                <p class="ser-tit fl"><a target="_blank" href="{:U('Index/index')}" class="bule fwb">首页</a><img src="{$Think.const.HIMG_URL}images_96.jpg" alt="" />
+                {$daohang.first} </p>
+                <else/>
+                <p class="ser-tit fl"><a target="_blank" href="{:U('Index/index')}">首页</a><img src="{$Think.const.HIMG_URL}images_96.jpg" alt="" />
+        {$daohang.second}
+        <img src="{$Think.const.HIMG_URL}images_96.jpg" alt="" />
+        {$daohang.first}</p>
+            </if>
+
+    </div>
+</div>
+<!-------第一通栏------->
+<div class="column-c pt10 pb30">
+    <!--****左边边通栏****-->
+    <div class="set-lis-l fl">
+        <!--<p class="nhtt-tit fl"><img src="{$Think.const.HIMG_URL}images_141.jpg" alt="蓝海头条" /></p>-->
+        <!--****左边第一通栏****-->
+        <ul class="set-lis_lb fl">
+            <foreach name="info" key="k" item="v">
+                <li>
+                    <dl class="set-lis-twjh fl pt15">
+                        <dt><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}"><img <if condition="($v.pic neq '') AND ($v.pic neq './Public/Upl/news/')">src="{$Think.const.SITE_URL}{$v.pic}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq '')"/>src="{$v.picfirst}"
+<elseif condition="($v.match eq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq '')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"
+<elseif condition="($v.match neq 'http') AND ($v.pic eq './Public/Upl/news/')"/>src="{$Think.const.SITE_URL}{$v.picfirst}"</if> alt="" /></a></dt>
+                        <dd>
+                            <p class="set-lis-wz fl"><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.news_title}</a></p>
+                            <p class="set-lis-nr fl">{$v.content|strip_tags|str_replace=array(" ","　","\t","\n","\r"),array("","","","",""),###|mb_substr=###,0,88,'utf-8'}</p>
+                            <p class="set-lis-plgz fl  fs12">{$v.add_time}</p>
+                            <p class="set-lis-plgz fr fs12"><span class="pr15"><img src="{$Think.const.HIMG_URL}images_06.png" alt="" />{$v.talk}</span><span class="pr15 fl"><img src="{$Think.const.HIMG_URL}images_07.png" alt="" />{$v.click}</span></p>
+                        </dd>
+                    </dl>
+                </li>
+            </foreach>
+        </ul>
+        <!--****左边第二通栏****-->
+        <ul class="page">
+        {$page}
+        </ul>
+    </div>
+    <!--****右边通栏****-->
+    <div class="set-lis-r fr">
+        <!--****右边第二通栏****-->
+        <div class="set-lis-tj fl pb10">
+            <p class="set-lis-tjtt fl"><img src="{$Think.const.HIMG_URL}images_142.jpg" alt="" /></p>
+            <ul class="nhtt-list-a fl pt15">
+                <foreach name="clickinfo" item="v">
+                    <li><a target="_blank" href="{:U('News/detail',array('news_id'=>$v['news_id'],'lan_id'=>$v['lan_id']))}">{$v.news_title}</a></li>
+                </foreach>
+            </ul>
+        </div>
+
+    <notempty name='adinfo3'>
+        <foreach name="adinfo3" item="v">
+                <p class="pt15"> <img src="{$Think.const.SITE_URL}{$v.pic}" />  </p>
+        </foreach>
+		</notempty>
+		<notempty name='adinfo4'>
+        <foreach name="adinfo4" item="v">
+                <p class="pt15"><img src="{$Think.const.SITE_URL}{$v.pic}" /> </p>
+        </foreach>
+		</notempty>
+		<notempty name='adinfo5'>
+        <foreach name="adinfo5" item="v">
+                <p class="pt15"><img src="{$Think.const.SITE_URL}{$v.pic}" /> </p>
+        </foreach>
+		</notempty>
+
+
+
+    </div>
+</div>

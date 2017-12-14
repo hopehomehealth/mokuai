@@ -1,0 +1,199 @@
+        <script type="text/javascript" src='{$Think.const.PLUGIN_URL}ueditor/ueditor.config.js' ></script>
+<script type="text/javascript" src='{$Think.const.PLUGIN_URL}ueditor/ueditor.all.min.js' ></script>
+<script type="text/javascript" src='{$Think.const.PLUGIN_URL}ueditor/lang/zh-cn/zh-cn.js' ></script>
+		<div class="main-content">
+          <div class="page-content">
+            <div class="row">
+              <div class="page-content box">
+                <div class="box-title margin_bot_20">
+                    <div class="span10">
+                        <h3><i class="icon-cogs"></i>系统配置</h3>
+                    </div>
+                </div>
+                <div class="breadcrumbs" style="margin-bottom:20px">
+                    <ul>
+                        <li class="active"> <a href="#">前台分页 </a></li>
+                         <li> <a href="#">网站电话 </a></li>
+						<li> <a href="#">邮箱设置 </a></li>
+						<li> <a href="#">服务条款 </a></li>
+						<li> <a href="#">蓝海长青公约 </a></li>
+                        <li> <a href="#">敏感词处理 </a></li>
+
+                        <!-- <li> <a href="__MODULE__/Keyword/index">关键词回复 </a></li>
+                        <li> <a href="__MODULE__/Tnews/index">图文消息回复 </a></li> -->
+
+
+                    </ul>
+                    <!-- .breadcrumb -->
+                </div>
+                <div style="margin-top:15px">
+                    <form action="__MODULE__/Sysconfig/base" method="post" class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label">长青论坛轮播数目 : </label>
+                            <div class="controls pull-left">
+                                <input type="text" name="pc_scroll_index" value="{$set.pc_scroll_index}" class="input-large">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">长青论坛博文数目 : </label>
+                            <div class="controls pull-left">
+                                <input type="text" name="pc_bg_index" value="{$set.pc_bg_index}" class="input-large">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">长青论坛新帖数量 : </label>
+                            <div class="controls pull-left">
+                                <input type="text" name="pc_new_index" value="{$set.pc_new_index}" class="input-large">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">长青论坛名家数量 : </label>
+                            <div class="controls pull-left">
+                                <input type="text" name="pc_famous1_index" value="{$set.pc_famous1_index}" class="input-large">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">长青论坛人物数量 : </label>
+                            <div class="controls pull-left">
+                                <input type="text" name="pc_famous2_index" value="{$set.pc_famous2_index}" class="input-large">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label"></label>
+                            <input type="hidden" name="setid" value="{$set.id}">
+                            <button id="bsubmit" type="submit"  class="btn btn-sm btn-primary">保存</button>
+                        </div>
+                    </form>
+                    <form action="__MODULE__/Sysconfig/base" method="post" class="form-horizontal"  style="display:none">
+                        <div class="form-group" >
+                            <label class="control-label">网站电话: </label>
+                            <div class="controls pull-left">
+                                <input type="text" name="phone" value="{$set.phone}" class="input-large">
+                            </div>
+                        </div>
+                       
+                        <div class="form-group">
+                            <label class="control-label"></label>
+                            <input type="hidden" name="setid" value="{$set.id}">
+                            <button id="bsubmit" type="submit"  class="btn btn-sm btn-primary">保存</button>
+                        </div>
+                    </form>
+					<form action="__MODULE__/Sysconfig/base" method="post" class="form-horizontal"  style="display:none">
+                        <div class="form-group" >
+                            <label class="control-label">系统发件邮箱: </label>
+                            <div class="controls pull-left">
+                                <input type="text" name="email" value="{$set.email}" class="input-large">
+                            </div>
+                        </div>
+						 <div class="form-group" >
+                            <label class="control-label">系统邮箱密码: </label>
+                            <div class="controls pull-left">
+                                <input type="text" name="emailpwd" value="{$set.emailpwd}" class="input-large">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label"></label>
+                            <input type="hidden" name="setid" value="{$set.id}">
+                            <button id="bsubmit" type="submit"  class="btn btn-sm btn-primary">保存</button>
+                        </div>
+                    </form>
+					<form action="__MODULE__/Sysconfig/base" method="post" class="form-horizontal"  style="display:none">
+							<div class="form-group" id="detail-tab-show">
+
+								<div class="controls" style="height:50px;font-size:1.5em;font-weight:bolder">《服务条款》:</div>
+								<div class="controls">
+									<textarea rows="5" cols="15" id='tiaokuan' name='tiaokuan' style='width:650px;height:350px;'>{$set.tiaokuan}</textarea>
+								</div>
+								<script type="text/javascript">
+									var ue1 = UE.getEditor('tiaokuan',{toolbars: [[
+										'fullscreen', 'source', '|', 'undo', 'redo', '|',
+										'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
+										'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
+										'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
+										'directionalityltr', 'directionalityrtl', 'indent', '|',
+										'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase'
+									]]});
+								</script>
+								<div class="form-group">
+									<label class="control-label"></label>
+									<input type="hidden" name="setid" value="{$set.id}">
+									<button id="bsubmit" type="submit"  class="btn btn-sm btn-primary">保存</button>
+								</div>
+							</div>
+                    </form>
+					<form action="__MODULE__/Sysconfig/base" method="post" class="form-horizontal"  style="display:none">
+							<div class="form-group" id="detail-tab-show">
+
+								<div class="controls" style="height:50px;font-size:1.5em;font-weight:bolder">蓝海长青公约:</div>
+								<div class="controls">
+									<textarea rows="5" cols="15" id='gongyue' name='gongyue' style='width:650px;height:350px;'>{$set.gongyue}</textarea>
+								</div>
+								<script type="text/javascript">
+									var ue2 = UE.getEditor('gongyue',{toolbars: [[
+										'fullscreen', 'source', '|', 'undo', 'redo', '|',
+										'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
+										'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
+										'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
+										'directionalityltr', 'directionalityrtl', 'indent', '|',
+										'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase'
+									]]});
+								</script>
+								<div class="form-group">
+									<label class="control-label"></label>
+									<input type="hidden" name="setid" value="{$set.id}">
+									<button id="bsubmit" type="submit"  class="btn btn-sm btn-primary">保存</button>
+								</div>
+							</div>
+                    </form>
+                    <form action="__MODULE__/Sysconfig/addword" method="post" id="newword" class="form-horizontal" style="display:none">
+						<div class="form-group">
+							<label class="control-label" style="width:100px;line-height:28px;padding-top:0">敏感词： </label>
+							<div class="controls pull-left">
+							  <input type="text" class="input-medium" name="word" value="" placeholder="请输入敏感词">
+							  <button type="button" id="addword" class="btn btn-sm btn-primary">添加</button>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label" style="width:100px;line-height:28px;padding-top:0">敏感词库 : </label>
+							<div class="form-group">
+								<label class="control-label"></label>
+								<div class="controls pull-left">
+								  <button type="button" id="editbtn" class="btn btn-sm btn-primary">保存修改</button>
+								</div>
+							</div>
+							<div class="controls pull-left">
+							<textarea class="input-large" id="description" style="margin: 0px; height: 500px; width: 400px;" name="description">{$wordlist}</textarea>
+							</div>
+						</div>
+                    </form>
+                </div>
+              </div>
+            </div>
+            <!--/.box-->
+          </div><!-- /.page-content -->
+        </div><!-- /.main-content -->
+        <script src='{$Think.const.JS_URL}jquery-2.1.3.min.js'></script>
+        <script type="text/javascript">
+            $(function(){
+                $(".breadcrumbs ul li").click(function(){
+                    $(this).addClass("active").siblings().removeClass('active');
+                    $("form").eq($(this).index()).css("display","block").siblings().css("display","none");
+                })
+				$("#addword").click(function(){
+					$.post($("#newword").attr('action'),$("#newword").serialize(),function(data){
+						if(data == 'success'){
+							alert('添加成功');
+						}else{
+							alert('已存在');
+						}
+					})
+				})
+				$("#editbtn").click(function(){
+					$.post("__MODULE__/Sysconfig/upd",{'description':$("#description").val()},function(data){
+						if(data == 'success'){
+							alert('修改成功');
+						}
+					})
+				})
+            })
+        </script>

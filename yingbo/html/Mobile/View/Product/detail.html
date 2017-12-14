@@ -1,0 +1,81 @@
+
+        <div class="main">
+               <form action="__MODULE__/Patient/payorder" method="post" enctype='multipart/form-data'>
+                   <div>
+                       <img src="{$Think.const.SITE_URL}{$info.pic}" />
+                   </div>
+                   <div class="storwList">
+                       <span>{$info.china}：</span>
+                       <div class="storwDate">
+                           <em >￥{$info.price}/小时</em>
+                       </div>
+                   </div>
+                   <!--<div class="storwList">-->
+                       <!--<span>VIP会员价：充值2000送200    充值5000送500</span>-->
+                   <!--</div>-->
+                   <div class="storeListD">
+                       <p class="storeListDTxt">
+                           <strong>内容介绍：</strong>
+                    <span>
+                        {$info.introduce}
+                    </span>
+                       </p>
+                       <!--<p class="storeListDTxt">-->
+                           <!--<strong>理疗时间：</strong>-->
+                    <!--<span>-->
+                        <!--60分钟-->
+                    <!--</span>-->
+                       <!--</p>-->
+                       <!--<p class="storeListDTxt">-->
+                           <!--<strong>护理手法：</strong>-->
+                    <!--<span>-->
+                        <!--产后泌乳护理-->
+                    <!--</span>-->
+                       <!--</p>-->
+
+                       <div class="xj_cp">
+                           <p class="xj_cp_t">购买次数：</p>
+                           <p class="xj_cp_n"><!--<em>+</em>-->
+                           <div class="gw_num">
+                               <em class="jian">-</em>
+                               <input type="text" name="number" value="1" class="num" />
+                               <em class="add">+</em>
+                           </div>
+                           </p>
+                       </div>
+
+                   </div>
+                   <div class="yuyBtn"  >
+                        <input type="hidden" name="shopid" value="{$info.pro_id}">
+                       <a><input id="bsubmit" type="submit"  value="预约服务" style="color: #ffffff;"/></a>
+                   </div>
+               </form>
+
+
+
+        </div>
+    </div>
+
+
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+//加的效果
+            $(".add").click(function(){
+                var n=$(this).prev().val();
+                var num=parseInt(n)+1;
+                if(num==0){ return;}
+                $(this).prev().val(num);
+            });
+//减的效果
+            $(".jian").click(function(){
+                var n=$(this).next().val();
+                var num=parseInt(n)-1;
+                if(num==0){ return}
+                $(this).next().val(num);
+            });
+        })
+    </script>
+
+ 

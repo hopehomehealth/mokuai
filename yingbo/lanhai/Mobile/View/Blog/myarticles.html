@@ -1,0 +1,115 @@
+<div class="main">
+<div class="banner_2">
+	<a href="#"><span>设置</span>管理</a>
+	<div><a href="__MODULE__/Blog/myzone">博客主页</a> | <a href="__MODULE__/Blog/createart">发表博文</a></div>
+</div>
+<aside>
+	<span class="fr clo"><img src="{$Think.const.MIMG_URL}ion_6.png" alt=""></span>
+	<p>个人信息</p>
+	<div class="nametou"><img src="{$bloginfo.userhead}" alt=""><p>{$bloginfo.username}</p></div>
+	<ul class="geren">
+		<li>今日访问: <span>{$bloginfo.today}</span></li>
+        <li>总访问量: <span>{$bloginfo.counts}</span></li>
+        <li>开博时间: <span>{$bloginfo.ctime|date='Y-m-d',###}</span></li>
+        <li>博客排名: <span>1023</span></li>
+	</ul>
+</aside>
+<div class="banner_3">
+	<img src="{$Think.const.MIMG_URL}banner.jpg" alt=""/>
+	<dl>
+		<dt></dt>
+        <dd>{$bloginfo.blog_name}</dd>
+        <dd>&nbsp;</dd>
+        <dd>{$bloginfo.blog_desc}</dd>
+	</dl>
+</div>
+
+<div class="tab">
+<p class="xj-hdts fl pl0-5 pt0-5"><img src="{$Think.const.MIMG_URL}qianxleft1.png"></p> <p class="xj-hdts fr pr0-5 pt0-5"><img src="{$Think.const.MIMG_URL}qianxr1.png"></p>
+	<div id="menu">
+		<ul class="slide">
+			<li><a href="__MODULE__/Blog/blogset">博客设置</a></li>
+			<li class="current"><a href="__MODULE__/Blog/myarticles">博文管理</a></li>
+			<li><a href="__MODULE__/Blog/mycomments">评论管理</a></li>
+			<li><a href="__MODULE__/Blog/myclass">分类管理</a></li>
+			<li><a href="__MODULE__/Blog/mycollect">收藏博文</a></li>
+			<li><a href="__MODULE__/User/ucenter">个人中心</a></li>
+			<li></li>
+		</ul>
+	</div>
+	<div class="settmain manage show">
+		<form action="__MODULE__/Blog/myarticles" method="get">
+			<label for="classify">
+				<span>博文分类：</span>
+				<select name="class_id" id="classify" style="outline:none">
+					<option style="font-size:1rem;outline:none" value="0">全部分类</option>
+					<foreach name="classlist" item="classinfo">
+					<option style="font-size:1rem;outline:none" value="{$classinfo['class_id']}">{$classinfo['class_name']}</option>
+					</foreach>
+				</select>
+			</label>
+			<label for="keyword">
+				<span>关&nbsp;键&nbsp;字&nbsp;：</span>
+				<input type="text" name="keywords" id="keyword" value="">
+				<button>查询</button>
+			</label>
+		</form>
+		<table>
+			<thead>
+			<tr>
+				<td>标题</td>
+				<td>访问</td>
+				<td>评论</td>
+				<td>操作</td>
+			</tr>
+			</thead>
+			<tbody>
+			<foreach name="articlelist" item="artinfo">
+			<tr>
+				<td>
+					<h4>{$artinfo.title}</h4>
+					<time>{$artinfo.add_time|date="Y/m/d H:i",###}</time>
+				</td>
+				<td>{$artinfo.views}</td>
+				<td>{$artinfo.comments}</td>
+				<td>
+					<a href="__MODULE__/Blog/editart/art_id/{$artinfo.art_id}">编辑</a><a href="__MODULE__/Blog/delarticle/art_id/{$artinfo.art_id}" class="delarticle">删除</a>
+				</td>
+			</tr>
+			</foreach>
+			</tbody>
+		</table>
+	</div>
+
+
+</div>
+</div>
+<script src="{$Think.const.MJS_URL}jquery-2.1.1.min.js"></script>
+<script src="{$Think.const.MJS_URL}slidemenu.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$(".banner_3").click(function () {
+		    if($("aside").css("display")=="none"){
+		        $("aside").slideDown(300);
+		    }else{
+		        $("aside").slideUp(300);
+		    }
+		});
+    });
+</script>
+<script type="text/javascript">
+	$(function(){
+		$(".delarticle").click(function(){
+			var arturl = $(this).attr('href');
+			$.get(arturl,function(data){
+				if(data == 'success'){
+					myalertbox('删除成功');
+				}else{
+					myalertbox('删除失败');
+				}
+			})
+			return false;
+		})
+	})
+</script>
+

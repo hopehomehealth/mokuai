@@ -1,0 +1,113 @@
+   
+<script type="text/javascript" src='{$Think.const.JS_URL}jquery-2.1.3.min.js'></script>
+<script type="text/javascript" src='{$Think.const.JS_URL}uploadPreview.js'></script>
+<script type="text/javascript" src='{$Think.const.PLUGIN_URL}ueditor/ueditor.config.js' ></script>
+<script type="text/javascript" src='{$Think.const.PLUGIN_URL}ueditor/ueditor.all.min.js' ></script>
+<script type="text/javascript" src='{$Think.const.PLUGIN_URL}ueditor/lang/zh-cn/zh-cn.js' ></script>
+
+<div class="main-content">
+    <div class="box-title margin_bot_20">
+        <div class="span10">
+            <h3><i class="icon-magic"></i>1P产品修改</h3>
+        </div>
+    </div>
+
+    <div class="page-content">
+        <div class="row">
+            <div class="page-content box">
+
+<form action="__SELF__" method="post" class="form-horizontal" enctype="multipart/form-data">
+    <input type='hidden' name='zeng_id' value='{$info.zeng_id}' />
+
+        <div class="form-group">
+            <label class="control-label">名　　称 : </label>
+            <div class="controls pull-left">
+                <input type="text" class="input-large" name="zeng_name" value="{$info.zeng_name}">
+                <span class="help-inline red"> * </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">市场价 : </label>
+            <div class="controls pull-left">
+                <input type="text" class="input-medium" name="price" value="{$info.price}">
+                <span class="help-inline red"> * </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">联盟价 : </label>
+            <div class="controls pull-left">
+                <input type="text" class="input-medium" name="nowprice" value="{$info.nowprice}">
+                <span class="help-inline red"> * </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">是否上架 : </label>
+            <div class="controls pull-left">
+                <label>
+                    <input type="radio" class="ace" name="is_show" <if condition="$v.is_show eq 0">checked="checked"</if> value="0">
+                    <span class="lbl">是</span>
+                </label>
+                <label>
+                    <input type="radio" class="ace" name="is_show" <if condition="$v.is_show eq 1">checked="checked"</if> value="1">
+                    <span class="lbl">否</span>
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">库存 : </label>
+            <div class="controls pull-left">
+                <input type="text" class="input-small" name="number" value="{$info.number}">
+                <span class="help-inline red" > * 请输入数字 </span>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <label class="control-label"> 商品图片 : </label>
+            <div class="controls pull-left">
+                <input type="file" class="input-large" id="pic" name="pic" >
+                <div id="pic_div"><img id='pic_img' src='{$Think.const.SITE_URL}{$info.pic|substr=###,2}'  alt='没有图片' width='100' height='100'></div>
+            </div>
+        </div>
+        <script type='text/javascript'>
+            $(function(){
+                new uploadPreview({ UpBtn: "pic", DivShow: "pic_div", ImgShow: "pic_img" });
+            });
+        </script>
+
+
+    <div class="form-group" id="detail-tab-show">
+
+        <label class="control-label">详细参数 : </label>
+        <div class="controls pull-left">
+            <span class="help-inline red"> * 参数格式(参数名:参数值),每行一条参数信息</span>
+            <textarea rows="5" cols="15" id='introduce' name='introduce' style='width:500px;height:350px;'>{$info.introduce}</textarea>
+        </div>
+        <script type="text/javascript">
+            var ue = UE.getEditor('introduce',{toolbars: [[
+                'fullscreen', 'source', '|', 'undo', 'redo', '|',
+                'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
+                'simpleupload', 'insertimage','|',
+                'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
+                'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
+                'directionalityltr', 'directionalityrtl', 'indent', '|',
+                'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase'
+            ]]});
+        </script>
+    </div>
+
+
+
+    <div class="form-actions" align="center">
+        <button id="bsubmit" type="submit"  class="btn btn-sm btn-primary">保存</button>
+    </div>
+</form>
+            </div>
+        </div>
+        <!--/.box-->
+    </div><!--/.content-->
+    </div>
+
+   

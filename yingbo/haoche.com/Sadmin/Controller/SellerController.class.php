@@ -1,0 +1,242 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Administrator
+ * Date: 2016/8/9 0009
+ * Time: 11:35
+ */
+
+namespace Sadmin\Controller;
+use Think\Controller;
+class SellerController extends Controller
+{
+    function showlist()
+    {
+        if ($_POST) {
+            $search = $_POST;
+            $map['seller_name'] = array('LIKE', "%{$search['search']}%");
+        } else {
+            $map = '';
+        }
+
+        $count = D('Seller')
+            ->where($map)
+            ->count();
+        $p = new \Think\Page($count, 10);
+        $info = D('Seller')
+            ->order('seller_id desc')
+            ->limit($p->firstRow . ',' . $p->listRows)
+            ->where($map)
+            ->select();
+        $page = $p->show();
+        $this->assign('page', $page);
+        $this->assign('info', $info);
+
+        $this->display();
+    }
+
+    function tianjia(){
+        if(IS_POST){
+            $c = D('Seller');
+            $shuju = $c->create();
+            $shuju['add_time'] = time();
+            $shuju['upd_time'] = time();
+            if($c->add($shuju)){
+                $this -> success('添加成功',U('showlist'),1);
+            }else{
+                $this -> error('添加失败',U('tianjia'),1);
+            }
+        }else{
+            $this -> display();
+        }
+    }
+    
+
+    function upd(){
+        $seller_id = I('get.seller_id');
+        $cat = D('Seller');
+        if(IS_POST){
+            $shuju = $cat -> create();
+            if($cat->save($shuju)){
+                $this -> success('修改成功',U('showlist'),1);
+            }else{
+                $this -> error('修改失败',U('upd',array('seller_id'=>$seller_id)),1);
+            }
+        }else{
+            $info = $cat->find($seller_id);
+            $this -> assign('info',$info);
+            $this -> display();
+        }
+    }
+    function setting(){
+        $userid = $_SESSION['userInfo']['userid'];
+        if(IS_POST){
+            $shuju = M('Seller')->where("userid={$userid}")->create();
+            //$shuju['userid'] = $userid;
+            //dump($shuju);dump($_POST);exit;
+            if($_FILES['pic_dian']['error']===0) {
+                if (!empty($shuju['seller_id'])) {
+                    $oldinfo = D('Seller')->find($shuju['seller_id']);
+                    if (!empty($oldinfo['pic_dian'])) {
+                        unlink($oldinfo['pic_dian']);
+                    }
+                }
+
+                $cfg = array(
+                    'rootPath'    =>  './Public/Upd/seller/', //保存根路径
+                );
+                $up = new \Think\Upload($cfg);
+                $z = $up -> uploadOne($_FILES['pic_dian']);
+
+                //把上传的图片"路径名"保存到数据库中
+                $picname = $up->rootPath.$z['savepath'].$z['savename'];
+                $shuju['pic_dian'] = $picname;
+            }
+
+            
+            if(M('Seller')->where("seller_id = {$_POST['seller_id']}")->save($shuju)){
+                $this->success("操作成功");
+                exit;
+            }else{
+                $this->error("系统繁忙，请稍后重试");
+                exit;
+            }
+        }
+        $catinfo = D('Sellercat')->select();
+        foreach($catinfo as $k=>$v){
+            if($v['cat_id'] == 7 ){
+                unset($catinfo[$k]);
+            }
+        }
+        $this->assign('catinfo',$catinfo);
+        $nowsellerinfo = M('Seller')->where("userid={$userid}")->select();
+        //dump($nowsellerinfo);exit;
+        /*$seller_id = $nowsellerinfo[0]['seller_id'];
+        $info = M('Seller')-> find( $seller_id);*/
+        if(!$nowsellerinfo){
+            $info = array();
+            $info['userid'] = $userid;
+            $lastid = M('Seller')->add($info);
+            $info['seller_id'] = $lastid;
+        }else{
+            $info = $nowsellerinfo[0];
+        }
+        $this->assign('info',$info);
+        $this->display();
+    }
+    function shen(){
+        $userid = $_SESSION['userInfo']['userid'];
+
+        if(IS_POST){
+            $shuju = M('Seller')->where("userid={$userid}")->create();
+
+            if($_FILES['pic_shen']['error']===0) {
+                if (!empty($shuju['seller_id'])) {
+                    $oldinfo = D('Seller')->find($shuju['seller_id']);
+                    if (!empty($oldinfo['pic_shen'])) {
+                        unlink($oldinfo['pic_shen']);
+                    }
+                }
+
+                $cfg = array(
+                    'rootPath'    =>  './Public/Upd/seller/', //保存根路径
+                );
+                $up = new \Think\Upload($cfg);
+                $z = $up -> uploadOne($_FILES['pic_shen']);
+
+                //把上传的图片"路径名"保存到数据库中
+                $picname = $up->rootPath.$z['savepath'].$z['savename'];
+                $shuju['pic_shen'] = $picname;
+            }
+
+
+            if(M('Seller')->where("userid={$userid}")->save($shuju)){
+                $this->success("操作成功");
+                exit;
+            }else{
+                $this->error("系统繁忙，请稍后重试");
+                exit;
+            }
+        }
+        $nowsellerinfo = M('Seller')->where("userid={$userid}")->select();
+        $seller_id = $nowsellerinfo[0]['seller_id'];
+        $info = M('Seller')-> find( $seller_id);
+        //dump($info);die;
+        $this->assign('info',$info);
+        $this->display();
+    }
+
+    function zhi(){
+        $userid = $_SESSION['userInfo']['userid'];
+
+        if(IS_POST){
+            $shuju = M('Seller')->where("userid={$userid}")->create();
+
+            if($_FILES['pic_zhi']['error']===0) {
+                if (!empty($shuju['seller_id'])) {
+                    $oldinfo = D('Seller')->find($shuju['seller_id']);
+                    if (!empty($oldinfo['pic_zhi'])) {
+                        unlink($oldinfo['pic_zhi']);
+                    }
+                }
+
+                $cfg = array(
+                    'rootPath'    =>  './Public/Upd/seller/', //保存根路径
+                );
+                $up = new \Think\Upload($cfg);
+                $z = $up -> uploadOne($_FILES['pic_zhi']);
+
+                //把上传的图片"路径名"保存到数据库中
+                $picname = $up->rootPath.$z['savepath'].$z['savename'];
+                $shuju['pic_zhi'] = $picname;
+            }
+
+
+            if(M('Seller')->where("userid={$userid}")->save($shuju)){
+                $this->success("操作成功");
+                exit;
+            }else{
+                $this->error("系统繁忙，请稍后重试");
+                exit;
+            }
+        }
+        $nowsellerinfo = M('Seller')->where("userid={$userid}")->select();
+        $seller_id = $nowsellerinfo[0]['seller_id'];
+        $info = M('Seller')-> find( $seller_id);
+        //dump($info);die;
+        $this->assign('info',$info);
+        $this->display();
+    }
+    function gonggao(){
+        $userid = $_SESSION['userInfo']['userid'];
+
+        if(IS_POST){
+            $shuju = M('Seller')->where("userid={$userid}")->create();
+            $shuju['content'] = $_POST['content'];
+
+
+            if(M('Seller')->where("userid={$userid}")->save($shuju)){
+                $this->success("操作成功");
+                exit;
+            }else{
+                $this->error("系统繁忙，请稍后重试");
+                exit;
+            }
+        }
+        $nowsellerinfo = M('Seller')->where("userid={$userid}")->select();
+        $seller_id = $nowsellerinfo[0]['seller_id'];
+        $info = M('Seller')-> find( $seller_id);
+        //dump($info);die;
+        $this->assign('info',$info);
+        $this->display();
+    }
+    function del(){
+        $seller_id = I('get.seller_id');
+
+        if(D('Seller')->delete($seller_id)){
+            $this->success('删除成功',U('showlist'));
+        }else{
+            $this->error('删除失败',U('del',array('seller_id'=>$seller_id)),1);
+        }
+    }
+}

@@ -1,0 +1,181 @@
+
+
+
+<script type="text/javascript" src='{$Think.const.JS_URL}jquery-2.1.3.min.js'></script>
+<script type="text/javascript" src='{$Think.const.PLUGIN_URL}ueditor/ueditor.config.js' ></script>
+<script type="text/javascript" src='{$Think.const.PLUGIN_URL}ueditor/ueditor.all.min.js' ></script>
+<script type="text/javascript" src='{$Think.const.PLUGIN_URL}ueditor/lang/zh-cn/zh-cn.js' ></script>
+
+<div class="main-content">
+
+    <div class="page-content">
+        <div class="row">
+            <div class="page-content box">
+                <div class="box-title margin_bot_20">
+                    <div class="span10">
+                        <h3><i class="icon-magic"></i>编辑文章</h3>
+                    </div>
+                </div>
+
+                <form action="__SELF__" method="post" class="form-horizontal" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label class="control-label">标题 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" class="input-large" name="title" value="{$slander.title}">
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">是否展示 : </label>
+                        <div class="controls pull-left">
+                            <label>
+                                <input type="radio" class="ace" name="is_show" value="1" <if condition="$slander.is_show eq 1"> checked="checked"</if>>
+                                <span class="lbl">是</span>
+                            </label>
+                            <label>
+                                <input type="radio" class="ace" name="is_show" value="0"<if condition="$slander.is_show eq 0"> checked="checked"</if>>
+                                <span class="lbl">否</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">是否热点 : </label>
+                        <div class="controls pull-left">
+                            <label>
+                                <input type="radio" class="ace" name="is_tui" value="1"<if condition="$slander.is_tui eq 1"> checked="checked"</if>>
+                                <span class="lbl">是</span>
+                            </label>
+                            <label>
+                                <input type="radio" class="ace" name="is_tui" value="0"<if condition="$slander.is_tui eq 0"> checked="checked"</if>>
+                                <span class="lbl">否</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">长青论坛轮播 : </label>
+                        <div class="controls pull-left">
+                            <label>
+                                <input type="radio" class="ace" {$slander['is_scroll']?"checked":""} name="is_scroll" value="1">
+                                <span class="lbl">是</span>
+                            </label>
+                            <label>
+                                <input type="radio" class="ace" {$slander['is_scroll']?"":"checked"} name="is_scroll" value="0">
+                                <span class="lbl">否</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group selectpic" <if condition="$slander.is_scroll eq 0">style="display:none"<else /></if>>
+                        <label class="control-label">文章展示图 : </label>
+                        <div class="controls pull-left">
+                            <div id="localImag" style="height:100px;position:relative;"><img id="preview" <if condition="($slander.is_scroll eq '1') AND ($slander.sland_img neq '')">src="{$slander.sland_img}"<else />src="{$Think.const.IMG_URL}qr.png"</if>  style="max-height: 100px;width:auto!important;"><input style="position:absolute;left:0;top:0px;width:100%;height:100%;opacity:0;cursor:pointer" onchange="javascript:setImagePreview();" type="file" id="selectpic" name="sland_img"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">内容 : </label>
+                        <div class="controls pull-left">
+                            <span class="help-inline red">  </span>
+                            <textarea rows="5" cols="30" id='content' name='content' style='width:850px;height:350px;'>{$slander.content}</textarea>
+                        </div>
+                    </div>
+
+
+                    <script type="text/javascript">
+                        var ue = UE.getEditor('content',{toolbars: [[
+                      'fullscreen', 'source', '|', 'undo', 'redo', '|',
+            'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'pasteplain', '|', 'forecolor', 'backcolor', 'selectall', 'cleardoc', '|',
+            'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
+            'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
+            'directionalityltr', 'directionalityrtl', 'indent', '|',
+            'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase', '|',
+            'link', 'unlink', '|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
+            'simpleupload', 'insertimage', 'emotion', 'scrawl', 'insertvideo', 'attachment', 'map', 'insertframe', 'pagebreak', '|',
+            'horizontal', 'date', 'time', 'spechars', '|',
+            'inserttable', 'deletetable', 'insertparagraphbeforetable', 'insertrow', 'deleterow', 'insertcol', 'deletecol', 'mergecells', 'mergeright', 'mergedown', 'splittocells', 'splittorows', 'splittocols', 'charts', '|',
+            'print', 'preview', 'searchreplace', 'drafts'
+                        ]]});
+                    </script>
+                    <div>
+                        <label class="control-label"></label>
+                        <input type="hidden" name="sland_id" value="{$Think.get.sland_id}">
+                        <button id="bsubmit" type="submit"  class="btn btn-sm btn-primary">保存</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--/.box-->
+    </div><!-- /.page-content -->
+</div><!-- /.main-content -->
+<script type="text/javascript">
+    $(function(){
+        $("#bsubmit").click(function(){
+            if($("input[name='title']").val() == ''){
+                alert('文章标题不能为空');
+                return false;
+            }
+            if($("input[name='is_scroll']:checked").val() == 1){
+                if($("input[name='sland_img']").val() == ''){
+                    alert('请选择展示图');
+                    return false;
+                }
+            }
+            if($("textarea[name='content']").val() == ''){
+                alert('文章内容不能为空');
+                return false;
+            }
+            return true;
+        })
+        $("input[name='is_scroll']").click(function(){
+            if($(this).val() == 1){
+                $(".selectpic").show();
+            }else{
+                $(".selectpic").hide();
+            }
+        })
+    })
+</script>
+<script type="text/javascript">
+    function setImagePreview(avalue) {
+      var docObj=document.getElementById("selectpic");
+
+      var imgObjPreview=document.getElementById("preview");
+      if(docObj.files &&docObj.files[0])
+      {
+      //火狐下，直接设img属性
+      imgObjPreview.style.display = 'block';
+      //imgObjPreview.style.width = '100%';
+      imgObjPreview.style.height = '100px';
+      //imgObjPreview.src = docObj.files[0].getAsDataURL();
+
+      //火狐7以上版本不能用上面的getAsDataURL()方式获取，需要一下方式
+      imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);
+      }
+      else
+      {
+      //IE下，使用滤镜
+      docObj.select();
+      var imgSrc = document.selection.createRange().text;
+      var localImagId = document.getElementById("localImag");
+      //必须设置初始大小
+      //localImagId.style.width = "100%";
+      localImagId.style.height = "100px";
+      //图片异常的捕捉，防止用户修改后缀来伪造图片
+      try{
+      localImagId.style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+      localImagId.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;
+      }
+      catch(e)
+      {
+      alert("您上传的图片格式不正确，请重新选择!");
+      return false;
+      }
+      imgObjPreview.style.display = 'none';
+      document.selection.empty();
+      }
+      return true;
+    }
+</script>
+
+
+
+
+

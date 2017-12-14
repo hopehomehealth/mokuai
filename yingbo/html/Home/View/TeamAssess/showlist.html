@@ -1,0 +1,96 @@
+<script type="text/javascript" src="{$Think.const.HJS_URL}jquery.SuperSlide.2.1.1.js"></script>
+
+<foreach name="adinfofen" key="k" item="v">
+    <div class="su_banner"><a href="{$v.url}"><img src="{$Think.const.SITE_URL}{$v.pic}" /></a>  </div>
+</foreach>
+
+
+<div class="sideBar">
+    <div class="about fl">
+        <p class="about_tit fl">加入乐护</p><p class="about_yw fl">Join&nbsp;Le&nbsp;Armor</p>
+    </div>
+
+
+    <div class="about_zc fl">
+        <ul class="news_list_tit">
+            <li class="current"><a href="{:U('TeamAssess/showlist')}">服务团队</a></li>
+            <li><a href="{:U('TeamExpert/showlist')}">专家顾问团队</a></li>
+            <li><a href="{:U('TeamManage/showlist')}">管理团队</a></li>
+            <li><a href="{:U('Contact/showlist')}">联系我们</a></li>
+        </ul>
+
+
+        <div class="gltd fl">
+            <div class="picScroll-left">
+                <div class="hd">
+                    <p>评估师团队</p>
+                    <ul>
+                    </ul>
+                    <span class="pageState"></span>
+                </div>
+                <div class="bd">
+                    <ul class="picList">
+                        <foreach name="assessinfo" key="k" item="v">
+                        <li>
+                            <dl class="gltd_pic fl">
+                                <dt><img src="{$Think.const.SITE_URL}{$v.pic}"/></dt>
+                                <dd>{$v.title}</dd>
+                                <p class="xj_picw">{$v.description|strip_tags|str_replace=array(" ","　","\t","\n","\r"),array("","","","",""),###|mb_substr=###,0,50,'utf-8'}</p>
+                            </dl>
+                        </li>
+
+                       </foreach>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="picScroll-left">
+                <div class="hd">
+                    <p>护理师团队</p>
+                    <ul>
+                    </ul>
+                    <span class="pageState"></span>
+                </div>
+                <div class="bd">
+                    <ul class="picList">
+                        <foreach name="nurseinfo" key="k" item="v">
+                        <li>
+                            <dl class="gltd_pic fl">
+                                <dt><img src="{$Think.const.SITE_URL}{$v.pic}" /></dt>
+                                <dd>{$v.title}</dd>
+                                <p class="xj_picw">{$v.description|strip_tags|str_replace=array(" ","　","\t","\n","\r"),array("","","","",""),###|mb_substr=###,0,50,'utf-8'}</p>
+                            </dl>
+                        </li>
+                        </foreach>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="picScroll-left">
+                <div class="hd">
+                    <p>HCA “Health Care Assistance 健康服务助理”</p>
+                    <ul>
+                    </ul>
+                    <span class="pageState"></span>
+                </div>
+                <div class="bd">
+                    <ul class="picList">
+                        <foreach name="healthinfo" key="k" item="v">
+                        <li>
+                            <dl class="gltd_pic fl">
+                                <dt><img src="{$Think.const.SITE_URL}{$v.pic}" /></dt>
+                                <dd>{$v.title}</dd>
+                                <p class="xj_picw">{$v.description|strip_tags|str_replace=array(" ","　","\t","\n","\r"),array("","","","",""),###|mb_substr=###,0,50,'utf-8'}</p>
+                            </dl>
+                        </li>
+                        </foreach>
+
+                    </ul>
+                </div>
+            </div>
+            <script type="text/javascript">
+                jQuery(".picScroll-left").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"leftLoop",autoPlay:true,scroll:3,vis:3,easing:"easeOutElastic"});
+            </script>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="logon">
+  <form action="__SELF__" method="post" id="loginform">
+    <p class="logon-tit fl">用户登录</p>
+    <ul class="logon-list fl">
+      <li>
+        <p class="logon-list-t fl">用户名：</p>
+        <p class="fl">
+          <input name="username" type="text" class="logon-list-k" />
+          <span class="pl10"><a href="__MODULE__/User/register">注册会员</a></span></p>
+      </li>
+      <li>
+        <p class="logon-list-t fl">密码：</p>
+        <p class="fl">
+          <input name="password" type="password" class="logon-list-k" />
+          <span class="pl10"><a href="__MODULE__/Email/getpassword">找回密码</a></span></p>
+      </li>
+      <li>
+        <p class="logon-list-t fl">验证码：</p>
+        <p class="fl">
+          <input name="verifycode" type="text" onblur="checkcode('__MODULE__/User/checkcode')" class="logon-list-k1" />
+          <span class="pl10"><a href="javascript:void(0)" onclick="document.getElementById('codeimg').src = document.getElementById('codeimg').src+'?'+Math.random()">看不清</a></span></p>
+      </li>
+      <li>
+        <p class="logon-list-t fl">&nbsp;</p>
+        <p class="fl"><img id="codeimg" src="__CONTROLLER__/verifyImg" onclick="this.src=this.src+'?'+Math.random()" /></p>
+      </li>
+      <li>
+        <p class="logon-list-t fl">&nbsp;</p>
+        <p class="fl">
+          <input name="remember" type="checkbox" />
+          &nbsp;下次自动登录</p>
+      </li>
+      <li>
+        <p class="logon-list-t fl">&nbsp;</p>
+        <p class="fl logon-an"><a id="loginbtn" href="javascript:void(0)">登&nbsp;录</a></p>
+      </li>
+    </ul>
+    <div class="logon-bot fl pb10">
+      <p class="logon-botw pt5"><span style="padding-top:5px" class="fl">快捷登录：</span><span class="fl pt5 pr15"><a href="__MODULE__/User/otherlogin/type/Qq"><img src="{$Think.const.HIMG_URL}images_117.jpg" style="padding:9px 5px 0px" />QQ登录</a></span><span class="fl pt5 pr15"><a href="__MODULE__/User/otherlogin/type/Weixin"><img src="{$Think.const.HIMG_URL}images_120.jpg" style="padding:9px 5px 0px" />微信登录</a></span></p>
+    </div>
+  </form>
+</div>
+
+<script type="text/javascript" src="{$Think.const.HJS_URL}msgbox.js"></script>
+<script type="text/javascript" src="{$Think.const.HJS_URL}register.js"></script>
+

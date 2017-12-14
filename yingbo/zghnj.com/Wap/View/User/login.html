@@ -1,0 +1,66 @@
+<!--*****header*****-->
+<div class="main">
+    <!--*****menu*****-->
+    <div class="login">
+        <section class="login-con">
+            <form action="" method="post" id="loginform">
+                <ul>
+                    <li>
+                        <input name="username" type="text" class="login-input" value="" placeholder="请输入用户名" />
+                    </li>
+                    <li>
+                        <input name="password" type="password" class="login-input" value="" placeholder="请输入密码" />
+                    </li>
+                        <input type="button" id="loginbtn" class="w100 login-an b-bule mt0-72" value="登&nbsp;录">
+                    <p class="w100 login-sm tac">您还不是会员，请点击<a href="__MODULE__/User/register">注册</a></p>
+                    </li>
+        </section>
+
+    </div>
+    <!--*****menuend*****-->
+</div>
+<script>
+    $(function(){
+        $("#loginbtn").click(function(){
+            $("#loginbtn").attr('disabled',true);
+            var username = $("#loginform").find("input[name='username']").val();
+            var password = $("#loginform").find("input[name='password']").val();
+            if (username == '') {
+              $("#loginbtn").attr('disabled',false);
+              $("#loginform").find("input[name='username']").val("请输入用户名");
+              $("#loginform").find("input[name='username']").css('color','red');
+              $("#loginform").find("input[name='username']").attr('readonly','readonly');
+              setTimeout(function(){$("#loginform").find("input[name='username']").val('');$("#loginform").find("input[name='username']").css('color','');$("#loginform").find("input[name='username']").removeAttr('readonly')},1000);
+              return false;
+            }
+            if (password == '') {
+              $("#loginbtn").attr('disabled',false);
+              $("#loginform").find("input[name='password']").get(0).type='text';
+              $("#loginform").find("input[name='password']").attr('readonly','readonly');
+              $("#loginform").find("input[name='password']").val('请输入密码');
+              $("#loginform").find("input[name='password']").css('color','red');
+              setTimeout(function(){$("#loginform").find("input[name='password']").val('');$("#loginform").find("input[name='password']").css('color','');$("#loginform").find("input[name='password']").removeAttr('readonly');$("#loginform").find("input[name='password']").get(0).type='password';$("#loginform").find("input[name='password']").removeAttr('readonly')},1000);
+              return false;
+            }
+            $.post("__MODULE__/User/login",$("#loginform").serialize(),function(data){
+                if(data.error == 0){
+                    location.href="__MODULE__/User/ucenter";
+                }else if(data.error == 1){
+                    $("#loginbtn").attr('disabled',false);
+                    $("#loginform").find("input[name='username']").val(data.errmsg);
+                    $("#loginform").find("input[name='username']").css('color','red');
+                    $("#loginform").find("input[name='username']").attr('readonly','readonly');
+                    setTimeout(function(){$("#loginform").find("input[name='username']").val('');$("#loginform").find("input[name='username']").css('color','');$("#loginform").find("input[name='username']").removeAttr('readonly')},1000);
+                }else if(data.error == 2){
+                    $("#loginbtn").attr('disabled',false);
+                    $("#loginform").find("input[name='password']").get(0).type='text';
+                    $("#loginform").find("input[name='password']").css('color','red');
+                    $("#loginform").find("input[name='password']").attr('readonly','readonly');
+                    $("#loginform").find("input[name='password']").val(data.errmsg);
+                    
+                    setTimeout(function(){$("#loginform").find("input[name='password']").val('');$("#loginform").find("input[name='password']").css('color','');$("#loginform").find("input[name='password']").removeAttr('readonly');$("#loginform").find("input[name='password']").get(0).type='password';$("#loginform").find("input[name='password']").removeAttr('readonly')},1000);
+                }
+            })
+        })
+    })
+</script>

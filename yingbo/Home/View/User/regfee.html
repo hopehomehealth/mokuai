@@ -1,0 +1,37 @@
+<div class="main">
+  <section>
+    <div class="navbj fl">
+        <ul class="login fl" style="text-align:center;padding-top:2rem;min-height:10rem;color:#323232">
+		  <if condition="$Think.get.errormsg eq 'recharge1'">
+		  <li style="border:none;color:#DD0045;">
+            充值一次成为爱国者才能定车
+          </li>
+		  </if>
+          <li style="border:none;">
+            充值金额<i style="font-size:1.5rem;font-weight:bolder;color:#DD0045"> {$set['regfee']} </i>元
+          </li>
+          <li style="border:none;">
+            乐购积分<i style="font-size:1.5rem;font-weight:bolder;color:#DD0045"> {$set['back_reg']} </i>
+          </li>
+          <li>
+            乐购积分可以在乐购商城使用
+          </li>
+        </ul>
+    </div>
+    <p class="login_b fl">
+        <input type="hidden" name="restatus" value="{$Think.get.restatus}">
+        <!-- <input type="hidden" name="back_reg" value="{$set['back_reg']}"> -->
+      <a href="__MODULE__/Wxpay/pay/type/reg/id/{$regfee['regid']}"><button id="paybtn" class="submit loginBtn" type="button">立即支付</button></a>
+    </p>
+  </section>
+</div>
+<script type="text/javascript">
+	$(function(){
+		if($("input[name='restatus']").val() == 'success'){
+			$("#paybtn").attr('disabled',true);
+			$("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-6rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'冲值成功'+"</div>");
+
+			$("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(2000);setTimeout(function(){$("#errormsg").remove();},3000);
+		}
+	})
+</script>

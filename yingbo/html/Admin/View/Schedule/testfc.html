@@ -1,0 +1,139 @@
+<script type="text/javascript" src='{$Think.const.JS_URL}jquery-1.7.2.min.js'></script>
+<div class="main-content">
+
+    <div class="page-content">
+        <div class="row">
+            <div class="page-content box">
+                <div class="box-title margin_bot_20">
+                    <div class="span10">
+                        <h3><i class="icon-cogs"></i>评估排班表</h3>
+                    </div>
+                </div>
+                
+                <form action="" method="post">
+                &nbsp;&nbsp;&nbsp;&nbsp;选择区域&nbsp;&nbsp;&nbsp;&nbsp;
+                <select name="province_id" class="province selectarea">
+                    <option value=''>省</option>
+                    <foreach name="provincelist" item="provinceinfo">
+                    <option value="{$provinceinfo.id}">{$provinceinfo.name}</option>
+                    </foreach>
+                </select>
+                <select name="city_id" class="city selectarea" style="visibility:hidden">
+                </select>
+                <select name="country_id" class="country selectarea" style="visibility:hidden">
+                </select>
+                选择日期&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="text" id="assessdate" name="date" style="width:117px;height:34px" placeholder="请选择日期" readonly>
+                &nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-sm submit" type="submit">检索</button>
+                </form>
+                <div style="height:20px"></div>
+                <table class="table table-striped table-bordered table-hover" style="text-align:center">
+                    <thead>
+                    <tr><th width="50px" style="text-align:center">编号</th>
+                        <th width="60px" style="text-align:center">姓名</th>
+                        <th width="100px" style="text-align:center">城市</th>
+                        <th width="100px" style="text-align:center">联系电话</th>
+                        <th width="100px" style="text-align:center">操作</th>
+                    </tr></thead>
+                    <tbody>
+                    <foreach name='assessList' key='k' item='v'>
+                        <tr>
+                            <td>{$firstno++}</td>
+                            <td>{$v.username}</td>
+                            <td>{$v.city}</td>
+                            <td>{$v.iphone}</td>
+                            <td>
+                                <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+                                    <a class="green" href="__MODULE__/Assess/assess/userid/{$v.userid}"> <i class="icon-pencil bigger-130"></i>&nbsp;查看详情 </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </foreach>
+                    </tbody>
+                </table>
+                <div class="green-black">{$page}</div>
+                
+            </div>
+        </div>
+        <script type="text/javascript">
+            jeDate({
+                dateCell:"#assessdate",
+                format:"YYYY-MM-DD",
+                isinitVal:true,
+                isTime:true, //isClear:false,
+                minDate:"2014-09-19 00:00:00",
+                okfun:function(val){alert(val)}
+            })
+        </script>
+        <script type="text/javascript">
+            $(function(){
+                    var provinceid,cityid,countryid; 
+                    var provincename,cityname,countryname;
+                    var areaname;
+                    $(".province").change(function(){
+                        var index = $(this).get(0).selectedIndex;
+                        if(index == 0){
+                            $(this).siblings('.selectarea').css("visibility","hidden");
+                            return;
+                        }else{
+                            $(".city").css("visibility","visible");
+                            provinceid = $(this).val();
+                            provincename = $(".province option:selected").text();
+                            //alert(provincename);
+                            $.post("__MODULE__/Schedule/getcity",{'upid':provinceid},function(data){
+                                if(data.error ==  1){
+
+                                }else{
+                                    var cityhtml = "<option value=''>市</option>";
+                                    var datalist = data.content;
+                                    for(var i in datalist){
+                                        cityhtml+="<option value='"+datalist[i].id+"'>"+datalist[i].name+"</option>";
+                                    }
+                                    $(".city").eq(0).html(cityhtml);
+                                }
+                            })
+                        }
+                        //计算出选择省在数组中的下标
+                    })
+                    $(".city").change(function(){
+                        var index = $(this).get(0).selectedIndex;
+                        if(index == 0){
+                            $(".country").css("visibility","hidden");
+                            return;
+                        }else{
+                            $(".country").css("visibility","visible");
+                            cityid = $(this).val();
+                            cityname = $(".city option:selected").text();
+                            //alert(cityid);
+                            $.post("__MODULE__/Schedule/getcity",{'upid':cityid},function(data){
+                                if(data.error ==  1){
+
+                                }else{
+                                    var countryhtml = "<option value=''>县/区</option>";
+                                    var datalist = data.content;
+                                    for(var i in datalist){
+                                        countryhtml+="<option value='"+datalist[i].id+"'>"+datalist[i].name+"</option>";
+                                    }
+                                    $(".country").eq(0).html(countryhtml);
+                                }
+                            })
+                        }
+                        //计算出选择省在数组中的下标
+                    })
+                    $(".country").change(function(){
+                        var index = $(this).get(0).selectedIndex;
+                        if(index == 0){
+                            return;
+                        }else{
+                            countryid = $(this).val();
+                            /*countryname = $(".country option:selected").text();
+                            areaname = provincename+cityname+'市'+countryname;
+                            $(".country option:selected").text(areaname);
+                            $("input[name='city']").val(areaname);*/
+                        }
+                    })
+                })
+        </script>
+        <!--/.box-->
+    </div><!-- /.page-content -->
+</div><!-- /.main-content -->

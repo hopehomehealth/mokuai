@@ -1,0 +1,35 @@
+
+        <div class="main">
+             <div class="listNav">
+                <ul class="listNavIn">
+                    <foreach name="catinfo" key="kc" item="class">
+                        <li <if condition="$kc eq 0">class="cur"<else /></if>>{$class.name}</li>
+                    </foreach>
+                </ul>
+            </div>
+            <div class="listNavBox">
+            <foreach name="catinfo" key="k" item="v">
+                <ul <if condition="$k eq 0">class="Navkind cur"<else />class="Navkind"</if>>
+                            <foreach name="v.productinfo" key="kk" item="vv">
+                                    <li>
+                                        <a href="{:U('Product/detail',array('pro_id'=>$vv['pro_id']))}">
+                                            <img src="{$Think.const.SITE_URL}{$vv.pic|substr=###,2}">
+                                            <span>{$vv.china|strip_tags|str_replace=array(" ","　","\t","\n","\r"),array("","","","",""),###|mb_substr=###,0,6,'utf-8'}</span>
+                                        </a>
+                                    </li>
+                            </foreach>
+                </ul>
+            </foreach>
+            </div>
+        </div>   
+    </div>
+
+    <script>        
+     $(function(){
+        $(".listNavIn li").click(function(){
+            $(this).addClass("cur").siblings().removeClass("cur");
+            $(".Navkind").eq($(this).index()).addClass("cur").siblings().removeClass("cur");
+        })
+     })
+    </script>
+

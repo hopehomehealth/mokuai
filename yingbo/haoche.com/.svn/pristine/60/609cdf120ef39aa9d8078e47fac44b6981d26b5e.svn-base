@@ -1,0 +1,56 @@
+
+<ul class="dj_xhk fr">
+    <p class="arrow-up fl"></p>
+    <li><a href="{:U('Union/index')}">369商家联盟</a></li>
+</ul>
+<script type="text/javascript">
+    $(".head_back2").click(function(){
+        $(".dj_xhk").slideToggle("1000");
+    });
+</script>
+<div class="main">
+    <section>
+        <div class="navbj fl pb0">
+            <dl class="bec-t fl">
+                <dt><img src="{$Think.const.HIMG_URL}xj_images_25.png"></dt>
+                <dd>苏运泰<br>
+                    <img src="{$Think.const.HIMG_URL}xj_images_26.png" alt=""><span class="fs1-2 pl0-5 gray">优质信誉商家</span></dd>
+            </dl>
+        </div>
+    </section>
+    <section>
+        <div class="navbj fl b_n pt0-5 pb0_5 mt0">
+            <form action="" method="get">
+                <ul class="sin-list fl pb0_5">
+                    <li>消费金额：
+                        <p class="fr sin-rk w70">
+                            <input class="fl sin-k w50" name="" placeholder="0.00" type="text">
+                            <span class="sin-yua fr">元</span></p>
+                    </li>
+                    <li>
+                        <p class="w80 fl lh2">金币余额：0.00￥<br>
+                            <span class="gray">可用盟币抵扣：0.00￥</span></p>
+                        <p class="fr">
+                            <input name="" type="checkbox" value="">
+                        </p>
+                    </li>
+                    <li>
+                        <p class="w80 fl lh2 sin-wxzf"><img src="{$Think.const.HIMG_URL}xj_images_42.png">微信支付<br>
+                            <span class="gray">微信安全支付，赠送盟币</span></p>
+                        <p class="fr">
+                            <input name="" type="checkbox" value="">
+                        </p>
+                    </li>
+                </ul>
+                <ul class="sin-list fl pb0_5">
+                    <li>订单金额：<span class="fr crimson">0.00￥</span> </li>
+                    <li>金币抵扣：<span class="fr crimson">0.00￥</span> </li>
+                </ul>
+                <ul class="sin-list fl pb0_5">
+                    <li>实际需付：<span class="crimson">0.00￥</span> <button class="submit sinBtn w25 fr lh2" id="subaplay" type="button">去支付</button></li>
+
+                </ul>
+            </form>
+        </div>
+    </section>
+</div>

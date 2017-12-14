@@ -1,0 +1,109 @@
+<script type="text/javascript" src='{$Think.const.JS_URL}jquery-1.7.2.min.js'></script>
+<script type="text/javascript" src='{$Think.const.JS_URL}uploadPreview.js'></script>
+<div class="main-content">
+    <div class="breadcrumbs">
+        <ul>
+            <li > <a href="__MODULE__/Product/upd">商品修改 </a> </li>
+
+        </ul>
+        <!-- .breadcrumb -->
+    </div>
+
+    <div class="page-content">
+        <div class="row">
+            <div class="page-content box">
+<form action="__SELF__" method="post" class="form-horizontal" enctype="multipart/form-data">
+    <input type="hidden" name="pro_id" value="{$info.pro_id}">
+    <div class="form-group">
+        <label class="control-label">中文名称 : </label>
+        <div class="controls pull-left">
+            <input type="text" class="input-large" name="china" value="{$info.china}">
+            <span class="help-inline red"> * </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label">英文名称 : </label>
+        <div class="controls pull-left">
+            <input type="text" class="input-large" name="english" value="{$info.english}">
+            <span class="help-inline red"> * </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label">价格 : </label>
+        <div class="controls pull-left">
+            <input type="text" class="input-medium" name="price" value="{$info.price}">
+            <span class="help-inline red"> * </span>
+        </div>
+    </div>
+                    <div class="form-group">
+    <label class="control-label">优惠政策 : </label>
+    <div class="controls pull-left">
+        <select class="input-medium" name="discount" value="{$info.discount}">
+            <option>无</option>
+        </select>
+    </div>
+</div>
+    <div class="form-group">
+        <label class="control-label">类型 :</label>
+        <div class="controls pull-left">
+            <select class="input-medium" name="cat" >
+
+                    <option value='0'>-请选择-</option>
+                    <foreach name='catinfoA' item='v'>
+                        <option value="{$v.cat_id}" <if condition="$v['cat_id'] eq $info['cat_id']">selected<else /></if> >{$v.name}</option>
+                    </foreach>
+
+            </select>
+        </div>
+    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">商品展示 :</label>
+                        <div class="controls pull-left">
+                            <label>
+                                <input type="radio" class="ace" name="is_on" {$info['is_on']?"":"checked"} value="0">
+                                <span class="lbl">上架</span>
+                            </label>
+                            <label>
+                                <input type="radio" class="ace" name="is_on" {$info['is_on']?"checked":""} value="1">
+                                <span class="lbl">下架</span>
+                            </label>
+                        </div>
+                    </div>
+    <div class="form-group">
+        <label class="control-label"> 商品图片 : </label>
+        <div class="controls pull-left">
+            <input type="file" class="input-large" id="pic" name="pic" >
+            <div id="pic_div"><img src='{$Think.const.SITE_URL}{$info.pic|substr=###,2}' id='pic_img' width='160' height='100'></div>
+        </div>
+    </div>
+    <script type='text/javascript'>
+        $(function(){
+            new uploadPreview({ UpBtn: "pic", DivShow: "pic_div", ImgShow: "pic_img" });
+        });
+    </script>
+
+                    <div class="form-group">
+                        <label class="control-label">商品介绍 : </label>
+                        <div class="controls pull-left">
+                            <textarea class="input-large" style="margin: 0px; height: 115px; width: 530px;" name="introduce">{$info.introduce}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">备　　注 : </label>
+                        <div class="controls pull-left">
+                            <textarea class="input-large" style="margin: 0px; height: 115px; width: 530px;" name="remarks">{$info.remarks}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+
+
+                        <button id="bsubmit" type="submit"  class="btn btn-sm btn-primary">保存</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--/.box-->
+    </div><!-- /.page-content -->
+</div><!-- /.main-content -->

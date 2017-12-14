@@ -1,0 +1,53 @@
+<div class="menu-bj">
+	<div class="column">
+		<if condition="$_SESSION['loginstatus'] eq ''">
+		<div class="menu-r fr">
+			<p class="login fl">登&nbsp;录</p>
+			<p class="register fl">注&nbsp;册</p>
+		</div>
+		<else/>
+		<div class="fr" style="padding-top:0px;width:157px">
+			<p style="height:46px;line-height:46px;color:white">{$_SESSION['user']['info']['username']}　<a href="__MODULE__/User/logout" style="text-decoration:underline;color:white;cursor:pointer">退出</a></p>
+		</div>
+		</if>
+		<ul class="menu_nr">
+			<li <if condition="CONTROLLER_NAME eq 'Index'">class="cur"</if>><a href="http://www.zghnj.com/index.php/Home/Index/index">首页</a></li>
+			<li <if condition="CONTROLLER_NAME eq 'Technology'">class="cur"</if>><a>技术前沿</a>
+				<div class="childnavin">
+					<a href="http://www.zghnj.com/index.php/Home/Technology/overview">技术概览</a>
+					<a href="http://www.zghnj.com/index.php/Home/Technology/academicForum">学术园地</a>
+					<a href="http://www.zghnj.com/index.php/Home/Technology/lectureRoom">大家讲堂</a>
+				</div>
+			</li>
+			<li <if condition="CONTROLLER_NAME eq 'News'">class="cur"</if>><a>新闻资讯</a>
+				<div class="childnavin">
+					<a href="http://www.zghnj.com/index.php/Home/News/industries">行业新闻</a>
+					<a href="http://www.zghnj.com/index.php/Home/News/activities">行业活动</a>
+				</div>
+			</li>
+			<li <if condition="CONTROLLER_NAME eq 'Develop'">class="cur"</if>><a>产业发展</a>
+				<div class="childnavin">
+					<a href="http://www.zghnj.com/index.php/Home/Develop/overview">产业概览</a>
+					<a href="http://www.zghnj.com/index.php/Home/Develop/material">工程材料与机具</a>
+					<a href="http://www.zghnj.com/index.php/Home/Develop/designer">工程设计与施工</a>
+					<a href="http://www.zghnj.com/index.php/Home/Develop/check">产品检验检测</a>
+				</div>
+			</li>
+			<li <if condition="CONTROLLER_NAME eq 'Exhibition'">class="cur"</if>><a>产品与服务</a>
+				<div class="childnavin">
+					<a href="http://www.zghnj.com/index.php/Home/Exhibition/product">产品系列</a>
+					<a href="http://www.zghnj.com/index.php/Home/Exhibition/cases">应用案例</a>
+					<a href="http://www.zghnj.com/index.php/Home/Exhibition/customer">应用客户</a>
+				</div>
+			</li>
+			<li <if condition="CONTROLLER_NAME eq 'Communicate'">class="cur"</if>><a>交流空间</a>
+				<div class="childnavin">
+					<a href="http://www.zghnj.com/index.php/Home/Communicate/knowledge">常识解答</a>
+					<a href="http://www.zghnj.com/index.php/Home/Communicate/exclusive">会员专属</a>
+					<a href="http://www.zghnj.com/index.php/Home/Communicate/analysis">经典解析</a>
+				</div>
+			</li>
+			<li <if condition="CONTROLLER_NAME eq ''">class="cur"</if>><a href="http://www.zghnj.com/index.php/Home//">网上商城</a></li>
+		</ul>
+	</div>
+</div>

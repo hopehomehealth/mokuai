@@ -1,0 +1,49 @@
+<div class="main-content">
+    <div class="breadcrumbs">
+        <ul>
+            <li > <a href="#">系统设置 </a> </li>
+
+        </ul>
+        <!-- .breadcrumb -->
+    </div>
+
+    <div class="page-content">
+        <div class="row">
+            <div class="page-content box">
+<form action="__MODULE__/Basic/{$op}" method="post" class="form-horizontal">
+    <div class="form-group">
+        <label class="control-label">AppID : </label>
+        <div class="controls pull-left">
+            <input type="text" class="input-large" name="appid" value="{$sysSet.appid}">
+            <span class="help-inline red"> * </span>
+        </div>
+    </div>
+     <div class="form-group">
+        <label class="control-label">AppSecret : </label>
+        <div class="controls pull-left">
+            <input type="text" class="input-large" name="appsecret" value="{$sysSet.appsecret}">
+            <span class="help-inline red"> * </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label">原始ID : </label>
+        <div class="controls pull-left">
+            <input type="text" class="input-large" name="apid" value="{$sysSet.apid}">
+            <span class="help-inline red"> * </span>
+        </div>
+    </div>
+                    <div class="form-actions">
+                        <notempty name="sysSet">
+                        <input type="hidden" name="basicid" value="{$sysSet.id}" />
+                        <input type="hidden" name="oldappid" value="{$sysSet.appid}" />
+                        <input type="hidden" name="oldappsecret" value="{$sysSet.appsecret}" />
+                        <input type="hidden" name="oldapid" value="{$sysSet.apid}" />
+                        </notempty>
+                        <button id="bsubmit" type="submit"  class="btn btn-sm btn-primary">保存</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--/.box-->
+    </div><!-- /.page-content -->
+</div><!-- /.main-content -->

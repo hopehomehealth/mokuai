@@ -1,0 +1,135 @@
+    <link href="{$Think.const.HCSS_URL}personal-style.css" type="text/css" rel="stylesheet" />
+    <section class="add" style="position:relative">
+
+        <div class="add_main">
+        <form action="" method="post" id="form">
+            <h2>请选择账户类型:</h2>
+            <p><select name="count_type" style="height:30px;border-radius:2px;border:1px solid #D6D6D6;color: #6A6A6A;outline:none;width:30%">
+                <option value="2">银行卡</option>
+            </select></p>
+            <!--<div class="alipay">
+                <h2>支付宝账号:</h2>
+                <p><input name="count_no" type="text" placeholder="支付宝账号"/></p>
+            </div>-->
+            <div class="bankpay">
+                <h2>银行名:</h2>
+                <p><select name="bankname" style="height:30px;border-radius:2px;border:1px solid #D6D6D6;color: #6A6A6A;outline:none;width:30%"><option>中国银行</option>
+                <option>工商银行</option><option>农业银行</option><option>建设银行</option><option>农业银行</option><option>交通银行</option><option>浦发银行</option><option>光大银行</option><option>邮政银行</option>
+            </select></p>
+            </div>
+            <div class="bankpay">
+                <h2>银行卡号:</h2>
+                <p><input name="card_no" type="text" placeholder="请输入银行卡号"/></p>
+            </div>
+            <div>
+                <h2>真实姓名:</h2>
+                <p><input name="count_name" type="text" placeholder="银行户名"/></p>
+            </div>
+            <div>
+                <h2>手机号:</h2>
+                <p><input name="bindphone" type="text" placeholder="预留手机号"/></p>
+            </div>
+            <h5><input style="background: url(/Public/Home/images/1.png) repeat;font-size:1.800rem;height:3.500rem;font-family: '黑体';color: #ffffff;border-radius:0.4rem" type="button" value="保存账户"/></h5>
+        </form>
+        </div>
+
+    </section>
+    <script type="text/javascript">
+        $(function(){
+            var flag = false;
+            var myreg = /^\d{19}$/i;
+            var myreg2 = /^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d{8}$/i;
+            $("select[name='count_type']").change(function(){
+                if($(this).val() == 1){
+                    $(".bankpay").css('display','none').siblings(".alipay").css('display','block');
+                }
+                if($(this).val() == 2){
+                    $(".bankpay").css('display','block').siblings(".alipay").css('display','none');
+                }
+            })
+            $("#form input[type='button']").click(function(){
+                $("#form").submit(function(){return false});
+                $("#form input[type='button']").attr('disabled',false);
+                if($("select[name='count_type']").val() == 1){
+                    if($("input[name='count_no']").val() == ''){
+                        flag = false;
+                        $("#form input[type='button']").attr('disabled',false);
+                        $("input[name='count_no']").val("请输入支付宝账号");
+                        $("input[name='count_no']").css('color','red');
+                        $("input[name='count_no']").attr('readonly','readonly');
+                        setTimeout(function(){$("input[name='count_no']").val('');$("input[name='count_no']").css('color','');$("input[name='count_no']").removeAttr('readonly')},1000);
+                        return;
+                    }else{
+                        flag = true;
+                    }
+                }
+                if($("select[name='count_type']").val() == 2){
+                    if($("input[name='card_no']").val() == ''){
+                        flag = false;
+                        $("#form input[type='button']").attr('disabled',false);
+                        $("input[name='card_no']").val("请输入银行卡号");
+                        $("input[name='card_no']").css('color','red');
+                        $("input[name='card_no']").attr('readonly','readonly');
+                        setTimeout(function(){$("input[name='card_no']").val('');$("input[name='card_no']").css('color','');$("input[name='card_no']").removeAttr('readonly')},1000);
+                        return;
+                    }else{
+                        flag = true;
+                    }
+                    if(myreg.test($("input[name='card_no']").val())){
+                        flag = true;
+                    }else{
+                        $("#form input[type='submit']").attr('disabled',false);
+                        flag = false;
+                        $("input[name='card_no']").val("非法银行卡号");
+                        $("input[name='card_no']").css('color','red');
+                        $("input[name='card_no']").attr('readonly','readonly');
+                        setTimeout(function(){$("input[name='card_no']").val('');$("input[name='card_no']").css('color','');$("input[name='card_no']").removeAttr('readonly')},1000);
+                        return;
+                    }
+                }
+                if($("input[name='count_name']").val() == ''){
+                    flag = false;
+                    $("#form input[type='button']").attr('disabled',false);
+                    $("input[name='count_name']").val("请输账户名");
+                    $("input[name='count_name']").css('color','red');
+                    $("input[name='count_name']").attr('readonly','readonly');
+                    setTimeout(function(){$("input[name='count_name']").val('');$("input[name='count_name']").css('color','');$("input[name='count_name']").removeAttr('readonly')},1000);
+                    return;
+                }else{
+                    flag = true;
+                }
+                if($("input[name='bindphone']").val() == ''){
+                    flag = false;
+                    $("#form input[type='button']").attr('disabled',false);
+                    $("input[name='bindphone']").val("请输手机号");
+                    $("input[name='bindphone']").css('color','red');
+                    $("input[name='bindphone']").attr('readonly','readonly');
+                    setTimeout(function(){$("input[name='bindphone']").val('');$("input[name='bindphone']").css('color','');$("input[name='bindphone']").removeAttr('readonly')},1000);
+                    return;
+                }else{
+                    flag = true;
+                }
+                if(myreg2.test($("input[name='bindphone']").val())){
+                    flag = true;
+                }else{
+
+;                   $("#form input[type='button']").attr('disabled',false);
+                    flag = false;
+                    $("input[name='bindphone']").val("非法的手机号");
+                    $("input[name='bindphone']").css('color','red');
+                    $("input[name='bindphone']").attr('readonly','readonly');
+                    setTimeout(function(){$("input[name='bindphone']").val('');$("input[name='bindphone']").css('color','');$("input[name='bindphone']").removeAttr('readonly')},1000);
+                    return;
+                }
+                if(flag){
+                    $.post("__MODULE__/Exchange/addaccount",$("#form").serialize(),function(data){
+                        if(data.error == 0){
+                            $("section").append("<div id='errormsg' style='display:none;position:absolute;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+data.content+"</div>");
+
+                            $("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);$("#bsubmit").attr('disabled',true);setTimeout(function(){$("#errormsg").remove();$("#bsubmit").attr('disabled',false);},2000);
+                        }
+                    })
+                }
+            })
+        })
+    </script>

@@ -1,0 +1,39 @@
+<div class="main">
+   <section>
+        <div class="nht-xl fl">
+            <p class="lin-tt">法规<span class="d-red">政策</span><span class="nht-tt fr">&nbsp;</span></p>
+            <ul class="nht-sumenu fr">
+               <foreach name="catinfo" item="v">
+<li><a href="{:U('News/faguilist',array('cat_id'=>$v['cat_id']))}">{$v.name}</a></li>
+                </foreach>
+            </ul>
+        </div>
+    </section>
+    <script type="text/javascript">
+        $(".nht-tt").click(function(){
+            $(".nht-sumenu").slideToggle("1000");
+        });
+    </script>
+
+  <!--*****news*****-->
+  <section>
+
+  <foreach name="catinfo" key="k" item="v">
+
+    <div class="h-l pb1 fl">
+      <p class="h-l-tt">{$v.name|mb_substr=###,0,21,'utf-8'}<span class="fr pr2 fs1"><a href="{:U('News/faguilist',array('cat_id'=>$v['cat_id']))}">更多>></a></span></p>
+      <foreach name="v.info" key="kk" item="vv">
+
+ <div class="h-l pb1 fl">
+            <ul class="news-list fl">
+                  <li>
+                       <a href="{:U('News/detail',array('news_id'=>$vv['news_id']))}">{$vv.news_title}</a>
+                            <p class="fl fs1 l-gray w100">{$vv.add_time}</p>
+                   </li>
+            </ul>
+        </div>
+
+	   </foreach>
+    </div>
+   </foreach>
+  </section>

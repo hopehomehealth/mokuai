@@ -1,0 +1,44 @@
+    <link href="{$Think.const.HCSS_URL}liyue-style.css" type="text/css" rel="stylesheet" />
+    <div class="ord_nav">
+        <ul>
+            <li ><a href="__MODULE__/Order/paying" >待付款</a></li>
+            <div class="nav"></div>
+            <li><a href="__MODULE__/Order/sending">待发货</a></li>
+            <div class="nav"></div>
+            <li><a href="#" style="display: inline-block;height: 34px;border-bottom: 2px solid #DF0245;color:#DF0245 ">待收货</a></li>
+            <div class="nav"></div>
+            <li><a href="__MODULE__/Order/received">已收货</a></li>
+        </ul>
+
+
+    </div>
+
+    <section style="margin-bottom:8rem">
+        <div class="order">
+        <notempty name="orderlist">
+        <foreach name="orderlist" item="info">
+            <div class="ord_main">
+                <p>订单编号：{$info.orderno}</p>
+                <dl><a href="__MODULE__/Order/orderinfo/orderid/{$info.orderid}" style="color:#333">
+                    <dd><img src="{$Think.const.SITE_URL}{$info.logo}" alt=""/></dd>
+                    <dt>下单时间：{$info.inputtime|date="Y-m-d H:i:s",###}<br/>{$info.goods_name}<br />{$info.spec}<span>共{$info.number}件商品<br><i style="color: #DD0045">￥{$info.price}</i></span></dt>
+                    <div style="clear: both"></div>
+                    </a>
+                </dl>
+                <h2><a href="__MODULE__/Order/confirm/orderid/{$info.orderid}"><input type="button" value="确认收货"/></a></h2>
+            </div>
+        </foreach>
+        </notempty>
+        <empty name="orderlist">
+            <div class="order">
+            <div class="or_main" style='text-align:center;height:20rem;line-height:20rem'>
+                您没有待收货订单哦！
+            </div>
+
+
+        </div>
+        </empty>
+        </div>
+
+
+    </section>

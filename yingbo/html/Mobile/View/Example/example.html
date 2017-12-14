@@ -1,0 +1,21 @@
+
+    <div class="main">
+        <ul class="caseBox">
+            <foreach name="exampleinfo" item="v">
+                <li>
+                    <a href="{:U('Example/example_list',array('example_id'=>$v['example_id']))}">
+                        <div class="CaseTx">
+                            <img src="{$Think.const.SITE_URL}{$v.pic}">
+                        </div>
+                        <div class="CaseTxT">
+                            <strong>{$v.name}</strong>
+                            <span>{$v.content|strip_tags|str_replace=array(" ","　","\t","\n","\r"),array("","","","",""),###|mb_substr=###,0,33,'utf-8'}...</span>
+                        </div>
+                    </a>
+                </li>
+            </foreach>
+
+        </ul>
+    </div>
+</div>
+

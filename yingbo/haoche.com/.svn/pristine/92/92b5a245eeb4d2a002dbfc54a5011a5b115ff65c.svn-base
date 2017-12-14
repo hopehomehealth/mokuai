@@ -1,0 +1,24 @@
+    <link href="{$Think.const.HCSS_URL}personal-style.css" type="text/css" rel="stylesheet" />
+    <section style=" background: #E00024;height:100%;">
+             <div class="kec">
+             <div class="kec_nav">
+                 <dl>
+                     <dd><img src="{$userinfo.userhead}" alt=""/></dd>
+                     <dt>我是<span>{$userinfo.nikename}</span></dt>
+                 </dl>
+             </div>
+             <div class="kec_main">
+                 <img src="{$Think.const.HIMG_URL}bj233.gif" alt=""/>
+
+             </div>
+
+
+                 <div class="kec_main1">
+                     <img src="{$userinfo.qrcode}" alt=""/>
+
+                 </div>
+
+             </div>
+    </section>
+
+    

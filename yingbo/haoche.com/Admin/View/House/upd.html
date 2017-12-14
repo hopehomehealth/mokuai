@@ -1,0 +1,135 @@
+
+ 
+<div class="main-content">
+    <div class="box-title margin_bot_20">
+        <div class="span10">
+            <h3><i class="icon-magic"></i>房天下申请修改</h3>
+        </div>
+    </div>
+
+    <div class="page-content">
+        <div class="row">
+            <div class="page-content box">
+                <form action="__SELF__" method="post" enctype='multipart/form-data' class="form-horizontal">
+                    <input type='hidden' name='house_id' value='{$info.house_id}' />
+                    <div class="form-group">
+                        <label class="control-label">姓名 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" class="input-small" name="name" value="{$userinfo[0]['name']}">
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">手机 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" class="input-middle" name="phone" value="{$userinfo[0]['phone']}">
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+                    <!--<div class="form-group">-->
+                        <!--<label class="control-label">邮箱 : </label>-->
+                        <!--<div class="controls pull-left">-->
+                            <!--<input type="text" class="input-large" name="email" value="{$info.email}">-->
+                            <!--<span class="help-inline red"> * </span>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <div class="form-group">
+                        <label class="control-label">意向区域 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" class="input-large" name="address" value="{$info.address}">
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">意向楼盘 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" class="input-large" name="building" value="{$info.building}">
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">意向户型 : </label>
+                        <div class="controls pull-left">
+                            <label>
+                                <!--<eq name='info.type_id' value='$v.type_id'>selected='selected'</eq>-->
+                                <input type="radio" class="ace" name="type" value="0" <eq name='info.type' value="0">checked="checked"</eq>>
+                                <span class="lbl">不限</span>
+                            </label>
+                            <label>
+                                <input type="radio" class="ace" name="type" value="1"<eq name='info.type' value="1">checked="checked"</eq>>
+                                <span class="lbl">一居</span>
+                            </label>
+                            <label>
+                                <input type="radio" class="ace" name="type" value="2" <eq name='info.type' value="2">checked="checked"</eq>>
+                                <span class="lbl">两居</span>
+                            </label>
+                            <label>
+                                <input type="radio" class="ace" name="type" value="3" <eq name='info.type' value="3">checked="checked"</eq>>
+                                <span class="lbl">三居</span>
+                            </label>
+                            <label>
+                                <input type="radio" class="ace" name="type" value="3" <eq name='info.type' value="4">checked="checked"</eq>>
+                                <span class="lbl">其它</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">意向面积 : </label>
+                        <div class="controls pull-left">
+                            <label>
+                                <!--<eq name='info.type_id' value='$v.type_id'>selected='selected'</eq>-->
+                                <input type="radio" class="ace" name="size" value="0" <eq name='info.size' value="0">checked="checked"</eq>>
+                                <span class="lbl">不限</span>
+                            </label>
+                            <label>
+                                <input type="radio" class="ace" name="size" value="1"<eq name='info.size' value="1">checked="checked"</eq>>
+                                <span class="lbl">≤90平方</span>
+                            </label>
+                            <label>
+                                <input type="radio" class="ace" name="size" value="2" <eq name='info.size' value="2">checked="checked"</eq>>
+                                <span class="lbl">90-120平方</span>
+                            </label>
+                            <label>
+                                <input type="radio" class="ace" name="size" value="3" <eq name='info.size' value="3">checked="checked"</eq>>
+                                <span class="lbl">其它</span>
+                            </label>
+                        </div>
+                    </div>
+                    <!--<div class="form-group">-->
+                        <!--<label class="control-label">意向价格 : </label>-->
+                        <!--<div class="controls pull-left">-->
+                            <!--<label>-->
+                                <!--&lt;!&ndash;<eq name='info.type_id' value='$v.type_id'>selected='selected'</eq>&ndash;&gt;-->
+                                <!--<input type="radio" class="ace" name="price" value="0" <eq name='info.price' value="0">checked="checked"</eq>>-->
+                                <!--<span class="lbl">不限</span>-->
+                            <!--</label>-->
+                            <!--<label>-->
+                                <!--<input type="radio" class="ace" name="price" value="1"<eq name='info.price' value="1">checked="checked"</eq>>-->
+                                <!--<span class="lbl">≤100万</span>-->
+                            <!--</label>-->
+                            <!--<label>-->
+                                <!--<input type="radio" class="ace" name="price" value="2" <eq name='info.price' value="2">checked="checked"</eq>>-->
+                                <!--<span class="lbl">100万-200万</span>-->
+                            <!--</label>-->
+                            <!--<label>-->
+                                <!--<input type="radio" class="ace" name="price" value="3" <eq name='info.price' value="3">checked="checked"</eq>>-->
+                                <!--<span class="lbl">其它</span>-->
+                            <!--</label>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+
+
+
+                    <div class="form-actions" align="center">
+                        <button id="bsubmit" type="submit"  class="btn btn-sm btn-primary">保存</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--/.box-->
+    </div><!-- /.page-content -->
+</div><!-- /.main-content -->
+

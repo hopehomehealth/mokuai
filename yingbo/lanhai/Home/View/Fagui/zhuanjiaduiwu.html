@@ -1,0 +1,38 @@
+
+
+
+<!-------banner------->
+<p class="com-banner">
+<notempty name="adinfo">
+    <foreach name="adinfo" item="v">
+
+            <img src="{$Think.const.SITE_URL}{$v.pic}" />
+
+    </foreach>
+	</notempty>
+</p>
+<!-------banner------->
+<!-------第一通栏------->
+<div class="column-c pt10 ser">
+    <p class="com-tit fl">关于<span class="red">我们</span></p>
+    <ul class="fl com-lift">
+        <li><a href="{:U('gongsijianjie')}">公司简介</a></li>
+       <!-- <li><a href="{:U('News/qiyejingshen')}">企业精神</a></li>-->
+        <li><a href="{:U('News/yewufanwei')}">业务范围</a></li>
+        <li><a href="{:U('News/zuzhijiagou')}">组织架构</a></li>
+        <li class="cur"><a href="{:U('News/zhuanjiaduiwu')}">专家队伍</a></li>
+        <li><a href="{:U('News/rencaizhaopin')}">人才招聘</a></li>
+    </ul>
+
+        <ul class="rep fr pb10">
+            <foreach name="info" item="v">
+                <li>
+				 <p class="com-w">{$v.author}</p>
+                            <p>{$v.content}</p>
+
+                </li>
+
+            </foreach>
+
+        </ul>
+    </div>

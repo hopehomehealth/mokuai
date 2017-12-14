@@ -1,0 +1,59 @@
+<style type="text/css">
+    body, html,#allmap {width: 100%;height: 100%;margin:0;font-family:"微软雅黑";font-size:14px;}
+    #l-map{height:500px;width:100%;}
+    #r-result{width:100%;}
+</style>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=xsbTAHuQOToG04ZiQazeMPwcVHqV6CxP"></script>
+
+
+<!-------banner------->
+<p class="com-banner">
+<notempty name="adinfo">
+    <foreach name="adinfo" item="v">
+
+            <img src="{$Think.const.SITE_URL}{$v.pic}" />
+
+    </foreach>
+	</notempty>
+</p>
+<!-------banner------->
+<!-------第一通栏------->
+<div class="column-c pt10 ser pb30">
+    <p class="com-tit fl">关于<span class="red">我们</span></p>
+    <ul class="fl com-lift">
+        <li class="cur"><a href="{:U('gongsijianjie')}">公司简介</a></li>
+       <!-- <li><a href="{:U('News/qiyejingshen')}">企业精神</a></li>-->
+        <li><a href="{:U('News/yewufanwei')}">业务范围</a></li>
+        <li><a href="{:U('News/zuzhijiagou')}">组织架构</a></li>
+        <li><a href="{:U('News/zhuanjiaduiwu')}">专家队伍</a></li>
+        <li><a href="{:U('News/rencaizhaopin')}">人才招聘</a></li>
+    </ul>
+    <div class="com-con fr pt22">
+        <foreach name="info" item="v">
+            {$v.content}
+        </foreach>
+        <p class="com-w">公司电话：010-83671790</p>
+        <p class="com-w">公司地址：北京市海淀区田村北路墨蔬院06号</p>
+
+
+        <p class="com-pic fl">
+        <div id="l-map"></div>
+        <div id="r-result"></div>
+        </p>
+    </div>
+
+
+</div>
+<script type="text/javascript">
+    // 百度地图API功能
+    var sContent ="<h4 class='blue' style='margin:0 0 5px 0;padding:0.2em 0'>田村北路墨蔬院06号</h4>" +
+            "<img style='float:right;margin:4px' id='imgDemo' src='http://www.bjlhcq.com/Public/Home/images/ditu.png' width='139' height='104' title='墨蔬院06号'/>" +
+            "<p style='margin:0;line-height:1.5;font-size:13px;text-indent:2em'>北京市海淀区田村北路墨蔬院06号</p>" +
+            "</div>";
+    var map = new BMap.Map("l-map");
+    var point = new BMap.Point(116.253192,39.940214);
+    map.centerAndZoom(point, 15);
+    var infoWindow = new BMap.InfoWindow(sContent);  // 创建信息窗口对象
+    map.openInfoWindow(infoWindow,point); //开启信息窗口
+    //    document.getElementById("r-result").innerHTML = "信息窗口的内容是：<br />" + infoWindow.getContent();
+</script>

@@ -1,0 +1,37 @@
+
+
+<div class="main-content">
+
+
+    <div class="page-content">
+        <div class="row">
+            <div class="page-content box">
+                <div class="box-title margin_bot_20">
+                    <div class="span10">
+                        <h3><i class="icon-magic"></i>角色修改</h3>
+                    </div>
+                </div>
+                <form action="__SELF__" method="post" class="form-horizontal" enctype="multipart/form-data">
+                    <input type="hidden" name="role_id" value="{$info.role_id}">
+                    <div class="form-group">
+                        <label class="control-label">名　　称 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" class="input-large" name="role_name" value="{$info.role_name}">
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="control-label"></label>
+                        <button id="bsubmit" type="submit"  class="btn btn-sm btn-primary">保存</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--/.box-->
+    </div><!-- /.page-content -->
+</div><!-- /.main-content -->
+
+
+
+

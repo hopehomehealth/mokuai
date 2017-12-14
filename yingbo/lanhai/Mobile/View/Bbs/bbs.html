@@ -1,0 +1,40 @@
+<div class="main">
+  <!--*****for*****-->
+  <section>
+    <div class="for fl bb-b">
+      <p class="fl pl0-5 fwb">长青<span class="d-red">论坛</span></p>
+      <p class="fr pr0-5 fs1"><if condition="$Think.session.flag eq ''"><a href="__MODULE__/User/register">注册</a> | <a href="__MODULE__/User/login">登录</a><else /><a href="__MODULE__/User/ucenter"><b style="text-decoration:underline;color:#004084">{$Think.session.userInfo.username}</b></a> | <a href="__MODULE__/User/logout">退出</a></if> |
+        <a href="__MODULE__/Posts/createpost">发帖</a> |
+        <if condition="$Think.session.flag eq ''">
+          <a href="__MODULE__/Blog/openblog">开通博客</a>
+        <else />
+          <if condition="$Think.session.userInfo.is_blog eq '1'">
+            <a href="__MODULE__/Blog/myzone">我的博客</a>
+          <else />
+            <a href="__MODULE__/Blog/openblog">开通博客</a>
+          </if>
+        </if>
+        </p>
+    </div>
+  </section>
+  <!--*****for-c*****-->
+  <div class="for-c fl">
+    <ul class="for-t fl">
+      <li><a href="__MODULE__/Bbs/blog">长青博客</a></li>
+      <li class="cur"><a href="__MODULE__/Bbs/bbs">巅峰论剑</a></li>
+      <li><a href="__MODULE__/Bbs/mingjia">名家讲坛</a></li>
+      <li><a href="__MODULE__/Bbs/renwu">蓝海人物</a></li>
+    </ul>
+    <div class="for-con cur">
+      <foreach name="boards" item="info2">
+      <dl class="forum-pic fl">
+        <dt><a href="__MODULE__/Posts/postlist/board_id/{$info2.board_id}"><if condition="$info2.board_img neq ''"><img src="{$info2.board_img}"><else /><img src="{$Think.const.MIMG_URL}images_13.png"></if></a></dt>
+        <dd><a href="__MODULE__/Posts/postlist/board_id/{$info2.board_id}">{$info2.board_title}</a>
+          <p class="w100 fl l-gray fs1">今日：{$info2.todposts}　帖数：{$info2.posts}</p>
+          <p class="w100 fl l-gray fs1-2 t-w"><a href="__MODULE__/Posts/detail/post_id/{$info2.post_id}">{$info2.topic}</a>  {$info2.ctime}  {$info2.username}</p>
+        </dd>
+      </dl>
+      </foreach>
+    </div>
+  </div>
+</div>

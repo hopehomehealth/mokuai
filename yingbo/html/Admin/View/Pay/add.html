@@ -1,0 +1,106 @@
+<div class="main-content">
+    <div class="breadcrumbs">
+        <ul>
+            <li > <a href="#">添加支付方式 </a> </li>
+
+        </ul>
+        <!-- .breadcrumb -->
+    </div>
+
+    <div class="page-content">
+        <div class="row">
+            <div class="page-content box">
+<form action="{:U('/Admin/Pay/add')}" method="post" class="form-horizontal">
+    <div class="form-group">
+        <label class="control-label">支付方式 : </label>
+        <div class="controls pull-left">
+            <input type="text" class="input-large" name="name" value="{$info.name}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label">支付类型 : </label>
+        <div class="controls pull-left">
+            <input type="text" class="input-large" name="type" value="{$info.type}">
+            <span class="help-inline red"> *（例如：weixin、alipay、baidu） </span>
+        </div>
+    </div>
+     <div class="form-group">
+        <label class="control-label">appid : </label>
+        <div class="controls pull-left">
+            <input type="text" class="input-large" name="appid" value="{$info.appid}">
+            <span class="help-inline red"> *微信支付 </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label">秘钥paysignkey : </label>
+        <div class="controls pull-left">
+            <input type="text" class="input-large" name="paysignkey" value="{$info.paysignkey}">
+            <span class="help-inline red"> *微信支付 </span>
+        </div>
+    </div>
+     <div class="form-group">
+        <label class="control-label">appsecret : </label>
+        <div class="controls pull-left">
+            <input type="text" class="input-large" name="appsecret" value="{$info.appsecret}">
+            <span class="help-inline red"> *微信支付 </span>
+        </div>
+    </div>
+     <div class="form-group">
+        <label class="control-label">商户IDpartnerid : </label>
+        <div class="controls pull-left">
+            <input type="text" class="input-large" name="partnerid" value="{$info.partnerid}">
+            <span class="help-inline red"> *微信支付 </span>
+        </div>
+    </div>
+     <div class="form-group">
+        <label class="control-label">支付宝账号user : </label>
+        <div class="controls pull-left">
+            <input type="text" class="input-large" name="user" value="{$info.user}">
+            <span class="help-inline red"> *支付宝 </span>
+        </div>
+    </div>
+     <div class="form-group">
+        <label class="control-label">支付宝pid : </label>
+        <div class="controls pull-left">
+            <input type="text" class="input-large" name="pid" value="{$info.pid}">
+            <span class="help-inline red"> *支付宝 </span>
+        </div>
+    </div>
+     <div class="form-group">
+        <label class="control-label">支付宝key : </label>
+       <div class="controls pull-left">
+            <input type="text" class="input-large" name="key" value="{$info.key}">
+            <span class="help-inline red"> *支付宝 </span>
+        </div>
+    </div>
+     <div class="form-group">
+        <label class="control-label">百度钱包bpartnerid: </label>
+       <div class="controls pull-left">
+            <input type="text" class="input-large" name="bpartnerid" value="{$info.bpartnerid}">
+            <span class="help-inline red"> *百度钱包 </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label">百度钱包bpaysignkey: </label>
+        <div class="controls pull-left">
+            <input type="text" class="input-large" name="bpaysignkey" value="{$info.bpaysignkey}">
+            <span class="help-inline red"> *百度钱包 </span>
+        </div>
+    </div>
+     <div class="form-group">
+        <label class="control-label"></label>
+       <div class="controls pull-left">
+            
+            <span class="help-inline red"> （注意：添加支付方式时非该支付方式项不用填） </span>
+        </div>
+    </div>
+                    <div class="form-actions">
+                        <input type="hidden" name="adminid" value="{$Think.get.id}" />
+                        <button id="bsubmit" type="submit"  class="btn btn-sm btn-primary">保存</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--/.box-->
+    </div><!-- /.page-content -->
+</div><!-- /.main-content -->

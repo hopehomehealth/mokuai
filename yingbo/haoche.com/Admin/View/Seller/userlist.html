@@ -1,0 +1,108 @@
+       <div class="main-content">
+          <div class="page-content">
+            <div class="row">
+              <div class="page-content box">
+              	<div class="box-title margin_bot_20">
+                  	<div class="span10">
+                   		<h3><i class="icon-cogs"></i>商家列表 </h3>
+                  	</div>
+                </div>
+                <form class="form-horizontal" action="__MODULE__/Seller/userlist" method="get">
+                    <div class="form-group">
+                        <label class="control-label" style="width:80px;">店铺名 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" class="input-medium" name="keywords">
+                            <button type="submit" class="btn btn-sm btn-primary">搜索</button>
+                        </div>
+						<div class="margin_bot_20" align="right">
+                            <a href="{:U('Seller/addseller')}" class="btn btn-primary btn-sm"><i class="icon-plus"></i>添加店铺</a>
+                        </div>
+                    </div>
+                </form>
+                  <!-- <div class="margin_bot_20">
+                      <a href="#" class="btn btn-primary btn-sm"><i class="icon-plus"></i>添加管理员</a>
+
+                  </div> -->
+                <div class="tableHead">
+                    <table class="table table_img table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th style="width:5%;">会员图像/昵称</th>
+                                <th style="width:5%;">商店logo/名称</th>
+                                <th style="width:5%;">联系人/手机/地址</th>
+                                <th style="width:5%;">经营行业</th>
+                                <th style="width:6%;">身份证照</th>
+                                <!-- <th style="width:5%;">佣金</th>
+                                <th style="width:5%;">可提现</th>
+                                <th style="width:5%;">积分</th> -->
+                                <th style="width:6%;">营业执照</th>
+                                <th style="width:5%;">1P商品</th>
+                                <th style="width:5%;">开店日期</th>
+                                <th style="width:5%;">状态</th>
+                                <th style="width:5%;">审核操作</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div id="table_hy">
+                    <foreach name="seller" item="userinfo">
+                    <table class="table table_img table-striped table-bordered  table-hover">
+                        <tr>
+                            <td style="width:5%;">
+                              <img src="{$userinfo.userhead}" width="50px" hieght="50px">
+                                <br /><a href="#" class="green" width="50px" hieght="50px')">[{$userinfo.nikename}]</a>
+                            </td>
+                            <td style="width:5%;">
+                                <img src="{$Think.const.SITE_URL}{$userinfo.pic_dian}" width="50px" hieght="50px">
+                                <br /><a href="#" style="color:red;font-weight:bolder" width="50px" hieght="50px')">[{$userinfo.seller_name}]</a>
+                            </td>
+                            <td style="width:5%;text-align:left;">{$userinfo.lianxi_name}<br />{$userinfo.phone}<br/>{$userinfo.address}</td>
+                            <td style="width:5%;">{$userinfo.cat_name}</td>
+                            <td style="width:6%;"><div style="padding:0;margin:0;width:115px;position:relative;max-height:80px;overflow:hidden"><img class="enlarge" title="点击查看大图" style="width:115px;" src="{$Think.const.SITE_URL}{$userinfo.pic_shen}"></div></td>
+                            <td style="width:6%;"><div style="padding:0;margin:0;width:115px;position:relative;max-height:80px;overflow:hidden"><img class="enlarge" title="点击查看大图" style="width:115px;" src="{$Think.const.SITE_URL}{$userinfo.pic_zhi}"></div></td>
+                            <td style="width:5%;"><if><a <if condition="$userinfo.is_merch eq 0"> href="__MODULE__/Seller/freelist/zeng_id/{$userinfo.zeng_id}"<else />href="__MODULE__/Seller/freelist"</if>>查看商品</a></td>
+                            <td style="width:5%;">
+                                {$userinfo.merchtime|date="Y-m-d",###}<br />
+                                审核状态<br />
+                                {$userinfo['status']?"<p class='status1 green'>已通过</p>":"<p class='status2 red'>未通过</p>"}
+                            </td>
+                            <td style="width:5%;">
+                            <if condition="$userinfo.paystatus eq 1">
+                              <if condition="$userinfo.isexpire eq '1'">
+                                <b style="color:red">已过期</b>
+                              <else />
+                                <if condition="$userinfo.merchexpire eq ''">
+                                  <b style="color:green">已支付</b>
+                                <else />
+                                {$userinfo.merchexpire|date="Y-m-d",###}
+                                </if>
+                              </if>
+                            <else />
+                              <b style="color:red">未支付</b>
+                            </if>
+                            </td>
+                            <td style="width:5%;"><a class="green examine" onclick="return confirm('确定执行该操作')" href="__MODULE__/Seller/examine/seller_id/{$userinfo.seller_id}/op/1">通过</a><br /><a class="green examine" onclick="return confirm('确定执行该操作')" href="__MODULE__/Seller/examine/seller_id/{$userinfo.seller_id}/op/2">取消</a></td>
+                        </tr>
+
+                    </table>
+                    </foreach>
+                </div>
+
+                <div class="technorati">{$page}<div/>
+              </div>
+            </div>
+            <!--/.box-->
+          </div><!-- /.page-content -->
+        </div><!-- /.main-content -->
+        <script type="text/javascript" src='{$Think.const.JS_URL}jquery-2.1.3.min.js'></script>
+        <script type="text/javascript">
+           $(function(){
+              var images=document.getElementsByClassName('enlarge');
+              $(".enlarge").click(function(){
+               /* var thiswidth = images[$(this).index()].width;
+                var thisheight = images[$(this).index()].height;
+                $(this).css({'width':thiswidth,'height':thisheight,'position':'absolute','bottom':'0','z-index':'9999'});*/
+              })
+
+           })
+        </script>

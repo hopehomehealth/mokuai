@@ -1,0 +1,140 @@
+
+<!-------banner------->
+<!-------banner------->
+<p class="su-banner pt10">
+    <foreach name="adinfo" item="v">
+        <if condition="$v.is_area eq 0">
+            <img src="{$Think.const.SITE_URL}{$v.pic}" />
+        </if>
+    </foreach>
+</p>
+
+<!-------第一通栏------->
+<div class="column-c pt10 ser">
+    <div class="ser-left fl">
+        <p class="ser-tit fl"><a href="index.html"><img src="{$Think.const.HIMG_URL}images_44.jpg" alt="首页" /></a><img src="{$Think.const.HIMG_URL}images_96.jpg" alt="" />军民融合</p>
+    </div>
+
+</div>
+<!-------第二通栏------->
+<div class="column-c pt10">
+    <!-------ad------->
+    <div class="coniner fl" id="idTransformView3">
+        <ul class="slier slier2" id="idSlider3">
+            <foreach name="clickinfo" item="v">
+                <li><a href="{:U('News/detail',array('news_id'=>$v['news_id']))}"><img src="{$Think.const.SITE_URL}{$v.pic}"/></a>
+                    <div class="idSiideer-pos">{$v.news_title}</div>
+                    <div class="idSiideer-pos2"></div>
+                </li>
+            </foreach>
+
+
+        </ul>
+        <ul class="num-a" id="idNum3">
+            <foreach name="clickinfo" item="v">
+            <li></li>
+            </foreach>
+        </ul>
+    </div>
+
+    <ul class="news fr">
+        <foreach name="pinginfo" item="v">
+            <li>
+                <h2><a href="{:U('News/detail',array('news_id'=>$v['news_id']))}">{$v.news_title}</a></h2>
+                <p class="news-sm ot-wd">{$v.content|strip_tags|str_replace=array(" ","　","\t","\n","\r"),array("","","","",""),###|mb_substr=###,0,88,'utf-8'}</p>
+            </li>
+        </foreach>
+
+
+    </ul>
+</div>
+
+<!-------第三通栏------->
+<div class="column-c pt5">
+    <div class="pt30">
+        <div class="view-a pr20 fl">
+            <p class="view-a-t fl"><span class="fr"><a href="{:U('News/newslist',array('lan_id'=>$lanhaifabuinfo1[0]['lan_id']))}">更多》</a></span><img src="{$Think.const.HIMG_URL}images_59.jpg" alt="蓝海发布" /></p>
+            <dl>
+                <foreach name="lanhaifabuinfo1" item="v">
+                    <h5><a href="{:U('News/detail',array('news_id'=>$v['news_id']))}">{$v.news_title}</a></h5>
+                    <dt><a href="{:U('News/detail',array('news_id'=>$v['news_id']))}"><img src="{$Think.const.SITE_URL}{$v.pic}" /></a></dt>
+                    <dd><a href="{:U('News/detail',array('news_id'=>$v['news_id']))}">{$v.content|strip_tags|str_replace=array(" ","　","\t","\n","\r"),array("","","","",""),###|mb_substr=###,0,66,'utf-8'}</a></dd>
+                </foreach>
+            </dl>
+            <ul>
+                <foreach name="lanhaifabuinfo2" item="v">
+                    <li><a href="{:U('News/detail',array('news_id'=>$v['news_id']))}">{$v.news_title}</a></li>
+                </foreach>
+            </ul>
+        </div>
+        <div class="view-a pr20 fl">
+            <p class="view-a-t fl"><span class="fr"><a href="{:U('News/newslist',array('lan_id'=>$chanyefazhaninfo1[0]['lan_id']))}">更多》</a></span><img src="{$Think.const.HIMG_URL}images_69.jpg" alt="产业发展" /></p>
+            <dl>
+                <foreach name="chanyefazhaninfo1" item="v">
+                    <h5><a href="{:U('News/detail',array('news_id'=>$v['news_id']))}">{$v.news_title}</a></h5>
+                    <dt><a href="{:U('News/detail',array('news_id'=>$v['news_id']))}"><img src="{$Think.const.SITE_URL}{$v.pic}" /></a></dt>
+                    <dd><a href="{:U('News/detail',array('news_id'=>$v['news_id']))}">{$v.content|strip_tags|str_replace=array(" ","　","\t","\n","\r"),array("","","","",""),###|mb_substr=###,0,66,'utf-8'}</a></dd>
+                </foreach>
+
+            </dl>
+            <ul>
+                <foreach name="chanyefazhaninfo2" item="v">
+                    <li><a href="{:U('News/detail',array('news_id'=>$v['news_id']))}">{$v.news_title}</a></li>
+                </foreach>
+            </ul>
+        </div>
+        <div class="view-a fl">
+            <p class="view-a-t fl"><span class="fr"><a href="{:U('News/newslist',array('lan_id'=>$wenhuachuanmeiinfo1[0]['lan_id']))}">更多》</a></span><img src="{$Think.const.HIMG_URL}images_62.jpg" alt="文化传媒" /></p>
+            <dl>
+                <foreach name="wenhuachuanmeiinfo1" item="v">
+                    <h5><a href="{:U('News/detail',array('news_id'=>$v['news_id']))}">{$v.news_title}</a></h5>
+                    <dt><a href="{:U('News/detail',array('news_id'=>$v['news_id']))}"><img src="{$Think.const.SITE_URL}{$v.pic}" /></a></dt>
+                    <dd><a href="{:U('News/detail',array('news_id'=>$v['news_id']))}">{$v.content|strip_tags|str_replace=array(" ","　","\t","\n","\r"),array("","","","",""),###|mb_substr=###,0,66,'utf-8'}</a></dd>
+                </foreach>
+
+            </dl>
+            <ul>
+                <foreach name="wenhuachuanmeiinfo2" item="v">
+                    <li><a href="{:U('News/detail',array('news_id'=>$v['news_id']))}">{$v.news_title}</a></li>
+                </foreach>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-------第四通栏------->
+<div class="column-c pt5">
+    <div class="fuse fl"> <span class="fr"><a href="{:U('News/newslist',array('lan_id'=>$jiaoyupeixuninfo[0]['lan_id']))}">更多》</a></span>
+        <p class="news-tit fl">教育培训</p>
+        <dl class="fuse fl">
+            <foreach name="jiaoyupeixuninfo" item="v">
+            <dt><a href="{:U('News/detail',array('news_id'=>$v['news_id']))}"><img src="{$Think.const.SITE_URL}{$v.pic}" /></a>
+                <p class="fuse-wz">{$v.news_title} </p>
+            </dt>
+            </foreach>
+        </dl>
+    </div>
+    <div class="view-a fr">
+        <p class="view-a-t fl"><span class="fr"><a href="{:U('News/newslist',array('lan_id'=>$anquanluntaninfo1[0]['lan_id']))}">更多》</a></span><span class="news-tit fl">安全与发展论坛</span></p>
+        <dl>
+            <foreach name="anquanluntaninfo1" item="v">
+            <h5><a href="{:U('News/detail',array('news_id'=>$v['news_id']))}">{$v.news_title}</a></h5>
+            <dt><a href="{:U('News/detail',array('news_id'=>$v['news_id']))}"><img src="{$Think.const.SITE_URL}{$v.pic}" /></a></dt>
+            <dd><a href="{:U('News/detail',array('news_id'=>$v['news_id']))}">{$v.content|strip_tags|str_replace=array(" ","　","\t","\n","\r"),array("","","","",""),###|mb_substr=###,0,66,'utf-8'}</a></dd>
+                </foreach>
+        </dl>
+        <ul class="">
+            <foreach name="anquanluntaninfo2" item="v">
+            <li><a href="{:U('News/detail',array('news_id'=>$v['news_id']))}">{$v.news_title}</a></li>
+              </foreach>
+        </ul>
+    </div>
+</div>
+
+<!-------第八通栏------->
+<p class="column-c ad1 pb30">
+    <foreach name="adinfo" item="v">
+        <if condition="$v.is_area eq 2">
+            <img src="{$Think.const.SITE_URL}{$v.pic}" />
+        </if>
+    </foreach>
+</p>

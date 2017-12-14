@@ -1,0 +1,172 @@
+<script type="text/javascript" src='{$Think.const.JS_URL}jquery-2.1.3.min.js'></script>
+<script type="text/javascript" src='{$Think.const.JS_URL}uploadPreview.js'></script>
+<div class="main-content">
+
+    <div class="page-content">
+        <div class="row">
+            <div class="page-content box">
+                <div class="box-title margin_bot_20">
+        <div class="span10">
+            <h3><i class="icon-magic"></i>栏目页广告修改</h3>
+        </div>
+    </div>
+                <form action="__SELF__" method="post" class="form-horizontal" enctype="multipart/form-data">
+                    <input type='hidden' id='extlanids' value='{$extlanids}' />
+                    <input type="hidden" name="banner_id" value="{$info.banner_id}">
+					<input type='hidden' name='lanid' value='{$info.lan_id}' />
+                    <div class="form-group">
+                        <label class="control-label">名称 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" class="input-large" name="title" value="{$info.banner_title}">
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">关键字 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" class="input-large" name="keyword" value="{$info.keyword}">
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">描　　述 : </label>
+                        <div class="controls pull-left">
+                            <textarea class="input-large" style="margin: 0px; height: 115px; width: 530px;" name="description">{$info.description}</textarea>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label">链接地址 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" class="input-large" name="url" value="{$info.url}">
+                            <span class="help-inline red"> * 注：必须以http://或https://开头  例如：http://www.hlnv.com</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">主栏目 : </label>
+                        <div class="controls pull-left">
+                            <select id='main_lan0' name='lan_id' onchange='show_lan1()'>
+                                <option value='0'>-请选择-</option>
+                                <foreach name='laninfoA' item='v'>
+                                    <option value="{$v.lan_id}"
+                                    <eq name='info.now_pid' value='$v.lan_id'>selected='selected'</eq>
+                                    >{$v.lan_title}</option>
+                                </foreach>
+                            </select>
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">扩展栏目 : </label>
+                        <div class="controls pull-left">
+                            <select id='ext_lan1' name='ext_lan[]'>
+                                <option value='0'>-请选择-</option></select>
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+                    <script type='text/javascript'>
+                        function show_lan1(){
+						var now_lanid = $("input[name='lanid']").val();
+                            var lan_id = $('#main_lan0').val();
+
+                                $.ajax({
+                                    url:"__MODULE__/Lanmu/getLanByPid",
+                                    data:{'lan_id':lan_id},
+                                    dataType:'json',
+                                    type:'get',
+                                    async:false,
+                                    success:function(msg){
+
+                                        var s = "";
+                                        //遍历msg并与html标签(option)结合，最后追加给页面
+                                        $.each(msg,function(){
+                                            s += "<option value='"+this.lan_id+"'";
+                                            if(now_lanid==this.lan_id){
+                                                s += "selected='selected'";
+                                            }
+                                            s += ">--/"+this.lan_title+"</option>";
+                                        });
+                                        $('#ext_lan1 option:gt(0)').remove();//清除旧数据标签
+                                        $('#ext_lan1').append(s);//追加新标签
+                                    }
+                                });
+                        }
+
+                        $(function(){
+                            var extlanids = $('#extlanids').val();
+                            show_lan1(extlanids);
+                        });
+                    </script>
+                    <div class="form-group">
+                        <label class="control-label">展示位置 : </label>
+                        <div class="controls pull-left">
+                            <label>
+                                <input type="radio" class="ace" name="is_area"  value="0"<if condition="$info.is_area eq 0">checked="checked"</if>>
+                                <span class="lbl">顶部</span>
+                                <span class="help-inline red"> * 图片建议尺寸</span>
+                            </label> <br/>
+                            <label>
+                                <input type="radio" class="ace" name="is_area" value="1"<if condition="$info.is_area eq 1">checked="checked"</if>>
+                                <span class="lbl">中部</span>
+                                <span class="help-inline red"> * 图片建议尺寸</span>
+                            </label> <br/>
+                            <label>
+                                <input type="radio" class="ace" name="is_area" value="2"<if condition="$info.is_area eq 2">checked="checked"</if>>
+                                <span class="lbl">底部</span>
+                                <span class="help-inline red"> * 图片建议尺寸</span>
+                            </label> <br/>
+                            <label>
+                                <input type="radio" class="ace" name="is_area" value="3"<if condition="$info.is_area eq 3">checked="checked"</if>>
+                                <span class="lbl">右下一</span>
+                                <span class="help-inline red"> * 图片建议尺寸</span>
+                            </label> <br/><label>
+                            <input type="radio" class="ace" name="is_area" value="4"<if condition="$info.is_area eq 4">checked="checked"</if>>
+                            <span class="lbl">右下二</span>
+                            <span class="help-inline red"> * 图片建议尺寸</span>
+                        </label> <br/><label>
+                            <input type="radio" class="ace" name="is_area" value="5"<if condition="$info.is_area eq 5">checked="checked"</if>>
+                            <span class="lbl">右下三</span>
+                            <span class="help-inline red"> * 图片建议尺寸</span>
+                        </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">图片 : </label>
+                        <div class="controls pull-left">
+                            <input type="file" class="input-large" id="pic" name="pic" >
+                            <div id="pic_div"><img src="{$Think.const.SITE_URL}/{$info.pic|substr=###,2}" id='pic_img' width='600' height='130'></div>
+                        </div>
+                    </div>
+                    <script type='text/javascript'>
+                        $(function(){
+                            new uploadPreview({ UpBtn: "pic", DivShow: "pic_div", ImgShow: "pic_img" });
+                        });
+                    </script>
+
+                    <div class="form-group">
+                        <label class="control-label">是否展示 : </label>
+                        <div class="controls pull-left">
+                            <label>
+                                <input type="radio" class="ace" name="is_show" value="0" <if condition="$info.is_show eq 0">checked="checked"</if> >
+                                <span class="lbl">是</span>
+                            </label>
+                            <label>
+                                <input type="radio" class="ace" name="is_show" value="1"<if condition="$info.is_show eq 1">checked="checked"</if> >
+                                <span class="lbl">否</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="control-label"></label>
+                        <button id="bsubmit" type="submit"  class="btn btn-sm btn-primary">保存</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--/.box-->
+    </div><!-- /.page-content -->
+</div><!-- /.main-content -->
+
+
+

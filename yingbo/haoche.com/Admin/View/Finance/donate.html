@@ -1,0 +1,76 @@
+        <div class="main-content">
+          <div class="page-content">
+            <div class="row">
+              <div class="page-content box">
+              	<div class="box-title margin_bot_20">
+                  	<div class="span10">
+                   		<h3><i class="icon-cogs"></i>账单列表</h3>
+                        <!--<div class="pull-right"><a class="btn btn-success btn-sm" href="#">导出订单</a></div>-->
+                  	</div>
+                </div>
+                <!--<form class="form-horizontal" method="post" action="__SELF__">
+                  <div class="form-group">
+                    <label class="control-label"  style="padding-top:0; margin-right:10px;">
+                        <select name="searchType" id="searchtype" class="input-medium">
+                          <option value="">--选择搜索类型--</option>
+                          <option value="orderno">订单编号</option>
+                          <option value="expressno">快递单号</option>
+                          <option value="userid">用 户 ID</option>
+                          <option value="consigner">收 货 人</option>
+                          <option value="phone">收货人电话</option>
+                        </select>
+                    </label>
+                    <div class="controls pull-left">
+                      <input type="text" name="search" value="{$Think.get.serach}" class="input-medium">
+                      <button type="submit" class="btn btn-sm btn-primary">搜索</button>
+                    </div>
+                  </div>
+                </form>-->
+                <div class="breadcrumbs">
+                    <ul>
+                        <li> <a href="__MODULE__/Finance/legou">乐购账单 </a> </li>
+                        <li> <a href="__MODULE__/Finance/recharge">冲值账单 </a> </li>
+                        <li> <a href="__MODULE__/Finance/haoche">豪车账单 </a> </li>
+                        <li> <a href="__MODULE__/Finance/channel">渠道账单 </a> </li>
+                        <li class="active"> <a href="__MODULE__/Finance/donate">捐款账单 </a> </li>
+						<li> <a href="__MODULE__/Finance/caiclub">办卡账单 </a> </li>
+						<li> <a href="__MODULE__/Finance/yangka">养卡账单 </a> </li>
+						<li> <a href="__MODULE__/Finance/tie">提额账单 </a> </li>
+						<li> <a href="__MODULE__/Finance/daikuan">贷款账单 </a> </li>
+						<li> <a href="__MODULE__/Finance/house">房天下账单 </a> </li>
+                        <!-- <li class="filterorder" filter='7'> <a href="#">已退货 </a> </li> -->
+                    </ul>
+                    <!-- .breadcrumb -->
+                </div>
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th width="100px">编号</th>
+                        <th width="100px">打款人</th>
+						<th width="100px">收款人</th>
+                        <th width="150px">金额</th>
+                        <th width="150px">收/支</th>
+                        <th width="150px">流水时间</th>
+                        <th width="150px">收支项目</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+					<foreach name="cimoney" item="info">
+                    <tr>
+                        <td></td>
+                        <td>{$info.nikename}</td>
+						<td>平台</td>
+                        <td style="color:black;font-style:italic;font-weight:bolder;font-size:1.1em">{$info.money}</td>
+                        <td>收入</td>
+                        <td>{$info.add_time|date="Y-m-d H:i:s",###}</td>
+                        <td>来自捐款：{$info.id}</td>
+                    </tr>
+					</foreach>
+					</tbody>
+                 </table>
+                 <div class="technorati">{$page}<div/>
+              </div>
+            </div>
+            <!--/.box-->
+          </div><!-- /.page-content -->
+        </div><!-- /.main-content -->

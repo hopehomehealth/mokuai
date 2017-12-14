@@ -1,0 +1,86 @@
+
+	<link href="{$Think.const.HCSS_URL}liyue-style.css" type="text/css" rel="stylesheet" />
+
+    <section style="margin-bottom:8rem;background:#F0F0F0;font-size:1.250rem;height:100%">
+    <form action="__MODULE__/Order/addorder" method="post" id="form">
+      <if condition="$delivery neq ''">
+      <div class="orderinfo_nav" style="padding-top:0.5rem;padding-bottom:0.5rem">
+          <a href="__MODULE__/Delivery/address" style="color:#999">
+          <dl>
+             <dd><img src="{$Think.const.HIMG_URL}dz.gif" alt=""/></dd>
+              <dt>收货人：{$delivery.consigner}<span>{$delivery.phone}</span><p style="padding-top:0.5rem">收货地址：{$delivery.dl_name}</p></dt>
+              <div style="clear: both"></div>
+          </dl>
+          </a>
+      </div>
+      <else />
+      <div class="orderinfo_nav" style="padding-top:0.5rem;padding-bottom:0.5rem">
+          <a href="__MODULE__/Delivery/address" style="color:#999">
+          <dl>
+             <dd><img src="{$Think.const.HIMG_URL}dz.gif" alt=""/></dd>
+             <dt style="height:4rem;line-height:4rem;font-size:2rem">请选择收货地址</dt>
+             <div style="clear: both"></div>
+          </dl>
+          </a>
+      </div>
+      </if>
+      <foreach name="orderList" item="orderinfo">
+      <div class="orderinfo_main">
+          <div class="orderinfo_main1">
+              <dl>
+                <dd><a href="{:U('Goods/detail',array('goods_id'=>$orderinfo['goodsinfo']['goods_id']))}"><img src="{$Think.const.SITE_URL}{$orderinfo.goodsinfo.mid_logo}" alt=""/></a></dd>
+                <dt>
+                    <h2 style="width:65%;word-break : break-all;">{$orderinfo.goodsinfo.goods_name}<br />{$orderinfo.spec}</h2>
+                    <p style="width:30%;color:#DD0045">￥{$orderinfo.goodsinfo.price}<br><span></span><br/>×{$orderinfo.number}</p>
+                    <!-- <div style="clear: both"></div>
+                    <span style='float:left;width:100%;'>{$Think.get.spec}</span> -->
+                </dt>
+                   <div style="clear: both"></div>
+                   <h3>运费<span style="color: #ccc">￥0.00</span></h3>
+                   <h3>首付<span style="color: #DD0045">￥{$orderinfo.downpay}</span></h3>
+                       <h3 style="color:#DD0045;font-size:2rem;font-weight:bolder">+<span style="color: #DD0045;"></h3>
+                       <h3>积分<span style="color: #DD0045;">{$orderinfo['score']}</span></h3>
+                    <h3>实付款：<span><b>￥{$orderinfo.downpay}</b></span></h3>
+              </dl>
+          </div>
+      </div>
+              <input type="hidden" name="goods_id[]" value="{$orderinfo['goodsinfo']['goods_id']}" />
+              <input type="hidden" name="spec[]" value="{$orderinfo['spec']}" />
+              <input type="hidden" name="downpay[]" value="{$orderinfo['downpay']}" />
+              <input type="hidden" name="score[]" value="{$orderinfo['score']}" />
+              <input type="hidden" name="number[]" value="{$orderinfo['number']}" />
+              <input type="hidden" name="consigner[]" value="{$delivery['consigner']}" />
+              <input type="hidden" name="phone[]" value="{$delivery['phone']}" />
+              <input type="hidden" name="delivery[]" value="{$delivery['dl_name']}" />
+              <input type="hidden" name="goods_name[]" value="{$orderinfo['goodsinfo']['goods_name']}" />
+      </foreach>
+      <div class="orderinfo_main2">
+          <h3 style="padding-left:0.5rem;padding-top:0.5rem">积分总计<span style="float:right;color: #DD0045;padding-right:0.5rem">{$total_sc}</span></h3>
+          <h3 style="padding-left:0.5rem">首付总计<span style="float:right;color: #DD0045;padding-right:0.5rem">￥{$total_my}</span></h3>
+      </div>
+      <div class="orderinfo_main2">
+        <ul>
+			  <input type="hidden" name="total_my" value="{$total_my}" />
+              <input type="hidden" name="total_sc" value="{$total_sc}" />
+              <li><input id="suborder" type="button" value="提交订单" style="padding:0.200rem;color:white; background: #DD0045"/></li>
+        </ul>
+        <div style="clear: both"></div>
+      </div>
+     </form>
+    </section>
+    <script type="text/javascript">
+        $(function(){
+			$("#suborder").click(function(){
+				$("#suborder").attr('disabled',true);
+				if(($("input[name='delivery[]']").val() == '') || ($("input[name='phone[]']").val() == '')){
+					flag = false;
+					$("section").append("<div id='errormsg' style='display:none;position:absolute;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1rem;opacity:0.7;background:#666'>"+'请选择收货地址'+"</div>");
+
+                    $("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);$("#bsubmit").attr('disabled',true);setTimeout(function(){$("#errormsg").remove();$("#suborder").attr('disabled',false);},2000);
+					return false;
+				}else{
+					$("#form").submit();
+				}
+			})
+        })
+    </script>

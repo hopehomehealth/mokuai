@@ -1,0 +1,336 @@
+<script type="text/javascript" src="{$Think.const.HJS_URL}jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src='{$Think.const.PLUGIN_URL}ueditor/ueditor.config.js' ></script>
+<script type="text/javascript" src='{$Think.const.PLUGIN_URL}ueditor/ueditor.all.min.js' ></script>
+<script type="text/javascript" src='{$Think.const.PLUGIN_URL}ueditor/lang/zh-cn/zh-cn.js' ></script>
+<script type="text/javascript" src="{$Think.const.HJS_URL}msgbox.js"></script>
+<script type="text/javascript" src='{$Think.const.HJS_URL}myblog.js' ></script>
+<!--banner-->
+<div class="bow">
+  <div style="width:1000px;margin:0 auto;position:relative">
+  <div class="bow-c" style="padding-top:0;left:0;height:auto">
+    <p class="fs30 white" style="padding-top:18px">{$bloginfo.blog_name}</p>
+    <p class="bow-c-w pt15">
+<!-- 	<a class="white" href="http://hetaohetao.blog.tianya.cn" target="_blank">http://hetaohetao.blog.tianya.cn</a> -->
+	<br />
+      {$bloginfo.blog_desc}</p>
+  </div>
+  </div>
+  <img src="{$Think.const.HIMG_URL}bow_banner.jpg" />
+</div>
+<ul style="width: 1000px;margin:0 auto;background: url({$Think.const.HIMG_URL}images_10.png) no-repeat left bottom;line-height: 36px;height:36px;display:block;margin-top:-36px;z-index:999;position:relative">
+  <li style="float:left;"><a style="color:#fff;height:36px" onclick="blogset()" href="javascript:void(0)">设置管理</a></li>
+  <li style="padding-left:30px; float:left;"><a style="color:#fff;height:36px" onclick="sendbowen()" href="javascript:void(0)">发布博文</a></li>
+</ul>
+<!--banner-->
+
+<!--第一通栏-->
+
+<div class="column-c pt10 pb30">
+  <!--****左边通栏****-->
+  <div class="set-lis-l fl">
+    <!--****左边第一通栏****-->
+    <p class="nhtt-tit fl"><img src="{$Think.const.HIMG_URL}images_163.jpg" alt="设置管理" /></p>
+    <!--****左边第二通栏****-->
+    <ul class="core-tit fl pt25">
+      <li class="current"><a href="javascript:void(0)">博客设置</a></li>
+      <li><a href="javascript:void(0)">博文管理</a></li>
+      <li><a href="javascript:void(0)">评论管理</a></li>
+      <li><a href="javascript:void(0)">分类管理</a></li>
+      <li><a href="javascript:void(0)">收藏博文</a></li>
+    </ul>
+    <div class="blogtable">
+      <ul class="advice fl h590">
+        <form action="__MODULE__/Blog/set" method="post" id="blogsetform">
+          <li>
+            <p class="dat-t fl">博文名称：</p>
+            <input name="blog_name" class="advice-k w385 fl" onblur="checkblogname(this.value)" value="{$bloginfo.blog_name}" placeholder="请输入博客名称" type="text" />
+          </li>
+           <li><p class="dat-t fl">博客简介：</p><p class="fl">
+           <textarea name="blog_desc" class="advice-k w385 h150" onblur="checkblogdesc(this.value)" style="resize:none" placeholder="输入简单的介绍~">{$bloginfo.blog_desc}</textarea>
+         </p></li>
+          <li>
+            <p class="dat-t fl">访问权限：</p>
+            <p class="fl lh34">
+              <label>
+                <input type="radio" name="is_open" value="1" {$bloginfo['is_open']?"checked":""} id="RadioGroup1_0" />
+                公开</label>
+              <label>
+                <input type="radio" name="is_open" value="0" {$bloginfo['is_open']?"":"checked"} id="RadioGroup1_1" />
+                不公开</label>
+            </p>
+          </li>
+          <li>
+            <p class="dat-t fl">&nbsp;</p>
+            <p class="advice-an fl"><a href="javascript:void(0)" onclick="subblogset()">确&nbsp;定</a></p>
+          </li>
+        </form>
+      </ul>
+    </div>
+    <div class="blogtable" style="display:none">
+        <p class="pt30 fl"><span class="fl lh34" style="padding-left:15px"> 博文分类：</span>
+        <select class="poster-k fl" name="class_id">
+            <option style="color:#666;" value='0'>&nbsp;&nbsp;&nbsp;&nbsp;选择分类</option>
+            <foreach name='classlist' item='classinfo'>
+                  <option style="color:#666;" value='{$classinfo.class_id}'>&nbsp;&nbsp;&nbsp;&nbsp;{$classinfo.class_name}</option>
+            </foreach>
+          </select>
+        <span class="pl40 fl lh34">关键字：</span><span class="pr15 fl">
+        <input name="" class="advice-k w190 fl" placeholder="" type="text" />
+        </span><span class="fl logon-an"><a href="">查询</a></span></p>
+        <table width="100%"  class="gem fl" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <th class="w-40">标题</th>
+            <th>时间</th>
+            <th>访问</th>
+            <th>评论</th>
+            <th>操作</th>
+          </tr>
+          <tr>
+            <td>中国大肆抛售美债 日本急了敲美闷棍</td>
+            <td>2016-09-06 10:37:08</td>
+            <td>365</td>
+            <td>356</td>
+            <td id="brn"><a class=" pr20 red">编辑</a><a class="red">删除</a></td>
+          </tr>
+        </table>
+    </div>
+    <div class="blogtable" style="display:none">
+      <p class="core-tit fl b-gray mt20"><a style="padding-left:15px" class="pr15 pl10 bule" href="tion.html">评论我的</a><a style="padding-left:15px" href="my_tion.html">我的评论</a></p>
+     <ul class="set-lis_lb fl">
+        <li>
+          <dl class="tion fl pt15">
+            <dt><a href="nhtt_final.html"><img src="{$Think.const.HIMG_URL}images_166.jpg" alt="" /></a></dt>
+            <dd>
+              <p class="tion-wz fl pb10"><a class="fr" href=""><img src="{$Think.const.HIMG_URL}images_165.jpg" /></a><span class="bule pr10">青玉伏案</span>评论<span class="bule pl10">中国大肆抛售美债 日本急了敲美闷棍</span></p>
+              <p class="set-lis-nr fl">众所周知，美国和日本的关系一向被人们视为主子与仆人的关系，日本一直是美国vcv为重返亚太平衡的一颗棋子，也
+                是美国剪羊毛的对象，上世纪70年代，日本被美国一剪回到解放前，经济一直处于停滞状态。</p>
+              <p class="set-lis-plgz fl  fs12">2016-09-06 10:37:08</p>
+            </dd>
+          </dl>
+        </li>
+        <li>
+          <dl class="tion fl pt15">
+            <dt><a href="nhtt_final.html"><img src="{$Think.const.HIMG_URL}images_166.jpg" alt="" /></a></dt>
+            <dd>
+              <p class="tion-wz fl pb10"><a class="fr" href=""><img src="{$Think.const.HIMG_URL}images_165.jpg" /></a><span class="bule pr10">青玉伏案</span>评论<span class="bule pl10">中国大肆抛售美债 日本急了敲美闷棍</span></p>
+              <p class="set-lis-nr fl">众所周知，美国和日本的关系一向被人们视为主子与仆人的关系，日本一直是美国vcv为重返亚太平衡的一颗棋子，也
+                是美国剪羊毛的对象，上世纪70年代，日本被美国一剪回到解放前，经济一直处于停滞状态。</p>
+              <p class="set-lis-plgz fl  fs12">2016-09-06 10:37:08</p>
+            </dd>
+          </dl>
+        </li>
+         <li>
+          <dl class="tion fl pt15">
+            <dt><a href="nhtt_final.html"><img src="{$Think.const.HIMG_URL}images_166.jpg" alt="" /></a></dt>
+            <dd>
+              <p class="tion-wz fl pb10"><a class="fr" href=""><img src="{$Think.const.HIMG_URL}images_165.jpg" /></a><span class="bule pr10">青玉伏案</span>评论<span class="bule pl10">中国大肆抛售美债 日本急了敲美闷棍</span></p>
+              <p class="set-lis-nr fl">众所周知，美国和日本的关系一向被人们视为主子与仆人的关系，日本一直是美国vcv为重返亚太平衡的一颗棋子，也
+                是美国剪羊毛的对象，上世纪70年代，日本被美国一剪回到解放前，经济一直处于停滞状态。</p>
+              <p class="set-lis-plgz fl  fs12">2016-09-06 10:37:08</p>
+            </dd>
+          </dl>
+        </li>
+         <li>
+          <dl class="tion fl pt15">
+            <dt><a href="nhtt_final.html"><img src="{$Think.const.HIMG_URL}images_166.jpg" alt="" /></a></dt>
+            <dd>
+              <p class="tion-wz fl pb10"><a class="fr" href=""><img src="{$Think.const.HIMG_URL}images_165.jpg" /></a><span class="bule pr10">青玉伏案</span>评论<span class="bule pl10">中国大肆抛售美债 日本急了敲美闷棍</span></p>
+              <p class="set-lis-nr fl">众所周知，美国和日本的关系一向被人们视为主子与仆人的关系，日本一直是美国vcv为重返亚太平衡的一颗棋子，也
+                是美国剪羊毛的对象，上世纪70年代，日本被美国一剪回到解放前，经济一直处于停滞状态。</p>
+              <p class="set-lis-plgz fl  fs12">2016-09-06 10:37:08</p>
+            </dd>
+          </dl>
+        </li>
+         <li>
+          <dl class="tion fl pt15">
+            <dt><a href="nhtt_final.html"><img src="{$Think.const.HIMG_URL}images_166.jpg" alt="" /></a></dt>
+            <dd>
+              <p class="tion-wz fl pb10"><a class="fr" href=""><img src="{$Think.const.HIMG_URL}images_165.jpg" /></a><span class="bule pr10">青玉伏案</span>评论<span class="bule pl10">中国大肆抛售美债 日本急了敲美闷棍</span></p>
+              <p class="set-lis-nr fl">众所周知，美国和日本的关系一向被人们视为主子与仆人的关系，日本一直是美国vcv为重返亚太平衡的一颗棋子，也
+                是美国剪羊毛的对象，上世纪70年代，日本被美国一剪回到解放前，经济一直处于停滞状态。</p>
+              <p class="set-lis-plgz fl  fs12">2016-09-06 10:37:08</p>
+            </dd>
+          </dl>
+        </li>
+      </ul>
+    </div>
+    <div class="blogtable" style="display:none">
+      <form method="post" action="__MODULE__/Blog/bgclass" id="addclassform">
+      <p class="pt30 fl">
+        <span class="fl lh34" style="padding-left:15px">添加新分类：</span>
+        <input type="text" class="poster-k fl" style="height:33px" name="class_name" onblur="checkclassname(this.value)" value="" placeholder="请输入分类名">
+        <!-- <select class="poster-k fl" name="">
+          <option>未分类</option>
+          <option>蓝海头条</option>
+          <option>军民融合</option>
+        </select> -->
+        <span class="fl logon-an ml28"><a href="javascript:void(0)" onclick="subclassform()">添加</a></span>
+      </p>
+      </form>
+      <table width="100%"  class="gem fl" border="0" cellspacing="0" cellpadding="0" id="classtable">
+        <tr>
+          <th class="w-40">分类</th>
+          <th>博文数</th>
+          <th>管理</th>
+        </tr>
+      </table>
+    </div>
+    <div class="blogtable" style="display:none">
+      <ul class="set-lis_lb fl">
+        <li>
+          <p class="set-lis-wz fl"><a class="fr pt10" href=""><img src="{$Think.const.HIMG_URL}images_165.jpg" /></a><a href="bowen_final.html">中国大肆抛售美债 日本急了敲美闷棍</a></p>
+          <p class="set-lis-nr fl">众所周知，美国和日本的关系一向被人们视为主子与仆人的关系，日本一直是美国vcv为重返亚太平衡的一颗棋子，也
+            是美国剪羊毛的对象，上世纪70年代，日本被美国一剪回到解放前，经济一直处于停滞状态。</p>
+          <p class="set-lis-plgz fl  fs12"><span class="pr15 bule">阑夕</span> 2016-09-06 10:37:08</p>
+          <p class="set-lis-plgz fr fs12"><span class="pr15"><img src="{$Think.const.HIMG_URL}images_06.png" alt="" />323</span><span class="pr15 fl"><img src="{$Think.const.HIMG_URL}images_07.png" alt="" />323</span></p>
+        </li>
+        <li>
+          <p class="set-lis-wz fl"><a class="fr pt10" href=""><img src="{$Think.const.HIMG_URL}images_165.jpg" /></a><a href="bowen_final.html">中国大肆抛售美债 日本急了敲美闷棍</a></p>
+          <p class="set-lis-nr fl">众所周知，美国和日本的关系一向被人们视为主子与仆人的关系，日本一直是美国vcv为重返亚太平衡的一颗棋子，也
+            是美国剪羊毛的对象，上世纪70年代，日本被美国一剪回到解放前，经济一直处于停滞状态。</p>
+          <p class="set-lis-plgz fl  fs12"><span class="pr15 bule">阑夕</span> 2016-09-06 10:37:08</p>
+          <p class="set-lis-plgz fr fs12"><span class="pr15"><img src="{$Think.const.HIMG_URL}images_06.png" alt="" />323</span><span class="pr15 fl"><img src="{$Think.const.HIMG_URL}images_07.png" alt="" />323</span></p>
+        </li>
+        <li>
+          <dl class="set-lis-twjh fl pt15">
+            <dt><a href="ser_final.html"><img src="{$Think.const.HIMG_URL}images_110.jpg" alt="" /></a></dt>
+            <dd>
+              <p class="set-lis-wz fl"><a class="fr" href=""><img src="{$Think.const.HIMG_URL}images_165.jpg" /></a><a href="bowen_final.html">中国大肆抛售美债 日本急了敲美闷棍</a></p>
+              <p class="set-lis-nr fl">众所周知，美国和日本的关系一向被人们视为主子与仆人的关系，日本一直是美国vcv为重返亚太平衡的一颗棋子，也
+                是美国剪羊毛的对象，上世纪70年代，日本被美国一剪回到解放前，经济一直处于停滞状态。</p>
+              <p class="set-lis-plgz fl  fs12"><span class="pr15 bule">阑夕</span> 2016-09-06 10:37:08</p>
+              <p class="set-lis-plgz fr fs12"><span class="pr15"><img src="{$Think.const.HIMG_URL}images_06.png" alt="" />323</span><span class="pr15 fl"><img src="{$Think.const.HIMG_URL}images_07.png" alt="" />323</span></p>
+            </dd>
+          </dl>
+        </li>
+        <li>
+          <dl class="set-lis-twjh fl pt15">
+            <dt><a href="bowen_final.html"><img src="{$Think.const.HIMG_URL}images_110.jpg" alt="" /></a></dt>
+            <dd>
+              <p class="set-lis-wz fl"><a class="fr" href=""><img src="{$Think.const.HIMG_URL}images_165.jpg" /></a><a href="bowen_final.html">中国大肆抛售美债 日本急了敲美闷棍</a></p>
+              <p class="set-lis-nr fl">众所周知，美国和日本的关系一向被人们视为主子与仆人的关系，日本一直是美国vcv为重返亚太平衡的一颗棋子，也
+                是美国剪羊毛的对象，上世纪70年代，日本被美国一剪回到解放前，经济一直处于停滞状态。</p>
+              <p class="set-lis-plgz fl  fs12"><span class="pr15 bule">阑夕</span> 2016-09-06 10:37:08</p>
+              <p class="set-lis-plgz fr fs12"><span class="pr15"><img src="{$Think.const.HIMG_URL}images_06.png" alt="" />323</span><span class="pr15 fl"><img src="{$Think.const.HIMG_URL}images_07.png" alt="" />323</span></p>
+            </dd>
+          </dl>
+        </li>
+        <li>
+          <dl class="set-lis-twjh fl pt15">
+            <dt><a href="bowen_final.html"><img src="{$Think.const.HIMG_URL}images_110.jpg" alt="" /></a></dt>
+            <dd>
+              <p class="set-lis-wz fl"><a class="fr" href=""><img src="{$Think.const.HIMG_URL}images_165.jpg" /></a><a href="bowen_final.html">中国大肆抛售美债 日本急了敲美闷棍</a></p>
+              <p class="set-lis-nr fl">众所周知，美国和日本的关系一向被人们视为主子与仆人的关系，日本一直是美国vcv为重返亚太平衡的一颗棋子，也
+                是美国剪羊毛的对象，上世纪70年代，日本被美国一剪回到解放前，经济一直处于停滞状态。</p>
+              <p class="set-lis-plgz fl  fs12"><span class="pr15 bule">阑夕</span> 2016-09-06 10:37:08</p>
+              <p class="set-lis-plgz fr fs12"><span class="pr15"><img src="{$Think.const.HIMG_URL}images_06.png" alt="" />323</span><span class="pr15 fl"><img src="{$Think.const.HIMG_URL}images_07.png" alt="" />323</span></p>
+            </dd>
+          </dl>
+        </li>
+        <li>
+          <dl class="set-lis-twjh fl pt15">
+            <dt><a href="bowen_final.html"><img src="{$Think.const.HIMG_URL}images_110.jpg" alt="" /></a></dt>
+            <dd>
+              <p class="set-lis-wz fl"><a class="fr" href=""><img src="{$Think.const.HIMG_URL}images_165.jpg" /></a><a href="bowen_final.html">中国大肆抛售美债 日本急了敲美闷棍</a></p>
+              <p class="set-lis-nr fl">众所周知，美国和日本的关系一向被人们视为主子与仆人的关系，日本一直是美国vcv为重返亚太平衡的一颗棋子，也
+                是美国剪羊毛的对象，上世纪70年代，日本被美国一剪回到解放前，经济一直处于停滞状态。</p>
+              <p class="set-lis-plgz fl  fs12"><span class="pr15 bule">阑夕</span> 2016-09-06 10:37:08</p>
+              <p class="set-lis-plgz fr fs12"><span class="pr15"><img src="{$Think.const.HIMG_URL}images_06.png" alt="" />323</span><span class="pr15 fl"><img src="{$Think.const.HIMG_URL}images_07.png" alt="" />323</span></p>
+            </dd>
+          </dl>
+        </li>
+        <li>
+          <p class="set-lis-wz fl"><a class="fr pt10" href=""><img src="{$Think.const.HIMG_URL}images_165.jpg" /></a><a href="bowen_final.html">中国大肆抛售美债 日本急了敲美闷棍</a></p>
+          <p class="set-lis-nr fl">众所周知，美国和日本的关系一向被人们视为主子与仆人的关系，日本一直是美国vcv为重返亚太平衡的一颗棋子，也
+            是美国剪羊毛的对象，上世纪70年代，日本被美国一剪回到解放前，经济一直处于停滞状态。<img src="{$Think.const.HIMG_URL}images_110.jpg" /><img src="{$Think.const.HIMG_URL}images_110.jpg" /><img src="{$Think.const.HIMG_URL}images_110.jpg" /></p>
+          <p class="set-lis-plgz fl  fs12"><span class="pr15 bule">阑夕</span> 2016-09-06 10:37:08</p>
+          <p class="set-lis-plgz fr fs12"><span class="pr15"><img src="{$Think.const.HIMG_URL}images_06.png" alt="" />323</span><span class="pr15 fl"><img src="{$Think.const.HIMG_URL}images_07.png" alt="" />323</span></p>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="set-lis-l fl" style="display:none">
+    <p class="nhtt-tit fl"><img src="{$Think.const.HIMG_URL}images_164.jpg" alt="发表博文" /></p>
+    <!--****左边第一通栏****-->
+    <form action="" method="post" id="articleform">
+     <ul class="advice fl">
+      <li>
+          <p class="poster-t fl">标题：</p>
+          <input name="title" class="advice-k w520 fl" placeholder="请输入文章标题！" type="text" />
+          <select class="poster-k fl ml28" name="class_id">
+            <option style="color:#666;" value='0'>&nbsp;&nbsp;&nbsp;&nbsp;选择分类</option>
+            <foreach name='classlist' item='classinfo'>
+                  <option style="color:#666;" value='{$classinfo.class_id}'>&nbsp;&nbsp;&nbsp;&nbsp;{$classinfo.class_name}</option>
+            </foreach>
+          </select>
+          </p>
+        </li>
+        <li>
+          <p class="poster-t fl">内容：</p> <textarea rows="5" cols="25" id='content' name="content" class="advice-k w653 fl" style='padding:0;border:0;width:663px;height:455px;'></textarea><div style="clear:both"></div>
+        </li>
+        <script type="text/javascript">
+          var ue = UE.getEditor('content',{toolbars: [[
+                    'fullscreen', 'source', '|',
+              'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'pasteplain', '|', 'forecolor', 'selectall', 'cleardoc', '|',
+              'rowspacingtop', 'rowspacingbottom', 'lineheight',
+              'fontfamily', 'fontsize','indent',
+              'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|',
+              'link', 'unlink', '|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
+              'simpleupload', 'emotion', '|',
+              'inserttable', 'deletetable', 'insertrow', 'deleterow', 'insertcol', 'deletecol', 'mergecells', 'mergeright', 'mergedown', 'splittocells', 'splittorows', 'splittocols', 'charts'
+          ]]});
+        </script>
+      <li>
+        <p class="poster-t fl">&nbsp;</p><p class="lh34"><span class=" pr20"> <label>
+                  <input type="radio" name="RadioGroup1" value="博文置顶" id="RadioGroup1_0" />
+                  博文置顶</label>
+               </span><span class="l-gray">请遵守<a href="" class="bule">蓝海长青公约</a>言论规则，不得违反国家法律法规</span> </p>
+      </li>
+      <li>
+        <p class="poster-t fl">&nbsp;</p> <input name="checkverify" type="text" class="logon-list-k1 fl mr15" placeholder="请输入验证码"  />
+        <img src="__MODULE__/Blog/verifyImg" onclick="this.src=this.src+'?'+Math.random()" /><span class="logon-an fr mr15"><a href="javascript:void(0)" onclick="subarticleform()">发&nbsp;表</a></span>
+      </li>
+    </ul>
+    </form>
+  </div>
+  <!--****右边通栏****-->
+  <div class="set-lis-r fr">
+    <!--****右边第一通栏****-->
+    <if condition="($Think.session.flag neq '') AND ($Think.session.userInfo.is_blog eq 1)">
+      <p class="set-lis-tjtt fl"><img src="{$Think.const.HIMG_URL}images_160.jpg"  alt=""/></p>
+      <dl class="bow-r fl" style="padding-top:10px;padding-bottom:10px">
+        <dt><a href="__MODULE__/Blog/myblog"><img src="{$Think.session.userInfo.userhead}" alt="" /></a></dt>
+        <dd>
+          <p class="fs22 pt10"><a href="__MODULE__/Blog/myblog">{$Think.session.userInfo.username}</a></p>
+        </dd>
+      </dl>
+       <!--****右边第二通栏****-->
+      <ul class="bow-list fl pt15" style="padding-bottom:10px">
+      <li>今日访问：{$bloginfo.today}</li>
+      <li>总访问量：{$bloginfo.counts}</li>
+      <li>开博时间：{$bloginfo.ctime|date="Y-m-d",###}</li>
+      <li>博客排名：<span class="bule">1023</span></li>
+      </ul>
+    <else />
+      <p class="fl blog-kt"><a href="__MODULE__/Blog/openblog">开通博客</a></p>
+    </if>
+
+    <!--****右边第三通栏****-->
+    <div class="set-lis-tj fl pt15">
+      <p class="set-lis-tjtt fl"><img src="{$Think.const.HIMG_URL}images_161.jpg" alt="" /></p>
+      <ul class="set-lis-list fl pt15">
+        <li><a href="bowen_final.html">打遍世界所有强国的神秘之师</a></li>
+        <li><a href="bowen_final.html">古代存在外星人的12铁证</a></li>
+        <li><a href="bowen_final.html">地球周围竟存神秘入口</a></li>
+        <li><a href="bowen_final.html">82种外星人与地球接触</a></li>
+      </ul>
+    </div>
+ <!--    <p class="pt15 fl"><img src="{$Think.const.HIMG_URL}images_111.jpg"  alt=""/></p> -->
+  </div>
+</div>
+<script type="text/javascript">
+  $(function(){
+    changetable();
+  })
+</script>
+

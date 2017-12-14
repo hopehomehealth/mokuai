@@ -1,0 +1,37 @@
+#tags { margin: 15px 0 0 0;  padding-top: 0px; height: 40px }
+#tags li{ float: left; margin-right: 3px; list-style-type: none; height: 40px; cursor: pointer; }
+#tags li a { padding: 0 20px; float: left; color: #999; line-height: 40px; height: 40px; text-decoration: none; font-size: 14px; margin-top: 0px;}
+#tags li.selectTag a { background-position: right top; color: #000; }
+.clr { display: block; clear: both; height: 1px; overflow: hidden; }
+
+#tagContent .tagContent0 {display: block;}
+.tagContent fieldset { margin-top: 0; background-color: #eee;-webkit-border-radius: 0 5px 5px 5px;border-radius: 0 5px 5px 5px; }
+.filterBox { height: 26px; position: relative; line-height: 26px; padding: 20px 0; }
+.g { width: 100%; margin: 0 auto;  }
+.filterBox h1 {font-family: "微软雅黑"; font-size: 14px; line-height: 26px; font-weight: normal; margin: 0; width: 80px; float: left; text-align: right; }
+.content p, .content table, .content tr, .content td, .content th, .content dl, .content dt, .content dd, .content ol, .content ul, .content li, .content input, .content button, .content select, .content stextarea { line-height: 1.5; }
+.filterBtn { margin-left: 90px; height: 36px; }
+.filterBtn li { float: left; text-align: center; cursor: pointer; border: 1px solid #fff; margin: 0 4px 4px 0;   position: relative;}
+.filterBtn li p { padding: 0 10px; display: block; line-height: 26px; background: #fff }
+.filterBtn li:hover { border: 2px solid #c30008; margin: -1px 3px 3px -1px; }
+.filterBtn .active { border: 2px solid #c30008; margin: -1px 3px 3px -1px; color: #c30008; }
+.filterBtn .active i { background: url(../images/pok.png) no-repeat; position: absolute; bottom: 0; right: 0; width: 13px; height: 13px; display: block; }
+.cateradio {padding-top: 20px;overflow: hidden;}
+#tagContent li {position: relative;}
+#grid .mix { opacity: 0; display: none }
+.grid li { z-index: 0; font-size: 12px }
+.grid li { *display:inline;*zoom:1;*float:left;}
+.cateradio li { float: left; margin: 0 0 20px 20px; width: 170px; height: 383px; text-align: center; background: url(../images/radio_iphone0.png) no-repeat center top; position: relative; }
+#grid li:hover .mbtip { position: absolute; bottom: 88px;   left: 14px; display: block;  width: 143px;padding: 6px; background-color: rgba(0,0,0,0.6);; color: #FFF;  text-align: left;  z-index: 999 }
+.cateradio2 { padding-top: 20px; }
+#grid li .mbtip{ display: none;}
+.msgWrap fieldset label img {margin-bottom: 10px;}
+.cateradio4 { padding: 20px }
+.samsung-render { width: 368px; height: 480px; padding-left: 25px; }
+.cateradio4 h3 {font-family: "微软雅黑"; font-size: 16px; color: #333333; font-weight: normal;margin-bottom: 10px;}
+#tagContent .radio{ display: inline-block; margin: 0px;}
+.cateradio li.active { background: url(../images/radio_iphone.png) no-repeat center top; }
+.cateradio li:hover { background: url(../images/radio_iphone.png) no-repeat center top; }
+.cateradio4 li label {display: block;font-size: 12px;padding: 10px; background: rgba(255,255,255,0.5)}
+#tagContent .lbl:before{margin-right: 7px;}
+.cateradio .lbl{margin-top: 12px ! important;}

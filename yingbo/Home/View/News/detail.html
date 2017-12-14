@@ -1,0 +1,62 @@
+
+{__NOLAYOUT__}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>新农缘天下商城</title>
+    <link href="{$Think.const.HCSS_URL}basic.css" type="text/css" rel="stylesheet" />
+    <link href="{$Think.const.HCSS_URL}style.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="{$Think.const.HJS_URL}jquery-1.7.2.min.js"></script>
+
+
+    <link rel="stylesheet" href="{$Think.const.HCSS_URL}personal-reset.css" />
+    <link rel="stylesheet" href="{$Think.const.HCSS_URL}personal-style.css" />
+    <link rel="stylesheet" href="{$Think.const.HCSS_URL}swiper.min.css"/>
+</head>
+
+<body>
+<header><a class="head_back1" href="Javascript:window.history.go(-1)">&nbsp;</a>
+    <div class="headTit">新闻详情</div>
+    <a class="head_back2">&nbsp;</a> </header>
+
+<ul class="dj_xhk fr">
+    <p class="arrow-up fl"></p>
+    <li><a href="{:U('News/showlist')}">新闻首页</a></li>
+    <!--<li><a href="{:U('News/type')}">新闻分类</a></li>-->
+</ul>
+<script type="text/javascript">
+    $(".head_back2").click(function(){
+        $(".dj_xhk").slideToggle("1000");
+    });
+</script>
+
+    <section >
+        <div class="jour">
+            <h2>{$info.title}</h2>
+            <h5>{$info.add_time|date='Y-m-d',###}<i style="padding:0 1rem; color:#dd0045;">{$info.author}</i>
+                <a href="{:U('News/type',array('type_id'=>$info['type_id']))}"> <span style="color:#dd0045;">{$info.type_name}</span> </a>
+                <!--<a href="{:U('News/showlist')}"> <span style="color:#dd0045;float: right;">新闻资讯</span></a>-->
+            </h5>
+            <style type="text/css">
+table{width:100%;}
+    embed,video,iframe{background: #000000;width:98%;margin: 2% 1%;}
+</style>
+            {$info.content}
+        </div>
+    </section>
+
+
+<script src="{$Think.const.HJS_URL}iscroll4.js"></script>
+<script src="{$Think.const.HJS_URL}jquery-1.8.2.min.js"></script>
+</body>
+</html>
+
+
+
+

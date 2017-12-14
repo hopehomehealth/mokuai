@@ -1,0 +1,138 @@
+
+        <div class="main">
+            <ul class="orderNav borBot">    
+                <li class="cur">
+                    <span>未完成</span>
+                </li>
+                <li>
+                    <span>进行中</span>
+                </li>
+                <li>
+                    <span>已完成</span>
+                </li>
+            </ul>
+            <div>
+                <div class="orderlist cur"> 
+                   <div class="wddd">
+                  <ul class="wmc_con">
+                  <span style="padding-bottom:0.875rem;color:#00a6d2;display:block">预约评估订单</span>
+                  <foreach name="orderList" item="info">
+                  <if condition="$info.shopid eq ''">
+                     <li>   
+                    <p class="wmc_tb wmc_bj"></p>
+                    <div class="wmc_list">
+                       <p class="wwcd_tit">描述<span>{$info.inputtime|date="Y-m-d",###}</span></p>
+                       <p class="wwcd_con wwcd_tit">提供中医理疗、慢病回访等服务</p>
+                    </div>
+                    </li>
+                  </if>
+                  </foreach>
+                  <span style="padding-bottom:0.875rem;padding-top:0.875rem;color:#00a6d2;display:block">预约服务订单</span>
+                  <foreach name="orderList" item="info">
+                  <if condition="($info.auserid eq '') and ($info.shopid neq '')">
+                    <a href="__MODULE__/Patient/orderinfo/orderid/{$info.orderid}">
+                    <li>   
+                    <p class="wmc_tb wmc_bj"></p>
+                    <div class="wmc_list">
+                       <p class="wwcd_tit">描述<span>{$info.inputtime|date="Y-m-d",###}</span></p>
+                       <p class="wwcd_con wwcd_tit">提供中医理疗、慢病回访等服务{$info['if_say']?"<span style='color:green'>已支付</span>":"<span style='color:red'>未支付</span>"}</p>
+                    </div>
+                    </li>
+                    </a>
+                  </if>
+                  </foreach>
+                  </ul>
+                  </div>
+                </div>
+
+
+                <div class="orderlist" style="color:red"> 
+                   <div class="wddd">
+                  <ul class="wmc_con">
+                  <span style="padding-bottom:0.875rem;color:#00a6d2;display:block">预约评估订单</span>
+                  <foreach name="assessorder" item="assessinfo">
+                  <if condition="$assessinfo.status eq '1'">
+                    <li>   
+                    <p class="wmc_tb wmc_bj"></p>
+                    <div class="wmc_list">
+                    <p class="wmc_tp"><if condition="$assessinfo.photo eq ''"><img src="{$Think.const.MBIMG_URL}pgtu.jpg"><else /><img src="__PUBLIC__/{$assessinfo.photo}"></if></p>
+                    <p class="wmc_wz">{$assessinfo.username}<span class="xinxin"><for start="0" end="$assessinfo.credit"><img src="{$Think.const.MBIMG_URL}xing.jpg"></for></span><br>联系电话：{$assessinfo.iphone}<br>联系地址：{$assessinfo.area}</p>
+                    <p class="jxs_hs gray">{$assessinfo.inputtime|date="Y-m-d",###}</p>
+                    <p class="wmc_an">已接单</p>
+                    </div>
+                   </li>
+                  </if>
+                  </foreach>
+                  <span style="padding-bottom:0.875rem;padding-top:0.875rem;color:#00a6d2;display:block">预约服务订单</span>
+                    <foreach name="nurseorder" item="nurseinfo">
+                      <if condition="$nurseinfo.status eq '1'">
+                      <a href="__MODULE__/Patient/orderinfo/orderid/{$nurseinfo.orderid}/suborderid/{$nurseinfo.suborder.orderid}">
+                      <li>   
+                      <p class="wmc_tb wmc_bj"></p>
+                      <div class="wmc_list">
+                      <p class="wmc_tp"><if condition="$nurseinfo.photo eq ''"><img src="{$Think.const.MBIMG_URL}pgtu.jpg"><else /><img src="__PUBLIC__/{$nurseinfo.photo}"></if></p>
+                      <p class="wmc_wz">{$nurseinfo.suborder.username}<span class="xinxin"><for start="0" end="$nurseinfo.credit"><img src="{$Think.const.MBIMG_URL}xing.jpg"></for></span><br>联系电话：{$nurseinfo.suborder.iphone}<br>联系地址：{$nurseinfo.suborder.area}</p>
+                      <p class="jxs_hs gray">{$nurseinfo.suborder.inputtime|date="Y-m-d",###}</p>
+                      <p class="wmc_an">已接单</p>
+                      </div>
+                     </li>
+                     </a>
+                     </if>
+                    </foreach>
+                  </ul>
+                  </div>
+                </div>
+                <div class="orderlist" style="color:blue"> 
+                   <div class="wddd">
+                  <ul class="wmc_con">
+                  <span style="padding-bottom:0.875rem;color:#00a6d2;display:block">预约评估订单</span>
+                  <foreach name="assessorder" item="assessinfo">
+                  <if condition="$assessinfo.status eq '2'">
+                    <li>   
+                      <p class="wmc_tb wmc_bj"></p>
+                      <div class="wmc_list">
+                      <p class="wmc_tp"><if condition="$assessinfo.photo eq ''"><img src="{$Think.const.MBIMG_URL}pgtu.jpg"><else /><img src="__PUBLIC__/{$assessinfo.photo}"></if></p>
+                      <p class="wmc_wz">{$assessinfo.username}<span class="xinxin"><for start="0" end="$assessinfo.credit"><img src="{$Think.const.MBIMG_URL}xing.jpg"></for></span><br>联系电话：{$assessinfo.iphone}<br>联系地址：{$assessinfo.area}</p>
+                      <p class="jxs_hs gray">{$assessinfo.inputtime|date="Y-m-d",###}</p>
+                      </div>
+                       <p class="ywc_hs"><a style="color:#00a6d2" href="__MODULE__/Patient/seelist/orderid/{$assessinfo.orderid}">评估报告</a></p>
+                    </li>
+                  </if>
+                  </foreach>
+                  <span style="padding-bottom:0.875rem;padding-top:0.875rem;color:#00a6d2;display:block">预约服务订单</span>
+                  <foreach name="nurseorder" item="nurseinfo">
+                  <if condition="$nurseinfo.status eq '2'">
+                  <a href="__MODULE__/Patient/orderinfo/orderid/{$nurseinfo.orderid}/suborderid/{$nurseinfo.suborder.orderid}">
+                  <li> 
+                    <p class="wmc_tb wmc_bj"></p>
+                    <div class="wmc_list">
+                    <p class="wmc_tp"><if condition="$nurseinfo.suborder.photo eq ''"><img src="{$Think.const.MBIMG_URL}pgtu.jpg"><else /><img src="__PUBLIC__/{$nurseinfo.suborder.photo}"></if></p>
+                    <p class="wmc_wz">{$nurseinfo.suborder.username}<span class="xinxin"><for start="0" end="$nurseinfo.suborder.credit"><img src="{$Think.const.MBIMG_URL}xing.jpg"></for></span><br>联系电话：{$nurseinfo.suborder.iphone}<br>联系地址：{$nurseinfo.suborder.area}</p>
+                    <p class="jxs_hs gray">{$nurseinfo.suborder.inputtime|date="Y-m-d",###}</p>
+                    </div>
+                     <ul class="ywc_hsc borTop borBot">
+                     <li>{$nurseinfo.introduce}</li>
+                     </ul>
+                     <ul class="ywc_list">
+                     <li><span>1</span>已选服务时间/小时</li>
+                     <li><span>{$nurseinfo.number}</span>已选服务次数</li>
+                     </ul>
+                     </li>
+                     </a>
+                     </if>
+                  </foreach>
+                  </ul>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(function(){
+            $(".orderNav li").click(function(){
+                $(this).addClass("cur").siblings().removeClass("cur");
+                $(".orderlist").eq($(this).index()).addClass("cur").siblings().removeClass("cur");
+            })
+        })
+    </script>

@@ -1,0 +1,271 @@
+{__NOLAYOUT__}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>新农缘天下商城</title>
+    <link href="{$Think.const.HCSS_URL}basic.css" type="text/css" rel="stylesheet" />
+    <link href="{$Think.const.HCSS_URL}style.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="{$Think.const.HJS_URL}refresh.js"></script>
+    <script type="text/javascript" src="{$Think.const.HJS_URL}jquery-1.7.2.min.js"></script>
+</head>
+
+<body>
+<header><a class="head_back1" href="Javascript:window.history.go(-1)">&nbsp;</a>
+    <div class="headTit">购物车</div>
+    <a class="head_back2">&nbsp;</a>
+
+<ul class="dj_xhk fr">
+    <p class="arrow-up fl"></p>
+    <li><a href="{:U('Goods/index')}">乐购首页</a></li>
+    <!--<li><a href="{:U('Goods/allcatlist')}">商品分类</a></li>-->
+</ul>
+<script type="text/javascript">
+    $(".head_back2").click(function(){
+        $(".dj_xhk").slideToggle("1000");
+    });
+</script>
+</header>
+<div class="main pb0">
+    <form action="__MODULE__/Order/placeorder" method="post" id="form">
+    <section>
+
+        <foreach name='cartinfo' item='v'>
+        <div id='goods_tr_{$v.goods_id}' class="navbj fl">
+            <dl class="sho_pic">
+
+
+    <input name="id[]" type="checkbox" class="sho_pic_xk fl" attrid="{$v.goods_id}" value="goods_tr_{$v.goods_id}">
+
+
+            <dt><a href="__MODULE__/Goods/detail/goods_id/{$v.goods_id}"><img src="{$Think.const.SITE_URL}{$v.mid_logo}"></a></dt>
+            <dd>{$v.goods_name} &nbsp;&nbsp;&nbsp;&nbsp;{$v.spec}
+                <span class="crimson fs1_4 fl">{$v.price}元&bull;积分</span>
+                <!--<span id='goodstotal_{$v.goods_id}'>{$v.goods_total_price}</span>-->
+                <p class="sho_gmjj fl">
+<input name=""  onclick="change_num('red',{$v['goods_id']},{$v['price']})" class="sho_ztf fl jian" type="button" value="-" />
+<input name="amount" id="goods_number_{$v.goods_id}" value="{$v.goods_buy_number}" type="text" class="fl sho_shuzk"  value="{$v.goods_buy_num}" onchange="change_num('mod',{$v['goods_id']},{$v['price']})"/>
+
+<input name="" onclick="change_num('add',{$v['goods_id']},{$v['price']})" class="sho_ztf fl jia" type="button" value="+" />
+                </p>
+                <a href="javascript:if(confirm('确定要删除该商品么')){del_goods({$v['goods_id']})}"> <p class="shop_cuo fr"></p></a>
+            </dd>
+
+            </dl>
+
+        </div>
+        </foreach>
+    </section>
+
+    <div class="login_b fl">
+        <input name="checkall" id="checkall" type="checkbox" class="sho_pic_xk fl" value="goods_tr_{$v.goods_id}" style="margin-top:1.2rem;">
+        <p class="sho_zjk">总金额&nbsp;:&nbsp;￥<span id="total" total="{$numberprice.price}" class="fwb crimson">0.00</span></p></div>
+    <p class="login_b fl"><button id="btn" type="button" class="submit loginBtn">结&nbsp;&nbsp;算</button></p>
+</div>
+</form>
+<script type='text/javascript'>
+    var total = 0.00;
+    $("#btn").click(function(){
+        $('#btn').attr("disabled",true);
+        var flag = false;
+        $("input[name='id[]']").each(function(){
+            if($(this).prop('checked')){
+                flag = true;
+            }
+        })
+        if(!flag){
+            $("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1rem;opacity:0.7;background:#666'>"+"你没选择任何商品"+"</div>");
+
+            $("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);$("#cart").attr('disabled',true);setTimeout(function(){$("#errormsg").remove();$("#cart").attr('disabled',false);},2000);
+            $('#btn').attr("disabled",false);
+        }else{
+            $('#form').submit();
+        }
+        /*return false;*/
+    })
+    $("#checkall").click(function(){
+
+        var isChecked = $(this).prop("checked");
+        $("input[name='id[]']").prop("checked", isChecked);
+        //全选时
+        if(isChecked){
+            $.ajax({
+                url:"__CONTROLLER__/allSelect",
+                dataType:'json',
+                type:'get',
+                success:function(msg){
+                    total = msg.numberprice.price.toFixed(2);
+                    //刷新购物车商品的总价格
+                    $('#total').html(total);
+                }
+            });
+        }else{
+            total = 0.00;
+            //刷新购物车商品的总价格
+            $('#total').html('0.00');
+        }
+
+
+    });
+    $("input[name='id[]']").click(function(){
+        var isChecked = $(this).prop("checked");
+        var goods_id = $(this).attr("attrid");
+        if(!isChecked){
+            if($("#checkall").prop("checked")){
+                $("#checkall").attr("checked",false);
+            }
+        }
+        //获取选中商品的总价
+        $.ajax({
+            url:"__CONTROLLER__/oneSelect",
+            data:{'goods_id':goods_id},
+            dataType:'json',
+            type:'get',
+            success:function(msg){
+                if(isChecked){
+                    total = (parseInt(total) + parseInt(msg.numberprice.price)).toFixed(2);
+
+                    //刷新购物车商品的总价格
+                    $('#total').html(total);
+                }else{
+                    total = (parseInt(total) - parseInt(msg.numberprice.price)).toFixed(2);
+
+                    //刷新购物车商品的总价格
+                    $('#total').html(total);
+                }
+
+            }
+        });
+
+    });
+    //删除购物车商品信息
+    function del_goods(goods_id){
+        //判断删除的产品是否选中状态
+
+        $.ajax({
+            url:"__CONTROLLER__/oneSelect",
+            data:{'goods_id':goods_id},
+            dataType:'json',
+            type:'get',
+            success:function(msg){
+                if($("input[attrid='"+goods_id+"']").prop("checked")){
+                    total = (parseInt(total) - parseInt(msg.numberprice.price)).toFixed(2);
+
+                    //刷新购物车商品的总价格
+                    $('#total').html(total);
+                }
+            }
+        });
+
+
+        $.ajax({
+            url:"__CONTROLLER__/delGoods",
+            data:{'goods_id':goods_id},
+            dataType:'json',
+            type:'get',
+            success:function(msg){
+                if($(""))
+                //dom方式删除页面商品tr
+                $('#goods_tr_'+goods_id).remove();
+                //$('#goods_number_'+goods_id).parent().parent().remove();
+
+                //刷新购物车商品的总价格
+                $('#total').html(msg.price);
+            }
+        });
+        //走ajax，触发服务器端删除指定的商品
+        /*$.ajax({
+            url:"__CONTROLLER__/delGoods",
+            data:{'goods_id':goods_id},
+            dataType:'json',
+            type:'get',
+            success:function(msg){
+                if($(""))
+                //dom方式删除页面商品tr
+                $('#goods_tr_'+goods_id).remove();
+                //$('#goods_number_'+goods_id).parent().parent().remove();
+
+                //刷新购物车商品的总价格
+                $('#total').html(msg.price);
+            }
+        });*/
+    }
+
+
+    //购物车商品数量增减
+    //@param flag string 增减标志，add:累加 red:减少 mod:修改
+    function change_num(flag,goods_id,price){
+        if(flag == 'add'){
+            //数量增加
+            //获得该商品原先数量
+            var num = parseInt($('#goods_number_'+goods_id).val());
+            num++;
+        }else if(flag == 'red'){
+            //数量减少
+            //获得该商品原先数量
+            var num = parseInt($('#goods_number_'+goods_id).val());
+            num--;
+            if(num<1){
+               num=1;
+                return false;
+            }
+        }else if(flag == 'mod'){
+            //手工修改数量
+            //获得该商品目前的数量
+            var num = parseInt($('#goods_number_'+goods_id).val());
+            //isNaN : is not a number
+            if(isNaN(num) === true){
+                alert('输入的数量必须是一个数字');
+                window.location.href = window.location.href;//页面刷新
+                return false;
+            }
+            if(num < 1){
+                num=1;
+                window.location.href = window.location.href;//页面刷新
+                return false;
+            }
+        }else{
+            return false;
+        }
+        //ajax调用服务器端，获取当前商品总价
+        $.ajax({
+            url:"__CONTROLLER__/allSelect",
+            dataType:'json',
+            type:'get',
+            success:function(msg){
+                var nowtotal = parseInt(msg.numberprice.price);
+                //ajax调用服务器端，修改购物车指定商品的数量
+                $.ajax({
+                    url:"__CONTROLLER__/cartChangeNumber",
+                    data:{'goods_id':goods_id,'number':num},
+                    dataType:'json',
+                    type:'get',
+                    success:function(data){
+                        //更新被修改商品的购买数量
+                        $('#goods_number_'+goods_id).val(num);
+                        //alert(num);
+                        //更新被修改商品的小计价格
+                        $('#goodstotal_'+goods_id).html(data.nowgoodsprice);
+                        //alert(data.nowgoodsprice);
+                        var differ = parseInt(data.numberprice.price) - nowtotal;
+                        if($("input[attrid='"+goods_id+"']").prop("checked")){
+                            total = (parseInt(total) + differ).toFixed(2);
+                            //刷新购物车商品的总价格
+                            $('#total').html(total);
+                        }
+                    }
+                });
+            }
+        });
+    }
+</script>
+
+
+
+</body>
+</html>

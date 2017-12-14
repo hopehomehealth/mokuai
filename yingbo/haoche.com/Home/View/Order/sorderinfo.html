@@ -1,0 +1,52 @@
+<link href="{$Think.const.HCSS_URL}liyue-style.css" type="text/css" rel="stylesheet" />
+<section style="margin-bottom:8rem;background:#F0F0F0;font-size:1.250rem;height:100%">
+
+  <if condition="$sorderinfo.isexpress eq '1'">
+  <div class="orderinfo_nav" style="padding-top:0.5rem;padding-bottom:0.5rem">
+      <dl>
+         <dd><img src="{$Think.const.HIMG_URL}dz.gif" alt=""/></dd>
+          <dt>收货人：{$sorderinfo.consigner}<span>{$sorderinfo.phone}</span><p style="padding-top:0.5rem">收货地址：{$sorderinfo.delivery}</p></dt>
+          <div style="clear: both"></div>
+      </dl>
+  </div>
+  </if>
+  <if condition="$sorderinfo.isexpress eq '0'">
+    <div class="orderinfo_main2">
+      <h3 style="padding-left:0.5rem;padding-top:1rem;padding-bottom:1rem;line-height:1.5rem;height:1.5rem">&nbsp;配送方式：<i style="color:#999">上门自提/上门消费</i></h3>
+    </div>
+  </if>
+  <div class="orderinfo_main">
+      <div class="orderinfo_main1">
+          <dl>
+            <dd><a href="{:U('Union/goodsdetail',array('goods_id'=>$sorderinfo['goods_id']))}"><img src="{$Think.const.SITE_URL}{$sorderinfo.logo}" alt=""/></a></dd>
+            <dt style="padding-top:0">
+                <h2 style="width:65%;word-break : break-all;"><h3><span> <span style="min-width:2rem">{$sorderinfo['goods_name']}</span></span></h3></h2>
+                <h2 style="width:100%;word-break : break-all;"><h3><span>市场价：<span style="color: #DD0045;text-decoration:line-through">￥{$sorderinfo['price']}</span><br />联盟价：<span style="color: #DD0045;">￥<b id="price">{$sorderinfo['nowprice']}</b></span></span></h3></h2>
+                <h2 style="width:65%;word-break : break-all;"><h3><span>×<span style="color: #DD0045;font-weight:bold" id="number">1</span></span></h3></h2>
+                <!-- <div style="clear: both"></div>
+                <span style='float:left;width:100%;'>{$Think.get.spec}</span> -->
+            </dt>
+              <div style="clear: both"></div>
+              <h3>运费<span style="color: #ccc;margin-right:1rem">￥0.00</span></h3>
+              <h3>实付款：<span style="margin-right:1rem;color:#DD0045">￥<b id="totalfee">{$sorderinfo['orderamount']}</b></span></h3>
+          </dl>
+      </div>
+  </div>
+  <div class="orderinfo_main2" style="padding-bottom:0">
+    <ul>
+            <li style="padding-bottom:0.5rem">
+              <if condition="$sorderinfo.pay_status eq '0'">
+                <a onclick="return confirm('确定要取消吗')" href="__MODULE__/Order/delsorder/orderid/{$sorderinfo['orderid']}"><input type="button" value="取消订单" style="padding:0.200rem;color:white; background: #DD0045"/></a><a href="__MODULE__/Wxpay/pay/type/sorderpay/id/{$sorderinfo.orderid}"><input type="button" value="立即付款" style="padding:0.200rem;color:white; background: #DD0045"/></a>
+              </if>
+              <if condition="$sorderinfo.shipping_status eq '1'">
+                <a href="__MODULE__/Order/sconfirm/orderid/{$sorderinfo.orderid}"><input style="padding:0.200rem;color:white; background: #DD0045" type="button" value="确认收货"/></a>
+              </if>
+              <if condition="($sorderinfo.shipping_status eq '2') OR ($orderinfo.status eq '1')">
+                <a href="__MODULE__/Order/delsorder/orderid/{$sorderinfo.orderid}"><input style="padding:0.200rem;color:white; background: #DD0045" type="button" value="删除订单"/></a>
+              </if>
+            </li>
+    </ul>
+    <div style="clear: both"></div>
+  </div>
+
+</section>

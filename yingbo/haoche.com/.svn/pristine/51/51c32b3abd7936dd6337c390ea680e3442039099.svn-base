@@ -1,0 +1,178 @@
+<script type="text/javascript" src='{$Think.const.JS_URL}jquery-2.1.3.min.js'></script>
+<script type="text/javascript" src='{$Think.const.JS_URL}uploadPreview.js'></script>
+<script type="text/javascript" src='{$Think.const.PLUGIN_URL}ueditor/ueditor.config.js' ></script>
+<script type="text/javascript" src='{$Think.const.PLUGIN_URL}ueditor/ueditor.all.min.js' ></script>
+<script type="text/javascript" src='{$Think.const.PLUGIN_URL}ueditor/lang/zh-cn/zh-cn.js' ></script>
+
+<div class="main-content">
+    <div class="page-content">
+        <div class="row">
+            <div class="page-content box">
+                <div class="box-title margin_bot_20">
+                    <div class="span10">
+                        <h3><i class="icon-cogs"></i>店铺设置</h3>
+                    </div>
+                </div>
+                <div class="breadcrumbs">
+                    <ul>
+                        <li class="active"> <a href="#">基本设置 </a></li>
+
+                        <li> <a href="#">身份证 </a></li>
+
+                        <li> <a href="#">营业执照 </a></li>
+                        <li> <a href="#">店铺公告 </a></li>
+
+                    </ul>
+                    <!-- .breadcrumb -->
+                </div>
+                <div style="margin-top:15px">
+                    <form action="__MODULE__/Seller/setting" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <input type='hidden' name='seller_id' value='{$info.seller_id}'/>
+                            <div class="form-group">
+                                <label class="control-label">店铺名称 : </label>
+                                <div class="controls pull-left">
+                                    <input type="text" class="input-large" name="seller_name" value="{$info.seller_name}">
+                                    <span class="help-inline red"> * </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">电话 : </label>
+                                <div class="controls pull-left">
+                                    <input type="text" class="input-large" name="phone" value="{$info.phone}">
+                                    <span class="help-inline red"> * </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">联系人 : </label>
+                                <div class="controls pull-left">
+                                    <input type="text" class="input-large" name="lianxi_name" value="{$info.lianxi_name}">
+                                    <span class="help-inline red"> * </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">地址 : </label>
+                                <div class="controls pull-left">
+                                    <input type="text" class="input-large" name="address" value="{$info.address}">
+                                    <span class="help-inline red"> * </span>
+                                </div>
+                            </div>
+                        <div class="form-group">
+                            <label class="control-label">经营行业 : </label>
+                            <div class="controls pull-left">
+                                <select class="input-medium" name='cat_id'>
+                                    <option value='0'>-请选择-</option>
+                                    <foreach name='catinfo' item='v'>
+                                        <option value='{$v.cat_id}' <eq name='info.cat_id' value='$v.cat_id'>selected='selected'</eq>>{$v.cat_name}</option>
+                                    </foreach>
+                                </select>
+                                <span class="help-inline red"> * </span>
+                            </div>
+                        </div>
+                            <div class="form-group">
+                                <label class="control-label">店铺logo图 : </label>
+                                <div class="controls pull-left">
+                                    <input type="file" class="input-large" id="pic1" name="pic_dian" >
+                                    <div id="pic_div1"><img src="{$Think.const.SITE_URL}{$info.pic_dian|substr=###,2}" id='pic_img1' width='100' height='100'></div>
+                                </div>
+                            </div>
+                            <script type='text/javascript'>
+                                $(function(){
+                                    new uploadPreview({ UpBtn: "pic1", DivShow: "pic_div1", ImgShow: "pic_img1" });
+                                });
+                            </script>
+
+
+
+                        <div class="form-actions" align="center">
+                            
+                            <button id="bsubmit" type="submit"  class="btn btn-sm btn-primary">保存</button>
+                        </div>
+                    </form>
+
+                    <form action="__MODULE__/Seller/shen" method="post" class="form-horizontal" enctype="multipart/form-data" style="display:none">
+                        <input type='hidden' name='seller_id' value='{$info.seller_id}'/>
+
+
+                            <div class="form-group">
+                                <label class="control-label">身份证 : </label>
+                                <div class="controls pull-left">
+                                    <input type="file" class="input-large" id="pic2" name="pic_shen" >
+                                    <div id="pic_div2"><img src="{$Think.const.SITE_URL}{$info.pic_shen|substr=###,2}" id='pic_img2' width='200' height='150'></div>
+                                </div>
+                            </div>
+                            <script type='text/javascript'>
+                                $(function(){
+                                    new uploadPreview({ UpBtn: "pic2", DivShow: "pic_div2", ImgShow: "pic_img2" });
+                                });
+                            </script>
+
+                            <div class="form-actions" align="center">
+                                <button id="bsubmit2" type="submit"  class="btn btn-sm btn-primary">保存</button>
+                            </div>
+
+                    </form>
+                    <form action="__MODULE__/Seller/zhi" method="post" class="form-horizontal" enctype="multipart/form-data" style="display:none">
+                        <input type='hidden' name='seller_id' value='{$info.seller_id}'/>
+                        <div class="form-group">
+
+                            <div class="form-group">
+                                <label class="control-label">营业执照 : </label>
+                                <div class="controls pull-left">
+                                    <input type="file" class="input-large" id="pic3" name="pic_zhi" >
+                                    <div id="pic_div3"><img src="{$Think.const.SITE_URL}{$info.pic_zhi|substr=###,2}" id='pic_img3' width='200' height='150'></div>
+                                </div>
+                            </div>
+                            <script type='text/javascript'>
+                                $(function(){
+                                    new uploadPreview({ UpBtn: "pic3", DivShow: "pic_div3", ImgShow: "pic_img3" });
+                                });
+                            </script>
+
+                            <div class="form-actions" align="center">
+                                <button id="bsubmit3" type="submit"  class="btn btn-sm btn-primary">保存</button>
+                            </div>
+                        </div>
+                    </form>
+                    <form action="__MODULE__/Seller/gonggao" method="post" class="form-horizontal" enctype="multipart/form-data" style="display:none">
+                        <input type='hidden' name='seller_id' value='{$info.seller_id}'/>
+                        <div class="form-group">
+
+                            <label class="control-label">公告内容 : </label>
+                            <div class="controls pull-left">
+
+                                <textarea rows="5" cols="15" id='content' name='content' style='width:800px;height:350px;'>{$info.content}</textarea>
+                            </div>
+                            <script type="text/javascript">
+                                var ue = UE.getEditor('content',{toolbars: [[
+                                    'fullscreen', 'source', '|', 'undo', 'redo', '|',
+                                    'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
+                                    'simpleupload', 'insertimage','|',
+                                    'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
+                                    'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
+                                    'directionalityltr', 'directionalityrtl', 'indent', '|',
+                                    'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase'
+                                ]]});
+                            </script>
+                            <br/>
+
+                            <div class="form-actions" align="center">
+                                <button id="bsubmit4" type="submit"  class="btn btn-sm btn-primary">保存</button>
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <!--/.box-->
+    </div><!-- /.page-content -->
+</div><!-- /.main-content -->
+<script type="text/javascript">
+    $(function(){
+        $(".breadcrumbs ul li").click(function(){
+            $(this).addClass("active").siblings().removeClass('active');
+            $("form").eq($(this).index()).css("display","block").siblings().css("display","none");
+        });
+    });
+    </script>

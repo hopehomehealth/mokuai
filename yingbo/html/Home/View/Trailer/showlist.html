@@ -1,0 +1,42 @@
+<link href="{$Think.const.HCSS_URL}mypage.css" rel="stylesheet" type="text/css"/>
+<foreach name="adinfofen" key="k" item="v">
+    <div class="su_banner"><a href="{$v.url}"><img src="{$Think.const.SITE_URL}{$v.pic}" /></a>  </div>
+</foreach>
+
+
+<div class="sideBar">
+    <div class="about fl">
+        <p class="about_tit fl">关于乐护</p><p class="about_yw fl">about&nbsp;us</p>
+    </div>
+
+
+    <div class="about_zc fl">
+        <ul class="news_list_tit">
+            <li><a href="{:U('News/news')}">新闻中心</a></li>
+            <li><a href="{:U('About/about')}">公司简介</a></li>
+            <li><a href="{:U('About/qywh')}">企业文化</a></li>
+            <li class="current"><a href="{:U('Trailer/showlist')}">宣传片</a></li>
+        </ul>
+        <ul class="xcp_list fl">
+            <foreach name="info" key="k" item="v">
+            <li>
+                <!--<a href="{$v.url}"><img src="{$Think.const.HIMG_URL}images_07.jpg" /><span><img src="{$Think.const.HIMG_URL}bfq.png" /></span></a>-->
+               <a href="{:U('Trailer/trailer_list',array('trailer_id'=>$v['trailer_id']))}">
+
+                   <img src="{$Think.const.SITE_URL}{$v.pic|substr=###,2}" width="360" height="230"/> <span><img src="{$Think.const.HIMG_URL}bfq.png" /></span>
+                <p class="xcp_xjt">{$v.title}</p></a>
+            </li>
+            </foreach>
+
+        </ul>
+        <table width="600" align="center">
+            <tr class="content" align="center">
+                <!--<td colspan="3" bgcolor="#FFFFFF">&nbsp;{$page}</td>-->
+                <td colspan="3" bgcolor="#FFFFFF" align="center"><div class="pages" align="center">
+                    {$page}
+                </div></td>
+            </tr>
+        </table>
+        
+    </div>
+</div>

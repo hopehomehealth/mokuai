@@ -1,0 +1,157 @@
+<div class="shousuo fl">
+    <form action="{:U('diansearch')}" method="post">
+        <input class="shousuo_l" name="searchname" type="text" id="searchname" placeholder="请输入店家名称">
+        <button id="submit" class="shousuo_r" type="submit">搜索</button>
+    </form>
+</div>
+<script type="text/jscript">
+ $(".head_login").toggle(function(){
+        $(".shousuo").show("1000");
+		 },function(){
+        $(".shousuo").hide("1000");
+
+		});
+		 $('#submit').click(function(){
+ var searchname = $('#searchname').val();
+     if(searchname == ''){
+        return false;
+    }
+        });
+</script>
+<div class="main">
+    <section>
+        <div class="union-tu fl pb0 mt0 pb_6">
+            <div class="union-tu-lsit">
+                <p class="fs1-6 fwb pl3-8">新农缘天下/<span class="fwn fs1-1"><span class="fwb fso pr0-2">369</span>&nbsp;商家联盟</span></p>
+                <p class="w60 fl xj-union-l pt1-4"><a href="{:U('Union/lianmengxieyi')}"><img src="{$Think.const.HIMG_URL}xj_images_33.png"></a></p>
+                <p class="w30 fl xj-union-r pt2-4"><img src="{$Think.const.HIMG_URL}xj_images_34.png"></p>
+                <p class="w100 union-tu_xtb pl2-2 fl pt_6"><img src="{$Think.const.HIMG_URL}xj_images_35.png">&nbsp;北京新农缘天下农业科技有限责任公司</p>
+                <p class="w100 union-tu_xtb pl2-2 fl pt0-2"><img src="{$Think.const.HIMG_URL}xj_images_11.png">&nbsp;010-5622 9268&nbsp;&nbsp;&nbsp;&nbsp;有效期至：
+                <if condition="$Think.session.userInfo.vipexpire neq ''">
+                    <if condition="$buyvip eq 1">
+                        <b style="color:red">已过期</b>
+                    <else />
+                        {$Think.session.userInfo.vipexpire|date="Y-m-d",###}
+                    </if>
+                <else />
+                0000-00-00
+                </if></span></p>
+            </div>
+        </div>
+    </section>
+    <section>
+        <ul class="union-menu">
+            <li>
+                <p class="d-blue union-menu-a"><a id="sellercenter" href="{:U('Core/index')}"><img src="{$Think.const.HIMG_URL}xj_images_01.png">商家中心</a></p>
+            </li>
+            <if condition="$buyvip eq 0">
+                <li>
+                    <p class="d-green union-menu-a"><a href="javascript:void(0)" style="font-weight:bolder;color:#e23406;font-style:italic"><img style="width:20%" src="{$Think.const.HIMG_URL}xj_images_26.png">联盟Vip</a></p>
+                </li>
+            </if>
+            <if condition="$buyvip eq 1">
+                <li>
+                    <p class="d-green union-menu-a"><a href="__MODULE__/User/bevip"><img style="width:20%" src="{$Think.const.HIMG_URL}xj_images_17.png">购买会员</a></p>
+                </li>
+            </if>
+            <li>
+                <p class="d-yellow union-menu-a"><a id="quanyi" href="{:U('Quanyi/showlist')}"><img src="{$Think.const.HIMG_URL}xj_images_03.png">商家权益</a></p>
+            </li>
+        </ul>
+    </section>
+    <section>
+        <ul class="navbj navuni navtwo fl pb0">
+            <foreach name="catinfo1" item="v">
+                <li> <a href="{:U('allcatlist')}"> <img src="{$Think.const.HIMG_URL}xj_images_04.png">
+                    <p>{$v.cat_name}</p>
+                </a> </li>
+            </foreach>
+            <foreach name="catinfo2" item="v">
+                <li> <a href="{:U('allcatlist')}"> <img src="{$Think.const.HIMG_URL}xj_images_05.png">
+                    <p>{$v.cat_name}</p>
+                </a> </li>
+            </foreach>
+            <foreach name="catinfo3" item="v">
+                <li> <a href="{:U('allcatlist')}"> <img src="{$Think.const.HIMG_URL}xj_images_06.png">
+                    <p>{$v.cat_name}</p>
+                </a> </li>
+            </foreach>
+            <foreach name="catinfo4" item="v">
+                <li> <a href="{:U('allcatlist')}"> <img src="{$Think.const.HIMG_URL}xj_images_07.png">
+                    <p>{$v.cat_name}</p>
+                </a> </li>
+            </foreach>
+            <li> <a href="bus_list.html"> <img src="{$Think.const.HIMG_URL}xj_images_40.png">
+                <p>旅游</p>
+            </a> </li>
+            <li> <a href="bus_list.html"> <img src="{$Think.const.HIMG_URL}xj_images_36.png">
+                <p>保险</p>
+            </a> </li>
+            <li> <a href="bus_list.html"> <img src="{$Think.const.HIMG_URL}xj_images_37.png">
+                <p>保健</p>
+            </a> </li>
+            <li> <a href="bus_list.html"> <img src="{$Think.const.HIMG_URL}xj_images_38.png">
+                <p>特产</p>
+            </a> </li>
+            <li> <a href="bus_list.html"> <img src="{$Think.const.HIMG_URL}xj_images_39.png">
+                <p>女装</p>
+            </a> </li>
+                <li> <a href="{:U('allcatlist')}"> <img src="{$Think.const.HIMG_URL}xj_images_08.png">
+                    <p>全部</p>
+                </a> </li>
+
+
+
+        </ul>
+    </section>
+    <section>
+        <div class="navbj fl pb0">
+            <p class="union-t fl">1P产品 / <span class="gray"> 附近</span><span class="union-t_gd fr"><a href="{:U('Union/allcatlist')}">更多</a></span></p>
+            <ul class="union-list fl">
+                <foreach name="zenginfo" item="v">
+                    <li><a href="{:U('diandetail',array('seller_id'=>$v['seller_id']))}">
+                        <dl class="union-pic">
+                            <dt><img src="{$Think.const.SITE_URL}{$v.pic}"></dt>
+                            <dd>
+                                <p><span class="fso crimson fs2-4 pr0-2">0</span><span class="fso crimson fs1-1 pr1">元购</span><span class="fs1-4 fwb">{$v.zeng_name}</span>
+                                </p>
+                                <p class="fs1">{$v.seller_name}</p>
+                                <p class="mt0-5 w20 union-an-a d-red fs1-2 crimson">预约</p>
+                            </dd>
+                        </dl>
+                    </a>
+                    </li>
+                </foreach>
+
+
+
+
+            </ul>
+        </div>
+    </section>
+</div>
+<script type="text/javascript" src="{$Think.const.HJS_URL}jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var isclick = false;
+        $("#sellercenter").click(function(){
+            var url = $(this).attr('href');
+            if(!isclick){
+                isclick = true;
+                $.get('__MODULE__/Core/checkvip',function(data){
+                    if(data == 'nologin'){
+                        location.href = '__MODULE__/User/login';
+                    }else if(data == 'error'){
+                        $("section").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-4.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+'请先购买会员'+"</div>");
+
+                        $("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(2000);setTimeout(function(){$("#errormsg").remove();isclick = false;},3000);
+                    }else{
+                        location.href = url;
+                    }
+                })
+            }
+            
+            return false;
+        })
+    })
+</script>

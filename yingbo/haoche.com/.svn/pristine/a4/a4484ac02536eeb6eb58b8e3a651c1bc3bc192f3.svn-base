@@ -1,0 +1,102 @@
+
+<link rel="stylesheet" href="{$Think.const.HCSS_URL}personal-reset.css" />
+<link rel="stylesheet" href="{$Think.const.HCSS_URL}personal-style.css" />
+
+    <section style="position:relative">
+        <form action="" method="post" enctype='multipart/form-data'>
+        <div class="hous_nav">
+            <p>买房申请</p>
+        </div>
+        <div style="background: #ffffff; width: 100%; margin-top: 1.5rem;">
+
+            <div class="hous_main">
+                <p><i>*</i><span>真实姓名</span>{$userinfo['name']}</p>
+                <p><i>*</i><span>手&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机</span>
+                    {$userinfo['phone']}
+                   </p>
+            </div>
+        </div>
+        <div style="background: #ffffff; width: 100%; margin-top: 1.5rem;">
+            <div class="hous_main1">
+                <p><i>*</i><span>意向区域</span>
+                    <input id="address" type="text" placeholder="请输入详细地址" style="width: 60%;">
+                </p>
+                <p><i style="margin-right: 0.6rem">&nbsp;</i><span>意向楼盘</span>
+                    <input id="building" type="text" placeholder="请输入楼盘名称" style="width: 60%;">
+                </p>
+                <p><i>*</i><span>意向户型</span>
+                    <select  style="width: 30%;" name="type" >
+                        <option value="0">不限</option>
+                        <option value="1">一居</option>
+                        <option value="2">两居</option>
+                        <option value="3">三居</option>
+                        <option value="4">其它</option>
+                    </select>
+                    <e style="color: #DD0045">*请选择您的意向户型</e>
+                </p>
+                <p><i>*</i><span>意向面积</span>
+                    <select style="width: 30%;" name="size" >
+                        <option value="0">不限</option>
+                        <option value="1">90平方</option>
+                        <option value="2">90-120平方</option>
+                        <option value="3">其它</option>
+                    </select>
+                    <e style="color: #DD0045">*请选择您的意向面积</e>
+                </p>
+
+                <p><i style="margin-right: 0.6rem">&nbsp;</i><span>交意向金</span>{$setinfo[0]['houseprice']}&nbsp;&nbsp;元</p>
+                <p><i style="margin-right: 0.6rem">&nbsp;</i>您前面还有<e style="color: #DD0045">&nbsp;{$houseinfo[0]['house_id']}&nbsp;</e>人在排队</p>
+
+            </div>
+        </div>
+        <div class="house2">
+            <p style="text-align: center;">温馨提示：“<e style="color: #DD0045; font-size:  1.3rem">*</e>”为必填项</p>
+            <h5><input id="bsubmit" style="background: #DD0045;font-size:1.800rem;height:3.500rem;font-family: '黑体';color: #ffffff;border-radius:0.4rem" type="button"  value="提&nbsp;&nbsp;&nbsp;&nbsp;交"/></h5>
+        </div>
+            </form>
+    </section>
+
+<script type="text/javascript">
+$(function(){
+    $('#bsubmit').click(function(){
+        var address = $('#address').val();
+        if(address == ''){
+            alert('意向区域不能为空');
+            return false;
+        }
+        var building = $('#building').val();
+        if(building == ''){
+            alert('意向楼盘不能为空');
+            return false;
+        }
+        var type = $('select[name=type]').val();
+        var size = $('select[name=size]').val();
+        $.ajax({
+            url:"__MODULE__/House/fang",
+            data:{'building':building,'type':type,'size':size,'address':address},
+            dataType:'json',
+            type:'post',
+            success:function(data){
+
+                    //alert('感谢您的申请，工作人员会及时与您联系!');
+					if(data.error == 0){
+						$("section").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+data.content+"</div>");
+
+						$("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);setTimeout(function(){$("#errormsg").remove();location.href="__MODULE__/Wxpay/pay/type/housepay/id/"+data.house_id;},2000);
+					}
+					if(data.error == 1){
+						$("section").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+data.content+"</div>");
+
+						$("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);setTimeout(function(){$("#errormsg").remove();},2000);
+					}
+					if(data.error == 2){
+						location.href="__MODULE__/User/login";
+					}
+            }
+        });
+    });
+});
+</script>
+
+<script src="{$Think.const.HJS_URL}iscroll4.js"></script>
+<script src="{$Think.const.HJS_URL}jquery-1.8.2.min.js"></script>

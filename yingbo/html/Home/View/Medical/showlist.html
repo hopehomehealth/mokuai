@@ -1,0 +1,44 @@
+<link href="{$Think.const.HCSS_URL}mypage.css" rel="stylesheet" type="text/css"/>
+<foreach name="adinfofen" key="k" item="v">
+    <div class="su_banner"><a href="{$v.url}"><img src="{$Think.const.SITE_URL}{$v.pic}" /></a>  </div>
+</foreach>
+
+
+<div class="sideBar">
+    <div class="about fl">
+        <p class="about_tit fl">医学知识</p><p class="about_yw fl">Medical&nbsp;Knowledge</p>
+    </div>
+
+
+    <div class="about_zc fl">
+        <ul class="news_list_tit">
+            <li class="current"><a href="{:U('Medical/showlist')}">护理健康知识</a></li>
+        </ul>
+        <ul class="med_con fl">
+            <foreach name="info" key="k" item="v">
+                <li>
+                    <p class="med_left fl">{$v.input_time|date='d',###}<br /><span>{$v.input_time|date='m',###}月<br />{$v.input_time|date='Y',###}</span></p>
+                    <div class="med_wz fl">
+                        <h1><a href="{:U('Medical/med_list',array('medical_id'=>$v['medical_id']))}">{$v.title}</a></h1>
+                        <a href="{:U('Medical/med_list',array('medical_id'=>$v['medical_id']))}">{$v.content|strip_tags|str_replace=array(" ","　","\t","\n","\r"),array("","","","",""),###|mb_substr=###,0,150,'utf-8'}...</a>
+                    </div>
+                    <p class="med_pic fr"><a href="{:U('Medical/med_list',array('medical_id'=>$v['medical_id']))}"><img src="{$Think.const.SITE_URL}{$v.pic}" width="172" height="114" /></a></p>
+                </li>
+
+            </foreach>
+        </ul>
+        <table width="600" align="center">
+            <tr class="content" align="center">
+                <!--<td colspan="3" bgcolor="#FFFFFF">&nbsp;{$page}</td>-->
+                <td colspan="3" bgcolor="#FFFFFF" align="center"><div class="pages" align="center">
+                    {$page}
+                </div></td>
+            </tr>
+        </table>
+
+
+
+
+
+    </div>
+</div>

@@ -1,0 +1,219 @@
+{__NOLAYOUT__}
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<title>新农缘天下商城</title>
+<link href="{$Think.const.HCSS_URL}basic.css" type="text/css" rel="stylesheet" />
+<link href="{$Think.const.HCSS_URL}style.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="{$Think.const.HJS_URL}jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="{$Think.const.HJS_URL}refresh.js"></script>
+<script type="text/javascript" src="{$Think.const.HJS_URL}jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="{$Think.const.HJS_URL}L_slide.js"></script>
+
+</head>
+
+<body>
+<section>
+<header> <a class="head_back1" href="Javascript:window.history.go(-1)">&nbsp;</a>
+  <div class="headTit">乐购商城</div>
+  <span style="position:absolute;float:right;right:0;height:4.4rem;padding-right:0.5rem"><a href="__MODULE__/User/regfee" style="height:100%;line-height:4.4rem;color:#fff;font-size:1.5rem;">积分充值</a></span> </header>
+<div class="main">
+  <section>
+    <div class="tesco fl pt_6 pb_6">
+      <p class="tesco_left fl"><a href="{:U('Cart/showlist')}"><img src="{$Think.const.HIMG_URL}tb_26.png"><span class="tesco_gwsz1">{$number}</span></a> </p>
+      <p class="tesco_right fl">
+      <form action="{:U('search')}" method="post">
+        <input type="text" class="tesco_rgt_k fl" name="searchname" id="searchname" placeholder="请输入商品名称/类型">
+        <input id="submit"  class="tesco_rgt_an" type="submit" value="">
+      </form>
+      <script type="text/jscript">
+ $('#submit').click(function(){
+ var searchname = $('#searchname').val();
+     if(searchname == ''){
+        return false;
+    }
+        });
+</script>
+      </p>
+    </div>
+  </section>
+  <section>
+    <input type='hidden' id='goods_id' value='{$info.goods_id}'>
+    <div class="navbj fl m0 pb0">
+      <div class="swipe">
+        <ul id="slider">
+          <foreach name="bannerinfo" item="v">
+            <li><a href="{$v.url}" ><img src="{$Think.const.SITE_URL}{$v.pic}" alt="" /></a></li>
+          </foreach>
+        </ul>
+        <div id="pagenavi"> <a href="javascript:void(0);" class="active">1</a> <a href="javascript:void(0);">2</a> <a href="javascript:void(0);">3</a> <a href="javascript:void(0);">4</a> </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <ul class="navbj navBox navOne fl pb0">
+      <foreach name="catinfo1" item="v">
+        <li> <a href="{:U('allcatlist',array('cat_id'=>1))}"> <img src="{$Think.const.HIMG_URL}jiayouka.png">
+          <p>{$v.cat_name}</p>
+          </a> </li>
+      </foreach>
+      <foreach name="catinfo2" item="v">
+        <li> <a href="{:U('allcatlist',array('cat_id'=>2))}"> <img src="{$Think.const.HIMG_URL}zhizhupingpai1.png">
+          <p>{$v.cat_name}</p>
+          </a> </li>
+      </foreach>
+      <foreach name="catinfo3" item="v">
+        <li> <a href="{:U('allcatlist',array('cat_id'=>3))}"> <img src="{$Think.const.HIMG_URL}meizhuang.png">
+          <p>{$v.cat_name}</p>
+          </a> </li>
+      </foreach>
+      <foreach name="catinfo4" item="v">
+        <li> <a href="{:U('allcatlist',array('cat_id'=>4))}"> <img src="{$Think.const.HIMG_URL}zhixiao.png">
+          <p>{$v.cat_name}</p>
+          </a> </li>
+      </foreach>
+      <foreach name="catinfo5" item="v">
+        <li> <a href="{:U('allcatlist',array('cat_id'=>5))}"> <img src="{$Think.const.HIMG_URL}qicheyongpin.png">
+          <p>{$v.cat_name}</p>
+          </a> </li>
+      </foreach>
+      <foreach name="catinfo6" item="v">
+        <li> <a href="{:U('allcatlist',array('cat_id'=>6))}"> <img src="{$Think.const.HIMG_URL}nongfuchanpin.png">
+          <p>{$v.cat_name}</p>
+          </a> </li>
+      </foreach>
+      <foreach name="catinfo7" item="v">
+        <li> <a href="{:U('allcatlist',array('cat_id'=>7))}"> <img src="{$Think.const.HIMG_URL}jinrong.png">
+          <p>{$v.cat_name}</p>
+          </a> </li>
+      </foreach>
+      <foreach name="catinfo8" item="v">
+      <li> <a href="{:U('allcatlist',array('cat_id'=>8))}">  <img src="{$Think.const.HIMG_URL}images_46.jpg">
+        <p>{$v.cat_name}</p>
+        </a> </li>
+		</foreach>
+    </ul>
+  </section>
+  <section>
+    <p class="tesco fl">加油卡 / <span class="fso gray">Fuel card</span><span class="car_tit_gd fr"><a href="{:U('allcatlist',array('cat_id'=>1))}">更多</a></span></p>
+
+	<foreach name="goodsinfo1" item="v">
+      <div class="navbj fl">
+        <dl class="tesco_pic fl">
+          <dt><a href="{:U('detail',array('goods_id'=>$v['goods_id']))}"><img width="96px" height="108px" src="{$Think.const.SITE_URL}{$v.logo}"></a></dt>
+          <dd>
+            <p class="car_xzsz"> <a href="{:U('detail',array('goods_id'=>$v['goods_id']))}"> <span class="gray">{$v.goods_name}</span> </a></p>
+            <p class="car_f fl crimson car_f_awm fwb"><span class="car_yj">乐购价</span>&nbsp;{$v['downpay']}元</p>
+            <p class="car_z fl pt_6 pb_6">￥{$v.price}元&nbsp;&bull;&nbsp;积分</p>
+            <p class="tesco_thzc fl">提货周期：{$v.cycle}&nbsp;天<img src="{$Think.const.HIMG_URL}tb_22.png"></p>
+            <p class="tesco_gm fl"><img id="cart1" goodsid="{$v['goods_id']}" class="addcart" src="{$Think.const.HIMG_URL}tb_21.png"></p>
+          </dd>
+        </dl>
+      </div>
+	 </foreach>
+
+  </section>
+  <section>
+    <p class="tesco fl">自主品牌 / <span class="fso gray">Independent brand</span><span class="car_tit_gd fr"><a href="{:U('allcatlist',array('cat_id'=>2))}">更多</a></span></p>
+    <foreach name="goodsinfo2" item="v">
+      <div class="navbj fl">
+        <dl class="tesco_pic fl">
+          <dt><a href="{:U('detail',array('goods_id'=>$v['goods_id']))}"><img width="96px" height="108px" src="{$Think.const.SITE_URL}{$v.logo}"></a></dt>
+          <dd>
+            <p class="car_xzsz"> <a href="{:U('detail',array('goods_id'=>$v['goods_id']))}"> <span class="gray">{$v.goods_name}</span></a></p>
+            <p class="car_f fl crimson pt_6 pb_6 car_f_awm fwb"><span class="car_yj">乐购价</span>&nbsp;{$v['downpay']}元</p>
+            <p class="car_z fl">￥{$v.price}元&nbsp;&bull;&nbsp;积分</p>
+            <p class="tesco_thzc fl">提货周期：{$v.cycle}&nbsp;天<img src="{$Think.const.HIMG_URL}tb_22.png"></p>
+            <p class="tesco_gm fl"><img id="cart" goodsid="{$v['goods_id']}" class="addcart" src="{$Think.const.HIMG_URL}tb_21.png"></p>
+          </dd>
+        </dl>
+      </div>
+    </foreach>
+  </section>
+</div>
+</section>
+<script type="text/javascript">
+        $(function(){
+            $(".addcart").click(function(){
+                //获得被添加到购物车的商品id信息
+                var goods_id = $(this).attr('goodsid');
+
+                $.ajax({
+                    url:"__MODULE__/Goods/addCart",
+                    data:{'goods_id':goods_id},
+                    dataType:'json',
+                    type:'get',
+                    success:function(msg){
+						if(msg.error == '1'){
+							location.href="__MODULE__/User/login";
+							return;
+						}
+						if(msg.error == '2'){
+							$("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+"本周期只能购买一次"+"</div>");
+							$("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);setTimeout(function(){$("#errormsg").remove();},2000);
+							return;
+						}
+
+                        $("body").append("<div id='errormsg' style='display:none;position:fixed;left:50%;top:50%;z-index:9999;width:12rem;height:3rem;margin-left:-6rem;margin-top:-1.5rem;text-align:center;line-height:3rem;color:white;font-weight:bold;font-size:1.5rem;opacity:0.7;background:#666'>"+"加入购物车成功"+"</div>");
+
+                        $("#errormsg").fadeIn(1000);$("#errormsg").fadeOut(1000);setTimeout(function(){$("#errormsg").remove();},2000);
+
+                                      $(".tesco_gwsz1").text(msg.number);
+                    }
+                });
+            })
+
+
+        })
+    </script>
+<script type="text/javascript" src="{$Think.const.HJS_URL}touchScroll.js"></script>
+<script type="text/javascript" src="{$Think.const.HJS_URL}touchslider.dev.js"></script>
+<script type="text/javascript">
+    var active=0,
+            as=document.getElementById('pagenavi').getElementsByTagName('a');
+
+    for(var i=0;i<as.length;i++){
+        (function(){
+            var j=i;
+            as[i].onclick=function(){
+                t2.slide(j);
+                return false;
+            }
+        })();
+    }
+    var t1=new TouchScroll({id:'wrapper','width':5,'opacity':0.7,color:'#555',minLength:20});
+
+    var t2=new TouchSlider({id:'slider', speed:600, timeout:6000, before:function(index){
+        as[active].className='';
+        active=index;
+        as[active].className='active';
+    }});
+</script>
+<footer id="panel_nav">
+  <ul>
+    <li
+    <if condition="CONTROLLER_NAME == Index">class="shou_a hover"</if>
+    class="shou"><a href="{:U('Index/index')}"><i>&nbsp;</i>首页</a>
+    </li>
+    <li
+    <if condition="CONTROLLER_NAME == Haoche">class="car_a hover"</if>
+    class="car"><a href="{:U('Haoche/showlist')}"><i>&nbsp;</i>豪车俱乐部</a>
+    </li>
+    <li
+    <if condition="CONTROLLER_NAME == Agriculture">class="world_a hover"</if>
+    class="world"><a href="{:U('Agriculture/index')}"><i>&nbsp;</i>商家联盟</a>
+    </li>
+    <li <if condition="CONTROLLER_NAME == Goods">class="purse_a hover"</if>class="purse"><a href="{:U('Goods/index')}"><i>&nbsp;</i>乐购商城</a></li>
+    <li
+    <if condition="CONTROLLER_NAME == User">class="my_a hover"</if>
+    class="my"><a href="{:U('User/userindex')}"><i>&nbsp;</i>我的</a>
+    </li>
+  </ul>
+</footer>
+</body>
+</html>

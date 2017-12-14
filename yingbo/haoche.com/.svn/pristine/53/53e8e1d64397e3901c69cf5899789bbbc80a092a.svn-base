@@ -1,0 +1,51 @@
+    <link href="{$Think.const.HCSS_URL}personal-style.css" type="text/css" rel="stylesheet" />
+    <section class="exc1" style="overflow:none;height:100%;">
+        <div class="exc_nav">
+            <p>历史兑换</p>
+             <ul>
+                 <li><a style="color:#fff" href="__MODULE__/Exchange/exchange">申请兑换</a></li>
+                 <li><a style="color:#fff" href="__MODULE__/Exchange/account">兑换账号</a></li>
+             </ul>
+        </div>
+        <div class="cash_records" style="">
+        <foreach name="exchange" item="info">
+          <div style="font-size:1.5rem;color:#636363;line-height:2rem;width:80%;margin:0 auto;border-bottom:1px solid #ccc;margin-top:1rem;">
+              <p><b style="letter-spacing:5px;padding-right:1rem;">兑现单号:</b>{$info.order_no}</p>
+              <p><b style="letter-spacing:5px;padding-right:1rem">申请时间:</b>{$info.inputtime|date="Y-m-d H:i:s",###}</p>
+              <p><b style="letter-spacing:5px;padding-right:1rem">兑现金额:</b>{$info.amount}元</p>
+              <p><b style="letter-spacing:5px;padding-right:1rem">操作时间:</b>46455456</p>
+              <p><b style="letter-spacing:5px;padding-right:1rem;">　状　态:</b>成功</p>
+          </div>
+        </foreach>
+         </div>
+         <if condition="$count gt 3">
+            <a class="viewmore" count="{$count}" style="display:inline-block;width:100%;font-size:1.5rem;padding-top:1.5rem;text-align:center;color:#888" href="javascript:void(0)">查看更多...</a>
+         </if>
+        <empty name="exchange">
+         <div class="exc_main">
+          您还没有兑换记录哦!
+         </div>
+        </empty>
+    </section>
+    <script type="text/javascript">
+        $(function(){
+            var nextpage = 1;
+            var count;
+            $(".viewmore").click(function(){
+                count = $(this).attr('count');
+                nextpage++;
+                $.get("__MODULE__/Exchange/index",{"viewmore":"viewmore","p":nextpage},function(data){
+                    if(data.error == 0){
+                        var moredata = '';
+                        for(var i in data.content){
+                            moredata += "<div style='color:#636363;font-size:1.5rem;line-height:2rem;width:80%;margin:0 auto;border-bottom:1px solid #ccc;margin-top:1rem;'><p><b style='letter-spacing:5px;padding-right:1rem;'>兑现单号:</b>"+data.content[i].order_no+"</p><p><b style='letter-spacing:5px;padding-right:1rem'>申请时间:</b>"+data.content[i].inputtime+"</p><p><b style='letter-spacing:5px;padding-right:1rem'>兑现金额:</b>"+data.content[i].amount+"元</p><p><b style='letter-spacing:5px;padding-right:1rem'>操作时间:</b>46455456</p><p><b style='letter-spacing:5px;padding-right:1rem;'>　状　态:</b>成功</p></div>";
+                        }
+                        $(".cash_records").append(moredata);
+                        if(count <= nextpage*3){
+                            $(".viewmore").remove();
+                        }
+                    }
+                })
+            })
+        })
+    </script>

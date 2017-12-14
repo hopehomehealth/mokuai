@@ -1,0 +1,97 @@
+
+<script type="text/javascript" src='{$Think.const.JS_URL}jquery-1.7.2.min.js'></script>
+<script type="text/javascript" src='{$Think.const.JS_URL}uploadPreview.js'></script>
+<div class="main-content">
+
+    <div class="page-content">
+        <div class="row">
+            <div class="page-content box">
+                <div class="box-title margin_bot_20">
+                    <div class="span10">
+                        <h3><i class="icon-magic"></i>幻灯片添加</h3>
+                    </div>
+                </div>
+
+
+                <div class="page-content">
+                    <div class="row">
+                        <div class="page-content box">
+
+                            <form action="__SELF__" method="post" class="form-horizontal" enctype="multipart/form-data">
+                                <input type='hidden' name='seller_id' value='0'/>
+                                <div class="form-group">
+                                    <label class="control-label">名　　称 : </label>
+                                    <div class="controls pull-left">
+                                        <input type="text" class="input-large" name="title">
+                                        <span class="help-inline green">  </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">栏　　目 : </label>
+                                    <div class="controls pull-left">
+                                        <select class="input-medium" name="cat_id">
+                                            <option value='0'>首页</option>
+                                            <foreach name='category' item='v'>
+                                                <option value='{$v.cat_id}' style="color:black">{$v.cat_name}</option>
+                                            </foreach>
+                                        </select>
+                                        <span class="help-inline red"> * </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">图　　片 : </label>
+                                    <div class="controls pull-left">
+                                        <input type="file" class="input-large" id="pic" name="pic" ><span class="help-inline red"> * 必填,PC端</span>
+                                        <div id="pic_div"><img id='pic_img' width='320' height='150'></div>
+                                    </div>
+                                    
+                                    <div class="controls pull-left">
+                                        <input type="file" class="input-large" id="picmobile" name="picmobile" ><span class="help-inline red"> * 必填,移动端</span>
+                                        <div id="pic_divmobile"><img id='pic_imgmobile' width='320' height='150'></div>
+                                    </div>
+                                </div>
+                                <script type='text/javascript'>
+                                    $(function(){
+                                        new uploadPreview({ UpBtn: "pic", DivShow: "pic_div", ImgShow: "pic_img" });
+                                        new uploadPreview({ UpBtn: "picmobile", DivShow: "pic_divmobile", ImgShow: "pic_imgmobile" });
+                                    });
+                                </script>
+                                <div class="form-group">
+                                    <label class="control-label">链接地址 : </label>
+                                    <div class="controls pull-left">
+                                        <input type="text" class="input-large" name="url">
+                                        <span class="help-inline green">  </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">是否显示 : </label>
+                                    <div class="controls pull-left">
+                                        <label>
+                                            <input type="radio" class="ace" name="is_show" checked="checked" value="0">
+                                            <span class="lbl">是</span>
+                                        </label>
+                                        <label>
+                                            <input type="radio" class="ace" name="is_show" value="1">
+                                            <span class="lbl">否</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">显示顺序 : </label>
+                                    <div class="controls pull-left">
+                                        <input type="text" class="input-medium" name="sort">
+                                        <span class="help-inline green"> </span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="control-label"></label>
+                                    <button id="bsubmit" type="submit"  class="btn btn-sm btn-primary">保存</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!--/.box-->
+                </div><!-- /.page-content -->
+            </div><!-- /.main-content -->
+</div>
+        </div></div>

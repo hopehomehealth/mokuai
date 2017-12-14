@@ -1,0 +1,71 @@
+
+        <div class="main">
+            <div class="tuXTop">
+                <span class="tuxiang" style="background-image:url({$info.photo})"></span>
+            </div>
+            <ul class="txNav">
+                <li>
+                    <a href="#" class="borRight">
+                        <span><if condition="$info.unfinished eq ''">0<else />{$info.unfinished}</if><em>个</em></span>
+                        <span>未完成</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="borRight">
+                        <span><if condition="$info.finishing eq ''">0<else />{$info.finishing}</if><em>个</em></span>
+                        <span>进行中</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span><if condition="$info.finished eq ''">0<else />{$info.finished}</if><em>个</em></span>
+                        <span>已完成</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="userList borBot">
+                <li class="borTop">
+                    <a href="__MODULE__/Nurse/allOrder">
+                        <i class="ico"></i>
+                        我的订单
+                        <i class="moreUser"></i>
+                    </a>
+                </li>
+            </ul>
+            <ul class="userList borBot">
+                <li class="borTop">
+                    <a href="__MODULE__/Nurse/xinxi">
+                        <i class="ico  ico_07"></i>
+                        个人信息
+                        <i class="moreUser"></i>
+                    </a>
+                </li>
+                <if condition="$info.id_status eq '1'">
+                <li class="borTop">
+                    <a href="__MODULE__/Nurse/timetable">
+                        <i class="ico ico_08"></i>
+                        作息时间
+                        <i class="moreUser"></i>
+                    </a>
+                </li>
+                </if>
+                <!-- <li class="borTop">
+                    <a href="__MODULE__/Nurse/pinggu">
+                        <i class="ico ico_02"></i>
+                        报告评估
+                        <i class="moreUser"></i>
+                    </a>
+                </li> -->
+            </ul>
+            <ul class="userList borBot">
+                <li class="borTop">
+                    <a href="__MODULE__/Nurse/cash">
+                        <i class="ico ico_cash"></i>
+                        提现 
+                        <i class="moreUser"></i>
+                    </a>
+                </li>
+            </ul>
+           
+        </div>
+    </div>

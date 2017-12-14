@@ -1,0 +1,90 @@
+
+<div class="main-content">
+    <div class="breadcrumbs">
+        <ul>
+            <li > <a href="__MODULE__/Contact/upd">留言修改 </a> </li>
+
+        </ul>
+        <!-- .breadcrumb -->
+    </div>
+
+    <div class="page-content">
+        <div class="row">
+            <div class="page-content box">
+                <form action="__SELF__" method="post" enctype='multipart/form-data' class="form-horizontal">
+                    <input type='hidden' name='contact_id' value='{$info.contact_id}' />
+                    <div class="form-group">
+                        <label class="control-label">回访时间 : </label>
+                        <div class="controls pull-left">
+                            <label>
+                                <!--<eq name='info.type_id' value='$v.type_id'>selected='selected'</eq>-->
+                                <input type="radio" class="ace" name="visit" value="0" <eq name='info.visit' value="0">checked="checked"</eq>>
+                                <span class="lbl">随时</span>
+                            </label>
+                            <label>
+                                <input type="radio" class="ace" name="visit" value="1"<eq name='info.visit' value="1">checked="checked"</eq>>
+                                <span class="lbl">上班时间</span>
+                            </label>
+                            <label>
+                                <input type="radio" class="ace" name="visit" value="2" <eq name='info.visit' value="2">checked="checked"</eq>>
+                                <span class="lbl">下班时间</span>
+                            </label>
+                            <label>
+                                <input type="radio" class="ace" name="visit" value="3" <eq name='info.visit' value="3">checked="checked"</eq>>
+                                <span class="lbl">周末</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">姓名 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" class="input-large" name="name" value="{$info.name}">
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">性别 : </label>
+                        <div class="controls pull-left">
+                            <label>
+                                <input type="radio" class="ace" name="sex" value="0" <eq name='info.sex' value="0">checked="checked"</eq>>
+                                <span class="lbl">先生</span>
+                            </label>
+                            <label>
+                                <input type="radio" class="ace" name="sex" value="1" <eq name='info.sex' value="1">checked="checked"</eq>>
+                                <span class="lbl">女士</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">手机 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" class="input-large" name="iphone" value="{$info.iphone}">
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">地址 : </label>
+                        <div class="controls pull-left">
+                            <input type="text" class="input-large" name="address" value="{$info.address}">
+                            <span class="help-inline red"> * </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">留言内容 : </label>
+                        <div class="controls pull-left">
+                            <textarea class="input-large"  name="content" >{$info.content}</textarea>
+                        </div>
+                    </div>
+
+
+                    <div class="form-actions">
+                        <input id="bsubmit" type="submit"  class="btn btn-sm btn-primary" value="保存"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--/.box-->
+    </div><!-- /.page-content -->
+</div><!-- /.main-content -->
+
+

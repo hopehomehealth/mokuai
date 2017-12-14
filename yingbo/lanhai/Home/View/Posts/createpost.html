@@ -1,0 +1,74 @@
+<script type="text/javascript" src="{$Think.const.HJS_URL}jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src='{$Think.const.PLUGIN_URL}ueditor/ueditor.config.js' ></script>
+<script type="text/javascript" src='{$Think.const.PLUGIN_URL}ueditor/ueditor.all.min.js' ></script>
+<script type="text/javascript" src='{$Think.const.PLUGIN_URL}ueditor/lang/zh-cn/zh-cn.js' ></script>
+<!--banner-->
+<!-- <p class="su-banner pt10"><img src="{$Think.const.HIMG_URL}images_43.jpg" /></p> -->
+<!--banner-->
+<!--第二通栏-->
+<div class="column-c pt10 pb30" style="height:auto;min-height:870px">
+  <!--****左边通栏****-->
+  <div class="set-lis-l fl h810" style="height:auto;min-height:810px;margin-bottom:20px">
+    <!--****左边第一通栏****-->
+  <form action="__SELF__" method="post" id="postform">
+   <ul class="advice fl">
+  <li>
+          <p class="poster-t fl">标题：</p>
+          <input name="topic" class="advice-k w520 fl" placeholder="请输入帖子标题！" type="text" />
+          <select class="poster-k fl ml28" name="board_id">
+            <option style="color:#666;" value='0'>请选择分类</option>
+            <foreach name='boards' item='bd'>
+              <if condition="$bd.pid eq 0">
+                <option style="color:#dcc;font-weight:bold" disabled="disabled" value='0'>{$bd.board_title}</option>
+              <else />
+                  <option style="color:#666;" value='{$bd.board_id}'>&nbsp;&nbsp;&nbsp;&nbsp;{$bd.board_title}</option>
+              </if>
+            </foreach>
+          </select>
+          </p>
+        </li>
+        <li><p class="poster-t fl">内容：</p> <textarea rows="5" cols="25" id='content' name="body" class="w653 fl" style='padding:0;border:0;width:663px;height:445px;'></textarea><div style="clear:both"></div></li>
+        <script type="text/javascript">
+          var ue = UE.getEditor('content',{toolbars: [[
+                    'fullscreen', 'source', '|',
+              'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'pasteplain', '|', 'forecolor', 'selectall', 'cleardoc', '|',
+              'rowspacingtop', 'rowspacingbottom', 'lineheight',
+              'fontfamily', 'fontsize','indent',
+              'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|',
+              'link', 'unlink', '|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
+              'simpleupload', 'emotion', '|',
+              'inserttable', 'deletetable', 'insertrow', 'deleterow', 'insertcol', 'deletecol', 'mergecells', 'mergeright', 'mergedown', 'splittocells', 'splittorows', 'splittocols', 'charts'
+          ]],wordCount:false});
+        </script>
+      <li><p class="poster-t fl">&nbsp;</p><p class="lh34">请遵守<a href="__MODULE__/Sysconfig/gongyue" class="bule">蓝海长青公约</a>言论规则，不得违反国家法律法规</span> </p>
+      </li>
+      <li> <p class="poster-t fl">&nbsp;</p> <input name="verifycode" type="text" class="logon-list-k1 fl mr15" placeholder="请输入验证码"  />
+        <img src="__MODULE__/Posts/verifyImg" onclick="this.src=this.src+'?'+Math.random()" /><span class="logon-an fr mr15"><a href="javascript:void(0)" id="postbtn">发&nbsp;表</a></span>
+      </li>
+  </ul>
+  </form>
+  </div>
+  <!--****右边通栏****-->
+  <div class="set-lis-r fr">
+    <!--****右边第二通栏****-->
+    <div class="set-lis-tj fl">
+      <p class="set-lis-tjtt fl"><img src="{$Think.const.HIMG_URL}images_108.jpg"  alt=""/></p>
+      <ul class="set-lis-list fl pt15">
+        <!-- <dl class="set-lis-pic fl pb10">
+          <dt><a href="ser_final.html"><img src="{$Think.const.HIMG_URL}images_112.jpg"  alt=""/></a></dt>
+          <dd><a href="ser_final.html">对电信诈骗受害者进行赔偿，银行会更有动力阻止电信诈骗。</a></dd>
+        </dl> -->
+        <foreach name="hotposts" item="info">
+        <li><a href="__MODULE__/Posts/detail/post_id/{$info.post_id}">{$info.topic}</a></li>
+        </foreach>
+	  <div style="clear:both"></div>
+      </ul>
+    </div>
+  </div>
+  ​<div style="clear:both"></div>
+</div>
+<div style="clear:both"></div>
+<script type="text/javascript" src="{$Think.const.HJS_URL}msgbox.js"></script>
+<script type="text/javascript" src='{$Think.const.HJS_URL}createposts.js' ></script>
+
+

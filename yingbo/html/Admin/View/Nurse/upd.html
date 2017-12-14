@@ -1,0 +1,120 @@
+<script type="text/javascript" src='{$Think.const.JS_URL}jquery-1.7.2.min.js'></script>
+<div class="main-content">
+    <div class="page-content">
+        <div class="row">
+            <div class="page-content box">
+    <div class="box-title margin_bot_20">
+        <div class="span10">
+            <h3><i class="icon-cogs"></i>护士资料</h3>
+        </div>
+    </div>
+            <form method="post" action="__MODULE__/Nurse/upd" enctype="multipart/form-data">
+            <table class="table table-striped table-bordered table-moreinfo-nurse" style="height:700px">
+                <tr>
+                    <th>姓名</th><td><input type="text" name="username" value="{$nurseinfo.username}"></td><th>性别</th><td><input type="radio" name="sex" {$nurseinfo['sex']?"":"checked"} value="0">女&nbsp;<input type="radio" name="sex" {$nurseinfo['sex']?"checked":""} value="1">男</td><th>工作单位</th><td><input type="text" name="company" value="{$nurseinfo.company}"></td><th>照片</th><td><if condition="$nurseinfo.photo eq ''"><img src="{$Think.const.IMG_URL}pgtu.jpg" style="width:75px;height:75px;border-radius:50%;margin:0px"><else /><img src="__PUBLIC__/{$nurseinfo.photo}" style="width:75px;height:75px;border-radius:50%;margin:0px"></if><br/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="file" name="photo" style="display:inline;width:200px"></td>
+                </tr>
+                <tr>
+                    <th>身份证号</th><td><input type="text" name="number" value="{$nurseinfo.number}"></td><th>职位类型</th><td><input type="text" name="type" value="{$nurseinfo.type}"></td><th>职称级别</th><td><input type="text" name="grade" value="{$nurseinfo.grade}"></td><th>护士级别</th><td><input type="text" name="level" value="{$nurseinfo.level}"></td>
+                </tr>
+                <tr>
+                    <th>部门</th><td><input type="text" name="departments" value="{$nurseinfo.departments}"></td><th>护士工龄</th><td><input type="text" name="standing" value="{$nurseinfo.standing}"></td><th>证书编号</th><td><input type="text" name="certificate" value="{$nurseinfo.certificate}"></td><th>电话</th><td><input type="text" name="iphone" value="{$nurseinfo.iphone}"></td>
+                </tr>
+                <tr>
+                    <th>学校</th><td><input type="text" name="school" value="{$nurseinfo.school}"></td><th>城市</th><td>
+                    <select name="province_id" class="province selectarea">
+                        <option value=''><if condition="$nurseinfo.city eq ''">省<else />{$nurseinfo.city}</if></option>
+                        <foreach name="provincelist" item="provinceinfo">
+                        <option value="{$provinceinfo.id}">{$provinceinfo.name}</option>
+                        </foreach>
+                    </select>
+                    <select name="city_id" class="city selectarea" style="visibility:hidden">
+                    </select>
+                    <select name="country_id" class="country selectarea" style="visibility:hidden">
+                    </select>
+                    <input type="hidden" name="city" value="{$nurseinfo.city}"> 
+                </td><th>详细地址</th><td><input type="text" name="area" value="{$nurseinfo.area}"></td><th>籍贯</th><td><input type="text" name="origin" value="{$nurseinfo.origin}"></td>
+                </tr>
+                <input type="hidden" name="userid" value="{$nurseinfo.userid}">
+                <input type="hidden" name="oldphoto" value="{$nurseinfo.photo}">
+                <tr>
+                    <th>工作经历</th><td colspan=7><textarea rows="5" cols="60" name="experience">{$nurseinfo.experience}</textarea></td>
+                </tr>
+                <tr>
+                    <td colspan=8><button class="btn btn-biger submit" type="submit">确认信息</td>
+                </tr>
+            </table>
+            </form>
+    <script type="text/javascript">
+            $(function(){
+                    var provinceid,cityid,countryid; 
+                    var provincename,cityname,countryname;
+                    var areaname;
+                    $(".province").change(function(){
+                        var index = $(this).get(0).selectedIndex;
+                        if(index == 0){
+                            $(this).siblings('.selectarea').css("visibility","hidden");
+                            return;
+                        }else{
+                            $(".city").css("visibility","visible");
+                            provinceid = $(this).val();
+                            provincename = $(".province option:selected").text();
+                            //alert(provincename);
+                            $.post("__MODULE__/Assess/getcity",{'upid':provinceid},function(data){
+                                if(data.error ==  1){
+
+                                }else{
+                                    var cityhtml = "<option value=''>市</option>";
+                                    var datalist = data.content;
+                                    for(var i in datalist){
+                                        cityhtml+="<option value='"+datalist[i].id+"'>"+datalist[i].name+"</option>";
+                                    }
+                                    $(".city").eq(0).html(cityhtml);
+                                }
+                            })
+                        }
+                        //计算出选择省在数组中的下标
+                    })
+                    $(".city").change(function(){
+                        var index = $(this).get(0).selectedIndex;
+                        if(index == 0){
+                            $(".country").css("visibility","hidden");
+                            return;
+                        }else{
+                            $(".country").css("visibility","visible");
+                            cityid = $(this).val();
+                            cityname = $(".city option:selected").text();
+                            //alert(cityid);
+                            $.post("__MODULE__/Assess/getcity",{'upid':cityid},function(data){
+                                if(data.error ==  1){
+
+                                }else{
+                                    var countryhtml = "<option value=''>县/区</option>";
+                                    var datalist = data.content;
+                                    for(var i in datalist){
+                                        countryhtml+="<option value='"+datalist[i].id+"'>"+datalist[i].name+"</option>";
+                                    }
+                                    $(".country").eq(0).html(countryhtml);
+                                }
+                            })
+                        }
+                        //计算出选择省在数组中的下标
+                    })
+                    $(".country").change(function(){
+                        var index = $(this).get(0).selectedIndex;
+                        if(index == 0){
+                            return;
+                        }else{
+                            countryid = $(this).val();
+                            countryname = $(".country option:selected").text();
+                            areaname = provincename+cityname+'市'+countryname;
+                            //$(".country option:selected").text(areaname);
+                            $("input[name='city']").val(areaname);
+                        }
+                    })
+                })
+        </script>
+            </div>
+        </div>
+        <!--/.box-->
+    </div><!-- /.page-content -->
+</div><!-- /.main-content -->
