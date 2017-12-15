@@ -1,0 +1,1 @@
+<h1>smarty 自定义函数</h1><{yuyu times="10" size="5" color="blue" con="hello,yy"}><h1>计算</h1><{jisuan num1='3' num2='5' operator='s'}><h1>块调用</h1><{test2 times="10" size="5" color="red"}>你好，小鱼儿<{/test2}><h1>直接使用smarty提供的自定义函数</h1><{html_select_date start_year="1989" end_year="2013"}>

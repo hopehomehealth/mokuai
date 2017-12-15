@@ -1,0 +1,2 @@
+264
+a:5:{s:8:"template";a:1:{s:11:"myindex.tpl";b:1;}s:11:"insert_tags";a:1:{s:12:"getVisitTime";a:5:{i:0;s:6:"insert";i:1;s:12:"getVisitTime";i:2;s:11:"myindex.tpl";i:3;i:1;i:4;b:0;}}s:9:"timestamp";i:1375945750;s:7:"expires";i:1375945810;s:13:"cache_serials";a:0:{}}<h1>访问该页面的次数</h1>f8d698aea36fcbead2b9d5359ffca76f{insert_cache a:1:{s:4:"name";s:12:"getVisitTime";}}f8d698aea36fcbead2b9d5359ffca76f<h1>用户列表</h1>

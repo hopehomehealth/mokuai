@@ -1,0 +1,4 @@
+<?php $_config_vars = array (
+  'title' => 'ÏÔÊ¾Êý¾Ý',
+  'bgcolor' => 'white',
+); ?>
