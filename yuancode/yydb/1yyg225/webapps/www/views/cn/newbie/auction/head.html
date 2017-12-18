@@ -1,0 +1,19 @@
+{include file="top.html"}
+<link rel="stylesheet" href="{url('/style/css/basis.css')}">
+
+<div id="wrap">
+    <div class="top-box fn-clear">
+        <div class="fn-left logo">
+            <a href="{url()}"><img src="{'/style/images/logo.png'|url}" alt="" /></a>
+        </div>
+        <div class="fn-right top-r">
+            <a href="{url()}">返回{$site_config.site_name}首页>></a>
+        </div>
+    </div>
+
+    <ul class="nav-box fn-clear">
+        <li{if $type eq 1} class="dq"{/if}><a href="{$url|cat:'index'|url}">账户注册</a></li>
+        <li{if $type eq 2} class="dq"{/if}><a href="{$url|cat:'zh-index'|url}">账户设置</a></li>
+        <li{if $type eq 3} class="dq"{/if}><a href="{$url|cat:'cz-index'|url}">充值{$L.unit_pay}</a></li>
+        <li{if $type eq 4} class="dq"{/if}><a href="{$url|cat:'jp-index'|url}">{$L.unit_pay}信息</a></li>
+    </ul>

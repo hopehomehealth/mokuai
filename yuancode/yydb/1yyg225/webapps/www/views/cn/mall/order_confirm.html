@@ -1,0 +1,163 @@
+{include file='home/uhead.html'}
+<link rel="stylesheet" href="/css/wx-site.css" type="text/css" />
+{literal}
+<style type="text/css">
+.wrap-s1{margin-bottom:15px}
+.sel-other{position:absolute; right:5px; top:50%; margin-top:-7px; height:14px; width:14px; color:#888}
+.sel-other i{font-size:14px; line-height:20px; height:20px; width:20px; color:#ccc}
+.express{text-align:left; padding:10px 0 10px 5px}
+.express label{width:60px}
+.express input,.express label{vertical-align:middle; display:inline-block; padding:0 2px; cursor:pointer}
+.ticket-tag *{display:inline-block; vertical-align:middle}
+.order-deliver .zone{width:85%; display:inline-block}
+</style>
+{/literal}
+<div class="context clear">
+    <form method="post" action="/xmall/create_order" onsubmit="return mall.createOrder()" id="orderForm">
+    <div class="wrap-s1 addrs">
+        <div class="info-tag">收货地址</div>
+        <div class="info order-deliver">
+            <a href="/xdeliver/select" style="display:block">
+                <span class="uname">{$deliver.real_name}</span>
+                <span class="mobile">{$deliver.mobile}</span><br>
+                <span class="zone">{substr($deliver.prov_name,2)}{$deliver.city_name}{$deliver.district_name},{$deliver.address}({$deliver.zipcode})</span><br>
+                <div class="sel-other"><i class="iconfont">&#xe60e;</i></div>
+            </a>
+        </div>
+
+        <div class="info-tag">配送方式</div>
+        <div class="express">
+            {foreach from=$express item=m key=k}
+            <input id="express{$m.id}" type="radio" name="express" value="{$m.id}"{if $k==0} checked{/if}>
+            <label for="express{$m.id}">{$m.name}</label>
+            {/foreach}
+        </div>
+
+        <div class="info-tag">支付方式</div>
+        <div class="express">
+            <input id="paytype1" type="radio" name="paytype" checked value="1">
+            <label for="paytype1">支付宝</label>
+            <input id="paytype2" type="radio" name="paytype" value="4">
+            <label for="paytype2">货到付款</label>
+        </div>
+
+        <div class="info-tag ticket-tag" style="display:none">
+            <label for="set_ticket">开发票</label>
+            <input type="checkbox" id="set_ticket">
+        </div>
+    </div>
+
+    <div class="wrap-s1">
+        <div class="info-tag">商品清单</div>
+        {if count($list)}
+        <ul class="check-good-list">
+            {foreach from=$list item=m key=k}
+            <li>
+                <div class="cart-item">
+                    <div class="good-desc">
+                        <div class="good-pic">
+                            <input type="hidden" name="cartids[{$k}]" value="{$m.id}" />
+                            <a href="/xmall/detail/{$m.good_id}"><img src="{$m.imgurl_thumb}"></a>
+                        </div>
+                        <div class="good-info">
+                            <a>{$m.good_name}</a>
+                            <span>{$m.rule}</span>
+                        </div>
+                    </div>
+                    <div class="good-opt">
+                        <table>
+                            <tr>
+                                <th>单价</th>
+                                <th>数量</th>
+                                <th>积分
+                                {if (isset($m.group_pref_price) && $m.group_pref_price!=0)}
+                                / 团折
+                                {/if}</th>
+                                <th>小计</th>
+                            </tr>
+                            <tr>
+                                <td>￥{$m.good_real_price}元</td>
+                                <td>{$m.buy_num}</td>
+                                <td>
+                                    {$m.good_real_price * 1}
+                                    {if (isset($m.group_pref_price) && $m.group_pref_price!=0)}
+                                    / 优惠{$m.group_pref_price}元
+                                    {/if}
+                                </td>
+                                <td><span class="pay-money">￥{$m.good_real_price*$m.buy_num}</span></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </li>
+            {/foreach}
+        </ul>
+        {/if}
+    </div>
+
+
+    <div class="wrap-s1">
+        <div class="info-tag" style="border-bottom:none">使用优惠券和积分</div>
+        <div style="padding:5px; line-height:24px">
+            <div style="padding-bottom:8px">
+                <label class="order-label">
+                    <span>选择已有优惠券</span>
+                    <select onchange="mall.useCredit()" id="use-coupon" name="coupon">
+                        <option value="">请选择</option>
+                        {foreach from=$coupons item=coupon}
+                        <option value="{$coupon.id}|{$coupon.exchange_money}">{$coupon.title}</option>
+                        {/foreach}
+                    </select>
+                </label>
+            </div>
+
+            <div style="padding-bottom:8px">
+                <label class="order-label">
+                    <span>使用积分</span><br>
+                    <input class="form-i LH18" id="use_credit_val" name="use_credit" value="0" onblur="mall.useCredit()" type="number">
+                    <input type="hidden" id="ratio_credit" value="{$ratio.credit}">
+                    <input type="hidden" id="user_credit" value="{$credit}">
+                    <input type="hidden" id="ratio_vip_credit" value="{$ratio.vip_credit}">
+                    <input type="hidden" id="ratio_vip_credit2" value="{$ratio.vip_credit2}">
+                    <input type="hidden" id="user_total_price" value="{$totalPrice}">
+                    <input type="hidden" id="ratio_use_credit" value="{$ratio.use_credit}">
+                    <input type="hidden" id="is-xvip" value="{$is_vip}"/>
+                </label>
+                <div style="color:#999">您目前的可用积分为{$credit}<span style="display:none">,本订单最多可用1000积分.</span></div>
+            </div>
+            <div class="pay-end">
+                <div>该订单完成后，您将获得<span id="gain-credit">{$ratio.gain_credit}</span>积分。</div>
+                <div>商品总价：<span>￥<b id="total-payment">{$totalPrice}</b></span><br></div>
+                <div id="use_credit" style="display:none">使用积分：<span id="use_credit_num">0</span></div>
+                <div id="use_coupon" style="display:none">使用优惠券：<span id="use_coupon_minus"></span></div>
+                <div class="total-pay">应付款金额：<span class="realpay">￥<b id="cur-payment">{$totalPrice}</b>元</span></div>
+            </div>
+
+        </div>
+        {literal}
+        <style type="text/css">
+            #use_credit_num{color:#f60}
+            .pay-end{border-top:1px solid #ddd; padding-top:10px; text-align:right; margin-top:10px; line-height:20px}
+            .total-pay{padding:5px 0}
+            .realpay{font-size:16px; color:#f40}
+            .realpay b{font-weight:100}
+        </style>
+        {/literal}
+
+
+        <div class="info-tag">给商家留言</div>
+        <div class="form-row">
+            <textarea class="form-area box-auto" name="message"></textarea>
+        </div>
+    </div>
+
+    </form>
+
+    <div class="h60"></div>
+    <div class="fix-bottom">
+        <a href="javascript:;" class="uiBtn BtnBlue BtnS4 s14 d2-mall-createOrder"><i class="iconfont">&#xe627;</i> 提交订单</a>
+    </div>
+</div><!--End Context-->
+<script type="text/javascript" src="/js/mall.js"></script>
+<span style="display:none" class="icon-heart"></span>
+{include file='home/foot.html'}

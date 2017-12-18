@@ -1,0 +1,138 @@
+{include file="header.html"}
+<script src="/style/lefttime.js"></script>
+<link rel="stylesheet" href="{url('/style/css/boutique.css')}">
+<link rel="stylesheet" href="{url('/style/css/yiyuanbao.css')}">
+<style type="text/css">
+    .fn-clear{ clear: both; }
+    .tiyan-box{ margin-bottom: 40px;}
+    h3{ font-size: 18px; line-height: 40px; height: 40px; overflow: hidden; color: #000; font-weight: normal; }
+    h3 a{ color: #000; }
+    h3 a:hover{ color: #e54048; }
+    h3 span{ float:right; font-size: 12px; line-height: 50px; }
+
+    .m-list-goodsList .m-list-mod-bd{ padding-top:0; width:1160px; }
+    .w-quickBuyList{ width: 100%; border-left:1px solid #ddd; border-top:2px solid #888; }
+    .w-quickBuyList-item{ margin-right:0; margin-bottom: 0; height: 375px; width:289px; margin-left:-1px;margin-top:-1px; }
+    .m-list-goodsList .w-goods-opr-buy{ margin-top: 0}
+
+    .hy-btn{ background:#1FB89A; height:22px; line-height: 22px; font-size:14px; color:#fff; cursor:pointer; border-radius:3px; border:1px solid #048E77; padding:0 10px; border-width: 0 1px 2px 0; }
+    .hy-btn:hover{ color:#ff0;}
+</style>
+
+<div class="ggAuc11">
+    {zz mod=content var=tagAdw module=ad id=9}
+    {zz mod=fileurl var=tagAds source=$tagAdw.images num=2}
+    {foreach from=$tagAds item=m}
+    <div class="g-gg" style="height:{$tagAdw.height}px;background:{$tagAdw.bgcolor} url('{$m.path}') no-repeat center bottom"><span></span></div>
+    {/foreach}
+    <!--<div class="container" style="position:relative;margin-top:-180px;height:250px;">
+        {zz mod=content var=tagGG catid=61 limit=1 type=row field=content}
+        {if $tagGG}
+        <div class="txt txt_ty">
+            <dl style="background: #ffdb0b;color:#000;">
+                <dt style="color: #e53f47">体验区公告</dt>
+                <dd>
+                    {$tagGG.content|stripcslashes}
+                </dd>
+            </dl>
+        </div>
+        {/if}
+        <div class="txtScroll-top" style="color: #666">
+            <h4>幸运一族：</h4>
+            <div class="bd">
+                <ul>
+                    {foreach from=$data.log item=m}
+                    <li title="恭喜{$m.username}会员{if $m.win > 0}在{$m.win}%出价成交活动中{/if}以{$m.bid_price|price_format}获{$m.title}">恭喜<a><span class="color01">{$m.username|nickname:$m.nickname}</span></a>会员{if $m.win > 0}在{$m.win}%出价成交活动中{/if}以<span>{$m.bid_price|price_format}</span>获{$m.title|truncate:16}</li>
+                    {/foreach}
+                </ul>
+            </div>
+        </div>
+        {include file="ur_here.html"}
+    </div>-->
+</div>
+
+<div class="container tiyan-box fn-clear mt10">
+
+    <h3><span><a href="{'/yunbuy/free'|url}">体验更多宝贝哦...</a></span><a href="{'/yunbuy/free'|url}">不花钱{$L.unit_yun}体验区</a>（<a href="{'/member'|url}" target="_blank">使用{$L.unit_pay_points}{$L.unit_yun}</a>，<a href="{'/member/myivt'|url}" target="_blank">邀请送{$L.unit_pay_points}</a>）</h3>
+    <div class="m-list-mod m-list-goodsList">
+        <div class="m-list-mod-bd">
+            <ul class="w-quickBuyList f-clear">
+                {foreach from=$data.yunList item=m name=list}
+                <li class="w-quickBuyList-item">
+                    {if $m.member eq -1}
+                    <img class="sale_db" src="/style/images/member_db.png" style="right: 5px; top:5px;" />
+                    {elseif $m.notjoin eq 1}
+                    <img class="sale_db" src="/style/images/nxdb.png" style="right: 5px; top:5px;" />
+                    {elseif $m.buynum gt 0 || $m.usernum gt 0}
+                    <img class="sale_db" src="/style/images/sale_db.png" style="right: 5px; top:5px;" />
+                    {/if}
+
+                    <div class="w-goods w-goods-l w-goods-ing">
+                        <div class="w-goods-pic v scrollLoadingDiv">
+                            <a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}" target="_blank" title="{$m.title}">
+                                <img alt="{$m.title}" class="scrollLoading" src="/style/images/pix.gif" data-url="{zz mod=fileurl source=$m.imgurl_src width=250 height=150}" style="">
+                            </a>
+                            <span></span>
+                        </div>
+                        <p class="w-goods-title f-txtabb">
+                            <a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}" target="_blank" title="{$m.title}"><span class="color01">(第{$m.qishu}期)</span> {$m.title}</a></p>
+                        <p class="w-goods-price">总需：{$m.need_num} 人次</p>
+                        <div class="w-progressBar" title="{$m.jindu}%">
+                            <p class="w-progressBar-wrap"><span class="w-progressBar-bar" style="width: {$m.jindu}%;"></span></p>
+                            <ul class="w-progressBar-txt f-clear">
+                                <li class="w-progressBar-txt-l">
+                                    <p><b>{$m.buy_num}</b></p>
+                                    <p>已免费参与人次</p>
+                                </li>
+                                <li class="w-progressBar-txt-r">
+                                    <p><b>{$m.end_num}</b></p>
+                                    <p>剩余人次</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="w-goods-opr">
+                            <a class="w-button w-button-green w-button-l" href="{'/yunbuy/detail/'|cat:$m.buy_id|url}" style="width: 90px;">{$L.unit_yun_button}</a>
+                        </div>
+                    </div>
+                </li>
+                {/foreach}
+                {if $yunListNo < 4 && $yunListNo > 0}
+                {for $foo=1 to $yunListNo}
+                <li class="w-quickBuyList-item blank"></li>
+                {/for}
+                {/if}
+            </ul>
+        </div>
+    </div>
+
+</div>
+{include file="footer.html"}
+<script type="text/javascript">
+    $('.w-quickBuyList-item').bind('mouseover',function(){
+        $(this).addClass('hover');
+    }).bind('mouseout',function(){
+        $(this).removeClass('hover');
+    });
+
+    $(function(){
+        $(".w-number-btn-plus").click(function(){
+            var max = $(this).parent().children('input.w-number-input').attr('data-max');
+            var qty = $(this).parent().children('input.w-number-input').val()*1;
+            if(qty < max){
+                $(this).parent().children('input.w-number-input').val(qty+1);
+            }
+        });
+        $(".w-number-btn-minus").click(function(){
+            var qty = $(this).parent().children('input.w-number-input').val()*1;
+            if(qty>1){
+                $(this).parent().children('input.w-number-input').val(qty-1);
+            }
+        });
+        $(".w-number-input").blur(function(){
+            var max = $(this).attr('data-max')*1;
+            if($(this).val()>max){
+                $(this).val(max);
+            }
+        });
+    });
+</script>

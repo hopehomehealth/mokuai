@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no" />
+    <title>会员中心</title>
+    <link rel="stylesheet" type="text/css" href="../cssn/aui.2.0.css" />
+    <link rel="stylesheet" type="text/css" href="../cssn/swiper.min.css" />
+    <link rel="stylesheet" type="text/css" href="../fonts/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="../cssn/style.css" />
+    <link rel="stylesheet" type="text/css" href="../cssn/center.css" />
+</head>
+<body class="center-bg">
+<div class="center-top">
+	<dl class="center-top1 aui-clearfix aui-text-center pd1">
+		<dt><em class="photo" onclick="openActionsheet()"><img src="../image/single-2.jpg"></em></dt>	
+		<dd>
+			<p><strong class="username"></strong></p>
+			<div class="recchage_bar" style="font-size: 16px;width: 30%;height:30px;border-radius:2px; background:orange; margin: 0 auto;" onclick="openWin('member_recchage')">
+				<span>充&nbsp;&nbsp;&nbsp;&nbsp;值</span>
+			</div>
+			<p>余额：<span class="user_money"></span>　<font class="unit_db_points"></font>：<span class="db_points"></span>　<font class="unit_pay_points"></font>：<span class="pay_points"></span></p>
+		</dd>
+	</dl>
+	<ul class="center-top2">
+		<li><a onclick="openWin('member_db',{type:2})"><img src="../image/center-1.png">正在进行</a></li>
+		<li><a onclick="openWin('member_db',{type:3})"><img src="../image/center-2.png">已揭晓</a></li>
+		<li><a onclick="openWin('member_db',{type:2})"><img src="../image/center-3.png">多期参与</a></li>
+		<li><a id="signin"><img src="../image/center-4.png">签到</a></li>
+		<li><a onclick="openWin('setting')"><img src="../image/center-5.png">设置</a></li>
+		<li><a onclick="openWin('member_changedb')"><img src="../image/center-8.png">兑换<font class="unit_db_points"></font></a></li>
+	</ul>
+</div>	
+<div class="center-1 aui-clearfix aui-text-center">
+	<a onclick="openWin('member_db')"> 
+		<em><img src="../image/center1-1.png"></em>
+		<p>夺宝记录</p>
+	</a>
+	<a onclick="openWin('member_luck')"> 
+		<em><img src="../image/center1-2.png"></em>
+		<p>中奖纪录</p>
+	</a>
+	<a onclick="openWin('member_order')"> 
+		<em><img src="../image/center1-3.png"></em>
+		<p>订单管理</p>
+	</a>
+	<a onclick="openWin('member_bonus')"> 
+		<em><img src="../image/center1-4.png"></em>
+		<p>我的<font class="unit_bonus"></font></p>
+	</a>
+	<a onclick="openWin('member_account')"> 
+		<em><img src="../image/center1-5.png"></em>
+		<p>资产管理</p>
+	</a>
+	<a onclick="openWin('member_task')"> 
+		<em><img src="../image/center1-6.png"></em>
+		<p>我的任务</p>
+	</a>
+	<a onclick="openWin('member_address')"> 
+		<em><img src="../image/center1-7.png"></em>
+		<p>收货地址</p>
+	</a>
+	<a onclick="openWin('member_info')"> 
+		<em><img src="../image/center1-8.png"></em>
+		<p>个人信息</p>
+	</a>
+	<a onclick="openWin('member_safe')"> 
+		<em><img src="../image/center1-9.png"></em>
+		<p>账户安全</p>
+	</a>
+	<a onclick="openWin('member_myivt')"> 
+		<em><img src="../image/center1-10.png"></em>
+		<p>我的邀请</p>
+	</a>
+	<a onclick="openWin('member_commission')"> 
+		<em><img src="../image/center1-11.png"></em>
+		<p>佣金明细</p>
+	</a>
+	<a class="store" onclick="openWin('store')"> 
+		<em><img src="../image/center1-13.png"></em>
+		<p>我的店铺</p>
+	</a>
+	<a class="quanzi" onclick="openWin('quanzi')"> 
+		<em><img src="../image/center1-14.png"></em>
+		<p>圈子云购</p>
+	</a>
+	<a onclick="openWin('member_share')"> 
+		<em><img src="../image/center1-15.png"></em>
+		<p>我的晒单</p>
+	</a>
+	<a onclick="doexit();"> 
+		<em><img src="../image/center1-12.png"></em>
+		<p>退出登录</p>
+	</a>
+</div>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/jquery.min.js"></script>
+<script type="text/javascript" src="../script/fastclick.js"></script>
+<script type="text/javascript" src="../script/doT.min.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript" src="../script/aui-actionsheet.js" ></script>
+<script type="text/javascript">
+var actionsheet = new auiActionsheet();
+function doexit(){
+  	showprog();
+	$api.setStorage('uid','');
+	$api.setStorage('uname','');
+	$api.setStorage('minfo','');
+	api.execScript({
+		       name : 'root',
+		       script : "loadcart()"
+	});
+	ajaxRequest('member/doexit', 'POST', {}, function (ret, err) {
+	    hideprog();
+	    closetoWin();
+	    reload('main',true);
+	});
+}
+function openActionsheet(){
+    actionsheet.init({
+        frameBounces:true,//当前页面是否弹动，（主要针对安卓端）
+        title:"设置头像",
+        cancelTitle:'取消',
+        buttons:['拍照','相册']
+    },function(ret){
+        if(ret.buttonIndex==1||ret.buttonIndex==2){
+            var type = ret.buttonIndex==1 ? 'camera' : 'album';
+            openWin('photo',{type:type});
+        }
+    })
+}
+$(function(){
+$('.store,.quanzi').hide();
+$('#signin').live('click',function(){
+      showprog();
+      ajaxRequest('member/ajax_signin', 'GET', {}, function (ret, err) {
+        hideprog();
+          $('#signin').attr("disabled",true);
+      	$('#signin').addClass('gary_btn');
+		$('#signin').removeClass('red_btn');
+	    api.alert({
+		    title: '系统消息',
+		    msg: ret.msg
+		});
+	  });
+});
+});
+//var apireadyLoad = false;
+function loadUser(){
+  showprog();
+  if(!uid) return;
+  ajaxRequest('member/index', 'GET', {}, function (ret, err) {
+    data = ret.data;
+    $('.photo img').attr('src',data.info.photo);
+    $('.username').html(data.info.username);
+    $('.rank_name').html(data.info.rank_name);
+    $('.rank_points').html(data.info.rank_points);
+    $('.pay_points').html(data.info.pay_points);
+    $('.user_money').html(data.info.user_money);
+    $('.db_points').html(data.info.db_points);
+    if(api.appVersion!=data.app_checking || api.systemType!='ios') $('.recchage_bar').show();
+    $('.unit_db_points').html(data.unit_db_points);
+    $('.unit_yun').html(data.unit_yun);
+    $('.unit_pay_points').html(data.unit_pay_points);
+    $('.unit_bonus').html(data.unit_bonus);
+    if(data.is_store) $('.store').show();
+    if(data.is_quanzi) $('.quanzi').show();
+    //如果已经签到过，改按钮状态为灰色
+    if (data.signin == 1) {
+      	$('#signin').attr("disabled",true);
+      	$('#signin').addClass('gary_btn');
+		$('#signin').removeClass('red_btn');
+    } 
+    hideprog();
+  });
+}
+apiready = function(){
+  api.execScript({
+     name : 'root',
+     script : "loadcart()"
+  }); 
+	loadUser();
+	apireadyLoad = true;
+}
+//if (apireadyLoad == false) {
+//	loadUser();
+//}
+</script>
+</body>
+</html>

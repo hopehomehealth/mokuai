@@ -1,0 +1,23 @@
+{if $data.qishuList|count>0}
+<div class="fn-clear auc_qishu {if $data.qishuList|count gt 27}auc_period{/if}">
+    <div class="period"><!--展开后添加CLASS toggle_close-->
+        <a href="javascript:void(0);" class="open">展开 <i></i></a>
+        <a href="javascript:void(0);" class="close">收起 <i></i></a>
+    </div>
+
+    <ul class="fn-clear">
+        {foreach from=$data.qishuList item=m key=key name=f}
+        <li{if $data.id eq $m.act_id} class="dq"{/if}><a href="{$m.url}">第{$m.qishu}期{if $m.ing eq 1} <img src="/style/images/ing.gif"/>{elseif $m.ing eq 0} <img src="/style/images/pre.gif"/>{/if}</a></li>
+        {if ($key+1)%9 eq 0 && !$smarty.foreach.f.last}
+        </ul><ul class="fn-clear">
+        {/if}
+        {/foreach}
+    </ul>
+</div>
+<script type="text/javascript">
+    $('.period').bind('click',function(){
+        $(this).toggleClass('toggle_close');
+        $(this).parent().toggleClass('toggle_qishu');
+    })
+</script>
+{/if}

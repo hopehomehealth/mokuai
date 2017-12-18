@@ -1,0 +1,16 @@
+<style>
+    body {
+        background-color: #f6f7f8;
+    }
+</style>
+<div class="container">
+    <div class="zddt">
+        <p>
+            {if $ur_here}
+            <a href="{url()}">首页</a> {$ur_here}
+            {else}
+            <a href="{url()}">首页</a>{zz mod=catpos catid=$data.cat.id space=' > ###' end=' > ###'}
+            {/if}
+        </p>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<p class="title"><a href="{'/content/share?id='|cat:$m.id|url}">{$m.obj_name}<span class="color03">（第{$m.qishu}期）</span></a></p>
+<div class="cont ui-clr">
+    <div class="pic"><a href="{'/content/share?id='|cat:$m.id|url}"><img src="{zz mod=fileurl source=$m.thumb width=200 type=0}" alt="{$m.title}" /></a></div>
+    <div class="txt">
+        <p class="mb5"><b style="color:#000">{$m.title}</b></p>
+        <a href="{'/content/share?id='|cat:$m.id|url}">{$m.content|truncate:200}</a>
+    </div>
+</div>
+<div class="author ui-clr">
+    <a href="{'/content/share?id='|cat:$m.id|url}" class="color04">{$m.username|nickname:$m.nickname}</a>
+    <time datetime="{$m.addtime|date_format:'m-d H:i'}">{$m.addtime|date_format:'m-d H:i'}</time>
+</div>

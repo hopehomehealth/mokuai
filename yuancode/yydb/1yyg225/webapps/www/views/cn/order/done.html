@@ -1,0 +1,16 @@
+{include file="header.html"}
+<div style="padding:200px;" class="tc">
+    <h2 style="text-align:center; font-size: 24px;">正在为您跳转支付...</h2>
+    <div style="display: none;" id="pay" order_sn="{$order_sn}">{$payment.pay_button}</div>
+</div>
+{literal}
+<script type="text/javascript">
+    $(function(){
+        $("#pay input").click();
+        $('.pb').click();
+    });
+</script>
+{/literal}
+{if $usertype!='zwxpay'}
+{include file="footer.html"}
+{/if}

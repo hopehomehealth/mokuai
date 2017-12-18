@@ -1,0 +1,28 @@
+{assign var='header' value='header2'}
+{include file="top.html"}
+<link rel="stylesheet" href="/style/mobile/css/order.css">
+<div style="text-align:center; margin-top: 150px;" class="tc">
+    <h2 style="text-align:center;">正在为您跳转支付...</h2>
+    <div id="pay" style="display: none;" order_sn="{$order_sn}">{$payment.pay_button}</div>
+</div>
+{literal}
+<script type="text/javascript">
+    $(function(){
+        
+        var order_sn = $("#pay").attr("order_sn");
+        var postdata =  { 'order_sn':order_sn };
+        $.ajax({
+            url:"/yunbuy/ajaxclear",
+            type:"POST",
+            data:postdata,
+            dataType:"json",
+            success:function(data){
+            	$("#pay input").click();
+            	$('.pb').click();
+            }
+        });
+    });
+</script>
+{/literal}
+</body>
+</html>

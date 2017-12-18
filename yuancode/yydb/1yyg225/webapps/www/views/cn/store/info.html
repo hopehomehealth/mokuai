@@ -1,0 +1,49 @@
+<div class="merchant-right">
+    <div class="merchant-pd merchant-right1">
+        <h2>欢迎光临本小店</h2>
+        <em class="v"><img src="{$business_row.bus_logo|default_pic:'store'}" /><span></span></em>
+        <p>店主：<span>{$business_row.bus_name}</span></p>
+        <p>电话：<span>{$business_row.bus_tel}</span></p>
+        <p class="merchant-btn">
+            {if $business_row.bus_qq}
+            <a href="http://wpa.qq.com/msgrd?v=3&uin={$business_row.bus_qq}&site=qq&menu=yes" target="_blank" class="merchant-a1">在线客服</a>
+            {/if}
+            <a href="{url()}" class="merchant-a2">商城首页</a>
+        </p>
+    </div>
+    <div class="merchant-pd">
+        <div class="merchant-top"><strong>店铺资料</strong></div>
+        <div class="merchant-right2">
+            <em class="v"><img src="{$business_row.bus_logo|default_pic:'store'}" /><span></span></em>
+            <p>商家名称：<span>{$business_row.bus_name}</span></p>
+            {if $business_row.bus_company_type}
+            <p>实体类型：<span>{$business_row.bus_company_type}</span></p>
+            {/if}
+            {if $business_row.bus_company}
+            <p>实体名称：<span>{$business_row.bus_company}</span></p>
+            {/if}
+            {if $business_row.bus_scope}
+            <p>经营范围：<span>{$business_row.bus_scope}</span></p>
+            {/if}
+            {if $business_row.bus_area}
+            <p>所属地区：<span>{$business_row.bus_area}</span></p>
+            {/if}
+            <p>联系地址：<span>{$business_row.bus_address}</span></p>
+            {if $business_row.bus_tel}
+            <p>客服电话：<span>{$business_row.bus_tel}</span></p>
+            {/if}
+            {if $business_row.bus_qq}
+            <p>客服QQ号：<span><a href="http://wpa.qq.com/msgrd?v=3&uin={$business_row.bus_qq}&site=qq&menu=yes" target="_blank">{$business_row.bus_qq}</a></span></p>
+            {/if}
+            <p>入驻时间：<span>{date('Y-m-d', $business_row.time_open)}</span></p>
+        </div>
+    </div>
+    {if $business_row.bus_intro}
+    <div class="merchant-pd">
+        <div class="merchant-top"><strong>商家介绍</strong></div>
+        <div class="merchant-right2 merchant-right2-1">
+            <p>{$business_row.bus_intro|stripcslashes}</p>
+        </div>
+    </div>
+    {/if}
+</div>

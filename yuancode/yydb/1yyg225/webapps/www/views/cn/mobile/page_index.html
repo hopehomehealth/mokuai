@@ -1,0 +1,36 @@
+{zz mod=category var=topData type=parent catid=$data.cat.id}
+{$row.head=$topData.catname}
+{assign var='header' value='header2'}
+{include file="top.html"}
+<link rel="stylesheet" href="/style/mobile/css/content.css">
+<div id="content" class="container main">
+    <div class="nav-m ui-clr">
+        <ul>
+            {zz mod=category field='id,catname,url,ismenu' catid=$data.cat.id}
+            {foreach from=$tagData item=m}
+			{if $m.ismenu==1}
+            <li{if $data.cat.id eq $m.id} class="on"{/if}><a href="{$m.url|url}">{$m.catname}</a></li>
+			{/if}
+            {/foreach}
+        </ul>
+    </div>
+    <div class="page_content">
+        <div class="t">{$data.page.title}</div>
+        <div class="c ui-clr">{$data.page.content|stripcslashes}</div>
+    </div>
+    {if $data.catlist.1 eq 7}
+    {zz mod=category var=tagCate field='id,catname,url,ismenu' catid=$data.catlist.1}
+    {if $tagCate}
+    <div class="nav-m-f ui-clr">
+        <ul>
+            {foreach from=$tagCate item=m name=list}
+			{if $m.ismenu==1}
+            <li{if $data.cat.id eq $m.id} class="on"{/if}><span>|</span><a href="{$m.url|url}">{$m.catname}</a></li>
+			{/if}
+            {/foreach}
+        </ul>
+    </div>
+    {/if}
+    {/if}
+</div>
+{include file="footer.html"}

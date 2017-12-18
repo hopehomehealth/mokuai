@@ -1,0 +1,149 @@
+{if $type}
+{assign var='header' value='header2'}
+{include file="top.html"}
+<!--支付表单提交-->
+<link rel="stylesheet" href="/style/mobile/css/member.css">
+<div id="content" class="container main">
+	<div class="gwc2-list1">尊敬的<b class="color01">{$username}</b>用户：</div>
+    <div class="tips-m">
+        <p>商户名称：<span class="color01">{$site_config.site_name}</span></p>
+        <p>您的支付金额为：<span class="color01">{$order.surplus_amount}</span>元</p>
+        {if $payment_info.pay_fee}
+        <p>支付手续费用为：{$payment_info.pay_fee}</p>
+        {/if}
+        <p style="margin-bottom: 10px;">您选择的支付方式为：{$payment_info.pay_name}</p>
+        <div class="pay_button">{$payment_info.pay_button}</div>
+    </div>
+</div>
+<style type="text/css">
+    .pay_button{ text-align: center;}
+    .pay_button input{ background: #e54048; border: 0; font-size: 14px; color: #fff; font-weight: bold; padding:10px 20px; margin: 10px 0; cursor: pointer }
+</style>
+{else}
+
+{include file="crowd/crowd_header.html"}
+<form action="/crowd/supportDone/{{$order['support_sn']}}" id="support_form" method="post">
+<div class="xiangxidd">
+    <div class="xiangxidd-m">
+        <div class="xiangxidd-m-cp">
+            <img src="{zz mod=fileurl source=$order.thumb width=285 height=224}" />
+            <p>
+                <em>
+                    <a href="">{{$order['cd_name']}}</a>
+                </em>
+                <i class="iconfont">&#xe62a;</i>
+            </p>
+            <section>
+                项目动态：众筹中
+                <br />
+                支持金额：{$order.support_amount|price_format:1}
+            </section>
+        </div>
+        <div class="xiangxidd-m-xx">
+            订单编号：
+            <i>{{$order['support_sn']}}</i>
+            <br />
+            交易状态：
+            <i>待付款</i>
+            <br />
+            {if $order.support_remark}
+            备注信息：
+            <i>{{$order['support_remark']}}</i>
+            <br />
+            {/if}
+
+        </div>
+        {if $order.address}
+        <div class="xiangxidd-m-xx">
+            <h3>
+                收货人
+            </h3>
+
+            姓名：
+            <i>{$order.address_name}</i>
+            <br />
+            电话：
+            <i>{$order.address_mobile}</i>
+            <br />
+            地址：
+            <i>{$order.address_area} {$order.address}</i>
+            <br />
+        </div>
+        {/if}
+        <div class="xiangxidd-m-nr">
+            <h3>
+                回报内容
+            </h3>
+            <div class="rt_desc">{{$order['rt_desc']}}</div>
+        </div>
+        <div class="xiangxidd-payment">
+            <div class="option" style="padding-bottom: 10px;">
+                <label class="w-checkbox w-checkbox-disabled">
+                    <input type="checkbox" value="1" name="balance_pay" checked="">
+                    <span data-pro="text" style="color:#000;font-weight:bold;">使用余额付款，账户余额： <em class="red">￥{{$member['user_money']}}</em></span>
+                </label>
+            </div>
+            <h3>
+                支付方式
+            </h3>
+            <div class="w-pay-selector">
+                {foreach from=$payment item=m name=payment}
+                <div style="float: left">
+                    <label value="{$m.pay_id}" class="w-pay-type w-pay-type-3 {if $smarty.foreach.payment.iteration eq 1}w-pay-selected{/if} {$m.pay_code}"><input type="radio"  value="{$m.pay_id}" style="display: none;" {if $smarty.foreach.payment.iteration eq 1}checked{/if}>{$m.pay_name}</label>
+                    {if $m.pay_code eq 'teegon'}
+                    <div class="payment" style="display: none;">
+
+                    </div>
+                    {/if}
+                </div>
+                {if $smarty.foreach.payment.iteration eq 1}<input type="hidden" class="pay_id_value" name="pay_id" value="{$m.pay_id}" >{/if}
+                {/foreach}
+                <div class="clear"></div>
+            </div>
+         </div>
+    </div>
+</div>
+<div class="quzf">
+    <input name="submit" value="on" type="hidden">
+    <button id="">去支付</button>
+</div>
+</form>
+        <script type="text/javascript">
+            $(function(){
+                $('.w-pay-selector').each(function(){
+                    var selector = $(this);
+                    selector.find('.w-pay-type').bind('click',function(){
+                        $('.w-pay-selector').find('.w-pay-type').removeClass('w-pay-selected');
+                        $('.w-pay-selector').find('.w-pay-type').children('input[name=pay_id]').attr('checked',false);
+                        $(this).addClass('w-pay-selected');
+                        $(".pay_id_value").val($(this).attr('value'));
+                        if($(this).hasClass('teegon') == true){
+                            $('.payment').empty();
+                            $('.payment').css('display','block');
+                            if (!is_weixn()){
+                                $('.payment').append("<input type='radio' name='payment_type' value='alipay_wap' checked style='display: inline'/>支付宝" + "<input type='radio' name='payment_type' value='wxpay_jsapi' style='display: inline'/>微信支付");
+                            }else {
+                                $('.payment').append("<input type='radio' name='payment_type' value='wxpay_jsapi' checked style='display: inline'/>微信支付");
+                            }
+                        }else {
+                            $('.payment').empty();
+                            $('.payment').css('display','none');	
+                        }
+                    });
+                });
+
+                if($('.w-pay-selected').hasClass('teegon')){
+                    $('.payment').empty();
+                    $('.payment').css('display','block');
+                    if (!is_weixn()){
+                        $('.payment').append("<input type='radio' name='payment_type' value='alipay_wap' checked style='display: inline'/>支付宝" + "<input type='radio' name='payment_type' value='wxpay_jsapi' style='display: inline'/>微信支付");
+                    }else {
+                        $('.payment').append("<input type='radio' name='payment_type' value='wxpay_jsapi' checked style='display: inline'/>微信支付");
+                    }
+                }
+            });
+        </script>
+        <style type="text/css">
+            .w-pay-selector .w-pay-type{ height: auto; padding: 0 0.3rem; }
+        </style>
+{/if}

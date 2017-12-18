@@ -1,0 +1,41 @@
+{assign var='header' value='header2'}
+{include file="top.html"}
+
+<div id="content" class="container shareDetail">
+    <p class="title">{$share.title}</p>
+    <div class="info">
+        <p>获奖商品：<a href="{$info.url}" class="color04">
+            {if $share.extension_code eq $smarty.const.CART_DB}(第{$info.qishu}期){/if}
+            {$info.title}</a>
+        </p>
+        <p>获得者：<a href="/minfo?id={$share.mid}" class="color04">{$share.username|nickname:$share.luck_nickname}</a></p>
+        {if $share.extension_code eq $smarty.const.CART_DB}
+        <div class="total">总共参与：<span class="color">{$db_info.qty}</span>人次</div>
+        <div class="code">幸运号码：<span class="color">{$db_info.luck_code}</span></div>
+        <div class="time">揭晓时间：{microtime_format($info.end_time,'Y-m-d H:i:s.x')}</div>
+        {if $new_buy && $share.extension_code eq $smarty.const.CART_DB}
+        <div class="more"><a class="color02" href="{'/yunbuy/detail/'|cat:$new_buy.buy_id}" target="_blank">第{$new_buy.qishu}期正在进行中…</a></div>
+        {/if}
+        {elseif $share.extension_code eq $smarty.const.CART_WIN}
+        <p>{$L.unit_winning}随机码：<span class="color">{$cj_info.cod}</span> </p>
+        <p>{$L.unit_winning}时间：{$cj_info.cod_time|date_format:'Y-m-d H:i:s'}</p>
+        {elseif $share.extension_code eq $smarty.const.CART_AUC}
+        <p>最后出价：<span class="color">{$cj_info.bid_price|price_format}</span></p>
+        <p>出价时间：{$cj_info.bid_time|date_format:'Y-m-d H:i:s'}</p>
+        {/if}
+    </div>
+    <div class="all">
+        <div class="txt">{$share.content|nl2br}</div>
+        <div class="pics">
+            {foreach from=unserialize($share.thumbs) item=m}
+            {if $m|pathExtType eq 'video'}
+            <iframe src="{$m}" frameborder=0 allowfullscreen style="background: #fff;width:100%;"></iframe>
+            {else}
+            <p><img class="scrollLoading" src="{zz mod=fileurl source=$m}" /></p>
+            {/if}
+            {/foreach}
+        </div>
+    </div>
+</div>
+
+{include file="footer.html"}

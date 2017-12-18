@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no" />
+    <title>夺宝详情</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/member_db.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+    <style type="text/css">
+    .input-m{border:1px solid #e6e6e6; width:90%;}
+    </style>
+</head>
+<body>
+  <div id="header">
+	   <div class="active">
+		    <div class="icon_box" tapmode="" onclick="api.closeWin()"><i class="iconfont icon-fanhui"></i></div>
+		    <div class="toptit">晒单</div>
+		    <div class="icon_box " tapmode="" onclick="backhome()"><i class="iconfont icon-shouye"></i></div>
+	   </div>
+  </div>
+  <div id="content" class="containerx main">
+	    <div class="tips-m">
+	        <div class="prompt">每个订单只要有一次晒单机会，发布晒单您将获得（<b class="red">1-5<font class="lang" lang="db_points">夺宝币</font></b>）的奖励，好好把握机会吧！</div>
+	        <div class="prompt">
+	            <span>普通晒单（<b class="red">1个<font class="lang" lang="db_points">夺宝币</font></b>）内容要求包含>>>></span><br>
+	            <span class="gray">
+	            1、中奖感言；<br>
+	            2、中奖商品真实拍摄照片；
+	            </span>
+	        </div>
+	        <div class="prompt">
+	            <span>精华晒单（<b class="red">5个<font class="lang" lang="db_points">夺宝币</font></b>）内容要求包含>>>></span><br>
+	            <span class="gray">
+	            1、刷脸和刷中奖产品，合照图片清晰，无倒置图片（即：您或您的亲友与物品的开心合照）；<br>
+	            2、中奖短信通知截图、物品高清照；<br>
+	            2、文字言之有物，分享中奖喜悦得当，正品、真实可信描述以及个人主观评价。
+	            </span>
+	        </div>
+	    </div>
+	
+	    <div class="form-m">
+	        <form action="" target="iframeNews" method="post" id="submit_form">
+	            <div class="item ui-clr">
+	                <dl>
+	                    <dt class="color03">晒单商品：</dt>
+	                    <dd style="line-height: 2rem; height:60px;" id="info-content">
+	                        <script id="info-template" type="text/x-dot-template">
+	                        <img src="{{=it.thumb}}" width="64" style="float:left;margin-right:10px;" />
+	                        {{=it.title}}
+	                        </script>
+	                    </dd>
+	                </dl>
+	            </div>
+	            <div class="fn-clear"></div>
+	            <div class="item ui-clr">
+	                <dl>
+	                    <dt class="color03">晒单标题：</dt>
+	                    <dd>
+	                        <input type="text" class="input-m" name="title" data-rule="*" data-nullmsg="请输入晒单标题" value="" />
+	                    </dd>
+	                </dl>
+	            </div>
+	            <div class="item ui-clr">
+	                <dl>
+	                    <dt class="color03">晒单内容：</dt>
+	                    <dd>
+	                        <textarea name="content" class="input-m" style="padding:5px;height:80px;" data-rule="*" data-nullmsg="请输入晒单内容"></textarea>
+	                    </dd>
+	                </dl>
+	            </div>
+	            <div class="item ui-clr">
+	                <dl>
+	                    <dt class="color03">上传图片：</dt>
+	                    <dd>
+	                    <span class="rbtn" id="btn">选择图片</span>
+	                    <div id="thumbs" style="padding:5px 0;"></div>
+	                    <input type="hidden" value="" name="share"  data-rule="*" data-nullmsg="请上传晒单图片">
+	                    </dd>
+	                </dl>
+	            </div>
+	            <div class="foot-view">
+			        <div class="order-submit">
+			            <button class="w100 red_btn" id="submit" type="button">提交晒单</button>
+			        </div>
+		        </div>
+	        </form>
+	    </div>
+	</div>
+<script type="text/javascript" src="../script/zepto.min.js"></script>
+<script type="text/javascript" src="../script/fastclick.js"></script>
+<script type="text/javascript" src="../script/availdate.js"></script>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/doT.min.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript">
+var id,filevalue={},suf;
+$(function() {					 					
+	ac.form({
+		area : "#submit_form",
+		btn : "#submit",
+		singleError : function(e, msg) {
+			toast(msg);
+		},
+		endSuccess : function(data) {
+			showprog();
+			ajaxRequest('member/post_share/'+id, 'POST', {
+				values : data,
+				files:filevalue
+			}, function(ret, err) {
+				hideprog();
+				toast(ret.msg);
+				if(ret.code==0){
+				  openWin('member_order');
+				}
+			});
+		}
+	});
+	$("#btn").click(function(){
+	  	var UIMediaScanner = api.require('UIMediaScanner');
+		UIMediaScanner.open({
+		    type: 'picture',
+		    column: 4,
+		    classify: true,
+		    max: 6,
+		    sort: {
+		        key: 'time',
+		        order: 'desc'
+		    },
+		    texts: {
+		        stateText: '已选择*项',
+		        cancelText: '取消',
+		        finishText: '完成'
+		    },
+		    styles: {
+		        bg: '#fff',
+		        mark: {
+		            icon: '',
+		            position: 'bottom_left',
+		            size: 20
+		        },
+		        nav: {
+		            bg: '#eee',
+		            stateColor: '#000',
+		            stateSize: 18,
+		            cancelBg: 'rgba(0,0,0,0)',
+		            cancelColor: '#000',
+		            cancelSize: 18,
+		            finishBg: 'rgba(0,0,0,0)',
+		            finishColor: '#000',
+		            finishSize: 18
+		        }
+		    },
+		    scrollToBottom:{
+		       intervalTime: 3,
+		       anim: true
+		    },
+		    exchange: true,
+		    rotation: true
+		}, function( ret ){
+		    if( ret ){
+		        filevalue = {};
+		        $("#thumbs").html('');
+		        $("input[name=thumb]").val('');
+		        for(i=0;i<ret.list.length;i++){
+		          $("#thumbs").append('<div><img src="'+ret.list[i].path+'" width="50%"/></div>');
+		          $("input[name=share]").val(ret.list[i].path);
+		            suf = ret.list[i].suffix;
+		          	UIMediaScanner.transPath({
+					   path: ret.list[i].path
+					}, function(ret, err){
+					    if( ret ){
+					        var imageCachePath = api.cacheDir;
+        					var imgName = new Date().getTime();
+					        var imageFilter = api.require('imageFilter');
+							imageFilter.compress({
+							    img: ret.path,
+							    quality: 1,
+							    save : {
+				                        album : false,
+				                        imgPath : imageCachePath,
+				                        imgName : imgName+'.'+suf
+				                }
+							}, function(cret, cerrs){        
+							    if( cret.status ){
+							        filevalue[imgName] = imageCachePath+'/'+imgName+'.'+suf;
+							    }
+							});
+							
+					    }
+					});
+		        }
+		    }
+		});
+	});
+});
+apiready = function(){
+   //适配iOS 7+，Android 4.4+状态栏
+   var header = $api.byId('header');
+   $api.fixStatusBar(header);
+   id = api.pageParam.id>0 ? api.pageParam.id : '';
+   showprog();
+   ajaxRequest('member/post_share/'+id, 'GET', {}, function (ret, err) {
+        hideprog();
+        if(ret.code>0){
+          toast(ret.msg);
+        }else{
+          temp(ret.data,'info');
+        }
+   });
+}
+</script>
+</body>
+</html>

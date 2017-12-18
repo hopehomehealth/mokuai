@@ -1,0 +1,31 @@
+<div class="win-list" id="win-list">
+    <div class="winCount">
+        截至目前共揭晓{$L.unit_yun}商品<b class="color01">{$data.count}</b>个
+    </div>
+    <div class="fn-clear">
+        <div id="list-djx"></div>
+        <div id="list-win">
+            {foreach from=$list item=m}
+            {include file="content/windbitem.html"}
+            {/foreach}
+        </div>
+    </div>
+</div>
+<input type="hidden" name="ids" id="ids" value="" />
+
+{include file="ajax_page.html"}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#load_db').find('.demo').ajaxContent({
+            event:'click', //mouseover
+            loaderType:"text",
+            loadingMsg:"<span class='loading'>拼命加载中...</span>",
+            target:'#load_db',
+            success:function(){
+                scrollLoading();
+            }
+        }).bind('click',function(){
+            $('html').animate({ scrollTop: '0' }, 500);
+        });
+    });
+</script>

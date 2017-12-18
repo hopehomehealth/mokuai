@@ -1,0 +1,104 @@
+{include file="header.html"}
+<link type="text/css" rel="stylesheet" href="/style/css_02/style.css" />
+<link type="text/css" rel="stylesheet" href="/style/css/member.css" />
+<link type="text/css" rel="stylesheet" href="/style/css_02/merchant.css" />
+<div class="container menu-show">
+    {include file="business/ur_here.html"}
+    {include file="business/menu.html"}
+    <div class="fn-right hy-r" id="m">
+        <div class="shop-right">
+            <h3>商品管理</h3>
+            <a href="/business/yunbuy_edit#m" class="shop-right2">发布商品</a>
+        </div>
+        <div class="shop-bor">
+            <ul class="shop-ul">
+                <li{if $smarty.get.status eq 0} class="hover"{/if}><a href="?status=0#m">已上架</a></li>
+                <li{if $smarty.get.status eq 1} class="hover"{/if}><a href="?status=1#m">审核中</a></li>
+                <li{if $smarty.get.status eq 2} class="hover"{/if}><a href="?status=2#m">已下架</a></li>
+            </ul>
+            <div class="shop-manage box-sizing" style="padding-top:13px;">
+                <div class="shop-search shop-set" style="padding: 0;height: 50px;">
+                    <select id="typeY" class="shop-select" onchange="location.href=this.value">
+                        <option value="/business/yunbuy?status={$smarty.get.status}#m" selected>{$L.unit_yun}商品</option>
+                        <option value="/business/yunbuy_gobuy?status={$smarty.get.status}#m">{$L.unit_go_buy}商品</option>
+                    </select>
+                    <select id="statusY" class="shop-select" onchange="search_yunbuy()">
+                        <option value="">-{$L.unit_yun}状态-</option>
+                        <option value="1" {if $smarty.get.statusY eq 1}selected{/if}>进行中</option>
+                        <option value="2" {if $smarty.get.statusY eq 2}selected{/if}>待揭晓</option>
+                        <option value="3" {if $smarty.get.statusY eq 3}selected{/if}>已开奖</option>
+                        <option value="4" {if $smarty.get.statusY eq 4}selected{/if}>已满期</option>
+                    </select>
+                </div>
+                <table width="100%">
+                    <tr class="shop-manage1">
+                        <th width="" nowrap class="shop-manage2">商品名称</th>
+                        <th width="160" nowrap>类别</th>
+                        <th width="260" nowrap>参与人次</th>
+                        <th nowrap>状态</th>
+                    </tr>
+                    {foreach from=$data.list item=m}
+                    <tr>
+                        <td class="shop-manage2">
+                            <em><a href="{$m.url}" target="_blank"><img src="{zz mod=fileurl source=$m.imgurl_src width=66 height=66 type=1}"></a></em>
+                            <p style="line-height: 1.8;">
+                                <a href="{$m.url}" target="_blank">第{$m.qishu}期 {$m.title}</a><br>
+                                <span style="color:red"> 商家价格：{$m.bus_money|price_format}</span><br />
+                                <a href="/business/yunbuy_edit/gobuy?id={$m.buy_id}" class="btn_a">发布{$L.unit_go_buy}商品</a>
+                            </p>
+                        </td>
+                        <td>{$m.price|num2char}元区</td>
+                        <td>
+                            <div class="progressBar">
+                                <p class="progressBar-wrap">
+                                    <span style="width:{$m.buy_num/$m.need_num*100}%"></span>
+                                </p>
+                                <div class="progressBar-txt">
+                                    <div class="txt-l">
+                                        <p><b>{$m.buy_num}</b></p>
+                                        <p>已参与人次</p>
+                                    </div>
+                                    <div class="txt-c" style="padding-left: 5px;">
+                                        <p class="color03">{$m.need_num}</p>
+                                        <p>总需人数</p>
+                                    </div>
+                                    <div class="txt-r">
+                                        <p><b>{$m.end_num}</b></p>
+                                        <p>剩余人次</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td nowrap>
+                            {if $m.is_show eq 1 && !$m.is_off}
+                            已上架
+                            {elseif $m.is_show eq 0 && !$m.is_off}
+                            审核中
+                            {elseif $m.is_off eq 1}
+                            已下架
+                            {/if}
+                        </td>
+                    </tr>
+                    {foreachelse}
+                    <tr>
+                        <td colspan="10">
+                            没有找到数据！
+                        </td>
+                    </tr>
+                    {/foreach}
+                </table>
+            </div>
+            {include file="public_page.html"}
+        </div>
+    </div>
+</div>
+<div class="merchant"></div>
+{include file="footer.html"}
+<script src="/style/css_02/common_02.js"></script>
+<script type="text/javascript">
+    //搜索
+    function search_yunbuy(){
+        var statusY = $('#statusY').val();
+        location.href = location.pathname+'?status={$smarty.get.status}&statusY='+statusY+'#m';
+    }
+</script>

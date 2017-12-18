@@ -1,0 +1,109 @@
+{assign var='header' value='header2'}
+{include file="top.html"}
+<link rel="stylesheet" href="/style/mobile/css/member.css">
+<style type="text/css">
+    .form-m .item dt{ width:100px; }
+</style>
+<div id="content" class="container main">
+    <div class="tips-m">
+        <div class="prompt">实名认证有利于提升账号的安全性和信任级别，请使用真实的身份证进行实名认证，<span class="color01">经验证身份证姓名和证号不符，有人为处理的，将扣十元保证金，</span>感谢您对{$site_config.site_name}的支持！</div>
+        {if $verify && $verify.status neq 3}
+        {if $verify.status eq 1}<div class="prompt">您提交的认证身份证，我们正在审核中请耐心等待！</div>{/if}
+        {else}
+        {if $verify.remark}<div class="prompt">未通过审核，请重新提交认证(拒绝理由-{$verify.remark})！</div>{/if}
+        {/if}
+    </div>
+
+    {if $verify && $verify.status neq 3}
+    <div class="form-m">
+        <div class="item ui-clr">
+            <dl>
+                <dt class="color03">姓 名：</dt>
+                <dd>{$verify.realname}</dd>
+            </dl>
+        </div>
+        <div class="item ui-clr">
+            <dl>
+                <dt class="color03">身份证号：</dt>
+                <dd>{$verify.card}</dd>
+            </dl>
+        </div>
+        <div class="item ui-clr">
+            <dl>
+                <dt class="color03">身份证正面照：</dt>
+                <dd><img src="{zz mod=fileurl source=$verify.card_image width=150 type=0 dir='idcard'}" width="150" id="idcard"/></dd>
+            </dl>
+        </div>
+        <div class="item ui-clr">
+            <dl>
+                <dt class="color03">身份证反面照：</dt>
+                <dd><img src="{zz mod=fileurl source=$verify.card_image2 width=150 type=0 dir='idcard'}" width="150" id="idcard"/></dd>
+            </dl>
+        </div>
+        <input type="button" value="返回" class="btn" onclick="window.history.go(-1)" />
+    </div>
+
+    {else}
+    <div class="form-m">
+        <form action="" target="iframeNews" method="post" id="submit_form">
+        <div class="item ui-clr">
+            <dl>
+                <dt class="color03">姓 名：</dt>
+                <dd>
+                    <input type="text" class="input-m" name="realname" value="" />
+                    <div class="tip-m">(请填写您身份证上的名字)</div>
+                </dd>
+            </dl>
+        </div>
+        <div class="item ui-clr">
+            <dl>
+                <dt class="color03">身份证号：</dt>
+                <dd>
+                    <input type="text" class="input-m" name="card" value="" />
+                    <div class="tip-m">(请填写真实的身份证号码，身份证号码是18位)</div>
+                </dd>
+            </dl>
+        </div>
+        <div class="item ui-clr">
+            <dl>
+                <dt class="color03">身份证正面照：</dt>
+                <dd>
+                    <div class="fn-clear mt10">
+                        <img src="{zz mod=fileurl source=$idcard type=1 nopic='/upload/idcard.jpg' width=150 type=0 dir='idcard'}" width="150" id="idcard" />
+                    </div>
+                    {upload_btn('idcard',500,500)}
+                    <div class="tip-m">(请确保身份证全部信息清晰)</div>
+                </dd>
+            </dl>
+        </div>
+        <div class="item ui-clr">
+            <dl>
+                <dt class="color03">身份证反面照：</dt>
+                <dd>
+                    <div class="fn-clear mt10">
+                        <img src="{zz mod=fileurl source=$idcard type=1 nopic='/upload/idcard2.jpg' width=150 type=0 dir='idcard'}" width="150" id="idcard2" />
+                    </div>
+                    <div style="white-space: nowrap">{upload_btn('idcard2',500,500)}</div>
+                    <div class="tip-m">(请确保身份证全部信息清晰)</div>
+                    <div class="color01">如果身份证实名认证，审核不通过。再次审核，将被要求提供手持身份证正反面照。</div>
+                </dd>
+            </dl>
+        </div>
+        {if $site_config.sms_open eq 1 && 'sms_idcard'|statusTpl}
+        <div class="item ui-clr">
+            <dl>
+                <dt class="color03">短信验证码：</dt>
+                <dd>
+                    <input type="text" name="sms_code" class="input-m" value="" style="width: 80px;" />
+                    <input type="button" value="获取短信验证码" onclick="getSmsVerify('sms_idcard')" id="btnSms" />
+                </dd>
+            </dl>
+        </div>
+        {/if}
+        <input type="hidden" name="Submit" value="1">
+        <input type="submit" value="确定" class="btn" />
+        </form>
+    </div>
+    {/if}
+</div>
+{include file="footer.html"}

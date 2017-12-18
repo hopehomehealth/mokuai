@@ -1,0 +1,9 @@
+[ 2016-12-19T13:06:38+08:00 ] 218.241.251.146 /business/apply
+ERR 1146 - Table '1yyg225.zz_' doesn't exist! SQL: select id FROM `zz_`  where  bus_name='99手机店'
+
+[ 2016-12-19T13:08:09+08:00 ] 218.241.251.146 /manage/business/edit
+ERR 1146 - Table '1yyg225.zz_' doesn't exist! SQL: select id FROM `zz_`  where  bus_name='99手机店' and id!=2
+
+[ 2016-12-19T16:29:55+08:00 ] 180.163.2.117 /yunbuy/success/2016121916293657545156
+ERR 1064 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND buy_id IN(428)' at line 1! SQL: DELETE FROM `zz_yuncart` WHERE mid= AND buy_id IN(428)
+

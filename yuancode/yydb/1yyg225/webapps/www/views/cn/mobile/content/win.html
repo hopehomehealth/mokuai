@@ -1,0 +1,41 @@
+{include file="top.html"}
+<script src="/style/lefttime_jx.js?v={$main.vjs}"></script>
+<style type="text/css">
+    .count{ background: #f60;font-size: 14px;color: #fff; display: inline-block; padding: 2px 10px; }
+    .count b{ color: #fff; }
+    .icon-count:after{ color: #fff; }
+</style>
+<div class="container">
+    {include file="nav.html"}
+    <div class="pro-view shareList">
+        <ul class="goodList" id="win-list">
+            <li class="item ui-clr item-db"></li>
+        </ul>
+    </div>
+    <a class="loading getMore">点击获取更多...</a>
+</div>
+<input type="hidden" name="ids" id="ids" value="" />
+{include file="footer.html"}
+<script src="/style/mobile/js/jquery.more.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $('.goodList').more({
+            'address': '/content/win/1',
+            'amount' : 10
+        })
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        compaceIds();
+        setInterval('compaceIds()',5*1000);
+    });
+    function compaceIds(){
+        $.post('/content/ajaxIds','skin=mobile&ids='+$('#ids').val(),function(data){
+            if(data.error==1){
+                $('#ids').val(data.ids);
+                $('#win-list').prepend(data.html);
+            }
+        },'json');
+    }
+</script>

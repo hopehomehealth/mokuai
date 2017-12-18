@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+	<meta name="format-detection" content="telephone=no" />
+	<title>购物车</title>
+	<link rel="stylesheet" type="text/css" href="../css/api.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/user.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+</head>
+<body>	
+<div id="header">
+   <div class="cart active">
+	    <div class="icon_box" tapmode="" onclick="api.closeWin()"><i class="iconfont icon-fanhui"></i></div>
+	    <div class="toptit">兑换</div>
+	    <div class="icon_box " tapmode="" onclick="backhome()"><i class="iconfont icon-shouye"></i></div>
+   </div>
+</div>
+<div id="content" class="container main">
+    <div id="change-content"></div>
+    <script id="change-template" type="text/x-dot-template">
+    <div class="change_bar">
+    <!--<h2 style="font-size: 1.5rem; padding-bottom:1rem;">购买网盘，获得{{=it.unit_db_points}}</h2>-->
+    <h2 style="font-size: 1.5rem; padding-bottom:1rem;">购买夺宝币</h2>
+    <div>
+        {{? it.bonus_money*2 >= it.change_db_limit}}
+        <div style="padding:10px 0 20px;font-size:14px;">
+            今日已赠送{{=it.unit_bonus}}数量<b class="color01">{{=it.bonus_money}}</b>/
+            限额<b class="color01">{{=it.change_db_limit}}</b>/
+            剩余<b class="color01">{{=it.end_limit}}</b>
+            {{=it.unit_db_points}}
+        </div>
+        {{?}}
+        <div class="fwb" style="line-height:2rem;">购买金额:</div>
+        <div class="w-pay-selector">
+            {{ for(var i=0; i< it.discount.length; i++) { }}
+            <div class="w-pay-money {{? i==0}}w-pay-money-selected{{?}}">{{? it.discount[i].s}}<span class="discount">首次兑换送{{=it.discount[i].s}}{{=it.unit_bonus}}</span>{{?}}{{=it.discount[i].v}}元<input type="radio" name="amount" {{? i==0}}checked{{?}} value="{{=it.discount[i].v}}" style="display: none"></div>
+            {{}}}
+            <div class="w-pay-money otherbar"><span>其他金额</span>&nbsp;&nbsp;<input maxlength="6" style="width: 50px;" class="w-input-input" name="other" type="text"></div>
+        </div>
+    </div>
+    <!--<div style="clear: both;">每支付1元购买{{=it.site_name}}云盘，系统将会赠送1个{{=it.unit_db_points}}（即1次抽奖机会），兑换1{{=it.unit_db_points}}＝1M云盘，兑换的款项将无法退回。</div>-->
+    <div style="clear: both;">每支付1元，将会获得1个夺宝币，支付的款项将无法退回。</div>
+    </div>
+    </script>
+<footer class="foot-view">
+    <div id="submit-content">
+        <button class="w100 red_btn" id="submit">确 认 兑 换</button>
+    </div>
+</footer>
+</div>		
+<script type="text/javascript" src="../script/zepto.min.js"></script>
+<script type="text/javascript" src="../script/fastclick.js"></script>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/doT.min.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript">
+$(function(){
+  $(".w-pay-money").live('click',function(){
+        $(this).addClass("w-pay-money-selected").siblings().removeClass("w-pay-money-selected");
+        $(this).children("input").prop('checked',true);
+        $(this).siblings().children("input[type=radio]").prop('checked',false);
+  });
+  $("#submit").click(function(){
+	   var amount = $('input[name=amount]:checked').val();
+	   var other = $('input[name=other]').val();
+	   showprog();
+	   ajaxRequest('member/change_db', 'POST', {values:{amount:amount,other:other}}, function (ret, err) {
+		    var data = ret.data;
+		    hideprog();
+		    if(ret.code){
+	          api.alert({
+			    title: '系统消息',
+			    msg: ret.msg
+			  });
+	          opentoTab('user');
+	        }else{
+	          toast(ret.msg);
+	        }
+	  });
+	});
+});
+		    
+apiready = function() {
+    //适配iOS 7+，Android 4.4+状态栏
+	var header = $api.byId('header');
+	$api.fixStatusBar(header);
+    showprog();
+    ajaxRequest('member/change_db', 'GET', {}, function (ret, err) {
+        hideprog();
+        temp(ret.data,'change');
+    });
+    
+}
+</script>
+</body>
+</html>

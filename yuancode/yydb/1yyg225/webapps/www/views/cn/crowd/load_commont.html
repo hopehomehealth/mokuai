@@ -1,0 +1,88 @@
+<div class="xqht-l-main">
+    <form>
+    <section>
+        <textarea placeholder="输入您想跟大家交流的内容..."></textarea>
+        <span>还可以输入140字</span>
+        <input type="button" class="submit_commont" value="发布话题" />
+    </section>
+    </form>
+<script type="text/javascript">
+    $('.submit_commont').on('click',function(){
+        var content = $(this).parent().children('textarea').val();
+        var parent_id = $(this).attr('id');
+        if(content.length<=0) layer.alert('请输入话题内容');
+        $.post('/crowd/submit_commont/'+id,{ content:content,parent_id:parent_id },function(result){
+            if(result.code==1){
+                layer.alert(result.msg,8,function(){
+                    location.href="{url('/member/login')}";
+                });
+            }else if(result.code==0){
+                //layer.alert(result.msg);
+                $('#commont').html(result.count);
+                $('.xqht-l-main').load('/crowd/load_commont/{$page.nonce}?id='+id);
+            }else{
+                layer.alert(result.msg);
+            }
+        },'JSON');
+    });
+</script>
+    {if $list}
+        <ul class="xqht-ul">
+            {foreach from=$list item=item}
+            <li>
+                <img class="xqht-tx1" src="{zz mod=photo source=$item.photo size=80}" />
+                <p class="p1">
+                    <span>{$item.username|nickname:$item.nickname}：</span>{$item.content}
+                </p>
+                <p class="p2">
+                    <span>{$item.add_time|formatTime}</span>
+                    <a href="javascript:;" onclick="$(this).offsetParent().toggleClass('on')"> 回复</a>
+                    <em class="textarea">
+                        <textarea></textarea>
+                        <input type="button" id="{$item.id}" class="submit_commont" value="提交">
+                    </em>
+                </p>
+                {if $item.reply}
+                <div class="xxht-m">
+                    {foreach from=$item.reply item=m}
+                    <div class="xqht-ul-div">
+                        <img class="xqht-tx2" src="{zz mod=photo source=$m.photo size=80}" />
+                        <p class="p1">
+                            <span>{$m.username|nickname:$item.nickname} {if $m.parent_id neq $m.top_parent_id}回复 {$m.reply_username|nickname:$m.reply_nickname}{/if}：</span>{$m.content}
+                        </p>
+                        <p class="p2">
+                            <span>{$m.add_time|formatTime}</span>
+                            <a href="javascript:;" onclick="$(this).offsetParent().toggleClass('on')"> 回复</a>
+                            <em class="textarea">
+                                <textarea></textarea>
+                                <input type="button" class="submit_commont" id="{$m.id}" value="提交">
+                            </em>
+                        </p>
+                    </div>
+                    {/foreach}
+                </div>
+                {/if}
+            </li>
+            {/foreach}
+        </ul>
+        <div class="feny mt20">{include file="crowd/ajax_page.html"}</div>
+    {else}
+        <div class="empty">暂时没有记录</div>
+    {/if}
+</div>
+<script type="text/javascript">
+    var load_div = '.xq-l-main';
+    $(document).ready(function(){
+        $(load_div).find('.demo').ajaxContent({
+            event:'click', //mouseover
+            loaderType:"text",
+            loadingMsg:"拼命加载中...",
+            target:load_div,
+            success:function(){
+                scrollLoading();
+            }
+        }).bind('click',function(){
+            //$('html,body').animate({ scrollTop: '400px' }, 500);
+        });
+    });
+</script>

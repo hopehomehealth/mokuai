@@ -1,0 +1,30 @@
+{foreach from=$list item=m}
+<div class="item">
+    <div class="pic">
+        <a href="{'/minfo?id='|cat:$m.mid|cat:'#share#vid='|cat:$m.id|url}" target="_blank" title="{$m.title}">
+            <img alt="{$m.title}" src="{zz mod=fileurl source=$m.thumb width=255 type=0}" />
+        </a>
+    </div>
+    <div class="name">
+        <a href="{$m.url}" target="_blank">
+            {if $m.extension_code eq $smarty.const.CART_DB}{/if}
+            {$m.obj_name}
+            <span class="color01" style="white-space: nowrap">【{if $m.extension_code eq $smarty.const.CART_DB}{$L.unit_yun_one}{elseif $m.extension_code eq $smarty.const.CART_WIN}{$L.unit_pay}{$L.unit_winning}{elseif $m.extension_AUC eq $smarty.const.CART_DB}{$L.unit_pay}获得{/if}】</span>
+        </a>
+    </div>
+    {if $m.extension_code eq $smarty.const.CART_DB}
+    <div class="code">
+        幸运号码：<strong class="txt-impt">{$m.luck_code}</strong>
+    </div>
+    {/if}
+    <div class="post">
+        <div class="title">
+            <a href="{'/minfo?id='|cat:$m.mid|cat:'#share#vid='|cat:$m.id|url}" target="_blank"><strong>{$m.title}</strong></a></div>
+        <div class="author">
+            <a href="{'/minfo?id='|cat:$m.mid|cat:'#share#vid='|cat:$m.id|url}" target="_blank" title="{$m.username}">{$m.username|nickname:$m.nickname}</a><span class="time">{$m.addtime|date_format:'m-d H:i'}</span></div>
+        <div class="abbr">
+            {$m.content|truncate:120}
+        </div>
+    </div>
+</div>
+{/foreach}

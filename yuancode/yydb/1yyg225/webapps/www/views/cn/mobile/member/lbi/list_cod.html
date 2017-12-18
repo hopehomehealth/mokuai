@@ -1,0 +1,40 @@
+<dt><b>{$k+1}.</b> <a href="#">{$m.title}</a></dt>
+<dd>
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th>需要出价（元）</th>
+            <td>
+                <span class="color01">{$m.bid_price|price_format}</span>
+            </td>
+        </tr>
+        <tr>
+            <th>{$L.unit_winning}随机号</th>
+            <td>
+                <span class="color01">{$m.cod}</span>
+            </td>
+        </tr>
+        <tr>
+            <th>{$L.unit_winning}时间</th>
+            <td>
+                {$m.cod_time|date_format:'Y-m-d H:i:s'}
+            </td>
+        </tr>
+        <tr>
+            <th>状态/操作</th>
+            <td>
+                {if $m.status eq $smarty.const.OKWIN}
+                {if $m.disabled eq 1}已失效
+                {else}
+                <form action="/order/buy" method="post">
+                    <input type="hidden" name="type" value="{$smarty.const.CART_WIN}" />
+                    <input type="hidden" name="id" value="{$m.log_id}" />
+                    <button type="submit" class="hy-btn2">{$L.unit_lingjiang}</button>
+                </form>
+                {/if}
+                {elseif $m.status eq $smarty.const.FINWIN}
+                已{$L.unit_lingjiang}
+                {/if}
+            </td>
+        </tr>
+    </table>
+</dd>

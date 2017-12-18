@@ -1,0 +1,73 @@
+{include file="header.html"}
+<link rel="stylesheet" href="{url('/style/css/member.css')}">
+{include file="ur_here.html"}
+<div id="container">
+    <div class="fn-clear mt20 pb20">
+        {include file="member/menu.html"}
+        <div class="fn-right hy-r">
+            <form action="" method="post" target="iframeNews">
+            <div class="fn-clear hy-tjxh">
+                <div class="title">
+                    <h2>提现</h2>
+                    <span><a href="{'/member/accountlog?type=2#m'}" class="color02">-查看提现记录-</a></span>
+                </div>
+                <div class="hy-czbox" style="padding-top:30px">
+                    <label>提现金额:</label>
+                    <input name="amount" type="text" class="inpt-style2" />
+                    <span>可提现余额：{$member.user_money|price_format}</span>
+                </div>
+                {if $feelist}
+                <div class="hy-czbox">
+                    <label>到帐时间:</label>
+                    <select name="gotime" id="gotime">
+                        {foreach from=$feelist item=m key=key}
+                        <option value="{$key}">{$key}</option>
+                        {/foreach}
+                    </select>
+                    <span class="color01 fee">提现将收取
+                        {foreach from=$feelist item=m name=fee key=key}
+                        <b class="fee{$key}" {if $smarty.foreach.fee.index neq 0}style="display:none;"{/if}>{$m}</b>
+                        {/foreach}
+                        手续费
+                    </span>
+                </div>
+                <script type="text/javascript">
+                $('#gotime').bind('change',function(){
+                    var v=$(this).val();
+                    $('.fee b').hide();
+                    $('.fee b.fee'+v).css('display','');
+                })
+                </script>
+                {/if}
+                <div class="hy-box">
+                    <div class="mt15 hy-table">
+                        <table>
+                            <tr>
+                                <th style="width:200px;">银行名称</th>
+                                <th>持卡人姓名</th>
+                                <th style="width:150px;">银行卡号</th>
+                                <th style="width:250px;">开户行所在地</th>
+                            </tr>
+                            {foreach from=$list item=m}
+                            <tr>
+                                <td><label><input name="id" type="radio" value="{$m.id}" {if $m.is_default eq 1}checked{/if} />{$m.bankname}</label></td>
+                                <td>{$m.name}</td>
+                                <td>{$m.bankcard}</td>
+                                <td style="text-align: left;">{$m.bankaddress}</td>
+                            </tr>
+                            {/foreach}
+                            <tr>
+                                <td colspan="4" style="text-align:right;">您当前的可用{$L.unit_baozheng}为：<span class="color01">￥{$member.user_money}</span>	冻结{$L.unit_baozheng}：<span class="color02">￥{$member.frozen_money}</span> 元</td>
+                            </tr>
+                        </table>
+                        <div class="btn2">
+                            <input name="Submit" type="submit" value="提交申请" class="hy-btn2" /><input type="reset" value="重置表单" class="hy-btn2" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+{include file="footer.html"}

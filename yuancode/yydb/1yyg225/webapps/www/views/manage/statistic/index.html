@@ -1,0 +1,234 @@
+<h3 class="info-tag">
+    {$title} <span></span></h3>
+{literal}
+<style type="text/css">
+.tj-item{float:left;height:250px; width:400px; border:1px solid #ccc; margin-left:-1px; margin-top:-1px}
+</style>
+{/literal}
+<div class="html-box clear">
+    <div id="xdata" class="tj-item">
+        <h4 style="line-height:24px; height:24px; padding:2px 5px; font-size:14px">系统概要</h4>
+        <div style="padding:5px">
+            访问总量：{$total_view}<br>
+            登录IP：{$userip}<br>
+            系统类型：{$system.type}<br>
+            系统版本：{$system.version}<br>
+            PHP版本：{$system.phpversion}<br>
+        </div>
+    </div>
+    <!--各浏览器分布-->
+    <div id="xmain" class="tj-item">
+        {if !empty($browsers_type)}正在加载中...{else}暂无浏览器统计数据{/if}
+    </div>
+    <!--近7天访问统计-->
+    <div id="xmain1" class="tj-item">
+        正在加载中...
+    </div>
+    <!--各设备分布-->
+    <div id="xmain2" class="tj-item">
+        {if !empty($platforms_type)}正在加载中...{else}暂无浏览器统计数据{/if}
+    </div>
+    <!--各城市访问量-->
+    <div id="xmain3" class="tj-item">
+        {if !empty($citys)}正在加载中...{else}暂无浏览器统计数据{/if}
+    </div>
+
+</div>
+
+
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+
+<script type="text/javascript">
+    // 路径配置
+    $.loadJs('/admin/js/bd-echarts/esl.js',function(){
+        require.config({
+            paths:{
+                echarts:'/admin/js/bd-echarts/echarts',
+                'echarts/chart/bar' : '/admin/js/bd-echarts/echarts-map',
+                'echarts/chart/line': '/admin/js/bd-echarts/echarts-map',
+                'echarts/chart/map' : '/admin/js/bd-echarts/echarts-map',
+                'echarts/chart/pie' : '/admin/js/bd-echarts/echarts-map'
+            }
+        });
+
+        // Step:4 require echarts and use it in the callback.
+        // Step:4 动态加载echarts然后在回调函数中开始使用，注意保持按需加载结构定义图表路径
+        require(
+            ['echarts','echarts/chart/bar','echarts/chart/line','echarts/chart/map','echarts/chart/pie'],
+            function (ec) {
+
+                {if !empty($browsers_type)}
+                //--- 浏览器分布饼图 ---
+                var myChart = ec.init(G('xmain'));
+                myChart.setOption({
+                    title : {
+                        text: '访问浏览器分布',
+                        //subtext: '最近的7个月',
+                        x:'center',
+                        textStyle:{
+                            fontSize: 14,
+                            fontWeight: 'bolder',
+                            color: '#333'
+                        }
+                    },
+                    tooltip : {
+                        trigger: 'item',
+                        formatter: "{literal}{a} <br/>{b} : {c} ({d}%){/literal}"
+                    },
+                    legend: {
+                        orient : 'vertical',
+                        x : 'left',
+                        data:{$browsers_type},
+                        textStyle:{
+                            fontSize: 12,
+                            color: '#666'
+                        }
+                    },
+
+                    series : [
+                        {
+                            name:'访问来源',
+                            type:'pie',
+                            radius : '55%',
+                            center: ['65%', '62%'],
+                            data:{$browsers_data}
+                        }
+                    ]
+                });
+                {/if}
+
+
+                var myChart2 = ec.init(G('xmain1'));
+                myChart2.setOption({
+                    title : {
+                        text: '网站每日PV',
+                        subtext: '最近7天'
+                    },
+                    tooltip : {
+                        trigger: 'axis'
+                    },
+
+                    calculable : true,
+                    xAxis : [
+                        {
+                            type : 'category',
+                            boundaryGap : false,
+                            data : {$seven_days}
+                        }
+                    ],
+                    yAxis : [
+                        {
+                            type : 'value',
+                            axisLabel : {
+                                formatter: '{literal}{value} 次{/literal}'
+                            }
+                        }
+                    ],
+                    series : [
+                        {
+                            name:'PV',
+                            type:'line',
+                            data:{$seven_view},
+                            markPoint : {
+                                data : [
+                                    { type : 'max', name: '最大值'},
+                                    { type : 'min', name: '最小值'}
+                                ]
+                            },
+                            markLine : {
+                                data : [
+                                    { type : 'average', name: '平均值'}
+                                ]
+                            }
+                        }
+                    ]
+                });
+
+
+
+                {if !empty($platforms_type)}
+                //--- 浏览器分布饼图 ---
+                var myChart3 = ec.init(G('xmain2'));
+                myChart3.setOption({
+                    title : {
+                        text: '访问设备分布',
+                        subtext: '最近的7个月',
+                        x:'center',
+                        textStyle:{
+                            fontSize: 14,
+                            fontWeight: 'bolder',
+                            color: '#333'
+                        }
+                    },
+                    tooltip : {
+                        trigger: 'item',
+                        formatter: "{literal}{a} <br/>{b} : {c} ({d}%){/literal}"
+                    },
+                    legend: {
+                        orient : 'vertical',
+                        x : 'left',
+                        data:{$platforms_type},
+                        textStyle:{
+                            fontSize: 12,
+                            color: '#666'
+                        }
+                    },
+
+                    series : [
+                        {
+                            name:'访问来源',
+                            type:'pie',
+                            radius : '55%',
+                            center: ['55%', '62%'],
+                            data:{$platforms_data}
+                        }
+                    ]
+                });
+                {/if}
+
+
+
+
+
+                {if !empty($citys)}
+
+                //--- 浏览器分布饼图 ---
+                var myChart4 = ec.init(G('xmain3'));
+                myChart4.setOption({
+                    title : { text: '各区域访问统计',subtext: '城市'},
+                    tooltip : {
+                        trigger: 'axis'
+                    },
+
+                    calculable : true,
+                    xAxis : [
+                        {
+                            type : 'category',
+                            data : {$citys}
+                        }
+                    ],
+                    yAxis : [
+                        {
+                            type : 'value'
+                        }
+                    ],
+                    series : [
+                        {
+                            name:'访问量',
+                            type:'bar',
+                            data:{$citys_data}
+                        }
+
+                    ]
+                });
+                {/if}
+
+
+            }
+        );
+
+
+    });
+
+</script>
+</body>

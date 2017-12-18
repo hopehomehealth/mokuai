@@ -1,0 +1,74 @@
+{include file="header.html"}
+<link rel="stylesheet" href="{url('/style/css/member.css')}">
+{include file="ur_here.html"}
+<div id="container">
+    <div class="fn-clear mt20 pb20">
+        {include file="member/menu.html"}
+        <div class="fn-right hy-r">
+            <div class="fn-clear hy-tjxh">
+                <div class="title">
+                    <h2>账户明细</h2>
+                </div>
+                <div class="hy-zjfl">
+                	{if $site_config.apply_jufu!=1}
+                    <a href="{url('/member/recchage')}">充值</a> | 
+                    {/if}
+                    <a href="{url('/member/accountdetail')}" class="dq">查看账户明细</a> |
+                    {if $site_config.apply_jufu!=1}
+                    <a href="{url('/member/accountlog')}">充值记录</a>
+                    {/if}
+                </div>
+                <div class="hy-box">
+                    <div class="mt15 hy-table">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>操作时间</th>
+                                <th>类型 </th>
+                                <th style="width:80px;">第三方支付</th>
+                                <th style="width:80px;">可用金额</th>
+                                <th style="width:80px;">冻结金额</th>
+                                <th style="width:80px;">{$L.unit_db_points}</th>
+                                <th style="width:80px;">{$L.unit_pay_points}</th>
+                                <th style="width:80px;">经验值</th>
+                                <th>备注</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {foreach from=$list item=m}
+                            <tr>
+                                <td><span class="color03">{date('Y-m-d H:i',$m.logtime)}</span></td>
+                                <td>
+                                    {$m.stage_title}
+                                </td>
+                                <td><span class="color01">{$m.amount}</span></td>
+                                <td><span class="color01">{$m.user_money}</span></td>
+                                <td><span class="color02">{$m.frozen_money}</span></td>
+                                <td><span class="color01">{$m.db_points}</span></td>
+                                <td><span class="color02">{$m.pay_points}</span></td>
+                                <td><span class="color02">{$m.rank_points}</span></td>
+                                <td style="text-align:left;">{$m.desc}</td>
+                            </tr>
+                            {/foreach}
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <td colspan="20" style="text-align: right">
+                                    第三方支付总计：<span class="color01">{$data.amount_in|default:0}</span><br>
+                                    余额统计：收入<span class="color02">{$data.user_money_in|default:0}</span> 支出<span class="color01">{$data.user_money_out|abs|default:0}</span><br>
+                                    {$L.unit_db_points}统计：收入<span class="color02">{$data.db_points_in|default:0}</span> 支出<span class="color01">{$data.db_points_out|abs|default:0}</span><br>
+                                    {$L.unit_pay_points}统计：收入<span class="color02">{$data.pay_points_in|default:0}</span> 支出<span class="color01">{$data.pay_points_out|abs|default:0}</span><br>
+                                </td>
+                            </tr>
+                            </tfoot>
+                        </table>
+                        <div class="foot-btn">
+                            {include file="public_page.html"}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="footer.html"}

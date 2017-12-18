@@ -1,0 +1,78 @@
+{include file="header.html"}
+<link rel="stylesheet" href="{url('/style/css/member.css')}">
+{include file="ur_here.html"}
+<div id="container">
+    <div class="fn-clear mt20 pb20">
+        {include file="member/menu.html"}
+        <div class="fn-right hy-r">
+            <div class="fn-clear hy-tjxh">
+                <ul class="fn-clear db-tab">
+                    <li><a href="{url('/member/auction')}">{$L.unit_pay}记录</a></li>
+                    <li class="dq"><a href="{url('/member/cod')}">{$L.unit_winning}领取</a></li>
+                    <!--<li><a href="{url('/member/share/auction')}">晒单</a></li>-->
+                </ul>
+
+                <div class="hy-box">
+                    <div class="jp-sx fn-clear">
+                        <form action="/member/cod" method="get">
+                            <label id="Label1">{$L.unit_winning}状态：</label>
+                            <select name="status" onchange="this.form.submit();">
+                                <option value="{$smarty.const.OKWIN}">已{$L.unit_winning}（未领取）</option>
+                                <option value="{$smarty.const.FINWIN}" {if $smarty.get.status eq $smarty.const.FINWIN}selected{/if}>已{$L.unit_winning}（已领取）</option>
+                                <option value="{$smarty.const.AllWIN}" {if $smarty.get.status eq $smarty.const.AllWIN}selected{/if}>所有{$L.unit_winning}记录</option>
+                            </select>
+                            <span style="color:#999;">（7天内未{$L.unit_lingjiang}将自动失效）</span>
+                        </form>
+                    </div>
+
+                    <div class="mt15 hy-table">
+                        <table>
+                            <tr>
+                                <th colspan="2">商品信息</th>
+                                <th style="width:120px">需要出价（元）</th>
+                                <th style="width:90px">{$L.unit_winning}随机号</th>
+                                <th style="width:150px">{$L.unit_winning}时间</th>
+                                <th style="width:90px">状态</th>
+                            </tr>
+                            {foreach from=$data.list item=m}
+                            <tr>
+                                <td width="80">
+                                    <a href="{$m.url}" target="_blank"><img src="{zz mod=fileurl source=$m.imgurl_src width=80 type=0}" alt="{$m.title}" width="80" /></a>
+                                </td>
+                                <td style="text-align:left">
+                                    <a href="{url('/auction/view/'|cat:$m.act_id)}" target="_blank">{$m.title}</a>
+                                </td>
+                                <td><span class="color01">{$m.bid_price|price_format}</span></td>
+                                <td>{$m.cod}</td>
+                                <td>{$m.cod_time|date_format:'Y-m-d H:i:s'}</td>
+                                <td class="hy-rza">
+                                    {if $m.status eq $smarty.const.OKWIN}
+                                    {if $m.disabled eq 1}已失效
+                                    {else}
+                                    <form action="/order/buy" method="post">
+                                        <input type="hidden" name="type" value="{$smarty.const.CART_WIN}" />
+                                        <input type="hidden" name="id" value="{$m.log_id}" />
+                                        <button type="submit" class="hy-btn2">{$L.unit_lingjiang}</button>
+                                    </form>
+                                    {/if}
+                                    {elseif $m.status eq $smarty.const.FINWIN}
+                                    已{$L.unit_lingjiang}
+                                    {/if}
+                                </td>
+                            </tr>
+                            {foreachelse}
+                            <tr>
+                                <td colspan="5">没有{$L.unit_winning}记录！</td>
+                            </tr>
+                            {/foreach}
+                        </table>
+                    </div>
+
+                    {include file="public_page.html"}
+                </div>
+
+            </div>
+        </div>
+     </div>
+</div>
+{include file="footer.html"}

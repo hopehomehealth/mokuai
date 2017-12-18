@@ -1,0 +1,89 @@
+{include file="crowd/crowd_header.html"}
+{include file="crowd/ur_here.html"}
+<div class="container">
+    <div class="gwc1">
+        <h3 class="gwc1-h3">{{$order['cd_name']}}</h3>
+        <div class="gwc1-r">
+            {if $order['price'] > 0}
+            <img src="{url('/style/crowd/images/jd2.jpg')}" />
+            {/if}
+            <div class="gwc2-r2">
+            {if $type}
+                <!--支付表单提交-->
+                <div class="gwc2-list1">尊敬的<b class="color01">{$username}</b>用户：</div>
+                <div class="gwc2-list2">
+                    <p>商户名称：<b class="color01">{$site_config.site_name}</b></p>
+                    <p>您的支付金额为：<b class="color01">{$order.surplus_amount}</b>元</p>
+                    {if $payment_info.pay_fee}
+                    <p>支付手续费用为：<b class="color01">{$payment_info.pay_fee}</b>元</p>
+                    {/if}
+                    <p>您选择的支付方式为：<b class="color01">{$payment_info.pay_name}</b></p>
+                    <div class="gwc2-list4">
+                        <ul>
+                            <dd>{$payment_info.pay_button}</dd>
+                        </ul>
+                    </div>
+                </div>
+
+            {else}
+            <!--支付方式选择-->
+                <div class="gwc2-list1">订单提交成功！请您在24小时内付款，否则订单将自动取消。</div>
+                <div class="gwc2-list2">
+                    <span>应付金额：<em>￥{{$order['support_amount']}}</em></span>
+                    <i>产品信息：{{$order['rt_desc']}} ￥{{$order['support_amount']}}</i>     订单号：{{$order['support_sn']}}
+                </div>
+                <form action="/crowd/supportDone/{{$order['support_sn']}}" id="support_form" method="post">
+                    
+                <div class="gwc2-list3">
+                    <div class="hd">
+                        <div class="option" style="padding-bottom: 10px;">
+                            <label class="w-checkbox w-checkbox-disabled">
+                                <input type="checkbox" value="1" name="balance_pay" checked=""> 
+                                <span data-pro="text" style="color:#000;font-weight:bold;">使用余额付款，账户余额： <em>￥{{$member['user_money']}}</em></span>
+                            </label>
+                        </div>
+                        <ul id="payment">
+                            <dt>支付方式：</dt>
+                            {foreach from=$payment item=m name=payment}
+                                <li>
+                                    <label {if $smarty.foreach.payment.iteration eq 1}w-pay-selected{/if}>
+                                        <input type="radio" name="pay_id" value="{$m.pay_id}" style="display: none;" {if $smarty.foreach.payment.iteration eq 1}checked{/if}/>{$m.pay_name}
+                                        {if $m.pay_code eq 'teegon'}
+                                        <div class="payment" style="display: none;"></div>
+                                        {/if}
+                                    </label>
+                                </li>
+                            {/foreach}
+                        </ul>
+                        <script type="text/javascript" >
+                            $(function(){
+                                $("#payment li").click(function(){
+                                    $(this).siblings().children('a').remove('w-pay-selected');
+                                    $(this).children('a').addClass('w-pay-selected');
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+
+                <script type="text/javascript">
+                    jQuery(".gwc2-list3").slide({ trigger: "click" });
+                </script>
+
+                <div class="gwc2-list4">
+                    <ul>
+                        <dd>
+                            <input type="hidden" name="submit" value="on" />
+                            <input type="submit" value="立即支付" /> 
+                        </dd>
+                    </ul>
+                </div>
+                </form>
+            {/if}
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+{include file="crowd/crowd_footer.html"}

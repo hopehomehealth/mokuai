@@ -1,0 +1,66 @@
+{include file="header.html"}
+<link rel="stylesheet" href="/style/css/member.css">
+{include file="ur_here.html"}
+<div id="container">
+    <div class="fn-clear mt20 pb20">
+        {include file="member/menu.html"}
+<style type="text/css">
+    .refer-box .rleft ul li{ width:410px;}
+</style>
+        <div class="fn-right hy-r">
+            <div class="fn-clear hy-tjxh">
+                <div class="title"><h2>分享码</h2></div>
+                <div class="hy-box">
+                {if $sharecode}
+                 您的分享码 : <b class="color01" style="font-size: 24px;">{$sharecode.code}</b>
+                    {share($comment)}
+                    <b style="font-size: 14px;">分享给您的<b class="color01">{$sharecode.allow_time}</b>个小伙伴使用,每次您都将获得<b class="color01">{$site_config.order_back}</b>元返利,伙伴们也可以获得{$site_config.order_share}的{$L.unit_db_points}！</b>
+                {else}
+                您还没有分享码，首次{$L.unit_yun}可以获得分享码，分享给小伙伴们使用您将获得{$L.unit_db_points}。<a href="{url('/yunbuy')}" class="color02">马上{$L.unit_yun}</a>
+                {/if}
+                </div>
+                {if $used_sharecode_list}
+                <div class="title"><h2>我使用的分享码</h2></div>
+                <div class="hy-table" style="margin: 10px auto;">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <th>使用会员</th>
+                            <th>订单号</th>
+                            <th>使用时间</th>
+                        </tr>
+                        {foreach from=$used_sharecode_list item=m}
+                        <tr>
+                            <td>{$m.username|nickname:$m.nickname}</td>
+                            <td>{$m.order_sn}</td>
+                            <td>{date('Y-m-d H:i:s',$m.add_time)}</td>
+                        </tr>
+                        {/foreach}
+                        </tbody>
+                    </table>
+                </div>
+                {/if}
+                <div class="title"><h2>我发出的分享码</h2></div>
+                <div class="hy-table" style="margin: 10px auto;">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <th>使用会员</th>
+                            <th>订单号</th>
+                            <th>使用时间</th>
+                        </tr>
+                        {foreach from=$sharecode_list item=m}
+                          <tr>
+                              <td>{$m.username|nickname:$m.nickname}</td>
+                              <td>{$m.order_sn}</td>
+                              <td>{date('Y-m-d H:i:s',$m.add_time)}</td>
+                          </tr>
+                        {/foreach}
+                        </tbody>
+                     </table>
+                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="footer.html"}

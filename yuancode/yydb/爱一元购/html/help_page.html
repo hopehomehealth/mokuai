@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>帮助中心</title>
+		<link rel="stylesheet" type="text/css" href="../css/api.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/style.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/user.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+	</head>
+	<body>
+		<div id="header">
+			<div class="cart active">
+				<div class="icon_box" tapmode="" onclick="api.closeWin()">
+					<i class="iconfont icon-fanhui"></i>
+				</div>
+				<div class="toptit">
+					帮助中心
+				</div>
+			</div>
+		</div>
+		<div id="content" class="container main">
+			<div id="faq-content"></div>
+			<script id="faq-template" type="text/x-dot-template">
+				<dl class="faq">
+				<dt style="font-size: 16px;">{{=it.list[0].title}}</dt>
+				<dd style="display: block;">{{=it.list[0].content}}</dd>
+				</dl>
+			</script>
+		</div>
+		<script type="text/javascript" src="../script/jquery.min.js"></script>
+		<script type="text/javascript" src="../script/fastclick.js"></script>
+		<script type="text/javascript" src="../script/api.js"></script>
+		<script type="text/javascript" src="../script/doT.min.js"></script>
+		<script type="text/javascript" src="../script/common.js"></script>
+		<script type="text/javascript" src="../script/formathtml.js"></script>
+		<script type="text/javascript">
+			$(function() {
+			});
+			apiready = function() {
+				//适配iOS 7+，Android 4.4+状态栏
+				var header = $api.byId('header');
+				$api.fixStatusBar(header);
+				var id = api.pageParam.id;
+				showprog();
+				var url = 'content/rule_help/'+id;
+				getData(url, 'faq');
+				hideprog();
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,143 @@
+{include file="header.html"}
+<link rel="stylesheet" href="{url('/style/css/yiyuanbao.css')}">
+<style type="text/css">
+    .w-quickBuyList-item{ height: 315px; }
+    .m-list-goodsList .w-goods-opr-buy{ margin:0; }
+    .w-goods-ing .w-goods-price b{ color: #f60; }
+</style>
+{if $ad.ad_mark}
+{zz mod=content var=tagAdw module=ad type='row' where="mark='"|cat:$ad.ad_mark|cat:"'"}
+{/if}
+{zz mod=fileurl var=tagAds source=$tagAdw.images num=2}
+{if $tagAds}
+{foreach from=$tagAds item=m}
+<div class="g-gg" style="margin-bottom:20px;height:{$tagAdw.height}px;background:{$tagAdw.bgcolor} url('{$m.path}') no-repeat center bottom"><span></span></div>
+{/foreach}
+{else}{include file="ur_here.html"}{/if}
+<div class="g-wrap g-body">
+<div class="m-list">
+<div class="g-body-hd f-clear">
+    <div class="m-list-classification">
+        <div class="m-classification">
+            <div class="m-classi">分类</div>
+            <div class="m-fication">
+                <ul>
+                    <li {if !$smarty.get.cid}class="current"{/if}><a href="{'/yunbuy'|url}{if $smarty.get.zq}?zq={$smarty.get.zq}{/if}">全部</a></li>
+                    {assign var=cid_one value=0}
+                    {foreach from=$yuncat item=m name=f}
+                    {if $m.parentid eq 0 && $m.id eq $smarty.get.cid}{$cid_one=$m.id}
+                    {elseif $m.parentid neq 0 && $m.id eq $smarty.get.cid}{$cid_one=$m.parentid}{/if}
+                    {if $m.ismenu eq 1 && $m.parentid eq 0}
+                    <li id="cat_{$m.id}"><a href="{'/yunbuy'|url}?cid={$m.id}{if $smarty.get.zq}&zq={$smarty.get.zq}{/if}" title="{$m.catname}">{$m.catname}</a></li>
+                    {/if}
+                    {/foreach}
+                </ul>
+                <a href="javascript:;" class="expansion"></a>
+            </div>
+        </div>
+
+        {if $cid_one}
+        <div class="m-classification" id="dd_sub" style="display: none;">
+            <div class="m-classi">子分类</div>
+            <div class="m-fication">
+                <ul>
+                    {foreach from=$yuncat item=m name=f}
+                    {if $m.ismenu eq 1 && $m.parentid eq $cid_one}
+                    <li class="{if $smarty.get.cid eq $m.id}current{/if}"><a href="{'/yunbuy'|url}?cid={$m.id}{if $smarty.get.zq}&zq={$smarty.get.zq}{/if}">{$m.catname}</a></li>
+                    <script type="text/javascript">
+                        $(function(){
+                            var dd = $('#dd_sub');
+                            if(dd.is(':hidden')){ dd.show(); }
+                        })
+                    </script>
+                    {/if}
+                    {/foreach}
+                    <script type="text/javascript">
+                        $(function(){
+                            $('#cat_{$cid_one}').addClass('current');
+                        })
+                    </script>
+                </ul>
+            </div>
+        </div>
+        {/if}
+
+        {if $brand}
+        <div id="dlBrandBox" class="m-classification">
+            <div class="m-classi">品牌</div>
+            <div class="m-fication">
+                <ul id="ulBrandList">
+                    <li {if !$smarty.get.bid}class="current"{/if}><a href="{'/yunbuy'|url}?cid={$smarty.get.cid}{if $smarty.get.zq}&zq={$smarty.get.zq}{/if}" title="全部">全部</a></li>
+                    {foreach from=$brand item=m}
+                    <li {if $smarty.get.bid eq $m.id}class="current"{/if}><a href="{'/yunbuy'|url}?bid={$m.id}&cid={$smarty.get.cid}{if $smarty.get.zq}&zq={$smarty.get.zq}{/if}" title="{$m.catname}">{$m.catname}</a></li>
+                    {/foreach}
+                </ul>
+                <div class="one_more">
+                    <a href="javascript:;" class="om1">展开<i></i></a>
+                    <a href="javascript:;" class="om2">收起<i></i></a>
+                </div>
+            </div>
+        </div>
+        {/if}
+    </div>
+</div>
+<div class="g-wrap g-body-bd f-clear">
+<div class="m-list-mod m-list-goodsList" style="overflow: hidden">
+<div class="m-list-mod-hd">
+    <h6>排序：</h6>
+    <ul class="m-list-sortList">
+        <li {if $smarty.get.k eq goods_click}class="selected"{/if}>
+        <a href="{'/yunbuy/'|url}?cid={$cid}&bid={$bid}&k=goods_click{if $smarty.get.zq}&zq={$smarty.get.zq}{/if}">人气</a>
+        </li>
+        <li {if $smarty.get.k eq add_time}class="selected"{/if}><a href="{'/yunbuy/'|url}?cid={$cid}&bid={$bid}&k=add_time{if $smarty.get.zq}&zq={$smarty.get.zq}{/if}">最新</a>
+        </li>
+        <li {if $smarty.get.k eq custom_price && $smarty.get.s eq desc}class="selected"{/if}><a href="{'/yunbuy/'|url}?cid={$cid}&bid={$bid}&k=custom_price&s=desc{if $smarty.get.zq}&zq={$smarty.get.zq}{/if}">价格<i class="ico ico-arrow-sort ico-arrow-sort-gray-down" title="降序"></i></a>
+        </li>
+        <li {if $smarty.get.k eq custom_price && $smarty.get.s eq asc}class="selected"{/if}><a href="{'/yunbuy/'|url}?cid={$cid}&bid={$bid}&k=custom_price&s=asc{if $smarty.get.zq}&zq={$smarty.get.zq}{/if}">价格<i class="ico ico-arrow-sort ico-arrow-sort-gray-up" title="升序"></i></a>
+        </li>
+    </ul>
+</div>
+<div class="m-list-mod-bd">
+<ul class="w-quickBuyList f-clear">
+    {foreach from=$list item=m name=list}
+    {include file="yunbuy/lbi_yunbuy_buy.html"}
+    {foreachelse}
+    <p class="empty">产品正在上架</p>
+    {/foreach}
+    {if $listNo < 4 && $listNo > 0}
+    {for $foo=1 to $listNo}
+    <li class="w-quickBuyList-item blank"></li>
+    {/for}
+    {/if}
+</ul>
+</div>
+</div>
+<div class="m-list-pager">
+    {include file="public_page.html"}
+</div>
+</div>
+</div>
+</div>
+{include file="footer.html"}
+<script type="text/javascript">
+    $('.w-quickBuyList-item').bind('mouseover',function(){
+        $(this).addClass('hover');
+    }).bind('mouseout',function(){
+        $(this).removeClass('hover');
+    });
+    $(function(){
+        if($('#ulBrandList').height() <= '56'){
+            $('.one_more').hide();
+        }
+    })
+    $('.one_more .om1').click(function(){
+        $('#dlBrandBox').css('height','auto');
+        $(this).hide();
+        $('.one_more .om2').show();
+    })
+    $('.one_more .om2').click(function(){
+        $('#dlBrandBox').css('height','74px');
+        $(this).hide();
+        $('.one_more .om1').show();
+    })
+</script>

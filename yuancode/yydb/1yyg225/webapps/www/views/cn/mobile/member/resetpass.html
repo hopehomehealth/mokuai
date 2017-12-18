@@ -1,0 +1,39 @@
+{assign var='header' value='header2'}
+{include file="top.html"}
+<div id="content" class="container main">
+    <div class="user-box">
+        <form action="" target="iframeNews" id="resetform" method="post">
+            <div class="form-box">
+                <div class="Validform_checktip color01"></div>
+                <div class="input">
+                    <i class="ap-icon icon-psw"></i>
+                    <input name="password" id="password" class="txt" type="password" placeholder="新密码" autocomplete="false"  datatype="*" nullmsg="请输入新密码" />
+                </div>
+            </div>
+            <div class="form-box">
+                <div class="Validform_checktip color01"></div>
+                <div class="input">
+                    <i class="ap-icon icon-psw"></i>
+                    <input name="confirm_password" class="txt" type="password" placeholder="确认密码" autocomplete="false"  datatype="*" nullmsg="请确认密码" errormsg="两次输入的密码不一致" />
+                </div>
+            </div>
+            <input class="btn" name="Submit" type="submit" value="确 认 重 置">
+        </form>
+    </div>
+</div>
+
+{literal}
+<script type="text/javascript" src="/style/Validform_min.js"></script>
+<script type="text/javascript" src="/style/mobile/js/script.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $("#resetform").Validform({
+            tiptype:function(msg,o,cssctl){ validTip(msg,o,cssctl); },
+            showAllError:true
+        });
+    })
+</script>
+{/literal}
+<iframe name="iframeNews" style="display:none;"></iframe>
+</body>
+</html>

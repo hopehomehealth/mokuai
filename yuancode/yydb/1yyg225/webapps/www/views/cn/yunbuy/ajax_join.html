@@ -1,0 +1,58 @@
+{if $list}
+<div class="content" style="">
+    <div class="m-detail-recordList-start"><i class="ico ico-clock"></i></div>
+    {foreach from=$list item=row key=k}
+    <div class="m-detail-recordList-timeSeperate">{$k}<i class="ico ico-recordDot ico-recordDot-solid"></i></div>
+    <ul class="m-detail-recordList m-detail-recordList-0">
+        {foreach from=$row item=m}
+        <li class="f-clear"><span class="time">{microtime_format($m.db_time,'H:i:s.x')}</span><i class="ico ico-recordDot ico-recordDot-hollow"></i><div class="m-detail-recordList-userInfo">
+            <div class="inner">
+                {if $m.luck_code}<div class="luck_icon"></div>{/if}
+                <p><span class="avatar">
+					<img height="20"  src="{zz mod=photo source=$m.photo size=30}" width="20"></span><a href="{'/minfo?id='|cat:$m.mid|url}" target="_blank"  class="color02">{$m.username|nickname:$m.nickname}</a>
+                    ({$m.ip|cityIp} IP：{$m.ip}) 参与了<b class="times txt-red">{$m.qty}人次</b>
+                    <a class="w-button w-button-simple btn-checkCodes" data-func="code" data-rid="1027" href="javascript:void(0)" style="display: none;">所有{$L.unit_yun}号码<i class="ico ico-arrow-gray ico-arrow-gray-down"></i></a>
+                </p>
+                <a class="btn-close" href="javascript:void(0)" style="display: none;">x</a>
+                <p class="codes" style="display: none;">{foreach from=$m.yun_code item=code}<b {if $code eq $m.luck_code}style="color:#E54048; font-weight:bold;"{/if}>{$code}</b>{/foreach}</p>
+            </div>
+        </div>
+        </li>
+        {/foreach}
+     </ul>
+    {/foreach}
+</div>
+  {include file="ajax_page.html"}
+{literal}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".m-detail-recordList li .w-button-simple").each(function(i){
+            $(this).click(function(){
+                $(this).parents("li").addClass("m-detail-recordList-userInfo-detail").siblings().removeClass("m-detail-recordList-userInfo-detail");
+            });
+        });
+        $(".btn-close").click(function(){
+            $(this).parents("li").removeClass("m-detail-recordList-userInfo-detail");
+        });
+        $('#recordPanel').find('.demo').ajaxContent({
+            event:'click', //mouseover
+            loaderType:"img",
+            loadingMsg:"/style/images/transparent.gif",
+            target:'#recordPanel'
+        });
+        $('#recordPanel').find('*[nc_type="sform"]').ajaxContent({
+            event:'change', //mouseover
+            loaderType:"img",
+            loadingMsg:"/style/images/transparent.gif",
+            target:'#recordPanel'
+        });
+    });
+</script>
+{/literal}
+{else}
+<div class="empty">
+    <p class="status-empty">
+        <i class="littleU littleU-cry"></i>&nbsp;&nbsp;暂时还没有参与记录</p>
+</div>
+{/if}
+

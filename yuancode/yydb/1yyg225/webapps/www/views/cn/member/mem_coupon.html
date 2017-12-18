@@ -1,0 +1,40 @@
+{include file='home/uhead.html'}
+{literal}
+<style type="text/css">
+
+</style>
+{/literal}
+<div class="context clear">
+    <div class="wrap-order">
+
+        {if count($coupons)}
+        <div class="user-credit">
+            已有优惠券 <span>{count($coupons)}</span> {$L.unit_bonus_unit}
+        </div>
+
+        {foreach from=$coupons item=m key=k}
+        <div class="i-coupon clear ibg{$k%3}">
+            <div class="sawtooth"></div>
+            <div class="cp-name">{$m.title}</div>
+            <div class="cp-info">
+                <div class="cp-desc">
+                    <span class="cp-word">{$m.credit}积分可领取</span><br>
+                    <a href="javascript:;" class="cp-shoping clear"><i class="iconfont">&#xe604;</i><span>立即购物</span></a>
+                </div>
+            </div>
+        </div>
+        {foreachelse}
+        {/foreach}
+        {else}
+
+        <div class="user-credit" style="text-align:center">
+            暂无优惠券
+        </div>
+
+        {/if}
+
+    </div>
+</div><!--End Context-->
+
+<script type="text/javascript" src="/js/member.js"></script>
+{include file='home/foot.html'}

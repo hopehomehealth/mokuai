@@ -1,0 +1,125 @@
+@charset "utf-8";
+.color{ color: #e54048; }
+.color01{ color:#e54048}
+.color02{ color:#00a0e9}
+.color03{ color:#999}
+.color04{ color:#F60;}
+.st{ font-family: '\5B8B\4F53',sans-serif; }
+.loading{ display: block; font-size: 18px; padding: 20px 0; text-align: center; border: 0; }
+.empty{ display: block; font-size: 18px; padding: 20px 0; text-align: center; border: 0; }
+.ico{display: inline-block;vertical-align: middle;background-image: url('../images/mix-icon.png');overflow: hidden;}
+
+@media only screen and (min-width: 1200px) {
+/*挖宝列表*/
+.one{ width: 1220px; }
+/*最新上架*/
+.beijing_index .index_top,
+.beijing_index .index_hot{ width: 1195px; }
+}
+
+/*头部购物车*/
+.cart-box{ width:320px; border:1px #e54048 solid; background:#fff;position:absolute; z-index:100; right:0; top:34px; display:none;font-weight: normal;}
+.cart-box h3{ font-size:14px; color:#000; height:22px; line-height:20px; margin-bottom:5px;}
+.gwc-list{ overflow:hidden; margin-bottom:8px; }
+.gwc-list .p1{ float:left; margin-right:10px; }
+.gwc-list .p1 img{ width:64px; }
+.gwc-list .p2{ float:left;width:220px; font-size: 14px; line-height: 20px; }
+.gwc-list .p2 span{ font-size: 12px;}
+.gwc-nr{ padding:10px;}
+.gwc-gmbox{ border-top:1px #ddd solid; background:#f5f5f5; padding:5px 10px 10px; text-align:right; font-weight:bold; color:#3c3c3c}
+.w-miniCart-empty { color: #C3C3C3; padding: 20px 0; text-align: center; }
+/**加入购物车飞入图片**/
+.ui-cart-move{ width: 50px; height: 50px; overflow: hidden; border:2px solid #e54048; border-radius: 50%; display: block; }
+.ui-cart-move img{ width: 100%; height: 100%; }
+
+/*图片异步加载中*/
+.scrollLoadingDiv{ background: url("../upload/load.png") no-repeat scroll center center transparent; }
+
+/*面包屑*/
+#breadCrumb{ height:46px; line-height:47px; overflow: hidden; border-bottom:1px #ebebeb solid; margin-bottom: 0; }
+.breadCrumb-txt{ margin:0 auto; background:url('../images/weizhi.jpg') 35px 15px no-repeat; padding:0 0 0 60px; }
+.breadCrumb-txt a{ color:#333;}
+.breadCrumb-txt a:hover{ color:#e54048;}
+.breadCrumb-txt em{ font-style: normal; }
+
+/*竞拍列表*/
+.kqjp_list li{ height: 330px; overflow: hidden; }
+.kqjp_list li.blank { background: #FFF url("../images/alt_blank_s.jpg") no-repeat scroll center center; }
+.tyjp1 li{ height: 330px; overflow: hidden; }
+.tyjp1 li.blank { background: #FFF url("../images/alt_blank_s.jpg") no-repeat scroll center center; }
+
+/*倒计时*/
+.yomibox i{ font-style: normal; }
+
+/*最新揭晓*/
+.win-list{ position: relative; overflow: visible; }
+.win-list .winCount{ position: absolute; right: 15px; top: -20px; font-size: 14px; color: #999; }
+.new_2{ height: 210px; overflow: hidden; }
+.new_3 h4{ max-height: 44px; }
+
+/*挖宝列表*/
+.kqjp_list li{ position: relative; }
+.sale_db{ position: absolute; right: 5px; top: 10px; width: auto !important; }
+.one li{ position: relative; }
+.one li h5{ height: 24px; }
+.join3 li h5{ height: 24px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.index_hot_2{ clear: both; overflow: hidden; line-height: 40px; text-align: center; width: 157px; margin: 0 auto;}
+.index_hot_2 a{ background:#eb3d61; display:inline-block; overflow:hidden; width:110px; float:left; margin-right:5px; color:#fff; font-size:18px}
+.index_hot_2 a.ty{ background:#FFA200;}
+/*挖宝排序*/
+.one_middle1 a.hover{ background: #DB3651; color: #fff; border-color:#DB3651; }
+.ico-arrow-sort{ width: 9px; height: 11px; margin-left: 2px; }
+.ico-arrow-sort-gray-down{background-position: -90px -160px;}
+.ico-arrow-sort-gray-up {background-position: -80px -160px;}
+.one_middle1 a:hover .ico-arrow-sort-gray-up{background-position:-100px -160px;}
+.one_middle1 a:hover .ico-arrow-sort-gray-down{background-position:-110px -160px;}
+.one_middle1 a.hover .ico-arrow-sort-gray-up{background-position:-60px -160px!important;}
+.one_middle1 a.hover .ico-arrow-sort-gray-down{background-position:-70px -160px!important;}
+
+/*首页*/
+.most1{ height: 330px; overflow: hidden; }
+.most1_3{ display: block; }
+.most1_3:hover{ color: #eee; }
+/*首页会员滚动区重置*/
+.index_hot1 dd{ border-top:0; padding: 0; height: auto; }
+.index_hot1 dd li{ clear: both; border-top:1px solid #CBCBCB; height: 55px; padding: 21px 0;}
+/*首页晒单列表*/
+.index_fx{ background: #F2F2F2; }
+.index_fx_1, .index_fx_1{ height: auto; max-height: 320px; }
+.index_fx_1, .index_fx_1 i{ height: auto; max-height: 320px; }
+.index_fx_1, .index_fx_2, .index_fx_3{ background: #fff; }
+.index_fx_3{ padding: 10px 0 0; }
+.index_fx1 li em img{ height: auto; max-height: none; }
+
+/*个人空间*/
+.space_right1 td{ padding-bottom: 20px !important; }
+.space_right1_1 th{ white-space: nowrap;}
+
+/*个人中心*/
+.center_2_1 img{ margin: 0 2px !important; }
+.center_left1 a.current{ background-color:#aaa ; }
+.center_left2 p a.dq{ color: #eb3d60}
+
+/*竞拍详情页*/
+.aucli{ position: relative; overflow: visible; }
+.aucli .winz{ position: absolute; top: 0; right: 0; display: block; width: 59px; height: 55px; background: url('../images/winz.png') no-repeat; z-index: 5 }
+.aucli .winz i{ display: block; padding-top:25px; text-align: center; color: #fff; font-weight: bold; font-size: 15px; padding-left:5px; font-family: georgia, 'lucida grande', arial }
+.aucli .winzUser{ background: url('../images/winzuser.png') no-repeat; }
+.aucli .winzUser i{ padding-top:20px; font-size: 14px; }
+.aucli .winz i span{ font-size: 10px; }
+.k_xx2_1 strong em{ font-size: 12px; }
+.btn_finish{ background: #ddd; padding:7px 15px; font-size: 20px; margin-right:15px; color: #000; }
+.btn_prestart{ background: #28a501; padding:7px 15px; font-size: 20px; margin-right:15px; color: #fff; }
+.special{ height: 30px; line-height:30px; overflow: hidden; font-weight: bold; text-align: center; color: #878787; font-size: 16px; border-top: 1px solid #ebebeb; padding-top:20px; }
+/* 出价弹窗 */
+.qujia_box{ font-size: 18px; color: #666; }
+.qujia_box .form-box{ padding: 3px 0; }
+.qujia_box input.input{ border: 1px solid #ccc; width: 110px; padding: 0 5px; height: 24px; line-height: 24px; border-radius: 2px; }
+.pujia-button a{ display: block; width: 140px; height: 45px; line-height: 45px; background: #d54148; text-align: center; color: #fff; margin: 10px auto 15px; font-size:24px; font-weight: bold; }
+.tips_password{ font-size: 12px; }
+
+/*挖宝详情*/
+.y_banner .pic-scroll .slick-slide em{ display: table-cell !important; vertical-align: middle; }
+.y_xx h4{ line-height:1.5; }
+.y_xx1 big{ display: inline; float: none !important; }
+.y_xx2 dd a{ margin: 0 3px !important; }

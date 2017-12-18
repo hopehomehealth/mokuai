@@ -1,0 +1,48 @@
+<dt><b>{$m.bonus_sn}</b></dt>
+<dd>
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th>{$L.unit_bonus}名称</th>
+            <td>{$m.b_title}</td>
+        </tr>
+        <tr>
+            <th>{$L.unit_bonus}价值</th>
+            <td><b class="color01">{$m.money}</b>{$m.money_type_title}</td>
+        </tr>
+        <tr>
+            <th>有效时间</th>
+            <td>
+                {if $m.start_time}{$m.start_time|date_format:'Y-m-d H:i:s'}{else}--{/if}<br>
+                {if $m.end_time}{$m.end_time|date_format:'Y-m-d H:i:s'}{else}--{/if}
+            </td>
+        </tr>
+        {if $m.used_time}
+        <tr>
+            <th>使用时间</th>
+            <td>
+                {if $m.used_time}{$m.used_time|date_format:'Y-m-d H:i:s'}{else}--{/if}
+            </td>
+        </tr>
+        <tr>
+            <th>订单号</th>
+            <td>
+                {if $m.order_id}{$m.order_id}{else}--{/if}
+            </td>
+        </tr>
+        {/if}
+        <tr>
+            <th>状态</th>
+            <td>
+                {if $m.disabled eq 1}
+                {if $m.order_id}
+                <span class="color01">已使用</span>
+                {else}
+                <span class="color01">已过期</span>
+                {/if}
+                {else}
+                未使用
+                {/if}
+            </td>
+        </tr>
+    </table>
+</dd>

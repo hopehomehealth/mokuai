@@ -1,0 +1,92 @@
+{if $list}
+<div class="list01 list-db">
+    {foreach from=$list item=m}
+    <dl class="item ui-clr">
+        <dt class="ui-clr">
+            <div class="db-img"><a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}"><img src="{zz mod=fileurl source=$m.imgurl_src width=90 type=0}" alt="{$m.goods_name}" /></a></div>
+            <div class="db-txt">
+                <p class="p1">{if $m.type eq 2}<span class="type-free">霸王餐区</span>{/if} <a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}" class="color00"><span class="color01"> <!-- (第{$m.qishu}期) --> </span> {$m.goods_name}</a></p>
+                {if $m.buy.luck_code eq 0}
+                <p class="color03">总需：{$m.buy.need_num}{if $m.type eq 1}人次{else}{$L.unit_pay_points}{/if}</p>
+                <p class="db-jdt">
+                    <span style="width:{$m.buy.jindu}%"></span>
+                </p>
+                <ul class="db-nums ui-clr color03">
+                    <li class="tr">剩余<span>{$m.buy.end_num}</span></li>
+                    <li class="tl">已参与<span>{$m.buy.buy_num}</span></li>
+                </ul>
+                {else}
+                <p class="color03">
+                    获得者：<a href="{'/minfo?id='|cat:$m.buy.member_id|url}#dbCod">{$m.buy.member_name|nickname:$m.luck_nickname}</a>（本期共参与{$m.luck_qty}人次）<br/>
+                    幸运号码：<b class="color01" style="font-size: 1.4rem">{$m.buy.luck_code}</b><br/>
+                    揭晓时间：{microtime_format($m.buy.end_time,'Y-m-d H:i:s.x')}
+                </p>
+                {/if}
+            </div>
+        </dt>
+        <dd>
+            <table cellpadding="0" cellspacing="0">
+                <tr>
+                    <th>{$L.unit_yun}状态</th>
+                    <td>
+                        {if $m.status eq 2}
+                        <span class="color02">正进行.....</span>
+                        {elseif $m.status eq 3}
+                        <span class="color01">已获得</span>
+                        {elseif $m.status eq 4}
+                        <span class="color03">待揭晓</span>
+                        {elseif $m.status eq 5}
+                        <span class="color01">已揭晓</span>
+                        {/if}
+                    </td>
+                </tr>
+                <tr>
+                    <th>参与人次</th>
+                    <td>
+                        {$m.qty}人次
+                    </td>
+                </tr>
+                <tr>
+                    <th>{$L.unit_yun}号码</th>
+                    <td>
+                        {foreach from=$m.yun_code item=c name=yun_code}
+                        {if $smarty.foreach.yun_code.iteration lt 10}{$c}&nbsp;&nbsp;
+                        {else}
+                        <span class="moreCode" style="display: none;">{$c}&nbsp;&nbsp;</span>
+                        {/if}
+                        {/foreach}
+                        {if $m.yun_code|count gt 9}
+                        <br /><a href="javascript:;" class="color02" onclick="moreCode(this)">查看更多&gt;&gt;</a>
+                        {/if}
+                    </td>
+                </tr>
+            </table>
+        </dd>
+    </dl>
+    {/foreach}
+</div>
+<div class="foot-btn">
+    {include file="ajax_page.html"}
+</div>
+{else}
+<div class="prompt">该用户还没有参与过{$L.unit_yun}！</div>
+{/if}
+
+<script type="text/javascript">
+    var load_div = '#load_db';
+    $(document).ready(function(){
+        $(load_div).find('.demo').ajaxContent({
+            event:'click', //mouseover
+            loaderType:"text",
+            loadingMsg:"拼命加载中...",
+            target:load_div
+        }).bind('click',function(){
+            $('html,body').animate({ scrollTop: '0px' }, 500);
+        });
+    });
+    function moreCode(obj){
+        $(obj).parents('td').find('.moreCode').toggle();
+        if($(obj).html()=='查看更多&gt;&gt;') $(obj).html('收起');
+        else $(obj).html('查看更多&gt;&gt;');
+    }
+</script>

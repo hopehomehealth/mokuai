@@ -1,0 +1,109 @@
+{include file="header.html"}
+<link rel="stylesheet" href="{url('/style/css/member.css')}">
+{include file="ur_here.html"}
+<div id="container">
+    <div class="fn-clear mt20 pb20">
+        {include file="member/menu.html"}
+        <div class="fn-right hy-r">
+            <div class="fn-clear hy-tjxh">
+                <div class="title">
+                    <h2>个人信息</h2>
+                </div>
+                <form action="" target="iframeNews" method="post" id="submit_form">
+                <div class="hy-box">
+                    <div class="hy-yhk">
+                        <div class="hy-ts1">
+                            亲爱的 <strong class="color01">{$member.username}</strong>
+                            用户，请填写您的真实资料，有助于我们更好的为您服务。
+                            <div class="prompt color04">完善以下资料即可获得80经验值，{$site_config.site_name}不会以任何形式公开您的个人隐私，请放心填写！<s></s></div>
+                        </div>
+
+                        <table>
+                            <tr>
+                                <th>昵 称：</th>
+                                <td>
+                                    <input name="nickname" type="text" class="inpt-style2 w100" value="{$member.nickname}" /><span class="color01">(填写呢称，只在前台显示，有利于帐户安全，还能增加好运哦)</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>出生日期：</th>
+                                <td><input name="birthday" type="text" class="inpt-style2 w100" value="{$member.birthday}" onclick="WdatePicker()"></td>
+                            </tr>
+                            <tr>
+                                <th>性　别：</th>
+                                <td>
+                                    <input name="sex" type="radio" value="1" {if $member.sex eq 1}checked{/if}/><label class="hy-xb">男</label>
+                                    <input name="sex" type="radio" value="2" {if $member.sex eq 2}checked{/if}/><label class="hy-xb">女</label>
+                                </td>
+                            </tr>
+                            <!-- <tr>
+                                <th>电子邮箱：</th>
+                                <td>
+                                    <input name="email" type="text" class="inpt-style2 w230" value="{$member.email}" /><span class="color01">*</span>
+                                </td>
+                            </tr> -->
+                            <tr>
+                                <th>所在地区：</th>
+                                <td>{linkage('zone',$member.zone)}<td>
+                            </tr>
+                            <tr>
+                                <th>留下一句：</th>
+                                <td>
+                                    <input name="intro" type="text" class="inpt-style2" value="{$member.intro}" style="width: 350px;" /><a href="{'/minfo?id='|cat:$member.mid}" class="color02">去我的空间看看</a>
+                                    <p>【<a href="{'/member/safe'|url}" class="color02">帐户安全</a>】<span style="color: #999">绑定手机号免费获得{$L.unit_pay_points}</span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th> &nbsp;</th>
+                                <td class="">
+                                    <input type="hidden" name="Submit" value="1">
+                                    <input type="submit" value="确定修改" class="hy-btn2 fn-left" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                </form>
+
+                <div class="title title2">
+                    <h2>修改登录密码</h2>
+                </div>
+
+                <div class="hy-box">
+                    <form action="{url('/member/chpass')}" target="iframeNews" method="post">
+                    <div class="hy-yhk">
+                        <table>
+                            <tr>
+                                <th>原密码：</th>
+                                <td>
+                                    <input name="oldpass" type="password" class="inpt-style2 w180 " value="" />
+                                <td>
+                            </tr>
+                            <tr>
+                                <th>新密码：</th>
+                                <td>
+                                    <input name="pass1" type="password" class="inpt-style2 w180 " value="" />
+                                <td>
+                            </tr>
+                            <tr>
+                                <th>确认密码：</th>
+                                <td>
+                                    <input name="pass2" type="password" class="inpt-style2 w180" value="" />
+                                <td>
+                            </tr>
+                            <tr>
+                                <th> &nbsp;</th>
+                                <td class="">
+                                    <input name="Submit" type="submit" value="确定修改" class="hy-btn2 fn-left" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <script type="text/javascript" src="/style/dp/WdatePicker.js"></script>
+        </div>
+     </div>
+</div>
+{include file="footer.html"}

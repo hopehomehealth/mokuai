@@ -1,0 +1,46 @@
+{include file="header.html"}
+<link rel="stylesheet" href="{url('/style/css/member.css')}">
+{include file="ur_here.html"}
+<div id="container">
+    <div class="fn-clear mt20 pb20">
+        {include file="member/menu.html"}
+        <div class="fn-right hy-r">
+            <div class="hy-tjxh fn-clear">
+                <ul class="fn-clear db-tab">
+                    <li><a href="{url('/member/db')}">{$L.unit_yun}记录</a></li>
+                    <li><a href="{url('/member/luck')}">{$L.unit_winning}记录</a></li>
+                    <li class="dq"><a href="{url('/member/share')}">晒单</a></li>
+                </ul>
+                <div class="db-nrbox fn-clear">
+                    {if $list}
+                    <ul class="db-zjxx fn-clear">
+                        {foreach from=$list item=m}
+                        <li>
+                            <div class="zjxx-box">
+                                <a href="{'/minfo?id='|cat:$m.mid|url}#share#vid={$m.id}" target="_blank" style="display: block; text-align: center;"><img src="{zz mod=fileurl source=$m.thumb width=250 height=175 type=1}" alt="" /></a>
+                                <div class="df-qh">
+                                    <p><a href="{$m.url}" target="_blank">(第{$m.qishu}期){$m.obj_name|truncate:16}</a></p>
+                                    <p>幸运号码：<strong class="color01">{$m.luck_code}</strong></p>
+                                </div>
+                            </div>
+                            <div class="zjxx-sdtxt">
+                                <h2>{$m.title}</h2>
+                                <div>{date('Y-m-d H:i',$m.addtime)}</div>
+                                <div class="zj-sd-tx">{$m.content|truncate:50}</div>
+                            </div>
+                        </li>
+                        {/foreach}
+                    </ul>
+                    <div class="foot-btn">
+                        {include file="public_page.html"}
+                    </div>
+                    {else}
+                    <div class="m-user-blank" id="dvBlank" style="">只有{$L.unit_winning}且签收了才可以晒单哦，去 <a href="{url('/member/order')}">订单管理</a> 看看吧！</div>
+                    {/if}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{include file="footer.html"}

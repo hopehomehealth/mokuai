@@ -1,0 +1,196 @@
+{include file="crowd/crowd_header.html"}
+<!-- Swiper -->
+<div class="swiper-container banner">
+    <div class="icon {if $info.is_success eq 0}icon-ing{elseif $info.is_success eq 1}icon-success{/if}"></div>
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <img src="{zz mod=fileurl source=$info.image width=790 height=400}" />
+        </div>
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+</div>
+
+
+<!-- Initialize Swiper -->
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: 2500,
+        autoplayDisableOnInteraction: false
+
+    });
+</script>
+<div class="nrxx">
+    <h3>
+        <span style="display: none;">3天前</span>{$info.cd_name}
+    </h3>
+    <p>
+        <i>已筹</i>
+        <em>￥</em>{$info.cd_total}
+    </p>
+
+    <div class="zcjd">
+        <span style="width:{$info.cd_total|progress:$info.cd_price}%;"></span>
+    </div>
+    <div class="zcd">
+        <dl>
+            <dd><i>已达</i>{$info.cd_total|progress:$info.cd_price}% </dd>
+            <dd><i>支持</i>￥{$info.cd_total}  </dd>
+            <dd><i>剩余时间</i><em>{$info.end_time|endDay}</em> </dd>
+        </dl>
+
+    </div>
+
+
+</div>
+<div class="zcfqr">
+    <h3>
+        <i class="iconfont">&#xe610;</i>项目发起人
+    </h3>
+    <section>
+
+        <img src="{zz mod=photo source=$member.photo size='80' nopic='/upload/default.gif'}" />
+
+        <div class="zcfqr-div">
+
+            <h4>{$member.username|nickname:$member.nickname}</h4>
+            <p>{$info.member_desc}</p>
+            <dl>
+                <dd> 发起<i>{$member.post_num}</i> </dd>
+                <dd>支持<i>{$member.support_num}</i></dd>
+            </dl>
+            <div class="cl"></div>
+        </div>
+
+    </section>
+
+
+</div>
+
+<div class="xmlist">
+    <ul>
+        <li>
+            <a href="{url('/crowd/load_detail?id=')}{$info.cd_id}"><i class=" iconfont fr">&#xe60e;</i><i class="icon iconfont">&#xe60f;</i><em>建议在wifi下查看</em><span>项目介绍</span></a>
+        </li>
+        <li>
+            <a href="{url('/crowd/load_commont/?id=')}{$info.cd_id}"><i class=" iconfont fr">&#xe60e;</i><i class="icon iconfont">&#xe612;</i><em>查看</em><span>话题（{$info.commont_num}）</span></a>
+        </li>
+    </ul>
+</div>
+
+<div class="xmlist">
+    <ul>
+        <li>
+            <i class="icon iconfont">&#xe611;</i><span>选择回报</span>
+        </li>
+    </ul>
+</div>
+
+{foreach from=$return item=item}
+<div class="cichi">
+    <section>
+        <i class="iconfont support" id="{$item.rt_id}" price="{if $item.price>0}{$item.price|price_format:1}{/if}">&#xe613;</i>
+        <p class="p1">{if $item.price}支持： {$item.price|price_format:1}{else}无私奉献{/if}</p>
+        <p class="p2">
+            {$item.support_num}<em> 位支持者（{if $item.limit_num gt 0}{$item.limit_num}{else}无限额{/if}）</em>
+        </p>
+    </section>
+    <div class="cichi-nr">
+        <p class="p1">
+            {if $item.draw_num gt 0}每满{$item.draw_num}位支持者抽取1位幸运用户，不满足时也抽取1位。{/if}{$item.rt_desc}{if $item.price eq 0}不需要给回报，选择此项，项目成功后发起人将不会给您发送回报{/if}
+        </p>
+        {if $item.is_address}
+        <p class="p2">
+            配送费用：
+            <i>免运费</i>
+        </p>
+        {/if}
+        {if $item.day}
+        <p class="p2">
+            预计发奖时间：
+            <i>项目成功结束后{$item.day}天内</i>
+        </p>
+        {/if}
+        <p class="p3">
+            {if $item.thumb}
+            <img src="{zz mod=fileurl source=$item.thumb width=78 height=78}" />
+            {/if}
+        </p>
+    </div>
+</div>
+{/foreach}
+<div class="h133"></div>
+ <style type="text/css">
+     .jiathis_txt{ display: none; }
+     .share_bar{ display: none; height: 2rem; padding:0.3rem; position: absolute; width: 100%; top: -2rem;  }
+ </style>
+<div class="ftnav2" style="overflow:visible;">
+    <div class="share_bar">
+        <!-- JiaThis Button BEGIN -->
+        <div class="jiathis_style_m" style="float: right;"></div>
+        <script type="text/javascript" src="http://v3.jiathis.com/code/jiathis_m.js" charset="utf-8"></script>
+        <!-- JiaThis Button END -->
+    </div>
+    <ul>
+        <li class="on">
+            <a href="javascript:;" class="focus"><i class="iconfont">&#xe60c;</i><em>{if $isfocus}已{/if}关注 <span>{$info.focus_num}</span></em></a>
+        </li>
+        <li>
+            {if $info.is_success eq 0}
+            <a href="javascript:;" class="submit_support">我要支持</a>
+            {else}
+            <a href="javascript:;" style="background: #a5a5a5;">筹款结束</a>
+            {/if}
+        </li>
+        <li>
+            <a href="javascript:;" class="share"><i class="iconfont">&#xe60d;</i><em>分享</em></a>
+        </li>
+    </ul>
+</div>
+<script type="text/javascript">
+    var id = '{$info.cd_id}';
+    var rtid = '';
+    $(function(){
+        $('.support').click(function(){
+            {if $info.is_success eq '0'}
+            var price = $(this).attr('price');
+            rtid = $(this).attr('id');
+            $(this).parents('.cichi').addClass('on').siblings().removeClass('on');
+
+            if(price!=''){
+                $('.submit_support').html('支持: '+price);
+            }else{
+                $('.submit_support').html('无私奉献');
+            }
+            {/if}
+        });
+        $('.share,.share_bar').click(function(){
+           $('.share_bar').toggle('fast');
+        });
+        $('.submit_support').click(function(){
+           if(rtid==''){
+               layer.alert('请选择回报');
+           }else{
+               location.href="/crowd/support/"+rtid;
+           }
+        });
+        $('.focus').click(function(){
+            $.post('/crowd/focus/'+id,{},function(result){
+                if(result.code==1){
+                    layer.alert(result.msg,8,function(){
+                        location.href="{url('/member/login')}";
+                    });
+                }else if(result.code==0){
+                    layer.alert(result.msg);
+                    $('.focus em').html('已关注 <span>'+result.count+'</span>');
+                }else{
+                    layer.alert(result.msg);
+                }
+            },'JSON');
+        });
+    })
+</script>

@@ -1,0 +1,43 @@
+{include file="header.html"}
+<link type="text/css" rel="stylesheet" href="/style/css_02/style.css" />
+<link type="text/css" rel="stylesheet" href="/style/css/member.css" />
+<link type="text/css" rel="stylesheet" href="/style/css_02/merchant.css" />
+<div class="container menu-show">
+    {include file="business/ur_here.html"}
+    {include file="business/menu.html"}
+    <div class="fn-right hy-r" id="m">
+        <div class="shop-right">
+            <h3>资金记录</h3>
+        </div>
+        <div class="shop-bor">
+            <ul class="money box-sizing">
+                <li>总收入：<span>{$data.user_money|price_format}</span></li>
+                <li>可用资金：<big>{$member.user_money|price_format}</big></li>
+            </ul>
+            <div class="shop-manage box-sizing">
+                <table width="100%">
+                    <tr class="shop-manage1">
+                        <th width="150">时间</th>
+                        <th width="120" nowrap>金额</th>
+                        <th>来源</th>
+                    </tr>
+                    {foreach from=$list item=m}
+                    <tr>
+                        <td>{date('Y-m-d H:i',$m.logtime)}</td>
+                        <td class="money-color">{$m.user_money}</td>
+                        <td>{$m.desc}</td>
+                    </tr>
+                    {foreachelse}
+                    <tr>
+                        <td colspan="5">无分润记录！</td>
+                    </tr>
+                    {/foreach}
+                </table>
+            </div>
+            {include file="public_page.html"}
+        </div>
+    </div>
+</div>
+<div class="merchant"></div>
+{include file="footer.html"}
+<script src="/style/css_02/common_02.js"></script>

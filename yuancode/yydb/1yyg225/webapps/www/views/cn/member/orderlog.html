@@ -1,0 +1,86 @@
+{include file='home/uhead.html'}
+<div class="context clear">
+    <div class="wrap-order">
+        {if count($orders)}
+        <ul class="order-list">
+            {foreach from=$orders item=m}
+            <li>
+                <div class="odhead">
+                    <div class="odtag">订单号 : {$m.order_sn}</div>
+                    {if $m.status==1 || $m.status==5}
+                    <a href="javascript:;" class="oddel" style="display:none">删除</a>
+                    {/if}
+                </div>
+                <div class="odbody">
+                    {foreach from=$m.goods item=g}
+                    <a class="oddesc" href="/xmall/detail/{$g.good_id}">
+                        <div class="odinfo">
+                            <h5>{$g.goods_name}</h5>
+                            <i class="buy_num">数量&nbsp;&nbsp;{$g.buy_num}</i>
+                            <i class="buy_price"><b>{$g.sell_price}</b>元</i>
+                        </div>
+                        <div class="odpic">
+                            <img src="{$g.imgurl_thumb}" width="{$g.thumb_size.width}" height="{$g.thumb_size.height}">
+                        </div>
+                    </a>
+                    {/foreach}
+                    {if $m.status==1}
+                    <div class="odprogress">
+                        <div class="odstatus">状态：<span>{$m.status_name}</span></div>
+                        <div class="od_ctime">下单时间：{date('Y-m-d H:i',$m.c_time)}</div>
+                    </div>
+                    <div class="odBtns">
+                        <a href="javascript:;" class="uiBtn BtnSmall BtnGreen">立即支付</a>
+                        <a href="javascript:;" class="uiBtn BtnSmall BtnGray e2-member-cancelOrder-{$m.id}">取消订单</a>
+                    </div>
+                    {elseif $m.status==2}
+                    <div class="odprogress">
+                        <div class="odstatus">状态：<span>{$m.status_name}</span></div>
+                        <div class="od_ctime">下单时间：{date('Y-m-d H:i',$m.c_time)}</div>
+                    </div>
+                    {elseif $m.status==3}
+                    <div class="odprogress">
+                        <div class="odstatus">状态：<span>{$m.status_name}</span></div>
+                        <div class="od_ctime">下单时间：{date('Y-m-d H:i',$m.c_time)}</div>
+                    </div>
+                    <div class="odBtns">
+                        <a href="http://m.kuaidi100.com/index_all.html?type={$m.express_pinyin}&postid={$m.express_num}&callback={$express_callback}" class="uiBtn BtnSmall BtnOrange">快递查询</a>
+                        <a href="javascript:;" class="uiBtn BtnSmall BtnGreen e2-member-confirmGoods-{$m.id}">确认收货</a>
+                    </div>
+                    {elseif $m.status==4}
+                    <div class="odprogress">
+                        <div class="odstatus">状态：<span>
+                            {if $m.is_evaluate=='0'}{$m.status_name}
+                            {else}
+                            已评价
+                            {/if}
+                        </span></div>
+                        <div class="od_ctime">下单时间：{date('Y-m-d H:i',$m.c_time)}</div>
+                    </div>
+                    {if $m.is_evaluate=='0'}
+                    <div class="odBtns">
+                        <a href="/xuser/evaluate/{$m.id}" class="uiBtn BtnSmall BtnGreen">评价</a>
+                    </div>
+                    {else}
+                    {/if}
+                    {elseif $m.status==5}
+                    <div class="odprogress">
+                        <div class="odstatus">状态：<span style="color:#999">{$m.status_name}</span></div>
+                        <div class="od_ctime">下单时间：{date('Y-m-d H:i',$m.c_time)}</div>
+                    </div>
+
+
+                    {/if}
+                </div>
+            </li>
+
+            {/foreach}
+        </ul>
+        {else}
+        <div style="line-height:40px; height:40px; text-align:center; font-size:14px; padding-top:15px; color:#666">暂无任何订单!</div>
+        {/if}
+    </div>
+</div><!--End Context-->
+<script type="text/javascript" src="/js/member.js"></script>
+<span style="display:none" class="icon-heart"></span>
+{include file='home/foot.html'}

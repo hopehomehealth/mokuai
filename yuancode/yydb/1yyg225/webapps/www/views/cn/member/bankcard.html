@@ -1,0 +1,84 @@
+{include file="header.html"}
+<link rel="stylesheet" href="{url('/style/css/member.css')}">
+{include file="ur_here.html"}
+<div id="container">
+    <div class="fn-clear mt20 pb20">
+        {include file="member/menu.html"}
+        <div class="fn-right hy-r">
+
+            <div class="fn-clear hy-tjxh">
+                <div class="title">
+                    <h2>绑定银行卡</h2>
+                </div>
+                <div class="hy-box">
+                    <div class="hy-yhk">
+                        <p class="hy-ts1">请先进行身份证实名认证且<strong class="color01">银行帐户名必须写实名认证的姓名一致</strong>。</p>
+                        <form action="" method="post" id="bankcard_form" target="iframeNews">
+                        <table>
+                            <tr>
+                                <th>银行卡持卡人：</th>
+                                <td>{$member.realname}</td>
+                            </tr>
+                            <tr>
+                                <th>银行名称：</th>
+                                <td><input name="bankname" value="{$row.bankname}" type="text" class="inpt-style2 w330" /></td>
+                            </tr>
+                            <tr>
+                                <th>银行卡号：</th>
+                                <td><input name="bankcard" value="{$row.bankcard}" type="text" class="inpt-style2 w330" /></td>
+                            </tr>
+                            <tr>
+                                <th>银行开户地：</th>
+                                <td><input name="bankaddress" value="{$row.bankaddress}" type="text" class="inpt-style2 w330" /></td>
+                            </tr>
+                            <tr>
+                                <th>设为默认: </th>
+                                <td><input type="checkbox" name="is_default" value="1" {if $row.is_default}checked{/if}></td>
+                            </tr>
+                            {if $site_config.sms_open eq 1 && 'sms_bankcard'|statusTpl}
+                            <tr>
+                                <th> 短信验证码：</th>
+                                <td><input type="text" name="sms_code" value=""><input type="button" value="获取短信验证码" onclick="getSmsVerify('sms_bankcard')" id="btnSms" /></td>
+                            </tr>
+                            {/if}
+                            <tr>
+                                <th> &nbsp;</th>
+                                <td class="">
+                                    <input name="Submit" type="submit" value="确定" class="hy-btn2 fn-left" />
+                                    <input type="button" value="返回" class="hy-btn2" onclick="window.history.go(-1);" />
+                                    <input type="hidden" name="id" value="{$row.id}"/>
+                                </td>
+                            </tr>
+                        </table>
+                        </form>
+                    </div>
+                    <div class="mt15 hy-table">
+                        <table>
+                            <tr>
+                                <th class="td_left" width="10%">持卡人</th>
+                                <th class="td_left" width="15%">银行名称</th>
+                                <th class="td_left" width="30%">银行卡号</th>
+                                <th width="30%">开户行所在地</th>
+                                <th width="5%">默认</th>
+                                <th>操作</th>
+                            </tr>
+                            {foreach from=$bankcard item=m}
+                            <tr>
+                                <td class="td_left">{$m.name}</td>
+                                <td class="td_left">{$m.bankname}</td>
+                                <td class="td_left">{$m.bankcard}</td>
+                                <td>{$m.bankaddress}</td>
+                                <td>{if $m.is_default}<span class="color01">默认</span>{/if}</td>
+                                <td class="hy-rza"><a href="{url('/member/bankcard/')}{$m.id}">编辑</a> <a href="javascript:zz_confirm('您确定要删除该银行账户?','{url('/member/bankcard_del/')}{$m.id}');">删除</a></td>
+                            </tr>
+                            {/foreach}
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+{include file="footer.html"}

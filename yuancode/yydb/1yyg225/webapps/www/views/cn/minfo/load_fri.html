@@ -1,0 +1,38 @@
+{if $list}
+<div class="friList fn-clear">
+    {foreach from=$list item=m}
+    <dl class="item">
+        <dt class="scrollLoadingDiv"><a href="{'/minfo?id='|cat:$m.mid}"><img class="scrollLoading" src="/style/images/pix.gif" data-url="{zz mod=photo source=$m.photo size='80' nopic='/upload/default.gif'}" /></a></dt>
+        <dd>
+            <p class="name"><a href="{'/minfo?id='|cat:$m.mid}">{$m.username|nickname:$m.nickname}</a></p>
+            <p class="desc">
+                {if $m.intro}{$m.intro}<br>{/if}
+                经验值：{$m.rank_points}
+            </p>
+        </dd>
+    </dl>
+    {/foreach}
+</div>
+<div class="foot-btn">
+    {include file="ajax_page.html"}
+</div>
+{else}
+<div class="m-blank">该用户还没有好友！</div>
+{/if}
+
+<script type="text/javascript">
+    var load_div = '#load_fri';
+    $(document).ready(function(){
+        $(load_div).find('.demo').ajaxContent({
+            event:'click', //mouseover
+            loaderType:"text",
+            loadingMsg:"拼命加载中...",
+            target:load_div,
+            success:function(){
+                scrollLoading();
+            }
+        }).bind('click',function(){
+            $('html,body').animate({ scrollTop: '400px' }, 500);
+        });
+    });
+</script>

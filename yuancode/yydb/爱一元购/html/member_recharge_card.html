@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+	<meta name="format-detection" content="telephone=no" />
+	<title>充值卡充值</title>
+	<link rel="stylesheet" type="text/css" href="../css/api.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/user.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/member.css"/>
+</head>
+<body>
+	<div id="header">
+	   <div class="active">
+		    <div class="icon_box" tapmode="" onclick="api.closeWin()"><i class="iconfont icon-fanhui"></i></div>
+		    <div class="toptit">充值卡充值</div>
+		    <div class="icon_box" tapmode="" onclick="backhome()"><i class="iconfont icon-shouye"></i></div>
+	   </div>
+	</div>
+<div id="content" class="container main">
+	<div class="form-m">
+		<form id="submit_form">
+			<div class="item ui-clr">
+				<dl>
+					<dt class="color03"> 卡号：</dt>
+					<dd>
+						<input name="number" type="text" class="input-m" data-rule="*" data-nullmsg="请输入卡号"  />
+					</dd>
+				</dl>
+				<dl>
+					<dt class="color03"> 卡密：</dt>
+					<dd>
+						<input name="password" type="text" class="input-m" data-rule="*" data-nullmsg="请输卡密"  />
+					</dd>
+				</dl>
+				<dl>
+					<dt class="color03"> 验证码：</dt>
+					<dd>
+						<input name="scode" type="text" class="input-m" data-rule="*" data-nullmsg="请输入验证码"  /> <img id="scode" />
+					</dd>
+				</dl>
+			</div>		
+			<input name="Submit" type="hidden" value="1" data-haved="true"/>
+			<input type="button" value="确认充值" id="submit" class="btn" />
+		</form>
+	</div>
+	<div  id="commission-content"></div>
+</div>
+
+<script type="text/javascript" src="../script/jquery.min.js"></script>
+<script type="text/javascript" src="../script/availdate.js"></script>
+<script type="text/javascript" src="../script/fastclick.js"></script>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/doT.min.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript">			
+function loadData(){			
+	showprog();
+	$('#scode').attr('src',RootUrl + 'welcome/scode?'+ Math.random());
+	hideprog();		
+}
+apiready = function() {
+	loadData();
+}
+$(function(){
+	$("#scode").click(function(){
+		$('#scode').attr('src',RootUrl + 'welcome/scode?'+ Math.random());
+	});
+
+	ac.form({
+	area: "#submit_form",
+	btn: "#submit",
+	singleError: function (e, msg) {
+		toast(msg);
+	},
+	endSuccess: function (data) {
+		showprog();
+        var number = $('input[name=number]').val();
+        var password = $('input[name=password]').val();
+        var scode = $('input[name=scode]').val();
+	    var D = {number:number,password:password,scode:scode,Submit:1};
+	    
+		ajaxRequest('member/rechage_card', 'POST', {values:D}, function (ret, err) {
+			hideprog();
+			toast(ret.msg);
+			if(ret.code==0){
+				loadData();
+			}
+		});
+	}
+	});
+});
+
+</script>
+</body>
+</html>

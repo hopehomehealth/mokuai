@@ -1,0 +1,20 @@
+{include file="header.html"}
+<link rel="stylesheet" href="{url('/style/css/member.css')}">
+{include file="ur_here.html"}
+<div id="container">
+    <div class="fn-clear mt20 pb20">
+        {include file="public_side_help.html"}
+        <div class="fn-right hy-r">
+
+            <div class="fn-clear hy-tjxh">
+                <div class="title">
+                    <h2>{$data.cat.catname}</h2>
+                </div>
+                <div class="hy-box">
+                    <div class="hy-qalist">{$data.page.content|stripcslashes}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="footer.html"}

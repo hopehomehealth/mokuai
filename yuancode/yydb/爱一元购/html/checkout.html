@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no" />
+    <title>购物车</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/cart.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+    
+</head>
+<body>
+<div id="header">
+   <div class="cart active">
+	    <div class="icon_box" tapmode="" onclick="api.closeWin()"><i class="iconfont icon-fanhui"></i></div>
+	    <div class="toptit">提交订单</div>
+	    <div class="icon_box " tapmode="" onclick="backhome()"><i class="iconfont icon-shouye"></i></div>
+   </div>
+</div>
+<div id="content" class="container main">
+    <div id="address-content" class="address_bar"></div>
+    <script id="address-template" type="text/x-dot-template">
+    <h2>直购商品寄送至：</h2>
+    <ul class="m-cart-address">
+        {{ for(var i=0; i< it.addressList.length; i++) { }}
+        <li {{? it.addressList[i].id == it.order_address_id}}class="on"{{?}}>
+        <label>
+            <input type="radio" name="address_id" value="{{=it.addressList[i].id}}" {{? it.addressList[i].id == it.order_address_id}}checked{{?}} />
+            {{=it.addressList[i].area}} {{=it.addressList[i].address}}（{{=it.addressList[i].name}} 收）<span>{{=it.addressList[i].mobile}}</span>
+        </label>
+        </li>
+        {{}}}
+    </ul>
+    </script>
+    <div class="pay-list">
+        <ul id="list-content"></ul>
+        <script id="list-template" type="text/x-dot-template">
+        {{? it.goods}}
+        {{ for(var i=0; i< it.goods.length; i++) { }}
+            {{? it.goods[i].type == 3}}
+            <li class="flex_wrap">
+                <div class="name"><input type="hidden" name="id[]" value="{{=it.goods[i].id}}"><span class="red">【{{=it.unit_go_buy}}】</span>{{=it.goods[i].goods_name}}</div>
+                <span class="num"></span>
+                <span class="num3"><em class="red">{{=it.goods[i].price}}</em> × {{=it.goods[i].qty}}</span>
+            </li>
+            {{??}}
+            <li class="flex_wrap">
+                <div class="name"><input type="hidden" name="id[]" value="{{=it.goods[i].id}}">{{=it.goods[i].goods_name}}</div>
+                <div class="num_box">
+	                <span class="num"><em class="red">{{=it.goods[i].qty}}</em>人次</span>
+                </div>
+            </li>
+            {{?}}
+        {{ } }}
+        {{?}}
+        </script>
+    </div>
+    <div class="order-total">
+                商品合计：<strong style="font-size:14px;" id="total">0</strong><span id="unit">夺宝币</span>
+    </div>
+    <div class="check_bar">
+    <div class="order-option">
+        <div class="checkBar" id="check-content"></div>
+        <script id="check-template" type="text/x-dot-template">
+            {{? it.is_share}}
+            <span style="display:none">
+                                    首次夺宝可使用分享码 <input type="text" name="sharecode" value="" size="5" class="w-number-input"> <span class="share_notice color01"></span>
+            </span>
+            {{?}}
+            {{? it.bonus}}
+            <!--
+            <span>
+		     <input type="checkbox" value="1" name="bonus_pay" checked>
+		                使用抵用券:<b class="red">{{=it.bonus.count}}</b>张&nbsp;&nbsp;价值:<b class="red">{{=it.bonus.money}}</b>个{{=it.unit}}      
+		    </span><br>
+		    -->
+		    <span style="font-size: 1.3em;color: black;">
+		    	<input type="checkbox" value="1" name="bonus_pay" checked>
+		    	红包折扣
+		    </span>
+		    	（单笔满10用1）
+		    <span style="float: right;margin-top: 6px">当前订单可使用<b class="red">{{=it.bonus.count}}</b>个</span>
+            <br>
+            <br>
+            {{?}}
+            {{? it.free !=1}}
+            <!--
+            <span>
+                 <input type="checkbox" value="1" name="balance_pay" checked>
+			                使用{{=it.unit}}:<b class="red">{{=it.member.db_points}}</b>个&nbsp;&nbsp;账户余额:<b class="red">{{=it.member.user_money_str}}</b>
+            </span>
+            -->
+            <span style="font-size: 1.3em;color: black;">
+            	<input type="checkbox" value="1" name="balance_pay" checked>
+            	余额支付
+            </span>
+            	（账户余额+夺宝币）
+            <span style="float: right;margin-top: 6px"><b class="red">{{=it.inpay}}</b>元</span>
+            {{??}}
+            <span>
+                <input type="checkbox" value="1" name="balance_pay" checked disabled="disabled">
+                                                使用{{=it.unit}}：<b class="red">{{=it.member.pay_points}}</b> 个
+            </span>
+            {{?}}
+        </script>
+    </div>
+    <div id="payment_bar">
+        <div id="payment-content"></div>
+        <script id="payment-template" type="text/x-dot-template">
+        <span style="font-size: 1.5em;color: black; margin:0 16px;">
+            	其他方式支付：
+            	<b class="red">{{=it.outpay}}</b>元
+        </span>
+        <!-- <span style="font-size: 1.1em;float: right;margin-right: 16px"><b class="red">{{=it.outpay}}</b>元</span> -->
+        <ul id="payment">
+          {{? it.payment}}
+          {{ for(var i=0; i< it.payment.length; i++) { }}
+          <li type="{{=it.payment[i].pay_code}}">
+	        <div class="icon_box">{{? it.payment[i].thumb}}<img src="{{=it.payment[i].thumb}}"/>{{?}}</div>
+	        <div class="text"><h2>{{=it.payment[i].pay_name}}</h2>{{=it.payment[i].pay_desc}}</div>
+	        <div class="choose {{? i==0}}hover{{?}}"><i class="iconfont icon-icon49"></i></div>
+	      </li>
+	      {{ } }}
+          {{?}}
+          <li type="wxsm">
+	        <div class="icon_box"></div>
+	        <div class="text"><h2>微信二维码</h2>扫码支付</div>
+	        <div class="choose 0"><i class="iconfont icon-icon49"></i></div>
+	      </li>
+        </ul>
+        <input type="hidden" name="payment" value="{{? it.payment}}{{ for(var i=0; i< it.payment.length; i++) { }}{{? i==0}}{{=it.payment[i].pay_code}}{{?}}{{ } }}{{?}}"/>
+        </script>
+	    
+	    
+    </div>
+    </div>
+</div>
+<form action="http://www.jhpay.com/service/wechatScanCode.jsp?_inputCharset=utf-8" method="post" id="wxsm" style="display: none"></form>
+<footer class="foot-view">
+    <div id="submit-content">
+        <button class="w100 red_btn" id="submit">确 认 支 付</button>
+    </div>
+    <script id="submit-template" type="text/x-dot-template">
+    {{? it.app_checking ==api.appVersion && api.systemType=='ios'}}
+    <button class="red_btn w100" onclick="openurl(RootUrl+'yunbuy/checkout?sign={{=it.sign}}&mid={{=it.member.mid}}')">前往网页支 付</button>
+    {{?? it.free == 1 && it.disabled_sub}}
+    <button class="red_btn w100" onclick="openWin('member_task')">{{=it.unit}}不足，点击领{{=it.unit}}</button>
+    {{??}}
+    <button class="red_btn w100" id="submit">确 认 支 付</button>
+    {{?}}
+    </script>
+</footer>
+<script type="text/javascript" src="http://web.iapppay.com/h5/v1.0.1/js/aibei_v1.1.0.js"></script>
+<script type="text/javascript" src="../script/jquery.min.js"></script>
+<script type="text/javascript" src="../script/fastclick.js"></script>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/doT.min.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript" src="../script/payment.js"></script>
+<script type="text/javascript">
+var order_sn = "";
+var no = new Date().format("yyyyMMddHHmmss");
+var ipayurl = "";
+var notify_url = "";
+$(function(){
+  $(".m-cart-address li").live('click',function(){
+    $(this).addClass('on').siblings().removeClass('on');
+    $('input[name=address_id]').attr('checked',false);
+    $(this).children().children('input').attr('checked',true);
+  });
+  $("#payment li").live('click',function(){
+     $("#payment li").children("div.choose").removeClass('hover');
+     $(this).children('div.choose').addClass('hover');
+     $("input[name='payment']").val($(this).attr('type'));
+  });
+  $("#submit").live('click',function(){
+    showprog();
+    if(order_sn!=''){
+      pay_order();
+    }else{
+      submit_order();
+    }
+    api.execScript({
+       name : 'root',
+       script : "loadcart()"
+    });
+  });
+});
+
+function openurl(url){
+  api.openApp({
+	        androidPkg : 'android.intent.action.VIEW',
+	        mimeType : 'text/html',
+	        uri : url,
+	        iosUrl:url
+  }, function(ret, err) {
+	        var msg = JSON.stringify(ret);
+	        api.alert({
+	                title : 'openApp',
+	                msg : msg,
+	                buttons : ['确定']
+	        });
+  });
+}
+
+function pay_order(){
+  var payment = $("input[name='payment']").val() || 'jhpay';
+  var payurl='yunbuy/pay/';
+  if(payment=="wxsm"){
+  	payurl='yunbuy/paywxsm/'
+  }
+  ajaxRequest(payurl+order_sn, 'POST', {values:{pay_code:payment}}, function (ret, err) {
+	    var data = ret.data;
+	    hideprog();
+	    if(data){
+	      var back_info=ret.data.payment;
+	      if(payment=='wxpayapp'){
+	        wxpay(back_info,1);
+	      }else if(payment=='aibei'){
+	        aibei(back_info,1);
+	      }else if(payment=='ipaynow'){
+	        ipaynow(back_info);
+	      }else if(payment=='jubaopay'){
+	        jubaopay(back_info);
+	      }else if(payment=='alipayapp'){
+	        alipay(back_info);
+	      }else if(payment=='jdpay'){
+	        jdpay(back_info);
+	      }else if(payment=='jhpay'){
+	        jhpay(back_info);
+	      }else if(payment=='heepaywechat'){
+	        heepaywechat(back_info);
+	      }else if(payment=='swiftpass'){
+	        swiftpass(back_info);
+	      }else if(payment=="wxsm"){
+	        if(data.payment.paymoney < 2){
+		        hideprog();
+	  		    toast("微信扫码金额不能小于2元且为整数");
+		    }else{
+	      	var shtml="";
+  	   		for(var i in data.payment){
+		    	shtml += "<input type='hidden' name='"+i+"' value='"+data.payment[i]+"'/>";
+		    }
+		    shtml += "<input id='wxsubmit' type='submit' value='立即支付'/></form>";
+		    $("#wxsm").html(shtml);
+		    hideprog();
+		    var form = $("#wxsm");
+ 			var	action = form.attr("action");
+		    form.on("submit",function(){
+			    $.post(action,form.serialize(),function(res){
+			    	res['orderid']=data.payment['merorderid'];
+		            openWin('wxsm',res);
+		        },'json');
+		        return false;	
+		    });
+		    $("#wxsm").submit();}
+	      }
+	    }else{
+	      toast(ret.msg);
+	    }
+  });
+}
+function submit_order(){
+    var ids = '';
+    var i=0;
+    $("input[name='id[]']").each(function(){
+        i++;
+        ids += i==$("input[name='id[]']").length ? $(this).val() :$(this).val()+',';
+    });
+    var payment = $("input[name='payment']").val() || 'jhpay';
+    var bonus_pay = $("input[name='bonus_pay']").val();
+    var balance_pay = $("input[name='balance_pay']").val();
+    var doneurl='yunbuy/done';
+    if(payment=="wxsm"){
+    	doneurl='yunbuy/donewxsm';
+    }
+    ajaxRequest(doneurl, 'POST', {values:{ids:ids,bonus_pay:bonus_pay,balance_pay:balance_pay,free:api.pageParam.free,pay_code:payment}}, function (ret, err) {
+	    var data = ret.data;
+	    hideprog();
+	    if(data){
+	        api.execScript({
+               name:'root',
+               script: 'loadcart();'
+            });
+	        if(data.status==2){
+	          openWin('respon',{result:1});
+	        }else{
+	          var back_info=ret.data.payment;
+//	          alert('payment:'+JSON.stringify(back_info));
+	          order_sn = ret.data.order_sn;
+	          if(payment=='wxpayapp'){
+		        wxpay(back_info,1);
+		      }else if(payment=='aibei'){
+		        aibei(back_info,1);
+		      }else if(payment=='ipaynow'){
+		        ipaynow(back_info);
+		      }else if(payment=='jubaopay'){
+		        jubaopay(back_info);
+		      }else if(payment=='alipayapp'){
+		        alipay(back_info);
+		      }else if(payment=='jdpay'){
+		        jdpay(back_info);
+		      }else if(payment=='jhpay'){
+		        jhpay(back_info);
+		      }else if(payment=='heepaywechat'){
+		        heepaywechat(back_info);
+		      }else if(payment=='swiftpass'){
+		        swiftpass(back_info);
+		      }else if(payment=="wxsm"){
+		        if(data.payment.paymoney < 2){
+		            hideprog();
+	  		        toast("微信扫码金额不能小于2元且为整数");
+		        }else{
+		      	var shtml="";
+	  	   		for(var i in data.payment){
+			    	shtml += "<input type='hidden' name='"+i+"' value='"+data.payment[i]+"'/>";
+			    }
+			    shtml += "<input id='wxsubmit' type='submit' value='立即支付'/></form>";
+			    $("#wxsm").html(shtml);
+			    hideprog();
+			    var form = $("#wxsm");
+     			var	action = form.attr("action");
+			    form.on("submit",function(){
+				    $.post(action,form.serialize(),function(res){
+				    	res['orderid']=data.payment['merorderid'];
+			            openWin('wxsm',res);
+			        },'json');
+			        return false;	
+			    });
+			    $("#wxsm").submit();}
+		      }
+	        }
+	    }else{
+		    toast(ret.msg);
+	    }
+   });
+}
+apiready = function(){
+   //适配iOS 7+，Android 4.4+状态栏
+   var header = $api.byId('header');
+   $api.fixStatusBar(header);
+   showprog();
+   ajaxRequest('yunbuy/checkout', 'POST', {values:{ids:api.pageParam.ids,free:api.pageParam.free}}, function (ret, err) {
+	    var data = ret.data;
+	    if(ret.code==5){
+	      api.alert({
+		    title: '系统消息',
+			msg: ret.msg
+		  }, function(ret, err){
+		    openWin('member_address');
+		  });
+		  return false;
+	    }
+	    ipayurl = data.pay_url;
+	    if(data){
+		    temp(data,'list');
+		    if(data.addressList) temp(data,'address');
+		    $("#total").html(data.total);
+		    $("#unit").html(data.unit);
+		    temp(data,'check');
+		    if(api.pageParam.free!=1) temp(data,'payment');
+		    temp(data,'submit');
+		    if(data.disabled_sub!=1) $("#payment_bar").hide();
+		    if(data.app_checking==api.appVersion && api.systemType=='ios'){
+		       $('.check_bar').html('<p style="padding:10px; font-size:16px;">本产品从事任何活动活动均与苹果公司无关，苹果公司既不作为赞助商也不以任何形式参与，购买需要在网页中进行。</p>');
+		    }
+		    hideprog();
+	    }else{
+	        hideprog();
+		    toast(ret.msg);
+		    opentoTab('cart');
+	    }
+   });
+}
+window.addEventListener('load', function() {
+  FastClick.attach(document.body);
+}, false);
+</script>
+</body>
+</html>

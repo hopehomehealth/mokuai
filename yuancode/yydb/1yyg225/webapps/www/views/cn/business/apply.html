@@ -1,0 +1,78 @@
+{include file="header.html"}
+<link type="text/css" rel="stylesheet" href="/style/css_02/style.css" />
+<link type="text/css" rel="stylesheet" href="/style/css/member.css" />
+<link type="text/css" rel="stylesheet" href="/style/css_02/merchant.css" />
+<div class="container menu-show" style="padding-top:30px;">
+    <div class="shop-right">
+        <h3>商家入驻申请</h3>
+    </div>
+    <div class="shop-bor shop-set">
+        <form action="" method="post" target="iframeNews">
+        <table width="100%" class="box-sizing" border="0">
+            <tr>
+                <th></th>
+                <td colspan="3" style="line-height: 1.8;">
+                    {if !empty($business_row) && $business_row.bus_status eq -1}
+                    <span style="color: #f60">温馨提示：入驻申请未通过，您还有{$bus_time_max-$business_row.bus_times}次申请机会！<br>未通过原因：{$business_row.bus_why|default:'-'}</span>
+                    {elseif !empty($business_row) && $business_row.bus_status eq 0}
+                    <span style="color: #f60">温馨提示：入驻申请审核中，请耐心等待！您可以继续完善申请资料！</span>
+                    {else}
+                    <span style="color: #000">温馨提示：认真填写以下资料，请务必真实！</span>
+                    {/if}
+                </td>
+            </tr>
+            <tr>
+                <th width="120">店铺名称：</th>
+                <td width="350"><input type="text" name="name" value="{$business_row.bus_name}" class="shop-set2" placeholder="必填" /></td>
+                <th width="120">经营范围：</th>
+                <td><input type="text" name="scope" value="{$business_row.bus_scope}" class="shop-set2" placeholder="必填" /></td>
+            </tr>
+            <tr>
+                <th width="120">实体名称：</th>
+                <td width="350"><input type="text" name="company" value="{$business_row.bus_company}" class="shop-set2" placeholder="必填" /></td>
+                <th width="120">实体类型：</th>
+                <td><input type="text" name="company_type" value="{$business_row.bus_company_type}" class="shop-set2" placeholder="必填" /></td>
+            </tr>
+            <tr>
+                <th>客服电话：</th>
+                <td><input type="text" name="tel" value="{$business_row.bus_tel}" class="shop-set2" placeholder="必填" /></td>
+                <th>所属地区：</th>
+                <td>
+                    {linkage('zone',{$business_row.bus_zone|default:1})}
+                </td>
+            </tr>
+            <tr>
+                <th>客服QQ：</th>
+                <td><input type="text" name="qq" value="{$business_row.bus_qq}" class="shop-set2" placeholder="选填" /></td>
+                <th>联系地址：</th>
+                <td><input type="text" name="address" value="{$business_row.bus_address}" class="shop-set2" placeholder="必填" /></td>
+            </tr>
+            <tr>
+                <th>&nbsp;</th>
+                <td colspan="3">
+                    <input type="submit" name="submit" value="提交入驻申请" class="shop-set3">
+                    <label><input type="checkbox" name="agree" checked /> 阅读并同意《<a href="javascript:;" id="Agree">商家入驻协议</a>》</label>
+                </td>
+            </tr>
+        </table>
+        </form>
+    </div>
+</div>
+<div class="merchant"></div>
+<div class="layer_agree"><div class="con">{zz mod=block mark=business_agree}</div></div>
+{include file="footer.html"}
+<script src="/style/css_02/common_02.js"></script>
+<script type="text/javascript">
+    $('#Agree').bind('click',function(){
+        $.layer({
+            type: 1,
+            shade: [0.5, '#000'],
+            shadeClose: true,
+            fix: true,
+            area: ['auto', 'auto'],
+            title: false,
+            border: [0],
+            page: { dom: '.layer_agree' }
+        });
+    })
+</script>

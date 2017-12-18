@@ -1,0 +1,34 @@
+{if $list}
+<div class="friList ui-clr">
+    {foreach from=$list item=m}
+    <dl class="item">
+        <dt><a href="{'/minfo?id='|cat:$m.mid}"><img src="{zz mod=photo source=$m.photo size='50' nopic='/upload/default.gif'}" /></a></dt>
+        <dd>
+            <p class="name"><a href="{'/minfo?id='|cat:$m.mid}">{$m.username|nickname:$m.nickname}</a></p>
+            <p class="desc">
+                {$m.lasttime|formatTime}
+            </p>
+        </dd>
+    </dl>
+    {/foreach}
+</div>
+<div class="foot-btn">
+    {include file="ajax_page.html"}
+</div>
+{else}
+<div class="prompt">该用户还没有好友！</div>
+{/if}
+
+<script type="text/javascript">
+    var load_div = '#load_visit';
+    $(document).ready(function(){
+        $(load_div).find('.demo').ajaxContent({
+            event:'click', //mouseover
+            loaderType:"text",
+            loadingMsg:"拼命加载中...",
+            target:load_div
+        }).bind('click',function(){
+            $('html,body').animate({ scrollTop: '0px' }, 500);
+        });
+    });
+</script>

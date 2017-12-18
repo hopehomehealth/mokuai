@@ -1,0 +1,42 @@
+{include file="header.html"}
+<link rel="stylesheet" href="{url('/style/css/yiyuanbao.css')}">
+<style type="text/css">
+    .shareM{ float: left; line-height: 36px; font-size: 14px; color: #999; }
+    .shareM b{ font-size: 16px; }
+    .shareA{ float: right; }
+    .shareA a{ float: right; margin-left: 15px; }
+    .shareA a.a{ display: block; height: 34px; font-size: 16px; background: #fff; border: 1px solid #fe685c; border-radius: 18px; padding: 0 20px; line-height: 36px; color: #fe685c; text-align: center; font-weight: bold; }
+    .shareA a.on{ background: #fe685c; color: #fff; }
+</style>
+{zz mod=content var=tagAdw module=ad id=7}
+{zz mod=fileurl var=tagAds source=$tagAdw.images num=2}
+{foreach from=$tagAds item=m}
+<div class="g-gg" style="height:{$tagAdw.height}px;background:{$tagAdw.bgcolor} url('{$m.path}') no-repeat center bottom"><span></span></div>
+{/foreach}
+
+<div id="stage">
+    <div class="container fn-clear" style="padding-top:20px;">
+        <div class="shareA">
+            <a href="{url('/member/order')}"><img src="/style/images/shareB.png" /></a>
+            <a href="/content/share/1?rec=yes" class="a{if $smarty.get.rec eq 'yes'} on{/if}">精华</a>
+            <a href="/content/share/1?rec=no" class="a{if $smarty.get.rec eq 'no'} on{/if}">普通</a>
+            <a href="/content/share" class="a{if !$smarty.get.rec} on{/if}">所有</a>
+        </div>
+        <div class="shareM">
+            <!-- 共<b class="color01">{$data.count}</b>个幸运获得者晒单 -->
+            最新的幸运获得者晒单
+        </div>
+    </div>
+    <div class="m-shareList g-wrap fn-clear transitions-enabled infinite-scroll" id="wall"></div>
+    <div id="loadmore" style="display:none;">
+        <a href="/content/share_ajax/{$smarty.get.rec|default:'all'}/2">加载更多</a>
+    </div>
+</div>
+{include file="footer.html"}
+<script type="text/javascript">
+    var _url = '/content/share_ajax/{$smarty.get.rec|default:"all"}/1';
+</script>
+<link type="text/css" rel="stylesheet" href="{url('/style/gk/css/style.css')}" />
+<script type="text/javascript" src="{url('/style/gk/js/jquery.masonry.min.js')}"></script>
+<script type="text/javascript" src="{url('/style/gk/js/jquery.infinitescroll.min.js')}"></script>
+<script type="text/javascript" src="{url('/style/gk/js/share.js')}"></script>

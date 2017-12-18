@@ -1,0 +1,17 @@
+<div class="left">
+    <div class="gr_dom_left_top"><a href="/disk/index"><img src="/images/xz_center.png"></a></div>
+    <div class="gr_dom_left_list">
+      <h3>{$L.unit_skydrive}目录</h3>
+      <dl>
+        <dt><a href="/disk/lists">我的{$L.unit_skydrive}</a></dt>
+        {foreach from=$folder  item=m}
+        <dd><a href="/disk/lists/?id={$m.id}"><i></i>{$m.title}</a></dd>
+        {/foreach}
+      </dl>
+    </div>
+    <div class="gr_dom_left_bil">
+      <p><label>{$L.unit_skydrive}容量：</label></p>
+      <h5><span style="width:{$spacebl}"></span></h5>
+      <p><span>{$userdata}</span>/<span>{$spacedata}</span>          <span>({$spacebl})</span></p>
+    </div>
+  </div>

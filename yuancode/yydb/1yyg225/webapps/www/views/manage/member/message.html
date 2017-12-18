@@ -1,0 +1,71 @@
+{include file='../public_btn.html'}
+<div class="html-box">
+    <form class="cond-form clear" action="#!member/message" onsubmit="return xForm.submit(this)">
+        <input type="hidden" value="" name="page" id="page">
+        <div class="f-unit">
+            <select name="k" id="k">
+                <option value="content" {if $k eq 'content'}selected{/if}>留言内容</option>
+                <!--<option value="ids" {if $k eq 'ids'}selected{/if}>流程ID</option>-->
+            </select>
+            <input id="q" class="form-i w160 sitem" name="q" value="{$q}" type="text">
+
+            <label class="ui-label">发送者（</label>
+            <select name="user">
+                <option value="username"{if $user eq 'username'} selected{/if}>会员名</option>
+                <option value="mid"{if $user eq 'mid'} selected{/if}>会员ID</option>
+            </select>
+            <label class="ui-label">
+                系统 <input type="checkbox" name="sys" value="1" {if $sys eq 1}checked{/if} />）：
+            </label>
+            <input id="username" class="form-i w160 sitem" name="username" value="{$username}" type="text">
+
+            <label class="ui-label">接收者（</label>
+            <select name="to_user">
+                <option value="to_username"{if $to_user eq 'username'} selected{/if}>会员名</option>
+                <option value="to_mid"{if $to_user eq 'mid'} selected{/if}>会员ID</option>
+            </select>
+            <label class="ui-label">
+                系统 <input type="checkbox" name="to_sys" value="1" {if $to_sys eq 1}checked{/if} />）：
+            </label>
+            <input id="to_username" class="form-i w160 sitem" name="to_username" value="{$to_username}" type="text">
+
+            <button type="submit" style="margin-left:10px; margin-top:1px" class="uiBtn BtnBlue">搜索</button>
+            <a href="#!member/message_call_member/com=xshow|管理员发送站内信"/>管理员发送站内信</a>
+	</div>
+    </form>
+
+    <table class="list" style="width:100%">
+        <thead>
+        <tr>
+            <th class="w40">ID</th>
+            <th class="title">留言内容</th>
+            <th class="">发送者</th>
+            <th class="">接收者</th>
+            <th class="w300">发送时间</th>
+            <th class="w80">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {foreach from=$list item=m}
+        <tr class="opera">
+            <td>{$m.id}</td>
+            <td class="title">
+                <div>{$m.content}</div>
+                {if $m.reply}
+                [回复]{$m.reply.content}({date('Y-m-d H:i:s',$m.reply.add_time)})(<span class="c-orange">{$m.id}</span>)
+                {/if}
+            </td>
+            <td>{if $m.mid}{if $m.type eq 1}<span class="c-orange">{/if}{$m.username}{if $m.type eq 1}</span>{/if} <span class="c-gray">({$m.mid})</span>{else}<span class="c-orange">系统</span>{/if}</td>
+            <td>{if $m.to_mid}{$m.to_username} <span class="c-gray">({$m.to_mid})</span>{else}<span class="c-orange">系统</span>{/if}</td>
+            <td>{date('Y-m-d H:i',$m.add_time)}</td>
+            <td>
+                {if !$m.reply && $m.mid && !$m.to_mid}<a href="#!member/message_reply/{$m.id}&com=xshow|回复">回复</a>{/if}
+                <a href='javascript:;' onclick="main.confirm_del('member/del_msg','{$m.id}')" class='iconfont icon-a' title='删除'>&#xe606;</a>
+            </td>
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+    {$page}
+
+</div>

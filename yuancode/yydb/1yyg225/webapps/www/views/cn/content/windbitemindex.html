@@ -1,0 +1,14 @@
+<div class="item item-db" title="{$m.title}">
+    <div class="pic">
+        <a href="{$m.url}" target="_blank"><img src="{zz mod=fileurl source=$m.imgurl_src width=102 height=102 type=0}" alt="{$m.title}" /></a>
+    </div>
+    <p><a href="{$m.url}" target="_blank" title="{$m.goods_name}"><!--{$m.qishu_name}-->{if $m.goods_name}{$m.goods_name}{else}{$m.title}{/if}</a></p>
+
+    商品总需：<span class="color01">{$m.need_num}</span>人次<br>
+    揭晓时间：<span class="color01">{$m.end_time|formatTime}</span><br>
+    获得者：<a href="{'/minfo?id='|cat:$m.mid|url}#dbCod" target="_blank" class="color02" title="{$m.username|nickname:$m.nickname}">{$m.username|nickname:$m.nickname}</a><br>
+
+    <!-- {if $m.new_buy}
+    <a class="btn-go-green btn-index-01" href="{$m.url}">第{$m.new_buy.qishu}期进行中...</a> 
+    {/if}-->
+</div>

@@ -1,0 +1,37 @@
+{if $list}
+<div class="list01 list-luck">
+    {foreach from=$list item=m name=list}
+    <dl class="item ui-clr">
+        <dt class="ui-clr">
+            {if $m.type eq 2}<span class="type-free">霸王餐区</span> {/if}<a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}" target="_blank" class="color00"><span class="color01"><!-- (第{$m.qishu}期) --></span> {$m.goods_name}</a>
+        </dt>
+        <dd>
+            <div class="db-img"><a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}" target="_blank"><img src="{zz mod=fileurl source=$m.imgurl_src width=120 type=0}" alt="{$m.goods_name}" /></a></div>
+            <div class="db-txt color03">
+                <p>总需：{$m.need_num}{if $m.type eq 1}人次{else}{$L.unit_pay_points}{/if}</p>
+                <p>幸运号码：<strong class="color01">{$m.luck_code}</strong></p>
+                <p>总共参与：{$m.qty}人次</p>
+                <p>揭晓时间：{microtime_format($m.end_time,'Y-m-d H:i:s.x')}</p>
+            </div>
+        </dd>
+    </dl>
+    {/foreach}
+</div>
+<div class="foot-btn">{include file="ajax_page.html"}</div>
+{else}
+<div class="prompt">该用户还没有{$L.unit_yun}{$L.unit_winning}记录！</div>
+{/if}
+
+<script type="text/javascript">
+    var load_div = '#load_dbCod';
+    $(document).ready(function(){
+        $(load_div).find('.demo').ajaxContent({
+            event:'click', //mouseover
+            loaderType:"text",
+            loadingMsg:"拼命加载中...",
+            target:load_div
+        }).bind('click',function(){
+            $('html,body').animate({ scrollTop: '0px' }, 500);
+        });
+    })
+</script>

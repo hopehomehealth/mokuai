@@ -1,0 +1,44 @@
+{if $list}
+<ul class="w-goodsList fn-clear">
+    {foreach from=$list item=m name=list}
+    <li class="w-goodsList-item {if $smarty.foreach.list.iteration %3 eq 0}last{/if}">
+        <div class="w-goods">
+            <div class="w-goods-pic v scrollLoadingDiv">
+                <a title="{$m.title}" target="_blank" href="{'/auction/view/'|cat:$m.act_id|url}"><img class="scrollLoading" src="/style/images/pix.gif" data-url="{zz mod=fileurl source=$m.imgurl_src width=230 height=142 type=0}" alt="{$m.title}"></a><span></span>
+            </div>
+            <p class="w-goods-title"><a title="{$m.title}" target="_blank" href="{'/auction/view/'|cat:$m.act_id|url}"><span class="color01">（第{$m.qishu}期）</span>{$m.title|truncate:50:''}</a></p>
+            <p class="w-goods-info">价值：{$m.goods_price|price_format}</p>
+            <p class="w-goods-info">{$L.unit_winning}出价：<span class="color01">{if $m.bid_price gt 0}{$m.bid_price|price_format}{/if}{if $m.paib gt 0} {$m.paib}{$L.unit_pay_points}{/if}</span></p>
+            <p class="w-goods-info">{$L.unit_winning}随机码：<span class="color01">{$m.cod}</span></p>
+            <p class="w-goods-info">{$L.unit_winning}时间：<span style="font-size: 13px;">{$m.cod_time|date_format:'Y-m-d H:i:s'}</span></p>
+        </div>
+    </li>
+    {/foreach}
+</ul>
+<div class="foot-btn fn-clear">{include file="ajax_page.html"}</div>
+{else}
+<div class="m-blank">该用户还没有{$L.unit_pay}{$L.unit_winning}记录！</div>
+{/if}
+
+<script type="text/javascript">
+    var load_div = '#load_aucCod';
+    $(document).ready(function(){
+        $(load_div).find('.demo').ajaxContent({
+            event:'click', //mouseover
+            loaderType:"text",
+            loadingMsg:"拼命加载中...",
+            target:load_div,
+            success:function(){
+                scrollLoading();
+            }
+        }).bind('click',function(){
+            $('html,body').animate({ scrollTop: '400px' }, 500);
+        });
+    });
+
+    $('.w-goodsList-item').bind('mouseover',function(){
+        $(this).addClass('hover');
+    }).bind('mouseout',function(){
+        $(this).removeClass('hover');
+    })
+</script>

@@ -1,0 +1,49 @@
+{include file="crowd/crowd_header.html"}
+<div class="gxlist">
+    <ul style="height: 100%;">
+        <li class="gxlist-li">
+            <form  id="progress_form">
+            <h3>
+                项目：
+                <i>{$info.cd_name}</i>
+            </h3>
+            <div class="textarea">
+                <textarea name="content" placeholder="请输入您的项目最新进展，图文并茂更精彩哦~" ></textarea>
+            </div>
+            <div class="fabu">
+
+                <ul id="warp">
+                    <li class="fabu-ul-img">
+                        {upload_btn('progress','','',6)}
+                    </li>
+                </ul>
+                <div id="load_list">
+
+                </div>
+                <input class="sub submit_progress"  type="button" value="发布" />
+            </div>
+            </form>
+        </li>
+
+    </ul>
+</div>
+<style type="text/css">
+    .xqjz-l-main li div.wu-example{ position: static; border-bottom:none; padding-bottom: 0px;}
+</style>
+<script type="text/javascript">
+    $(function(){
+        $('.submit_progress').click(function(){
+            var D = $("#progress_form").serializeArray();
+            $.post('/crowd_member/updateProgress/{$info.cd_id}',D,function(data){
+                if(data.msg){
+                    layer.alert(data.msg);
+                }else{
+                    $('textarea[name=content]').val('');
+                    $('#thelistprogress').html('');
+                    $("input[name='progress[]']").remove();
+                    layer.alert('发布成功');
+                }
+            },'json');
+        });
+    });
+</script>

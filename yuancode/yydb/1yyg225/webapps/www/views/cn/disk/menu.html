@@ -1,0 +1,29 @@
+<tr>
+	<td colspan="3" class="td1">
+	  <p>
+      <a id="reload"><img src="/images/xz_a4.png"></a>
+      <a id="folder_button" class="a1"><img src="/images/xz_a5.png"></a>
+      <a href="/disk/folder"><img src="/images/xz_a6.png"></a>
+      <a id="upload_button"><img src="/images/xz_a7.png"></a>
+      <a href="/member/change_db#m" target="_blank"><img src="/images/xz_a8.png"></a>
+      </p>
+    </td>
+    <td class="td1">
+      {if $folderid}
+      <form action="/disk/lists" method="GET">
+      <input type="text" name="title" placeholder="文件名称">
+      <input type="submit" name="search" value=" ">
+      </form>
+      {else}
+      <form action="/disk/folder" method="GET">
+      <input type="text" name="title" placeholder="文件夹称">
+      <input type="submit" name="search" value=" ">
+      </form>
+      {/if}
+	</td>
+</tr>
+<script>
+$("#reload").click(function(){
+	window.location.reload(); 
+})
+</script>

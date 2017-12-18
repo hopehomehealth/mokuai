@@ -1,0 +1,69 @@
+{include file="crowd/crowd_header.html"}
+{include file="crowd/ur_here.html"}
+<div class="container">
+    <div class="gwc1">
+
+        <div class="zcjcxx">
+
+            <ul>
+                <li>
+                    <a href="javascript:;">基本信息</a>
+                </li>
+
+                <li>
+                    <a href="javascript:;">项目信息</a>
+                </li>
+                <li>
+                    <a href="javascript:;">详细描述</a>
+                </li>
+
+                <li class="on">
+                    <a href="javascript:;">回报设置</a>
+                </li>
+                <dd><a href="{url('/crowd/detail/')}{$info.cd_id}" target="_blank">预览</a></dd>
+            </ul>
+
+
+        </div>
+
+
+        <form action="/crowd/step_return" target="iframeNews" id="step_form" method="post">
+            <div class="fqbd">
+                <h3 class="fqbd-h3">设置你的回报信息</h3>
+                <div class="huib-ts">回报信息是让用户支持你的项目，你给予一定的回报内容，可以是具体实物也可以是虚拟信息</div>
+                <div class="list">
+                    {include file="crowd/lbi_return.html"}
+                </div>
+                <div id="add_content" style="display:none;">
+                    <h3 class="huibaoh3">回报</h3>
+                    <div class="huibao-tj"></div>
+                </div>
+                <div class="fqzc-jxtj add_return">
+                    <a>+继续添加新的回报</a>
+                </div>
+                <section class="faxyb">
+                    <a href="{url('/crowd/step_detail/')}{$info.cd_id}">上一步</a>
+                    <input type="hidden" value="{$info.cd_id}" name="id">
+                    <input type="hidden" name="submit" value="1">
+                    <input type="submit" value="提交审核"/>
+                </section>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+var cd_id = '{$info.cd_id}';
+$(function(){
+    $(".add_return").click(function(){
+        $.get('/crowd/return_edit',{ id:0,cd_id:cd_id },function(data){
+
+            $("#add_content").children('.huibao-tj').html(data);
+        });
+        $(this).fadeOut();
+        $("#add_content").fadeIn();
+    });
+});
+
+</script>
+{include file="crowd/crowd_footer.html"}

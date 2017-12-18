@@ -1,0 +1,56 @@
+<li class="aucli">
+    <div class="img scrollLoadingDiv"><a href="{$auction.url}" title="{$auction.title}" target="_blank"><img class="scrollLoading" src="/style/images/pix.gif" data-url="{zz mod=fileurl source=$auction.imgurl_src width=$auction.imgw height=$auction.imgh type=0}" alt="{$auction.title}" /></a></div>
+    <h2><a href="{$auction.url}" title="{$auction.title}" target="_blank">{$auction.title}</a></h2>
+
+    {if $auction.cat_type eq 'tiyan'}
+    <div class="tj-jg">
+        <b>价值</b>
+        <b>{$auction.price|price_format}</b>
+        {if $auction.paib}
+        仅需<b class="color01">{$auction.paib}<em><a href="{'/content/tiyan'|url}" title="做任务，赚{$L.unit_pay_points}" target="_blank">{$L.unit_pay_points}</a></em></b>
+        {/if}
+        {if $auction.current_price gt 0}
+        当前价<b class="color01">{$auction.current_price|price_format}</b>
+        {/if}
+    </div>
+    {else}
+    <div class="tj-jg">
+        <strong class="color01">{$auction.current_price|price_format}</strong>
+        <span>{$auction.price|price_format}</span>
+        {if $auction.paib}
+        <b class="color01">{$auction.paib}<em><a href="{'/content/tiyan'|url}" title="做任务，赚{$L.unit_pay_points}" target="_blank">{$L.unit_pay_points}</a></em></b>
+        {/if}
+    </div>
+    {/if}
+
+    <div class="tj-zjl">
+        {if $auction.cat_type eq 'tiyan'}体验{/if}{$L.unit_winning}率：<span>{$auction.win}%</span>，
+        已有<span class="color01">{$auction.bid_user_count}</span>人{if $auction.cat_type eq 'tiyan'}免费{/if}参与
+    </div>
+
+    {if $auction.status lt $smarty.const.FINISHED}
+    <div class="p4">{if $auction.status eq $smarty.const.PRE_START}即将开始{else}剩余{/if}：<i id="leftTime{$auction.act_id}{$auction.key}">请稍等, 载入中...</i></div>
+    <script type="text/javascript">
+        onload_leftTime('{$auction.act_id}{$auction.key}',"{$auction.diff_time}","{$auction.status}");
+    </script>
+    {/if}
+
+    {if $auction.status eq $smarty.const.PRE_START}
+    <div class="btn-qg btn-jjts fn-clear">
+        <a href="{$auction.url}" target="_blank">即将推出</a>
+    </div>
+    {elseif $auction.status eq $smarty.const.UNDER_WAY}
+    <div class="btn-qg fn-clear">
+        <a href="{$auction.url}" target="_blank">抢拍</a>
+    </div>
+    {else}
+    <div class="btn-qg btn-lscj fn-clear">
+        <span class="fn-left jp-jsl">已经结束</span>
+        <a href="{$auction.url}" target="_blank">去看看</a>
+    </div>
+    {/if}
+
+    {if $auction.win > 0}
+    <div class="winz {if $auction.user eq 1}winzUser{/if}"><i>{$auction.win}<span>%</span></i></div>
+    {/if}
+</li>

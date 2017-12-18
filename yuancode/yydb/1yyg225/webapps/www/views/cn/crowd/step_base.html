@@ -1,0 +1,228 @@
+{include file="crowd/crowd_header.html"}
+{include file="crowd/ur_here.html"}
+<div class="container">
+<div class="gwc1">
+
+<div class="zcjcxx">
+    <div class="hd">
+        <ul>
+            <li class="on">
+                <a href="javascript:;">基本信息</a>
+            </li>
+
+            <li>
+                <a href="javascript:;">项目信息</a>
+            </li>
+            <li>
+                <a href="javascript:;">详细描述</a>
+            </li>
+
+            <li>
+                <a href="javascript:;">回报设置</a>
+            </li>
+            <dd><a href="javascript:;">预览</a></dd>
+        </ul>
+
+    </div>
+</div>
+
+<form action="/crowd/step_base" target="iframeNews" id="step_form" method="post">
+<div class="fqbd">
+    <h3 class="fqbd-h3">选择你的身份类型</h3>
+    <div class="fqbdbox">
+        <div class="hd">
+
+            <section class="fqbd-gs">
+                <ul>
+                    <li class="on" type="1">
+                        <a href="javascript:;">个人</a>
+                    </li>
+                    <li type="2">
+                        <a  href="javascript:;">机构</a>
+                    </li>
+                </ul>
+            </section>
+        </div>
+
+        <div class="bd">
+            <section class="fqbd-txt">
+                <ul>
+                    <li>
+                        <span>姓名：</span>
+                        <input type="text" value="{$info.realname}" name="realname" placeholder="输入中文姓名，2~20个字符（需与结算时的银行卡开户名一致）" />
+                        <i>＊请填写您的真实姓名</i>
+                    </li>
+                    <li>
+                        <span> 身份证号码：</span>
+                        <input type="text" value="{$info.code}" name="code" placeholder="输入您的二代身份证号码，数字或者字母" />
+                        <i>＊请填写您的身份证号</i>
+                    </li>
+                    <li>
+                        <span> 联系方式：</span>
+                        <input type="text" value="{$info.tel}" name="tel" placeholder="输入您手机联系方式" />
+                        <i>＊请填写您的手机号码</i>
+                    </li>
+                    <li>
+                        <span id="nothere">地区： </span>
+                        {linkage('zone',$info.post_area_id,3)}
+                        <i>＊请填写您的所在区域</i>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="fqbd-txt-jg">
+                <ul>
+                    <li>
+
+
+                                    <span>
+                                        企业/机构名称：
+                                    </span>
+                        <input type="text" value="{$info.company}" name="company" placeholder="输入企业/机构名称(需与结算时的银行卡开户名一致)" />
+                        <i>
+                            ＊请填写机构或企业名称
+                        </i>
+                    </li>
+                    <li>
+                                    <span>
+                                        营业执照号或组织机构代码：
+                                    </span>
+                        <input type="text" name="licence" placeholder="请填写营业执照号或组织机构代码" />
+                        <i>
+                            ＊请填写企业营业执照号
+                        </i>
+                    </li>
+                    <li>
+                                    <span>
+                                        法人姓名：
+                                    </span>
+                        <input type="text" value="{$info.legalperson}" name="legalperson" placeholder="法定代表人姓名" />
+                        <i>
+                            ＊请填写法人代表的姓名
+                        </i>
+                    </li>
+                    <li>
+                                    <span>
+                                        注册地址：
+                                    </span>
+                        <input type="text" value="{$info.address}" name="address" placeholder="企业/机构注册地址" />
+                        <i>
+                            ＊请填写企业注册地址
+                        </i>
+                    </li>
+                    <li>
+                                    <span>
+                                        联系人姓名：
+                                    </span>
+                        <input type="text" value="{$info.realname}" name="contact" placeholder="输入联系人姓名" />
+                        <i>
+                            ＊请填写联系人的姓名
+                        </i>
+                    </li>
+                    <li>
+                        <span> 联系方式：</span>
+                        <input type="text"  value="{$info.tel}" name="mobile" placeholder="输入联系人手机号" />
+                        <i>＊请填写联系人的手机号码</i>
+                    </li>
+
+                </ul>
+            </section>
+
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        jQuery(".fqbdbox").slide({ trigger: "click" });
+    </script>
+
+
+
+    <h3 class="fqbd-h3">选择你要创建的项目类型</h3>
+    <div class="fqbd-lblx">
+        <section class="fqbd-lb hd">
+            <ul>
+                {foreach from=$crowd_cat item=cat}
+                <li {if $info.cid eq $cat.id}class="on"{/if} cid="{$cat.id}" cost="{$cat.cost}">
+                    <a href="javascript:;">{$cat.catname}</a>
+                </li>
+                {/foreach}
+            </ul>
+        </section>
+    </div>
+    <script type="text/javascript">
+
+        jQuery(".fqbd-lblx").slide({ trigger: "click" });
+    </script>
+
+    <h3 class="fqbd-h3">上传相关材料</h3>
+    <section class="fqbd-scsf">
+        <ul id="warp">
+
+            <li class="on">
+                身份证正面照：
+            </li>
+            <dd>
+                <img id="certificate1"  src="{zz mod=fileurl source=$info.certificate1 type=1 nopic='/style/crowd/images/sctp.jpg' dir='idcard'}">
+                {upload_btn('certificate1',500,500)}
+            </dd>
+
+            <li>
+                身份证背面照：
+            </li>
+            <dd>
+                <img id="certificate2"  src="{zz mod=fileurl source=$info.certificate2 type=1 nopic='/style/crowd/images/sctp.jpg' dir='idcard'}"   />
+                {upload_btn('certificate2',500,500)}
+            </dd>
+        </ul>
+    </section>
+
+
+    <h3 class="fqbd-h3">选择平台渠道费</h3>
+
+
+    <section class="qdcheckbox">
+        <input type="checkbox" name="agree"  value="1" checked/> 渠道费 <span id="cost">{$info.cost}</span>% (用于支付给第三方支付机构，如众筹项目不成功，则不收取该笔费用。)
+    </section>
+
+    <section class="faxyb">
+        <input type="submit" name="submit" value="下一步">
+    </section>
+    <input type="hidden" name="id" value="{$info.cd_id}">
+    <input type="hidden" id="type" name="type" value="1">
+    <input type="hidden" id="cid" name="cid" value="1">
+</div>
+</form>
+
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+<style type="text/css">
+#select_linkage select:first-child{ margin-right: 15px; }
+.webuploader-pick{
+    margin: 0px;
+    width: 196px;
+    height: 124px;
+    text-indent:-999em;
+    background: none;
+}
+
+</style>
+<script type="text/javascript">
+    $('.fqbd-gs ul li').click(function(){
+        $("#type"). val($(this).attr('type'));
+    });
+    $('.fqbd-lb ul li').click(function(){
+        $("#cid"). val($(this).attr('cid'));
+        $("#cost"). html($(this).attr('cost'));
+    });
+</script>
+{include file="crowd/crowd_footer.html"}

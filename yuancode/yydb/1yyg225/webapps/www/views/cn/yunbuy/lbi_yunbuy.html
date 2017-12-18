@@ -1,0 +1,53 @@
+<li class="w-quickBuyList-item">
+    {if $m.member eq -1}
+    <img class="sale_db" src="/style/images/member_db.png" style="right: 5px; top:5px;" />
+    {elseif $m.notjoin eq 1}
+    <img class="sale_db" src="/style/images/nxdb.png" style="right: 5px; top:5px;" />
+    {elseif $m.buynum gt 0 || $m.usernum gt 0}
+    <img class="sale_db" src="/style/images/sale_db.png" style="right: 5px; top:5px;" />
+    {/if}
+
+    <div class="w-goods w-goods-l w-goods-ing">
+        <div class="w-goods-pic scrollLoadingDiv">
+            <a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}" target="_blank" title="{$m.title}">
+                <img alt="{$m.title}" class="scrollLoading" src="/style/images/pix.gif" data-url="{zz mod=fileurl source=$m.imgurl_src width=250 height=150 type=0}" id="buy_img_{$m.buy_id}" />
+            </a></div>
+        <p class="w-goods-title f-txtabb">
+            <!-- <a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}" target="_blank" title="{$m.title}"><span class="color01">(第{$m.qishu}期)</span> {$m.title}</a></p> -->
+            <a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}" target="_blank" title="{$m.title}"><span class="color01"></span> {$m.title}</a></p>
+        <p class="w-goods-price">总需：{$m.need_num} 人次{if $m.price gt 1}<span class="zq_ico" style="float: right;">{$m.price|num2char}元{$L.unit_area}</span>{/if}</p>
+        <div class="w-progressBar" title="{$m.jindu}%">
+            <p class="w-progressBar-wrap"><span class="w-progressBar-bar" style="width: {$m.jindu}%;"></span></p>
+            <ul class="w-progressBar-txt f-clear">
+                <li class="w-progressBar-txt-l">
+                    <p><b class="color01 ft18 fwb">{$m.buy_num}</b></p>
+                    <p>已参与人次</p>
+                </li>
+                <li class="w-progressBar-txt-r">
+                    <p><b class="color02 ft18 fwb">{$m.end_num}</b></p>
+                    <p>剩余人次</p>
+                </li>
+            </ul>
+        </div>
+        <p class="w-goods-progressHint"><b class="txt-blue">
+            2739</b>人次已参与，赶快去参加吧！剩余<b class="txt-red">{$m.end_num}</b>人次
+        </p>
+        <div class="w-goods-opr">
+            我要参与：
+            <div class="w-goods-opr-number">
+                <div id="pro-view-3" class="w-number w-number-inline">
+                    <input class="w-number-input" id="qty_{$m.buy_id}" data-max="{$m.end_num}" value="{$site_config.qty|intval}">
+                    <a class="w-number-btn w-number-btn-plus" href="javascript:void(0);">+</a>
+                    <a class="w-number-btn w-number-btn-minus" href="javascript:void(0);">-</a> </div>
+            </div>
+            人次
+            <p class="w-goods-opr-buy">
+                {if $type eq 2}
+                <a class="w-button w-button-main w-button-l" onclick="addToCart('{$m.buy_id}','free');" href="javascript:;" style="width: 90px;background: #1FB89A !important">免费{$L.unit_yun}</a>
+                {else}
+                <a class="w-button w-button-main w-button-l" onclick="addToCart('{$m.buy_id}','buy');" href="javascript:;" style="width: 90px;">{$L.unit_yun_button}</a>
+                <a class="w-button w-button-l" onclick="addToCart('{$m.buy_id}','',this)" href="javascript:;" style="width:90px;">加入购物车</a> </p>
+                {/if}
+        </div>
+    </div>
+</li>

@@ -1,0 +1,62 @@
+{include file="crowd/crowd_header.html"}
+<style type="text/css">
+    a{ cursor: pointer; }
+    .body{ position: relative; text-align: left; padding-left: 60px; margin-left: 20px; }
+    .body i{ position: absolute; left: 0; top: 0; background: url('/style/images/pay_icon.png') no-repeat -40px 0; display: block; width: 44px; height: 44px; }
+    h3{ font-size: 16px; line-height: 44px; color: #333; padding:0; }
+    .msg{ color: #999; margin: 0 0 15px; }
+    .btn-box{ line-height: 20px; }
+    .btn{ background: #e53d09; color: #fff; height: 20; line-height: 20px; padding: 5px 10px; font-size: 14px; border-radius: 5px; margin-bottom: 10px; }
+    .btn:hover{ background: #ff4e00; color: #fff; }
+    .back{ color: #DD344F; }
+    .back:hover{ text-decoration: underline; }
+    .btn-box span a{ color: #DD344F; font-size: 14px; }
+    .btn-box span a:hover{ text-decoration: underline; }
+    .btn-box span font{ padding: 0 5px; }
+    .clear{ clear:both; }
+</style>
+
+<div id="content" class="container main tc">
+    <div class="body">
+        {if $status eq 0}
+        <i></i>
+        <h3>很抱歉，您的订单支付失败！</h3>
+        <div class="btn-box">
+            您现在可以查看 <a href="/crowd_member/support" class="blue">我的支持</a>，重新支付订单！
+            <div class="clear"></div>
+        </div>
+        {elseif $status eq 1}
+        <i></i>
+        <h3>您的订单已过期，请重新下单！</h3>
+        <div class="btn-box">
+            <a href="/crowd/lists" class="color01">重新下单</a>
+            <div class="clear"></div>
+        </div>
+        {elseif $status eq 2}
+        <i></i>
+        <h3>恭喜您，支付成功！</h3>
+        <div class="btn-box">
+            <p>请耐心等待众筹结束！</p>
+            <p>您现在可以查看 <a href="/crowd_member/support" class="blue">我的支持</a></p>
+            <div class="clear"></div>
+        </div>
+        {elseif $status eq 3}
+        <i></i>
+        <h3>很抱歉，回报人数已满！</h3>
+        <div class="btn-box">
+            <p>余额已退回您的账户！</p>
+            <p>您可以选择其他的众筹，或者回报，<a href="/crowd_member/support" class="blue">继续支持</a>。</p>
+            <div class="clear"></div>
+        </div>
+        {elseif $status > 3}
+        <i></i>
+        <h3>恭喜您，支付成功！</h3>
+        <div class="btn-box">
+            <p>请耐心等待众筹结束！</p>
+            <p>您现在可以查看 <a href="/crowd_member/support" class="blue">我的支持</a></p>
+            <div class="clear"></div>
+        </div>
+        {/if}
+    </div>
+</div>
+{include file="crowd/crowd_footer.html"}

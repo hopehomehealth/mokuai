@@ -1,0 +1,145 @@
+{include file="header.html"}
+<link rel="stylesheet" href="{url('/style/css/member.css')}">
+<script type="text/javascript" src="/style/dp/WdatePicker.js"></script>
+{include file="ur_here.html"}
+<div id="container">
+    <div class="fn-clear mt20 pb20">
+        {include file="member/menu.html"}
+        <div class="fn-right hy-r">
+        <div class="hy-tjxh fn-clear">
+            <div class="db-nrbox fn-clear">
+                {if !isset($smarty.get.order)}
+                <div class="dq-ts">
+                    我的订单： 待付款<a href="{url('/member/order')}?status=1" class="color01 fwb">（{$total.notpay}）</a> 待发货<a href="{url('/member/order')}?status=2" class="color01 fwb">（{$total.wait}）</a> 已发货<a href="{url('/member/order')}?status=3" class="color01 fwb">（{$total.shiped}）</a> 已完成<a href="{url('/member/order')}?status=4" class="color01 fwb">（{$total.finish}）</a>
+                </div>
+                {/if}
+                <div class="fn-clear mt20">
+                    <div class="fn-left db-sxl">
+                        <a href="{url('/member/order')}{if isset($smarty.get.order)}?order{/if}" {if $smarty.get.time eq ''}class="dq"{/if}>全部</a>
+                        <a href="{url('/member/order')}?time=1{if isset($smarty.get.order)}&order{/if}" {if $smarty.get.time eq 1}class="dq"{/if}>今天</a>
+                        <a href="{url('/member/order')}?time=2{if isset($smarty.get.order)}&order{/if}" {if $smarty.get.time eq 2}class="dq"{/if}>本周</a>
+                        <a href="{url('/member/order')}?time=3{if isset($smarty.get.order)}&order{/if}" {if $smarty.get.time eq 3}class="dq"{/if}>本月</a>
+                        <a href="{url('/member/order')}?time=4{if isset($smarty.get.order)}&order{/if}" {if $smarty.get.time eq 4}class="dq"{/if}>最近三个月</a>
+                    </div>
+                    <form action="{url('/member/order')}">
+                    <div class="fn-right db-sxr">
+                        <label>选择时间段：</label>
+                        <input name="from_data" type="text" onclick="WdatePicker()" class="dq-inpt" />
+                        <label>-</label>
+                        <input name="to_data" type="text"  onclick="WdatePicker()" class="dq-inpt"  />
+                        <input type="submit" value="搜索" />
+                    </div>
+                    </form>
+                </div>
+                <div class="dq-tab-t">
+                    <table>
+                        <tr>
+                            <th width="116">商品图片</th>
+                            <th>商品名称</th>
+                            <th width="250">收货人信息</th>
+                            <th width="150">状态与操作</th>
+                        </tr>
+                    </table>
+                </div>
+                <div class="db-tab-list">
+                    <table>
+                        {if $list}
+                        {foreach from=$list item=r}
+                        <div class="db-tab-list">
+                            <table>
+                                <tr>
+                                    <th colspan="2" style="text-align:left;">
+                                        <span style="margin-left:20px;">
+                                            订单号：<b class="color02">{$r.order_sn}</b>
+                                        </span>
+                                        下单时间：{$r.c_time|date_format:'Y-m-d H:i:s'}
+                                        ({$r.order_code})
+                                    </th>
+                                    <th colspan="2">
+                                        <span>订单总额：{$r.order_price}</span>
+                                        {if $r.amount gt 0}
+                                            <span class="color01">还需支付：{$r.amount}</span>
+                                            {if $r.status lt 3}
+                                            <a href="{'/order/pay/'|cat:$r.id|url}" target="_blank" class="hy-btn2">支付订单</a>
+                                            {/if}
+                                        {/if}
+                                    </th>
+                                </tr>
+                                {foreach from=$r.goods item=m name=f}
+                                <tr>
+                                    <td width="116">
+                                        <div class="db-img"><img src="{$m.imgurl_thumb}" alt="{$m.goods_name}" /></div>
+                                    </td>
+                                    <td style="text-align: left;">
+                                        <a href="{$m.goods_url|default:$r.goods_url}" target="_blank">{$m.goods_name}</a>
+                                        {if $m.bus_name}
+                                        <p class="color01">
+                                            商家：{$m.bus_name}
+                                            {if $m.item_status_name}
+                                            【{$m.item_status_name}】
+                                            <br>{$m.express_name}: {$m.item_express_num}
+                                            {/if}
+                                        </p>
+                                        {/if}
+                                        {if $m.virtual_list}
+                                        <ul class="virtual_ul color01" style="padding-top:5px;font-weight:bold;">
+                                            {foreach from=$m.virtual_list item=n}
+                                            <li>
+                                                <b title="点击查看卡密">卡号：{$n.vir_number}</b> <a href="javascript:;" class="color01">【显示卡密】</a><br>
+                                                <span style="display:none;">卡密：{$n.vir_pass}</span>
+                                            </li>
+                                            {/foreach}
+                                        </ul>
+                                        {/if}
+                                        {if $r.status eq 4 && $r.is_share eq 0}
+                                        <p><a href="{'/member/post_share/'|cat:$r.id|url}" class="hy-btn2">晒单</a></p>
+                                        {/if}
+                                    </td>
+                                    <td width="250" style="text-align:left;border-right:1px solid #ddd">
+                                        <div>{$r.name}({$r.mobile}) {$r.area} {$r.deliver}</div>
+                                        {if $r.express_num}{$r.express_name}单号: {$r.express_num}<br />
+                                        <span style="color: #999">
+                                            {if $r.express_pinyin eq 'tmall'}
+                                                {if $m.goods_desc.1}
+                                                <a class="color02" href="{$m.goods_desc.1}" target="_blank" style="display: none;">商品来源</a>
+                                                {/if}
+                                            {elseif $r.express_pinyin neq 'none' && $r.express_num gt 0}
+                                            <a class="color02" href="http://www.kuaidi100.com/chaxun?com={$r.express_pinyin}&nu={$r.express_num}" target="_blank">查看物流</a>&nbsp;
+                                            {/if}
+                                        </span>
+                                        {/if}
+                                    </td>
+                                    {if $smarty.foreach.f.index eq 0}
+                                    <td width="150" rowspan="{$r.goods|count}">
+                                        <span class="color01">{$r.status_name}</span><br/>
+                                        {if $r.status eq 3}<a href="javascript:;" onclick="zz_confirm('您确认已经收到该订单商品？','{'/member/finish_order/'|cat:$r.id|url}')" class="hy-btn2">确认收货</a><br/>{/if}
+                                    </td>
+                                    {/if}
+                                </tr>
+                                {/foreach}
+                            </table>
+                        </div>
+                        {/foreach}
+                        {else}
+                        <tr><td>暂时没有相关记录</td></tr>
+                        {/if}
+                    </table>
+                </div>
+                <div class="foot-btn">
+                    {include file="public_page.html"}
+                </div>
+            </div>
+        </div>
+
+        </div>
+     </div>
+</div>
+{include file="footer.html"}
+<script type="text/javascript">
+    $('.virtual_ul li').each(function(){
+        var li = $(this);
+        li.find('a').bind('click',function(){
+            li.find('span').toggle();
+        })
+    })
+</script>

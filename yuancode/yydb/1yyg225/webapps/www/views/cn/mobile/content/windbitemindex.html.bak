@@ -1,0 +1,7 @@
+<li class="item-db">
+    <em><a href="{$m.url}"><img width="93" src="{zz mod=fileurl source=$m.imgurl_src width=93 type=0}"></a></em>
+    <div class="new-index-2">
+        <span><a href="{$m.url}">{$m.qishu_name}{if $m.title}{$m.title|truncate:26}{else}{$m.goods_name}{/if}</a></span>
+        <p>获得者：<a href="{'/minfo?id='|cat:$m.mid|url}#dbCod">{$m.username|nickname:$m.nickname}</a></p>
+    </div>
+</li>

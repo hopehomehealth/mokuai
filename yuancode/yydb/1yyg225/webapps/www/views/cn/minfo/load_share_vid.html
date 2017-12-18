@@ -1,0 +1,62 @@
+<div class="w-tabs-panel-item m-user-share m-user-shareDetail">
+    <div class="hd">
+        <h1 class="title">{$share.title}</h1>
+        <div class="time">晒单时间：{date('Y-m-d H:i:s',$share.addtime)}</div>
+        <div class="w-shareTo share" id="dvShare">{share()}</div>
+    </div>
+    <div class="winDetail">
+        <div class="owner">
+            <b class="sh_num sh_num{$share.db_points}"></b>
+            <a href="{'/minfo?id='|cat:$member.mid|url}" title="{$member.username}" class="avatar"><img src="{zz mod=photo source=$member.photo nopic='/upload/photo.jpg'}" height="90" width="90"></a>
+            <div class="info">
+                <div class="name">获得者：<a href="{'/minfo?id='|cat:$member.mid|url}">{$member.username|nickname:$member.nickname}</a></div>
+                {if $share.extension_code eq $smarty.const.CART_DB}
+                <div class="total">总共参与：<strong class="txt-impt">{$db_info.qty}</strong>人次</div>
+                <div class="code">幸运号码：<strong class="txt-impt">{$db_info.luck_code}</strong></div>
+                <div class="time">揭晓时间：{microtime_format($info.end_time,'Y-m-d H:i:s.x')}</div>
+                {elseif $share.extension_code eq $smarty.const.CART_WIN}
+                <div class="code">{$L.unit_winning}随机码：<strong class="txt-impt">{$cj_info.cod}</strong></div>
+                <div class="time">{$L.unit_winning}时间：{$cj_info.cod_time|date_format:'Y-m-d H:i:s'}</div>
+                {elseif $share.extension_code eq $smarty.const.CART_AUC}
+                <div class="code">最后出价：<strong class="txt-impt">{$cj_info.bid_price|price_format}</strong></div>
+                <div class="time">出价时间：{$cj_info.bid_time|date_format:'Y-m-d H:i:s'}</div>
+                {/if}
+            </div>
+        </div>
+        <div class="goods">
+            {if $share.extension_code eq $smarty.const.CART_DB}
+            <a href="{$info.url}" target="_blank"><img class="pic" src="{zz mod=fileurl source=$info.thumb width=90 height=90 type=1}" height="90"></a>
+            {else}
+            <a href="{$info.url}" target="_blank"><img class="pic" src="{zz mod=fileurl source=$info.imgurl_src width=90 height=90 type=1}" height="90"></a>
+            {/if}
+            <div class="info">
+                <div class="name"><a href="{$info.url}" target="_blank">
+                    {if $share.extension_code eq $smarty.const.CART_DB}<!--(第{$info.qishu}期)-->{/if}
+                    {$info.title}
+                    <span class="color01" style="white-space: nowrap">【{if $share.extension_code eq $smarty.const.CART_DB}{$L.unit_yun_one}{elseif $share.extension_code eq $smarty.const.CART_WIN}{$L.unit_pay}{$L.unit_winning}{elseif $share.extension_AUC eq $smarty.const.CART_DB}{$L.unit_pay}获得{/if}】</span>
+                </a></div>
+
+                {if $new_buy && $share.extension_code eq $smarty.const.CART_DB}
+                <div class="more"><a class="color02" href="{'/yunbuy/detail/'|cat:$new_buy.buy_id}" target="_blank"><!-- 第{$new_buy.qishu}期正在进行中… -->下一期正在进行中</a></div>
+                {/if}
+                {if $share.extension_code neq $smarty.const.CART_DB}
+                <div class="total">参与人数：<b class="txt-impt">{$info.bid_user_count}</b></div>
+                {/if}
+            </div>
+        </div>
+    </div>
+    <div class="cont">
+        <div class="text">
+            {$share.content|nl2br}
+        </div>
+    </div>
+    <div class="pics">
+        {foreach from=unserialize($share.thumbs) item=m}
+        {if $m|pathExtType eq 'video'}
+        <iframe src="{$m}" frameborder=0 allowfullscreen style="background: #fff;width:500px;height: 300px;"></iframe>
+        {else}
+        <div class="item scrollLoadingDiv"><img class="scrollLoading" src="/style/images/pix.gif" data-url="{zz mod=fileurl source=$m}"/></div>
+        {/if}
+        {/foreach}
+    </div>
+</div>

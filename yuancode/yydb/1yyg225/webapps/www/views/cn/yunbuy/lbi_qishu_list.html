@@ -1,0 +1,38 @@
+{if $list}
+<a href="javascript:;" class="a_close"></a>
+<div class="qishu_search">
+    <label>直达第</label>
+    <div class="inp"><input type="text" id="HOWQI" value="" placeholder="请输入" /></div>
+    <label>期</label>
+    <a href="javascript:;" onclick="fly_qishu()"></a>
+</div>
+<ul class="fn-clear qishu_ul">
+    {foreach from=$list item=m key=k}
+    <li{if $qishu eq $m.qishu} class="dq"{/if}><a href='/yunbuy/detail/{$m.buy_id}'>第{$m.qishu}期{if $m.end_num gt 0} <img src='/style/images/ing.gif' />{/if}</a></li>
+    {/foreach}
+</ul>
+<div class="fn-clear"></div>
+{include file="ajax_page.html"}
+{literal}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#qishuList').find('.demo').ajaxContent({
+            event:'click', //mouseover
+            loaderType:"img",
+            loadingMsg:"/style/images/transparent.gif",
+            target:'#qishuList',
+            success:function(){
+                $('#qishuList .a_close').bind('click',function(){
+                    $('#qishuList').stop().slideUp(200);
+                })
+                $("#HOWQI").keydown(function (e) {
+                    if (e.which == 13) {
+                        fly_qishu();
+                    }
+                });
+            }
+        });
+    });
+</script>
+{/literal}
+{/if}

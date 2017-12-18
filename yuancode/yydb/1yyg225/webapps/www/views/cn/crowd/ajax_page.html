@@ -1,0 +1,19 @@
+{if $page.count>1}
+<ul class="pagination">
+    {if $page.nonce>1}
+    <li class="disabled">
+        <a class="demo" {$page.prev} aria-label="Previous"><span aria-hidden="true">«</span></a>
+    </li>
+    {/if}
+    {foreach from=$page.links item=v key=k}
+    <li {if $k==$page.nonce} class="active"{/if}>
+        <a {if $v}class="demo"{/if} {$v} >{$k}</a>
+    </li>
+    {/foreach}
+    {if $page.nonce<$page.count}
+    <li>
+        <a class="demo" {$page.end} aria-label="Next"><span aria-hidden="true">»</span></a>
+    </li>
+    {/if}
+</ul>
+{/if}

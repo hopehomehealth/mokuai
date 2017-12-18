@@ -1,0 +1,63 @@
+{assign var='header' value='header2'}
+{include file="top.html"}
+<!-- 引用pc端样式 -->
+<link rel="stylesheet" href="{url('/style/css/member.css')}">
+
+<link rel="stylesheet" href="/style/mobile/css/member.css">
+<div id="content" class="container main">
+    <div class="user-summary">
+        <form action="" method="post" target="iframeNews">
+            <div class="hy-tjxh" style="padding-bottom: 15px;">
+                <div class="title"><h2>{if $site_config.disk_status eq 1}购买{$L.unit_skydrive}，获得{else}兑换{/if}{$L.unit_db_points}</h2></div>
+                <div class="change_bar">
+                <div>
+                    {if $bonus_money*2 >= $site_config.change_db_limit}
+                    <div style="padding:10px 0 20px;font-size:14px;">
+                        今日已赠送{$L.unit_bonus}数量<b class="color01">{$bonus_money|default:0}</b>/
+                        限额<b class="color01">{$site_config.change_db_limit|default:0}</b>/
+                        剩余<b class="color01">{($site_config.change_db_limit-$bonus_money)|default:0}</b>
+                        {$L.unit_db_points}
+                    </div>
+                    {/if}
+                    <div class="ui-left fwb" style="line-height: 44px; font-size: 14px;margin-right: 15px;">兑换金额:</div>
+                    <div class="w-pay-selector">
+                        {foreach from=$discount item=m key=key name=discount}
+                        <div class="w-pay-money {if $smarty.foreach.discount.iteration eq 1}w-pay-money-selected{/if}">{if $m}<span class="discount">首次兑换送{$m}{$L.unit_bonus}</span>{/if}{$key}元<input type="radio" name="amount" {if $smarty.foreach.discount.iteration eq 1}checked{/if} value="{$key}" style="display: none"></div>
+                        {/foreach}
+                        <div class="w-pay-money otherbar"><span>其他金额</span>&nbsp;&nbsp;<input maxlength="6" style="width: 50px;" class="w-input-input" name="other" type="text"><input type="radio" name="amount" value="0" style="display: none"></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                    {if $site_config.disk_status eq 1}
+                <div>每支付1元购买{$site_config.site_name}云盘，系统将会赠送1个{$L.unit_db_points}（即1次{$L.unit_choujiang}机会），兑换1{$L.unit_db_points}＝1M云盘   <span class="color01"> ({$site_config.site_name}云盘自动开通功能在开发中，请<a class="color01" href="{url('/content/index/')}35" target="_blank">联系客服</a>手动开通，云盘资源1年内开通使用有效)</span>，兑换的款项将无法退回。</div>
+                    {/if}
+                </div>
+                <div class="btn2">
+                    <input name="Submit" type="submit" value="确认兑换" class="hy-btn2" /><input type="reset" value="重置表单" class="hy-btn2" />
+                </div>
+            </div>
+            </form>
+    </div>
+</div>
+{literal}
+<script type="text/javascript">
+$(function(){
+    $("input[name=other]").blur(function(){
+        var amount = $(this).val();
+        $('.other_dis').remove();
+        $.post('/member/ajax_discount_db',{amount:amount},function(data){
+            var html = '<span class="discount other_dis">送'+data+'</span>';
+            if(data>0){
+                $('.otherbar').prepend(html);
+            }
+
+        });
+    });
+    $(".w-pay-money").click(function(){
+        $(this).addClass("w-pay-money-selected").siblings().removeClass("w-pay-money-selected");
+        $(this).children("input").prop('checked',true);
+    });
+});
+</script>
+{/literal}
+{include file="footer.html"}

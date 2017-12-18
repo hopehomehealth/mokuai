@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>微信扫码</title>
+		<link rel="stylesheet" type="text/css" href="../css/api.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/style.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/user.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+		<style>
+			.wx-main p {
+				display: block;
+				width: 250px;
+				margin-left: 22%;
+				text-align: left;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="header">
+			<div class="cart active">
+				<div class="icon_box" tapmode="" onclick="api.closeWin()">
+					<i class="iconfont icon-fanhui"></i>
+				</div>
+				<div class="toptit">
+					微信二维码<font class="unit_bonus"></font>
+				</div>
+				<div class="icon_box " tapmode="" onclick="backhome()">
+					<i class="iconfont icon-shouye"></i>
+				</div>
+			</div>
+		</div>
+		<div id="content" class="container main">
+			<!-- <label id="code"></label>
+			<img id="wxsm" src=""/>
+			<a id="awxsm" href="">网址链接</a>
+			<input id="cwxsm" type="button" value="点击扫码"/> -->
+			<div class="sm-header" style="height:40px;background-color: #eee;padding: 10px 20px;position: relative;">
+				<img src="../image/wx-logo.png" alt="" style="height:40px;"/>
+				<span style="font-size:18px;display: inline-block;position: absolute;left:70px;top:16px;color:green;">请使用微信扫码付款</span>
+			</div>
+			<div class="wx-main" style="text-align:center;">
+				<!-- <h1 style="font-size:26px;color:green;margin: 10px 0;">请使用微信扫码付款</h1> -->
+				<img id="wxsm" src="" alt="" style="width:60%;margin-top: 15px;"/>
+				<a href="javascript:;" id="" onclick="goPay()"><img src="../image/wx-scan.png" alt="" style="width:60%;margin-top: 15px;"/></a>
+				<a href="javascript:;" id="" onclick="openWin('wxcourse')"><img src="../image/wx-course.png" alt="" style="width:60%;margin-top: 15px;"/></a>
+				<p>
+					1.点击“点击扫码支付”保存图片二维码
+				</p>
+				<p>
+					2.在【微信】扫码中识别二维码，完成支付
+				</p>
+				<p>
+					3.返回i1y8商城APP完成充值
+				</p>
+			</div>
+		</div>
+		<script type="text/javascript" src="../script/zepto.min.js"></script>
+		<script type="text/javascript" src="../script/fastclick.js"></script>
+		<script type="text/javascript" src="../script/api.js"></script>
+		<script type="text/javascript" src="../script/doT.min.js"></script>
+		<script type="text/javascript" src="../script/common.js"></script>
+		<script type="text/javascript">
+			apiready = function() {
+				//适配iOS 7+，Android 4.4+状态栏
+				var header = $api.byId('header');
+				$api.fixStatusBar(header);
+				var res = api.pageParam;
+				var code = res.code;
+				var message = res.message;
+				if (code != "0000") {
+					//$("#code").html(message);
+					$("#wxsm").attr('src', "../image/fail-get-qrcode.png");
+				} else {
+					$("#wxsm").attr('src', message);
+					message = message.substr(36, message.length);
+					$("#awxsm").attr('href', message);
+				}
+			}
+			$(function() {
+				var cwxsm = $("#cwxsm");
+				cwxsm.click(function() {
+					var wxsm = $("#wxsm").attr('src');
+				});
+			});
+			function goPay() {
+				var screenClip = api.require('screenClip');
+				var msg = {
+					content : '请前往微信【扫一扫】中完成支付',
+					leftBtnTitle : '去支付',
+					rightBtnTitle : '取消支付'
+				};
+				var dialogBox = api.require('dialogBox');
+				dialogBox.confirm({
+					tapClose : true,
+					msg : msg,
+					styles : {
+						bg : '#fff',
+						maskBg : 'rgba(0,0,0,0.5)',
+						h : 140,
+						msg : {
+							color : '#000000',
+							size : 20,
+							maginLR : 10,
+							maginT : 30,
+							align : 'center',
+						},
+						leftBtn : {
+							bg : '#25b6ed',
+							color : '#FFF',
+							size : 14,
+							maginLR : 10,
+							maginB : 10
+						},
+						rightBtn : {
+							bg : '#25b6ed',
+							color : '#FFF',
+							size : 14,
+							maginLR : 10,
+							maginB : 10
+						},
+					}
+				}, function(ret) {
+					if (ret.eventType === 'cancel') {
+						dialogBox.close({
+							dialogName : 'confirm'
+						});
+						var now = new Date().getTime();
+						var sType = api.systemType;
+						if (sType == "ios") {
+							var demo = api.require('moduleDemo');
+							demo.showAlert({
+								msg : '是否确认截图？'
+							}, function(retg, err) {
+								if (retg.index == 2) {
+									msg = {
+										content : '支付中......',
+										leftBtnTitle : '支付成功',
+										rightBtnTitle : '遇到问题'
+									};
+									dialogBox.confirm({
+										tapClose : false,
+										msg : msg,
+										styles : {
+											bg : '#fff',
+											maskBg : 'rgba(0,0,0,0.5)',
+											h : 140,
+											msg : {
+												color : '#000000',
+												size : 20,
+												maginLR : 10,
+												maginT : 30,
+												align : 'center',
+											},
+											leftBtn : {
+												bg : '#25b6ed',
+												color : '#FFF',
+												size : 14,
+												maginLR : 10,
+												maginB : 10
+											},
+											rightBtn : {
+												bg : '#25b6ed',
+												color : '#FFF',
+												size : 14,
+												maginLR : 10,
+												maginB : 10
+											},
+										}
+									}, function(ret1) {
+										if (ret1.eventType === 'ok') {
+											dialogBox.close({
+												dialogName : 'confirm'
+											});
+											opentoTab('user');
+										} else {
+											var orderid = api.pageParam.orderid;
+											ajaxRequest('member/rechargewxsmselect', 'GET', {
+												values : {
+													'orderid' : orderid
+												}
+											}, function(ret2, err) {
+												var data = ret2.data;
+												if (data.result) {
+													if (data.order['is_paid'] == 0) {
+														toast("请耐心等待支付结果");
+													} else {
+														toast("支付成功");
+													}
+													openWin('member_account', {
+														wxsm : 'wxsm'
+													});
+												} else {
+													toast("订单有误,请联系客服");
+												}
+												dialogBox.close({
+													dialogName : 'confirm'
+												});
+											});
+										}
+									});
+									api.appInstalled({
+										appBundle : 'weixin://'
+									}, function(ret8, err) {
+										if (ret8.installed) {
+											api.openApp({
+												iosUrl : 'weixin://',
+												appParam : {
+													appParam : 'app参数'
+												}
+											});
+										} else {
+											toast('未安装微信');
+											return false;
+										}
+									});
+								}
+							});
+						} else {
+							screenClip.screenShot({
+								album : false,
+								imgPath : 'widget://',
+								imgName : 'wx.png'
+							}, function(ret4, err) {
+								if (ret4.status) {
+									api.saveMediaToAlbum({
+										path : 'widget://wx.png'
+									}, function(reth, err) {
+										msg = {
+											content : '支付中......',
+											leftBtnTitle : '支付成功',
+											rightBtnTitle : '遇到问题'
+										};
+										dialogBox.confirm({
+											tapClose : false,
+											msg : msg,
+											styles : {
+												bg : '#fff',
+												maskBg : 'rgba(0,0,0,0.5)',
+												h : 140,
+												msg : {
+													color : '#000000',
+													size : 20,
+													maginLR : 10,
+													maginT : 30,
+													align : 'center',
+												},
+												leftBtn : {
+													bg : '#25b6ed',
+													color : '#FFF',
+													size : 14,
+													maginLR : 10,
+													maginB : 10
+												},
+												rightBtn : {
+													bg : '#25b6ed',
+													color : '#FFF',
+													size : 14,
+													maginLR : 10,
+													maginB : 10
+												},
+											}
+										}, function(ret1) {
+											if (ret1.eventType === 'ok') {
+												dialogBox.close({
+													dialogName : 'confirm'
+												});
+												opentoTab('user');
+											} else {
+												var orderid = api.pageParam.orderid;
+												ajaxRequest('member/rechargewxsmselect', 'GET', {
+													values : {
+														'orderid' : orderid
+													}
+												}, function(ret2, err) {
+													var data = ret2.data;
+													if (data.result) {
+														if (data.order['is_paid'] == 0) {
+															toast("请耐心等待支付结果");
+														} else {
+															toast("支付成功");
+														}
+														openWin('member_account', {
+															wxsm : 'wxsm'
+														});
+													} else {
+														toast("订单有误,请联系客服");
+													}
+													dialogBox.close({
+														dialogName : 'confirm'
+													});
+												});
+											}
+										});
+										api.appInstalled({
+											appBundle : 'com.tencent.mm'
+										}, function(ret9, err) {
+											if (ret9.installed) {
+												api.openApp({
+													androidPkg : 'com.tencent.mm',
+													mimeType : 'text/html',
+													uri : ''
+												}, function(ret5, err) {
+												});
+											} else {
+												toast('未安装微信');
+												return false;
+											}
+										});
+									});
+								};
+							});
+						}
+					} else {
+						dialogBox.close({
+							dialogName : 'confirm'
+						});
+					}
+				});
+			}
+		</script>
+	</body>
+</html>

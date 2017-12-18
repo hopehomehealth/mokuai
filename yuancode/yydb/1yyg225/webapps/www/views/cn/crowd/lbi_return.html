@@ -1,0 +1,33 @@
+{foreach from=$list item=item name=return_list}
+<h3 class="huibaoh3">回报{$smarty.foreach.return_list.iteration}</h3>
+<div id="{$item.rt_id}" class="return_content">
+<div class="huibaoxq">
+    <h3>
+        {$item.price_format}
+        <i>{if $item.limit_num gt 0}限制{$item.limit_num}人{else}无限制{/if}</i>
+    </h3>
+    <p>{$item.rt_name}</p>
+    <section>{$item.rt_desc}</section>
+    <div class="peisong">
+        <p>
+            配送费用：<i>免费</i>
+        </p>
+        <p>
+            预计回报发送时间：
+            <i>项目成功结束后{$item.rt_day}天</i>
+        </p>
+    </div>
+</div>
+</div>
+{/foreach}
+<script type="text/javascript">
+    $('.huibaoxq').on('click',function(){
+        var id = $(this).parent().attr('id');
+        $.get('/crowd/return_edit',{ id:id,cd_id:cd_id },function(data){
+            $('#add_content').fadeOut('');
+            $('.add_return').fadeOut('');
+            $('#add_content').children('.huibao-tj').html('');
+            $("#"+id).addClass('huibao-tj').html(data);
+        });
+    });
+</script>

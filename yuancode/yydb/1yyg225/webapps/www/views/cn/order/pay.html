@@ -1,0 +1,41 @@
+{include file="header.html"}
+<link rel="stylesheet" href="{url('/style/css/member.css')}">
+{include file="ur_here.html"}
+<div id="container">
+    <div class="fn-clear mt20 pb20">
+        {include file="member/menu.html"}
+        <div class="fn-right hy-r">
+            <div class="fn-clear hy-tjxh">
+                <div class="title">
+                    <h2>订单支付</h2>
+                </div>
+
+                <div class="hy-box">
+                    <div class="hy-yhk">
+                        <table>
+                            <tr>
+                                <th>您的支付金额为：</th>
+                                <td>{$order.surplus_amount|price_format}</td>
+                            </tr>
+                            {if $payment_info.pay_fee}
+                            <tr>
+                                <th>支付手续费用为：</th>
+                                <td>{$payment_info.pay_fee}</td>
+                            </tr>
+                            {/if}
+                            <tr>
+                                <th>您选择的支付方式为：</th>
+                                <td>{$payment_info.pay_name}</td>
+                            </tr>
+                            <tr>
+                                <th>&nbsp;</th>
+                                <td>{$payment_info.pay_button}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="footer.html"}

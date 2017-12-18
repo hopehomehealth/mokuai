@@ -1,0 +1,284 @@
+{include file="crowd/crowd_header.html"}
+<script src="{url('/style/jquery.ajaxContent.pack.js')}" type="text/javascript"></script>
+<div class="container">
+
+    <div class="czxx">
+        <div class="czxx-top">
+            <section>
+                <img class="img" src="{zz mod=photo source=$member.photo size='80' nopic='/upload/default.gif'}" width="80px;" height="80px;"/>
+                <p class="p1">{$info.cd_name}</p>
+                <p class="p2">
+                    {$member.username|nickname:$member.nickname}
+                    <a href="{url('/member/message?mid=')}{$info.mid}" target="_blank"> <img src="/style/crowd/images/lxw.png" /></a>
+                </p>
+            </section>
+            <div style="float: right; margin-top: 15px;">
+                <!-- JiaThis Button BEGIN -->
+                <div class="jiathis_style_32x32">
+                    <a class="jiathis_button_qzone"></a>
+                    <a class="jiathis_button_tsina"></a>
+                    <a class="jiathis_button_tqq"></a>
+                    <a class="jiathis_button_renren"></a>
+                    <a class="jiathis_button_kaixin001"></a>
+                    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+                </div>
+                <script type="text/javascript" >
+                $(function(){
+			var apiKey='4110768210';  
+	                function shorturl(long_url){  
+	                    var apiUrl='http://api.t.sina.com.cn/short_url/shorten.json?source='+apiKey+'&url_long='+long_url;  
+	                    $.ajax(apiUrl, {    
+	                        data: {    
+	                          'source': apiKey,    
+	                          'url_long': long_url  
+	                        },    
+	                        dataType: 'jsonp',    
+	                        crossDomain: true,    
+	                        success: function(data) {   
+	                            if(data[0].type==0){
+					 console.log(data[0].url_short);  
+	                                 return data[0].url_short;   
+	                            }else{
+					 console.log('生成失败');  
+	                                 return '生成失败';   
+	                            }  
+	                        }    
+	                      });   
+	                }  
+                   
+	                function expandurl(short_url){  
+	                    apiUrl='http://api.t.sina.com.cn/short_url/expand.json?source='+apiKey+'&url_short='+short_url;  
+	                    $.ajax(apiUrl, {    
+	                        data: {    
+	                          'type':0,  
+	                          'source': apiKey,    
+	                          'url_short': short_url  
+	                        },    
+	                        dataType: 'jsonp',    
+	                        crossDomain: true,    
+	                        success: function(data) {  
+	                            if(data[0].type==0){  
+	                                return data[0].url_long;   
+	                            }else{  
+	                                 return '生成失败';   
+	                            }   
+	                        }    
+	                      });   
+	                }
+		    console.log(window.location.href);  
+                    var jiathis_config={
+                        summary:"",
+                        url:shorturl(window.location.href),
+                        shortUrl:true,
+                        hideMore:true
+                    }
+		}()!
+		</script>
+                <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+                <!-- JiaThis Button END -->
+
+            </div>
+
+        </div>
+        <div class="czxx-min">
+            <div class="icon {if $info.is_success eq 0}icon-ing{elseif $info.is_success eq 1}icon-success{/if}"></div>
+            <div class="czxx-min-l">
+                <img src="{zz mod=fileurl source=$info.image width=790 height=400}" />
+            </div>
+            <div class="czxx-min-r">
+                <h3>{$info.cd_name}</h3>
+
+                <i class="yic">已筹到</i>
+                <p class="p-je">
+                    ￥
+                    <em>{$info.cd_total}</em>
+                </p>
+                <section>
+
+
+                    <div class="zcjd">
+                        <span style="width:{$info.cd_total|progress:$info.cd_price}%;"></span>
+                    </div>
+
+                    <dl class="zcjd-dl">
+                        <dd>
+                            <p>
+                                <i>{$info.cd_total|progress:$info.cd_price}%</i>
+                                <span>已达</span>
+                            </p>
+                        </dd>
+                        <dd>
+                            <p>
+                                <i>￥{$info.cd_total}</i>
+                                <span>已筹</span>
+                            </p>
+                        </dd>
+                        <dd>
+                            <p>
+                                <i>{$info.end_time|endDay}</i>
+                                <span>剩余时间</span>
+                            </p>
+                        </dd>
+                    </dl>
+
+
+                </section>
+
+
+                <p class="guznz">
+                    <a class="gz focus" href="javascript:;"><i>{if $isfocus}已{/if}关注（{$info.focus_num}）</i></a>
+                    <a class="zc" href="#support">我要支持</a>
+                </p>
+                <p class="tix">此项目必须在 {$info.end_time|date_format:'Y年m月d日'} 前得到 ￥{$info.cd_price}的支持才可成功！ 剩余 {$info.end_time|endDay}!</p>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+<div class="container">
+<div class="xq-l">
+    <div class="hd">
+        <ul class="xq-l-ul">
+            <li class="on" onclick="mLoad('detail')">
+                <a href="javascript:;">项目介绍</a>
+            </li>
+            <li onclick="mLoad('progress')">
+                <a href="javascript:;">项目进展({$info.progress_num})</a>
+            </li>
+            <li onclick="mLoad('commont')">
+                <a href="javascript:;">话题(<span id="commont">{$info.commont_num}</span>)</a>
+            </li>
+            <li onclick="mLoad('support')">
+                <a href="javascript:;">支持者({$info.support_num})</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="xq-l-main">
+    </div>
+
+
+
+</div>
+<script type="text/javascript">
+    var id = '{$info.cd_id}';
+    console.log(window.location.href);
+    $(function(){
+        $('.focus').click(function(){
+            $.post('/crowd/focus/'+id,{},function(result){
+                if(result.code==1){
+                    layer.alert(result.msg,8,function(){
+                        location.href="{url('/member/login')}";
+                    });
+                }else if(result.code==0){
+                    layer.alert(result.msg);
+                    $('.focus i').html('已关注（'+result.count+'）');
+                }else{
+                    layer.alert(result.msg);
+                }
+            },'JSON');
+        });
+        mLoad('detail');
+    });
+    function mLoad(hash){
+        var loadDiv = '.xq-l-main';
+        $(loadDiv).html("拼命加载中...").load('/crowd/load_'+hash+'?id='+id,function(){
+        });
+    }
+
+
+    jQuery(".xq-l").slide({ trigger: "click" });
+</script>
+<div class="xq-r" id="support">
+    {foreach from=$return item=item}
+    <div class="zc-xq">
+        <h3>
+            {if $item.price}{$item.price|price_format:1}{else}无私奉献{/if}
+            <i>{$item.support_num}位支持者</i>
+        </h3>
+
+        <p class="dwei">
+            {if $item.draw_num gt 0}<a href="/content/index/0?mark=crowd_rule">抽奖规则></a>{/if}{if $item.limit_num gt 0}限额{$item.limit_num}份 | 剩余{$item.end_num}份{else}无限额{/if}
+            {if $item.draw_num gt 0}<i>（抽奖档）</i>{/if}
+        </p>
+
+        <div class="zc-xq-nr">
+            {if $item.draw_num gt 0}每满{$item.draw_num}位支持者抽取1位幸运用户，不满足时也抽取1位。{/if}{$item.rt_desc}{if $item.price eq 0}不需要给回报，选择此项，项目成功后发起人将不会给您发送回报{/if}
+        </div>
+        {if $item.thumb}
+        <p class="xqp1">
+            <a class="fancybox-effects-a" href="{zz mod=fileurl source=$item.thumb width=500 height=500}">
+                <img src="{zz mod=fileurl source=$item.thumb width=78 height=78}" />
+            </a>
+        </p>
+        {/if}
+        {if $item.is_address}
+        <p class="xqp2">
+            配送费用：
+            <b>免运费</b>
+        </p>
+        {/if}
+        {if $item.day}
+        <p class="xqp3">
+            预计回报发送时间：
+            <b>项目成功结束后<i>{$item.day}</i>天内</b>
+        </p>
+        {/if}
+        <p class="xqp4">
+            {if $info.is_success eq 0}
+            <a href="{url('/crowd/support/')}{$item.rt_id}">{if $item.price}支持 {$item.price|price_format:1}{else}无私奉献{/if}</a>
+            {else}
+            <button disabled>筹款结束</button>
+            {/if}
+        </p>
+    </div>
+    {/foreach}
+    <div class="zc-xq">
+        <h3>
+            风险说明
+        </h3>
+        <div class="zc-xq-nr">{zz mod=block mark=explain}</div>
+
+    </div>
+    <div class="zc-xq" style="padding-bottom: 0;overflow: hidden;">
+        <h3>
+            相关推荐
+        </h3>
+
+
+        <ul class="tuij-ul">
+            {foreach from=$relevant_crowd item=row}
+            <li>
+                <a href="{url('/crowd/detail/')}{$row.cd_id}"><img src="{zz mod=fileurl source=$row.thumb width=285 height=224}"/>{$row.cd_name}</a>
+            </li>
+            {/foreach}
+
+
+        </ul>
+
+    </div>
+</div>
+<div class="clear"></div>
+<script src="/style/crowd/source/jquery.fancybox.js"></script>
+<link href="/style/crowd/source/jquery.fancybox.css" rel="stylesheet" />
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".fancybox-effects-a").fancybox({
+            helpers: {
+                title : {
+                    type : 'outside'
+                },
+                overlay : {
+                    speedOut : 0
+                }
+            }
+        });
+
+    });
+</script>
+</div>
+{include file="crowd/crowd_footer.html"}

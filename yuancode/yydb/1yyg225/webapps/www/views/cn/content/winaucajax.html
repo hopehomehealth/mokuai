@@ -1,0 +1,50 @@
+<div class="win-list">
+    <div class="winCount">
+        截至目前共揭晓{$L.unit_pay}商品<b class="color01">{$data.count}</b>个
+    </div>
+    <ul class="fn-clear">
+        {foreach from=$list item=m}
+        <li class="item">
+            <div class="itemc">
+                <div class="itemL scrollLoadingDiv"><a href="{'/auction/view/'|cat:$m.act_id}" title="{$m.title}" target="_blank"><img class="scrollLoading" src="/style/images/pix.gif" data-url="{zz mod=fileurl source=$m.imgurl_src width=150 type=0}" width="150" /></a></div>
+                <div class="itemR">
+                    <div class="user-info">
+                        <div class="photo"><a href="{'/minfo?id='|cat:$m.bid_user|url}#aucCod" title="{$m.username|nickname:$m.nickname}" target="_blank"><img class="scrollLoading scrollLoadingDiv" src="/style/images/pix.gif" data-url="{zz mod=photo source=$m.photo size='80' nopic='/upload/default.gif'}" width="60" height="60" /></a></div>
+                        <div class="txt">
+                            <p class="p1">获得者：<a href="{'/minfo?id='|cat:$m.bid_user|url}#aucCod" target="_blank" class="color02" title="{$m.username|nickname:$m.nickname}">{$m.username|nickname:$m.nickname}</a></p>
+                            <p>来自：{$m.ip|cityIp}</p>
+                            <p>{$L.unit_winning}出价：<span class="color01">{if $m.bid_price gt 0}{$m.bid_price|price_format} {/if}{if $m.paib gt 0}{$m.paib}{$L.unit_pay_points}{/if}</span></p>
+                            <p>{$L.unit_winning}时间：<span class="color01">{$m.cod_time|formatTime}</span></p>
+                        </div>
+                    </div>
+                    <div class="pro-info">
+                        <p class="tit"><a href="#" title="{$m.title}">{$m.title|truncate:26}</a></p>
+                        <p>商品价值：{$m.price|price_format}</p>
+                        <p>{$L.unit_winning}概率：{$m.win}%</p>
+                        <p class="button"><span><a href="{'/auction/view/'|cat:$m.act_id}" target="_blank">查看详情</a></span></p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        {foreachelse}
+        <li class="empty">暂无最新{$L.unit_yun}记录！</li>
+        {/foreach}
+    </ul>
+</div>
+
+{include file="ajax_page.html"}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#load_auc').find('.demo').ajaxContent({
+            event:'click', //mouseover
+            loaderType:"text",
+            loadingMsg:"<span class='loading'>拼命加载中...</span>",
+            target:'#load_auc',
+            success:function(){
+                scrollLoading();
+            }
+        }).bind('click',function(){
+            $('html').animate({ scrollTop: '0' }, 500);
+        });
+    });
+</script>

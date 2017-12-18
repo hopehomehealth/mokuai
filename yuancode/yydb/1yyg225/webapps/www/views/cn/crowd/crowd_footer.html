@@ -1,0 +1,105 @@
+
+<div class="ft1">
+    <div class="container">
+
+        <ul class="ft1-ul">
+            <li class="l-1">
+                <i><a href="/content/index/0?mark=crowd_rule">帮助中心</a></i>
+            </li>
+            <li class="l-2">
+                <i><a href="/content/index/0?mark=crowd_norm">项目发起规范</a></i>
+            </li>
+            <li class="l-3">
+                <i><a href="/content/index/0?mark=crowd_service">服务协议</a></i>
+            </li>
+            <li class="l-4">
+                <i><a href="/content/index/0?mark=crowd_feedback">意见反馈</a></i>
+            </li>
+        </ul>
+
+        <div class="phone">
+            <h3>{$site_config.tel}</h3>
+            <p>
+                {$site_config.work|nl2br}
+                <br />
+                (全国免费热线)
+            </p>
+            {if $site_config.qq}<a onclick="window.open('http://wpa.qq.com/msgrd?v=3&uin={$site_config.qq}&site=qq&menu=yes');">在线客服</a>{/if}
+        </div>
+
+        <div class="ewm">
+            <img src="{zz mod=fileurl source=$site_config.weixin_logo}"  width="90" height="90"/>
+            <img src="{url('/style/crowd/images/ficogf.png')}" />
+        </div>
+
+    </div>
+</div>
+<footer>
+    <dl class="container">
+        <dt>
+            <img src="/style/crowd/images/ft5.png">
+            <img src="/style/crowd/images/ft1.png">
+            <img src="/style/crowd/images/ft2.png">
+            <img src="/style/crowd/images/ft3.png">
+            <img src="/style/crowd/images/ft4.png">
+        </dt>
+        <dd>
+            {zz mod=block mark=footer}
+            {$site_config.cnnz|htmlspecialchars_decode}
+        </dd>
+        <div class="clear"></div>
+    </dl>
+</footer>
+
+<ul class="kefu">
+    <li class="k1" style="display:none;">
+        <a href=""></a>
+    </li>
+    {if $site_config.qq}
+    <li class="k2" onclick="window.open('http://wpa.qq.com/msgrd?v=3&uin={$site_config.qq}&site=qq&menu=yes');">
+        <a></a>
+    </li>
+    {/if}
+    <li class="k3">
+        <img src="{zz mod=fileurl source=$site_config.weixin_logo}" width="90" height="90"/>
+    </li>
+    <li class="k4">
+        <img src="{$qrcode}"  width="90" height="90"/>
+    </li>
+    <li class="k6">
+        <span>返回顶部</span>
+    </li>
+</ul>
+<script>
+    function a(x, y) {
+        l = $('.container').offset().left;
+        w = $('.container').width();
+        $('.kefu').css('left', (l + w + x) + 'px');
+        $('.kefu').css('bottom', y + 'px');
+    }//获取#tbox的div距浏览器底部和页面内容区域右侧的距离函数#main为页面的可视宽度
+    $(function () {
+        $(window).scroll(function () {
+            t = $(document).scrollTop();
+            if (t > 300) {
+                // $('#go-top').fadeIn('slow');
+            } else {
+                // $('#go-top').fadeOut('slow');
+            }
+        })
+        a(10, 100);//#tbox的div距浏览器底部和页面内容区域右侧的距离
+        $('.k6').click(function () {
+            $('body,html').animate({
+                        scrollTop: 0
+                    },
+                    800);//点击回到顶部按钮，缓懂回到顶部,数字越小越快
+            return false;
+        })
+    });</script>
+
+<script type="text/javascript">	(function () { var ind = 2; var nav = jQuery(".nav"); var init = jQuery(".nav .m").eq(ind); var block = jQuery(".nav .block"); block.css({ "left": init.position().left - 3 }); nav.hover(function () { }, function () { block.animate({ "left": init.position().left - 3 }, 100); }); jQuery(".nav").slide({ type: "menu", titCell: ".m", targetCell: ".sub", delayTime: 300, triggerTime: 0, returnDefault: true, defaultIndex: ind, startFun: function (i, c, s, tit) { block.animate({ "left": tit.eq(i).position().left - 3 }, 100); } }); })()	</script>
+
+<script type="text/javascript">				jQuery(".focusBox").hover(function () { jQuery(this).find(".prev,.next").stop(true, true).fadeTo("show", 0.2) }, function () { jQuery(this).find(".prev,.next").fadeOut() }); jQuery(".focusBox").slide({ mainCell: ".pic", effect: "fold", autoPlay: true, delayTime: 600, trigger: "click" });	</script>
+<iframe name="iframeNews" style="display:none;"></iframe>
+<script type="text/javascript">
+    var logCount = '{$main.logCount}';
+</script>

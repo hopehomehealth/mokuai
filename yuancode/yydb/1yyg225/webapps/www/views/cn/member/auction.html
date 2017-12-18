@@ -1,0 +1,82 @@
+{include file="header.html"}
+<link rel="stylesheet" href="{url('/style/css/member.css')}">
+{include file="ur_here.html"}
+<div id="container">
+    <div class="fn-clear mt20 pb20">
+        {include file="member/menu.html"}
+        <div class="fn-right hy-r">
+            <div class="fn-clear hy-tjxh">
+                <ul class="fn-clear db-tab">
+                    <li class="dq"><a href="{url('/member/auction')}">{$L.unit_pay}记录</a></li>
+                    <li><a href="{url('/member/cod')}">{$L.unit_winning}领取</a></li>
+                </ul>
+
+                <div class="hy-box">
+                    <div class="jp-sx fn-clear">
+                        <form action="/member/auction" method="get">
+                            <label id="Label1">{$L.unit_pay}状态：</label>
+                            <select name="status" onchange="this.form.submit();">
+                                <option value="99">所有参与的{$L.unit_pay}</option>
+                                <option value="{$smarty.const.UNDER_WAY}" {if $smarty.get.status eq $smarty.const.UNDER_WAY}selected{/if}>进行中的{$L.unit_pay}</option>
+                                <option value="{$smarty.const.FINISHED}" {if $smarty.get.status eq $smarty.const.FINISHED}selected{/if}>成功的{$L.unit_pay}（未购买）</option>
+                                <option value="{$smarty.const.SETTLED}" {if $smarty.get.status eq $smarty.const.SETTLED}selected{/if}>成功的{$L.unit_pay}（已购买）</option>
+                                <option value="{$smarty.const.FINISHED_ALL}" {if $smarty.get.status eq $smarty.const.FINISHED_ALL}selected{/if}>历史记录</option>
+                            </select>
+                        </form>
+                    </div>
+
+                    <div class="mt15 hy-table">
+                        <table>
+                            <tr>
+                                <th colspan="2">商品信息</th>
+                                <th style="width:150px;">最后出价（￥/人）</th>
+                                <th style="width:170px">我的出价（￥/随机码）</th>
+                                <th style="width:100px">出价时间 </th>
+                                <th style="width:90px">状态/操作</th>
+                            </tr>
+                            {foreach from=$data.list item=m}
+                            <tr>
+                                <td width="80">
+                                    <a href="{$m.url}" target="_blank"><img src="{zz mod=fileurl source=$m.imgurl_src width=80 type=0}" alt="{$m.title}" width="80" /></a>
+                                </td>
+                                <td style="text-align: left">
+                                    <a href="{$m.url}" target="_blank">{$m.title}</a>
+                                </td>
+                                <td>
+                                    <span class="color01">{$m.current_price|price_format}</span><br>
+                                    {$m.last_bid.username|nickname:$m.last_bid.nickname}
+                                </td>
+                                <td>
+                                    <span class="color01">{$m.my_bid.bid_price|price_format}</span><br>
+                                    {$m.my_bid.cod}
+                                </td>
+                                <td><span class="color03">{$m.my_bid.bid_time|date_format:'Y-m-d H:i:s'}</span></td>
+                                <td class="hy-rza">
+                                    <!-- {if $m.status eq $smarty.const.UNDER_WAY} -->
+                                    <span class="color01">正在进行中...</span>
+                                    <!-- {elseif $m.status eq $smarty.const.FINISHED && $m.last_bid.bid_user eq $smarty.session.mid && $m.type eq 1} -->
+                                    <span class="color02">最高价获得</span>
+                                    <br><a href="{$m.url}" target="_blank">立即购买</a>
+                                    <!-- {elseif $m.status eq $smarty.const.SETTLED && $m.last_bid.bid_user eq $smarty.session.mid && $m.type eq 1} -->
+                                    <span class="color03">已购买</span>
+                                    <!-- {else} -->
+                                    <span class="color03">已结束</span>
+                                    <!-- {/if} -->
+                                </td>
+                            </tr>
+                            {foreachelse}
+                            <tr>
+                                <td colspan="5">没找到{$L.unit_pay}记录！</td>
+                            </tr>
+                            {/foreach}
+                        </table>
+                    </div>
+
+                    {include file="public_page.html"}
+                </div>
+
+            </div>
+        </div>
+     </div>
+</div>
+{include file="footer.html"}

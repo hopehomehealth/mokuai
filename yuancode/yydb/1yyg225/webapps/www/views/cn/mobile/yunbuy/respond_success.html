@@ -1,0 +1,35 @@
+{include file="top.html"}
+<script type="text/javascript">
+    if(top.location!=self.location){ top.location=self.location; }
+</script>
+<style type="text/css">
+    a{ cursor: pointer; }
+    .body{ position: relative; text-align: left; padding-left: 60px; margin-left: 20px; }
+    .body i{ position: absolute; left: 0; top: 0; background: url('/style/images/pay_icon.png') no-repeat -40px 0; display: block; width: 44px; height: 44px; }
+    h3{ font-size: 16px; line-height: 44px; color: #333; padding:0; }
+    .msg{ color: #999; margin: 0 0 15px; }
+    .btn-box{ line-height: 20px; }
+    .btn{ background: #e53d09; color: #fff; height: 20; line-height: 20px; padding: 5px 10px; font-size: 14px; border-radius: 5px; margin-bottom: 10px; }
+    .btn:hover{ background: #ff4e00; color: #fff; }
+    .back{ color: #DD344F; }
+    .back:hover{ text-decoration: underline; }
+    .btn-box span a{ color: #DD344F; font-size: 14px; }
+    .btn-box span a:hover{ text-decoration: underline; }
+    .btn-box span font{ padding: 0 5px; }
+    .clear{ clear:both; }
+</style>
+
+<div id="content" class="container main tc">
+    <div class="body">
+        <i></i>
+        <h3>支付成功啦~请等待揭晓</h3>
+        <div class="msg st">揭晓并成功获得后，<br>将发送短信和邮件通知您领取！</div>
+        <div class="btn-box">
+            <a id="j_finish" class="btn" href="/yunbuy">继续{$L.unit_yun}</a>&nbsp;
+            <a class="btn" href="/member/db?return">夺宝记录</a>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+
+{include file="footer.html"}

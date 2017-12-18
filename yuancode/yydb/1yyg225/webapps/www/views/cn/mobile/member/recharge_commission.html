@@ -1,0 +1,39 @@
+{assign var='header' value='header2'}
+{include file="top.html"}
+<link rel="stylesheet" href="/style/mobile/css/member.css">
+<div id="content" class="container main">
+    <div class="nav-m ui-clr">
+        <ul>
+            {if $site_config.withdraw_status eq 1}
+            <li><a href="{'/member/withdraw_commission'}">提现</a></li>
+            {/if}
+            {if $site_config.apply_jufu!=1}
+            <li class="on"><a>充值到账户</a></li>
+            {if $site_config.withdraw_status eq 1}
+            <li><a href="{url('/member/commission')}">佣金明细</a></li>
+            <li><a href="{url('/member/withdraw_commission_log')}">佣金提现记录</a></li>
+            {/if}
+            {/if}
+        </ul>
+    </div>
+
+    <div class="title-m2">
+        <b>可充值佣金：<span class="color01">{$member.commission|price_format}</span></b>
+    </div>
+
+    <div class="form-m" style="background: #fff;border-top:1px solid #e6e6e6;">
+        <form action="" method="post" target="iframeNews">
+            <div class="item ui-clr">
+                <dl>
+                    <dt class="color03"><span class="color01">*</span> 充值金额：</dt>
+                    <dd>
+                        <input name="change_money" type="text" class="input-m" />
+                    </dd>
+                </dl>
+                <div style="line-height: 2em;" id="withdraw_tip"></div>
+            </div>
+            <input name="Submit" type="submit" value="充值" class="btn" />
+        </form>
+    </div>
+</div>
+{include file="footer.html"}

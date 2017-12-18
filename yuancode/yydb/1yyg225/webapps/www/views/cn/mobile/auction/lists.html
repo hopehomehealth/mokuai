@@ -1,0 +1,57 @@
+{include file="top.html"}
+<script src="/style/lefttime.js"></script>
+<div class="container">
+    {include file="nav.html"}
+    <div class="sort">
+        <ul class="ui-clr">
+            <li id="li_cate" class="DESC"><a>{$data.top.title}<i class="ap-icon icon-sort"><em></em></i></a></li>
+            <li class="li_sort" id="li_default"><a onclick="mLoad('default')">剩余</a> </li>
+            <li class="li_sort" id="li_count"><a onclick="mLoad('count')">人气</a></li>
+            <li class="li_sort" id="li_new"><a onclick="mLoad('new')">最新</a></li>
+            <li class="li_sort" id="li_price"><a onclick="mLoad('price')">价值<i class="ap-icon icon-sort"><em></em></i></a> </li>
+        </ul>
+    </div>
+
+    <div class="pro-view">
+        <div class="cate-bg"></div>
+        <div class="cate">
+            <ul class="ui-clr">
+                <li><a{if $data.type eq 'kaquan'} class="on"{/if} href="{'/auction/lists/kaquan'|url}"><i class="ap-icon c1"></i>卡券拍</a></li>
+                <li><a{if $data.type eq 'jingpin'} class="on"{/if} href="{'/auction/lists/jingpin'|url}"><i class="ap-icon c2"></i>精品拍</a></li>
+                <li><a{if $data.type eq 'tiyan'} class="on"{/if} href="{'/auction/lists/tiyan'|url}"><i class="ap-icon c3"></i>体验拍</a></li>
+            </ul>
+        </div>
+        <ul class="goodList"></ul>
+    </div>
+    <a class="loading getMore"></a>
+</div>
+{include file="footer.html"}
+<script src="/style/mobile/js/jquery-pageload.js"></script>
+<script type="text/javascript">
+    var order = "{if $smarty.get.order}{$smarty.get.order}{else}default{/if}";
+    var sort = "{if $smarty.get.sort}{$smarty.get.sort}{else}ASC{/if}";
+    var url = "/auction/lists/{$data.type}/{$data.status}/{$data.id}";
+    var param = "order="+order+"&sort="+sort;
+
+    $(function(){
+        $('.sort li.li_sort').removeClass('on DESC ASC');
+        $('.sort #li_'+order).addClass('on '+sort);
+        $('.goodList').pageload({ url: url, param: param });
+
+        $('#li_cate').bind('click',function(){
+            if($(this).hasClass('DESC')){
+                $(this).removeClass('DESC').addClass('ASC');
+            }else{
+                $(this).removeClass('ASC').addClass('DESC');
+            }
+            $('.cate-bg,.cate').toggle();
+        })
+    });
+
+    function mLoad(type){
+        if(type=='price'){ sort=(sort=='ASC')?'DESC':'ASC'; }
+        else if(type=='default'){ sort='ASC'; }
+        else{ sort='DESC'; }
+        location.replace(url+(url.indexOf('?')>-1?'&':'?')+'order='+type+'&sort='+sort);
+    }
+</script>

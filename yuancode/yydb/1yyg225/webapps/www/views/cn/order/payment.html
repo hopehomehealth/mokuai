@@ -1,0 +1,30 @@
+{include file='home/uhead.html'}
+<link rel="stylesheet" href="/css/wx-site.css" type="text/css" />
+{literal}
+<style type="text/css">
+</style>
+{/literal}
+<div class="context clear">
+    <div class="wrap-s1">
+        <div class="succ-tag">
+            您的订单已提交成功!<br>
+            您的订单号: <span>{$order.order_sn}</span>
+        </div>
+
+        <div class="order-desc">
+            配送方式：<span>{$express.name}</span><br>
+            支付方式：<span>支付宝</span><br>
+            付款金额：<span>￥{$order.order_price}</span>
+        </div>
+        <div class="goto-home">
+            <div><a href="/xorder/topay/{$order.id}" class="uiBtn BtnOrange BtnS6 s14">立即支付</a></div>
+            <div class="homelink"><a href="/xmall">返回首页</a></div>
+        </div>
+
+        <div class="fix-bottom">
+
+        </div>
+    </div>
+</div><!--End Context-->
+<span style="display:none" class="icon-heart"></span>
+{include file='home/foot.html'}

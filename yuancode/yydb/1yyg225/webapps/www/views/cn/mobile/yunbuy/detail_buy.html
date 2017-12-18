@@ -1,0 +1,123 @@
+{assign var='header' value='header2'}
+{include file="top.html"}
+<div id="content" class="container detail">
+    <div class="slider" id="single-item">
+        {foreach from=$row.pics item=m name=pics key=k}
+        {if $m.imgurl_src}
+        <div><img src="{zz mod=fileurl source=$m.imgurl_src width=410 height=380}" {if $k eq 0}id="buy_img_{$row.buy_id}"{/if} /></div>
+        {/if}
+        {/foreach}
+    </div>
+
+    <div class="info">
+        <p class="title">{$row.title}</p>
+        <p class="price">
+            价格：<b class="color01">{$row.custom_price|price_format}</b>
+        </p>
+        {if $row.end_num gt 0}
+        <div class="progressBar">
+            <div class="bottom">
+                购买数量：
+                <div class="number" style="margin-right: 5px;">
+                    <input class="num-input" type="text" id="qty_{$row.buy_id}" data-max="1000" value="1" />
+                    <a class="num-btn btn-plus" id="qty_plus" href="javascript:void(0);">+</a>
+                    <a class="num-btn btn-minus" id="qty_minus" href="javascript:void(0);">-</a>
+                </div>
+                <script type="text/javascript">
+                    function add(){
+                        var div=$(".num-input");
+                        var num=div.val();
+                        num=parseInt(num);
+                        num+=1;
+                        if(num>div.attr('data-max')) return false;
+                        div.val(num);
+                    }
+                    function reduce(){
+                        var div=$(".num-input");
+                        var num=div.val();
+                        num=parseInt(num);
+                        num-=1;
+                        if(num<1) return false;
+                        div.val(num);
+                    }
+                    window.onload=function(e){
+                        //鼠标按钮时刻，抬起时刻
+                        var firstTime,lastTime;
+                        //定义计时器(判断2s后)
+                        var time1,time2;
+                        //周期性计时器;
+                        var flag=false;
+                        document.getElementById("qty_plus").onmousedown=function(e){
+                            firstTime=new Date().getTime();
+                            var time1=setTimeout(function(){
+                                flag=true;
+                                clearTimeout(time1);
+                            },100);
+                            time2=setInterval(function(){
+                                if(flag==true){
+                                    add();
+                                }
+                            },100);
+                        }
+                        document.getElementById("qty_minus").onmousedown=function(e){
+                            firstTime=new Date().getTime();
+                            var time1=setTimeout(function(){
+                                flag=true;
+                                clearTimeout(time1);
+                            },100);
+                            time2=setInterval(function(){
+                                if(flag==true){
+                                    reduce();
+                                }
+                            },100);
+                        }
+                        document.onmouseup=function(e){
+                            lastTime=new Date().getTime();
+                            var someTime=lastTime-firstTime;
+                            someTime=someTime/1000;
+                            if(someTime<2){
+                                if(e.target.id=="qty_plus"){
+                                    add();flag=false;clearInterval(time2);
+                                }else if(e.target.id=="qty_minus"){
+                                    reduce();flag=false;clearInterval(time2);
+                                }
+                            }else{
+                                flag=false;
+                                clearTimeout(time2);
+                            }
+                        }
+                        $(".num-input").blur(function(){
+                            var max = $(this).attr('data-max')*1;
+                            if($(this).val()>max){
+                                $(this).val(max);
+                            }
+                        });
+                    }
+                </script>
+            </div>
+            <div class="bottom button-box ui-clr">
+                <span class="btn-db"><a href="javascript:void(0)" onclick="addToCart('{$row.buy_id}','buy')">立即购买</a></span>
+                <span class="btn-db btn-cart"><a href="javascript:void(0)" onclick="addToCart('{$row.buy_id}','',this)">加入购物车</a></span>
+            </div>
+        </div>
+        {/if}
+    </div>
+
+    <ul class="yunbuy_other">
+        <a href="{'/yunbuy/detail/'|cat:$row.buy_id|cat:'/info'|url}"><b></b>商品图文详情<label>（建议WIFI下使用）</label></a>
+    </ul>
+</div>
+
+{include file="footer.html"}
+<script src="/style/mobile/js/slick.min.js"></script>
+<script src="/style/mobile/js/jquery-pageload.js"></script>
+<script src="/style/mobile/js/jquery.more.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $('#single-item').slick({
+            autoplay: true,
+            arrows: false,
+            dots: true
+        });
+    });
+</script>

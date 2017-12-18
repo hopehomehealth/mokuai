@@ -1,0 +1,132 @@
+{include file='../public_btn.html'}
+<div class="html-box">
+    <form target="iframeNewsTarget" method="post" action="/manage/member/edit" enctype="multipart/form-data">
+        <input type="hidden" name="post[mid]" value="{$row.mid}" />
+        <table class="table-list">
+            <tbody>
+            <tr>
+                <td class="td-label"><label>用户名：</label><span class="c-red"> *</span></td>
+                <td class="td-input">
+                    {if $row.mid}
+                    {$row.username}
+                    <input type="hidden" name="post[username]" value="{$row.username}" />
+                    {else}
+                    <input type="text" name="post[username]" value="{$row.username}" class="form-i w200">
+                    {/if}
+                </td>
+            </tr>
+            <tr>
+                <td class="td-label">会员等级：</td>
+                <td class="td-input">
+                    <select name="post[rank_id]">
+                        <option value="0">非特殊等级</option>
+                        {foreach from=$ranklist item=m}
+                        <option value="{$m.id}" {if $m.id eq $row.rank_id}selected{/if}>{$m.rank_name}</option>
+                        {/foreach}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="td-label"><label>昵称：</label></td>
+                <td class="td-input">
+                    <input type="text" name="post[nickname]" value="{$row.nickname}" class="form-i w200">
+                </td>
+            </tr>
+            <tr>
+                <td class="td-label"><label>真实名称：</label></td>
+                <td class="td-input">
+                    <input type="text" name="post[realname]" value="{$row.realname}" class="form-i w200">
+                </td>
+            </tr>
+            <tr>
+                <td class="td-label"><label>电子邮箱：</label></td>
+                <td class="td-input">
+                    <input type="text" name="post[email]" value="{$row.email}" class="form-i w200">
+                </td>
+            </tr>
+            {if $row.mid}
+            <tr>
+                <td class="td-label"><label>可用余额：</label></td>
+                <td class="td-input"> {$row.user_money}</td>
+            </tr>
+            <tr>
+                <td class="td-label"><label>冻结金额：</label></td>
+                <td class="td-input"> {$row.frozen_money} </td>
+            </tr>
+            {/if}
+            <tr>
+                <td class="td-label"><label>新密码：</label></td>
+                <td class="td-input">
+                    <input type="password" name="post[password]" value="" class="form-i w200">
+                </td>
+            </tr>
+            <tr>
+                <td class="td-label"><label>确认密码：</label></td>
+                <td class="td-input">
+                    <input type="password" name="post[cfmpassword]" value="" class="form-i w200">
+                </td>
+            </tr>
+            <tr>
+                <td class="td-label"><label>新支付密码：</label></td>
+                <td class="td-input">
+                    <input type="password" name="post[pay_password]" value="" class="form-i w200">
+                </td>
+            </tr>
+            <tr>
+                <td class="td-label"><label>确认支付密码：</label></td>
+                <td class="td-input">
+                    <input type="password" name="post[cfmpay_password]" value="" class="form-i w200">
+                </td>
+            </tr>
+            <tr class="h s0">
+                <td class="td-label"><label>性别：</label></td>
+                <td class="td-input">
+                   <label><input type="radio" name="post[sex]" value="1" {if $row.sex eq 1 || $row.id eq 0}checked{/if}> 男</label>
+                   <label><input type="radio" name="post[sex]" value="2" {if $row.sex eq 2}checked{/if}> 女</label>
+                </td>
+            </tr>
+            <tr>
+                <td class="td-label"><label>生日：</label></td>
+                <td class="td-input"><input type="text" name="post[birthday]" onclick="WdatePicker()" value="{$row.birthday}" class="form-i w200"></td>
+            </tr>
+            <tr>
+                <td class="td-label"><label>所在地区：</label></td>
+                <td class="td-input"><div id="select_linkage">{$area}</div></td>
+            </tr>
+            <tr>
+                <td class="td-label"><label>联系地址：</label></td>
+                <td class="td-input"><input type="text" name="post[address]" value="{$row.address}" class="form-i w200"></td>
+            </tr>
+            <tr>
+                <td class="td-label"><label>手机号：</label></td>
+                <td class="td-input">
+                    <input type="text" name="post[mobile]" value="{$row.mobile}" class="form-i w200">
+                </td>
+            </tr>
+            <tr class="h s0">
+                <td class="td-label"><label>状态：</label></td>
+                <td class="td-input">
+                    <label><input type="radio" name="post[status]" value="1" {if $row.status eq 1 || $row.id eq 0}checked{/if}> 正常</label>
+                    <label><input type="radio" name="post[status]" value="0" {if $row.status eq 0}checked{/if}> 关闭</label>
+                </td>
+            </tr>
+            {if $smarty.get.act neq 'show'}
+            <tr class="tr-btn">
+                <td class="td-label"></td>
+                <td class="td-input">
+                    <button type="submit" name="Submit" class="uiBtn BtnGreen">提&nbsp;&nbsp;交</button>
+                    <button type="reset" class="uiBtn">重&nbsp;&nbsp;置</button>
+                </td>
+            </tr>
+            {/if}
+            </tbody>
+        </table>
+    </form>
+</div>
+
+{literal}
+<script type="text/javascript">
+    $.loadJs('/admin/js/manage/linkage.js',function(){
+});
+</script>
+{/literal}

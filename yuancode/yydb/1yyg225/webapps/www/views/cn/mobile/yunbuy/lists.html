@@ -1,0 +1,68 @@
+{include file="top.html"}
+<div id="content" class="container">
+    {include file="search.html"}
+    {include file="nav.html"}
+    <div class="sort">
+        <ul class="ui-clr">
+            <li id="li_cate" class="DESC"><a>{if $type eq 2}免费{$L.unit_yun}{elseif isset($yuncat[$cid])}{$yuncat[$cid].catname}{else}全部{$L.unit_yun}{/if}<i class="ap-icon icon-sort"><em></em></i></a>
+            </li>
+            <li class="li_sort" id="li_ratio"><a onclick="mLoad('ratio')">人气</a> </li>
+            <li class="li_sort" id="li_new"><a onclick="mLoad('new')">最新</a> </li>
+            <li class="li_sort" id="li_end_num"><a onclick="mLoad('end_num')">剩余人次</a> </li>
+            <li class="li_sort" id="li_need_num"><a onclick="mLoad('need_num')">总需人次<i class="ap-icon icon-sort"><em></em></i></a></li>
+        </ul>
+    </div>
+
+    <div class="pro-view">
+        <div class="cate-bg"></div>
+        <div class="cate">
+            <ul class="ui-clr">
+                <li><a href="/yunbuy?zq={$smarty.get.zq}"{if !$smarty.get.cid} class="on"{/if}><i class="ap-icon d0"></i>全部{$L.unit_yun}</a></li>
+                {foreach from=$yuncat item=m name=list}
+                {if $m.ismenu eq 1 && $m.parentid eq 0}
+                <li><a{if $smarty.get.cid eq $m.id} class="on"{/if} href="{'/yunbuy/index?cid='|cat:$m.id|url}{if $smarty.get.zq}&zq={$smarty.get.zq}{/if}"><i class="ap-icon d{$smarty.foreach.list.index+1}"></i>{$m.catname}</a></li>
+                {/if}
+                {/foreach}
+            </ul>
+        </div>
+        <ul class="paiList list">
+            {include file="yunbuy/lbi/list.html"}
+        </ul>
+    </div>
+    <script type="text/javascript">
+        var order = "{if $smarty.get.order}{$smarty.get.order}{else}{/if}";
+        var sort = "{if $smarty.get.sort}{$smarty.get.sort}{else}{/if}";
+        var url = "/yunbuy/index";
+        var param = "?cid={$cid}&order="+order+"&sort="+sort+"&type={$type}&zq={$smarty.get.zq}&q={$smarty.get.q}&load";
+
+        $(function(){
+            $('.sort li.li_sort').removeClass('on DESC ASC');
+            $('.sort #li_'+order).addClass('on '+sort);
+
+            $('#li_cate').bind('click',function(){
+                if($(this).hasClass('DESC')){
+                    $(this).removeClass('DESC').addClass('ASC');
+                }else{
+                    $(this).removeClass('ASC').addClass('DESC');
+                }
+                $('.cate-bg,.cate').toggle();
+            })
+        });
+
+        function mLoad(type){
+            if(type=='need_num'){ sort=(sort=='ASC')?'DESC':'ASC'; }
+            else if(type=='end_num'){ sort='ASC'; }
+            else{ sort='DESC'; }
+            location.replace(url+(url.indexOf('?')>-1?'&':'?')+'cid={$cid}&order='+type+'&sort='+sort+"&type={$type}&zq={$smarty.get.zq}&q={$smarty.get.q}");
+        }
+
+        var ExtendOptions = {
+            path: function(index) {
+                return "/yunbuy/index/"+index+"?cid={$cid}&order="+order+"&sort="+sort+"&type={$type}&zq={$smarty.get.zq}&q={$smarty.get.q}&load";
+            }
+        };
+    </script>
+    {include file="public_scroll.html"}
+
+</div>
+{include file="footer.html"}

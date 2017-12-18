@@ -1,0 +1,51 @@
+{include file="crowd/crowd_header.html"}
+<form action="/crowd/step_one" target="iframeNews" id="step_form" method="post">
+    <div class="faqizc">
+        <ul id="warp" class="faqizc-ul">
+            <li>
+                <span>用途</span>
+
+                <i class="iconfont">&#xe62a;</i>
+                <select name="cid">
+                    {foreach from=$crowd_cat item=cat}
+                    <option {if $info.cid eq $cat.id}selected{/if} value="{$cat.id}" cost="{$cat.cost}">{$cat.catname}</option>
+                    {/foreach}
+                </select>
+            </li>
+            <li>
+                <span>标题</span>
+                <input placeholder="请输入标题" name="cd_name" value="{$info.cd_name}" type="text" />
+            </li>
+            <li>
+                <span>筹资目标</span>
+                <input placeholder="请输入整数" name="cd_price" value="{$info.cd_price}" type="text" />
+                <em>元</em>
+            </li>
+            <li class="faqizc-ul-img">
+                    <span>
+                        添加封面
+                    </span>
+                    <img id="crowd"  src="{zz mod=fileurl source=$info.thumb type=1 nopic='/style/crowd/mobile/images/xji.png'}">
+                    {upload_btn('crowd',790,400)}
+            </li>
+        </ul>
+    </div>
+    <input class="xiayibu" type="submit" name="submit" value="下一步">
+    <input type="hidden" name="id" value="{$info.cd_id}">
+    <input type="hidden" id="type" name="type" value="1">
+</form>
+<style type="text/css">
+    #select_linkage select:first-child{ margin-right: 15px; }
+    .webuploader-pick{
+        margin: 0px;
+        width: 196px;
+        height: 124px;
+        text-indent:-999em;
+        background: none;
+    }
+    .fqbd-txt-cj li span.state{
+        float: none; width: auto; margin: 0px; text-align:left;
+    }
+    .fqbd-txt-cj li.thumb{ line-height: normal;}
+</style>
+<iframe name="iframeNews" style="display:none;"></iframe>

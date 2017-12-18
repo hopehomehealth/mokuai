@@ -1,0 +1,227 @@
+{assign var='header' value='header2'}
+{include file="top.html"}
+<style type="text/css">
+    .tips-m{ background: #fff; padding: 15px 10px 5px; font-size: 1.4rem; color: #666; }
+
+    .m-cart-address{ font-size: 1.0rem; }
+    .m-cart-address li{ padding:0 10px 0 0; margin-bottom: 5px; font-size: 1.2rem; }
+    .m-cart-address li b{ display: inline-block; }
+    .m-cart-address li span{ color: #666; }
+    .m-cart-address li .address-edit{ display: none; }
+    .m-cart-address li.on{ border: 1px solid #e54048; padding:4px 10px 4px 10px; background:#FFF0E8; color: #333; box-shadow: 5px 5px 0 #F3F3F3; margin-bottom: 10px; }
+    .m-cart-address li.on b{ color: #f50; font-size: 1.2rem; }
+    .hidden{ display: none; }
+</style>
+<form action="{url('/yunbuy/done')}" id="checkoutFrom" method="post">
+<input type="hidden" name="token" value="{createToken()}" />
+<div id="content" class="container main">
+    <div class="tips-m">
+        <ul class="m-cart-address">
+            {foreach from=$data.addressList item=m key=key}
+            <li id="address-{$m.id}" {if $smarty.session.order_address_id eq $m.id} class="on"{/if}>
+            <b>{if $smarty.session.order_address_id eq $m.id}直购商品寄送至：{/if}</b>
+            <label>
+                <input type="radio" name="address_id" value="{$m.id}" onchange="changeAddress('{$m.id}')" {if $smarty.session.order_address_id eq $m.id} checked{/if} />
+                {$m.area} {$m.address}（{$m.name} 收）<span>{$m.mobile}</span>
+            </label>
+            <span style="display: none;"><a href="{url('/member/address/'|cat:$m.id|cat:'?back=/order/buy/'|cat:$type|cat:'/'|cat:$id)}" class="ui-right address-edit"{if $smarty.session.order_address_id eq $m.id} style="display:block"{/if}>修改本地址</a></span>
+            </li>
+            {/foreach}
+        </ul>
+    </div>
+    <div class="pay-list">
+        <ul>
+            {foreach from=$cartgoods item=m}
+            <li class="ui-clr">
+                {if $m.type eq 3}
+                <span class="name"><input type="hidden" name="id[]" value="{$m.id}"><span class="color">【{$L.unit_go_buy}】</span><a href="{'/yunbuy/detail/'|cat:$m.buy_id}">{$m.goods_name}</a></span>
+                <span class="num"></span>
+                <span class="num"><em class="color">{$m.price|price_format}</em> × {$m.qty}</span>
+                {else}
+                <span class="name"><input type="hidden" name="id[]" value="{$m.id}"><a href="{'/yunbuy/detail/'|cat:$m.buy_id}">(第{$m.qishu}期) {$m.goods_name}</a></span>
+                <span class="num">&nbsp;参与<em class="color">{$m.multi}</em>期</span>
+                <span class="num"><em class="color">{$m.qty}</em>人次</span>
+                {/if}
+                {if $site_config.pay_discount_status eq 1}<span style="color:rgba(229, 64, 72, 1);">（买网盘送{$L.unit_db_points}）</span>{/if}
+            </li>
+            {/foreach}
+        </ul>
+    </div>
+    <div class="order-total">
+        商品合计：<strong style="font-size:14px;">{$cart_total}</strong>{$unit}
+    </div>
+    <div class="order-option">
+        <div class="checkBar">
+            {if $is_share}
+            <span>
+                首次{$L.unit_yun}可使用分享码 <input type="text" name="sharecode" value="" size="5" class="w-number-input"> <span class="share_notice color01"></span>
+            </span>
+            {/if}
+            {if $bonus}
+            <span style="font-size: 1.4em;color: black;">
+            	<input type="checkbox" value="1" name="bonus_pay" checked style="display: none" />
+                {$L.unit_bonus}折扣
+            </span>
+            {if $rules}<span>（单笔满{$rules.0}用{$rules.1}）</span>{/if}
+           	<span style="float: right;">当前订单可使用<b class="color01">&nbsp;{$bonus.list|count}</b>&nbsp;{$L.unit_bonus_unit}</span>
+            <br>
+            {/if}
+    	</div>
+    </div>
+    <div class="order-option">
+        <div class="checkBar">
+            {if $smarty.post.free neq 1}
+            <span>
+            <input type="checkbox" value="1" name="balance_pay" checked style="display: none" />
+            	<span style="font-size: 1.4em;color: black;">余额支付</span>  <span>（账户余额+夺宝币）</span>
+            </span>
+            <span style="float: right;">
+          		<b class="color01">{$inpay}&nbsp;元</b>
+            </span>
+            {else}
+            <span>
+                <input type="hidden" value="1" name="free" />
+                <input type="checkbox" value="1" name="balance_pay" checked disabled="disabled">
+               	 使用{$L.unit_pay_points}：<b class="color01">{$member.pay_points}</b> &nbsp;个
+            </span>
+            {/if}
+        </div>
+    </div>
+    {if $smarty.post.free neq 1}
+    <div class="order-option">
+        <div class="m-cart-order-pay checkBar">
+            <div class="pay_online">
+                <div data-pro="paySelector">
+                    <div class="w-pay" id="pro-view-2">
+                        <div class="w-pay-title"><span style="font-size: 1.4em;color: black;">其他方式支付</span>：<b style="float: right;" class="color01">{$outpay}&nbsp;元</b></div>
+                        <div class="w-pay-selector">
+                            {foreach from=$payment item=m name=payment}
+                            <div style="float: left">
+                                <label class="w-pay-type  w-pay-type-3 {if $smarty.foreach.payment.iteration eq 1}w-pay-selected{/if} {$m.pay_code}"><input type="radio" name="pay_id" value="{$m.pay_id}" style="display: none;" {if $smarty.foreach.payment.iteration eq 1}checked{/if}>{$m.pay_name}</label>
+                                {if $m.pay_code eq 'teegon'}
+                                <div class="payment" style="display: none;">
+                                </div>
+                                {/if}
+                            </div>
+                            {/foreach}
+                            <div style="float: left">
+                                <label class="w-pay-type  w-pay-type-3 "><input type="radio" name="pay_id" value="99" style="display: none;">扫码支付</label>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {foreach from=$cartgoods item=m}
+        {if $m.type eq 3}
+        <div class="order-option">
+            <dl class="checkBar">
+                <dt class="color01" style="margin-bottom: 5px;">下单备注：{$m.goods_name}（{$L.unit_go_buy}商品）</dt>
+                <dd><textarea name="goods_info_{$m.id}" style="width: 95%;padding:5px;border-color:#ccc;">{$m.tips}</textarea></dd>
+            </dl>
+        </div>
+        {/if}
+        {/foreach}
+    </div>
+    <div id="sm-course" class="order-option hidden" style="padding: 0 15px;">
+      扫码支付步骤：
+      <p>1、长按二维码图片，保存二维码到手机相册</p>
+      <p>2、打开微信或支付宝，选择“扫一扫”</p>
+      <p>3、点击右上角“相册”，选中二维码图片</p>
+      <p>4、支付成功，回到浏览器，完成本次夺宝<p>
+    </div>
+    {/if}
+    <div class="order-submit">
+        {if $smarty.post.free eq 1 && $disabled_sub}
+        <a class="ap-button" href="/member#free">{$L.unit_pay_points}不足，点击领{$L.unit_pay_points}</a>
+        {else}
+        <button class="ap-button" type="submit" id="pro-view-10" onclick="return submitCheck()">确 认 支 付</button>
+        {/if}
+    </div>
+</div>
+</form>
+<script type="text/javascript">
+    $('input[name=sharecode]').blur(total);
+    $(function(){
+        $(".w-pay-type-3").click(function(){
+            if($(this).hasClass("jhpay")){
+                $("#sm-course").addClass("hidden");
+            }else{
+                $("#sm-course").removeClass("hidden");
+            }
+        })
+        $('.w-pay-selector').each(function(){
+            var selector = $(this);
+            selector.find('.w-pay-type').bind('click',function(){
+                $('.w-pay-selector').find('.w-pay-type').removeClass('w-pay-selected');
+                $('.w-pay-selector').find('.w-pay-type').children('input[name=pay_id]').attr('checked',false);
+                $(this).addClass('w-pay-selected');
+                $(this).children('input[name=pay_id]').attr('checked',true);
+                if($(this).hasClass('teegon') == true){
+                    $('.payment').empty();
+                    $('.payment').css('display','block');
+                    if (!is_weixn()){
+                        $('.payment').append("<input type='radio' name='payment_type' value='alipay_wap' checked style='display: inline'/>支付宝" + "<input type='radio' name='payment_type' value='wxpay_jsapi' style='display: inline'/>微信支付");
+                    }else {
+                        $('.payment').append("<input type='radio' name='payment_type' value='wxpay_jsapi' checked style='display: inline'/>微信支付");
+                    }
+                }else {
+                    $('.payment').empty();
+                    $('.payment').css('display','none');
+                }
+            });
+        });
+
+        if($('.w-pay-selected').hasClass('teegon')){
+            $('.payment').empty();
+            $('.payment').css('display','block');
+            if (!is_weixn()){
+                $('.payment').append("<input type='radio' name='payment_type' value='alipay_wap' checked style='display: inline'/>支付宝" + "<input type='radio' name='payment_type' value='wxpay_jsapi' style='display: inline'/>微信支付");
+            }else {
+                $('.payment').append("<input type='radio' name='payment_type' value='wxpay_jsapi' checked style='display: inline'/>微信支付");
+            }
+        }
+    });
+    function total(){
+        var sharecode = $("input[name='sharecode']").val();
+
+        var ids = '';
+        var i=0;
+        $("input[name='id[]']").each(function(){
+            i++;
+            ids += i==$("input[name='id[]']").length ? $(this).val() :$(this).val()+',';
+        });
+        $.getJSON('/yunbuy/total', { sharecode:sharecode,ids:ids } ,function(data){
+            $(".share_notice").html(data.msg);
+        });
+    }
+    function changeAddress(id){
+        $('.m-cart-address li').removeClass('on').find('b').html('');
+        $('#address-'+id).addClass('on').find('b').html('直购商品寄送至：');
+
+        var D = { address_id:id };
+        $.post("/order/updateAddress", D,
+                function(data){
+                    //location.reload();
+                }
+        );
+    }
+    function is_weixn(){
+        var ua = navigator.userAgent.toLowerCase();
+        if(ua.match(/MicroMessenger/i)=="micromessenger") {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    function submitCheck(){
+    	$('#pro-view-10').prop('disabled',true);
+    	var dd=$('#pro-view-10').attr('disabled');
+    	document.forms[0].submit();
+        return true;
+    }
+</script>
+</body>
+</html>

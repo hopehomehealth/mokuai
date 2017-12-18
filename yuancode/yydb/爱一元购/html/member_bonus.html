@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+	<meta name="format-detection" content="telephone=no" />
+	<title>购物车</title>
+	<link rel="stylesheet" type="text/css" href="../css/api.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/user.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+</head>
+<body>	
+<div id="header">
+   <div class="cart active">
+	    <div class="icon_box" tapmode="" onclick="api.closeWin()"><i class="iconfont icon-fanhui"></i></div>
+	    <div class="toptit">我的<font class="unit_bonus"></font></div>
+	    <div class="icon_box " tapmode="" onclick="backhome()"><i class="iconfont icon-shouye"></i></div>
+   </div>
+</div>
+<div id="content" class="container main">
+   <div class="user_body">
+     <div class="title"><h2><font class="unit_bonus"></font>使用规则</h2></div>
+	 <div class="hy-box ruls"></div>
+     <table class="com_tab" width="100%">
+            <thead>
+            <tr>
+                <th class="unit_bonus"></th>
+                <th>有效时间</th>
+                <th>使用时间/订单号</th>
+            </thead>
+            <tbody id="list-content"></tbody>
+            <script id="list-template" type="text/x-dot-template">
+            {{ for(var i=0; i< it.list.length; i++) { }}
+            <tr>
+              <td>{{=it.list[i].b_title}} 价值:<span class="red">{{=it.list[i].money}}{{=it.list[i].money_type_title}}</span><br/>{{=it.list[i].bonus_sn}}</td>
+              <td class="tc">{{=it.list[i].start_time}}<br>{{=it.list[i].end_time}}</td>
+              <td class="tc">{{? it.list[i].used_time}}{{=it.list[i].used_time}} {{=it.list[i].order_id}}{{??}}未使用{{?}}</td>
+            </tr>
+            {{ } }}
+            </script>
+      </table>
+   </div>
+</div>		
+<script type="text/javascript" src="../script/zepto.min.js"></script>
+<script type="text/javascript" src="../script/fastclick.js"></script>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/doT.min.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript">
+function loadData(page){
+  	showprog();
+    ajaxRequest('member/bonus/'+page, 'GET', {}, function (ret, err) {
+        if(ret.data) {
+            if(page==1){
+             $('.unit_bonus').html(ret.data.unit_bonus);
+             $('.ruls').html(ret.data.ruls);
+            }
+            var content = $api.byId('list-content');
+            var tpl = $api.byId('list-template').text;
+            var tempFn = doT.template(tpl);
+            $api.append(content, tempFn(ret.data));
+            reslut = true;
+        }else{
+            toast('没有更多了');
+        }
+        hideprog();
+   });
+}
+var page = 1;	    
+apiready = function() {
+    //适配iOS 7+，Android 4.4+状态栏
+	var header = $api.byId('header');
+	$api.fixStatusBar(header);
+    loadData(page);
+    api.addEventListener({name: 'scrolltobottom'}, function(ret, err){
+       page++;
+       loadData(page);
+    }); 
+    
+}
+</script>
+</body>
+</html>

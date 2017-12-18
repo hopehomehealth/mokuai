@@ -1,0 +1,138 @@
+{include file="crowd/crowd_header.html"}
+<!-- Swiper -->
+<div class="swiper-container banner">
+    {zz mod=content var=tagAdw module=ad where="mark = 'crowd_mobile'" type=row}
+    {zz mod=fileurl var=tagAds source=$tagAdw.images num=10}
+
+    <div class="swiper-wrapper">
+        {foreach from=$tagAds item=m}
+        <div class="swiper-slide"><a href="{$m.title}"{if $m.isblank} target="_blank"{/if}><img src="{$m.path}"/></a></div>
+        {/foreach}
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+</div>
+<!-- Initialize Swiper -->
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: 2500,
+        autoplayDisableOnInteraction: false
+
+    });
+</script>
+
+<div class="ynav">
+    <ul>
+        {foreach from=$cat_arr item=cat name=cat}
+        {if $smarty.foreach.cat.iteration lt 5}
+        <li>
+            <a href="{url('/crowd/lists?cid=')}{$cat.id}"><em><img src="{$cat.pic}"></em>{$cat.catname}</a>
+        </li>
+        {/if}
+        {/foreach}
+        <li>
+            <a href="{url('/crowd/lists')}"><em><img src="{url('/style/crowd/mobile/images/iico5.png')}"></em>全部</a>
+        </li>
+    </ul>
+</div>
+<div class="zxxm">
+    <em><i></i><span>最新项目</span></em>
+</div>
+<div class="zxxm-list">
+<ul class="zxxm-list-ul">
+{foreach from=$newItem item=row}
+<li>
+    <h3>
+        <span><a href="{url('/crowd/detail/')}{$row.cd_id}">{$row.cd_name|truncate:50:''}</a></span>
+        <i class="iconfont focus {if $row.isfocus}on{/if}" id="{$row.cd_id}">&#xe61c;</i>
+    </h3>
+    <a href="{url('/crowd/detail/')}{$row.cd_id}"><img src="{zz mod=fileurl source=$row.thumb width=250 height=125}" /></a>
+    <section>
+        <div class="zzje">
+            <span> 筹集金额</span>  ￥<i>{$row.cd_total|price_format:4:false}</i> / ￥
+            <i>{round($row.cd_price/10000,1)}</i>万
+        </div>
+        <div class="zcjd">
+            <span style="width:{$row.cd_total|progress:$row.cd_price}%;"></span>
+        </div>
+        <dl class="zcjd-dl">
+            <dd>
+                <p>
+                    <i>{$row.support_num}</i>
+                    <span>支持人数</span>
+                </p>
+            </dd>
+            <dd>
+                <p>
+                    <i>{$row.cd_total|progress:$row.cd_price}%</i>
+                    <span>项目进度</span>
+                </p>
+            </dd>
+            <dd>
+                <p>
+                    <i>{$row.end_time|endDay}</i>
+                    <span>剩余时间</span>
+                </p>
+            </dd>
+        </dl>
+        <p class="p">{$row.desc}</p>
+    </section>
+</li>
+{/foreach}
+</ul>
+
+<a class="more" href="{url('/crowd/lists?order=1')}">查看更多</a>
+</div>
+<div class="axgy">
+    <div class="zxxm">
+        <em><i></i><span>爱心公益</span></em>
+    </div>
+
+    <ul class="axgy-ul">
+        {foreach from=$loveItem item=row}
+        <li style="background-image: url('{zz mod=fileurl source=$row.thumb width=250 height=125}');">
+            <span></span>
+            <a href="{url('/crowd/detail/')}{$row.cd_id}">
+            <table style="width:100%;">
+                <tr>
+                    <td>
+                        <h3>{$row.cd_name}</h3>
+                        <p>
+                            筹集金额
+                            <i>{$row.cd_total|price_format:4}</i>
+                            <i>项目进度</i>
+                        </p>
+                    </td>
+                </tr>
+            </table>
+            </a>
+
+        </li>
+        {/foreach}
+    </ul>
+    <a class="more" href="{url('/crowd/lists?cid=1')}">查看更多</a>
+</div>
+<script type="text/javascript">
+    $(function(){
+        $('.focus').click(function(){
+            var id = $(this).attr('id');
+            $.post('/crowd/focus/'+id,{},function(result){
+                if(result.code==1){
+                    layer.alert(result.msg,8,function(){
+                        location.href="{url('/member/login')}";
+                    });
+                }else if(result.code==0){
+                    layer.alert(result.msg);
+                    $("#"+id).addClass('on');
+                }else{
+                    layer.alert(result.msg);
+                }
+            },'JSON');
+        });
+    });
+</script>
+{include file="crowd/crowd_footer.html"}

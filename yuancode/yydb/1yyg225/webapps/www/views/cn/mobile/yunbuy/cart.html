@@ -1,0 +1,193 @@
+{assign var='header' value='header2'}
+{include file="top.html"}
+
+<form action="{url('/yunbuy/checkout')}" id="cartForm" method="post">
+<div id="content" class="container main">
+    <div class="cart-list">
+        {foreach from=$cart_goods item=m}
+        <div class="item">
+            <div class="pic"><a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}"><img alt="(第{$m.qishu}期) {$m.goods_name}" src="{zz  mod=fileurl source=$m.imgurl_thumb width=64 type=0}" width="64" /></a></div>
+            <div class="info">
+                <div class="title to">
+                    <input value="{$m.id}" name="id[]" type="checkbox" {if $m.notbuy}disabled{else}checked{/if}/>
+                    {if $m.type eq 3}
+                    <span class="color">【{$L.unit_go_buy}】</span>
+                    {/if}
+                    <a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}">{if $m.type neq 3}(第{$m.qishu}期){/if} {$m.goods_name}</a>
+                </div>
+                {if $m.type eq 3}
+                <p>价格：{$m.price|price_format}，市场价：<del>{$m.goods_price|price_format}</del></p>
+                {else}
+                <p>总需 {$m.need_num} 人次，剩余 <em>{$m.end_num}</em> 人次</p>
+                {/if}
+                <div class="bottom">
+                    {if $m.type eq 3}购买数量：
+                    {else}参与人次：{/if}
+                    <div class="number">
+                        <input class="num-input" type="text" data-id="{$m.id}" data-max="{$m.end_num}" value="{$m.qty}" />
+                        <a class="num-btn btn-plus" data-pro="plus" href="javascript:void(0);">+</a>
+                        <a class="num-btn btn-minus" data-pro="minus" href="javascript:void(0);">-</a>
+                    </div>
+                </div>
+                {if $site_config.open_multi eq 1 && $m.type neq 3}
+                <div class="bottom">
+                    参与多期：
+                    <div class="number">
+                        <input class="qishu-input" type="text" data-id="{$m.id}" data-max="{$m.max_multi}" value="{$m.multi}" {if $site_config.open_multi neq 1}disabled{/if}/>
+                        <a class="num-btn btn-qishu-plus" data-pro="plus" href="javascript:void(0);" {if $site_config.open_multi neq 1}style="background-color:#DEDEDE; "{/if}>+</a>
+                        <a class="num-btn btn-qishu-minus" data-pro="minus" href="javascript:void(0);" {if $site_config.open_multi neq 1}style="background-color:#DEDEDE; "{/if}>-</a>
+                    </div>
+                </div>
+                {/if}
+                <a class="del" href="javascript:;" onclick="delCart('{$m.id}',1)"><i class="ap-icon icon-del"></i></a>
+
+                {if $m.num_notbuy}<p class="color01">该期商品活动已结束，<br>请先删除再进行结算</p>
+                {else if $m.extData.error gt 0}<p class="color01">{$m.extData.error_text}</p>
+                {/if}
+            </div>
+        </div>
+        {foreachelse}
+        <div class="empty">您的清单里还没有任何商品，<a class="color02" href="{url('/yunbuy')}">马上去逛逛~</a></div>
+        {/foreach}
+    </div>
+</div>
+
+<footer class="foot-view">
+    <div class="text">
+        {if isset($smarty.get.free)}
+        共参与{$cart_goods|count}件产品，总计：<em class="color"><i id="total">{$cart_total}</i> {$unit}</em>
+        {else}
+        共参与{$cart_goods|count}件产品，总计：<em class="color">￥<i id="total">{$cart_total}</i></em>
+        {/if}
+    </div>
+    <div class="btn">
+        {if isset($smarty.get.free)}<input type="hidden" name="free" value="1"/>{/if}
+        <input type="hidden" name="Submit" value="1"/>
+        <button class="ap-button w-button-xl" onclick="return check_sumbit()">提交</button>
+    </div>
+</footer>
+<input type="hidden" name="address_id" value="{$smarty.get.address_id}"/>
+</form>
+
+
+<script type="text/javascript">
+    function check_sumbit(){
+        $.post("/welcome/checkYunLimit",{ ajax:1 },function(data){
+            if(data.code == 1){
+                if(data.msg){
+                    layer.alert(data.msg,8,function(){
+                        if(data.url){
+                            location.href=data.url;
+                        }
+                    });
+                }
+                return false;
+            } else if(data.code == 2){
+                if(data.msg){
+                    if( ! confirm(data.msg)){
+                        return false;
+                    }else{
+                        $('#cartForm').submit();
+                    }
+                }
+            } else if(data.code == 0){
+                $('#cartForm').submit();
+            }
+        },'json');
+        return false;
+    }
+    $(function(){
+        //参与人数
+        $(".btn-plus").click(function(){
+            var id = $(this).parent().children('input.num-input').attr('data-id');
+            var max = $(this).parent().children('input.num-input').attr('data-max');
+            var qty = $(this).parent().children('input.num-input').val()*1;
+            if(qty < max){
+                $(this).parent().children('input.num-input').val(qty+1);
+            }
+            updatecart(id,$(this).parent().children('input.num-input').val(),'');
+        });
+        $(".btn-minus").click(function(){
+            var id = $(this).parent().children('input.num-input').attr('data-id');
+            var qty = $(this).parent().children('input.num-input').val()*1;
+            if(qty>1){
+                $(this).parent().children('input.num-input').val(qty-1);
+            }
+            updatecart(id,$(this).parent().children('input.num-input').val(),'');
+        });
+        $("input.num-input").blur(function(){
+            var id = $(this).attr('data-id');
+            var max = $(this).attr('data-max')*1;
+            if($(this).val()>max){
+                $(this).val(max);
+            }
+            if($(this).val()<=0) $(this).val(1);
+            updatecart(id,$(this).val(),'');
+        });
+        {if $site_config.open_multi eq 1}
+        //多期参与
+        $(".btn-qishu-plus").click(function(){
+            var id = $(this).parent().children('input.qishu-input').attr('data-id');
+            var max = $(this).parent().children('input.qishu-input').attr('data-max');
+            var multi = $(this).parent().children('input.qishu-input').val()*1;
+            if(multi < max){
+                $(this).parent().children('input.qishu-input').val(multi+1);
+            }
+            updatecart(id,'',$(this).parent().children('input.qishu-input').val());
+        });
+        $(".btn-qishu-minus").click(function(){
+            var id = $(this).parent().children('input.qishu-input').attr('data-id');
+            var multi = $(this).parent().children('input.qishu-input').val()*1;
+            if(multi>1){
+                $(this).parent().children('input.qishu-input').val(multi-1);
+            }
+            updatecart(id,'',$(this).parent().children('input.qishu-input').val());
+        });
+        $(".qishu-input").blur(function(){
+            var id = $(this).attr('data-id');
+            var max = $(this).attr('data-max')*1;
+            if($(this).val()>max){
+                $(this).val(max);
+            }
+            if($(this).val()<=0) $(this).val(1);
+            updatecart(id,'',$(this).val());
+        });
+        {/if}
+        function updatecart(id,qty,multi){
+            var ids = '';
+            var i = 0;
+            $("input[name='id[]']").each(function(){
+                if($(this).is(':checked')){
+                    i++;
+                    ids += i==$("input[name='id[]']:checked").length ? $(this).val() :$(this).val()+',';
+                }
+            });
+            $.post('/yunbuy/updatecart',{ id:id,qty:qty,ids:ids,multi:multi,type:'{if isset($smarty.get.free)}2{else}1{/if}' },function(data){
+                $('#total').html(data.total);
+            },'json');
+        }
+        $("input[name='id[]']").click(function(){
+            show_total();
+        });
+        function show_total(){
+            var ids = '';
+            var i=0;
+            $("input[name='id[]']").each(function(){
+                if($(this).is(':checked')){
+                    i++;
+                    ids += i==$("input[name='id[]']:checked").length ? $(this).val() :$(this).val()+',';
+                }
+            });
+            $.getJSON('/yunbuy/total',{ ids:ids },function(data){
+                $('#total').html(data.amount);
+                if(data.amount==0){
+                    $('.w-button-xl').addClass('w-button-disabled').attr("disabled",true);
+                }else{
+                    $('.w-button-xl').removeClass('w-button-disabled').removeAttr("disabled");
+                }
+            });
+        }
+    });
+</script>
+</body>
+</html>

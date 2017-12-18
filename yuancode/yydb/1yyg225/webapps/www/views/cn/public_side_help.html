@@ -1,0 +1,19 @@
+<div class="fn-left hy-l ffbz">
+    <h4>帮助中心</h4>
+    <div class="hy-lnav">
+        {zz mod=category field='id,catname,url,ismenu' catid=$smarty.const.HELP_ID type=child child=0 }
+        {foreach from=$tagData item=m}
+			{if $m.ismenu==1}
+            <h3 class="fn-clear"><span></span>{$m.catname} </h3>
+            <ul class="fn-clear">
+                {zz mod=category field='id,catname,url,ismenu' catid=$m.id type=child child=0}
+                {foreach from=$tagData item=m}
+				{if $m.ismenu==1}
+                <li{if $data.cat.id==$m.id} class="dq"{/if}><a href="{$m.url|url}">{$m.catname}</a></li>
+				{/if}
+                {/foreach}
+            </ul>
+			{/if}
+        {/foreach}
+    </div>
+</div>

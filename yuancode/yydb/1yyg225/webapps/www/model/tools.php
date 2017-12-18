@@ -1,0 +1,1 @@
+<?php/** * Class tools_model */class tools_model extends Lowxp_Model{    function __construct(){}}

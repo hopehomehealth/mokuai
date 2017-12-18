@@ -1,0 +1,9 @@
+{assign var='header' value='header2'}
+{include file="top.html"}
+<div id="content" class="container main" style="padding: 64px 0px 50px;">
+    <div class="user-box">
+    <input type="button" onclick="window.location.href='{url('/member/login')}'"  style="margin-bottom: 10px;" class="btn" value="绑定已有账号">
+    <input type="button" onclick="window.location.href='{url('/member/regist')}'" class="btn" value="注册账号">
+    </div>
+</div>
+{include file="footer.html"}

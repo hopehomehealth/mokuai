@@ -1,0 +1,1 @@
+<?php#图片上传目录$config['image_dir'] = RootDir.'web/upload/images/';$config['image_url'] = RootUrl.'upload/images/';#文件上传目录$config['file_dir'] = RootDir.'web/upload/files/';$config['file_url'] = RootUrl.'upload/files/';

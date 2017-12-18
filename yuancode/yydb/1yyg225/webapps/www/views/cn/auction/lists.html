@@ -1,0 +1,112 @@
+{include file="header.html"}
+<script src="/style/lefttime.js"></script>
+<link rel="stylesheet" href="{url('/style/css/boutique.css')}">
+
+{if !$smarty.get.k && $data.type neq 'all' && $data.type neq 'tiyan'}
+<div class="ggAuc">
+    {zz mod=content var=tagAdw module=ad id=$data.top.ggid}
+    {zz mod=fileurl var=tagAds source=$tagAdw.images num=2}
+    {foreach from=$tagAds item=m}
+    <div class="g-gg" style="height:{$tagAdw.height}px;background:{$tagAdw.bgcolor} url('{$m.path}') no-repeat center bottom"><span></span>{if $m.title}<a href="{$m.title}" target="_blank"></a>{/if}</div>
+    {/foreach}
+    <div class="container" style="position:relative;margin-top:-180px;height:250px;">
+        {zz mod=content var=tagGG catid=$data.noteid limit=1 type=row field=content}
+        {if $tagGG}
+        <div class="txt txt_{$data.type}">
+            <dl style="background: #{$data.top.bgcolor}">
+                <dt>{zz mod=category catid=$data.noteid type=field}</dt>
+                <dd>
+                    {$tagGG.content|stripcslashes}
+                </dd>
+            </dl>
+        </div>
+        {/if}
+        <div class="txtScroll-top" style="color: #{$data.top.bgcolor}">
+            <h4>幸运一族：</h4>
+            <div class="bd">
+                <ul>
+                    {foreach from=$data.log item=m}
+                    <li title="恭喜{$m.username}会员{if $m.win > 0}在{$m.win}%出价成交活动中{/if}以{$m.bid_price|price_format}获{$m.title}">恭喜<a href="{'/minfo?id='|cat:$m.bid_user|url}#aucCod" target="_blank"><span class="color01">{$m.username|nickname:$m.nickname}</span></a>会员{if $m.win > 0}在{$m.win}%出价成交活动中{/if}以<span class="color01">{if $m.bid_price gt 0}{$m.bid_price|price_format}{/if}{if $m.paib gt 0} {$m.paib}{$L.unit_pay_points}{/if}</span>获{$m.title|truncate:16}</li>
+                    {/foreach}
+                </ul>
+            </div>
+        </div>
+        {include file="ur_here.html"}
+    </div>
+</div>
+{else}
+{include file="ur_here.html"}
+{/if}
+
+<div id="container">
+    <div class="jp-lbsx mt10" id="m">
+        {if $data.cate}
+        <ul class="jp-fl fn-clear">
+            {foreach from=$data.cate item=m}
+            <li {if $m.id eq $data.id}class="dq"{/if}><a href="{'/auction/lists/'|cat:$data.type|cat:'/'|cat:$data.status|cat:'/'|cat:$m.id|cat:$data.urlQuery|url}#m">{$m.catname}({$m.count})</a></li>
+            {/foreach}
+        </ul>
+        {/if}
+
+        {if $smarty.get.k}
+        <div class="jp-flpx fn-clear">
+            <span>搜索{$L.unit_pay}商品：{$smarty.get.q}</span>
+        </div>
+        {/if}
+    </div>
+
+    <ul class="fn-clear mt20 jp-tab">
+        <li{if $data.status eq $smarty.const.UNDER_WAY} class="dq"{/if}><a href="{'/auction/lists/'|cat:$data.type|cat:'/'|cat:$smarty.const.UNDER_WAY|cat:'/'|cat:$data.row.id|cat:$data.urlQuery|url}#m">正在热拍</a></li>
+        <li{if $data.status eq $smarty.const.PRE_START} class="dq"{/if}><a href="{'/auction/lists/'|cat:$data.type|cat:'/'|cat:$smarty.const.PRE_START|cat:'/'|cat:$data.row.id|cat:$data.urlQuery|url}#m">下期预告</a></li>
+        <li{if $data.status eq $smarty.const.FINISHED_ALL} class="dq"{/if}> <a href="{'/auction/lists/'|cat:$data.type|cat:'/'|cat:$smarty.const.FINISHED_ALL|cat:'/'|cat:$data.row.id|cat:$data.urlQuery|url}#m">历史成交</a></li>
+        <li class="other">
+            <a href="/content/index/79" _title="为什么只要70%的价格，就可以购买来自京东天猫等商城完全正品？" class="layerTip">【什么是{$L.unit_pay}？】</a>
+        </li>
+    </ul>
+
+    <div class="fn-clear mt20 jp-list mb20">
+        <ul class="fn-clear" style="display:block">
+            {foreach from=$data.list item=auction}
+            {include file="auction/lbi_auction.html"}
+            {foreachelse}
+            <p class="empty" style="border-bottom: 1px solid #e3e3e3">正在上架</p>
+            {/foreach}
+            {if $data.listNo < 4 && $data.listNo > 0}
+            {for $foo=1 to $data.listNo}
+            <li class="blank"></li>
+            {/for}
+            {/if}
+        </ul>
+    </div>
+
+    {include file="public_page.html"}
+
+    {if $data.love}
+    <div class="ceneral-title">
+        <h2>猜你喜欢 </h2>
+    </div>
+    <div class="fn-clear ceneral picScroll-left">
+        <div class="bd">
+            <ul class="picList">
+                {foreach from=$data.love item=auction}
+                {include file="auction/lbi_auction.html"}
+                {/foreach}
+            </ul>
+        </div>
+    </div>
+    {/if}
+
+</div>
+{include file="footer.html"}
+
+<script src="/style/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript">
+    jQuery(".txtScroll-top").slide({ mainCell:".bd ul",autoPage:true,interTime:3000,effect:"top",autoPlay:true,vis:1 });
+    jQuery(".picScroll-left").slide({ titCell:".hd ul",mainCell:".bd ul",autoPage:true,interTime:6000,effect:"left",autoPlay:true,vis:5,trigger:"click" });
+
+    $('.jp-list li,.picList li').bind('mouseover',function(){
+        $(this).addClass('hover');
+    }).bind('mouseout',function(){
+        $(this).removeClass('hover');
+    })
+</script>

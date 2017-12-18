@@ -1,0 +1,98 @@
+{include file="header.html"}
+<link rel="stylesheet" href="{url('/style/css/member.css')}">
+{include file="ur_here.html"}
+<div id="container">
+    <div class="fn-clear mt20 pb20">
+        {include file="member/menu.html"}
+        <div class="fn-right hy-r">
+
+            <div class="fn-clear hy-tjxh">
+                <div class="title">
+                    <h2>站内信</h2>
+                </div>
+                <div class="hy-box">
+                    <div class="mt15 hy-table">
+                        <table>
+                            <tr>
+                                <th style="width:66px;">ID</th>
+                                <th>留言信息</th>
+                                <th style="width:110px">发送时间</th>
+                                <th style="width:140px">发送者</th>
+                                <th style="width:140px">接收者</th>
+                                <th>操作</th>
+                            </tr>
+                            {foreach from=$list  item=m}
+                            <tr>
+                                <td>{$m.id}</td>
+                                <td style="text-align:left;">
+                                    {$m.content}
+                                    {if $m.reply}
+                                    <br/>
+                                    <span class="color01">[回复]</span>
+                                    {$m.reply.content}
+                                    <span class="color03">{date('Y-m-d H:i:s',$m.reply.add_time)}</span>
+                                    {/if}
+                                </td>
+                                <td><span class="color03">{date('Y-m-d H:i:s',$m.add_time)}</span></td>
+				<td>{if $m.mid&&$m.type==0}{$m.username}{else}管理员{/if}</td>
+                                <td>{if $m.to_mid&&$m.type==1}{$m.to_username}{else}管理员{/if}</td>
+                                <td class="hy-rza">
+				    {if $m.status==0&&$m.type==1}<a href="{url('/member/message_read/')}{$m.id}">标为已读</a>{/if}
+                                    {if $m.is_reply}<a href="{url('/member/message/')}?id={$m.id}">回复</a>{/if}
+                                    <a href="javascript:zz_confirm('您确认要删除该留言?','{url('/member/message_del/')}{$m.id}');" title="删除" class="f6">删除</a>
+                                </td>
+                            </tr>
+                            {/foreach}
+                        </table>
+                        <div class="foot-btn">
+                            {include file="public_page.html"}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="title title2">
+                    <h2>发送站内信</h2>
+                </div>
+                <form action="" method="post" id="msgform" target="iframeNews">
+                    {if $row}<input type="hidden" name="parent_id" value="{$row.id}"/>{/if}
+                    <div class="hy-box">
+                        <div class="hy-yhk">
+                            <table>
+                                {if $row.id}
+                                <tr>
+                                    <th>回复：</th>
+                                    <td>{$row.content|stripcslashes|nl2br}</td>
+                                </tr>
+                                {/if}
+                                <tr>
+                                    <th>收件人：</th>
+                                    <td>
+                                        {if $row.mid}
+                                        <a href="{'/minfo?id='|cat:$row.mid}" target="_blank">{$row.username|nickname:$row.nickname}</a>
+                                        <input name="to_mid" type="hidden" value="{$row.mid}" />
+                                        {else}
+                                        网站管理员
+                                        {/if}
+                                    <td>
+                                </tr>
+                                <tr>
+                                    <th>内容：</th>
+                                    <td>
+                                        <textarea name="content" cols="20" rows="2" class="hy-lynr"></textarea>
+                                    <td>
+                                </tr>
+                                <tr>
+                                    <th> &nbsp;</th>
+                                    <td class="">
+                                        <input name="Submit" type="submit" value="提交" class="hy-btn2 fn-left" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="footer.html"}

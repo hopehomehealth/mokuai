@@ -1,0 +1,122 @@
+{include file="header.html"}
+<link rel="stylesheet" href="{url('/style/css/yiyuanbao.css')}">
+<script src="{url('/style/quanzi.js')}" type="text/javascript"></script>
+<style type="text/css">
+    .w-quickBuyList-item{ height: 315px; }
+    .m-list-goodsList .w-goods-opr-buy{ margin:0; }
+    .w-goods-ing .w-goods-price b{ color: #f60; }
+</style>
+<div class="g-gg" style="margin-bottom:20px;height:250px;background: url('/style/images/banner/banner_qz.jpg') no-repeat center bottom"><span></span></div>
+<div class="g-wrap g-body">
+<div class="m-list">
+<div class="g-body-hd f-clear">
+    <div class="m-list-classification">
+        <div class="m-classification">
+            <div class="m-fication" style="width:1158px;margin-left:0">
+                <ul>
+                    <li{if $send eq 0} class="current"{/if}><a href="/quanzi">未发起的{$L.unit_yun_team}</a></li>
+                    <li{if $send eq 1} class="current"{/if}><a href="/quanzi?send=1">已发起的{$L.unit_yun_team}</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="m-classification">
+            <div class="m-classi">分类</div>
+            <div class="m-fication">
+                <ul>
+                    <li {if !$smarty.get.cid}class="current"{/if}><a href="/quanzi?send={$send}">全部</a></li>
+                    {assign var=cid_one value=0}
+                    {foreach from=$yuncat item=m name=f}
+                    {if $m.parentid eq 0 && $m.id eq $smarty.get.cid}{$cid_one=$m.id}
+                    {elseif $m.parentid neq 0 && $m.id eq $smarty.get.cid}{$cid_one=$m.parentid}{/if}
+                    {if $m.ismenu eq 1 && $m.parentid eq 0}
+                    <li id="cat_{$m.id}"><a href="/quanzi?cid={$m.id}&send={$send}" title="{$m.catname}">{$m.catname}</a></li>
+                    {/if}
+                    {/foreach}
+                </ul>
+                <a href="javascript:;" class="expansion"></a>
+            </div>
+        </div>
+
+        {if $cid_one}
+        <div class="m-classification" id="dd_sub" style="display: none;">
+            <div class="m-classi">子分类</div>
+            <div class="m-fication">
+                <ul>
+                    {foreach from=$yuncat item=m name=f}
+                    {if $m.ismenu eq 1 && $m.parentid eq $cid_one}
+                    <li class="{if $smarty.get.cid eq $m.id}current{/if}"><a href="/quanzi?cid={$m.id}&send={$send}">{$m.catname}</a></li>
+                    <script type="text/javascript">
+                        $(function(){
+                            var dd = $('#dd_sub');
+                            if(dd.is(':hidden')){ dd.show(); }
+                        })
+                    </script>
+                    {/if}
+                    {/foreach}
+                    <script type="text/javascript">
+                        $(function(){
+                            $('#cat_{$cid_one}').addClass('current');
+                        })
+                    </script>
+                </ul>
+            </div>
+        </div>
+        {/if}
+    </div>
+</div>
+<div class="g-wrap g-body-bd f-clear">
+<div class="m-list-mod m-list-goodsList" style="overflow: hidden">
+<div class="m-list-mod-hd">
+    <h6>排序：</h6>
+    <ul class="m-list-sortList">
+        <li {if $smarty.get.k eq add_time}class="selected"{/if}><a href="/quanzi/?cid={$cid}&k=add_time&send={$send}">最新商品</a>
+        </li>
+        <li {if $smarty.get.k eq custom_price && $smarty.get.s eq desc}class="selected"{/if}><a href="{'/quanzi/'|url}?cid={$cid}&k=custom_price&s=desc&send={$send}">价值<i class="ico ico-arrow-sort ico-arrow-sort-gray-down" title="降序"></i></a>
+        </li>
+        <li {if $smarty.get.k eq custom_price && $smarty.get.s eq asc}class="selected"{/if}><a href="{'/quanzi/'|url}?cid={$cid}&k=custom_price&s=asc&send={$send}">价值<i class="ico ico-arrow-sort ico-arrow-sort-gray-up" title="升序"></i></a>
+        </li>
+    </ul>
+    {if $smarty.session.mid && $send eq 1}
+    <ul class="m-list-other">
+        <li><label><input type="checkbox" onclick="checkMe($(this))" {if $smarty.get.manage eq 1}checked="checked"{/if} /> 只显示我发布的</label></li>
+    </ul>
+    {/if}
+</div>
+<div class="m-list-mod-bd">
+<ul class="w-quickBuyList f-clear">
+    {foreach from=$list item=m name=list}
+    {include file="quanzi/lbi_yunbuy.html"}
+    {foreachelse}
+    <p class="empty">产品正在上架</p>
+    {/foreach}
+    {if $listNo < 4 && $listNo > 0}
+    {for $foo=1 to $listNo}
+    <li class="w-quickBuyList-item blank"></li>
+    {/for}
+    {/if}
+</ul>
+</div>
+</div>
+<div class="m-list-pager">
+    {include file="public_page.html"}
+</div>
+</div>
+</div>
+</div>
+{include file="quanzi/checkSendQz.html"}
+{include file="footer.html"}
+<script type="text/javascript">
+    $('.w-quickBuyList-item').bind('mouseover',function(){
+        $(this).addClass('hover');
+    }).bind('mouseout',function(){
+        $(this).removeClass('hover');
+    });
+    //只选中我发布的
+    function checkMe(obj){
+        if(obj.attr('checked')=='checked'){
+            location.href="/quanzi/index?cid={$cid}&send={$send}&manage=1";
+        }else{
+            location.href="/quanzi/index?cid={$cid}&send={$send}";
+        }
+    }
+</script>

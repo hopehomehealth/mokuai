@@ -1,0 +1,20 @@
+{assign var='header' value='header2'}
+{include file="top.html"}
+<script type="text/javascript">
+    if(top.location!=self.location){ top.location=self.location; }
+</script>
+<div id="content" class="container main tc">
+    {if $icon eq 3}
+    <img src="/style/images/msg_3.png" style="max-width: 60%;margin: 30px auto 0;" />
+    {/if}
+    <div class="empty">{$message}</div>
+    {if $link}
+    {foreach from=$link item=m}
+    <a href="{$m.link}" class="color02" style="margin:0 5px;font-size:14px;">{$m.text}</a>
+    {/foreach}
+    {else}
+    <script type="text/javascript">
+        setTimeout(function(){ location.href='{$url}' },3*1000);
+    </script>
+    {/if}
+</div>

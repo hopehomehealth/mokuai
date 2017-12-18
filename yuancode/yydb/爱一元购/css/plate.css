@@ -1,0 +1,41 @@
+
+.choujiang { margin: 0 auto;  position:relative; overflow: hidden;}
+.choujiang .plate {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    float: left;
+    width: 23rem;
+    height: 23rem;
+    background: url(../image/plate/dzpan.png) center center no-repeat;
+    background-size: 100%;
+    margin-left: -11.6rem;
+    margin-top: -7.0rem;
+    margin-bottom: 2.0rem;
+}
+.choujiang #plateBtn { position: absolute; left: 50%; top: 50%; width:8rem; height:13rem; margin-top: -6.5rem; margin-left:-4rem; background:url("../image/plate/zizhen.png") no-repeat; background-size:100%; text-indent: -9999px; overflow: hidden; }
+.choujiang .result { padding-top:2rem; position: absolute; left: 50%; top: 50%; display:none; width:25rem; height: 15rem; margin-top: -7.5rem; margin-left:-12.5rem; background-color: white; text-align: center; z-index: 11; border-radius: 0.2rem; }
+.choujiang .resultTxt{ padding: 0 1.5rem; }
+.choujiang .resultTxt img { display: block; margin: 0 auto; width:10rem; }
+.choujiang .resultTxt span{ font-size: 1rem; color: #ababab; }
+.choujiang .resultTxt b{ font-size: 1rem; color: #000; padding-top:1.5rem; display: block; margin-bottom:1rem; }
+.choujiang .resultTxt em{ color: #de3636; font-style: normal; font-size:1rem; }
+.choujiang #fenxiang { position: absolute; top: 0.4rem; right: 0.4rem; border: 1px #e6e6e6 solid; padding: 0.1rem 0.46rem; border-radius: 1rem; }
+.choujiang .resultBtn { display: inline-block; background-color: #ff2f46; color: white; padding: 0.5rem 1rem; border-radius: 25px; margin-top: 1rem; }
+.choujiang .result .resultClose{ position: absolute; right: 0.4rem; top: 0.4rem; width: 16px; height: 16px; display: block; background: url('../image/plate/close.gif') no-repeat 0; cursor: pointer; }
+.resultBg{ position: fixed; width: 100%; height: 100%; z-index:10; background-color:#000; opacity:0.6; filter:alpha(opacity=60); display: none; top: 0; left: 0; }
+
+.dzp-jifen { margin: 0 1rem; background-color: #ff2f46; line-height: 2rem; font-size:1.2rem; padding: 0 1rem; border-radius: 4px; color: #fff; }
+.dzp-jifen i { float: right; }
+
+.dzp-jxsm { padding: 0 1rem; margin-top: 1rem; }
+.dzp-jxsm section { overflow: hidden; border-radius: 4px; }
+.dzp-jxsm table { border: 1px #ff2f46 dashed; width: 100%; }
+.dzp-jxsm th { border: 1px #ff2f46 solid; background-color: #ff2f46; width: 1.6rem; text-align: center; padding: 0.6rem 0; color: #fff; font-size:1.2rem; }
+.dzp-jxsm td { border: 1px #ff2f46 dashed; color: #434343; line-height:1.5rem; padding: 0.2rem 0 0.2rem 0.4rem; font-size:1.2rem; }
+.dzp-jxsm td i { color: #ff2f46; font-size:1rem; vertical-align: middle; }
+.dzp-jxsm td em { color: #ababab; }
+
+.dzp-guiz { border-radius: 4px; margin: 0 1rem; background-color: #fff9e7; margin-top: 1rem; border: 1px #f0cf18 solid; padding:1rem; }
+.dzp-guiz .dzp-guiz-h3 { color: #000000; font-size:1.2rem; margin-bottom: 0.2rem; }
+.dzp-guiz section { color: #818181; font-size:1.2rem; line-height: 1.5rem; }

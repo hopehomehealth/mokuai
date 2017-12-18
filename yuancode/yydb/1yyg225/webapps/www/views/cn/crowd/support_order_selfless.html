@@ -1,0 +1,80 @@
+{include file="crowd/crowd_header.html"}
+{include file="crowd/ur_here.html"}
+<div class="container">
+    <div class="gwc1">
+        <h3 class="gwc1-h3">{{$return['cd_name']}}</h3>
+        <div class="gwc1-r">
+            <form action="/crowd/support/{{$return['rt_id']}}" target="iframeNews" id="support_form" method="post">
+            <div class="gwc1-r2">
+                <div class="gwc1-r2-zc">
+                    <h3>无私奉献</h3>
+                    <p> 感谢您对我们的信任，我们将带着您的这份支持向梦想启航。</p>
+                </div>
+                <ul>
+                    <li class="user-grxx-tx">
+                        <span class="jzje-span">支持金额：</span>
+                        <p class="jzje">
+                            {if is_array($price)}
+                            {foreach from=$price item=p}
+                            <a href="javascript:;" data-bind="{{$p['price']}}">￥{{$p['price']}}</a>
+                            {/foreach}
+                            {/if}
+                            <input type="text" name="price" id="price" placeholder="其他金额" />
+                        </p>
+                    </li>
+
+                    <li class="beiz">
+                        <span>捐赠寄语：</span>
+                        <p>
+                            <textarea placeholder="写下您的捐赠寄语，给我们加油鼓气吧~"  name="remark"></textarea>
+                        </p>
+                    </li>
+
+                </ul>
+                <dl>
+                    <dd>
+                        <span> 实付款：</span><b class="money">￥{{$return['price']}}</b>
+                    </dd>
+                    <dd> <input type="checkbox" name="agree" value="on"/> 我已阅读并同意爱我拍众筹的<a style="color: #e54048;" href="">《支持者协议》</a></dd>
+                    <dd>
+                        <input type="hidden" name="submit" value="on" />
+                        <input type="hidden" name="return" value="{{$return['rt_id']}}" />
+                        <input type="submit" value="提交订单" /> 
+                    </dd>
+                </dl>
+            </div>
+            </form>
+            <div class="fxts">
+                <strong> 风险提示：</strong>
+                <br />
+                请您务必审慎阅读、充分理解协议中相关条款内容，其中包括：
+                <br />
+                1、风险提示条款和特别提示条款；
+                <br />
+                2、与您约定法律适用和管辖的条款；
+                <br />
+                3、其他以粗体标识的重要条款。
+                <br />
+                如您不同意相关协议、公告、规则、操作流程和项目页面承诺，您有权选择不支持；一旦选择支持，即视为您已确知并完全同意相关协议。
+                <br />
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".jzje a").click(function () {
+            $(".jzje a").attr("class", "");
+            $(this).attr("class", "on");
+            $("#price").val($(this).attr("data-bind"));
+            $(".money").text('￥'+ $(this).attr("data-bind"));
+        });
+        $("#price").focus(function(){
+        }).blur(function(){
+            $(".jzje a").attr("class", "");
+            $(".money").text('￥'+ $("#price").val());
+        });
+    });
+</script>
+
+{include file="crowd/crowd_footer.html"}

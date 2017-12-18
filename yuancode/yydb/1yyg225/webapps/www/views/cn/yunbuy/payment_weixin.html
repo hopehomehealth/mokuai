@@ -1,0 +1,31 @@
+{include file="header.html"}
+<style type="text/css">
+    a{ cursor: pointer; }
+    .body{ position: relative; width: 260px; margin: 80px auto 150px; text-align: center; }
+    .body .i{ position: absolute; right: -215px; top: 0; }
+    .msg{ color: #333; font-size: 18px; }
+    .price{ font-size: 28px; color: #DF334F; margin-bottom: 30px; }
+    .qr{ margin-bottom: 20px; height: 260px; }
+</style>
+
+<div class="container">
+    <ul class="body">
+        <li class="i"><img src="/style/images/weixin_0.png" /></li>
+        <li class="msg">微信扫一扫付款</li>
+        <li class="price">{$data.money|price_format}</li>
+        <li class="qr"><img src="/welcome/build_qrcode?data={$data.url}" width="260" /></li>
+        <li class="tip"><img src="/style/images/weixin_1.png" /></li>
+    </ul>
+</div>
+
+<script type="text/javascript">
+    function respond(){
+        $.get("/welcome/respond/{$data.log_id}", { ajax:1 },
+            function(data){
+                if(data.is_success>0) window.location.href="/welcome/respond/{$data.log_id}";
+            }, "json");
+    }
+    window.setInterval(respond,1000);
+</script>
+
+{include file="footer.html"}

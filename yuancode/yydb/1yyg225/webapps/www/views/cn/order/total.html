@@ -1,0 +1,60 @@
+<div class="summary">
+    <div class="total">
+        <p>
+        商品总价：<span>{$total.goods_price|price_format}</span>
+        {if $total.pay_fee}
+        + 支付费用：<span>{$total.pay_fee|price_format}</span>
+        {/if}
+        </p>
+
+        <p>
+        {if $total.deposit}
+        - 使用冻结款：<span>{$total.deposit|price_format}</span>
+        {/if}
+        {if $total.surplus}
+        - 使用余额：<span>{$total.surplus|price_format}</span>
+        {/if}
+        {if $total.integral}
+        - 使用积分：<span>{$total.integral}</span>
+        {/if}
+        </p>
+
+        <p>
+        还需支付：<strong><span data-pro="amount">{$total.amount|price_format}</span></strong> 元
+        </p>
+    </div>
+    <div class="tips">
+        {if $total.amount > 0}
+        <p>您的账户余额不足，请选择以下方式完成支付</p>
+        {/if}
+    </div>
+</div>
+
+{if $total.amount > 0}
+<div data-pro="paySelector">
+    <div class="w-pay">
+        <div class="w-pay-title">支付方式：</div>
+        <div class="w-pay-selector">
+            {foreach from=$data.paymentList item=m key=key}
+            <div class="w-pay-type{if $data.pay_id eq $m.pay_id} w-pay-selected{/if} v" onclick="changePayment($(this),'{$m.pay_id}')">
+                <label>
+                    {if $m.thumb}
+                    <img src="{zz mod=fileurl source=$m.thumb width=144 height=54 type=0}" /><span></span>
+                    {else}{$m.pay_name}
+                    {/if}
+                    <input type="radio" name="payment" value="{$m.pay_id}" style="display:none;" {if $data.pay_id eq $m.pay_id} checked{/if} />
+                </label>
+            </div>
+            {/foreach}
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function changePayment(obj,pay_id){
+        $('.w-pay-type').removeClass('w-pay-selected');
+        obj.addClass('w-pay-selected');
+        obj.find('input').attr('checked',true);
+        changeAmount({ pay_id:pay_id });
+    }
+</script>
+{/if}

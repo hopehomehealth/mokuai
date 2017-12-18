@@ -1,0 +1,135 @@
+{include file="crowd/crowd_header.html"}
+<form action="/crowd/support/{{$return['rt_id']}}" target="iframeNews" id="support_form" method="post">
+{if $return.is_address}
+<div class="dd-shr">
+    <ul class="dd-shr-ul">
+        <a href="javascript:;" onclick="$('.dzxuanzhe').show();">
+            <i class="iconfont">&#xe62a;</i>
+            <input type="hidden" id="address" name="address" class="regular-radio" value="{{$address[0]['id']}}">
+            <li>
+                <span class="mobile">{{$address[0]['mobile']}}</span> 收件人：<font class="name">{{$address[0]['name']}}</font>
+            </li>
+            <dd class="address">{{$address[0]['area']}} {{$address[0]['address']}} {if $address.0.zip}({$address.0.zip}){/if}</dd>
+        </a>
+    </ul>
+
+    <div class="dzxuanzhe" style="display:none;">
+        <ul class="dzxuanzhe-ul">
+            <dd> 请选择收货地址 <a href="javascript:;" onclick="$('.dzxuanzhe').hide();" class="close"></a> </dd>
+            {foreach from=$address item=a}
+            <li>
+                <label>
+                    <em></em>
+                    <input type="radio" value="{$a.id}" n="{$a.name}" m="{$a.mobile}" a="{$a.area} {$a.address}{if $a.zip}({$a.zip}){/if}"/>
+                </label>
+                <section>
+                    <p>
+                        <span>姓名</span> {$a.name}
+                    </p>
+                    <p>
+                            <span>
+                                电话
+                            </span>{$a.mobile}
+                    </p>
+                    <p>
+                            <span>
+                                地址
+                            </span>{$a.area} {$a.address} {if $a.zip}({$a.zip}){/if}
+                    </p>
+                </section>
+                <a class="dz-bj" href="/member/address/{{$a['id']}}?back={urlencode('/crowd/support/')}{{$return['rt_id']}}">
+                    <img src="/style/crowd/mobile/images/ico-bianji.png" />
+                </a>
+            </li>
+            {/foreach}
+        </ul>
+
+
+
+        <div class="xinzhang">
+
+            <a href="/member/address?back={urlencode('/crowd/support/')}{$return.rt_id}">新增收货地址</a>
+
+        </div>
+
+    </div>
+</div>
+{/if}
+<div class="xiangxidd">
+    <div class="huibao">
+        <div class="huibao-t">
+            档位金额：
+            <span>{{$return['price']}}元</span>
+        </div>
+        <section>
+            <p>
+                <span>回报内容：</span>
+                <i class="iconfont">&#xe628;</i>
+            </p>
+            <p>{{$return['rt_desc']}}</p>
+        </section>
+    </div>
+    <div class="psf">
+        <section>
+            {if $return.is_address}
+            <p class="p2">
+                配送费用：
+                <span>免邮费</span>
+            </p>
+            {/if}
+            <p class="p3">
+                应付金额：
+                <span><i>{{$return['price']}}</i>元</span>
+            </p>
+        </section>
+    </div>
+
+    <div class="beizu">
+
+        <i>备注：</i>
+        <textarea rows="2" name="remark" cols="20"></textarea>
+    </div>
+    </div>
+    <div class="fxts">
+
+        <p>
+            风险提示：
+            <i class="iconfont">&#xe628;</i>
+        </p>
+        <section>
+            {zz mod=block mark=tip}
+        </section>
+    </div>
+</div>
+<div class="tjdd">
+    <span>总计金额 <i>{{$return['price']}} 元</i></span>
+    <input type="hidden" name="submit" value="on" />
+    <input type="hidden" name="return" value="{{$return['rt_id']}}" />
+    <input type="hidden" name="agree" value="on"/>
+    <input type="submit" value="提交订单">
+</div>
+</form>
+<iframe name="iframeNews" style="display:none;"></iframe>
+<script>
+    $(function () {
+        $(".zf-list-ico").bind('click', function () {
+            $('#chose_zf').html($(this).attr('title'));
+            $('.zf_xl').hide();
+            $("#chose_zf").parent('div').find('img').addClass('jt_xz');
+        });
+        $("#chose_zf").click(function () {
+            $('.zf_xl').show();
+            $("#chose_zf").parent('div').find('img').removeClass('jt_xz');
+        });
+        $(".dzxuanzhe-ul li label").click(function(){
+            $(this).parent('li').addClass('on').siblings().removeClass('on');
+            $("#address").val($(this).children('input').val());
+            $(".name").html($(this).children('input').attr('n'));
+            $(".mobile").html($(this).children('input').attr('m'));
+            $(".address").html($(this).children('input').attr('a'));
+            $('.dzxuanzhe').hide();
+        });
+
+    })
+
+</script>

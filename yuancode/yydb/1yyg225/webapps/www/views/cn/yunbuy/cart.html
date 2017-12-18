@@ -1,0 +1,379 @@
+{include file="header.html"}
+<link rel="stylesheet" href="{url('/style/css/yiyuanbao.css')}" xmlns="http://www.w3.org/1999/html">
+{include file="ur_here.html"}
+<div class="g-body mb15">
+    <div class="m-user">
+        <div class="g-wrap">
+            <div class="g-body">
+            <form action="{url('/yunbuy/checkout')}" id="cartForm" method="post">
+                {if $is_cart_db || ($is_cart_db_free && isset($smarty.get.free))}
+                <div class="m-header">
+                    <div class="g-wrap">
+                        {assign var="progress" value="1"}
+                        {include file="yunbuy/progress_cart.html"}
+                    </div>
+                </div>
+                <div class="m-cart-order" data-pro="order">
+                    <table id="pro-view-5" class="w-table ">
+                        <colgroup>
+                            <col class="w-table-col0">
+                            <col class="w-table-col1">
+                            <col class="w-table-col2">
+                            <col class="w-table-col3">
+                            <col class="w-table-col4">
+                            <col class="w-table-col5">
+                            <col class="w-table-col6">
+                            <col class="w-table-col7">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th class="w-table-chk " style="padding: 8px 15px;">
+                                <label id="pro-view-6" class="w-checkbox"><input class="selectall" type="checkbox" checked></label>
+                            </th>
+                            <th style="text-align: center;">{$L.unit_yun}商品</th>
+                            <th style="text-align: center;">名称</th>
+                            <th style="text-align: center;">价值</th>
+                            <th style="text-align: center;">{$L.unit_yun}价</th>
+                            <th style="text-align: center;">参与人次</th>
+                            <th style="text-align: center;">{if $site_config.open_multi eq 1}参与多期{/if}</th>
+                            <th style="text-align: center;">小计</th>
+                            <th class="w-table-opt" style="">操作</th>
+                        </tr>
+                        </thead>
+                        {foreach from=$cart_goods item=m}
+                        {if $m.type neq 3}
+                        <tr>
+                            <td class="w-table-chk" style=""><input value="{$m.id}" name="id[]" type="checkbox" {if $m.notbuy}disabled{else}checked{/if}/></td>
+                            <td style=""><img alt="(第{$m.qishu}期) {$m.goods_name}" src="{zz  mod=fileurl source=$m.imgurl_thumb width=64 type=0}" width="64"></td>
+                            <td style="">
+                                {if $m.prev_buy_id}
+                                <label class="new"><i></i>已为您更新至{$m.qishu}期</label>
+                                {/if}
+                                {if $m.type eq 3}
+                                <p><a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}" target="_blank"> {$m.goods_name}</a></p>
+                                <span class="color01">{$L.unit_go_buy}商品</span>
+                                {else}
+                                <p><a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}" target="_blank">(第{$m.qishu}期) {$m.goods_name}</a></p>
+                                <p>总需<b class="color02">{$m.need_num}</b>人次参与，还剩{$m.end_num}人次</p>
+                                {/if}
+                            </td>
+                            <td style="text-align: center;">
+                                {if $m.type eq 3}
+                                --
+                                {elseif $m.type eq 1}
+                                {$m.goods_price|price_format}
+                                {else}
+                                {$m.goods_price}{$unit}
+                                {/if}
+                            </td>
+                            <td style="text-align: center;">
+                                {if $m.type eq 2}
+                                {$m.price}{$unit}
+                                {else}
+                                {$m.price|price_format}
+                                {/if}
+                            </td>
+                            <td style="text-align: center;">
+                                <div id="pro-view-9" class="w-number w-number-inline">
+                                    <input class="w-number-input" value="{$m.qty}" data-id="{$m.id}" data-max="{$m.end_num}">
+                                    <a class="w-number-btn w-number-btn-plus" data-pro="plus" href="javascript:void(0);">+</a>
+                                    <a class="w-number-btn w-number-btn-minus" data-pro="minus" href="javascript:void(0);">-</a>
+                                </div>
+                                {if $m.num_notbuy}<p class="txt-err">该期{$L.unit_price}活动已结束，<br>请先删除再进行结算</p>
+                                {else if $m.extData.error gt 0}<p class="txt-err">{$m.extData.error_text}</p>
+                                {/if}
+                            </td>
+                            
+                            <td style="text-align: center;">
+                                {if $site_config.open_multi eq 1 && $m.type neq 3}
+                                <div class="w-number w-number-inline">
+                                    <input class="w-qishu-input" value="{$m.multi}" data-id="{$m.id}" data-max="{$m.max_multi}" {if $site_config.open_multi neq 1}disabled style="color:gray"{/if}>
+                                    <a class="w-number-btn w-qishu-btn-plus" data-pro="plus" href="javascript:void(0);">+</a>
+                                    <a class="w-number-btn w-qishu-btn-minus" data-pro="minus" href="javascript:void(0);">-</a>
+                                </div>
+                                {/if}
+                            </td>
+                            
+                            <td style="text-align: center;">
+                                {if $m.type eq 2}
+                                <em><span id="subtotal_{$m.id}">{$m.subtotal}</span>{$unit}</em>
+                                {else}
+                                <em>￥<span id="subtotal_{$m.id}">{$m.subtotal}</span></em>
+                                {/if}
+                            </td>
+                            <td class="w-table-opt"><a data-pro="del" onclick="delCart('{$m.id}',1)" class="w-button w-button-main" style="color:#fff;">删除</a></td>
+                        </tr>
+                        {/if}
+                        {/foreach}
+                    </table>
+                </div>
+                {if $is_cart_buy && !isset($smarty.get.free)}
+                <div style="clear: both;height: 30px;"></div>
+                {/if}
+                {/if}
+
+                {if $is_cart_buy && !isset($smarty.get.free)}
+                {include file="yunbuy/progress_cart_buy.html"}
+                <div style="clear: both;height: 15px;"></div>
+
+                <div class="m-cart-order" data-pro="order">
+                    <table id="pro-view-5" class="w-table ">
+                        <colgroup>
+                            <col class="w-table-col0">
+                            <col class="w-table-col1">
+                            <col class="w-table-col2">
+                            <col class="w-table-col3">
+                            <col class="w-table-col4">
+                            <col class="w-table-col5">
+                            <col class="w-table-col6">
+                            <col class="w-table-col7">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th class="w-table-chk " style="padding: 8px 15px;">
+                                <label id="pro-view-6" class="w-checkbox"><input class="selectall" type="checkbox" checked></label>
+                            </th>
+                            <th style="text-align: center;">直购商品</th>
+                            <th style="text-align: center;">名称</th>
+                            <th style="text-align: center;">价值</th>
+                            <th style="text-align: center;">市场价</th>
+                            <th style="text-align: center;">数量</th>
+                            <th style="text-align: center;"></th>
+                            <th style="text-align: center;">小计</th>
+                            <th class="w-table-opt" style="">操作</th>
+                        </tr>
+                        </thead>
+                        <tfoot>
+                        <tr>
+                            <td colspan="9">
+                                <div class="footer">
+                                    <div class="total">
+                                        {if isset($smarty.get.free)}
+                                        总计：<strong><span id="total">{$cart_total}</span></strong> {$unit}
+                                        {else}
+                                        夺宝金额总计：<strong>￥<span id="total">{$cart_total}</span></strong>
+                                        {/if}
+                                    </div>
+                                    <label id="pro-view-7" class="w-checkbox"><input class="selectall" type="checkbox" checked></label>
+                                    <a class="delChecked" href="javascript:void(0);" style="font-weight: bold;">删除选中</a> </div>
+                            </td>
+                        </tr>
+                        </tfoot>
+                        {foreach from=$cart_goods item=m}
+                        {if $m.type eq 3}
+                        <tr>
+                            <td class="w-table-chk" style=""><input value="{$m.id}" name="id[]" type="checkbox" {if $m.notbuy}disabled{else}checked{/if}/></td>
+                            <td style=""><img alt="{$m.goods_name}" src="{zz mod=fileurl source=$m.imgurl_thumb width=64 type=0}" width="64"></td>
+                            <td style="">
+                                <p><a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}" target="_blank"> {$m.goods_name}</a></p>
+                                <span class="color01">{$L.unit_go_buy}商品</span>
+                            </td>
+                            <td style="text-align: center;">
+                                {$m.price|price_format}
+                            </td>
+                            <td style="text-align: center;">
+                                {$m.goods_price|price_format}
+                            </td>
+                            <td style="text-align: center;">
+                                <div id="pro-view-9" class="w-number w-number-inline">
+                                    <input class="w-number-input" value="{$m.qty}" data-id="{$m.id}" data-max="{$m.end_num}">
+                                    <a class="w-number-btn w-number-btn-plus" data-pro="plus" href="javascript:void(0);">+</a>
+                                    <a class="w-number-btn w-number-btn-minus" data-pro="minus" href="javascript:void(0);">-</a>
+                                </div>
+                                {if $m.num_notbuy}<p class="txt-err">该商品库存不足，无法购买</p>{/if}
+                            </td>
+                            <td></td>
+                            <td style="text-align: center;">
+                                <em>￥<span id="subtotal_{$m.id}">{$m.subtotal}</span></em>
+                            </td>
+                            <td class="w-table-opt"><a data-pro="del" onclick="delCart('{$m.id}',1)" class="w-button w-button-main" style="color:#fff;">删除</a></td>
+                        </tr>
+                        {/if}
+                        {/foreach}
+                    </table>
+                </div>
+                {/if}
+
+                <div class="m-cart-submit" data-pro="submit">
+                    <a id="pro-view-1" class="w-button w-button-aside w-button-xl" href="{url()}"><span>返回首页</span></a>
+                    <input type="hidden" name="Submit" value="1"/>
+                    {if isset($smarty.get.free)}<input type="hidden" name="free" value="1"/>{/if}
+                    <button class="w-button w-button-main w-button-xl {if $not_buy}w-button-disabled{/if}" onclick="return check_sumbit()" {if $not_buy}disabled{/if}><span>同意以下协议，提交订单</span></button>
+                </div>
+                <input type="hidden" name="address_id" value="{$smarty.get.address_id}"/>
+            </form>
+            <div class="m-helpcenter-detail-bd" style="height:auto;">
+                {if isset($smarty.get.free)}
+                {zz mod=block mark=server02}
+                {else}
+                {zz mod=block mark=server}
+                {/if}
+            </div>
+
+            <div class="m-cart-tuijian">
+                <div class="w-hd">
+                    <h3 class="w-hd-title">推荐{$L.unit_yun}</h3>
+                    <a class="w-hd-more" href="{url('/yunbuy')}">想看更多精彩，逛一下吧！</a> </div>
+                <div class="m-cart-tuijian-bd">
+                    <ul class="w-goodsList f-clear">
+                        {foreach from=$rec_buy item=m}
+                        <li class="w-goodsList-item row-first">
+                            <div class="w-goods w-goods-briefFree">
+                                <div class="w-goods-pic scrollLoadingDiv"><a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}" target="_blank" title="{$m.title}"><img alt="{$m.title}" class="scrollLoading" src="/style/images/pix.gif" data-url="{zz mod=fileurl source=$m.imgurl_src width=210 height=130 type=0}"></a></div>
+                                <p class="w-goods-title f-txtabb"><a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}" target="_blank" title="{$m.title}">(第{$m.qishu}期){$m.title}</a></p>
+                                <p class="w-goods-price">总需：{$m.need_num} 人次</p>
+                                <p>参与 <b class="txt-gray">{$m.buy_num}</b> 人次，</p>
+                                <p>还剩 <b class="txt-blue">{$m.end_num}</b> 人次</p>
+                                <div class="w-goods-opr1"><a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}" style="" target="_blank">详情&gt; </a></div>
+                            </div>
+                        </li>
+                        {/foreach}
+                    </ul>
+                </div>
+            </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function check_sumbit(){
+        $.post("/welcome/checkYunLimit",{ ajax:1 },function(data){
+            if(data.code == 1){
+                if(data.msg){
+                    layer.alert(data.msg,8,function(){
+                        if(data.url){
+                            location.href=data.url;
+                        }
+                    });
+                }
+                return false;
+            } else if(data.code == 2){
+                if(data.msg){
+                    if( ! confirm(data.msg)){
+                        return false;
+                    }else{
+                        $('#cartForm').submit();
+                    }
+                }
+            } else if(data.code == 0){
+                $('#cartForm').submit();
+            }
+        },'json');
+        return false;
+    }
+    $(function(){
+        //参与人次
+        $(".w-number-btn-plus").click(function(){
+            var id = $(this).parent().children('input.w-number-input').attr('data-id');
+            var max = $(this).parent().children('input.w-number-input').attr('data-max');
+            var qty = $(this).parent().children('input.w-number-input').val()*1;
+            if(qty < max){
+                $(this).parent().children('input.w-number-input').val(qty+1);
+            }
+            updatecart(id,$(this).parent().children('input.w-number-input').val(),'');
+        });
+        $(".w-number-btn-minus").click(function(){
+            var id = $(this).parent().children('input.w-number-input').attr('data-id');
+            var qty = $(this).parent().children('input.w-number-input').val()*1;
+            if(qty>1){
+                $(this).parent().children('input.w-number-input').val(qty-1);
+            }
+            updatecart(id,$(this).parent().children('input.w-number-input').val(),'');
+        });
+        $(".w-number-input").blur(function(){
+            var id = $(this).attr('data-id');
+            var max = $(this).attr('data-max')*1;
+            if($(this).val()>max){
+                $(this).val(max);
+            }
+            if($(this).val()<=0) $(this).val(1);
+            updatecart(id,$(this).val(),'');
+        });
+        {if $site_config.open_multi eq 1}
+        //多期参与
+        $(".w-qishu-btn-plus").click(function(){
+            var id = $(this).parent().children('input.w-qishu-input').attr('data-id');
+            var max = $(this).parent().children('input.w-qishu-input').attr('data-max');
+            var multi = $(this).parent().children('input.w-qishu-input').val()*1;
+            if(multi < max){
+                $(this).parent().children('input.w-qishu-input').val(multi+1);
+            }
+            updatecart(id,'',$(this).parent().children('input.w-qishu-input').val());
+        });
+        $(".w-qishu-btn-minus").click(function(){
+            var id = $(this).parent().children('input.w-qishu-input').attr('data-id');
+            var multi = $(this).parent().children('input.w-qishu-input').val()*1;
+            if(multi>1){
+                $(this).parent().children('input.w-qishu-input').val(multi-1);
+            }
+            updatecart(id,'',$(this).parent().children('input.w-qishu-input').val());
+        });
+        $(".w-qishu-input").blur(function(){
+            var id = $(this).attr('data-id');
+            var max = $(this).attr('data-max')*1;
+            if($(this).val()>max){
+                $(this).val(max);
+            }
+            if($(this).val()<=0) $(this).val(1);
+            updatecart(id,'',$(this).val());
+        });
+        {/if}
+        function updatecart(id,qty,multi){
+            var ids = '';
+            var i = 0;
+            $("input[name='id[]']").each(function(){
+                if($(this).is(':checked')){
+                    i++;
+                    ids += i==$("input[name='id[]']:checked").length ? $(this).val() :$(this).val()+',';
+                }
+            });
+            $.post('/yunbuy/updatecart',{ id:id,qty:qty,ids:ids,multi:multi,type:'{if isset($smarty.get.free)}2{else}1{/if}' },function(data){
+                $('#subtotal_'+id).html(data.subtotal);
+                $('#total').html(data.total);
+            },'json');
+        }
+        $('.selectall').click(function(){
+            $("input[name='id[]']").not(':disabled').prop("checked",$(this).is(':checked'));
+            $('.selectall').prop('checked',$(this).is(':checked'));
+            show_total();
+        });
+        $("input[name='id[]']").click(function(){
+            show_total();
+        });
+        function show_total(){
+            var ids = '';
+            var i=0;
+            $("input[name='id[]']").each(function(){
+                if($(this).is(':checked')){
+                    i++;
+                    ids += i==$("input[name='id[]']:checked").length ? $(this).val() :$(this).val()+',';
+                }
+            });
+            $.getJSON('/yunbuy/total',{ ids:ids },function(data){
+                $('#total').html(data.amount);
+                if(data.amount==0){
+                    $('.w-button-xl').addClass('w-button-disabled').attr("disabled",true);
+                }else{
+                    $('.w-button-xl').removeClass('w-button-disabled').removeAttr("disabled");
+                }
+            });
+        }
+        $('.delChecked').click(function(){
+            var ids = '';
+            var i = 0;
+            $("input[name='id[]']").each(function(){
+                if($(this).is(':checked')){
+                    i++;
+                    ids += i==$("input[name='id[]']:checked").length ? $(this).val() :$(this).val()+',';
+                }
+            });
+            $.post('/yunbuy/delcart/'+ids,{ ajax:1 },function(data){
+                if(data){
+                    location.reload();
+                }
+            });
+        });
+    });
+</script>
+{include file="footer.html"}

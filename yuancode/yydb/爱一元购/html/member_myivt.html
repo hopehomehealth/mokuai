@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no" />
+    <title>夺宝详情</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/minfo.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/member.css"/>    
+</head>
+<body>
+  <div id="header">
+	   <div class="active">
+		    <div class="icon_box" tapmode="" onclick="api.closeWin()"><i class="iconfont icon-fanhui"></i></div>
+		    <div class="toptit">我的邀请</div>
+		    <div class="icon_box" tapmode="" onclick="backhome()"><i class="iconfont icon-shouye"></i></div>
+	   </div>
+  </div>
+  <div id="content" class="container main space">
+        <div class="tab-m-a">
+			<ul class="ui-clr">
+				<li class="ta ivt1" onclick="onLoad('ivt1')">邀请好友</li>
+				<li class="ta last list" onclick="onLoad('list')">我的邀请</li>
+			</ul>
+		</div>
+		<div class="tab-m-c" >
+		    <div class="ivt1-c cbar" id="ivt1-content"></div>
+		    <div class="list-c cbar">
+				<div class="prompt">邀请会员注册，会员参与夺宝后您将得到分销提成。</div>
+				<div class="tab-m-a">
+					<ul class="ui-clr" id="itype-content"></ul>
+				</div>
+				<div class="list01 list-address" id="list-content">
+				</div>
+			</div>
+		</div>
+		<script id="itype-template" type="text/x-dot-template">
+		{{?it.cmss}}
+		{{ for(var i=0;i< it.cmss.length;i++) { }}
+		<li class="ta {{? i==0}}hover{{??}}last{{?}}">{{=it.cmss[i].level}}级分销({{=it.cmss[i].count}}人)</li>
+		{{ } }}
+		{{?}}
+		</script>
+		<script id="ivt1-template" type="text/x-dot-template">
+	    <div class="form-itv">
+			<p class="color01">分享邀请链接：</p>
+			<p><textarea id="text" onfocus="this.style.borderColor='#FD9';this.select();" onblur="this.style.borderColor='#ccc'" class="input-m showcontent" style="width: 95%;height:70px;padding:10px;">{{=it.comment.text}} {{=it.comment.url}}</textarea></p>
+			<p class="share_bar">
+			分享到: <i class="iconfont icon-qzone" onclick="qqshare('QZone')"></i> <i class="iconfont icon-qq2" onclick="qqshare('QFriend')"></i> <i class="iconfont icon-weixin" onclick="wxshare('session')"></i> <i class="iconfont icon-wxfriend" onclick="wxshare('timeline')"></i>
+			</p>		
+			<div style="clear: both"></div>
+		</div>
+		<div style="padding-left: 10px;font-size: 16px;">邀请好友送<span style="color:red;">5</span>个拍币。好友夺宝提取<span style="color:red;">5%</span>佣金</div>
+		</script>
+		<script id="list-template" type="text/x-dot-template">
+		{{?it.list}}
+		{{ for(var i=0;i< it.list.length;i++) { }}
+		<dl>
+			<dt><b>{{=it.list[i].num}}、{{=it.list[i].username}}</b></dt>
+			<dd>
+				<table cellpadding="0" cellspcing="0">
+				<tr>
+					<th>注册时间</th>
+					<td>
+						{{=it.list[i].c_time}}&nbsp;&nbsp;
+						{{? typeof(it.list[i].is_award) != "undefined"}}
+							{{? it.list[i].is_award == 0}}
+							<a id="mid{{=it.list[i].mid}}" class="btn-small" href="javascript:;" onclick="award_ivt('{{=it.list[i].mid}}')">领取</a>
+							{{??}}
+							<a class="btn-small btn-disable" href="javascript:;">已领取</a>
+							{{?}}
+						{{?}}
+					</td>
+				</tr>
+				</table>
+			</dd>
+		</dl>
+		{{ } }}
+		{{?}}
+		</script>	    
+  </div>
+<input type="hidden" id="type" value=""/>  
+<script type="text/javascript" src="../script/jquery.min.js"></script>
+<script type="text/javascript" src="../script/fastclick.js"></script>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/doT.min.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript" src="../script/share.js"></script>
+<script type="text/javascript">
+var id = '';
+var page = 1;
+var itype = 0;
+var appshareurl,sharetext,shareurl,sharepic,wxKey,type,sharetitle;
+function onLoad(type){
+  page = 1;  
+  $("#list-content,#ivt1-content").html("");
+  $(".ta").removeClass("on");
+  $("."+type).addClass("on");
+  $(".cbar").hide();
+  $("."+type+'-c').show();
+  loadData(type,page);
+}
+function loadData(type,page){  
+    var url = 'member/myivt/'+page;
+    if(type=='list') url+='?type='+itype;
+    var reslut = false;
+    showprog();
+    ajaxRequest(url, 'GET', {}, function (ret, err) {
+		var content = $api.byId(type+'-content');
+		var tpl = $api.byId(type+'-template').text;
+		var tempFn = doT.template(tpl);
+		$api.append(content, tempFn(ret.data));
+		if(type=='ivt1'){
+		   sharetext = ret.data.comment.text;
+		   shareurl = ret.data.comment.url.replace('http://www.i1y8.com', appshareurl);
+		   sharepic = 'http://www.i1y8.com/upload/images/gallery/y/s/1253_src.png' || ret.data.comment.pic;
+		   sharetitle = '';
+		   wxKey = ret.data.comment.wxKey;
+		   temp(ret.data,'itype');
+		}
+		reslut = true;        
+        hideprog();
+    });
+    return reslut;
+}
+
+apiready = function(){
+    ajaxRequest('home/getShareUrl', 'GET', {}, function (ret, err) {
+	    if (ret) {
+            appshareurl = ret.data;
+	    } else {
+	        toast(err.msg);
+	    }
+	});
+    //适配iOS 7+，Android 4.4+状态栏
+	var header = $api.byId('header');
+	$api.fixStatusBar(header);
+    onLoad('ivt1');
+    api.addEventListener({name: 'scrolltobottom'}, function(ret, err){
+       page++;
+       loadData('list',page);
+    }); 
+    checkUpdate();
+}
+
+function award_ivt(mid){
+	var D = { mid:mid };	
+	ajaxRequest('member/award_ivt/', 'POST', {values:D}, function (ret, err) {
+		toast(ret.msg);
+		onLoad('list');
+	});
+}
+
+$(function(){
+  $('#itype-content li').live('click',function(){
+    $(this).addClass('hover').siblings().removeClass('hover');
+    itype = $('#itype-content li').index(this);
+    $("#list-content").html("");
+    page = 1;
+    loadData('list',page);
+  });
+});
+</script>
+</body>
+</html>

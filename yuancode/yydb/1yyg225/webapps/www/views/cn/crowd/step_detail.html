@@ -1,0 +1,49 @@
+{include file="crowd/crowd_header.html"}
+{include file="crowd/ur_here.html"}
+<div class="container">
+    <div class="gwc1">
+
+        <div class="zcjcxx">
+
+            <ul>
+                <li>
+                    <a href="javascript:;">基本信息</a>
+                </li>
+
+                <li>
+                    <a href="javascript:;">项目信息</a>
+                </li>
+                <li class="on">
+                    <a href="javascript:;">详细描述</a>
+                </li>
+
+                <li>
+                    <a href="javascript:;">回报设置</a>
+                </li>
+                <dd><a href="{url('/crowd/detail/')}{$info.cd_id}" target="_blank">预览</a></dd>
+            </ul>
+
+
+        </div>
+
+
+        <form action="/crowd/step_detail" target="iframeNews" id="step_form" method="post">
+        <div class="fqbd">
+            <h3 class="fqbd-h3">编辑您的项目详情</h3>
+            {$info.html_content}
+            <section class="faxyb">
+                <a href="{url('/crowd/step_info/')}{$info.cd_id}">上一步</a>
+                <input type="submit" value="下一步">
+            </section>
+            <input type="hidden" name="id" value="{$info.cd_id}">
+        </div>
+        </form>
+
+
+
+
+
+    </div>
+
+</div>
+{include file="crowd/crowd_footer.html"}

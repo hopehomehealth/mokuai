@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+    {$site_config.qq_admins}
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>{$seo.title}</title>
+    <meta charset="utf-8">
+    <meta name="keywords" content="{$seo.keywords}" />
+    <meta name="description" content="{$seo.description}" />
+    <meta name="viewport" content="width=device-width,initial-scale=1{if $viewport eq 'pc'},user-scalable=yes,maximum-scale=3{else},maximum-scale=2,user-scalable=no{/if}">
+    <link rel="stylesheet" href="/style/mobile/css/common.css">
+    <link rel="stylesheet" href="/style/mobile/css/font/iconfont.css">
+    <script src="/style/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/style/layer/layer.min.js"></script>
+    <script type="text/javascript" src="/style/common.js"></script>
+    {if $wechat && $smarty.session.mid}
+    {if !$wx_config_false}
+    <script type="text/javascript" src="{getUrl('http')}://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            //微信端所有页面带邀请者ID
+            wx.config({
+                debug: false,
+                appId: '{$signPackage.appId}',
+                timestamp: '{$signPackage.timestamp}',
+                nonceStr: '{$signPackage.nonceStr}',
+                signature: '{$signPackage.signature}',
+                jsApiList: [
+                    //所有要调用的 API 都要加到这个列表中
+                    'checkJsApi',
+                    'onMenuShareTimeline',
+                    'onMenuShareAppMessage',
+                    'onMenuShareQQ'
+                ]
+            });
+            
+        })
+    </script>
+    {/if}
+    {/if}
+</head>
+<body>
+
+{if $header eq 'header2'}
+<header id="header2">
+    <h1>{if $row.head}{$row.head}{else}{$seo.head}{/if}</h1>
+    <div class="back"><a class="ap-icon" href="javascript:history.back();"></a></div>
+    <div class="menu">
+        <!--<a class="icon-cart ap-icon" href="{url('/yunbuy/cart')}"><em class="cartNum">{$cartNum}</em></a>-->
+        <a class="icon-home ap-icon" href="{url()}"></a>
+    </div>
+</header>
+{else}
+
+{/if}

@@ -1,0 +1,202 @@
+{include file='../public_btn.html'}
+
+{literal}<style type="text/css">
+.stocks table{width:100%}
+.spec-item{width:140px; display:inline-block}
+.spec-item *{display:inline-block; vertical-align:middle}
+.spec-item span{width:100px}
+</style>{/literal}
+<div class="html-box">
+    <form target="iframeNewsTarget" enctype="multipart/form-data" method="post" action="/manage/goods/submit" id="goods-form">
+        <input name="id" type="hidden" value="{$product.id}" />
+        <input type="hidden" id="x_cate" value="{$product.cate}">
+        <input type="hidden" id="x_subcate" value="{$product.subcate}">
+
+        <table class="table-list">
+        <tbody>
+            <tr>
+                <td class="td-label"><label>商品名称：<span class="c-red">*</span></label></td>
+                <td class="td-input">
+                    <input class="form-i w360" type="text" name="name" value="{$product.name}" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="td-label"><label>商品分类：<span class="c-red">*</span></label></td>
+                <td class="td-input">
+                    <select name="cid">{$select_categorys}</select>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="td-label"><label>商品品牌：</label></td>
+                <td class="td-input">
+                    <select name="bid"><option value="">请选择</option>{$select_brands}</select>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="td-label"><label>商品来源：</label></td>
+                <td class="td-input">
+                    <input class="form-i w360" type="text" name="desc" value="{$product.desc}" />
+                    <div class="form-tip">格式示例：京东采购|http://www.jd.com</div>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="td-label"><label>原价：</label></td>
+                <td class="td-input">
+                    <input type="text" class="form-i w140" name="price" value="{$product.price}" placeholder="0.00" />
+                </td>
+            </tr>
+
+            {if $common.a_money}
+            <tr>
+                <td class="td-label"><label>折现价：</label></td>
+                <td class="td-input">
+                    <input type="text" class="form-i w140" name="real_price" value="{$product.real_price}" placeholder="0" />
+                    <div class="form-tip">0表示不支持折现</div>
+                </td>
+            </tr>
+            {/if}
+
+            <tr>
+                <td class="td-label"><label>缩略图：</label></td>
+                <td class="td-input">
+                    {$product.html_thumb}
+                    <span class="form-tip">
+                        <!--建议：最佳尺寸268*195-->
+                    </span>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="td-label"><label>展示图集：</label></td>
+                <td class="td-input">
+                    {$product.html_goods_thumb}
+                    <span class="form-tip">建议：最佳宽度>=800，高度随意</span>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="td-label"><label>商品详情：</label></td>
+                <td class="td-input" colspan="2">
+                    {$product.html_content}
+                </td>
+            </tr>
+
+            <tr style="display: none;">
+                <td class="td-label"><label>商品规格：</label></td>
+                <td class="td-input">
+                    <div class="goods-spec" id="sp-box">
+                        {foreach from=$spec_list item=m}
+                        <div class="f-unit spec-unit" sp_id="{$m.id}" sp_name="{$m.name}">
+                            <label class="ui-label w60">{$m.name}：</label>
+                            <div class="rule-box">
+                                {foreach from=$m.values item=n}
+                                <label class="spec-item">
+                                    {if isset($product.sp_val[$m.id][$n.id])}
+                                    <input class="spec-ckbox e1-goods-setSpecVal-{$n.id}" value="{$product.sp_val[$m.id][$n.id]}" type="checkbox" name="sp_val[{$m.id}][{$n.id}]" spitem_id="{$n.id}" checked>
+                                    <span><input value="{$product.sp_val[$m.id][$n.id]}" class="spec-val form-i BtnSm w110" onblur="goods.chSepcValue(this)"></span>
+                                    {else}
+                                    <input class="spec-ckbox e1-goods-setSpecVal-{$n.id}" value="{$n.value}" type="checkbox" name="sp_val[{$m.id}][{$n.id}]" spitem_id="{$n.id}">
+                                    <span>{$n.value}</span>
+                                    {/if}
+                                </label>
+                                {/foreach}
+                            </div>
+                        </div>
+                        {/foreach}
+                    </div>
+                </td>
+            </tr>
+
+            <tr class="table-h3">
+                <td colspan="2">其它信息</td>
+            </tr>
+
+            <tr>
+                <td class="td-label"><label>是否审核：</label></td>
+                <td class="td-input">
+                    <label><input type="radio" name="is_sale" value="1" {if $product.is_sale eq 1}checked{/if}/>是</label>
+                    <label><input type="radio" name="is_sale" value="0" {if $product.is_sale eq 0}checked{/if}/>否</label>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="td-label"><label>关键词：</label></td>
+                <td class="td-input">
+                    <input type="text" class="form-i w200" name="words" value="{$product.words}" />
+                    <div class="form-tip">多个关键词用|分隔</div>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="td-label"><label>下单备注：</label></td>
+                <td class="td-input">
+                    <textarea name="tips">{$product.tips}</textarea>
+                    <div class="form-tip">下单时，提示会员需要填写的信息</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="td-label"><label>微信分享：</label></td>
+                <td class="td-input">
+                    <textarea name="wxshares">{$product.wxshares}</textarea>
+                    <div class="form-tip">微信分享信息添加（云购覆盖本信息）</div>
+                </td>
+            </tr>
+
+            {if $virtual_power}
+            <tr>
+                <td class="td-label"><label>虚拟卡：</label></td>
+                <td class="td-input">
+                    <label><input type="radio" name="virtual" value="1" {if $product.virtual eq 1}checked{/if}/>是</label>
+                    <label><input type="radio" name="virtual" value="0" {if $product.virtual eq 0}checked{/if}/>否</label>
+                    <div class="form-tip">
+                        虚拟卡商品发布后，请尽快发布虚拟卡卡密，否则会员下单后获取不到卡密
+                    </div>
+                </td>
+            </tr>
+            {/if}
+
+            {if $business_power && $product.mid}
+            <tr>
+                <td class="td-label"><label>平台返佣点：</label></td>
+                <td class="td-input">
+                    <input type="text" class="form-i w40" name="rebate" value="{$product.rebate}" />%
+                    <div class="form-tip" style="line-height: 1.5;padding-top:5px;">
+                        设置0或空时默认使用商家配置的平台返佣点；<br>
+                        设置-1时该商品平台无返佣。
+                    </div>
+                </td>
+            </tr>
+            {/if}
+
+            <tr class="tr-btn">
+                <td class="td-label"></td>
+                <td class="td-input">
+                    <button type="submit" name="Submit" class="uiBtn BtnGreen">提&nbsp;&nbsp;交</button>
+                    <button type="reset" class="uiBtn">重&nbsp;&nbsp;置</button>
+                </td>
+            </tr>
+
+        </tbody>
+        </table>
+    </form>
+</div>
+<script type="text/javascript">
+
+$.loadJs('/admin/js/manage/product.js',function(){
+$.loadJs('/admin/js/manage/goods.js',function(){
+$.loadJs('/admin/js/upload.js',function(){
+    //goods.spData = '';
+    {if isset($goodsItem)}
+        goods.stuffSpecs({$goodsItem});
+    {/if}
+    //gallery.initUploader();
+});
+});
+});
+</script>
+</div>
+

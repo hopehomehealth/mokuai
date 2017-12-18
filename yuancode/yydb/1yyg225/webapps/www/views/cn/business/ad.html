@@ -1,0 +1,60 @@
+{include file="header.html"}
+<link type="text/css" rel="stylesheet" href="/style/css_02/style.css" />
+<link type="text/css" rel="stylesheet" href="/style/css/member.css" />
+<link type="text/css" rel="stylesheet" href="/style/css_02/merchant.css" />
+<div class="container menu-show">
+    {include file="business/ur_here.html"}
+    {include file="business/menu.html"}
+    <div class="fn-right hy-r" id="m">
+        <div class="shop-right">
+            <h3>店铺广告图</h3>
+        </div>
+        <div class="shop-bor shop-set">
+            <form action="" method="post" target="iframeNews">
+            <table width="100%" class="box-sizing" border="0">
+                <tr>
+                    <th width="150">店铺首页广告图：</th>
+                    <td>
+                        <p style="color: #f00">
+                            温馨提示：广告图最佳尺寸为 宽905像素 高400像素
+                        </p>
+                        <ul class="shop-set5">
+                            <li>
+                                <em class="v"><img src="{$ads.0.path|default_pic:'ad'}" id="ad0" /><span></span></em>
+                                {$option.btn_title=' '}
+                                {upload_btn('ad0',905,400,1,'','',$option)}
+                            </li>
+                            <li>
+                                <em class="v"><img src="{$ads.1.path|default_pic:'ad'}" id="ad1" /><span></span></em>
+                                {$option.btn_title=' '}
+                                {upload_btn('ad1',905,400,1,'','',$option)}
+                            </li>
+                            <li>
+                                <em class="v"><img src="{$ads.2.path|default_pic:'ad'}" id="ad2" /><span></span></em>
+                                {$option.btn_title=' '}
+                                {upload_btn('ad2',905,400,1,'','',$option)}
+                            </li>
+                            <li>
+                                <em class="v"><img src="{$ads.3.path|default_pic:'ad'}" id="ad3" /><span></span></em>
+                                {$option.btn_title=' '}
+                                {upload_btn('ad3',905,400,1,'','',$option)}
+                            </li>
+                        </ul>
+                        <style type="text/css">
+                            .wu-example{ position: absolute; width: 238px; height: 140px; top: 0; left: 0; z-index: 100 }
+                            .webuploader-pick{ width: 238px; height: 140px; overflow: hidden; padding: 0; margin: 0; background: none; }
+                        </style>
+                    </td>
+                </tr>
+                <tr>
+                    <th>&nbsp;</th>
+                    <td><input type="submit" name="submit" value="保存" class="shop-set3"></td>
+                </tr>
+            </table>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="merchant"></div>
+{include file="footer.html"}
+<script src="/style/css_02/common_02.js"></script>

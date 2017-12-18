@@ -1,0 +1,185 @@
+{assign var='header' value='header2'}
+{include file="top.html"}
+<link rel="stylesheet" href="/style/mobile/css/member.css">
+<div id="content" class="container main">
+    <form action="" method="post" target="_blank">
+    <div class="nav-m ui-clr">
+        <ul>
+            <li class="on"><a href="{'/member/recchage'}">充值</a></li>
+            <li><a href="{'/member/accountlog'}">充值记录</a></li>
+            <li><a href="{'/member/accountdetail'}">帐户明细</a></li>
+        </ul>
+    </div>
+
+    <div class="title-m2">
+        <span class="color01">请您选择充值金额：</span>
+    </div>
+    <div class="re-money">
+        <ul class="ui-clr">
+            <li class="on"><label><input type="radio" class="radio recharge" name="amount" value="10" checked /> 10元<span style="float:right"> (无赠送) </span></label></li>
+            <li><label><input type="radio" class="radio recharge" name="amount" value="50" /> 50元<span style="float:right;"> (赠送一元红包) </span></label></li>
+            <li><label><input type="radio" class="radio recharge" name="amount" value="100" /> 100元<span style="float:right;"> (赠送2元红包) </span></label></li>
+            <li><label><input type="radio" class="radio recharge" name="amount" value="200" /> 200元<span style="float:right;"> (赠送5元红包) </span></label></li>
+            <li><label><input type="radio" class="radio recharge" name="amount" value="500" /> 500元<span style="float:right"> (赠送15元红包) </span></label></li>
+            <li>
+                <label onclick="$(this).find('.input-m').focus();">
+                    <input type="radio" class="radio" name="amount" value="0" />
+                    <span style="display:none;">其它金额</span>
+                    <input type="text" placeholder="其它金额"  name="other" class="input-m recharge-other" style="width:90%;vertical-align:top;margin-top:4px;" maxlength="7" />
+                </label>
+            </li>
+        </ul>
+    </div>
+
+    <div class="title-m2">
+        <span class="color01">请选择支付方式：</span>
+    </div>
+    {foreach from=$list item=m name=pay}
+    {if $m.pay_code eq 'chinabank'}
+    <dl class="re-payment" style="display: none">
+        <dt style="border-top:0;padding-top:10px;">银行支付：</dt>
+        <dd>
+            <ul class="pay-img-list banks ui-clr">
+                <li><label>
+                    <input type="radio" name="bank" value="ICBC-NET-B2C" />
+                    <img src="/style/images/bank/gongshang.gif" />
+                </label></li>
+                <li><label>
+                    <input type="radio" name="bank" value="CMBCHINA-NET-B2C" />
+                    <img src="/style/images/bank/zhaohang.gif" />
+                </label></li>
+                <li><label>
+                    <input type="radio" name="bank" value="ABC-NET-B2C" />
+                    <img src="/style/images/bank/nongye.gif" />
+                </label></li>
+                <li><label>
+                    <input type="radio" name="bank" value="CCB-NET-B2C" />
+                    <img src="/style/images/bank/jianshe.gif" />
+                </label></li>
+                <li><label>
+                    <input type="radio" name="bank" value="BCCB-NET-B2C" />
+                    <img src="/style/images/bank/beijing.gif" />
+                </label></li>
+                <li><label>
+                    <input type="radio" name="bank" value="BOCO-NET-B2C" />
+                    <img src="/style/images/bank/jiaotong.gif" />
+                </label></li>
+                <li><label>
+                    <input type="radio" name="bank" value="CMBC-NET-B2C" />
+                    <img src="/style/images/bank/minsheng.gif" />
+                </label></li>
+                <li><label>
+                    <input type="radio" name="bank" value="CEB-NET-B2C" />
+                    <img src="/style/images/bank/guangda.gif" />
+                </label></li>
+                <li><label>
+                    <input type="radio" name="bank" value="BOC-NET-B2C" />
+                    <img src="/style/images/bank/zhongguo.gif" />
+                </label></li>
+                <li><label>
+                    <input type="radio" name="bank" value="PINGANBANK-NET-B2C" />
+                    <img src="/style/images/bank/pingan.gif" />
+                </label></li>
+                <li><label>
+                    <input type="radio" name="bank" value="ECITIC-NET-B2C" />
+                    <img src="/style/images/bank/zhongxin.gif" />
+                </label></li>
+                <li><label>
+                    <input type="radio" name="bank" value="SDB-NET-B2C" />
+                    <img src="/style/images/bank/shenfa.gif" />
+                </label></li>
+                <li><label>
+                    <input type="radio" name="bank" value="GDB-NET-B2C" />
+                    <img src="/style/images/bank/guangfa.gif" />
+                </label></li>
+                <li><label>
+                    <input type="radio" name="bank" value="SHB-NET-B2CC" />
+                    <img src="/style/images/bank/shanghaibank.gif" />
+                </label></li>
+                <li><label>
+                    <input type="radio" name="bank" value="POST-NET-B2C" />
+                    <img src="/style/images/bank/youzheng.gif" />
+                </label></li>
+                <li><label>
+                    <input type="radio" name="bank" value="SPDB-NET-B2C" />
+                    <img src="/style/images/bank/spdb.gif" />
+                </label></li>
+            </ul>
+            <div class="fn-clear"></div>
+        </dd>
+    </dl>
+    {/if}
+    {/foreach}
+
+    <dl class="re-payment">
+        <dt>支付平台支付：</dt>
+        <dd>
+            <ul class="pay-img-list pays ui-clr">
+                {foreach from=$list item=m name=pay}
+                <li><label>
+                    <input name="pay_id" type="radio" class="{$m.pay_code}" value="{$m.pay_id}" {if $smarty.foreach.pay.iteration eq 1}checked{/if} /> {if $m.thumb}<img src="{zz mod=fileurl source=$m.thumb width=154 type=0}" style="border:1px solid #ccc;border-radius:5px;" />{else}{$m.pay_name}{/if}
+                </label></li>
+                {/foreach}
+            </ul>
+            <div class="fn-clear"></div>
+        </dd>
+        <dd class="payment" style="display: none"></dd>
+    </dl>
+
+    <div style="padding:20px 10px 0;background: #fff;"><input name="Submit" type="submit" value="前往充值" class="btn" /></div>
+    {if $rc_open}
+    <div style="padding:10px 10px 20px;background: #fff;"><input type="button" value="我有充值卡" class="btn" onclick="location.href='/member/rechage_card'" style="background: #ff3300" /></div>
+    {/if}
+    </form>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        if ($('.teegon').attr('checked') == 'checked') {
+            $('.payment').empty();
+            $('.payment').css('display', 'block');
+            if (!is_weixn()) {
+                $('.payment').append("<input type='radio' name='payment_type' value='alipay_wap' checked/>支付宝" + "<input type='radio' name='payment_type' value='wxpay_jsapi' />微信支付");
+            }else {
+                $('.payment').append("<input type='radio' name='payment_type' value='wxpay_jsapi' checked/>微信支付");
+            }
+        }
+    });
+    $('.re-money li label').bind('click',function(){
+        $('.re-money li').removeClass('on');
+        $(this).parents('li').addClass('on');
+        $(this).find("input[type='radio']").attr("checked", true);
+    });
+    $('.banks label').bind('click',function(){
+        $(".pays label input[type='radio']").attr("checked", false);
+    });
+    $('.pays label').bind('click',function(){
+        $(".banks label input[type='radio']").attr("checked", false);
+    });
+    $('.recharge').bind('click',function(){
+        $(".recharge-other").val('');
+    });
+    $('.pays li input').bind('click', function () {
+        $('.payment').empty();
+        if ($(this).attr('class') == 'teegon') {
+            $('.payment').css('display', 'block');
+            if (!is_weixn()) {
+                $('.payment').append("<input type='radio' name='payment_type' value='alipay_wap' checked/>支付宝" + "<input type='radio' name='payment_type' value='wxpay_jsapi' />微信支付");
+            }else {
+                $('.payment').append("<input type='radio' name='payment_type' value='wxpay_jsapi' checked/>微信支付");
+            }
+        } else {
+            $('.payment').css('display', 'none');
+            $('.payment').empty();
+        }
+    });
+
+    function is_weixn(){
+        var ua = navigator.userAgent.toLowerCase();
+        if(ua.match(/MicroMessenger/i)=="micromessenger") {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
+{include file="footer.html"}

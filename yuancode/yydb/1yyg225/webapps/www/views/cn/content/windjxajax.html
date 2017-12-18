@@ -1,0 +1,29 @@
+{if $listDjx.list}
+{foreach from=$listDjx.list item=m key=key}
+{if $m.wait_status eq 0}
+<div class="item item-djx" id="itemDjx{$m.buy_id}" q="{$m.qihao}" {if $key eq 0 || $key%3 eq 0} style="margin-left:-1px;width:393px;"{/if}>
+    <s></s>
+    <div class="itemc">
+        <div class="itemL scrollLoadingDiv"><a href="{$m.url}" title="{$m.title}" target="_blank"><img class="scrollLoading" src="{zz mod=fileurl source=$m.imgurl_src width=150 type=0}" width="150" /></a></div>
+        <div class="itemR">
+            <div class="pro-info">
+                <p class="tit" style="max-height:60px;"><a href="{$m.url}" title="{$m.title}" target="_blank"><!-- {$m.qishu_name} -->{if $m.title}{$m.title}{else}{$m.goods_name}{/if}</a></p>
+                <p>总需：{$m.need_num}人次</p>
+                <p><span class="btn-ymy">已满员</span></p>
+                <div class="jx-time">
+                    <p>揭晓倒计时</p>
+                    <cite id="leftTimeJx{$m.buy_id}">载入中...</cite>
+                </div>
+                <div class="jx-ing" style="display: none;">{$L.unit_kaijiang}计算中...</div>
+                <script type="text/javascript">
+                    $(document).ready(function(){
+                        onload_leftTime_jx('{$m.buy_id}',"{$m.has_time}");
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+{/if}
+{/foreach}
+{/if}

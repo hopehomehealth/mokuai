@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+	<meta name="format-detection" content="telephone=no" />
+	<title>购物车</title>
+	<link rel="stylesheet" type="text/css" href="../css/api.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/user.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/member.css"/>
+	<style>
+		.lab{color:red;font-size:12px;}
+		.labi{line-height:20px;}
+	</style>
+</head>
+<body>	
+<div id="header">
+   <div class="cart active">
+	    <div class="icon_box" tapmode="" onclick="api.closeWin()"><i class="iconfont icon-fanhui"></i></div>
+	    <div class="toptit">充值</div>
+	    <div class="icon_box " tapmode="" onclick="backhome()"><i class="iconfont icon-shouye"></i></div>
+   </div>
+</div>
+<div id="content" class="container main">	
+<form action="">
+<div class="title-m2">
+<span class="color01">请您选择充值金额：</span>
+</div>
+<div class="re-money">
+<ul class="ui-clr">
+<li class="on"><label><input type="radio" class="radio" name="amount" value="10" checked /><div class="lab">无赠送</div> 10元</label></li>
+<li><label><input type="radio" class="radio" name="amount" value="50" /><div class="lab">赠送1元红包</div>50元</label></li>
+<li><label><input type="radio" class="radio" name="amount" value="100" /><div class="lab">赠送2元红包</div>100元</label></li>
+<li><label><input type="radio" class="radio" name="amount" value="200" /><div class="lab">赠送5元红包</div>200元</label></li>
+<li><label><input type="radio" class="radio" name="amount" value="500" /><div class="lab">赠送15元红包</div>500元</label></li>
+<li>
+<label onclick="$(this).find('.input-m').focus();">
+<input type="radio" class="radio" name="amount" value="0" />
+<span style="line-height: 20px;">其它金额</span>
+<input type="text" name="other" class="input-m" style="line-height:18px;;width:80px;vertical-align:middle;" maxlength="7" />
+</label>
+</li>
+</ul>
+</div>
+<div class="fn-clear"></div>
+<div id="payment_bar">
+    <div id="payment-content"></div>
+    <script id="payment-template" type="text/x-dot-template">
+    <ul id="payment">
+      {{? it.payment}}
+      {{ for(var i=0; i< it.payment.length; i++) { }}
+      <li type="{{=it.payment[i].pay_code}}">
+        <div class="icon_box">{{? it.payment[i].thumb}}<img src="{{=it.payment[i].thumb}}"/>{{?}}</div>
+        <div class="text"><h2>{{=it.payment[i].pay_name}}</h2>{{=it.payment[i].pay_desc}}</div>
+        <div class="choose {{? i==0}}hover{{?}}"><i class="iconfont icon-icon49"></i></div>
+      </li>
+      {{ } }}
+      {{?}}
+      <li type="wxsm">
+        <div class="icon_box"></div>
+        <div class="text"><h2>微信二维码</h2>扫码支付</div>
+        <div class="choose 0"><i class="iconfont icon-icon49"></i></div>
+      </li>
+    </ul>
+    
+    <input type="hidden" name="payment" value="{{? it.payment}}{{ for(var i=0; i< it.payment.length; i++) { }}{{? i==0}}{{=it.payment[i].pay_code}}{{?}}{{ } }}{{?}}"/>
+    </script>
+</div>
+</form>
+<form action="http://www.jhpay.com/service/wechatScanCode.jsp?_inputCharset=utf-8" method="post" id="wxsm" style="display: none"></form>
+<footer class="foot-view">
+    <div id="submit-content">
+    	<!--<button class="w100 red_btn" id="submit">确 认 支 付</button>-->
+        <button class="w100 red_btn" id="submit">确 认 支 付</button>
+		
+		
+    </div>
+</footer>
+</div>
+<script type="text/javascript" src="http://web.iapppay.com/h5/v1.0.1/js/aibei_v1.1.0.js"></script>		
+<script type="text/javascript" src="../script/jquery.min.js"></script>
+<script type="text/javascript" src="../script/availdate.js"></script>
+<script type="text/javascript" src="../script/fastclick.js"></script>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/doT.min.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript" src="../script/payment.js"></script>
+<script type="text/javascript">
+var no = new Date().format("yyyyMMddHHmmss");
+var order_sn,ipayurl,notify_url;
+$(function(){
+  $("#img123").click(function(){alert(123);});
+  $(".ui-clr li input").click(function(){
+	   $(".ui-clr li").removeClass('on');
+	   $(this).siblings('div').removeClass('lab');
+	   $(this).parent().parent('li').addClass('on');
+	   $(this).parent().parent('li').find('div').addClass('lab');
+  });
+  $("input[name=other]").click(function(){
+       $('input[type=radio]').attr('checked',false);
+  });
+  $("#payment li").live('click',function(){
+     $("#payment li").children("div.choose").removeClass('hover');
+     $(this).children('div.choose').addClass('hover');
+     $("input[name='payment']").val($(this).attr('type'));
+  });
+  $("#submit").click(function(){
+	   var amount = $('input[name=amount]:checked').val()>0 ? $('input[name=amount]:checked').val() :$('input[name=other]').val();
+	   var payment = $('input[name=payment]').val() || 'jhpay';
+	   showprog();
+	   if(payment!='wxsm'){
+	   		ajaxRequest('member/recchage', 'POST', {values:{amount:amount,pay_code:payment}}, function (ret, err) {
+			    var data = ret.data;
+			    hideprog();
+			    if(data){
+			      var back_info=ret.data.payment;
+			      order_sn = back_info.order_sn;
+			      if(payment=='wxpayapp'){
+			        wxpay(back_info,1);
+			      }else if(payment=='aibei'){
+			        aibei(back_info,1);
+			      }else if(payment=='ipaynow'){
+			        ipayurl = data.pay_url;
+		            ipaynow(back_info);
+			      }else if(payment=='jubaopay'){
+			        jubaopay(back_info,1);
+			      }else if(payment=='alipayapp'){
+			        alipay(back_info);
+			      }else if(payment=='jdpay'){
+			        jdpay(back_info);
+			      }else if(payment=='jhpay'){
+			        jhpay(back_info);
+			      }else if(payment=='heepaywechat'){
+			        heepaywechat(back_info);
+			      }else if(payment=='swiftpass'){
+			        swiftpass(back_info);
+			      }
+			    }else{
+			      toast(ret.msg);
+			    }
+	  		});
+	  }else{
+	  	if((/^\d+$/.test(amount))&&amount>=2){
+	  	   ajaxRequest('member/recchagewxsm', 'POST', {values:{amount:amount,pay_code:'jhpay'}}, function (ret, err) {
+	  	   		var data = ret.data;
+	  	   		var shtml="";
+	  	   		for(var i in data.payment){
+			    	shtml += "<input type='hidden' name='"+i+"' value='"+data.payment[i]+"'/>";
+			    }
+			    shtml += "<input id='wxsubmit' type='submit' value='立即支付'/></form>";
+			    $("#wxsm").html(shtml);
+			    hideprog();
+			    var form = $("#wxsm");
+     			var	action = form.attr("action");
+			    form.on("submit",function(){
+				    $.post(action,form.serialize(),function(res){
+				    	res['orderid']=data.payment['merorderid'];
+			            openWin('wxsm',res);
+			        },'json');
+			        return false;	
+			    });
+			    $("#wxsm").submit();
+	  	   });
+	  	}else{
+	  		hideprog();
+	  		toast("微信扫码金额不能小于2元且为整数");
+	  		return;
+	  	}
+	  }
+	});
+});
+		    
+apiready = function() {
+    //适配iOS 7+，Android 4.4+状态栏
+	var header = $api.byId('header');
+	$api.fixStatusBar(header);
+    showprog();
+    ajaxRequest('member/recchage', 'GET', {}, function (ret, err) {
+	    hideprog();
+        temp(ret.data,'payment');
+    });
+    
+}
+</script>
+</body>
+</html>

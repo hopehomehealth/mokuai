@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    {$site_config.qq_admins}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>微信登录</title>
+    <meta name="keywords" content="{$seo.keywords}" />
+    <meta name="description" content="{$seo.description}" />
+    <meta name="Author" content="技术支持：港湾有巢 www.lnest.com" />
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: rgb(51, 51, 51);
+            padding: 50px;
+            background: #FFF;
+        }
+        h3{ font-size: 16px;  border-bottom: 1px solid #cccccc; text-align: center; line-height: 3em;}
+        .main{ margin: 50px auto; }
+        input[type="text"],
+        input[type="password"] {
+            border: 1px solid #ccc;
+            padding: 2px;
+            font-size: 1.2em;
+            color: #444;
+        }
+        input[type="button"]{
+            border: 1px solid #ccc;
+            background: #f1f1f1;
+            padding: 2px;
+            font-size: 12px;
+            color: #444;
+            margin: 0 0 0 10px;
+        }
+        input[type="submit"] {
+             border: 1px solid #7d7d7d;
+             background: #7d7d7d;
+             padding: 5px 10px;
+             font-size: 14px;
+             color: #fff;
+         }
+        input,select,textarea{ vertical-align:middle; }
+        table tr th{ width: 58px; }
+    </style>
+<html>
+<body>
+<div class="main">
+    <h3>用户登录</h3>
+    <form action="/member/sync_login" method="post" target="iframeNews">
+    <table cellpadding="0" width="260" cellspacing="10" align="center" style="margin:10px auto;">
+        <tr><th>手机号 :</th><td><input name="mobile" id="mobile" value="" datatype="m" maxlength="11" size="10" type="text"/></td></tr>
+        <tr><th>验证码 :</th><td><input type="text" name="sms_code" maxlength="4" size="3" id="sms_code" class="inpt-style" value="" /><input type="button" value="获取短信验证码" onclick="getSmsVerify('sms_verifymobile')" id="btnSms" /></td></tr>
+        <tr><th>&nbsp;</th><td><input type="submit" value="确定"/><input type="hidden" name="session_id" value="{$session_id}"/></td></tr>
+    </table>
+    </form>
+</div>
+<footer>
+    <iframe name="iframeNews" style="display:none;"></iframe>
+    <p></p>
+</footer>
+<link type="text/css" rel="stylesheet" href="/style/css/validform.css" />
+<script type="text/javascript" src="/style/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/style/layer/layer.min.js"></script>
+<script type="text/javascript" src="/style/common.js"></script>
+</body>
+</html>

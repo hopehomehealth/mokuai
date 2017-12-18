@@ -1,0 +1,33 @@
+{assign var='header' value='header2'}
+{include file="top.html"}
+<link rel="stylesheet" href="/style/mobile/css/member.css">
+<div id="content" class="container main">
+    <div class="nav-m ui-clr">
+        <ul>
+        	{if $site_config.apply_jufu!=1}
+            <li><a href="{'/member/recchage'}">充值</a></li>
+            <li class="on"><a href="{'/member/accountlog'}">充值记录</a></li>
+            {/if}
+            <li><a href="{'/member/accountdetail'}">帐户明细</a></li>
+        </ul>
+    </div>
+
+    <div class="list01 list-address">
+        <dl class="item"></dl>
+    </div>
+    <div class="loading getMore"></div>
+    <div class="list_foot">
+        您当前的可用保证金为：<span class="color01">{$member.user_money|price_format}</span>
+        冻结保证金：<span class="color02">{$member.frozen_money|price_format}</span>
+    </div>
+</div>
+<script src="/style/mobile/js/jquery.more.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $('.list-address').more({
+            'address': '/member/accountlog',
+            'amount' : 10
+        })
+    });
+</script>
+{include file="footer.html"}

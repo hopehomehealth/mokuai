@@ -1,0 +1,51 @@
+{include file="crowd/crowd_header.html"}
+{include file="crowd/ur_here.html"}
+
+<div class="container">
+    <div class="gwc1">
+        <h3 class="gwc1-h3">{{$order['cd_name']}}</h3>
+        <div class="gwc1-r">
+{if $status eq 0}
+            <div class="gwc2-r2" style="width: 1000px;min-height: 300px;margin: 30px auto 0;background: url('/style/images/msg_4.gif') 50px center no-repeat;">
+                    <div class="txt" style="padding: 70px 0 70px 320px;">
+                        <h2 class="color01" style="font-size: 50px;color: #e54048; height: 50px;">很抱歉，您的订单支付失败！</h2>
+                        <p class="p2" style="font-size: 18px;height: 40px;">您现在可以查看 <a href="/crowd_member/support" class="color01">我的支持</a>，重新支付订单！</p>
+                    </div>
+            </div>
+{elseif $status eq 1}
+            <div class="gwc2-r2" style="width: 1000px;min-height: 300px;margin: 30px auto 0;background: url('/style/images/msg_4.gif') 50px center no-repeat;">
+                    <div class="txt" style="padding: 70px 0 70px 320px;">
+                        <h2 class="color01" style="font-size: 46px;color: #e54048; height: 50px;">您的订单已过期，请重新下单！</h2>
+                    </div>
+            </div>
+{elseif $status eq 2}
+            <div class="gwc2-r2" style="width: 1000px;min-height: 300px;margin: 30px auto 0;background: #f6f6f6 url('/style/images/yes.gif') 50px center no-repeat;">
+                    <div class="txt" style="padding: 70px 0 70px 320px;">
+                        <h2 class="color01" style="font-size: 50px;color: #e54048; height: 50px;">恭喜您，支付成功！</h2>
+                        <p class="p1" style="font-weight: bold;font-size: 30px;height: 40px;">请耐心等待众筹结束！</p>
+                        <p class="p2" style="font-size: 18px;height: 40px;">您现在可以查看 <a href="/crowd_member/support" class="blue">我的支持</a>！</p>
+                    </div>
+            </div>
+{elseif $status eq 3}
+            <div class="gwc2-r2" style="width: 1000px;min-height: 300px;margin: 30px auto 0;background: url('/style/images/msg_4.gif') 50px center no-repeat;">
+                    <div class="txt" style="padding: 70px 0 70px 320px;">
+                        <h2 class="color01" style="font-size: 50px;color: #e54048; height: 50px;">很抱歉，回报人数已满！</h2>
+                        <p class="p1" style="font-weight: bold;font-size: 30px;height: 40px;">余额已退回您的账户！</p>
+                        <p class="p2" style="font-size: 18px;height: 40px;">您可以选择其他的众筹，或者回报，继续支持。</p>
+                    </div>
+            </div>
+{elseif $status > 3}
+            <div class="gwc2-r2" style="width: 1000px;min-height: 300px;margin: 30px auto 0;background: #f6f6f6 url('/style/images/yes.gif') 50px center no-repeat;">
+                    <div class="txt" style="padding: 70px 0 70px 320px;">
+                        <h2 class="color01" style="font-size: 50px;color: #e54048; height: 50px;">恭喜您，支付成功！</h2>
+                        <p class="p1" style="font-weight: bold;font-size: 30px;height: 40px;">请耐心等待众筹结束！</p>
+                        <p class="p2" style="font-size: 18px;height: 40px;">您现在可以查看 <a href="/crowd_member/support" class="blue">我的支持</a>！</p>
+                    </div>
+            </div>
+{/if}
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+{include file="crowd/crowd_footer.html"}

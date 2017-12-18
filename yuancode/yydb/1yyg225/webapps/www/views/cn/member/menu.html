@@ -1,0 +1,214 @@
+<div class="hy-txx fn-clear mb15">
+    <a href="{url('/member/photo#m')}" class="hy-txa"><img src="{zz mod=photo source=$member.photo nopic=$member.defaultPic}" alt="" /></a>
+    <div class="fn-left hy-txx-l">
+        <div class="hy-txx-name">
+            <a href="{url('/member')}" class="hy-username"><strong>{if $member.nickname}{$member.nickname|truncate:6}{else}{$member.username|truncate:6}{/if}</strong></a>
+            <span id="hello">下午好！</span>
+            <a href="{'/content/index/43'|url}" class="color02">[{$member.rank_name|default:'普通会员'}]</a> 经验值<a title="距下次升级还需{$member.level_upgrade}经验" style="cursor:pointer;" class="color01">({$member.rank_points})</a>
+
+            &nbsp;&nbsp;
+            {if $member.idcard}
+            <a title="实名认证已通过"><img src="/style/images/hy-ico2-1.png" alt="身份证验证" /></a>
+            {else}
+            <a href="{'/member/verifyidcard#m'|url}" title="点击实名认证"><img src="/style/images/hy-ico2.png" /></a>
+            {/if}
+            {if $member.verify_email}
+            <a title="邮箱验证已通过"><img src="/style/images/hy-ico3-1.png" /></a>
+            {else}
+            <a href="{'/member/verifyEmail#m'|url}" title="点击验证邮箱"><img src="/style/images/hy-ico3.png" /></a>
+            {/if}
+        </div>
+        <div class="mb10">
+            <span class="fn-left">账户安全等级：</span>
+            <ul class="hy-mmqd fn-clear">
+                <li {if $safe_level eq 1}class="dq"{/if}>弱</li>
+                <li {if $safe_level eq 2}class="dq"{/if}>中</li>
+                <li {if $safe_level eq 3}class="dq"{/if}>强</li>
+            </ul>
+            <div class="fn-clear"></div>
+        </div>
+        <p class="color03 clear">当前/最近<span class="color01">登录IP</span>：{$member.ip}/{$member.lastip}</p>
+        <p class="color03">当前/最近<span class="color01">登录时间</span>：{date('Y-m-d H:i:s',$member.login)}/{if $member.lastlogin}{date('Y-m-d H:i:s',$member.lastlogin)}{else}{$member.login}{/if}</p>
+        <p class="hy-ltx">
+            <a href="{url('/member/photo#m')}" class="a1">修改头像</a>
+            <span>|</span>
+            <a href="{url('/member/info#m')}" class="a2">完善资料</a>
+            {if $business_power eq 1}
+            <span>|</span>
+            {if !$business_row}
+            <a href="{url('/business/apply#m')}" class="a2">成为商家</a>
+            {elseif $business_row.bus_status eq -1}
+            <a href="{url('/business/apply#m')}" class="a2">入驻进度</a>
+            {elseif $business_row.bus_status eq 0}
+            <a href="{url('/business/apply#m')}" class="a2">入驻进度</a>
+            {elseif $business_row.bus_status gt 9}
+            <a href="{url('/business/#m')}" class="a2">商家中心</a>
+            {/if}
+            {/if}
+        </p>
+    </div>
+
+    <div class="fn-right hy-txx-r">
+        <table>
+            <thead>
+            <tr>
+                <td>
+                    <a href="{'/member/accountdetail'|url}#m"><strong class="color01">￥{$member.user_money}</strong></a><br /><span>可用余额</span>
+                </td>
+                {if $smarty.const.IsAuction}
+                <td>
+                    <a href="{'/member/accountdetail'|url}#m"><strong class="color01">￥{$member.frozen_money}</strong></a><br /><span>冻结余额</span>
+                </td>
+                {/if}
+                <td>
+                    <a href="{'/member/accountdetail'|url}#m"><strong class="color01">{$member.pay_points}</strong></a><br /><span>{$L.unit_pay_points}</span>
+                </td>
+                <td>
+                    <a href="{'/member/accountdetail'|url}#m"><strong class="color01">{$member.db_points}</strong></a><br /><span>{$L.unit_db_points}</span>
+                </td>
+                <td style="border-right: 0;">
+                    <a href="{'/member/bonus'|url}#m" id="layerTip-bonus"><strong class="color01">{$bonus_count.money}</strong></a><br /><span>限时{$L.unit_bonus}</span>
+                </td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td colspan="5" class="hy-txx-rbtn">
+                	{if $site_config.apply_jufu!=1}
+                    <a href="{url('/member/change_db#m')}" class="zc-a">兑换{$L.unit_db_points}</a>
+                    <a href="{url('/member/recchage#m')}" class="zc-a">充值</a>
+					{/if}
+					{if $site_config.apply_jufu!=1}
+                    <a href="{url('/member/myivt#m')}" class="zc-a">邀请得现金{$L.unit_jiangli}</a>
+					{/if}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="fn-left hy-l">
+    <div class="singer">
+        <div class="singer_l_cont">
+            <span>签到<br/>领{$L.unit_pay_points}</span>
+        </div>
+        <div class="singer_r_r">
+            <a class="singer_r_img {if $is_signin}current{/if}" href="javascript:;">
+                <span id="sing_for_number"></span>
+            </a>
+        </div>
+    </div>
+    <div class="hy-lnav">
+        {if $site_config.index_skin neq 2}
+        <h3 class="fn-clear"><span></span>我的{$L.unit_yun}</h3>
+        <ul>
+            <li {if $nav eq db}class="dq"{/if}><a href="{url('/member/db')}">{$L.unit_yun}记录</a></li>
+            <li {if $nav eq luck}class="dq"{/if}><a href="{url('/member/luck')}">{$L.unit_winning}记录</a></li>
+        </ul>
+        {/if}
+        {if $smarty.const.IsAuction}
+        <h3 class="fn-clear"><span></span>我的{$L.unit_pay}</h3>
+        <ul class="fn-clear">
+            <li {if $nav eq auction}class="dq"{/if}><a href="{url('/member/auction')}">{$L.unit_pay}记录</a></li>
+            <li {if $nav eq cod}class="dq"{/if}><a href="{url('/member/cod')}">{$L.unit_winning}领取</a></li>
+        </ul>
+        {/if}
+        {if $crowd_power}
+        <h3 class="fn-clear"><span></span>我的{$L.unit_cd}</h3>
+        <ul class="fn-clear">
+            <li {if $nav eq support}class="dq"{/if}><a href="{url('/crowd_member/support')}">我支持的</a></li>
+            <li {if $nav eq focus}class="dq"{/if}><a href="{url('/crowd_member/focus')}">我关注的</a></li>
+            <li {if $nav eq start}class="dq"{/if}><a href="{url('/crowd_member/start')}">我发起的</a></li>
+        </ul>
+        {/if}
+        <h3 class="fn-clear"><span></span>我的订单</h3>
+        <ul>
+            <li {if $nav eq order}class="dq"{/if}><a href="{url('/member/order')}">订单管理</a></li>
+            <li {if $nav eq address}class="dq"{/if}><a href="{url('/member/address')}">收货地址</a></li>
+            <li {if $nav eq share}class="dq"{/if}><a href="{url('/minfo?id='|cat:$smarty.const.MID)}#share" target="_blank">我的晒单</a></li>
+        </ul>
+        <h3 class="fn-clear"><span></span>我的资金</h3>
+        <ul>
+            <li {if $nav eq account}class="dq"{/if}><a href="{url('/member/accountdetail')}">资金明细</a></li>
+            <li {if $nav eq bonus}class="dq"{/if}><a href="{url('/member/bonus')}">我的{$L.unit_bonus}</a></li>
+			{if $site_config.apply_jufu!=1}
+            <li {if $nav eq commission}class="dq"{/if}><a href="{url('/member/commission')}">佣金明细</a></li>
+            {if $site_config.withdraw_status eq 1}
+            <li {if $nav eq withdraw_commission_log}class="dq"{/if}><a href="{url('/member/withdraw_commission_log')}">佣金提现记录</a></li>
+        	{/if}
+			{/if}
+        </ul>
+        <h3 class="fn-clear"><span></span>我的帐户</h3>
+        <ul>
+            <li {if $nav eq info}class="dq"{/if}><a href="{url('/member/info')}">个人信息</a></li>
+            <li {if $nav eq safe}class="dq"{/if}><a href="{url('/member/safe')}">账户安全</a></li>
+			{if $site_config.apply_jufu!=1}
+            <li {if $nav eq myivt}class="dq"{/if}><a href="{url('/member/myivt')}">我的邀请</a></li>
+			{/if}
+            <li {if $nav eq message}class="dq"{/if}><a href="{url('/member/message')}">站内信</a></li>
+        </ul>
+    </div>
+</div>
+<div id="m"></div>
+<script type="text/javascript">
+    /*签到模块日期捕捉：*/
+    function week(){
+        var objDate= new Date();
+        var week = objDate.getDay();
+        switch(week)
+        {
+            case 0:
+                week="周日";
+                break;
+            case 1:
+                week="周一";
+                break;
+            case 2:
+                week="周二";
+                break;
+            case 3:
+                week="周三";
+                break;
+            case 4:
+                week="周四";
+                break;
+            case 5:
+                week="周五";
+                break;
+            case 6:
+                week="周六";
+                break;
+        }
+        $("#sing_for_number").html( week );
+    }
+
+    $(function(){
+        welcome_time();
+        week();
+
+        {if $bonus_count.count_dis gt 0}
+        $("#layerTip-bonus").each(function(){
+            layer.tips('您有{$bonus_count.count_dis}{$L.unit_bonus_unit}{$L.unit_db_points}{$L.unit_bonus}快过期', $(this), { time:0 });
+        });
+        {/if}
+
+        $(".singer_r_img,.btn-sing").click(function(){
+            $.post('/member/ajax_signin',{},function(data){
+                if(data.error==1){
+                    var params = ' ';
+                    if(data.url){
+                        params = function(){
+                            location.href=data.url;
+                        };
+                    }
+                    layer.alert(data.msg,8,params);
+                }else{
+                    $(".singer_r_img").addClass("current");
+                    layer.alert(data.msg,1,function(){ location.reload(); });
+                }
+            },'json');
+        });
+
+    });
+</script>

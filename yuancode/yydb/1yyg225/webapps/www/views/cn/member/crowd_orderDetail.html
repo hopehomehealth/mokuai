@@ -1,0 +1,156 @@
+{include file="header.html"}
+<link rel="stylesheet" href="{url('/style/css/member.css')}">
+<link rel="stylesheet" href="{url('/style/crowd/style/style.css')}">
+<script type="text/javascript" src="/style/dp/WdatePicker.js"></script>
+{include file="ur_here.html"}
+<script src="{url('/style/jquery.ajaxContent.pack.js')}" type="text/javascript"></script>
+<script src="{url('/style/crowd/source/jquery.fancybox.js')}"></script>
+<link href="{url('/style/crowd/source/jquery.fancybox.css')}" rel="stylesheet" />
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".fancybox-effects-a").fancybox({
+            helpers: {
+                title: {
+                    type: 'outside'
+                },
+                overlay: {
+                    speedOut: 0
+                }
+            }
+        });
+
+    });
+</script>
+<div id="container">
+    <div class="fn-clear mt20 pb20">
+        {include file="member/menu.html"}
+        <div class="fr-nr">
+            <div class="wode">
+                交易详情
+
+            </div>
+
+            <div class="dingdxx">
+                <h3>订单详情</h3>
+                <div class="dingdxx-dz">
+                    {if $support.address neq ''}
+                    <p class="mb15"><em>收货地址：</em>{$support.address_name}，{$support.address_mobile|nickname}，{$support.address_area} {$support.address}</p>
+                    {/if}
+                    <p><em>订单信息：</em>订单号 ：{$support.support_sn}</p>
+                    <p>
+                        <i>支付金额：{$support.support_amount|price_format}</i>
+                    </p>
+                    <p>
+                        <i>
+                            支付状态：<span>{if $support.support_status eq 0}
+                                            未支付
+                                        {elseif $support.support_status eq 1}
+                                            订单过期（未支付）
+                                        {elseif $support.support_status eq 2}
+                                            已支付
+                                        {elseif $support.support_status eq 3}
+                                            已退款（人数已满）
+                                        {elseif $support.support_status eq 4}
+                                            已支付
+                                        {elseif $support.support_status eq 5}
+                                            已支付
+                                        {elseif $support.support_status eq 6}
+                                            已支付
+                                        {/if}</span>
+                            {if $support.support_status eq 4}
+                            未中奖
+                            {elseif $support.support_status eq 5}
+                            中奖（等待发货）
+                            {elseif $support.support_status eq 6}
+                            中奖（已发货）
+                            {/if}
+                        </i>
+                    </p>
+                    <p>
+                        <i>备注：{$support.support_remark}</i>
+                    </p>
+                </div>
+                <ul class="dingdxx-ul dingdxx-ul-top">
+                    <li class="li1">项目名称</li>
+                    <li class="li2">发起人</li>
+                    <li class="li3">回报</li>
+                    <li class="li4">支付金额</li>
+                    <li class="li5">配送费用</li>
+                </ul>
+                <ul class="dingdxx-ul dingdxx-ul-top2">
+                    <li class="li1">
+                        <table style="width:100%;">
+                            <tr>
+                                <td>
+                                    <a href="{url('/crowd/detail/')}{$support.cd_id}" target="_blank">{$support.cd_name}</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li class="li2">
+                        <table style="width:100%;">
+                            <tr>
+                                <td>{$support.username|nickname:$support.nickname}</td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li class="li3">
+                        <table style="width:100%;">
+                            <tr>
+                                <td>{$support.return_name}</td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li class="li4">
+                        <table style="width:100%;">
+                            <tr>
+                                <td>{$support.support_amount|price_format}</td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li class="li5">
+                        <table style="width:100%;">
+                            <tr>
+                                <td>￥0</td>
+                            </tr>
+                        </table>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="gxxmdt-jy on">
+                <h3>
+                    <a href="javascript:;"onclick="$(this).offsetParent().toggleClass('on')"><i>收起详情</i><em>展开详情</em></a>
+                    项目最新进展
+                </h3>
+                <div class="xqjz-l-main">
+                    {if $support.progress}
+                    <ul>
+                        {foreach from=$support.progress item=row}
+                        <li>
+                                <span class="icon">{date('Y-m-d',$row.add_time)}</span>
+                                <p>
+                                    {$support.cd_name}
+                                    {$support.usename|nickname:$support.nickname}
+                                </p>
+                                <section>{$row.content}</section>
+                                <div class="fuck">
+                                    {foreach from=$row.thumb item=m}
+                                    <a class="fancybox-effects-a" href="{zz mod=fileurl source=$m width=500 height=500}">
+                                        <img src="{zz mod=fileurl source=$m width=50 height=50}">
+                                    </a>
+                                    {/foreach}
+                                </div>
+                            </li>
+                         {/foreach}
+                    </ul>
+                    {else}
+                    <div class="empty">暂时没有进展</div>
+                    {/if}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{include file="footer.html"}

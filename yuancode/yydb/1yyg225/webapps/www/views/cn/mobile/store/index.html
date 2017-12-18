@@ -1,0 +1,85 @@
+{include file="top.html"}
+<link rel="stylesheet" href="/style/mobile/css/business.css">
+<div class="bus_top">
+    <a href="javascript:;" onclick="_system._guide(true)" class="bus_share">邀请小伙伴一起</a>
+    <dl>
+        <dt><a href="/minfo?id={$business_row.mid}"><img src="{zz mod=photo source=$member.photo size='80'}" /></a></dt>
+        <dd>
+            <h3>{$business_row.bus_name}</h3>
+            <p>{if $member.nickname}昵称{else}会员名{/if}：{$member.username|nickname:$member.nickname}</p>
+        </dd>
+    </dl>
+</div>
+
+<div class="bus_body">
+    <div class="sort">
+        <ul class="ui-clr">
+            <li id="li_cate" class="DESC"><a>{$data.cate_name}<i class="ap-icon icon-sort"><em></em></i></a></li>
+            {if $smarty.get.zq eq 'buy'}
+            <li class="li_sort" id="li_new"><a onclick="mLoad('new')">最新</a> </li>
+            <li class="li_sort" id="li_price"><a onclick="mLoad('price')">价格<i class="ap-icon icon-sort"><em></em></i></a></li>
+            {else}
+            <li class="li_sort" id="li_ratio"><a onclick="mLoad('ratio')">人气</a> </li>
+            <li class="li_sort" id="li_new"><a onclick="mLoad('new')">最新</a> </li>
+            <li class="li_sort" id="li_end_num"><a onclick="mLoad('end_num')">剩余人次</a> </li>
+            <li class="li_sort" id="li_need_num"><a onclick="mLoad('need_num')">总需人次<i class="ap-icon icon-sort"><em></em></i></a></li>
+            {/if}
+        </ul>
+    </div>
+
+    <div class="pro-view">
+        <div class="cate-bg"></div>
+        <div class="cate">
+            <ul class="ui-clr">
+                {if $site_config.index_skin eq 2}{else}
+                <li><a href="/store/index/{$business_row.mid}"{if !$smarty.get.cid && !$smarty.get.zq} class="on"{/if}><i class="ap-icon d0"></i>{$L.unit_yun}商品</a></li>
+                {/if}
+                <li><a href="/store/index/{$business_row.mid}?zq=buy"{if !$smarty.get.cid && $smarty.get.zq eq 'buy'} class="on"{/if}><i class="ap-icon d0"></i>{$L.unit_go_buy}商品</a></li>
+                {foreach from=$yuncat item=m name=list}
+                {if $m.ismenu eq 1 && $m.parentid eq 0}
+                <li><a{if $smarty.get.cid eq $m.id} class="on"{/if} href="/store/index/{$business_row.mid}?cid={$m.id}&zq={$smarty.get.zq}"><i class="ap-icon d{$smarty.foreach.list.index+1}"></i>{$m.catname}</a></li>
+                {/if}
+                {/foreach}
+            </ul>
+        </div>
+        <ul class="paiList list">
+            {include file=$template_lbi}
+        </ul>
+    </div>
+    <script type="text/javascript">
+        var order = "{if $smarty.get.order}{$smarty.get.order}{else}{if $smarty.get.zq eq 'buy'}new{else}ratio{/if}{/if}";
+        var sort = "{if $smarty.get.sort}{$smarty.get.sort}{else}{/if}";
+        var url = "/store/index/{$business_row.mid}";
+        var param = "?cid={$cid}&order="+order+"&sort="+sort+"&zq={$smarty.get.zq}&load";
+
+        $(function(){
+            $('.sort li.li_sort').removeClass('on DESC ASC');
+            $('.sort #li_'+order).addClass('on '+sort);
+
+            $('#li_cate').bind('click',function(){
+                if($(this).hasClass('DESC')){
+                    $(this).removeClass('DESC').addClass('ASC');
+                }else{
+                    $(this).removeClass('ASC').addClass('DESC');
+                }
+                $('.cate-bg,.cate').toggle();
+            })
+        });
+
+        function mLoad(type){
+            if(type=='need_num'||type=='price'){ sort=(sort=='ASC')?'DESC':'ASC'; }
+            else if(type=='end_num'){ sort='ASC'; }
+            else{ sort='DESC'; }
+            location.replace(url+(url.indexOf('?')>-1?'&':'?')+'cid={$cid}&order='+type+'&sort='+sort+"&zq={$smarty.get.zq}");
+        }
+
+        var ExtendOptions = {
+            path: function(index) {
+                return "/store/index/{$business_row.mid}/"+index+"?cid={$cid}&order="+order+"&sort="+sort+"&zq={$smarty.get.zq}&load";
+            }
+        };
+    </script>
+    {include file="public_scroll.html"}
+</div>
+{include file="public_share.html"}
+{include file="footer.html"}

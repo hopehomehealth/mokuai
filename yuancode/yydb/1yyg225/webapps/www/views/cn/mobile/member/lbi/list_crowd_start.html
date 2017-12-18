@@ -1,0 +1,55 @@
+{foreach from=$list item=row}
+<li>
+    <h3>
+        <a href="{url('/crowd/detail/')}{$row.cd_id}">{$row.cd_name}</a>
+    </h3>
+    <div class="mylist2-div">
+        <a href="{url('/crowd/detail/')}{$row.cd_id}"><img src="{zz mod=fileurl source=$row.thumb width=100 height=100}" /></a>
+        <section>
+            <div class="zcjd">
+                <span style="width:{$row.cd_total|progress:$row.cd_price}%;"></span>
+            </div>
+            <dl class="zcjd-dl">
+                <dd>
+                    <p>
+                        <i>{$row.cd_total|progress:$row.cd_price}%</i>
+                        <span>已达</span>
+                    </p>
+                </dd>
+                <dd>
+                    <p>
+                        <i>{$row.cd_total|price_format:1}</i>
+                        <span>已筹</span>
+                    </p>
+                </dd>
+                <dd>
+                    <p>
+                        <i>{$row.end_time|endDay}</i>
+                        <span>剩余时间</span>
+                    </p>
+                </dd>
+            </dl>
+        </section>
+    </div>
+    <div class="zhuangt">
+        <p class="fl">
+            目标金额：
+            <span>{$row.cd_price|price_format:2}</span>
+        </p>
+        <p class="fr">
+            结算状态：
+            <span>{if $row.is_success eq 1}已结算{else}不可结算{/if}</span>
+        </p>
+    </div>
+    <div class="zhuangtdd">
+        <span class="fr">
+            {if $row.status eq 0 || $row.status eq 3}<a href="{url('/crowd/step_one/')}{$row.cd_id}">编辑</a>{/if}
+            {if $row.status eq 1}<a  href="javascript:zz_confirm('您确认取消审核吗?','{url('/crowd_member/cancel/')}{$row.cd_id}');">取消</a>{/if}
+            {if $row.status eq 2}
+            <a href="{url('/crowd_member/supportOrder/')}{$row.cd_id}">订单列表</a>  <em> |</em>
+            <a href="{url('/crowd_member/updateProgress/')}{$row.cd_id}">更新项目动态</a>
+            {/if}
+        </span>
+    </div>
+</li>
+{/foreach}

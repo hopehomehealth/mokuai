@@ -1,0 +1,30 @@
+[ 2017-02-23T11:17:43+08:00 ] 221.122.114.250 /manage/content/edit/ad
+ERR 1054 - Unknown column 'catid' in 'field list'! SQL: SELECT id,catid FROM `zz_ad`  WHERE  id IN(14)
+
+[ 2017-02-23T11:18:10+08:00 ] 221.122.114.250 /manage/content/edit/ad
+ERR 1054 - Unknown column 'catid' in 'field list'! SQL: SELECT id,catid FROM `zz_ad`  WHERE  id IN(14)
+
+[ 2017-02-23T11:19:00+08:00 ] 221.122.114.250 /manage/content/edit/ad
+ERR 1054 - Unknown column 'catid' in 'field list'! SQL: SELECT id,catid FROM `zz_ad`  WHERE  id IN(14)
+
+[ 2017-02-23T13:20:38+08:00 ] 116.226.217.173 /manage/member/index?ajax=1
+ERR 1317 - Query execution was interrupted! SQL: SELECT SQL_CALC_FOUND_ROWS  DISTINCT a.mid,a.*,b.c_time AS stime,IFNULL(c.username,'-') AS ivt_name FROM `zz_member` AS a  LEFT  JOIN `zz_member_login_log` AS b  ON  b.mid=a.mid LEFT JOIN `zz_member` AS c  ON  c.mid=a.ivt_id  WHERE  1  ORDER BY a.mid DESC LIMIT 0,20
+
+[ 2017-02-23T13:20:38+08:00 ] 221.122.114.250 /manage/member/online
+ERR 1317 - Query execution was interrupted! SQL: DELETE FROM `zz_member_login_log` WHERE (mid>0 AND c_time<1487816915) OR (mid=0 AND c_time<1487816915)
+
+[ 2017-02-23T13:20:38+08:00 ] 121.40.150.85 /manage/robots/done?ajax=1
+ERR 1317 - Query execution was interrupted! SQL: SELECT * FROM `zz_member`  WHERE  is_robots = 1 AND status = 1 ORDER BY RAND( )
+
+[ 2017-02-23T13:20:38+08:00 ] 121.40.150.85 /manage/robots/done?ajax=1
+ERR 1317 - Query execution was interrupted! SQL: UPDATE `zz_member` SET pay_points = pay_points+('0'),rank_points = rank_points+('2'),db_points = db_points+('0'),frozen_money = frozen_money+('0'),user_money = user_money+('0'),rank_id = 1 WHERE mid = '36827'
+
+[ 2017-02-23T13:20:38+08:00 ] 221.122.114.250 /manage/timing/index?ajax=1
+ERR 1317 - Query execution was interrupted! SQL: SELECT COUNT(DISTINCT a.log_id)  FROM `zz_auction_log` AS a  LEFT  JOIN `zz_goods_activity` AS g  ON  g.act_id=a.act_id LEFT JOIN `zz_member` AS m  ON  m.mid=a.bid_user  WHERE m.mid<>0 AND g.act_type=0  AND a.first=1 AND a.frozen=0 AND g.end_time<'1487826973' AND g.deposit>0 ORDER BY a.log_id DESC
+
+[ 2017-02-23T15:58:49+08:00 ] 115.183.248.158 /manage/content/edit/ad
+ERR 1054 - Unknown column 'catid' in 'field list'! SQL: SELECT id,catid FROM `zz_ad`  WHERE  id IN(14)
+
+[ 2017-02-23T15:59:24+08:00 ] 115.183.248.158 /manage/content/edit/ad
+ERR 1054 - Unknown column 'catid' in 'field list'! SQL: SELECT id,catid FROM `zz_ad`  WHERE  id IN(14)
+

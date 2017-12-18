@@ -1,0 +1,111 @@
+{include file='home/head.html'}
+<link rel="stylesheet" href="/css/wx-site.css" type="text/css" />
+{literal}
+<style type="text/css">
+
+</style>
+{/literal}
+<div id="cond-overlay" class="overlay d2-common-hideOverlay"></div>
+
+<div class="conds in-box" id="list-conds">
+    <div class="flex1 cond-menu">
+        <a href="javascript:;" class="menu-btn"><i class="iconfont">&#xf004a;</i><span>选择分类</span></a>
+        <div class="cate-list ext-list clear no-tapcolor">
+            <div class="wrp-cate clear">
+                {foreach from=$tree item=cate}
+                <div class="m-item {if $smarty.get.cate eq $cate.id}on{/if}"><a href="/xmall/good_list?cate={$cate.id}">{$cate.name}</a><i></i></div>
+                {/foreach}
+            </div>
+            <div class="wrp-cate clear">
+                {foreach from=$tree.$top_cate.son item=cate}
+                <div class="m-item {if $smarty.get.cate eq $cate.id}on{/if}"><a href="/xmall/good_list?cate={$cate.id}">{$cate.name}</a></div>
+                {/foreach}
+            </div>
+        </div>
+    </div>
+
+    <div class="flex1 cond-menu {if $sort eq sell}press{/if}">
+        <a href="/xmall/good_list?cate={$smarty.get.cate}&sort=sell" class="menu-btn"><span>销量</span><i class="iconfont">&#xf0004;</i></a>
+    </div>
+    <div class="flex1 cond-menu {if $sort eq price}press{/if}">
+        <a href="/xmall/good_list?cate={$smarty.get.cate}&sort=price" class="menu-btn"><span>默认排序</span><i class="iconfont">&#xf0004;</i></a>
+    </div>
+</div>
+
+<ul class="good-list no-tapcolor">
+    {foreach from=$goods item=m}
+    <li>
+        <a href="/xmall/detail/{$m.id}" class="g-item in-box">
+            <div class="cover">
+                <img src="{$m.imgurl_thumb}">
+            </div>
+            <div class="flex1">
+                <h3>{$m.name}</h3>
+                <div class="g-price in-box">现价:<strong>￥{$m.real_price}</strong></div>
+                <div class="g-info in-box">
+                    <div class="flex1">原价：<i class="through">￥{$m.price}</i></div>
+                    <div class="flex1 cell">售出{$m.sell}</div>
+                </div>
+            </div>
+        </a>
+    </li>
+    {/foreach}
+</ul>
+
+
+<!--加入购物车-前往购物车-->
+{include file='home/mall/cart_btn.html'}
+
+<script type="text/javascript">
+$('#list-conds.ext-list').each(function(){
+    this.setAttribute('offset-h',this.offsetHeight);
+    this.style.visibility = 'visible';
+    this.style.height = '0px';
+});
+function slideUpExtList(currExt){
+
+    var lastPress = $('#list-conds.press');
+    if(lastPress.length==1){
+        lastPress.removeClass('press');
+        var lastExtL = $('.ext-list',lastPress[0]);
+        if(lastExtL.length==1){
+            lastExtL[0].style.height = '0px';
+            common.hideOverlay();
+        }
+    }
+    return lastPress;
+}
+
+
+var common=function(){
+    this.overlay = $('#cond-overlay');
+};common.prototype={
+    hideOverlay:function(){
+        this.overlay.hide();
+        slideUpExtList(null);
+    },
+    showOverlay:function(){
+        this.overlay.show();
+    }
+};common = new common;
+
+$('#list-conds.menu-btn').each(function(){
+    this[GE.mousedown] = function(){
+        var currParent=this.parentNode;
+        var lastPress = slideUpExtList(currParent);
+        if(lastPress[0]==currParent){
+            return;
+        }
+
+        var extList = $('.ext-list',currParent);
+        [currParent].addClass('press');
+
+        if(extList.length==1){
+            extList[0].style.height = extList[0].getAttribute('offset-h')+'px';
+            common.showOverlay();
+        }
+    }
+});
+</script>
+
+{include file='home/foot.html'}

@@ -1,0 +1,106 @@
+{include file="header.html"}
+<script src="/style/lefttime.js"></script>
+<link rel="stylesheet" href="{url('/style/css/boutique.css')}">
+{include file="ur_here.html"}
+
+<div id="container">
+	<div class="jp-top">
+		<div class="fn-left jp-lgg">
+			<h2>{zz mod=category catid=$data.noteid type=field}</h2>
+			<div class="jp-ggtxt">
+                {zz mod=content catid=$data.noteid limit=1 type=row field=content}
+                {$tagData.content|stripcslashes}
+			</div>
+		</div>
+		<div class="fn-left jp-timg">
+            {zz mod=content var=tagAdw module=ad id=$data.ggid}
+            {zz mod=fileurl var=tagAds source=$tagAdw.images num=2}
+            {foreach from=$tagAds item=m}
+            <a href="{$m.title}"{if $m.isblank} target="_blank"{/if}><img src="{$m.path}" /></a>
+            {/foreach}
+		</div>
+		<div class="fn-right jp-tzj">
+			<h2>{$L.unit_winning}名单</h2>			
+			<div class="txtScroll-top">				
+				<div class="bd">
+					<ul class="infoList">
+                        {foreach from=$data.log item=m}
+						<li title="恭喜{$m.username}会员在{$m.win}%出价成交活动中以{$m.bid_price|price_format}获{$m.title}">恭喜<a>{$m.username}</a>会员在{$m.win}%出价成交活动中以<span class="color01">{$m.bid_price|price_format}</span>获{$m.title}</li>
+                        {/foreach}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<ul class="fn-clear mt20 jp-tab">
+		<li class="dq"><a href="{'/auction/lists/'|cat:$data.type|cat:'/'|cat:$smarty.const.UNDER_WAY|url}">正在热拍</a></li>
+		<li><a href="{'/auction/lists/'|cat:$data.type|cat:'/'|cat:$smarty.const.PRE_START|url}">下期预告</a></li>
+		<li> <a href="{'/auction/lists/'|cat:$data.type|cat:'/'|cat:$smarty.const.FINISHED_ALL|url}">历史成交</a></li>
+	</ul>
+	
+	<div class="fn-clear mt20 jp-list mb20">
+		<ul class="fn-clear" style="display:block">
+            {foreach from=$data.underWay item=auction}
+            {include file="auction/lbi_auction.html"}
+            {foreachelse}
+            <p class="empty" style="border-bottom: 1px solid #e3e3e3">暂无热拍商品</p>
+            {/foreach}
+		</ul>
+		<ul class="fn-clear jp-jjts">
+            {foreach from=$data.preStart item=auction}
+            {include file="auction/lbi_auction.html"}
+            {foreachelse}
+            <p class="empty" style="border-bottom: 1px solid #e3e3e3">暂无预告商品</p>
+            {/foreach}
+		</ul>
+		<ul class="fn-clear jp-lscj">
+            {foreach from=$data.finished item=auction}
+            {include file="auction/lbi_auction.html"}
+            {foreachelse}
+            <p class="empty" style="border-bottom: 1px solid #e3e3e3">暂无历史成交记录</p>
+            {/foreach}
+		</ul>
+	</div>
+
+    {if $data.love}
+	<div class="ceneral-title">
+		<h2>猜你喜欢 </h2>
+	</div>
+	<div class="fn-clear ceneral picScroll-left">	
+		<div class="bd">
+			<ul class="picList">
+                {foreach from=$data.love item=auction}
+                {include file="auction/lbi_auction.html"}
+                {/foreach}
+			</ul>
+	    </div>
+	</div>
+    {/if}
+
+</div>
+{include file="footer.html"}
+
+<script src="/style/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript">
+jQuery(".txtScroll-top").slide({ titCell:".hd ul",mainCell:".bd ul",autoPage:true,interTime:6000,effect:"top",autoPlay:true,vis:2 });
+jQuery(".picScroll-left").slide({ titCell:".hd ul",mainCell:".bd ul",autoPage:true,interTime:6000,effect:"left",autoPlay:true,vis:5,trigger:"click" });
+$(function(){
+	//选项卡鼠标滑过事件
+	$('.jp-tab  li').hover(function(){
+		TabSelect(".jp-tab  li", ".jp-list ul", "dq", $(this))
+	});
+	$('.jp-tab li').eq(0).trigger("hover");
+
+	function TabSelect(tab,con,addClass,obj){
+		var $_self = obj;
+		var $_nav = $(tab);
+		$_nav.removeClass(addClass),
+		$_self.addClass(addClass);
+		var $_index = $_nav.index($_self);
+		var $_con = $(con);
+		$_con.hide(),
+		$_con.eq($_index).show();
+	}
+});
+</script>

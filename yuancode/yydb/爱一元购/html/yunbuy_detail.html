@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no" />
+    <title>夺宝详情</title>
+    <link rel="stylesheet" type="text/css" href="../cssn/aui.2.0.css" />
+    <link rel="stylesheet" type="text/css" href="../cssn/swiper.min.css" />
+    <link rel="stylesheet" type="text/css" href="../fonts/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="../cssn/style.css" />
+    <link rel="stylesheet" type="text/css" href="../cssn/main.css" />
+    <link rel="stylesheet" type="text/css" href="../cssn/swiper.min.css" />
+    <style>
+        #header{
+    		background-color:#ffffff;
+    		color:white;
+    	}
+    </style>
+</head>
+<body>
+<header class="aui-bar aui-bar-nav" id="header">
+	<div class="header1 header-product">
+	    <a class="aui-btn aui-pull-left" tapmode onclick="api.closeWin()"><img src="../image/product-1.png"></a>
+	    <a class="aui-btn aui-pull-right" tapmode onclick="backhome()"><img src="../image/product-2.png"></a>
+	    <span class="aui-btn aui-fenxiang aui-pull-right"><img src="../image/product-3.png"></span>
+	</div>
+</header>
+<div class="fenxiang-screen"></div>
+<ul class="fenxiang">
+	<li onclick="share(123,'session')">
+		<em><img src="../image/fx-wx.png"></em>
+		<p>微信</p>
+	</li>	
+	<li onclick="share(123,'timeline')">
+		<em><img src="../image/fx-pyq.png"></em>
+		<p>微信朋友圈</p>
+	</li>	
+	<li onclick="share(123,'QFriend')">
+		<em><img src="../image/fx-qq.png"></em>
+		<p>QQ</p>
+	</li>	
+	<li onclick="share(123,'QZone')">
+		<em><img src="../image/fx-qqkj.png"></em>
+		<p>QQ空间</p>
+	</li>	
+</ul>	
+<div class="goods white-bg aui-clearfix" id="pics-content">
+	
+</div>
+<script id="pics-template" type="text/x-dot-template">
+ 	<div class="goods-img swiper-container">
+	    <div class="swiper-wrapper">
+	    {{? it.info.pics}}
+	    {{ for(var i=0; i< it.info.pics.length; i++) { }}
+		    {{? it.info.pics[i].imgurl_src!=''}}
+		    <div class="swiper-slide"><img src="{{=it.info.pics[i].imgurl_src}}"></div>
+		    {{?}}
+		    {{? i==0}}
+		    <img src="{{=it.info.pics[i].imgurl_src}}" id="buy_img_{{=it.info.buy_id}}" style="display:none;"/>
+		    {{? it.row_buy}}<img src="{{=it.info.pics[i].imgurl_src}}" id="buy_img_{{=it.row_buy.buy_id}}" style="display:none;"/>{{?}}
+		    {{?}}
+	    {{}}} 
+	    {{?}}
+	    </div>
+	    <div class="swiper-pagination"></div>
+	</div>
+	<big>{{=it.info.title}}{{=it.info.goods_subtit}}{{? it.info.price > 1}}<span style="margin-left:10px;" class="zq_ico">{{=it.info.num2char}}元专区</span>{{?}}</big>
+</script>
+<div id="info-content"></div>
+    <script id="info-template" type="text/x-dot-template">
+    {{? it.info.gobuy==1 && !it.row_buy}}
+    <div class="direct3 aui-clearfix">
+		<div class="direct aui-clearfix">
+			<span class="aui-pull-left">价格：</span>
+			<p class="aui-pull-left">￥<strong>{{=it.info.goods_price}}</strong></p>	
+		</div>
+	</div>
+	<div class="white-bg aui-clearfix goods1">
+	    <div class="goods-6 aui-clearfix">
+	    	<span class="aui-pull-left">购买数量：</span>
+	    	<div class="goods-6-1 aui-pull-left">
+	    		<input type="button" value="-" class="goods-6-input" />
+	    		<input type="text" value="1" id="qty_{{=it.info.buy_id}}" class="goods-6-input1" />
+	    		<input type="button" value="+" class="goods-6-input" />
+	    	</div>
+	    </div>
+	    <div class="goods-4 aui-clearfix">
+	    	<p><input type="button" value="立即购买" onclick="addToCart('{{=it.info.buy_id}}','buy_buy')" class="aui-btn aui-btn-block good-bg" /></p>
+	    	<p><input type="button" value="加入购物车" onclick="addToCart('{{=it.info.buy_id}}','buy_buy')" class="aui-btn aui-btn-block good-bg1" /></p>
+	    </div>
+	</div>    
+    {{?? it.row_buy}}
+    <div class="white-bg aui-clearfix goods">
+		<div class="direct aui-clearfix">
+			<p class="aui-pull-right">￥<strong>{{=it.row_buy.custom_price}}</strong></p>	
+			<div class="direct-1">
+				<div class="direct-2">
+					<span class="aui-pull-left">1</span>
+					<strong>全价购买</strong>
+				</div>
+				<p>无需等待，直接获得商品！</p>
+			</div>
+		</div>
+		{{? it.row_buy.need_num > 0}}
+		<div class="direct2"><p><input type="button" value="直接购买" onclick="addToCart('{{=it.row_buy.buy_id}}','buy_buy')" class="aui-btn aui-btn-block" /></p></div>
+		{{??}}
+		<div class="direct2"><p><input type="button" value="已抢光" class="aui-btn aui-btn-gray" /></p></div>
+		<em style="color: #db3652;line-height:5rem">库存不足，立即{{=it.unit_yun}}</em>
+		{{?}}
+	</div>
+    {{?}}
+    <div class="white-bg aui-clearfix goods1">
+    {{? it.info.end_num>0 && it.info.gobuy!=1}}
+    {{? it.row_buy}}
+    <div class="direct-1">
+		<div class="direct-2">
+			<span class="aui-pull-left">2</span>
+			<strong>一元夺宝</strong>
+		</div>
+		<p>只需要{{=it.info.price}}元就有机会活获得商品！<a onclick="openWin('help_page',{id:64,mark:'rule'})">参与规则</a></p>
+	</div>
+	{{??}}
+	<div class="goods1-1 aui-clearfix"><big  style="color:orange;">一元夺宝</big>只需要{{=it.info.price}}元就有机会活获得商品！<a onclick="openWin('help_page',{id:64,mark:'rule'})">参与规则</a></div>
+	{{?}}
+	<div class="aui-progress aui-progress-xs goods1-2">
+        <div class="aui-progress-bar" style="width:{{=it.info.jindu}}%;"></div>
+    </div>
+    <ul class="goods1-3 aui-clearfix">
+    	<li class="aui-pull-left">
+    		<span class="color4" id="buy_num_span">{{=it.info.buy_num}}</span>
+    		<p>已参与</p>
+    	</li>
+    	<li class="aui-pull-right">
+    		<span class="color5">{{=it.info.end_num}}</span>
+    		<p>剩余</p>
+    	</li>
+    	<li class="aui-text-center">
+    		<span class="color4">{{=it.info.need_num}}</span>
+    		<p>总需人数</p>
+    	</li>
+    </ul>
+    <div class="goods-6 aui-clearfix">
+    	<span class="aui-pull-left">参与人次：</span>
+    	<div class="goods-6-1 aui-pull-left">
+    		<input type="button" value="-" class="goods-6-input"/>
+    		<input type="text" value="{{=it.info.max_mun}}" id="qty_{{=it.info.buy_id}}" class="goods-6-input1 qty" />
+    		<input type="button" value="+" class="goods-6-input" />
+    		<div class="goods-6-position">
+    			<p>获得机率<font id="wPointer">0</font>%</p>
+    			<span></span>
+    		</div>
+    	</div>
+    	<div class="goods-6-2">
+    		<span>10</span>
+    		<span>50</span>
+    		<span>100</span>
+    		<span>扫尾</span>
+    	</div>
+    </div>
+    <div class="goods-4 aui-clearfix">
+        {{? it.info.luck_code > 0 || it.info.wait_lottery}}
+        <p>第{{=it.new_buy.qishu}}期 火热进行中…</p>
+        <p><input type="button" onclick="openWin('yunbuy_detail',{id:{{=it.new_buy.buy_id}}})" value="立即前往" class="aui-btn aui-btn-block good-bg" /></p>
+		{{?? it.info.gobuy==1}}
+		<p><input type="button" onclick="addToCart('{{=it.info.buy_id}}','buy')" value="立即购买" class="aui-btn aui-btn-block good-bg" /></p>
+    	<p><input type="button" value="加入购物车" onclick="addToCart('{{=it.info.buy_id}}','',this)" class="aui-btn aui-btn-block good-bg1" /></p>
+		{{?? it.info.type == 1}}
+		<p><input type="button" onclick="addToCart('{{=it.info.buy_id}}','buy')" value="{{=it.unit_yun_button}}" class="aui-btn aui-btn-block good-bg" /></p>
+    	<p><input type="button" value="加入购物车" onclick="addToCart('{{=it.info.buy_id}}','',this)" class="aui-btn aui-btn-block good-bg1" /></p>
+		{{??}}
+		<p><input type="button" onclick="addToCart('{{=it.info.buy_id}}','free')" value="免费{{=it.unit_yun}}" class="aui-btn aui-btn-block good-bg" /></p>
+		{{?}}
+    </div>
+    <div class="aui-clearfix goods-5">
+        {{? it.member_join.length}}
+    	<p>您本期总共参与了<span class="color2">{{=it.member_join_count}}</span>人次</p>
+    	<p>您的号码：{{ for(var i=0; i < it.member_join.length; i++) { }}
+            <span>{{=it.member_join[i]}}</span>
+            {{ } }}</p>
+        {{??}}
+        <p>您还没有参与,赶紧参与吧！</p>
+        {{?}}    
+    </div>
+    {{?? it.info.luck_code>0}}
+    <div class="goods-yjx">
+		<div class="goods-yjx1">中奖者</div>	
+		<div class="goods-yjx2">
+			<dl class="goods-yjx2-1">
+				<dt onclick="openWin('minfo',{id:{{=it.luck_member.mid}}})"><img src="{{=it.luck_member.photo}}"></dt>
+				<dd>
+					<p>获奖者：<span onclick="openWin('minfo',{id:{{=it.luck_member.mid}}})" class="color2">{{=it.luck_member.username}}({{=it.luck_member.ip_str}})</span></p>
+					<!--<p>用户ID：{{=it.luck_member.midFormat}}（唯一不变标识）</p>-->
+					<p>期号：{{=it.info.qihao}}</p>
+					<p>本期参与：<span class="color2">{{=it.luck_member.qty}}人次</span></p>
+					<p>揭晓时间：{{=it.info.wait_time}}</p>
+				</dd>
+			</dl>	
+			<dl class="goods-yjx2-2" >
+				<dt onclick="openWin('detail_result',{id:{{=it.info.buy_id}}})">计算结果</dt>
+				<dd>幸运号码：<strong>{{=it.info.luck_code}}</strong></dd>
+			</dl>
+		</div>
+	</div>
+    {{?? it.info.wait_lottery}}
+    <div class="countdown">
+		<div class="countdown1">揭晓倒计时</div>
+		<div class="m-detail-main-will-countdown" id="divLotteryTimer">
+	       <ul class="Announced_FrameClockMar Announced_FrameCode" id="jx_clock">
+	            <li id="liMinute1">0</li>
+	            <li id="liMinute2">0</li>
+	            <li id="liMinute3" style="display: none;">0<b></b></li>
+	            <li class="Code_Point">:</li>
+	            <li id="liSecond1">0</li>
+	            <li id="liSecond2">0</li>
+	            <li class="Code_Point">:</li>
+	            <li id="liMilliSecond1">0</li>
+	            <li id="last">0</li>
+	        </ul>
+	    </div>
+	</div>
+    {{?}}
+    </div>
+    </script>
+<div class="white-bg aui-clearfix goods1" style="padding-top:0; padding-bottom:0;">
+    <span class="apple" style="color:red; display: none; padding-top:0.3rem;">声明：所有购物活动与苹果公司(apple inc.)无关</span>
+    <ul class="good-list aui-clearfix" style="padding-top:0;">
+    	<li class="aui-clearfix detail_join"><a onclick="openWin('detail_join',{id:api.pageParam.id})">所有夺宝纪录</a></li>	
+    	<li class="aui-clearfix"><a onclick="openWin('detail_info',{id:api.pageParam.id})">商品图文详情</a></li>	
+    	<li class="aui-clearfix detail_share"><a onclick="openWin('detail_share',{id:api.pageParam.id})">幸运者晒单</a></li>	
+    	<li class="aui-clearfix detail_win" style="display:none;"><a onclick="openWin('detail_win',{id:api.pageParam.id})">往期揭晓</a></li>
+    </ul>
+    <div class="good-more">
+    	<span>继续拖动，查看图文详情</span>
+    	<p><em></em></p>   	
+    </div>
+</div>
+<script type="text/javascript" src="../script/swiper.min.js" ></script>
+<script type="text/javascript" src="../script/jquery.min.js"></script>  
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/doT.min.js"></script>
+<script type="text/javascript" src="../script/fastclick.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript" src="../script/share.js"></script>
+
+<script type="text/javascript">
+function share(item,type){
+	var options = {
+		type:type,
+		text:item	
+	};
+	
+	if(type === 'session' || type === 'timeline'){
+		wxshare(type);
+	}else{
+		qqshare(type);
+	}
+}
+
+var sharetext,shareurl,sharepic,wxKey,type,sharetitle;
+function buyNum(num){
+    $('.qty').val(num);
+    $('#wPointer').html((num/need_num*100).toFixed(3));
+    $('.goods-6-position').clearQueue();
+	$('.goods-6-position').fadeIn().delay(5000).fadeOut();
+}
+$(function(){
+	$('.goods-6-2 span').live('click',function(){
+	    $(this).addClass('active').siblings().removeClass('active');
+	    num = Math.ceil($(this).html());
+	    if(num<=0 || isNaN(num) || num>need_num) num = need_num - parseInt($('#buy_num_span').text());
+	    buyNum(num);
+	});
+	$('.goods-6-1 input.goods-6-input').live('click',function(){
+	    var qty = $('.qty').val()*1;
+	    if($(this).val()=='+'){
+	      num = qty<need_num ? qty+1 : need_num;
+	    }else{
+	      num = qty>1 ? qty-1 : 1;
+	    }
+	    buyNum(num);
+	});
+	$('.fenxiang').css('bottom',-$('.fenxiang').height())
+	$('header .header1 .aui-fenxiang').live('click',function(){
+	    $('.fenxiang').animate({bottom:'0'}, 300);
+	    $('.fenxiang-screen').fadeIn();
+	});
+	$('.fenxiang-screen').live('click',function(){
+	    $('.fenxiang').animate({bottom:-$('.fenxiang').height()}, 300);
+	    $('.fenxiang-screen').fadeOut();
+	});
+	$('.m-detail-codes-btn').live('click',function(){
+	    $(this).hide();
+	    $('.m-detail-code').hide();
+	    $('.m-detail-codes').show();
+	    $('.m-detail-codes-btn-hide').show();
+	});
+	$('.m-detail-codes-btn-hide').live('click',function(){
+	    $(this).hide();
+	    $('.m-detail-codes').hide();
+	    $('.m-detail-code').show();
+	    $('.m-detail-codes-btn').show();
+	});
+});
+var id = '';
+var lottery = 0;
+var is_ssc = 0;
+var qihao = 0;
+var Secondms_jx = 60*1000;
+var minutems_jx = 1000;
+var wait_time = 0;
+var need_num = 0;
+function show_date_time(diff,obj) {
+		console.log(diff);
+		if(diff <= 0) {
+            $("#liMinute").html('00');
+            $("#liSecond").html('00');
+            $("#liMilliSecond").html('00');
+            if(lottery==0){ //#
+                if(is_ssc==1){
+	                lottery = 1;
+	                ajaxRequest('welcome/lottery/'+qihao, 'GET', {}, function (ret, err) {
+					    openWin('yunbuy_detail',{id:id})
+					});
+                }else{
+	                rTimeout = window.clearTimeout(rTimeout);
+		            $('#divLotteryTime').html("<div class='jx_ing'>开奖计算中...</div>");
+		            setTimeout(function(){
+		                lottery = 1;
+		                openWin('yunbuy_detail',{id:id})
+		            }, 5000);
+                }
+            }
+            return false;
+        }
+
+        DifferSecond   = Math.floor(diff / Secondms_jx);
+        diff -= DifferSecond * Secondms_jx;
+        DifferMinute   = Math.floor(diff / minutems_jx);
+        diff -= DifferMinute * minutems_jx;
+//		DifferSecond = Math.floor(diff % 60);
+//		DifferMinute = Math.floor(diff / 60);
+
+        if(DifferSecond.toString().length < 2) DifferSecond = '0'+DifferSecond;
+        if(DifferMinute.toString().length < 2) DifferMinute = '0'+DifferMinute;
+
+        DifferSecond_1 = DifferSecond.toString().substr(0,1);
+        DifferSecond_2 = DifferSecond.toString().substr(1,1);
+        DifferSecond_3 = DifferSecond.toString().substr(2,1);
+
+        DifferMinute_1 = DifferMinute.toString().substr(0,1);
+        DifferMinute_2 = DifferMinute.toString().substr(1,10);
+
+        wait_time=wait_time-1000;
+        $("#liMinute1").html(DifferSecond_1);
+        $("#liMinute2").html(DifferSecond_2);
+        $("#liMinute3").html(DifferSecond_3);
+        $("#liSecond1").html(DifferMinute_1);
+        $("#liSecond2").html(DifferMinute_2);
+        
+        if(DifferSecond.toString().length >= 3){
+            $('#liMinute3').show();
+        }
+}
+apiready = function  () {
+    //适配iOS 7+，Android 4.4+状态栏
+    var header = $api.byId('header');
+    $api.fixStatusBar(header);
+    id = api.pageParam.id;
+    showprog();
+    ajaxRequest('yunbuy/detail/'+id, 'GET', {}, function (ret, err) {
+        if (ret) {
+           var data = ret.data;
+           qihao = data.info.qihao;
+           temp(data,'pics');
+           var swiper = new Swiper('.goods-img.swiper-container', {
+			    pagination: '.goods-img .swiper-pagination',
+			    autoplay : 7000,
+			    loop :true,
+		   });	
+		   temp(data,'info');
+		   is_ssc = data.is_ssc;
+		   need_num = data.info.need_num;
+		   $('#shareNum').html(data.share_num);
+		   if(data.info.gobuy==1) $('.detail_join,.detail_share,.detail_win').hide();
+		   
+		   if(data.end_time>0){
+		     wait_time = parseInt(data.end_time);
+		     show_date_time(wait_time,null);
+	         rTimeout = window.setInterval(function(){ show_date_time(wait_time, null); }, 1000);
+	
+	         //毫秒单独计时
+	         var h = 100;
+		        timeID_h_jx = window.setInterval(function(){
+		            if(h<=0) h = 100;
+		            h = parseInt(h)-1;
+		            if(h.toString().length < 1) h = '00';
+		            if(h.toString().length == 1) h = '0'+h;
+		            if(h.toString().length > 2) h = '99';
+		
+		            var h_1 = h.toString().substr(0,1);
+		            var h_2 = h.toString().substr(1,1);
+		
+		            $("#liMilliSecond1").html(h_1);
+		            $("#last").html(h_2);
+		        }, 10);
+		   }
+		   
+		   sharetext = data.info.title;
+		   sharetitle = data.info.wx_share;
+		   shareurl = data.app_shareurl+'/yunbuy/detail/' + id;
+		   sharepic = data.info.imgurl_thumb ? ('http://www.i1y8.com' + data.info.imgurl_thumb) : data.info.pics[0].imgurl_src;
+//		   wxKey = data.wxKey;
+        } else {
+            toast(err.msg);
+        }
+        hideprog();
+    });
+    var scro = 0;
+    api.addEventListener({
+        name: 'scrolltobottom'
+    }, function (ret, err) {
+    	scro++;
+    	if(scro>1){
+    		openWin('detail_info',{id:api.pageParam.id});
+    		scro=1;
+    	}
+        
+    });
+    
+	var systemType = api.systemType;
+	if(systemType == "ios") {
+		$('.apple').css("display","block");
+	}
+}
+</script>
+</body>
+</html>

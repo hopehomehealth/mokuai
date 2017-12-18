@@ -1,0 +1,98 @@
+<form class="return_form">
+<ul>
+    <li class="huibao-tj-li1">
+        <span>选择回报类型：</span>
+        <i>
+            <input type="radio" id="radio-1-1" name="is_address" value="1" class="regular-radio" {if $return.is_address eq 1 || $return.is_address eq ''}checked=""{/if}>
+            <label for="radio-1-1"></label>实物回报（回报需邮寄）
+        </i>
+        <i>
+            <input type="radio" id="radio-1-2" name="is_address" value="0" class="regular-radio" {if $return.is_address eq '0'}checked=""{/if}>
+            <label for="radio-1-2"></label>虚拟回报（回报无需邮寄）
+        </i>
+    </li>
+    <li class="huibao-tj-li2">
+        <span>是否抽奖：</span>
+        <i>
+            <input type="checkbox" name="is_lottery" {if $return.draw_num gt 0}checked{/if}  value="1" >
+            <label for="radio-1-3"></label>抽奖回报
+        </i>
+        <input type="text" name="draw_num" value="{if $return.draw_num gt 0}{$return.draw_num}{/if}" style="width:210px; margin-left: 170px" placeholder="每满多少位支持者抽取1位幸运用户" />
+    </li>
+    <li class="huibao-tj-li2">
+        <span>支持金额：</span>
+        <input type="text" name="price" value="{$return.price}" placeholder="输入需要用户支持的金额(必填)" />
+    </li>
+    <li class="huibao-tj-li3">
+        <span> 回报标题：</span>
+        <input type="text" name="rt_name" value="{$return.rt_name}" placeholder="输入回报标题（必填）" />
+    </li>
+    <li class="huibao-tj-li4">
+        <span> 回报内容：</span>
+        <textarea name="rt_desc" rows="2" cols="20">{$return.rt_desc}</textarea>
+    </li>
+    <li class="huibao-tj-li5">
+        <span>人数上限：</span>
+        <input type="text" name="limit_num" value="{$return.limit_num}" placeholder="留空为无限制" />
+    </li>
+    <li class="huibao-tj-li6">
+        <span>回报时间：</span>
+        <input type="text" name="rt_day" value="{$return.rt_day}" placeholder="项目成功后几天内发送回报" />
+    </li>
+    <li class="huibao-tj-li7">
+        <span>添加图片：</span>
+        <ul id="warp">
+            <li><img id="return"  src="{zz mod=fileurl source=$return.thumb type=1 nopic='/style/crowd/images/sctp.jpg'}">
+                {upload_btn('return',500,500)}</li>
+        </ul>
+        <em>
+            支持jpg、jpeg、png、gif格式，<br />
+            大小不超过500KB。
+        </em>
+    </li>
+    <li class="huibao-tj-chaoz">
+        <input type="hidden" name="cd_id" value="{$info.cd_id}">
+        <input type="hidden" name="id" value="{$return.rt_id}">
+        <input type="hidden" name="submit" value="1">
+        {if $return.rt_id}<a href="javascript:;" class="delete_return" id="{$return.rt_id}">删除</a>{/if}
+        <input type="button" id="submit_return" value="保存"/>
+    </li>
+</ul>
+</form>
+<style type="text/css">
+    .webuploader-pick{
+        margin: 0px;
+        width: 196px;
+        height: 124px;
+        text-indent:-999em;
+        background: none;
+    }
+</style>
+<script type="text/javascript">
+$(function(){
+    $("#submit_return").on('click',function(){
+        var D = $(this).parents(".return_form").serializeArray();
+        $.post('/crowd/return_edit',D,function(data){
+            if(data.msg){
+                layer.alert(data.msg);
+            }else{
+                $('#add_content').fadeOut('');
+                $('#add_content').children('.huibao-tj').html('');
+                $(".add_return").fadeIn();
+                $(".list").html(data.html);
+            }
+        },'json');
+    });
+    $(".delete_return").on('click',function(){
+        var id = $(this).attr('id');
+        $.post('/crowd/return_del/'+id,{ },function(data){
+            if(data.msg){
+                layer.alert(data.msg);
+            }else{
+                $(".add_return").fadeIn();
+                $(".list").html(data.html);
+            }
+        },'json');
+    });
+});
+</script>

@@ -1,0 +1,122 @@
+{include file="header.html"}
+<link rel="stylesheet" href="{url('/style/css/member.css')}">
+{include file="ur_here.html"}
+<div id="container">
+    <div class="fn-clear mt20 pb20">
+        {include file="member/menu.html"}
+        <div class="fn-right hy-r">
+        <div class="fn-clear hy-tjxh">
+            <div class="title">
+                <h2>收货地址</h2>
+            </div>
+            <div class="hy-box">
+                <div class="hy-adddz">
+                    <div class="adddz-t">
+                        <strong>{if $row.id}编辑{else}新增{/if}收货人信息</strong>
+                        <span class="color01">(最多保存5个有效地址)</span>
+                        {if $row.id}
+                        <a href="/member/address{if $smarty.get.back}?back={$smarty.get.back}{/if}" class="color02">[新增]</a>
+                        {/if}
+                    </div>
+                    <form action="" target="iframeNews" method="post" id="address_form">
+                    <table>
+                        <tr>
+                            <th><span class="color01">*</span> 配送区域：</th>
+                            <td>{linkage('zone',$row.zone)}</td>
+                        </tr>
+                        <tr>
+                            <th><span class="color01">*</span> <span class="label">详细地址</span>：</th>
+                            <td>
+                                <input name="address" value="{$row.address}" datatype="*" type="text" class="inpt-style2 w420">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><span class="color01">*</span><span class="label">收货人姓名</span>：</th>
+                            <td>
+                                <input name="name" value="{$row.name}" datatype="*2-6" type="text" class="inpt-style2 ">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><span class="color01">*</span><span class="label">手机/电话</span>：</th>
+                            <td>
+                                <input name="mobile" value="{$row.mobile|default:$member.mobile}" type="text" class="inpt-style2 ">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>邮政编码：</th>
+                            <td><input  name="zip" value="{$row.zip}" datatype="n" ignore="ignore" type="text" class="inpt-style2 "></td>
+                        </tr>
+                        <tr>
+                            <th>设为默认:</th>
+                            <td><input type="checkbox" name="is_default" value="1" {if $row.is_default}checked{/if}></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>
+                                <input type="hidden" name="back" value="{$smarty.get.back}" />
+                                <input name="Submit" type="submit" value="{if $smarty.get.back}配送到此地址{else}保 存{/if}" class="hy-btn2" />
+                                <input type="hidden" name="id" value="{$row.id}">
+                            </td>
+                        </tr>
+                    </table>
+                    </form>
+                </div>
+
+                <div class="mt15 hy-table">
+                    <table>
+                        <tr>
+                            <th style="width:125px;">收货人</th>
+                            <th style="width:165px;">区域</th>
+                            <th>详细地址</th>
+                            <th style="width:95px;">  邮编</th>
+                            <th style="width:120px;">电话/手机</th>
+                            <th style="width:50px;">默认</th>
+                            <th style="width:60px;">操作</th>
+                        </tr>
+                        {foreach from=$address item=m}
+                        <tr>
+                            <td>{$m.name}</td>
+                            <td>{$m.area}</td>
+                            <td style="word-break : break-all;">{$m.address}</td>
+                            <td>{$m.zip}</td>
+                            <td>{$m.mobile|default:$member.mobile}</td>
+                            <td>{if $m.is_default}<span class="color01">默认</span>{/if}</td>
+                            <td class="hy-rza">
+                                <a href="{url('/member/address/'|cat:$m.id)}{if $smarty.get.back}?back={$smarty.get.back}{/if}">编辑</a>
+                                <a href="javascript:zz_confirm('您是否确认删除收货地址?','{url('/member/address_del/'|cat:$m.id)}{if $smarty.get.back}?back={$smarty.get.back}{/if}');">删除</a>
+                            </td>
+                        </tr>
+                        {/foreach}
+                    </table>
+                </div>
+            </div>
+
+        </div>
+        </div>
+    </div>
+</div>
+{literal}
+<script type="text/javascript" src="/style/Validform_min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $("#address_form").Validform({
+            tiptype:3,
+            showAllError:true,
+            label:".label",
+            datatype:{
+                "phone":function(gets,obj,curform,regxp){
+                    var reg1=regxp["m"],
+                            reg2=/[\d]{7}/,
+                            mobile=curform.find(".mobile");
+
+                    if(reg1.test(mobile.val())){return true;}
+                    if(reg2.test(gets)){return true;}
+
+                    return false;
+                }
+            }
+        });
+    });
+</script>
+{/literal}
+{include file="footer.html"}

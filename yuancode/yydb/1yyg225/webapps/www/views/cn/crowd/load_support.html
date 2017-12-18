@@ -1,0 +1,33 @@
+{if $list}
+    <ul class="xqzc-ul">
+        {foreach from=$list item=item}
+        <li>
+            <img class="xqht-tx1" src="{zz mod=photo source=$item.photo size=80}" />
+            <p>
+                <span>{$item.username|nickname:$item.nickname}：</span>支持
+                <b>{$item.support_amount|price_format:1}</b>
+            </p>
+            <p>{date('Y-m-d H:i',$item.pay_time)}</p>
+        </li>
+        {/foreach}
+    </ul>
+    <div class="feny mt20">{include file="crowd/ajax_page.html"}</div>
+{else}
+    <div class="empty">暂时没有记录</div>
+{/if}
+<script type="text/javascript">
+    var load_div = '.xq-l-main';
+    $(document).ready(function(){
+        $(load_div).find('.demo').ajaxContent({
+            event:'click', //mouseover
+            loaderType:"text",
+            loadingMsg:"拼命加载中...",
+            target:load_div,
+            success:function(){
+                scrollLoading();
+            }
+        }).bind('click',function(){
+            //$('html,body').animate({ scrollTop: '400px' }, 500);
+        });
+    });
+</script>

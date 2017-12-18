@@ -1,0 +1,79 @@
+{include file="crowd/crowd_header.html"}
+<div class="xiangxidd">
+    <div class="xiangxidd-m">
+        <div class="xiangxidd-m-cp">
+            <img src="{zz mod=fileurl source=$support.thumb width=100 height=100}" />
+            <p>
+                <em>
+                    <a href="{url('/crowd/detail/')}{$support.cd_id}" target="_blank">{$support.cd_name}</a>
+                </em>
+                <i class="iconfont">&#xe62a;</i>
+            </p>
+            <section>
+                项目动态：{if $support.is_success eq 0}众筹中{elseif $support.is_success eq 1}众筹成功{else}众筹失败{/if}
+                <br />
+                支持金额：{$support.support_amount|price_format}
+            </section>
+        </div>
+        <div class="xiangxidd-m-xx">
+
+            订单编号：
+            <i>{$support.support_sn}</i>
+            <br />
+            交易状态：
+            <i>{if $support.support_status eq 0}
+                未支付
+                {elseif $support.support_status eq 1}
+                订单过期（未支付）
+                {elseif $support.support_status eq 2}
+                已支付
+                {elseif $support.support_status eq 3}
+                已退款（人数已满）
+                {elseif $support.support_status eq 4}
+                已支付
+                {elseif $support.support_status eq 5}
+                已支付
+                {elseif $support.support_status eq 6}
+                已支付
+                {/if}</span>
+                {if $support.support_status eq 4}
+                未中奖
+                {elseif $support.support_status eq 5}
+                中奖（等待发货）
+                {elseif $support.support_status eq 6}
+                中奖（已发货）
+                {/if}</i>
+            <br />
+            备注信息：
+            <i>{$support.support_remark|default:'无'}</i>
+            <br />
+
+        </div>
+        {if $support.address neq ''}
+        <div class="xiangxidd-m-xx">
+            <h3>
+                收货人
+            </h3>
+
+            姓名：
+            <i>{$support.address_name}</i>
+            <br />
+            电话：
+            <i>{$support.address_mobile|nickname}</i>
+            <br />
+            地址：
+            <i>{$support.address_area} {$support.address}</i>
+            <br />
+        </div>
+        {/if}
+        <div class="xiangxidd-m-nr">
+            <h3>
+                回报内容
+            </h3>
+            <p>{$support.rt_desc}</p>
+        </div>
+    </div>
+</div>
+<div class="quzf">
+    <a href="javascript:window.history.go(-1)">返回</a>
+</div>

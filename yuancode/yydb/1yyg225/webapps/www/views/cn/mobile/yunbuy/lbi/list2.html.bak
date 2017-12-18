@@ -1,0 +1,14 @@
+{foreach from=$list item=m name=list}
+<div class="new-box" style="position: relative">
+    {if $m.price gt 1}<span class="zq_ico" style="position: absolute;right:0;top:0;">{$m.price|num2char}元{$L.unit_area}</span>{/if}
+    <em><a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}"><img alt="{$m.title}" src="{zz mod=fileurl source=$m.imgurl_src width=180 type=0}" id="buy_img_{$m.buy_id}"></a></em>
+    <h5><a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}"><span>(第{$m.qishu}期)</span><p>{$m.title}</p></a></h5>
+    <dl class="new-box1">
+        <dt><i class="iconfont icon-jiarugouwuche" onclick="addToCart('{$m.buy_id}','{if $m.type eq 2}free{/if}',this)"></i></dt>
+        <dd>
+            <p class="new-box1-1">揭晓进度<span>{$m.jindu}%</span></p>
+            <p class="new-box1-2"><span style="width: {$m.jindu}%;"></span></p>
+        </dd>
+    </dl>
+</div>
+{/foreach}

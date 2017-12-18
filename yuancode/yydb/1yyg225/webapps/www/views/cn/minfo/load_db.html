@@ -1,0 +1,80 @@
+{if $list}
+<table class="w-table">
+    <thead>
+    <tr>
+        <th class="col1">{$L.unit_price}图片</th>
+        <th class="col2">{$L.unit_price}名称</th>
+        <th class="col3">{$L.unit_yun}状态</th>
+        <th class="col4">参与人次</th>
+        <th class="col5">{$L.unit_yun}号码</th>
+        <th class="col6">操作</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    {foreach from=$list item=m}
+    <tr>
+        <td class="col1 scrollLoadingDiv"><a target="_blank" href="{'/yunbuy/detail/'|cat:$m.buy_id|url}"><img class="scrollLoading" src="/style/images/pix.gif" data-url="{zz mod=fileurl source=$m.imgurl_thumb width=120 type=0}" alt="{$m.goods_name}"></a></td>
+        <td class="col2" style="text-align: left">
+            <div class="w-goods w-goods-l">
+                <p class="w-goods-title"><a title="{$m.goods_name}" target="_blank" href="{'/yunbuy/detail/'|cat:$m.buy_id|url}"><span class="color01"><!-- (第{$m.qishu}期) --></span>{$m.goods_name}</a></p>
+                <p class="w-goods-price">总需：{$m.buy.need_num}人次</p>
+                <div class="w-progressBar">
+                    <ul class="w-progressBar-txt f-clear">
+                        <li class="w-progressBar-txt-l">
+                            已参与{$m.buy.buy_num}人次
+                        </li>
+                        <li class="w-progressBar-txt-r">
+                            剩余{$m.buy.end_num}人次
+                        </li>
+                    </ul>
+                </div>
+                <div class="winner" style="display: none;">
+                    <div class="name">获得者：<a target="_blank" href="{'/minfo/?id='|cat:$m.luck_db.mid|url}" title="{$m.luck_db.username|nickname:$m.luck_db.nickname})">{$m.luck_db.username|nickname:$m.luck_db.nickname}</a>（本期共参与<strong class="txt-dark">{$m.luck_db.qty}</strong>人次）</div>
+                    <div class="code">幸运号码：<strong class="txt-impt">{$m.luck_db.luck_code}</strong></div>
+                </div>
+            </div>
+        </td>
+        <td class="col3" nowrap>
+            {if $m.status eq 2}<span class="color01">正在进行…</span>
+            {elseif $m.status eq 3 || $m.status eq 5}<span class="color02">已揭晓</span>
+            {else}<span class="color03">等待揭晓</span>{/if}
+        </td>
+        <td class="col4 color01" nowrap style="font-size: 14px;">
+            {$m.qty}人次
+        </td>
+        <td class="col5" nowrap>
+            <ul class="codeLayer">
+                {foreach from=$m.yun_code item=c name=yun_code}
+                {if $smarty.foreach.yun_code.iteration lt 5}<li>{$c}</li>{/if}
+                {/foreach}
+            </ul>
+        </td>
+        <td class="col6" nowrap style="font-size: 14px;"><a href="javascript:;" onclick="mLoad('db#vid='+{$m.buy_id})" class="color01">详情></a></td>
+    </tr>
+    {/foreach}
+</tbody>
+</table>
+<div class="foot-btn">
+    {include file="ajax_page.html"}
+</div>
+{else}
+<div class="m-blank">该用户还没有参与过{$L.unit_yun}！</div>
+{/if}
+
+<script type="text/javascript">
+    var load_div = '#load_db';
+    $(document).ready(function(){
+        $(load_div).find('.demo').ajaxContent({
+            event:'click', //mouseover
+            loaderType:"text",
+            loadingMsg:"拼命加载中...",
+            target:load_div,
+            success:function(){
+                scrollLoading();
+            }
+        }).bind('click',function(){
+            $('html,body').animate({ scrollTop: '400px' }, 500);
+        });
+    });
+</script>

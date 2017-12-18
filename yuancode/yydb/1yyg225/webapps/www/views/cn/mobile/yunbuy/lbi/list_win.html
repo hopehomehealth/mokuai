@@ -1,0 +1,15 @@
+{foreach from=$list item=m key=k}
+<li>
+    <div class="win-title"><a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}"><span class="color"><!--第{$m.qishu}期--></span>{if $m.last_dbtime}( 揭晓时间：{microtime_format($m.last_dbtime,'Y-m-d H:i:s.x')} ){/if}</a></div>
+    <div class="win-cont ui-clr">
+        <div class="win-pic"><a href="/minfo?id={$m.mid}#dbCod"><img src="{zz mod=photo source=$m.photo size='80'}"></a></div>
+        <div class="win-detail">
+            <p class="to">获奖者：<a class="blue" href="/minfo?id={$m.mid}#dbCod">{$m.username|nickname:$m.nickname}</a></p>
+            <p class="to gray">( {$m.ip|cityIp} IP：{$m.ip} )</p>
+            <p>幸运号码：<span class="color">{$m.luck_code}</span> </p>
+            <p>本期参与：{$m.mid_buy_num}人次</p>
+            <p>{$L.unit_yun}时间：{microtime_format($m.db_time,'Y-m-d H:i:s.x')}</p>
+        </div>
+    </div>
+</li>
+{/foreach}

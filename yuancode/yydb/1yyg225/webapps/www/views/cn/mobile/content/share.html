@@ -1,0 +1,18 @@
+{include file="top.html"}
+<div id="content" class="container">
+    {include file="nav.html"}
+    <div class="shareList">
+        <div class="item"></div>
+    </div>
+    <div class="loading getMore"></div>
+</div>
+{include file="footer.html"}
+<script src="/style/mobile/js/jquery.more.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $('.shareList').more({
+            'address': '/content/share_ajax/all',
+            'amount' : 10
+        })
+    });
+</script>

@@ -1,0 +1,43 @@
+{include file="header.html"}
+<link rel="stylesheet" href="{url('/style/css/yiyuanbao.css')}">
+{include file="ur_here.html"}
+<div class="g-body">
+<div class="g-wrap g-body-bd f-clear">
+    <div class="m-freelist-mod m-freelist-allGoods">
+        <div class="m-freelist-mod-bd">
+        <ul class="w-goodsList f-clear">
+                {foreach from=$list item=m}
+                <li class="w-goodsList-item ">
+                    <div class="w-goods w-goods-ing">
+                        <div class="w-goods-pic">
+                        <a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}" target="_blank" title="{$m.title}"><img alt="{$m.title}" class="" src="{zz mod=fileurl source=$m.imgurl_src width=200 height=150 type=0}" style=""></a></div>
+                        <p class="w-goods-title f-txtabb"><a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}" target="_blank" title="(第{$m.qishu}期){$m.title}">(<b>第{$m.qishu}期</b>){$m.title}</a></p>
+                        <p class="w-goods-price">总需：{$m.need_num} 赠币 </p>
+                        <div class="w-progressBar" title="{$m.jindu}%">
+                            <p class="w-progressBar-wrap"><span class="w-progressBar-bar" style="width: {$m.jindu}%;"></span></p>
+                            <ul class="w-progressBar-txt f-clear">
+                                <li class="w-progressBar-txt-l">
+                                    <p><b>{$m.buy_num}</b></p>
+                                    <p>已参与人次</p>
+                                </li>
+                                <li class="w-progressBar-txt-r">
+                                    <p><b>{$m.end_num}</b></p>
+                                    <p>剩余人次</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <p class="w-goods-progressHint"><b class="txt-blue">{$m.join_num}</b>人次已参与，赶快去参加吧！剩余<b class="txt-red">{$m.end_num}</b>人次</p>
+                        <div class="w-goods-opr"><a class="w-button w-button-green w-button-l" href="{'/yunbuy/detail/'|cat:$m.buy_id|url}" style="width: 96px;" target="_blank">{$L.unit_yun_button}</a> </div>
+                    </div>
+                </li>
+                {/foreach}
+        </ul>
+        </div>
+        <div class="m-list-pager">
+            {include file="public_page.html"}
+        </div>
+    </div>
+</div>
+</div><div class="clear mb20">
+</div>
+{include file="footer.html"}

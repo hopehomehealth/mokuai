@@ -1,0 +1,31 @@
+{include file="header.html"}
+<link rel="stylesheet" href="{url('/style/css/member.css')}">
+{include file="ur_here.html"}
+<div id="container">
+    <div class="fn-clear mt20 pb20">
+        {include file="public_side_help.html"}
+        <div class="fn-right hy-r">
+            <div class="fn-clear hy-tjxh">
+                <div class="title">
+                    <h2>{$data.cat.catname}</h2>
+                </div>
+                <div class="hy-box">
+                    <div class="hy-qalist">
+                        {foreach from=$data.list item=m name=list}
+                        <div class="qa-t"><span>{$smarty.foreach.list.iteration}</span>{$m.title}</div>
+                        <dl class="fn-clear">
+                            <dt>答：</dt>
+                            <dd>{$m.content|stripcslashes|strip_tags}</dd>
+                        </dl>
+                        {/foreach}
+                    </div>
+                    {if empty($data.list)}
+                    <div class="empty">没有内容！</div>
+                    {/if}
+                    <div class="page">{include file='public_page.html'}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="footer.html"}

@@ -1,0 +1,20 @@
+{assign var='header' value='header2'}
+{include file="top.html"}
+<div id="content" class="container main">
+    <div class="fn-clear mt20 pb20">
+        <div class="shareList">
+            <div class="item"></div>
+        </div>
+        <div class="loading getMore" style="background: #fff;"></div>
+    </div>
+</div>
+<script src="/style/mobile/js/jquery.more.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $('.shareList').more({
+            'address': '/member/share',
+            'amount' : 10
+        })
+    });
+</script>
+{include file="footer.html"}

@@ -1,0 +1,17 @@
+{foreach from=$list item=row key=k}
+<div class="day-box">
+    <div class="record-time">{$k}</div>
+    <ul class="record-list">
+        {foreach from=$row item=m}
+        <li>
+            <div class="pic"><a href="{'/minfo?id='|cat:$m.mid|url}"><img src="{zz mod=photo source=$m.photo size=80}" /> </a> </div>
+            <div class="text">
+                <p class="to"><a class="blue" href="{'/minfo?id='|cat:$m.mid|url}">{$m.username|nickname:$m.nickname}</a> </p>
+                <p class="to">({$m.ip|cityIp} IP：{$m.ip})</p>
+                <p>参与了<span class="color">{$m.qty}</span>人次 {microtime_format($m.db_time,'H:i:s.x')}</p>
+            </div>
+        </li>
+        {/foreach}
+    </ul>
+</div>
+{/foreach}

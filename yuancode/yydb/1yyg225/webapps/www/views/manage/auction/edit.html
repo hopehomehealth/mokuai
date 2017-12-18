@@ -1,0 +1,209 @@
+{include file='../public_btn.html'}
+<div class="html-box">
+    <form target="iframeNewsTarget" method="post" action="/manage/auction/edit">
+    <input type="hidden" name="id" value="{if $act eq 'copy'}0{else}{$row.act_id}{/if}" />
+
+    <table class="table-list">
+    <tbody>
+
+        <tr>
+            <td class="td-label"><label>{$L.unit_pay}类型：<span class="c-red">*</span></label></td>
+            <td class="td-input">
+                <select name="post[cat_type]">
+                    <option value="">-请选择-</option>
+                    {foreach from=$actTypes item=m}
+                    <option value="{$m.key}" {if $m.key eq $row.cat_type}selected{/if}>{$m.title}</option>
+                    {/foreach}
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="td-label"><label>{$L.unit_pay}商品：<span class="c-red">*</span></label></td>
+            <td class="td-input">
+                <div class="f-unit" style="padding: 0">
+                    <select name="k" id="SEARCH_K">
+                        <option value="id">ID</option>
+                        <option value='name'>名称</option>
+                    </select>
+                    <input type="text" class="form-i w100" name="q" id="SEARCH_Q" value="" />
+                    <select name="cid" id="SEARCH_CID">
+                        <option value=''>-商品分类-</option>
+                        {$select_categorys}
+                    </select>
+                    <button type="submit" style="margin-left:5px;padding:2px 10px;" class="uiBtn BtnBlue" onclick="auction.search_goods();">搜索</button>
+                </div>
+                <div class="f-unit" style="padding: 0">
+                    <select name="post[goods_id]" id="GOODS_ID" onchange="auction.select_goods(this)" style="width: 400px;">
+                        {if $row.act_id}
+                        <option value="{$row.goods_id}">{$row.goods_name}</option>
+                        {else}
+                        <option value=""></option>
+                        {/if}
+                    </select>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="td-label"><label>商品名称：</label></td>
+            <td class="td-input">
+                <input type="hidden" id="GOODS_NAME" name="post[goods_name]" value="{$row.goods_name}" />
+                <input type="text" class="form-i w300" id="ACT_NAME" name="post[title]" value="{$row.title}" />
+                <div class="form-tip">留空时取{$L.unit_pay}商品名称</div>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="td-label"><label>成本价：</label></td>
+            <td class="td-input">
+                <input type="text" class="form-i w140" id="GOODS_PRICE" name="post[old_price]" value="{$row.old_price|default:0}" />
+                <div class="form-tip">拿货价（前台不显示，便于后台统计成本）</div>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="td-label"><label>{$L.unit_pay}时间：<span class="c-red">*</span></label></td>
+            <td class="td-input">
+                <input class="form-i Wdate" name="post[start_time]" id="start_time" value="{$row.start_time|date_format:'Y-m-d H:i'}" type="text" onclick="WdatePicker({ dateFmt:'yyyy-MM-dd HH:mm', maxDate:'#F{ $dp.$D(\'end_time\') }' })" readonly />
+                ~
+                <input class="form-i Wdate" name="post[end_time]" id="end_time" value="{$row.end_time|date_format:'Y-m-d H:i'}" type="text" onclick="WdatePicker({ dateFmt:'yyyy-MM-dd 11:00', minDate:'#F{ $dp.$D(\'start_time\') }' })" readonly />
+            </td>
+        </tr>
+
+        <tr>
+            <td class="td-label"><label>推荐：</label></td>
+            <td class="td-input">
+                <label><input type="radio" name="post[posid]" value="1" {if $row.posid eq 1}checked{/if} /> 是</label>
+                <label><input type="radio" name="post[posid]" value="0" {if $row.posid eq 0}checked{/if} /> 否</label>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="td-label"><label>推荐图：</label></td>
+            <td class="td-input">
+                {$row.html_thumb}
+            </td>
+        </tr>
+
+        <tr class="table-h3">
+            <td colspan="2">{$L.unit_pay}参数</td>
+        </tr>
+
+        <tr>
+            <td class="td-label"><label>起拍价：</label></td>
+            <td class="td-input">
+                <input type="text" class="form-i w140 {if $act eq 'edit' && $row.bid_user_count gt 0}c-gray" readonly{else}"{/if} name="post[start_price]" value="{$row.start_price|default:0}" />
+            </td>
+        </tr>
+
+        <tr>
+            <td class="td-label"><label>{$L.unit_baozheng}：</label></td>
+            <td class="td-input">
+                <input type="text" class="form-i w140 {if $act eq 'edit' && $row.bid_user_count gt 0}c-gray" readonly{else}"{/if} name="post[deposit]" value="{$row.deposit|default:0}" />
+            </td>
+        </tr>
+
+        <tr>
+            <td class="td-label"><label>加价幅度：</label></td>
+            <td class="td-input">
+                <input type="text" class="form-i w140" name="post[amplitude]" value="{$row.amplitude|default:0}" />
+            </td>
+        </tr>
+
+        <tr>
+            <td class="td-label"><label>{$L.unit_pay_points}限额：</label></td>
+            <td class="td-input">
+                <input type="text" class="form-i w140" name="post[painum]" value="{$row.painum|default:0}" />
+                <span class="form-tip">支付时最多可使用的{$L.unit_pay_points}数</span>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="td-label"><label>扣除{$L.unit_pay_points}：</label></td>
+            <td class="td-input">
+                <input type="text" class="form-i w140" name="post[paib]" value="{$row.paib|default:0}" />
+                <span class="form-tip">首次出价需要扣除的{$L.unit_pay_points}</span>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="td-label"><label>最大{$L.unit_winning}人数：</label></td>
+            <td class="td-input">
+                <input type="text" class="form-i w140" name="post[winnum]" value="{$row.winnum}" />
+                <span class="form-tip">负数不限制 0不设置</span>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="td-label"><label>设置{$L.unit_winning}率：</label></td>
+            <td class="td-input">
+                <select name="post[win]">
+                    {foreach from=$winList item=m}
+                    <option value="{$m}" {if $row.win eq $m}selected{/if}>{$m}%</option>
+                    {/foreach}
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="td-label"><label>会员限制：</label></td>
+            <td class="td-input">
+                <select name="post[user]">
+                    <option value="0" {if $row.user eq '0'}selected{/if}>所有会员</option>
+                    <option value="1" {if $row.user eq '1'}selected{/if}>新会员（7天内注册）</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="td-label"><label>模式限制：</label></td>
+            <td class="td-input">
+                <select name="post[type]">
+                    <option value="0" {if $row.type eq '0'}selected{/if}>{$L.unit_winning}模式</option>
+                    <option value="1" {if $row.type eq '1'}selected{/if}>{$L.unit_winning}+{$L.unit_pay}模式</option>
+                </select>
+                <input type="text" class="form-i w40" name="post[typenum]" value="{$row.typenum|default:0}" />
+                <span class="form-tip">达到此人数自动转{$L.unit_pay}，大于0时有效</span>
+            </td>
+        </tr>
+
+        <tr class="table-h3 s h0">
+            <td colspan="2">SEO设置</td>
+        </tr>
+
+        <tr class="s h0">
+            <td class="td-label"><label>SEO关键词：</label></td>
+            <td class="td-input">
+                <input type="text" class="form-i w200" name="post[keywords]" value="{$row.keywords}" />
+            </td>
+        </tr>
+
+        <tr class="s h0">
+            <td class="td-label"><label>SEO描述：</label></td>
+            <td class="td-input">
+                <textarea name="post[description]">{$row.description}</textarea>
+            </td>
+        </tr>
+
+        {if $row.status lt $smarty.const.FINISHED || $smarty.get.act eq 'copy'}
+        <tr class="tr-btn">
+            <td class="td-label"></td>
+            <td class="td-input td-button">
+                <button type="submit" name="Submit" class="uiBtn BtnGreen">提&nbsp;&nbsp;交</button>
+                <button type="reset" class="uiBtn">重&nbsp;&nbsp;置</button>
+            </td>
+        </tr>
+        {/if}
+
+    </tbody>
+    </table>
+
+    </form>
+</div>
+
+<script type="text/javascript">
+    $.loadJs('/admin/js/manage/auction.js',function(){ });
+</script>
+
+

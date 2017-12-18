@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    {$site_config.qq_admins}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>微信登录</title>
+    <meta name="keywords" content="{$seo.keywords}" />
+    <meta name="description" content="{$seo.description}" />
+    <meta name="Author" content="技术支持：港湾有巢 www.lnest.com" />
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: rgb(51, 51, 51);
+            padding: 50px;
+            color: #FFF;
+        }
+
+        .main{
+            width: 360px;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .main h3{
+            margin: 10px 0;
+        }
+        .info {
+            background-color: #232323;
+            border-radius: 100px;
+            box-shadow: 0 5px 10px -5px #191919 inset, 0 1px 0 0 #444444;
+            margin-top: 15px;
+            padding: 15px 0;
+        }
+        footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px 0;
+        }
+
+        footer>p {
+            text-align: center;
+            color: #777;
+            font-size: 13px;
+        }
+    </style>
+<html>
+<body>
+<div class="main">
+    <h3>微信登陆</h3>
+    <img src="/welcome/wx_scan">
+    <div class="info">
+        <p>请使用微信扫描二维码登录</p>
+    </div>
+</div>
+<footer>
+    <p></p>
+</footer>
+<script type="text/javascript" src="/style/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+    var timer;
+    $(function() {
+        timer = setInterval(checkLogin, 5000);
+    });
+    function checkLogin(){
+        $.post('/member/check_sync','sessionid={$session_id}',function(data){
+            if(data.error==0){
+                clearInterval(timer);
+                window.location = './';
+            }
+        },'json');
+    }
+</script>
+</body>
+</html>

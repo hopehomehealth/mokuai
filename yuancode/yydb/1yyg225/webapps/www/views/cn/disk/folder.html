@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{$seo.title}-个人中心</title>
+<meta name="keywords" content="{$seo.keywords}" />
+<meta name="description" content="{$seo.description}" />
+<link type="text/css" href="/style/css/xz_wp.css" rel="stylesheet">
+<script type="text/javascript" src="/style/jquery-1.8.3.min.js"></script>
+</head>
+
+<body>
+{include file="disk/header.html"}
+<div class="gr_dom">
+  {include file="disk/left.html"}
+  <div class="right">
+    <div class="xz_ny">
+      <table cellpadding="0" cellspacing="0" width="100%">
+      {include file="disk/menu.html"}
+      <tr><td colspan="4"><p class="list">当前位置：<a href="/disk/index" class="a1">我的{$L.unit_skydrive}</a>>文件夹管理</p></td></tr>
+      <tr>
+      <td class="td2"><h4>文件夹名</h4></td>
+      <td class="td2"><h4></h4></td>
+      <td class="td2"><h4>创建时间</h4></td>
+      <td class="td2"><p class="p1"><i>操作</i></p></td>
+      </tr>
+      {foreach from=$list  item=m}
+      <tr>
+      <td><label><input type="checkbox">{$m.title}</label></td>
+      <td></td>
+      <td>{date('Y-m-d H:i:s',$m.addtime)}</td>
+      <td class="xz_cz">
+      <p class="p1">
+      <a value="{$m.id}" class="a4 editfolder"></a>
+      <a class="a5" href="/disk/delfolder/?id={$m.id}"></a>
+      </p>
+      </td>
+      </tr>
+      {/foreach}
+      <tr>
+        <td class="td3" colspan="3" >
+          <label style="display:none;"><input type="checkbox">全选/反选</label>
+          <select style="display:none;"><option>请选择</option><option>请选择1</option><option>请选择2</option></select>
+          <label class="ra1" style="display:none;"><input type="radio" name="tdt">批量删除</label>
+          <input style="display:none;" type="button" value="." class="xz_but">
+        </td>
+        <td class="td3" >{include file="public_page.html"}</td></tr>
+    </table>
+    
+    </div>
+  </div>
+</div>
+{include file="disk/footer.html"}
+<script>
+ $(function(){
+  var $rai = $(".gr_dom .right table .td3 .ra1");
+  $(".xz_ny tr:odd td:not(:first)").css("background-color","#fff4f5");
+  $rai.click(function(){
+	$(this).css("background","url(/images/xz_a11.png) no-repeat left center")  ;
+	$(this).siblings(".ra1").css("background","url(/images/xz_a10.png) no-repeat left center")  ;
+	  }); 
+  /*弹窗*/
+  $(".xz_but").click(function(){
+	$(".xz_xjBox").show(); 
+	  });
+  var $a_close = $(".xz_sc_top .a2");
+  $a_close.click(function(){
+	$(".xz_xjBox").hide(); 
+	  });
+  var $i_close = $(".xz_sc_list ul li i");
+  $i_close.click(function(){
+	$(this).parent().hide();
+	  });
+  $("#folder_button").click(function(){
+	  $(".xz_xjBox").show();
+  }) 
+	  
+	 })
+</script>
+</body>
+</html>
+
+

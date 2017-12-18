@@ -1,0 +1,20 @@
+{include file="crowd/crowd_header.html"}
+{include file="member/crowd_menu.html"}
+<div class="mylist3">
+    <ul class="list">
+        {include file="member/lbi/list_crowd_start.html"}
+    </ul>
+</div>
+<script type="text/javascript">
+    var url = "/crowd_member/start/";
+    $(function(){
+    });
+
+    var ExtendOptions = {
+        path: function(index) {
+            return "/crowd_member/start/"+index;
+        }
+    };
+</script>
+{include file="public_scroll.html"}
+{include file="crowd/crowd_footer.html"}

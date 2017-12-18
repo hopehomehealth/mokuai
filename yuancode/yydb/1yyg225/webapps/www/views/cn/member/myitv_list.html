@@ -1,0 +1,36 @@
+<table>
+    <tbody>
+    <tr>
+        <th>注册会员</th>
+        <th>注册时间</th>
+    </tr>
+    {foreach from=$list item=m name=ivt_list}
+    <tr>
+        <td class="username">{$m.username|nickname:$m.nickname}</td>
+        <td>
+            {date('Y-m-d H:i:s',$m.c_time)}
+            {if isset($m.is_award)}
+            {if $m.is_award eq 0}
+            <a id="mid{$m.mid}" class="hy-btn2" href="javascript:;" onclick="award_btn('{$m.mid}')">领取{$site_config.ivt1}{$L.unit_pay_points}</a>
+            {else}
+            <a class="hy-btn1" href="javascript:;">已领取</a>
+            {/if}
+            {/if}
+        </td>
+    </tr>
+    {/foreach}
+    </tbody>
+</table>
+
+{include file="ajax_page.html"}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#load_'+'{$smarty.get.type}').find('.demo').ajaxContent({
+            event:'click', //mouseover
+            loaderType:"text",
+            loadingMsg:"<span class='loading'>拼命加载中...</span>",
+            target:'#load_'+'{$smarty.get.type}',
+            success:function(){ }
+        });
+    });
+</script>

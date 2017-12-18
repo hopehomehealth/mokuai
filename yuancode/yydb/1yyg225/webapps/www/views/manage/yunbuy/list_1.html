@@ -1,0 +1,92 @@
+{include file='../public_btn.html'}
+<div class="html-box">
+    <form class="cond-form clear" action="#!yunbuy/index" onsubmit="return xForm.submit(this)">
+        <div class="f-unit">
+            <input type="hidden" name="gobuy" value="{$smarty.get.gobuy}" />
+            <select name="k" id="k">
+                <option value="title" {if $k eq 'title'}selected{/if}>商品名称</option>
+                {if $business_power}
+                <option value="b.bus_name" {if $k eq 'b.bus_name'}selected{/if}>商家名称</option>
+                {/if}
+                <option value="buy_id" {if $k eq 'buy_id'}selected{/if}>ID</option>
+            </select>
+            <input id="q" class="form-i w160 sitem" name="q" value="{$q}" type="text">
+            <select name="is_show">
+                <option value="">-上架状态-</option>
+                <option value="1" {if $is_show eq 1}selected{/if}>上架</option>
+                <option value="99" {if $is_show eq 99}selected{/if}>下架</option>
+            </select>
+            <select name="posid">
+                <option value="">-推荐-</option>
+                <option value="1" {if $posid eq 1}selected{/if}>是</option>
+                <option value="99" {if $posid eq 99}selected{/if}>否</option>
+            </select>
+            <select name="publish">
+                <option value="">发布来源</option>
+                <option value="1" {if $publish eq 1} selected{/if}>后台发布</option>
+                <option value="2" {if $publish eq 2} selected{/if}>商家发布</option>
+            </select>
+            <button type="submit" style="margin-left:10px; margin-top:1px" class="uiBtn BtnBlue">搜索</button>
+        </div>
+    </form>
+
+    <table class="list">
+        <thead>
+            <tr>
+                <th class="w30">排序</th>
+                <th class="w30">ID</th>
+                <th align="left">商品名称</th>
+                <th class="w120">价格/市场价</th>
+                <th class="w120">库存/销量</th>
+                <th class="w80">点击</th>
+                <th class="w40">推荐</th>
+                <th class="w80">是否上架</th>
+                <th class="w80">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            {foreach from=$data.list item=m}
+            <tr>
+                <td align='center'><input class="form-i-s w30" name="listorders[{$m.buy_id}]" value="{$m.listorders}" type="text"></td>
+                <td class='id' align='center'>{$m.buy_id}</td>
+                <td>
+                    <a href="{$smarty.const.RootUrl}yunbuy/detail/{$m.buy_id}" target="_blank">{$m.title}</a>
+                    {if $m.gobuy eq 1} <span class="mark">{$L.unit_go_buy}</span>{/if}
+                    {if $m.bus_name}
+                    <p><span style="color:#f00" class="">商家：{$m.bus_name}； 平台分佣：{$m.bus_money_manage|price_format}</span></p>
+                    {/if}
+                </td>
+                <td align="center" nowrap>
+                    <b class="c-orange">{$m.custom_price}</b> / {$m.goods_price}
+                </td>
+                <td align="center"><b class="c-orange">{$m.need_num}</b> / {$m.buy_num}</td>
+                <td align="center">{$m.goods_click}</td>
+                <td align='center'>
+                    {if $m.posid == 1}
+                    <a href="javascript:;" onclick="main.chang_status('{$m.buy_id}','yunbuy','posid','buy_id')" class="c-green" title="点击设为不推荐">是</a>
+                    {else}
+                    <a href="javascript:;" onclick="main.chang_status('{$m.buy_id}','yunbuy','posid','buy_id')" class="c-red" title="点击设为推荐">否</a>
+                    {/if}
+                </td>
+                <td align="center">
+                	{if $m.is_show}
+                    <a href='javascript:;' class='c-green' onclick='main.chang_status("{$m.buy_id}","yunbuy","is_show","buy_id")' title='点击设为下架'>上架</a>
+                    {else}
+                    <a href='javascript:;' class='c-red' onclick='main.chang_status("{$m.buy_id}","yunbuy","is_show","buy_id")' title='点击设为上架'>下架</a>
+                    {/if}
+				</td>
+                <td class='opera' align='center' nowrap>
+                    <a href='#!yunbuy/edit/?id={$m.buy_id}&com=xshow|编辑{$L.unit_yun}（{$m.buy_id}）' class='iconfont icon-a' title='编辑'>&#xe603;</a>
+                    <a href='javascript:;' onclick="main.confirm_del('yunbuy/del','{$m.buy_id}')" class='iconfont icon-a' title='删除'>&#xe606;</a>
+                </td>
+            </tr>
+            {/foreach}
+        </tbody>
+    </table>
+    <div class="foot-btn">
+        <div class="pager r">{$page}</div>
+        <button type="button" class="uiBtn BtnGreen" onclick="main.batch_order('formlist','order','yunbuy','listorders','buy_id')">更新排序</button>
+    </div>
+
+</div>
+

@@ -1,0 +1,9 @@
+<div id="progress" class="progress-0{$progress}">
+    <ul class="fn-clear">
+        <li{if $progress >= 1} class="dq"{/if}><span>1</span><p>提交订单</p></li>
+        <li{if $progress >= 2} class="dq"{/if}><span>2</span><p>支付订单</p></li>
+        <li{if $progress >= 3} class="dq"{/if}><span>3</span><p>支付成功，等待揭晓</p></li>
+        <li{if $progress >= 4} class="dq"{/if}><span>4</span><p>揭晓幸运码</p></li>
+        <li{if $progress >= 5} class="dq"{/if}><span>5</span><p>{$L.unit_price}派发</p></li>
+    </ul>
+</div>

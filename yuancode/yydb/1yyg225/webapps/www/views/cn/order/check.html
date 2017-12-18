@@ -1,0 +1,135 @@
+{include file="header.html"}
+<link rel="stylesheet" href="{url('/style/css/yiyuanbao.css')}">
+{include file="ur_here.html"}
+<form action="/order/done" method="post" target="iframeNews">
+<div class="g-body blue">
+    <div class="g-wrap">
+        <ul class="m-cart-address">
+            {foreach from=$data.addressList item=m key=key}
+            <li id="address-{$m.id}" {if $smarty.session.order_address_id eq $m.id} class="on"{/if}>
+                <b>{if $smarty.session.order_address_id eq $m.id}寄送至：{/if}</b>
+                <label>
+                    <input type="radio" name="address_id" value="{$m.id}" onchange="changeAddress('{$m.id}')" {if $smarty.session.order_address_id eq $m.id} checked{/if} />
+                    {$m.area} {$m.address}（{$m.name} 收）<span>{$m.mobile}</span>
+                </label>
+                <span style="display: none;"><a href="{url('/member/address/'|cat:$m.id|cat:'?back=/order/buy/'|cat:$type|cat:'/'|cat:$id)}" class="ui-right address-edit"{if $smarty.session.order_address_id eq $m.id} style="display:block"{/if}>修改本地址</a></span>
+            </li>
+            {/foreach}
+            <li style="display: none;">
+                <b></b>
+                <label>
+                    <input type="radio" style="visibility: hidden" />
+                    <a href="{url('/member/address/'|cat:'?back=/order/buy/'|cat:$type|cat:'/'|cat:$id)}">使用其它地址</a>
+                </label>
+            </li>
+        </ul>
+
+        <div class="m-cart-order m-cart-order-list">
+            <div data-pro="order">
+                <table class="w-table">
+                    <thead>
+                    <tr>
+                        <th>商品名称</th>
+                        <th width="100">购买价格</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {foreach from=$data.cart item=m}
+                    <tr>
+                        <td style="text-align:left">
+                            <a target="_blank" href="{if $smarty.session.extension_code neq 3}{url('/auction/view/'|cat:$m.goods_id)}{else}{url('/yunbuy/detail/'|cat:$db_info.buy_id)}{/if}">{$m.goods_name}</a>
+                        </td>
+                        <td style="text-align:left"><em>{if $smarty.session.extension_code neq 3}{$m.goods_price|price_format}{else}{$m.market_price|price_format}{/if}</em></td>
+                    </tr>
+                    {/foreach}
+                    </tbody>
+                </table>
+
+                <table class="w-table">
+                    <thead>
+                    <tr>
+                        <th class="color01">订单备注</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="m-order-desc">
+                            <textarea name="goods_info">{$data.tips}</textarea>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                {if $smarty.session.extension_code neq 3}<div class="m-cart-order-options">
+                    <div class="option">
+                        <label class="w-checkbox">
+                            <input type="checkbox" name="integral" id="integral" value="1" onchange="changeAmount({ integral:this.checked==true?1:0 })" />
+                            <span>使用{$L.unit_pay_points}抵消部分余额，{$L.unit_pay_points}余额：<em>{$member.pay_points}</em> ，此订单可使用：<em>{$data.pay_points}</em> {$L.unit_pay_points}</span>
+                        </label>
+                    </div>
+                    <div class="option">
+                        <label class="w-checkbox">
+                            <input type="checkbox" name="surplus" id="surplus" value="1" onchange="changeAmount({ surplus:this.checked==true?1:0 })" />
+                            <span>使用账户余额支付，帐户余额：<em>{$member.user_money|price_format}</em></span>
+                        </label>
+                    </div>
+                </div>{/if}
+            </div>
+            {if $smarty.session.extension_code neq 3}
+            <div class="m-cart-order-pay f-clear" style="min-height: 120px;">
+                {include file="order/total.html"}
+            </div>
+            {/if}
+
+        </div>
+
+        <div class="m-cart-submit">
+            <button class="w-button w-button-main w-button-xl" id="pro-view-10" type="submit"><span>{if $smarty.session.extension_code neq 3}确认支付{else}确认{$L.unit_lingjiang}{/if}</span></button>
+        </div>
+        {if $smarty.session.extension_code neq 3}
+        <div class="w-payTips">
+            <p class="w-payTips-title">付款遇到问题</p>
+            <ol>
+                <li>1、如您未开通网上银行，即可以使用储蓄卡快捷支付轻松完成付款；</li>
+                <li>2、如果您没有网银，可以使用银联在线支付，银联有支持无需开通网银的快捷支付和储值卡支付；</li>
+                <li>3、如果您有财付通或快钱、手机支付账户，可将款项先充入相应账户内，然后使用账户余额进行一次性支付；</li>
+                <li>4、如果银行卡已经扣款，但您的账户中没有显示，有可能因为网络原因导致，将在第二个工作日恢复。</li>
+            </ol>
+        </div>
+        {/if}
+
+    </div>
+</div>
+</form>
+<div class="clear mb20"></div>
+<script type="text/javascript">
+$(function(){
+    {if $total.integral > 0}
+    $('#integral').click();
+    {/if}
+    {if $total.surplus > 0}
+    $('#surplus').click();
+    {/if}
+})
+function changeAddress(id){
+    $('.m-cart-address li').removeClass('on').find('b').html('');
+    $('#address-'+id).addClass('on').find('b').html('寄送至：');
+
+    var D = { address_id:id };
+    $.post("/order/updateAddress", D,
+        function(data){
+            //location.reload();
+        }
+    );
+}
+function changeAmount(D){
+    $.post("/order/updateAmount", D,
+        function(data){
+            if(data){
+                $('.m-cart-order-pay').html(data);
+            }
+        }
+    );
+}
+</script>
+{include file="footer.html"}

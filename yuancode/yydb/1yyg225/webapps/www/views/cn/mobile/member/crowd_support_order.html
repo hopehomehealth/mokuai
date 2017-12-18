@@ -1,0 +1,21 @@
+{include file="crowd/crowd_header.html"}
+<div class="ddlist">
+    <ul class="list">
+        {include file="member/lbi/list_crowd_supportOrder.html"}
+    </ul>
+    {include file="public_scroll.html"}
+</div>
+<div class="quzf">
+    <a href="javascript:window.history.go(-1)">返回</a>
+</div>
+<script type="text/javascript">
+    var url = "/crowd_member/supportOrder/{$id}";
+    $(function(){
+    });
+
+    var ExtendOptions = {
+        path: function(index) {
+            return "/crowd_member/supportOrder/{$id}/"+index+"&load";
+        }
+    };
+</script>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+	<meta name="format-detection" content="telephone=no" />
+	<title>微信扫码</title>
+	<link rel="stylesheet" type="text/css" href="../css/api.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/user.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+</head>
+<body>	
+<div id="header">
+   <div class="cart active">
+	    <div class="icon_box" tapmode="" onclick="api.closeWin()"><i class="iconfont icon-fanhui"></i></div>
+	    <div class="toptit">扫码支付教程<font class="unit_bonus"></font></div>
+	    <div class="icon_box " tapmode="" onclick="backhome()"><i class="iconfont icon-shouye"></i></div>
+   </div>
+</div>
+<div id="content" class="container main" style="padding:0;height:100%;background-color: #cbcbcb;background-image: url(../image/course-bg.jpg);background-size: 100% 100%;background-position: 0 40px;">
+	<!-- <img id="wx-bg" src="../image/course-bg.jpg" alt="" style="width:100%;"/> -->
+	<ul style="">
+	  <li></li>
+	</ul>
+</div>
+<script type="text/javascript" src="../script/zepto.min.js"></script>
+<script type="text/javascript" src="../script/fastclick.js"></script>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/doT.min.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript">    
+apiready = function() {
+    //适配iOS 7+，Android 4.4+状态栏
+	var header = $api.byId('header');
+	$api.fixStatusBar(header);
+	
+	var UIScrollPicture = api.require('UIScrollPicture');
+	UIScrollPicture.open({
+	    rect: {
+	        x: api.winWidth*0.14,
+	        y: api.winHeight*0.22,
+	        w: api.winWidth*0.74,
+	        h: api.winHeight*0.68
+	    },
+	    data: {
+	        paths: [
+	            'widget://image/course-step1.png',
+	            'widget://image/course-step2.png',
+	            'widget://image/course-step3.png',
+	            'widget://image/course-step4.png',
+	        ]
+	    },
+	    styles: {
+	        indicator: {
+	            align: 'center',
+	            color: '#FFFFFF',
+	            activeColor: '#DA70D6'
+	        }
+	    },
+	    placeholderImg: 'widget://image/loading_more.gif',
+	    contentMode: 'scaleToFill',
+	    interval: 5,
+	    fixedOn: api.frameName,
+	    loop: true,
+	    fixed: false
+	}, function(ret, err) {
+	});
+}
+
+
+</script>
+</body>
+</html>

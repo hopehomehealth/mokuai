@@ -1,0 +1,103 @@
+{assign var='header' value='header2'}
+{include file="top.html"}
+<link rel="stylesheet" href="/style/mobile/css/member.css">
+<div id="content" class="container main">
+    <div class="tips-m">
+        {if $row.id}编辑{else}新增{/if}银行卡信息
+        {if $row.id}
+        <a href="/member/bankcard" class="color02">[新增]</a>
+        {/if}
+        <div class="prompt">银行卡主要用于申请提现，<span class="color01">请先进行身份证实名认证，否则无法使用取现功能。</span></div>
+    </div>
+
+    <div class="form-m">
+        <form action="" method="post" id="bankcard_form" target="iframeNews">
+            <div class="item ui-clr">
+                <dl>
+                    <dt class="color03">银行卡持卡人：</dt>
+                    <dd>
+                        {$member.realname}
+                    </dd>
+                </dl>
+            </div>
+            <div class="item ui-clr">
+                <dl>
+                    <dt class="color03">银行名称：</dt>
+                    <dd>
+                        <input name="bankname" value="{$row.bankname}" type="text" class="input-m">
+                    </dd>
+                </dl>
+            </div>
+            <div class="item ui-clr">
+                <dl>
+                    <dt class="color03">银行卡号：</dt>
+                    <dd>
+                        <input name="bankcard" value="{$row.bankcard}" type="text" class="input-m">
+                    </dd>
+                </dl>
+            </div>
+            <div class="item ui-clr">
+                <dl>
+                    <dt class="color03">银行开户地：</dt>
+                    <dd>
+                        <input name="bankaddress" value="{$row.bankaddress}" type="text" class="input-m">
+                    </dd>
+                </dl>
+            </div>
+            <div class="item ui-clr">
+                <dl>
+                    <dt class="color03">设为默认：</dt>
+                    <dd>
+                        <input type="checkbox" name="is_default" value="1" {if $row.is_default}checked{/if}>
+                    </dd>
+                </dl>
+            </div>
+            {if $site_config.sms_open eq 1 && 'sms_bankcard'|statusTpl}
+            <div class="item ui-clr">
+                <dl>
+                    <dt class="color03">短信验证码：</dt>
+                    <dd>
+                        <input type="text" name="sms_code" class="input-m" value="" style="width: 80px;" />
+                        <input type="button" value="获取短信验证码" onclick="getSmsVerify('sms_bankcard')" id="btnSms" />
+                    </dd>
+                </dl>
+            </div>
+            {/if}
+            <input type="hidden" name="id" value="{$row.id}"/>
+            <input name="Submit" type="submit" value="保 存" class="btn" />
+        </form>
+    </div>
+
+    <div class="list01 list-address">
+        {foreach from=$bankcard item=m}
+        <dl class="item">
+            <dt><b>{$m.bankname}（{$m.bankcard}）</b> </dt>
+            <dd>
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <th>持卡人</th>
+                        <td>
+                            {$m.name}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th nowrap>开户行所在地</th>
+                        <td>
+                            {$m.bankaddress}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>操作</th>
+                        <td>
+                            <a href="{url('/member/bankcard/')}{$m.id}" class="color02">编辑</a>&nbsp;&nbsp;
+                            <a href="javascript:zz_confirm('您确定要删除该银行账户?','{url('/member/bankcard_del/')}{$m.id}');" class="color02">删除</a>
+                            {if $m.is_default}&nbsp;&nbsp;<span class="color01">默认</span>{/if}
+                        </td>
+                    </tr>
+                </table>
+            </dd>
+        </dl>
+        {/foreach}
+    </div>
+</div>
+{include file="footer.html"}

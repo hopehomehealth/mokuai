@@ -1,0 +1,405 @@
+{assign var='header' value='header2'}
+{include file="top.html"}
+<link rel="stylesheet" href="/style/mobile/css/goods.css">
+<div id="content" class="container detail">
+    {if $row.wait_time eq 0}
+    {elseif $row.luck_code}
+    {else}
+    <div style="clear:both;height:1px;width:100%;"></div>
+    <div id="divLotteryTime" class="pProcess clearfix"{if $row.luck_code||$row.wait_time} style="margin-bottom:0;"{/if}>
+        <span class='jx_ing' id="jx_load">倒计时加载中...</span>
+        <div class="pCountdown" id="jx_clock" style="display: none;">
+            <div class="g-snav">
+                <div class="g-s g-s-1"><div class="g-snav-lst">揭晓<br>倒计时<s></s></div></div>
+                <div class="g-s"><div class="g-snav-lst"><b id="liMinute">00</b><em>分</em></div></div>
+                <div class="g-s"><div class="g-snav-lst"><b id="liSecond">00</b><em>秒</em></div></div>
+                <div class="g-s"><div class="g-snav-lst"><b id="liMilliSecond">00</b><em>毫秒</em></div></div>
+            </div>
+        </div>
+    </div>
+    {/if}
+
+    {if $row.luck_code||$row.wait_time}
+    <link rel="stylesheet" href="/style/mobile/css/goods.css">
+    <div style="clear:both;height:1px;width:100%;"></div>
+    <div class="pProcess">
+        <div class="pResults">
+            <div class="pResultsL" onclick="location.href='{'/minfo?id='|cat:$luck_member.mid}#dbCod'">
+                <a>
+                    <img src="{zz mod=photo source=$luck_member.photo}" />
+                    <span>{$luck_member.username|nickname:$luck_member.nickname}</span>
+                </a>
+                <s></s>
+            </div>
+            <div class="pResultsR">
+                <div class="g-snav">
+                    <div class="g-snav-lst g1">参与<br><dd><b class="orange">{$member_join|count}</b><br>人次</dd></div>
+                    <div class="g-snav-lst">揭晓时间<br><dd class="gray9"><span>{if $row.end_time}{microtime_format($row.end_time,'Y-m-d H:i:s.x','<br>')}{else}？{/if}</span></dd></div>
+                    <div class="g-snav-lst">{$L.unit_yun}时间<br><dd class="gray9"><span>{if $luck_member.db_time}{microtime_format($luck_member.db_time,'Y-m-d H:i:s.x','<br>')}{else}？{/if}</span></dd></div>
+                </div>
+            </div>
+            <p><a href="{'/yunbuy/detail/'|cat:$row.buy_id|cat:'/luck'|url}" class="fr">查看计算结果</a>幸运云购码：<b class="orange">{if $row.luck_code}{$row.luck_code}{else}？{/if}</b></p>
+        </div>
+    </div>
+    {/if}
+
+    <div class="slider" id="single-item" style="position: relative">
+        <div class="bd">
+            {foreach from=$row.pics item=m name=pics key=k}
+            {if $m.imgurl_src}
+            <div><img src="{zz mod=fileurl source=$m.imgurl_src width=410 height=380}" {if $k eq 0}id="buy_img_{$row.buy_id}"{/if} /></div>
+            {/if}
+            {/foreach}
+        </div>
+        <ul class="slick-dots">
+            {foreach from=$row.pics item=m name=pics key=k}
+            {if $m.imgurl_src}
+            <li><button type="button"></button></li>
+            {/if}
+            {/foreach}
+        </ul>
+    </div>
+    <p class="title">{$row.title}<span style="color:red;" title="{$row.goods_subtit}">{$row.goods_subtit}{if $row.start_time > $smarty.const.RUN_TIME} {date('m-d H:i:s',$row.start_time)}开始{$L.unit_yun}{/if}</span>{if $row.price gt 1}<span class="zq_ico" style="margin-left: 10px;">{$row.price|num2char}元{$L.unit_area}</span>{/if}</p>
+	<p id="row_keyword" style="display:none">{$row.wx_share}</p>
+	<p id="row_title" style="display:none">{$row.title}</p>
+    {if $row_buy}
+    <div class="info info_1" style="border-bottom: 0;padding-bottom: 15px;">
+        <p class="title">全价购买 <span>&nbsp;&nbsp;无需等待，直接获得商品！</span></p>
+        <p class="price"><b class="color01">{$row_buy.custom_price|price_format}</b></p>
+        <div class="bottom button-box ui-clr">
+            {if $row_buy.need_num gt 0}
+            <span class="btn-db btn-db-buy"><a href="javascript:void(0)" onclick="addToCart('{$row_buy.buy_id}','buy_buy')">直接购买</a></span>
+            {else}
+            <span class="btn-db btn-db-disable"><a href="javascript:void(0)">已抢光</a></span>
+            <em style="color: #db3652;line-height: 37px">&nbsp;&nbsp;库存不足，立即{$L.unit_yun}</em>
+            {/if}
+        </div>
+    </div>
+    {/if}
+
+    <div class="info {if $row_buy}info_2{/if}">
+        {if $row.type neq 2}
+        <p class="title">{$L.unit_yun_one} <span>&nbsp;&nbsp;只需要{$row.price|intval}元就有机会获得商品！</span></p>
+        {/if}
+        <p class="price">
+            {if $row.end_num gt 0}
+            <span style="float:right">总需{if $row.is_off}0{else}{$row.need_num}{/if}人次</span>
+            {/if}
+            {if $row.type eq 2}
+            <p class="title">{$L.unit_yun_one} <span>&nbsp;&nbsp;只需要{$row.price|intval}元就有机会获得商品！</span></p>
+            {else}
+            总需：<b class="color01">{if $row.is_off}0{else}{$row.need_num}{/if}</b>人次
+            {/if}
+        </p>
+        {if $row.end_num gt 0}
+        <div class="progressBar">
+            <p class="wrap-bar">
+                <span class="bar" style="width:{if $row.is_off}0{else}{$row.jindu}{/if}%"></span>
+            </p>
+            <div class="txt ui-clr">
+                <span class="ui-left">{if $row.is_off}0{else}{$row.buy_num}{/if}人已参与</span>
+                <span class="ui-right">剩余{if $row.is_off}0{else}{$row.end_num}{/if}人次</span>
+            </div>
+            <div class="bottom">
+                参与人次：
+                <div class="number" style="margin-right: 50px;">
+                    <input class="num-input" type="text" id="qty_{$row.buy_id}" data-max="{$row.end_num}" value="{$row.max_mun}" />
+                    <a class="num-btn btn-plus" id="qty_plus" href="javascript:void(0);">+</a>
+                    <a class="num-btn btn-minus" id="qty_minus" href="javascript:void(0);">-</a>
+                    <a class="num-btn btn-last" href="javascript:void(0);" onclick="buyNum('{$row.end_num}')">包尾</a>
+                </div>
+                <span style="color: #EB3D60">获得机率 <font id="w-number-point">100</font>%</span>
+                <script type="text/javascript">
+                    var need_num = {$row.need_num};
+
+                    function buyNum(num){
+                        $('.num-input').val(num);
+                    }
+                    function add(){
+                        var div=$(".num-input");
+                        var num=div.val();
+                        num=parseInt(num);
+                        num+=1;
+                        if(num>div.attr('data-max')) return false;
+                        div.val(num);
+                        getWinPoint(num,need_num);
+                    }
+                    function reduce(){
+                        var div=$(".num-input");
+                        var num=div.val();
+                        num=parseInt(num);
+                        num-=1;
+                        if(num<1) return false;
+                        div.val(num);
+                        getWinPoint(num,need_num);
+                    }
+                    function getWinPoint($num,$need_num){
+                        $('#w-number-point').html(($num/$need_num*100).toFixed(3));
+                    };
+                    window.onload=function(e){
+                        //鼠标按钮时刻，抬起时刻
+                        var firstTime,lastTime;
+                        //定义计时器(判断2s后)
+                        var time1,time2;
+                        //周期性计时器;
+                        var flag=false;
+                        document.getElementById("qty_plus").onmousedown=function(e){
+                            firstTime=new Date().getTime();
+                            var time1=setTimeout(function(){
+                                flag=true;
+                                clearTimeout(time1);
+                            },100);
+                            time2=setInterval(function(){
+                                if(flag==true){
+                                    add();
+                                }
+                            },100);
+                        }
+                        document.getElementById("qty_minus").onmousedown=function(e){
+                            firstTime=new Date().getTime();
+                            var time1=setTimeout(function(){
+                                flag=true;
+                                clearTimeout(time1);
+                            },100);
+                            time2=setInterval(function(){
+                                if(flag==true){
+                                    reduce();
+                                }
+                            },100);
+                        }
+                        document.onmouseup=function(e){
+                            lastTime=new Date().getTime();
+                            var someTime=lastTime-firstTime;
+                            someTime=someTime/1000;
+                            if(someTime<2){
+                                if(e.target.id=="qty_plus"){
+                                    add();flag=false;clearInterval(time2);
+                                }else if(e.target.id=="qty_minus"){
+                                    reduce();flag=false;clearInterval(time2);
+                                }
+                            }else{
+                                flag=false;
+                                clearTimeout(time2);
+                            }
+                        }
+                        $(".num-input").blur(function(){
+                            var max = $(this).attr('data-max')*1;
+                            if($(this).val()>max){
+                                $(this).val(max);
+                            }
+                            getWinPoint($(this).val(),need_num);
+                        });
+                        getWinPoint($(".num-input").val(),need_num);
+                    }
+                </script>
+            </div>
+            <div class="bottom button-box ui-clr">
+                {if $row.is_off}
+                <span class="btn-db btn-db-disable"><a href="javascript:void(0)">商品已下架</a></span>
+                <em style="color: #db3652;line-height: 37px">&nbsp;&nbsp;参与金额，已退还！</em>
+                {elseif $row.type eq 1}
+                <span class="btn-db"><a href="javascript:void(0)" onclick="addToCart('{$row.buy_id}','buy')">{$L.unit_yun_button}</a></span>
+                <span class="btn-db btn-cart"><a href="javascript:void(0)" onclick="addToCart('{$row.buy_id}','',this)">加入购物车</a></span>
+                {else}
+                <span class="btn-db btn-db-free"><a href="javascript:void(0)" onclick="addToCart('{$row.buy_id}','free')">免费{$L.unit_yun}</a></span>
+                {/if}
+            </div>
+        </div>
+        {/if}
+    </div>
+
+    {if $row.end_num gt 0}
+    <div class="detail-userCodes">
+        {if !$smarty.session.mid}
+        <p>
+            看不到？是不是没登录或是没注册？
+            <a href="{url('/member/login')}?back={'/yunbuy/detail/'|cat:$row.buy_id|cat}" class="color02">登录</a>
+            <a href="{url('/member/regist')}?back={'/yunbuy/detail/'|cat:$row.buy_id|cat}" class="color02">注册</a>
+        </p>
+        {elseif $member_join}
+        <p>{if $row.luck_code}{$L.unit_winning}者{else}您{/if}本期总共参与了<b class="color01">{$member_join|count}</b>人次</p>
+        <p class="codes">
+            {if $row.luck_code}TA{else}您{/if}的号码:
+            <span class="m-detail-code">
+            {foreach from=$member_join item=m name=member_join}
+            {if $smarty.foreach.member_join.iteration lt 9}
+            {if $smarty.foreach.member_join.iteration lt 8}<b>{$m}</b>{else}……{/if}
+            {/if}
+            {/foreach}
+            </span>
+            {if $member_join|count gt 8}
+            <a class="m-detail-codes-btn color02" href="javascript:void(0)">展开所有&gt;&gt;</a>
+
+            {if $member_join|count gt 8}
+            {foreach from=$join_arr item=m}
+            <span class="m-detail-codes" style="display:none;">
+                {foreach from=$m.code item=v}
+                <b {if $v eq $row.luck_code}class="color01"{/if}>{$v}</b>
+                {/foreach}
+            </span>
+            <a class="m-detail-codes-btn-hide color02" style="display: none;" href="javascript:void(0)">收起号码&gt;&gt;</a>
+            {/foreach}
+
+            {/if}
+            {/if}
+        </p>
+        {else}
+        <p class="detail-userCodes-blank">您还没有参与本次{$L.unit_yun}哦！</p>
+        {/if}
+    </div>
+    {elseif $row.luck_code}
+    <div class="detail-userCodes" style="padding:10px">
+        <div class="pClosed">本{$L.unit_yun}已揭晓</div>
+        {if $new_buy.buy_id>$row.buy_id}
+        <div class="pOngoing">
+            <em><!--第 {$new_buy.qishu} 期 -->进行中…</em>
+            <a class="fr" href="{'/yunbuy/detail/'|cat:$new_buy.buy_id|url}">查看详情</a>
+        </div>
+        {/if}
+    </div>
+    {/if}
+
+    <ul class="yunbuy_other">
+        <a href="{'/yunbuy/detail/'|cat:$row.buy_id|cat:'/join'|url}"><b></b>所有{$L.unit_yun}记录</a>
+        <a href="{'/yunbuy/detail/'|cat:$row.buy_id|cat:'/info'|url}"><b></b>商品图文详情<label>（建议WIFI下使用）</label></a>
+        <a href="{'/yunbuy/detail/'|cat:$row.buy_id|cat:'/share'|url}"><b></b>幸运者晒单</a>
+        {if $row.qishu gt 1}
+        <a href="{'/yunbuy/detail/'|cat:$row.buy_id|cat:'/win'|url}"><b></b>往期揭晓</a>
+        {/if}
+    </ul>
+
+    {if $prev_buy.member_id}
+    <div class="joinAndGet">
+        <ul id="prevPeriod" class="m-round">
+            <li class="fl"><s></s><img src="{zz mod=photo source=$prev_buy.photo}" /></li>
+            <li class="fr"><b class="z-arrow"></b></li>
+            <li class="getInfo">
+                <dd><em class="blue">{$prev_buy.member_name|nickname:$prev_buy.nickname}</em> ({$prev_buy.ip|cityIp}) </dd>
+                <dd>幸运{$L.unit_yun}码：<em class="orange arial">{$prev_buy.luck_code}</em></dd>
+                <dd>揭晓时间：{microtime_format($prev_buy.wait_time,'Y-m-d H:i:s.x')}</dd>
+                <dd>{$L.unit_yun}时间：{microtime_format($prev_buy.db_time,'Y-m-d H:i:s.x')}</dd>
+            </li>
+        </ul>
+    </div>
+    {/if}
+</div>
+
+{include file="footer.html"}
+<script src="/style/TouchSlide.1.1.js"></script>
+<script src="/style/mobile/js/jquery-pageload.js"></script>
+<script src="/style/mobile/js/jquery.more.js"></script>
+<script type="text/javascript">
+    $(function(){
+        TouchSlide({ slideCell:"#single-item", mainCell:".bd", titCell:".slick-dots li", titOnClassName:"slick-active" });
+        tabs(".tab", ".tab-nav li", ".tab-item", "on", "click");
+
+        $('.m-detail-codes-btn').bind('click',function(){
+            $(this).hide();
+            $('.m-detail-code').hide();
+            $('.m-detail-codes').show();
+            $('.m-detail-codes-btn-hide').show();
+        })
+        $('.m-detail-codes-btn-hide').bind('click',function(){
+            $(this).hide();
+            $('.m-detail-codes').hide();
+            $('.m-detail-code').show();
+            $('.m-detail-codes-btn').show();
+        })
+    });
+
+    var isLoad = {
+        "join" : false,
+        "win"  : false,
+        "share": false
+    };
+
+    function mLoad(type){
+        if(isLoad[type]==false){
+            if(type == 'share'){
+                $('.shareList').more({
+                    'address': '/content/share_ajax/all?goods_id={$row.goods_id}&type=db',
+                    'amount' : 10
+                })
+            }else{
+                $('#'+type).pageload({
+                    url: '/yunbuy/ajax_'+type,
+                    param: 'id={$row.buy_id}',
+                    trigger: '.getMore_'+type
+                });
+            }
+            isLoad[type] = true;
+        }
+    }
+</script>
+
+{if $row.wait_time neq 0 && $row.luck_code eq '0'}
+<script type="text/javascript">
+    var lottery = 0;
+    var Secondms_jx = 60*1000;
+    var minutems_jx = 1000;
+    var wait_time = 0;
+    var buy_id = 0;
+
+    function show_date_time(diff,obj) {
+        if(diff <= 0) {
+            $("#liMinute").html('00');
+            $("#liSecond").html('00');
+            $("#liMilliSecond").html('00');
+            if(lottery==0){ //#
+                {if $site_config.is_ssc}
+                lottery = 1;
+                $.getJSON('/welcome/lottery/{$row.qihao}' ,function(result) { window.location.reload(); } );
+                {else}
+                rTimeout = window.clearTimeout(rTimeout);
+                $('#divLotteryTime').html("<span class='jx_ing'>开奖计算中...</span>");
+
+                setTimeout(function(){
+                    lottery = 1;
+                    window.location.reload();
+                }, 5000);
+                {/if}
+            }
+            return false;
+        }
+
+        DifferSecond   = Math.floor(diff / Secondms_jx);
+        diff -= DifferSecond * Secondms_jx;
+        DifferMinute   = Math.floor(diff / minutems_jx);
+        diff -= DifferMinute * minutems_jx;
+
+        if(DifferSecond.toString().length < 2) DifferSecond = '0'+DifferSecond;
+        if(DifferMinute.toString().length < 2) DifferMinute = '0'+DifferMinute;
+
+        wait_time=wait_time-1000;
+        $("#liMinute").html(DifferSecond);
+        $("#liSecond").html(DifferMinute);
+
+        if($("#jx_load").is(':visible')){
+            $("#jx_load").hide();
+            $('#jx_clock').show();
+        }
+    }
+    $(document).ready(function(){
+    	buy_id  = parseInt("{$row.buy_id}");
+        window.setInterval(function(){ $.get('/yunbuy/getLeftTime/'+buy_id,'',function(data){
+        	wait_time = data;
+        	
+        	rTimeout = how_date_time(wait_time, null);
+    	}); },60*1000);
+        wait_time = parseInt("{$end_time}");
+        rTimeout = window.setInterval(function(){ show_date_time(wait_time, null); }, 1000);
+
+        //毫秒单独计时
+        var h = 100;
+        timeID_h_jx = window.setInterval(function(){
+            if(h<=0) h = 100;
+            h = parseInt(h)-1;
+            if(h.toString().length < 1) h = '00';
+            if(h.toString().length == 1) h = '0'+h;
+            if(h.toString().length > 2) h = '99';
+
+            $("#liMilliSecond").html(h);
+        }, 10);
+    } );
+</script>
+{/if}

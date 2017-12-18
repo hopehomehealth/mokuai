@@ -1,0 +1,19 @@
+<form id="chprice-form" style="padding:30px">
+
+    <div class="f-unit">
+        <label class="ui-label w60">买家：</label>
+        <div class="form-tip">{$member.username}</div>
+    </div>
+
+    <div class="f-unit">
+        <label class="ui-label w60">订单号：</label>
+        <div class="form-tip">{$order.order_sn}</div>
+        <input type="hidden" name="order_id" id="order_id" value="{$order.id}"/>
+    </div>
+
+    <div class="f-unit">
+        <label class="ui-label w60">还需支付：</label>
+        <input type="text" class="form-i w200" value="{$order.amount}" name="amount" id="new_order_price">
+    </div>
+
+</form>

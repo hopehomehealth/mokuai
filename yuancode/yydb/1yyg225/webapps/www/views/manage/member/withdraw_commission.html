@@ -1,0 +1,70 @@
+<h3 class="info-tag">
+    提现列表(共{$page_total}个记录) 佣金统计:<span>￥{$total}</span>
+</h3>
+
+<div class="html-box">
+    <form class="cond-form clear" action="#!member/commission" id="searchForm" method="get">
+        <input type="hidden" value="" name="page" id="page">
+        <div class="f-unit">
+            <select name="k" id="k">
+                <option value="username" {if $smarty.get.k eq 'username'}selected{/if}>会员名</option>
+                <option value="bankname" {if $smarty.get.k eq 'bankname'}selected{/if}>提现银行</option>
+                <option value="bankcard" {if $smarty.get.k eq 'bankcard'}selected{/if}>提现账号</option>
+            </select>
+            <input id="q" class="form-i w160 sitem" name="q" value="" type="text">
+            <label class="ui-label w60">操作时间：</label>
+            <div class="l">
+                <input class="form-i w120 sitem" name="start_time" value="{$smarty.get.start_time|strip_tags}" type="text" autocomplete="off" onclick="WdatePicker()">
+                <input style="margin-left:-1px" class="form-i w120 sitem" name="end_time" value="{$smarty.get.end_time|strip_tags}" type="text"  autocomplete="off" onclick="WdatePicker()">
+            </div>
+            <label class="ui-label w60">状态：</label>
+            <div class="l">
+                <select name="status">
+                    <option value="">请选择</option>
+                    <option value="1" {if $smarty.get.status eq 1}selected{/if}>待处理</option>
+                    <option value="2" {if $smarty.get.status eq 2}selected{/if}>处理中</option>
+                    <option value="3" {if $smarty.get.status eq 3}selected{/if}>已处理</option>
+                </select>
+            </div>
+            <button type="submit" style="margin-left:10px; margin-top:1px" class="uiBtn BtnBlue e2-member-searchlog-1">搜索</button>
+        </div>
+    </form>
+
+    <table class="list" style="width:100%">
+        <tr>
+            <th class="w40"><input type="checkbox" class="checkall"></th>
+            <th class="w40">ID</th>
+            <th class="w80">会员名称</th>
+            <th class="w80">提现银行</th>
+            <th class="w80">提现账号</th>
+            <th class="w80">提现佣金(元)</th>
+            <th class="w80">手续费(元)</th>
+            <th class="w80">营业税(元)</th>
+            <th class="w80">所得税(元)</th>
+            <th class="w80">到账金额(元)</th>
+            <th class="w160">状态</th>
+            <th class="w160">操作时间</th>
+            <th>操作</th>
+        </tr>
+        {foreach from=$list item=m}
+        <tr class="opera">
+            <td><input type="checkbox" name="id" value="{$m.id}"></td>
+            <td>{$m.id}</td>
+            <td>{$m.username}</td>
+            <td>{$m.bankname}</td>
+            <td>{$m.bankcard}</td>
+            <td><b style="color:#f80">{$m.commission}</b></td>
+            <td><b style="color:#f80">{$m.fee}</b></td>
+            <td><b style="color:#f80">{$m.sales_tax}</b></td>
+            <td><b style="color:#f80">{$m.income_tax}</b></td>
+            <td><b style="color:#f80">{$m.amount}</b></td>
+            <td>{if $m.status eq 1}待处理{else if $m.status eq 2}处理中{else}已处理{/if}</td>
+            <td>{date('Y-m-d H:i',$m.addtime)}</td>
+            <td><a href="#!member/withdraw_commission_edit/{$m.id}?com=xshow|申请佣金提现">查看</a></td>
+        </tr>
+        {/foreach}
+    </table>
+    {$page}
+</div>
+
+<script src="/js/manage/member.js"></script>

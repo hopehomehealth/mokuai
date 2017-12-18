@@ -1,0 +1,76 @@
+{include file="top.html"}
+<link rel="stylesheet" href="/style/mobile/css/member.css">
+<link rel="stylesheet" href="/style/mobile/css/new_index.css">
+<style type="text/css">
+    *{ box-sizing: border-box; }
+    .sort li label{ height: 30px; line-height: 30px; }
+    .new-index2 .new-box h5{ margin-bottom: 0 !important; }
+</style>
+<script src="/style/mobile/js/quanzi.js" type="text/javascript"></script>
+<div id="content" class="container">
+    <div class="tab-m-a" style="padding:15px 15px;border-bottom-width:0;">
+        <ul class="ui-clr">
+            <li class="{if $send eq 0}on{/if}"><a href="/quanzi">未发起的{$L.unit_yun_team}</a></li>
+            <li class="{if $send eq 1}on{/if} last"><a href="/quanzi?send=1">已发起的{$L.unit_yun_team}</a></li>
+        </ul>
+    </div>
+
+    <div class="sort">
+        <ul class="ui-clr">
+            <li id="li_cate" class="DESC"><a>全部商品<i class="ap-icon icon-sort"><em></em></i></a></li>
+            <li class="li_sort {if $smarty.get.k eq add_time}on{/if}"><a href="/quanzi/?cid={$cid}&k=add_time&send={$send}">最新</a></li>
+            <li class="li_sort {if $smarty.get.k eq custom_price}on {if $smarty.get.s eq asc}ASC{else}DESC{/if}{/if}"><a href="{'/quanzi/'|url}?cid={$cid}&k=custom_price&s={if $smarty.get.s eq asc}desc{else}asc{/if}&send={$send}">价值<i class="ap-icon icon-sort"><em></em></i></a></li>
+            {if $smarty.session.mid && $send eq 1}
+            <li class="li_sort"><label><input type="checkbox" onclick="checkMe($(this))" {if $smarty.get.manage eq 1}checked="checked"{/if} /> 只显示我发布的</label></li>
+            {/if}
+        </ul>
+    </div>
+
+    <div class="pro-view">
+        <div class="cate-bg"></div>
+        <div class="cate">
+            <ul class="ui-clr">
+                <li><a href="/quanzi?send={$send}" {if !$smarty.get.cid}class="on"{/if}><i class="ap-icon d0"></i>全部商品</a></li>
+                {foreach from=$yuncat item=m}
+                {if $m.ismenu eq 1 && $m.parentid eq 0}
+                <li><a href="/quanzi?cid={$m.id}&send={$send}" {if $smarty.get.cid eq $m.id}class="on"{/if}><i class="ap-icon d{$smarty.foreach.list.index+1}"></i>{$m.catname}</a></li>
+                {/if}
+                {/foreach}
+            </ul>
+        </div>
+        <div class="clearfix new-index2 list">
+            {include file="quanzi/lbi/list2.html"}
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(function(){
+            $('#li_cate').bind('click',function(){
+                if($(this).hasClass('DESC')){
+                    $(this).removeClass('DESC').addClass('ASC');
+                }else{
+                    $(this).removeClass('ASC').addClass('DESC');
+                }
+                $('.cate-bg,.cate').toggle();
+            })
+        });
+
+        //只选中我发布的
+        function checkMe(obj){
+            if(obj.attr('checked')=='checked'){
+                location.href="/quanzi/index?cid={$cid}&send={$send}&manage=1";
+            }else{
+                location.href="/quanzi/index?cid={$cid}&send={$send}";
+            }
+        }
+
+        var ExtendOptions = {
+            itemSelector: "div",
+            path: function(index) {
+                return "/quanzi/index/"+index+"?cid={$cid}&k={$smarty.get.k}&s={$smarty.get.s}&send={$send}&manage={$manage}&load";
+            }
+        };
+    </script>
+    {include file="public_scroll.html"}
+</div>
+{include file="quanzi/checkSendQz.html"}
+{include file="footer.html"}

@@ -1,0 +1,113 @@
+{include file="top.html"}
+{zz mod=content var=tagAdw module=ad id=14}
+{zz mod=fileurl var=tagAds source=$tagAdw.images num=2}
+{foreach from=$tagAds item=m}
+<div class="full top-banner" {if {$m.title}}onclick="location.href='{$m.title}'"{/if} style="{if $m.title}cursor: pointer;{/if}{if $m.path}background-image: url('{$m.path}');{/if}"></div>
+{/foreach}
+<div class="full headbg">
+    <div class="site-nav">
+        <div class="container site-nav-bd">
+            <div class="site-nav-bd-l ui-left">多一个选择，多一份惊喜，天天{$site_config.site_name}！</div>
+            <div class="site-nav-bd-r ui-right">
+                {if !$smarty.session.mid}
+                {if $smarty.session.oauth.nickname}
+                <a href="{url('/member/verifymobile')}" class="color">{$smarty.session.oauth.nickname}</a>
+                [<a href="{url('/member/doexit')}">退出</a>]
+                {else}
+                {if $site_config.wxpc_login && $mobile neq 1}
+                <a href="https://open.weixin.qq.com/connect/qrconnect?appid={$site_config.wxpc_appid}&redirect_uri={urlencode(url(''))}&response_type=code&scope=snsapi_login&state=22138#wechat_redirect" class="color"><img src="/style/images/wechat.png" style="vertical-align: middle" /> 微信登录</a>
+                <span></span>
+                {/if}
+                {if $site_config.qq_login}
+                <a href="javascript:;" onclick="oauth('{url('/member/oauth/qq?open=1')}')" class="color"><img src="/style/images/qq.png" style="vertical-align: middle" /> QQ登录</a>
+                <span></span>
+                {/if}
+                <a href="{url('/member/login')}" class="color">请登录</a>
+                <span></span>
+                <a href="{url('/member/regist')}"><i class="color" style="font-style: normal">{$L.unit_gift}</i></a>
+                {/if}
+                {else}
+                <a href="{url('/member')}" class="color">{$smarty.session.username}</a>
+                [<a href="{url('/member/doexit')}">退出</a>]
+                <span></span>
+                <a href="{url('/member')}" class="color abg">会员中心</a>
+                {/if}
+
+                {assign var="nav" value=1|nav}
+                {foreach from=$nav item=m}
+                <span> | </span>
+                <a href="{$m.linkurl}"{if $m.isblank} target="_blank"{/if}{if $m.rec eq 1} class="color01"{/if}>{$m.title}</a>
+                {/foreach}
+                
+                <span> | </span>
+                <a href="javascript:;" onclick="AddFavorites(document.title, '{url()}')">收藏网站</a>
+				{if $site_config.disk_status eq 1}
+				<span> | </span>
+				<a href="/disk/login"  class="topa-hot">我的{$L.unit_skydrive}</a>
+				{/if}
+            </div>
+        </div>
+    </div>
+    <div class="container head">
+        <h1 class="logo-bd ui-left">
+            <a href="{url()}" target="_self" style="text-indent:0;"><img src="{zz mod=fileurl source=$site_config.logo}"/></a>
+        </h1>
+        <dl class="logo1">
+            <dd>
+                <form onsubmit="return searchWord();">
+                    <input class="logo1_i1" id="SEARCHQ" name="q" value="{if $smarty.get.q}{$smarty.get.q}{else}{$main.search}{/if}" onfocus="if(this.value=='{$main.search}'){ this.value=''; }"  onblur="if(this.value==''){ this.value='{$main.search}'; }" />
+                    <button type="submit" class="logo1_i2">搜索</button>
+                    <input type="hidden" id="zq" value="{$smarty.get.zq}" />
+                </form>
+                <script type="text/javascript">
+                    function searchWord(){
+                        location.href='/yunbuy?zq='+$('#zq').val()+'&q='+encodeURIComponent($('#SEARCHQ').val());
+                        return false;
+                    }
+                </script>
+            </dd>
+            <dt class="load_cart">
+                <a href="{url('/yunbuy/cart')}" class="logo1_1"><span>购物车</span><em class="cartNumber" id="cartNum">{$cartNum}</em></a>
+            <div class="cart-box" id="cart_info"></div>
+            </dt>
+            {literal}
+            <script>
+                $(function(){
+                    $('.load_cart').hover(function(){
+                        loadCart();
+                        $('#cart_info').show();
+                    },function(){
+                        $('#cart_info').hide();
+                    });
+                });
+            </script>
+            {/literal}
+        </dl>
+        <span class="buyers" onclick="location.href='/content/buyRecords'" {if $site_config.hide_bidCount || $site_config.index_skin eq 2}style="display:none;"{/if}>
+            <label>累计参与</label>
+            <span id="BIDNUMBER"></span>
+            <label class="rc">人次<b><s></s></b></label>
+        </span>
+    </div>
+</div>
+
+<div class="header">
+    <div class="nav-wrap">
+        <div class="container nav">
+<!--
+            {if $site_config.index_skin eq 2}
+            <div class="nav-title ui-left"><a href="/yunbuy?zq=buy">商品分类</a></div>
+            {else}
+            <div class="nav-title ui-left"><a href="/yunbuy">{$L.unit_yun}分类</a></div>
+            {/if}
+-->
+            <div class="nav-title ui-left"><a href="/yunbuy">全部商品</a></div>
+            <ul class="nav-main ui-left">
+                {assign var="nav" value=3|nav}
+                {foreach from=$nav item=m}
+                <li><a href="{$m.linkurl|url}"{if $m.isblank} target="_blank"{/if}>{$m.title}{if $m.rec eq 1}<img src="/style/images/t-hot.gif" />{/if}</a></li>
+                {/foreach}
+            </ul>
+        </div>
+    </div>
+</div>

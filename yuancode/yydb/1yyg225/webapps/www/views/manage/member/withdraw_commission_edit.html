@@ -1,0 +1,49 @@
+{include file='../public_btn.html'}
+<div class="html-box">
+    <form target="iframeNewsTarget" method="post" action="/manage/member/withdraw_commission_edit/{$row.id}" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="{$row.id}" />
+        <table class="table-list">
+            <tbody>
+            <tr>
+                <td class="td-label"><label>用户名：</label></td>
+                <td class="td-input">{$row.username}</td>
+            </tr>
+            <tr>
+                <td class="td-label"><label>提现佣金：</label></td>
+                <td class="td-input">{$row.commission}</td>
+            </tr>
+            <tr>
+                <td class="td-label"><label>手续费：</label></td>
+                <td class="td-input">{$row.fee}</td>
+            </tr>
+            <tr>
+                <td class="td-label"><label>营业税：</label></td>
+                <td class="td-input">{$row.sales_tax}</td>
+            </tr>
+            <tr>
+                <td class="td-label"><label>所得税：</label></td>
+                <td class="td-input">{$row.income_tax}</td>
+            </tr>
+            <tr>
+                <td class="td-label"><label>到账总额：</label></td>
+                <td class="td-input">{$row.amount}</td>
+            </tr>
+            <tr>
+                <td class="td-label"><label>状态：</label></td>
+                <td class="td-input">
+                    <label><input type="radio" name="status" value="1" {if $row.status eq 1}checked{/if} {if $row.status eq 3}disabled{/if}>待处理</label>
+                    <label><input type="radio" name="status" value="2" {if $row.status eq 2}checked{/if} {if $row.status eq 3}disabled{/if}>处理中</label>
+                    <label><input type="radio" name="status" value="3" {if $row.status eq 3}checked{/if} {if $row.status eq 3}disabled{/if}>已处理</label>
+                </td>
+            </tr>
+            <tr class="tr-btn">
+                <td class="td-label"></td>
+                <td class="td-input">
+                    <button type="submit" name="Submit" class="uiBtn BtnGreen">提&nbsp;&nbsp;交</button>
+                    <button type="reset" class="uiBtn">重&nbsp;&nbsp;置</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget id="A6945317926370"  version="0.0.1">
+  <name>爱一元吧</name>
+    <description>
+        爱一元吧
+    </description>
+    <author email="15527941667@163.com">
+        Developer
+    </author>
+    <content src="index.html" />
+    <preference name="appBackground" value="rgba(0,0,0,0)"/>
+    <preference name="windowBackground" value="rgba(0,0,0,0)"/>
+    <preference name="frameBackgroundColor" value="rgba(0,0,0,0)"/>
+    <preference name="autoLaunch" value="true"/>
+    <preference name="autoUpdate" value="true"/>
+    <preference name="smartUpdate" value="true"/>
+    <preference name="debug" value="false"/>
+    <preference name="statusBarAppearance" value="true"/>
+    <preference name="urlScheme" value="awpapp"/>
+    <preference name="urlScheme" value="wxb563b0bb70dd9d51"/>
+    <permission name="location"/>
+    <permission name="internet"/>
+    <permission name="readPhoneState" />
+    <permission name="camera"/>
+    <permission name="fileSystem" />
+    <permission name="hardware" />
+    <preference name="querySchemes" value="weixin,wechat" />
+    <access origin="*"/>
+    <feature name="alipayScheme">
+    	<param name="alipayScheme" value="awpapp"/>
+  	</feature>
+    <feature name="qq">
+    	<param name="urlScheme" value="tencent101374557" />
+    	<param name="apiKey" value="101374557" />
+ 	</feature>
+	<feature name="wx">
+    	<param name="urlScheme" value="wxb563b0bb70dd9d51"/>
+    	<param name="apiKey" value="wxb563b0bb70dd9d51"/>
+    	<param name="apiSecret" value="78140c661594e12de0209a541da7801c"/>
+  	</feature>
+ 	<feature name="jhfPay">
+    	<param name="md5Key" value="989b8i0xg4"/>
+  	</feature>
+</widget>

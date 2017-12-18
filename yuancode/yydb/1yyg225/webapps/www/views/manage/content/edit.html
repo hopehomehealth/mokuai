@@ -1,0 +1,120 @@
+{include file='../public_btn.html'}
+<div class="html-box">
+    <form target="iframeNewsTarget" method="post" action="/manage/content/edit/{$moduleinfo.name}" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="{$row.id}" />
+
+    <table class="table-list">
+    <tbody>
+        {foreach from=$fieldsinfo item=m}
+        <tr>
+            <td class="td-label"><label>{$m.name}：{if $m.required}<span class="c-red"> *</span>{/if}</label></td>
+            <td class="td-input">
+                {$m.html}
+            </td>
+        </tr>
+        {/foreach}
+
+        <tr class="tr-btn">
+            <td class="td-label"></td>
+            <td class="td-input">
+                <button type="submit" name="Submit" class="uiBtn BtnGreen">提&nbsp;&nbsp;交</button>
+                <button type="reset" class="uiBtn">重&nbsp;&nbsp;置</button>
+            </td>
+        </tr>
+
+    </tbody>
+    </table>
+
+    </form>
+    {if $row.id==25}
+    <table class="table-list">
+        <tbody>
+                        <tr>
+                <td>注册：</td>
+                <td>regist</td>
+                <td>资产管理:</td>
+                <td>memberaccount</td>
+            </tr>
+            <tr>
+                <td>夺宝记录：</td>
+                <td>member_db</td>
+                <td>中奖记录:</td>
+                <td>member_luck</td>
+            </tr>
+            <tr>
+                <td>订单管理:</td>
+                <td>member_order</td>
+                <td>我的红包：</td>
+                <td>member_bonus</td>
+            </tr>
+            <tr>
+                <td>我的任务：</td>
+                <td>member_task</td>
+         
+                <td>收货地址：</td>
+                <td>member_address</td>
+            </tr>
+            <tr>
+                <td>个人信息：</td>
+                <td>member_info</td>
+         
+                <td>账户安全：</td>
+                <td>member_save</td>
+            </tr>
+            <tr>
+                <td>我的邀请：</td>
+                <td>member_myivt</td>
+                <td>佣金：</td>
+                <td>member_commission</td>
+            </tr>
+            <tr>
+                <td>我的晒单：</td>
+                <td>member_share</td>
+                <td>主页：</td>
+                <td>main</td>
+            </tr>
+            <tr>
+                <td>新手堂</td>
+                <td>newbee</td
+                <td>最新揭晓：</td>
+                <td>results</td>
+            </tr>
+            <tr>
+                <td>用户中心：</td>
+                <td>user</td>
+            
+                <td>充值：</td>
+                <td>member_recchage</td>
+            </tr>
+            <tr>
+                <td>全部分类：</td>
+                <td>yunbuy</td>
+            </tr>
+            <tr>
+                <td>数码电器</td>
+                <td>yunbuy#1</td>
+                <td>汽车专区</td>
+                <td>yunbuy#35</td>
+            </tr>
+            <tr>
+                <td>时尚潮流</td>
+                <td>yunbuy#4</td>
+                <td>生活超市</td>
+                <td>yunbuy#3</td>
+            </tr>
+            <tr>
+                <td>户外运动</td>
+                <td>yunbuy#2</td>
+                <td>充值卡类</td>
+                <td>yunbuy#8</td>
+            </tr>
+        </tbody>
+    </table>
+    {/if}
+</div>
+
+<script type="text/javascript">
+$.loadJs('/admin/js/manage/linkage.js',function(){
+
+});
+</script>

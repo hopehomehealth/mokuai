@@ -1,0 +1,20 @@
+{assign var='header' value='header2'}
+{include file="top.html"}
+<div id="content" class="container detail">
+    <div class="record" id="join">
+        <div class="t-clock"><span class="ap-icon icon-clock"></span></div>
+    </div>
+    <div class="loading getMore_join"></div>
+</div>
+
+{include file="footer.html"}
+<script src="/style/mobile/js/jquery-pageload.js"></script>
+<script src="/style/mobile/js/jquery.more.js"></script>
+<script type="text/javascript">
+    var type='join';
+    $('#'+type).pageload({
+        url: '/yunbuy/ajax_'+type,
+        param: 'id={$row.buy_id}',
+        trigger: '.getMore_'+type
+    });
+</script>

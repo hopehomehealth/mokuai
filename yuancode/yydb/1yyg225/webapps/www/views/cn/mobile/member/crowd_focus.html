@@ -1,0 +1,20 @@
+{include file="crowd/crowd_header.html"}
+{include file="member/crowd_menu.html"}
+<div class="mylist2">
+    <ul class="list">
+        {include file="member/lbi/list_crowd_focus.html"}
+    </ul>
+</div>
+<script type="text/javascript">
+    var url = "/crowd_member/focus";
+    $(function(){
+    });
+
+    var ExtendOptions = {
+        path: function(index) {
+            return "/crowd_member/focus/"+index;
+        }
+    };
+</script>
+{include file="public_scroll.html"}
+{include file="crowd/crowd_footer.html"}

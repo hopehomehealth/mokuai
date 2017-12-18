@@ -1,0 +1,83 @@
+{include file="header.html"}
+<link rel="stylesheet" href="{url('/style/css/member.css')}">
+{include file="ur_here.html"}
+<div id="container">
+    <div class="fn-clear mt20 pb20">
+        {include file="member/menu.html"}
+        <div class="fn-right hy-r">
+            <form action="" method="post" target="iframeNews">
+            <div class="fn-clear hy-tjxh">
+                <div class="title">
+                    <h2>佣金提现</h2>
+                </div>
+                <div class="hy-zjfl">
+                    <a href="{url('/member/withdraw_commission')}" class="dq">提现</a> | <a href="{url('/member/recharge_commission')}">充值{$L.unit_yun}账户</a>
+                </div>
+                <div class="hy-czbox">
+                    <label>提现金额:</label>
+                    <input name="amount" onblur="commission_fee()" type="text" class="inpt-style2" />
+                    <span>可提现佣金：{$member.commission|price_format}</span>
+                    <div style="line-height: 2em;" id="withdraw_tip"></div>
+                </div>
+<script type="text/javascript">
+function commission_fee(){
+    var amount = $("input[name=amount]").val();
+    var html = '';
+    $.post("/member/commission_fee", { amount:amount },
+            function(data){
+                html = "到账金额 <span class=\"color01\">￥"+data.amount+"</span> (收取平台手续费:<span class=\"color01\">￥"+data.fee+"</span>";
+                if(data.sales_tax){
+                    html += "营业税:<span class=\"color01\">￥"+data.sales_tax+"</span>";
+                }
+                if(data.income_tax){
+                    html += "所得税:<span class=\"color01\">￥"+data.income_tax+"</span>";
+                }
+                html += ")";
+                html = data.msg ? data.msg : html;
+                $("#withdraw_tip").html(html);
+                if(data.msg){
+                    $("#withdraw_tip").addClass('color01');
+                }else{
+                    $("#withdraw_tip").removeClass('color01');
+                }
+             }, "json");
+}
+</script>
+                <div class="hy-box">
+                    <div class="mt15 hy-table">
+                        <table>
+                            <tr>
+                                <th style="width:200px;">银行名称</th>
+                                <th>持卡人姓名</th>
+                                <th style="width:150px;">银行卡号</th>
+                                <th style="width:250px;">开户行所在地</th>
+                            </tr>
+                            {foreach from=$list item=m}
+                            <tr>
+                                <td><label><input name="id" type="radio" value="{$m.id}" {if $m.is_default eq 1}checked{/if} />{$m.bankname}</label></td>
+                                <td>{$m.name}</td>
+                                <td>{$m.bankcard}</td>
+                                <td style="text-align: left;">{$m.bankaddress}</td>
+                            </tr>
+                            {/foreach}
+                        </table>
+                        <h2>提现手续费：</h2>
+                        <div class="color03">
+                            提现佣金<=200 , 收取8%平台手续费<br/>
+                            提现佣金201-500 , 收取5%平台手续费<br/>
+                            提现佣金501-800，收取5%平台手续费+5.6%营业税<br/>
+                            提现佣金801-1000，收取5%平台手续费+5.6%营业税+3%所得税<br/>
+                            提现佣金1001-4000，收取5%平台手续费+5.6%营业税+（提现佣金-800）*20%所得税<br/>
+                            大额佣金提现请联系客服处理
+                        </div>
+                        <div class="btn2">
+                            <input name="Submit" type="submit" value="提交申请" class="hy-btn2" /><input type="reset" value="重置表单" class="hy-btn2" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+{include file="footer.html"}

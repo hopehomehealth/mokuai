@@ -1,0 +1,28 @@
+<li>
+    <div class="pic v scrollLoadingDiv"><a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}" title="{$m.title}" target="_blank"><img class="scrollLoading" src="/style/images/pix.gif" data-url="{zz mod=fileurl source=$m.imgurl_src width=210 height=180 type=0}" id="buy_img_{$m.buy_id}{$pre}" /></a><span></span></div>
+    <p class="title"><a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}" title="{$m.title}" target="_blank">{$m.title}</a></p>
+    <p class="num">总需：{$m.need_num} 人次{if $m.price gt 1}<span class="zq_ico" style="float: right;">{$m.price|num2char}元{$L.unit_area}</span>{/if}</p>
+    <div class="progressBar">
+        <p class="progressBar-wrap">
+            <span style="width:{$m.jindu}%"></span>
+        </p>
+        <div class="progressBar-txt">
+            <div class="txt-l">
+                <p><b>{$m.buy_num}</b></p>
+                <p>已参与人次</p>
+            </div>
+            <div class="txt-r">
+                <p><b>{$m.end_num}</b></p>
+                <p>剩余人次</p>
+            </div>
+        </div>
+    </div>
+    <div class="btn-go-box">
+        {if $m.type eq 2}
+        <a class="btn-go-green" href="javascript:void(0)" onclick="addToCart('{$m.buy_id}','free')">{$L.unit_yun_button}</a>
+        {else}
+        <a class="btn-go" href="javascript:void(0)" onclick="addToCart('{$m.buy_id}','buy')">{$L.unit_yun_button}</a>
+        <a class="btn-go btn-go-cart" href="javascript:void(0)" onclick="addToCart('{$m.buy_id}','',this,'{$pre}')"></a>
+        {/if}
+    </div>
+</li>

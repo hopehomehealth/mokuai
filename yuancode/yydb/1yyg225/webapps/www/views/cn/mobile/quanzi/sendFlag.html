@@ -1,0 +1,19 @@
+<style type="text/css">
+    .sendFlag{ padding: 20px 20px 10px; color: #000; }
+    .sendFlag .title{ font-size: 18px; color: #000; text-align: center; font-weight: normal; padding-top:100px; background: url('/style/images/icon_qz_flag.gif') no-repeat center top; }
+    .sendFlag .title span{ color: #e54048; }
+    .sendFlag .tip{ font-size: 16px; color: #000; text-align: center; margin: 20px 0; padding: 0; }
+    .sendFlag .btn-box{ text-align: center; margin-bottom: 20px; }
+    .sendFlag .btn-box button{ background: #e54048; font-size: 16px; color: #fff; display: inline-block; height: 35px; line-height: 35px; border: 0; border-radius: 5px; padding: 0 15px; width: auto !important; }
+</style>
+<div id="sendFlag" style="display: none;">
+    <div class="sendFlag">
+        <h3 class="title">恭喜您成功发起<span>{$row.title}</span>的{$L.unit_yun_team}，圈号为{$row.qz_sn}</h3>
+        <p class="tip">立即邀请好友进入{$L.unit_yun_team}来{$L.unit_yun}吧！</p>
+        <div class="btn-box">
+            <button onclick="_system._guide(true)">邀请好友</button>
+            <button style="background: #ffb922 !important;margin-left:10px;" onclick="location.href='/quanzi/detail/{$row.buy_id}'">去参与</button>
+        </div>
+    </div>
+</div>
+{include file="public_share.html"}

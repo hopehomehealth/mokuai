@@ -1,0 +1,535 @@
+<?php
+!defined('App') && die('Hacking attempt');
+
+include_once(AppDir . 'function/payment.php');
+$payment_lang = AppDir . 'includes/languages/payment/jhpay.php';
+
+if (file_exists($payment_lang)) {
+    global $_LANG;
+    include_once($payment_lang);
+}
+
+/* 模块的基本信息 */
+if (isset($set_modules) && $set_modules == TRUE) {
+    $i = isset($modules) ? count($modules) : 0;
+
+    /* 代码 */
+    $modules[$i]['code'] = basename(__FILE__, '.php');
+
+    /* 描述对应的语言项 */
+    $modules[$i]['desc'] = 'jhpay_desc';
+
+    /* 是否支持货到付款 */
+    $modules[$i]['isCod'] = '0';
+
+    /* 是否支持在线支付 */
+    $modules[$i]['is_online'] = '1';
+
+    /* 支付费用 */
+    $modules[$i]['pay_fee'] = '0';
+
+    /* 作者 */
+    $modules[$i]['author'] = '聚合富';
+
+    /* 网址 */
+    $modules[$i]['website'] = 'https://www.jhpay.com/';
+
+    /* 版本号 */
+    $modules[$i]['version'] = '1.0.0';
+
+    /* 配置信息 */
+    $modules[$i]['config'] = array(
+        array('name' => 'app_id', 'type' => 'text', 'value' => ''),
+        array('name' => 'app_key', 'type' => 'text', 'value' => ''),
+        array('name' => 'app_mername', 'type' => 'text', 'value' => ''),
+    );
+
+    return;
+}
+
+class jhpay {
+
+    public $jhpayMerid; //商户ID
+    public $jhpayMd5; //尽量不要明文赋值
+    //以下字段参考接口文档
+    public $jhpayVersion = '1.0';
+    public $jhpayMername = '云购商城'; //商户名称
+    public $jhpayPolicyid = '000006';
+    public $jhpayMerorderid = ''; //订单号
+    public $jhpayPaymoney = 0; //金额
+    public $jhpayProductname = '商城商品支付'; //商品名称，尽量不要用云购，1元云购等
+    public $jhpayProductdesc = '商城商品支付'; //商品描述
+    public $jhpayUserid = '';
+    public $jhpayUsername = '';
+    public $jhpayEmail = '';
+    public $jhpayPhone = '';
+    public $jhpayExtra = ''; //添加自定义内容
+    public $jhpayCustom = '';
+    public $jhpayRedirect = '2';
+    public $jhpayRedirecturl = ''; //回调地址
+    public $jhpayCrtfile = ''; //证书
+
+    /**
+     * 构造函数
+     */
+
+    public function jhpay() {
+        
+    }
+
+    public function __construct() {
+        $payment = get_payment('jhpay');
+        //商户编号
+        $this->jhpayMerid = $payment['app_id'];
+        //md5 key
+        $this->jhpayMd5 = $payment['app_key'];
+        $this->jhpayRedirecturl = url('/welcome/respond') . '?code=jhpay'; //回调地址
+        $this->jhpay();
+        global $lowxp;
+        $this->jhpayMername = $payment['app_mername'];
+    }
+
+    /**
+     * 生成支付代码
+     * @param type $order 订单信息
+     * @param type $payment 支付方式信息
+     * @return type
+     */
+    public function get_code($order, $payment) {
+        //记录支付订单号
+        $order_no = $order['order_sn'] . $order['log_id'];
+        insert_order_sn($order['log_id'], array('order_no'=>$order_no));
+
+        $this->jhpayMerorderid = $order_no; //订单号
+        $this->jhpayExtra = $order['order_sn'];
+        $this->jhpayPaymoney = $order['order_amount'] * 1; //金额
+        $this->jhpayUserid = $order['mid'];
+        $this->jhpayUsername = $order['username'];
+
+        //构造要请求的参数数组，无需改动
+        $parameter = array(
+            "version" => $this->jhpayVersion,
+            "merid" => $this->jhpayMerid,
+            "mername" => $this->jhpayMername,
+            "policyid" => $this->jhpayPolicyid,
+            "merorderid" => $this->jhpayMerorderid,
+            "paymoney" => $this->jhpayPaymoney,
+            "productname" => $this->jhpayProductname,
+            "productdesc" => $this->jhpayProductdesc,
+            "userid" => $this->jhpayUserid,
+            "username" => base64_encode($this->jhpayUsername),
+            "email" => $this->jhpayEmail,
+            "phone" => $this->jhpayPhone,
+            "extra" => $this->jhpayExtra,
+            "custom" => $this->jhpayCustom,
+            "redirect" => $this->jhpayRedirect,
+            "redirecturl" => $this->jhpayRedirecturl
+        );
+
+        $jhpayConfig = array(
+            "partner" => $this->jhpayMerid,
+            "key" => $this->jhpayMd5,
+            "sign_type" => 'MD5', //签名方式 不需修改
+            "inputCharset" => 'utf-8', //字符编码格式 目前支持 gbk 或 utf-8
+            "transport" => 'http'
+        );
+        $url="";
+        if(IS_APP !=1){
+            $jhpaySubmit = new JhpaySubmit($jhpayConfig);
+            $url = $jhpaySubmit->buildRequestForm($parameter, 'POST', 'submit');
+            return $url;
+        }else{
+            $parameter['AppUrl']=$url;
+            return $parameter;
+        }
+
+    }
+    
+    /**
+     * 收银台扫码支付代码
+     * @param type $order 订单信息
+     * @param type $payment 支付方式信息
+     * @return type
+     */
+    public function get_codesm($order, $payment) {
+        //记录支付订单号
+        $order_no = $order['order_sn'] . $order['log_id'];
+        insert_order_sn($order['log_id'], array('order_no'=>$order_no));
+    
+        $this->jhpayMerorderid = $order_no; //订单号
+        $this->jhpayExtra = $order['order_sn'];
+        $this->jhpayPaymoney = $order['order_amount'] * 1; //金额
+        $this->jhpayUserid = $order['mid'];
+        $this->jhpayUsername = $order['username'];
+    
+        //构造要请求的参数数组，无需改动
+        $parameter = array(
+            "version" => $this->jhpayVersion,
+            "merid" => $this->jhpayMerid,
+            "mername" => $this->jhpayMername,
+            "policyid" => $this->jhpayPolicyid,
+            "merorderid" => $this->jhpayMerorderid,
+            "paymoney" => $this->jhpayPaymoney,
+            "productname" => $this->jhpayProductname,
+            "productdesc" => $this->jhpayProductdesc,
+            "userid" => $this->jhpayUserid,
+            "username" => base64_encode($this->jhpayUsername),
+            "email" => $this->jhpayEmail,
+            "phone" => $this->jhpayPhone,
+            "extra" => $this->jhpayExtra,
+            "custom" => $this->jhpayCustom,
+            "redirect" => $this->jhpayRedirect,
+            "redirecturl" => $this->jhpayRedirecturl
+        );
+    
+        $jhpayConfig = array(
+            "partner" => $this->jhpayMerid,
+            "key" => $this->jhpayMd5,
+            "sign_type" => 'MD5', //签名方式 不需修改
+            "inputCharset" => 'utf-8', //字符编码格式 目前支持 gbk 或 utf-8
+            "transport" => 'http'
+        );
+        $url="";
+        
+        $jhpaySubmit = new JhpaySubmit($jhpayConfig);
+        $url = $jhpaySubmit->buildRequestFormsm($parameter, 'POST', 'submit');
+        return $url;
+    }
+    
+    /**
+     * 生成微信二维码
+     * @param type $order 订单信息
+     * @param type $payment 支付方式信息
+     * @return type
+     */
+    public function get_codewxsm($order, $payment) {
+        //记录支付订单号
+        $order_no = $order['order_sn'] . $order['log_id'];
+        insert_order_sn($order['log_id'], array('order_no'=>$order_no));
+    
+        $this->jhpayMerorderid = $order_no; //订单号
+        $this->jhpayExtra = $order['order_sn'];
+        $this->jhpayPaymoney = $order['order_amount'] * 1; //金额
+        $this->jhpayUserid = $order['mid'];
+        $this->jhpayUsername = $order['username'];
+    
+        //构造要请求的参数数组，无需改动
+        $parameter = array(
+            "version" => $this->jhpayVersion,
+            "merid" => $this->jhpayMerid,
+            "mername" => $this->jhpayMername,
+            "merorderid" => $this->jhpayMerorderid,
+            "paymoney" => $this->jhpayPaymoney,
+            "productname" => $this->jhpayProductname,
+            "productdesc" => $this->jhpayProductdesc,
+            "userid" => $this->jhpayUserid,
+            "username" => base64_encode($this->jhpayUsername),
+            "email" => $this->jhpayEmail,
+            "phone" => $this->jhpayPhone,
+            "extra" => $this->jhpayExtra,
+            "custom" => $this->jhpayCustom,
+        );
+    
+        $jhpayConfig = array(
+            "partner" => $this->jhpayMerid,
+            "key" => $this->jhpayMd5,
+            "sign_type" => 'MD5', //签名方式 不需修改
+            "inputCharset" => 'utf-8', //字符编码格式 目前支持 gbk 或 utf-8
+            "transport" => 'http'
+        );
+        $url="";
+       
+        $jhpaySubmit = new JhpaySubmit($jhpayConfig);
+        $parameter = $jhpaySubmit->buildRequestPara($parameter);
+        
+        return $parameter;
+        
+    }
+
+    /**
+     * 响应操作
+     */
+    public function respond() {
+        /*
+          商户编号	 merid	12
+          商户订单号	merorderid	32	商户订单号
+          交易流水号	tradeid	20
+          交易完成时间	tradedate	19
+          支付交易结果	success	1	0：失败1：成功
+          支付交易成功金额	successmoney
+          支付渠道编号	paychannel	6
+          渠道服务提供方交易流水号	channeltradeid	32	支付渠道为网银/快捷支付时为银行流水号，其支付渠道与交易流水号相同
+          支付卡号/手机号	cardid	20	卡号（使用卡类支付时所使用的卡号）
+          用户ID	userid	32
+          用户名称	username	128	支付用户的名称
+          商户附加信息	extra	128
+          附加信息	attach	128	保留
+          通知方式	internal		0：前台页面返回 1：后台服务器返回
+          MD5校验值	md5	32	参数值的MD5校验值
+          签名信息	sign	1024	数字签名信息
+         */
+        $parameter = array(
+            'version' => $this->jhpayVersion, //版本号
+            'merid' => $this->jhpayMerid, //商户编号
+            'merorderid' => $_REQUEST['merorderid'], //商户订单号
+            'tradeid' => $_REQUEST['tradeid'], //交易流水号
+            'tradedate' => $_REQUEST['tradedate'], //交易完成时间
+            'success' => $_REQUEST['success'], //支付交易结果	0：失败1：成功
+            'successmoney' => $_REQUEST['successmoney'], //支付交易成功金额
+            'paychannel' => $_REQUEST['paychannel'], //支付渠道编号
+            'channeltradeid' => $_REQUEST['channeltradeid'], //渠道服务提供方交易流水号	支付渠道为网银/快捷支付时为银行流水号，其支付渠道与交易流水号相同
+            'cardid' => $_REQUEST['cardid'], //支付卡号/手机号	卡号（使用卡类支付时所使用的卡号）
+            'userid' => $_REQUEST['userid'], //用户ID
+            'username' => $_REQUEST['username'], //用户名称	支付用户的名称
+            'extra' => $_REQUEST['extra'], //商户附加信息
+            'attach' => $_REQUEST['attach'], //附加信息	保留
+            'internal' => $_REQUEST['internal'], //通知方式	0：前台页面返回 1：后台服务器返回
+            'sign' => $_REQUEST['sign'], //签名信息
+        );
+
+        $jhpayConfig = array(
+            "partner" => $this->jhpayMerid,
+            "key" => $this->jhpayMd5,
+            "sign_type" => 'MD5', //签名方式 不需修改
+            "inputCharset" => 'utf-8', //字符编码格式 目前支持 gbk 或 utf-8
+            "transport" => 'http'
+        );
+
+        $order_sn = str_replace($_REQUEST['extra'], '', $_REQUEST['merorderid']);
+        $order_sn = trim(addslashes($order_sn));
+
+        /* 检查支付的金额是否相符 */
+        if (!check_money($order_sn, $_REQUEST['successmoney'])) {
+            return false;
+        }
+
+        $jhpaySubmit = new JhpaySubmit($jhpayConfig);
+
+        //生成签名结果
+        $mysign = strtoupper($jhpaySubmit->buildRequestMysign($jhpaySubmit->paraFilterJhf($parameter)));
+
+        //证书验证
+        //$verifySign = $jhpaySubmit->verifySign($this->jhpayCrtfile, $this->createLinkstring($jhpaySubmit->paraFilterJhf($parameter)), $_REQUEST['sign']);
+        if (strtoupper($_REQUEST['md5']) == $mysign /* && $verifySign */ &&  $_REQUEST['success']) {
+            /* 改变订单状态 */
+            header('Response: 1');
+            $data = order_paid( $order_sn , 2);
+            if($data['error'] > 0){ return false; }
+            else{
+                //记录第三方订单号
+                insert_order_sn($order_sn, array('transaction_id'=>$parameter["tradeid"]));
+            }
+            return true;
+        }
+        header('Response: 0');
+        return false;
+    }
+
+}
+
+class JhpaySubmit {
+
+    private $jhfpayConfig;
+
+    /**
+     * 聚合富网关地址（新）
+     */
+    private $jhfpay_gateway_new = 'http://www.jhpay.com/service/payment.jsp?';
+    private $jhfpay_gateway_mobile = 'http://www.jhpay.com/mobile/payment.jsp?';
+    private $jhfpay_gateway_wechat = 'http://www.jhpay.com/wechat/wechatpay.jsp?';
+
+    public function __construct($jhfpayConfig) {
+        $this->jhfpayConfig = $jhfpayConfig;
+        if (IS_MOBILE == 1) {
+            $this->jhfpay_gateway_new = $this->jhfpay_gateway_wechat;
+        }
+    }
+
+    /**
+     * 建立请求，以表单HTML形式构造（默认）
+     * @param $para_temp 请求参数数组
+     * @param $method 提交方式。两个值可选：post、get
+     * @param $button_name 确认按钮显示文字
+     * @return 提交表单HTML文本
+     */
+    public function buildRequestForm($para_temp, $method, $button_name) {
+        if ((IS_MOBILE == 1) && isset($para_temp['policyid'])) {
+            unset($para_temp['policyid']);
+            unset($para_temp['redirect']);
+        }
+        //待请求参数数组	
+        $para = $this->buildRequestPara($para_temp);
+        $sHtml = "";
+        $sHtml .= "<form id=jhfpaysubmit' name='jhfpaysubmit' action='" . $this->jhfpay_gateway_new . "_inputCharset=" . trim(strtolower($this->jhfpayConfig['inputCharset'])) . "' method='" . $method . "'>";
+        while (list ($key, $val) = each($para)) {
+            $sHtml.= "<input type='hidden' name='" . $key . "' value='" . $val . "'/>";
+            //echo $key.'->'.$val.'</br>';
+        }
+        //submit按钮控件请不要含有name属性
+        $sHtml = $sHtml . '<input type="submit" value="立即支付"/></form>';
+        return $sHtml;
+    }
+    
+    /**
+     * 建立请求，以表单HTML形式构造（默认）
+     * @param $para_temp 请求参数数组
+     * @param $method 提交方式。两个值可选：post、get
+     * @param $button_name 确认按钮显示文字
+     * @return 提交表单HTML文本
+     */
+    public function buildRequestFormsm($para_temp, $method, $button_name) {
+        //待请求参数数组
+        $para = $this->buildRequestPara($para_temp);
+        $sHtml = "";
+        $sHtml .= "<form id=jhfpaysubmit' name='jhfpaysubmit' action='" . $this->jhfpay_gateway_mobile . "_inputCharset=" . trim(strtolower($this->jhfpayConfig['inputCharset'])) . "' method='" . $method . "'>";
+        while (list ($key, $val) = each($para)) {
+            $sHtml.= "<input type='hidden' name='" . $key . "' value='" . $val . "'/>";
+            //echo $key.'->'.$val.'</br>';
+        }
+        //submit按钮控件请不要含有name属性
+        $sHtml = $sHtml . '<input type="submit" value="立即支付"/></form>';
+        return $sHtml;
+    }
+
+    /**
+     * 生成要请求给聚合富的参数数组
+     * @param $para_temp 请求前的参数数组
+     * @return 要请求的参数数组
+     */
+    public function buildRequestPara($para_temp) {
+        //除去待签名参数数组中的空值和签名参数
+        $para_filter = $this->paraFilterJhf($para_temp);
+        //对待签名参数数组排序，聚合富暂不用排序
+        //$para_sort = argSort($para_filter);
+        $para_sort = $para_filter;
+        //生成签名结果
+        $mysign = $this->buildRequestMysign($para_sort);
+
+        //签名结果与签名方式加入请求提交参数组中
+        //$para_sort['sign'] = $mysign;
+        //$para_sort['sign_type'] = strtoupper(trim($this->jhfpayConfig['sign_type']));
+        $para_sort['md5'] = strtoupper($mysign);
+        
+        return $para_sort;
+    }
+
+    /**
+     * 除去数组中的空值和签名参数
+     * @param $para 签名参数组
+     * return 去掉空签名
+     */
+    public function paraFilterJhf($para) {
+        $para_filter = array();
+        while (list ($key, $val) = each($para)) {
+            if ($key == "sign" || $key == "sign_type")
+                continue;
+            else
+                $para_filter[$key] = $para[$key];
+        }
+        return $para_filter;
+    }
+
+    /**
+     * 
+     * @param string $prestr
+     * @param type $key
+     * @return type
+     */
+    public function md5Sign($prestr, $key) {
+        $prestr = $prestr . $key;
+        return md5($prestr);
+    }
+
+    /**
+     * 生成签名结果
+     * @param $para_sort 已排序要签名的数组
+     * return 签名结果字符串
+     */
+    public function buildRequestMysign($para_sort) {
+        //把数组所有元素，按照“参数=参数值”的模式用“&”字符拼接成字符串
+        $prestr = $this->createLinkstring($para_sort);
+
+        $mysign = "";
+        switch (strtoupper(trim($this->jhfpayConfig['sign_type']))) {
+            case "MD5" :
+                $mysign = $this->md5Sign($prestr, $this->jhfpayConfig['key']);
+                break;
+            default :
+                $mysign = "";
+        }
+
+        return $mysign;
+    }
+
+    //自定义构造GET提交URL
+    public function buildRequestGet($para_temp) {
+        $para = $this->buildRequestPara($para_temp);
+        $hUrl = $this->jhfpay_gateway_new;
+        while (list ($key, $val) = each($para)) {
+            // $hUrl .= urlencode('&').$key.'='.$val;
+            $hUrl .= '&' . $key . '=' . $val;
+        }
+        return $hUrl;
+    }
+
+    /**
+     * 建立请求，以模拟远程HTTP的POST请求方式构造并获取聚合富的处理结果
+     * @param $para_temp 请求参数数组
+     * @return 支付宝处理结果
+     */
+    public function buildRequestHttp($para_temp) {
+        $sResult = '';
+
+        //待请求参数数组字符串
+        $request_data = $this->buildRequestPara($para_temp);
+
+        //远程获取数据
+        $sResult = getHttpResponsePOSTJhf($this->jhfpay_gateway_new, $this->jhfpayConfig['cacert'], $request_data, trim(strtolower($this->jhfpayConfig['inputCharset'])));
+
+        return $sResult;
+    }
+
+    /**
+     * 把数组所有元素，按照“参数=参数值”的模式用“&”字符拼接成字符串
+     * @param $para 需要拼接的数组
+     * return 拼接完成以后的字符串
+     */
+    public function createLinkstring($para) {
+        $arg = "";
+        while (list ($key, $val) = each($para)) {
+            $arg.=$key . "=" . $val . "&";
+        }
+        //去掉最后一个&字符
+        $arg = substr($arg, 0, count($arg) - 2);
+
+        //如果存在转义字符，那么去掉转义
+        if (get_magic_quotes_gpc()) {
+            $arg = stripslashes($arg);
+        }
+
+        return $arg;
+    }
+
+    /**
+     * 证书验证
+     * @param string $crtfile 证书地址   绝对地址，例如"c:\\juhefu.cer";
+     * @param string $updateData 参数连接字符串
+     * @param string $sign 签名
+     * @return boolean
+     */
+    public static function verifySign($crtfile, $updateData, $sign) {
+        try {
+            $x509 = openssl_x509_read(file_get_contents($crtfile));
+            $public_key_id = openssl_get_publickey($x509);
+            $success = openssl_verify($updateData, base64_decode($sign), $public_key_id, OPENSSL_ALGO_MD5);
+            if ($success) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
+}

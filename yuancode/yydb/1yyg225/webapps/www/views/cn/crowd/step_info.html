@@ -1,0 +1,119 @@
+{include file="crowd/crowd_header.html"}
+{include file="crowd/ur_here.html"}
+<div class="container">
+    <div class="gwc1">
+
+        <div class="zcjcxx">
+
+            <ul>
+                <li>
+                    <a href="javascript:;">基本信息</a>
+                </li>
+
+                <li class="on">
+                    <a href="javascript:;">项目信息</a>
+                </li>
+                <li>
+                    <a href="javascript:;">详细描述</a>
+                </li>
+
+                <li>
+                    <a href="javascript:;">回报设置</a>
+                </li>
+                <dd><a href="{url('/crowd/detail/')}{$info.cd_id}" target="_blank">预览</a></dd>
+            </ul>
+
+
+        </div>
+        <form action="/crowd/step_info" target="iframeNews" id="step_form" method="post">
+        <div class="fqbd">
+            <h3 class="fqbd-h3">创建你的项目信息</h3>
+            <div class="fqbdbox">
+                <section class="fqbd-txt-cj">
+
+                    <div class="zcfm">
+                        <span>设置封面：</span>
+
+                        <ul id="warp">
+                            <li class="thumb">
+                                <img id="crowd"  src="{zz mod=fileurl source=$info.thumb type=1 nopic='/style/crowd/images/sctp.jpg'}">
+                                {upload_btn('crowd',790,400)}
+                            </li>
+                        </ul>
+                        <em> 建议尺寸大小790*400，图片大小不要超过2M</em>
+                        <i>*请上传项目封面</i>
+                    </div>
+
+                    <ul>
+                        <li>
+                                <span>
+                                    项目标题：
+                                </span>
+                            <input type="text" name="cd_name" value="{$info.cd_name}" placeholder="给自己的项目取个响亮的名称吧，名字不能超过40个汉字哦~
+" />
+                            <i>
+                                ＊请填写项目标题
+                            </i>
+                        </li>
+                        <li class="zctextarea">
+                                <span>
+                                    筹款目的：
+                                </span>
+                            <textarea name="desc" placeholder="一句话简单的介绍一下您的项目">{$info.desc}</textarea>
+                            <i>
+                                ＊请填写筹款目的
+                            </i>
+                        </li>
+                        <li>
+                                <span>
+                                    项目地点：
+                                </span>
+                                {linkage('zone',$info.area_id,3)}
+                                <i>
+                                    ＊请填写项目地点
+                                </i>
+                        </li>
+                        <li class="czjine">
+                                <span>
+                                    筹资金额：
+                                </span>
+                            <input type="text"  name="cd_price" value="{if $info.cd_price gt 0}{$info.cd_price}{/if}" placeholder="输入你需要筹资的金额（最低500元）" />元
+                            <i>
+                                ＊请填写筹资金额
+                            </i>
+                        </li>
+                        <li class="czjine">
+                                <span>
+                                    筹资天数：
+                                </span>
+                            <input type="text" name="day" value="{if $info.day gte 10}{$info.day}{/if}" placeholder="输入您的筹资时间周期（10-90天）" />天
+                            <i>＊请填写筹资天数</i>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+
+            <section class="faxyb">
+                <a href="{url('/crowd/step_base/')}{$info.cd_id}">上一步</a> <input type="submit" value="下一步"/>
+            </section>
+            <input type="hidden" name="id" value="{$info.cd_id}">
+        </div>
+        </form>
+    </div>
+</div>
+<style type="text/css">
+#select_linkage select:first-child{ margin-right: 15px; }
+.webuploader-pick{
+    margin: 0px;
+    width: 196px;
+    height: 124px;
+    text-indent:-999em;
+    background: none;
+}
+.fqbd-txt-cj li span.state{
+    float: none; width: auto; margin: 0px; text-align:left;
+}
+.uploader-list{ display: none; }
+.fqbd-txt-cj li.thumb{ line-height: normal;}
+</style>
+{include file="crowd/crowd_footer.html"}

@@ -1,0 +1,85 @@
+{include file='home/uhead.html'}
+{literal}
+<style type="text/css">
+.user-credit{color:#666; font-size:16px; line-height:16px; padding-bottom:10px}
+.user-credit span{color:#56a5fd;}
+.note-tag{color:#999; line-height:24px; font-size:12px; height:24px; margin-bottom:10px}
+
+.credit-box{
+    border:1px solid #ddd;
+    background-color:#fff;
+}
+.credit-box .coupon-item{
+    width:33.3%;
+    float:left;
+}
+.credit-box .coupon-item a{
+    margin:10px 5px 0 5px;
+    display:block;
+}
+.credit-box .c-tag{
+    border-bottom:1px solid #ddd;
+    line-height:24px;
+    padding:4px 8px;
+    color:#333;
+}
+.cl1{background-color:#0a930d;}
+.cl1 .cc2{color:#5bbd5d}
+.cl2{background-color:#eda700;}
+.cl2 .cc2{color:#ffcc53}
+.cl3{background-color:#00be0d;}
+.cl3 .cc2{color:#22e22f}
+
+.no-coupon{line-height:24px; height:24px; padding:15px 0; text-align:center; font-size:14px}
+
+.ex-coupon span{display:block; text-align:center}
+
+.cc1{color:#fff; font-size:14px; line-height:20px; height:20px; padding:20px 0 5px}
+.cc1 em{font-style:normal; font-size:20px}
+.cc2{padding:0 0 15px; line-height:20px; height:20px}
+.cc3{
+    color:#56a5fd;
+    display:block;
+    line-height:24px;
+    height:24px;
+    padding-top:5px;
+}
+</style>
+{/literal}
+<div class="context clear">
+    <div class="wrap-order">
+
+        <div class="user-credit">
+            当前可用积分 <span>{$credit}</span>
+        </div>
+
+        <div class="note-tag">
+            积分可以用来兑换配件，也可以用来兑换优惠券
+        </div>
+
+        <div class="credit-box ex-coupons">
+            <div class="c-tag">积分可换购以下优惠券</div>
+            <div class="clear">
+                {foreach from=$coupons item=m key=k}
+                <div class="coupon-item">
+                    <a href="javascript:;" class="ex-coupon e2-member-excoupon-{$m.id}">
+                    <span class="cl{$k+1}">
+                        <span class="cc1">{$m.title}</span>
+                        <span class="cc2">{$m.credit}积分可领取</span>
+                    </span>
+                        <span class="cc3">立即换购</span>
+                    </a>
+                </div>
+                {foreachelse}
+                <div class="no-coupon">
+                    暂无可兑换的优惠券!
+                </div>
+                {/foreach}
+            </div>
+
+        </div>
+
+    </div>
+</div><!--End Context-->
+<script type="text/javascript" src="/js/member.js"></script>
+{include file='home/foot.html'}

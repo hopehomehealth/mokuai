@@ -1,0 +1,42 @@
+{assign var='header' value='header2'}
+{include file="top.html"}
+<link rel="stylesheet" href="/style/mobile/css/member.css">
+<div id="content" class="container main">
+    <div class="tab-m-a" style="padding:15px 40px;border-bottom-width:1px;">
+        <ul class="ui-clr">
+            <li class="{if !isset($smarty.get.order)}on{/if}"><a href="{url('/member/db')}">参与成功</a></li>
+            <li class="{if isset($smarty.get.order)}on{/if} last"><a href="{url('/member/db?order')}">未付款</a></li>
+        </ul>
+    </div>
+
+    {if !isset($smarty.get.order)}
+    <div class="tips-m" style="padding:10px;text-align: center;color:#333;">
+        即将揭晓商品<a href="{url('/member/db')}?type=1" class="color01"><b>（{$total.wait}）</b></a>
+        进行中的商品<a href="{url('/member/db')}?type=2" class="color01"><b class="color01">（{$total.ing}）</b></a>
+        已揭晓商品<a href="{url('/member/db')}?type=3" class="color01"><b class="color01">（{$total.end}）</b></a>
+    </div>
+    {/if}
+
+    <ul class="tab-cell tab-cell-5 ui-clr">
+        <li{if $smarty.get.time eq ''} class="on"{/if}><a href="{url('/member/db')}{if isset($smarty.get.order)}?order{/if}">全部</a></li>
+        <li{if $smarty.get.time eq 1} class="on"{/if}><a href="{url('/member/db')}?time=1{if isset($smarty.get.order)}&order{/if}">今天</a></li>
+        <li{if $smarty.get.time eq 2} class="on"{/if}><a href="{url('/member/db')}?time=2{if isset($smarty.get.order)}&order{/if}">本周</a></li>
+        <li{if $smarty.get.time eq 3} class="on"{/if}><a href="{url('/member/db')}?time=3{if isset($smarty.get.order)}&order{/if}">本月</a></li>
+        <li class="last {if $smarty.get.time eq 4} on{/if}"><a href="{url('/member/db')}?time=4{if isset($smarty.get.order)}&order{/if}">最近三月</a></li>
+    </ul>
+
+    <div class="list01 list-db">
+        <dl class="item ui-clr"></dl>
+    </div>
+    <div class="loading getMore" style="background: #fff;"></div>
+</div>
+<script src="/style/mobile/js/jquery.more.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $('.list-db').more({
+            'address': '/member/db?1{if isset($smarty.get.order)}&order{/if}{if $smarty.get.time}&time={$smarty.get.time}{/if}{if $smarty.get.type}&type={$smarty.get.type}{/if}',
+            'amount' : 10
+        })
+    });
+</script>
+{include file="footer.html"}

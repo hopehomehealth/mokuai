@@ -1,0 +1,51 @@
+{include file="header.html"}
+<link rel="stylesheet" href="{url('/style/css/member.css')}">
+{include file="ur_here.html"}
+<div id="container">
+    <div class="fn-clear mt20 pb20">
+        {include file="member/menu.html"}
+        <div class="fn-right hy-r">
+            <div class="fn-clear hy-tjxh">
+                <div class="title">
+                    <h2>充值卡充值</h2>
+                </div>
+
+                <div class="hy-box">
+                    <form action="" target="iframeNews" method="post">
+                    <div class="hy-yhk">
+                        <table>
+                            <tr>
+                                <th>卡号：</th>
+                                <td>
+                                    <input name="number" class="inpt-style2 w180 " value="" />
+                                <td>
+                            </tr>
+                            <tr>
+                                <th>卡密：</th>
+                                <td>
+                                    <input name="password" class="inpt-style2 w180 " value="" />
+                                <td>
+                            </tr>
+                            <tr>
+                                <th>验证码：</th>
+                                <td>
+                                    <input type="text" id="scode" name="scode" value="" class="inpt-style2" placeholder="请输入答案" />
+                                    <img src="/welcome/scode" class="imgcode" onclick="this.src='/welcome/scode?xrand='+Math.random();" />
+                                <td>
+                            </tr>
+                            <tr>
+                                <th> &nbsp;</th>
+                                <td class="">
+                                    <input type="hidden" name="token" value="{createToken()}" />
+                                    <input name="Submit" type="submit" value="确认充值" class="hy-btn2 fn-left" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+     </div>
+</div>
+{include file="footer.html"}

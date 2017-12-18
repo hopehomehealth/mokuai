@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>夺宝</title>
+    <link rel="stylesheet" type="text/css" href="./cssn/aui.2.0.css" />
+    <link rel="stylesheet" type="text/css" href="./cssn/style.css" />
+    <link rel="stylesheet" type="text/css" href="./fonts/iconfont.css" />
+    <style>
+    	#header{
+    		background-color:#e54048;
+    		color:white;
+    	}
+    </style>
+</head>
+<body>
+<header class="aui-bar aui-bar-nav" id="header">
+	<div class="head header1" data-name="main">
+	    <a class="aui-btn aui-pull-right" tapmode onclick="openTab('yunbuy')"></a>
+		<h2 class="title aui-title">爱一元吧</h2>   
+	</div>
+	<div class="header1 aui-hide header-bor" data-name="yunbuy">
+	    <a class="aui-pull-left aui-btn" tapmode onclick="backhome()">
+	        <span class="iconfont icon-zuojiantou"></span>
+	    </a>
+		<div class="aui-title">所有商品</div>          
+	</div>
+	<div class="header1 aui-hide header-bor" data-name="results">
+	    <a class="aui-pull-left aui-btn" tapmode onclick="backhome()">
+	        <span class="iconfont icon-zuojiantou"></span>
+	    </a>
+		<div class="aui-title">最新揭晓</div>          
+	</div>
+	<div class="header1 aui-hide header-bor" data-name="cart">
+	    <a class="aui-pull-left aui-btn" tapmode onclick="backhome()">
+	        <span class="iconfont icon-zuojiantou"></span>
+	    </a>
+		<div class="aui-title">购物车</div>          
+	</div>
+	<div class="header1 aui-hide header-bor" data-name="user">
+	    <a class="aui-pull-left aui-btn" tapmode onclick="backhome()">
+	        <span class="iconfont icon-zuojiantou"></span>
+	    </a>
+	    <a class="aui-btn aui-pull-right" tapmode onclick="openWin('./html/setting')"><span class="iconfont icon-shezhi"></span></a>
+		<div class="aui-title">会员中心</div>          
+	</div>
+</header>
+<div id="main"></div>
+<footer class="aui-bar aui-bar-tab" id="foot">
+    <div class="aui-bar-tab-item aui-active" data-name="main" onclick="switchNav( this,true);" tapmode>
+        <i class="iconfont icon-zhuye"></i>
+        <div class="aui-bar-tab-label">首页</div>
+    </div>
+    <div class="aui-bar-tab-item" tapmode data-name="yunbuy" onclick="switchNav( this );">
+        <i class="iconfont icon-fenlei"></i>
+        <div class="aui-bar-tab-label">全部分类</div>
+    </div>
+    <div class="aui-bar-tab-item" tapmode data-name="results" onclick="switchNav( this );">
+        <i class="iconfont icon-zuixinjiexiaoxiankuang"></i>
+        <div class="aui-bar-tab-label">最新揭晓</div>
+    </div>
+    <div class="aui-bar-tab-item" tapmode data-name="cart" onclick="switchNav( this );">
+        <div class="aui-badge" id="cart_num">0</div>
+        <i class="iconfont icon-gouwuche1"></i>
+        <div class="aui-bar-tab-label">购物车</div>
+    </div>
+    <div class="aui-bar-tab-item" tapmode data-name="user" onclick="switchNav( this );">
+        <i class="iconfont icon-cf-c18"></i>
+        <div class="aui-bar-tab-label">我的</div>
+    </div>
+</footer>
+<script type="text/javascript" src="./script/jquery.min.js"></script>
+<script type="text/javascript" src="./script/fastclick.js"></script>
+<script type="text/javascript" src="./script/api.js"></script>
+<script type="text/javascript" src="./script/index.js"></script>
+<script type="text/javascript" src="./script/common.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+<div class="pic">
+    <a href="{'/yunbuy/detail/'|cat:$m.buy_id}"><img src="{zz mod=fileurl source=$m.imgurl_src width=200 type=0}" /></a>
+</div>
+<div class="info">
+    <p>获得者：<a href="{'/minfo?id='|cat:$m.mid|url}#dbCod" class="color">{$m.username|nickname:$m.nickname}</a></p>
+    <p>本期{$L.unit_yun}：<span class="color">{$m.qty}</span>人次</p>
+    <p>幸运码：<span class="color">{$m.luck_code}</span></p>
+    <p>揭晓时间：<span>{$m.end_time|formatTime}</span></p>
+</div>

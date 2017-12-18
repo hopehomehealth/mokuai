@@ -1,0 +1,82 @@
+{include file="header.html"}
+<link rel="stylesheet" href="{url('/style/css/member.css')}">
+<link rel="stylesheet" href="{url('/style/crowd/style/style.css')}">
+{include file="ur_here.html"}
+<script src="{url('/style/jquery.ajaxContent.pack.js')}" type="text/javascript"></script>
+<script src="{url('/style/crowd/source/jquery.fancybox.js')}"></script>
+<link href="{url('/style/crowd/source/jquery.fancybox.css')}" rel="stylesheet" />
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".fancybox-effects-a").fancybox({
+            helpers: {
+                title: {
+                    type: 'outside'
+                },
+                overlay: {
+                    speedOut: 0
+                }
+            }
+        });
+
+    });
+</script>
+<div id="container">
+    <div class="fn-clear mt20 pb20">
+        {include file="member/menu.html"}
+        <div class="fn-right hy-r">
+            <div class="fn-clear hy-tjxh">
+                <div class="title">
+                    <h2>更新项目进展</h2>
+                </div>
+                <div class="hy-box">
+
+                    <div class="gxxmdt">
+                        <div class="xqjz-l-main">
+                            <ul style="padding-bottom: 25px;">
+                                <li style="border-bottom: 1px #dedede solid; padding-bottom: 25px;">
+                                    <span class="icon">今天</span>
+                                    <form  id="progress_form">
+                                    <div class="gxdtfb">
+                                        <textarea name="content" placeholder="请输入您项目的最新进展，图文并茂更精彩哦~"></textarea>
+                                        <div class="gxdtfb-b" style="overflow: auto;">
+                                            <div style="float: left; padding-bottom: 0px;border-bottom: none;">{upload_btn('progress','','',6)}</div>
+                                            <a class="submit_progress">发布</a>
+                                            <div class="clear"></div>
+                                        </div>
+                                    </div>
+                                    </form>
+                                </li>
+                            </ul>
+                            <div id="load_list">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             </div>
+        </div>
+    </div>
+</div>
+<style type="text/css">
+    .xqjz-l-main li div.wu-example{ position: static; border-bottom:none; padding-bottom: 0px;}
+    .webuploader-pick{ text-indent:-999em; background:url('/style/crowd/images/tusc.jpg') no-repeat center; width: 58px; height: 58px; padding: 0px; border: 1px #dedede solid; }
+</style>
+<script type="text/javascript">
+    $(function(){
+        $('.submit_progress').click(function(){
+            var D = $("#progress_form").serializeArray();
+            $.post('/crowd_member/updateProgress/{$info.cd_id}',D,function(data){
+                if(data.msg){
+                    layer.alert(data.msg);
+                }else{
+                    $('textarea[name=content]').val('');
+                    $('#thelistprogress').html('');
+                    $("input[name='progress[]']").remove();
+                    $("#load_list").load('/crowd_member/load_progress?id={$info.cd_id}');
+                }
+            },'json');
+        });
+       $("#load_list").load('/crowd_member/load_progress?id={$info.cd_id}');
+    });
+</script>
+{include file="footer.html"}

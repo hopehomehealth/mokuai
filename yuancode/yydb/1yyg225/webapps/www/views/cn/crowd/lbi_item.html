@@ -1,0 +1,34 @@
+<li>
+    <div class="icon {if $row.is_success eq 0}icon-ing{elseif $row.is_success eq 1}icon-success{/if}"></div>
+    <a class="imgfd" href="{url('/crowd/detail/')}{$row.cd_id}"><img src="{zz mod=fileurl source=$row.thumb width=285 height=224}" /></a>
+    <section>
+        <div class="zzje">
+            <a href="{url('/crowd/detail/')}{$row.cd_id}" title="{$row.cd_name}"> {$row.cd_name|truncate:16:''}</a>
+        </div>
+
+        <div class="zcjd">
+            <span style="width:{$row.cd_total|progress:$row.cd_price}%;"></span>
+        </div>
+
+        <dl class="zcjd-dl">
+            <dd>
+                <p>
+                    <i>{$row.cd_total|progress:$row.cd_price}%</i>
+                    <span>已达</span>
+                </p>
+            </dd>
+            <dd>
+                <p>
+                    <i>{$row.cd_total|price_format:1}</i>
+                    <span>已筹</span>
+                </p>
+            </dd>
+            <dd>
+                <p>
+                    <i>{$row.end_time|endDay}</i>
+                    <span>剩余时间</span>
+                </p>
+            </dd>
+        </dl>
+    </section>
+</li>

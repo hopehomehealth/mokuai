@@ -1,0 +1,213 @@
+{include file="header.html"}
+<script src="{url('/style/lefttime.js')}"></script>
+<link rel="stylesheet" href="{url('/style/css/boutique.css')}">
+<script src="{url('/style/artDialog/artDialog.js?skin=225')}"></script>
+<script src="{url('/style/jquery.ajaxContent.pack.js')}" type="text/javascript"></script>
+{include file="ur_here.html"}
+
+<div id="container">
+    <div id="qishu"></div>
+    <div class="fn-clear mt20 jp-sp">
+        <div class="picFocus fn-left aucli">
+            {if $data.row.win > 0}
+            <div class="winz {if $data.row.user eq 1}winzUser{/if}"><i>{$data.row.win}<span>%</span></i></div>
+            {/if}
+            <div class="bd">
+                <ul>
+                    {zz mod=fileurl var=tagPics source=$data.row.thumbs width=448 height=277 type=0 num=5}
+                    {foreach from=$tagPics item=m key=key}
+                    <li><img src="{zz mod=fileurl source=$m.path width=448 height=277 type=0}" /></li>
+                    {/foreach}
+                </ul>
+            </div>
+            <div class="hd">
+                <ul>
+                    {foreach from=$tagPics item=m key=key}
+                    <li class="v"><img src="{zz mod=fileurl source=$m.path width=80 height=54 type=0}" /><span></span></li>
+                    {/foreach}
+                </ul>
+            </div>
+
+            <div class="fn-clear jp-fx">
+                <span class="fn-left">分享到：</span>
+                {share()}
+            </div>
+        </div>
+
+        <div class="fn-right jp-spr">
+            <h1 class="jp-title">{$data.row.title}</h1>
+            <div class="p4">{if $data.row.status eq $smarty.const.PRE_START}即将开始{else}剩余{/if}：<i id="leftTime{$data.row.act_id}">请稍等, 正在载入中...</i></div>
+            <script type="text/javascript">
+                onload_leftTime('{$data.row.act_id}',"{$data.row.diff_time}","{$data.row.status}");
+            </script>
+            <p><span class="txt-sc">市场价：{$data.row.price|price_format}</span></p>
+            {if $data.row.desc.0}
+            <p>商品来源：<a href="{$data.row.desc.1}" class="color02" target="_blank">{$data.row.desc.0}</a> <span class="color04">（正品保障）（采购平台价格会有上下浮动）</span></p>
+            {/if}
+            {if $data.row.amplitude > 0}
+            <p>加价幅度：<span class="color02">{$data.row.amplitude|price_format}</span></p>
+            {/if}
+            {if $data.row.deposit > 0}
+            <p>{$L.unit_pay}<a _title="为保证公平公正竟拍" class="layerTip">{$L.unit_baozheng}</a>：<span class="color01">{$data.row.deposit|price_format}</span> <span class="color04">（参加本{$L.unit_pay}需暂时缴纳的{$L.unit_baozheng}）（<span class="color01">获奖者直接使用此{$L.unit_baozheng}支付部分款项；未获奖者{$L.unit_pay}结束后将退还到您的帐户余额</span>）</span></p>
+            {/if}
+            <p>{$L.unit_pay}模式：<span class="color01">{if $data.row.type eq 0}{$L.unit_winning}{else}{$L.unit_pay}+{$L.unit_winning}{/if}</span> <span class="color04">（{if $data.row.type eq 0}本{$L.unit_pay}为{$L.unit_winning}模式，只有一次出价机会{if $data.row.typenum gt 0}，参与人数超过<span class="color01">{$data.row.typenum}</span>人，最高出价者将获得商品{/if}{else}本{$L.unit_pay}最高出价者{$L.unit_pay}成功，同时首次出价者还有一次{$L.unit_winning}机会{/if}）</span></p>
+            <p>{$L.unit_kaijiang}处理：<span class="color04">工作日每天下午3:00-4:00，系统计算当天14点前所有首次出价结果</span></p>
+            <p>{$L.unit_winning}人数：{$data.codCount}/{if $data.row.winnum<0}不限数量{elseif $data.row.winnum>0}{$data.row.winnum}{else}0{/if} <span class="color04">（{if $data.row.winnum<0}本{$L.unit_pay}{$L.unit_winning}人数不限数量{elseif $data.row.winnum>0}本{$L.unit_pay}最大{$L.unit_winning}数为前{$data.row.winnum}位{$L.unit_winning}者{else}本{$L.unit_pay}未设置{$L.unit_winning}{/if}）</span></p>
+            {if $data.row.painum > 0}
+            <p><a href="{'/content/index/78'|url}">{$L.unit_pay_points}</a>限额：{$data.row.painum} <span class="color04">（若您{$L.unit_pay}成功或{$L.unit_winning}，下单时最多可使用{$L.unit_pay_points}的数量）</span></p>
+            {/if}
+            {if $data.row.paib}
+            <p>扣除<a href="{'/content/index/78'|url}">{$L.unit_pay_points}</a>：{$data.row.paib} <span class="color04">（本商品首次出价即扣相应{$L.unit_pay_points}数，{$L.unit_pay_points}不足则无法出价）</span></p>
+            {/if}
+
+            <div class="fn-clear jp-spbtn">
+                {if $data.row.status eq $smarty.const.PRE_START}
+                <div class="fn-left jp-btn02">
+                    <div class="fn-left jp-jgtxt">
+                        即将开始
+                    </div>
+                </div>
+                {elseif $data.row.status eq $smarty.const.UNDER_WAY}
+                <div class="fn-left jp-btn">
+                    <div class="fn-left jp-jgtxt">
+                        {if $data.row.winnum>0 && $data.codCount>=$data.row.winnum}
+                        {$L.unit_winning}人数已满，敬待下期
+                        {else}
+                        <style type="text/css">
+                            .jp-spbtn{ height:78px; line-height:78px; margin-top:20px;}
+                            .jp-btn{ background:url('/style/images/jp-btr.png') right top no-repeat; padding-right:15px;}
+                            .jp-jgtxt{ background:url('/style/images/jp-btl.png') left top no-repeat; padding-left:35px; color:#ffff00; padding-right:10px;font-size: 40px; font-weight: bold;}
+                            .jp-jgtxt i{ font-size: 18px; font-weight: normal; font-style: normal;}
+                        </style>
+                        {if $data.row.current_price > 0}
+                        ￥<span id="CurPrice">{$data.row.current_price}</span>
+                        {else}
+                        {$data.row.paib}<i>{$L.unit_pay_points}</i>
+                        {/if}
+                        {/if}
+                    </div>
+                    {if $data.row.winnum>0 && $data.codCount>=$data.row.winnum}
+                    {else}
+                    <div class="fn-left jp-btn-01">
+                        {if $smarty.session.mid}
+                        <a href="javascript:;" id="qjA">出 价</a>
+                        {else}
+                        <a href="{'/member/login'|url}">登 陆</a>
+                        {/if}
+                    </div>
+                    {/if}
+                </div>
+                {else}
+                    {if $data.row.type eq '1'}
+                        {if $smarty.session.mid && ($data.row.last_bid.bid_user eq $smarty.session.mid) && ($data.row.status eq $smarty.const.FINISHED)}
+                        <div class="fn-left">
+                            <form action="/order/buy" method="post" style="padding-top:12px;">
+                                <input type="hidden" name="type" value="{$smarty.const.CART_AUC}" />
+                                <input type="hidden" name="id" value="{$data.row.act_id}" />
+                                <button type="submit" class="btn-common">点击购买</button>
+                            </form>
+                        </div>
+                        {else}
+                        <div class="fn-left jp-btn03">
+                            <div class="fn-left jp-jgtxt">
+                                {$L.unit_pay}结束
+                            </div>
+                        </div>
+                        {/if}
+                    {else}
+                    <div class="fn-left jp-btn03">
+                        <div class="fn-left jp-jgtxt">
+                            {$L.unit_pay}已结束
+                        </div>
+                    </div>
+                    {/if}
+                {/if}
+                <div class="fn-left jp-spzjl">
+                    {if $data.row.current_price > 0}{else}【<a href="{'/content/index/78'|url}" class="color02" target="_blank">领{$L.unit_pay_points}</a>】 {/if}{$L.unit_winning}率：<span class="color01">{$data.row.win}%</span> ，已有<span class="color01" id="BidCount">{$data.row.bid_user_count}</span>人参与
+                </div>
+            </div>
+            {include file="auction/public_qujia.html"}
+        </div>
+    </div>
+
+    <div class="fn-clear jp-sptab" id="tab">
+        <ul class="fn-left">
+            <li class="dq">商品描述</li>
+            <li onclick="load_log()">出价记录</li>
+            <li onclick="load_cod()">{$L.unit_winning}名单</li>
+        </ul>
+        <div class="fn-left">
+            <a href="{'/content/html/winrules'|url}" target="_blank">{$L.unit_winning}规则</a>
+            <a href="{'/content/index/47'|url}" target="_blank">常见问题</a>
+        </div>
+    </div>
+    <div class="jp-spxq fn-clear">
+        <div class="nr1 sp-txt">
+            {picurl($data.row.content|stripcslashes)}
+            {if $data.row.price > 5000}
+            <div class="special">重要说明：{$L.unit_price}获得者拥有 {$data.row.title} 10年免费使用权</div>
+            {/if}
+        </div>
+        <div class="nr1 sp-zjmd fn-clear" id="log" style="display: none"></div>
+        <div class="nr1 sp-zjmd fn-clear" id="cod" style="display: none"></div>
+    </div>
+
+    {if $data.love}
+    <div class="ceneral-title mt20">
+        <h2>猜你喜欢 </h2>
+    </div>
+    <div class="fn-clear ceneral picScroll-left">
+        <div class="bd">
+            <ul class="picList">
+                {foreach from=$data.love item=auction}
+                {include file="auction/lbi_auction.html"}
+                {/foreach}
+            </ul>
+        </div>
+    </div>
+    {/if}
+</div>
+
+{include file="footer.html"}
+<script src="/style/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript">
+    jQuery(".picScroll-left").slide({ titCell:".hd ul",mainCell:".bd ul",autoPage:true,interTime:6000,effect:"left",autoPlay:true,vis:5,trigger:"click" });
+</script>
+<script type="text/javascript">jQuery(".picFocus").slide({ mainCell:".bd ul",effect:"left",autoPlay:true });</script>
+<script type="text/javascript">
+    $(function(){
+        //选项卡鼠标滑过事件
+        $('.jp-sptab  li').click(function(){
+            TabSelect(".jp-sptab li", ".jp-spxq .nr1", "dq", $(this))
+        });
+
+        function TabSelect(tab,con,addClass,obj){
+            var $_self = obj;
+            var $_nav = $(tab);
+            $_nav.removeClass(addClass);
+            $_self.addClass(addClass);
+            var $_index = $_nav.index($_self);
+            var $_con = $(con);
+            $_con.hide();
+            $_con.eq($_index).show();
+        }
+    });
+
+    $("#qishu").load('/auction/ajax_qishu?id={$data.row.act_id}');
+
+    var isloadLog = isloadCod = false;
+    function load_log(load){
+        load=load?load:false;
+        if(isloadLog == false || load==true){
+            $("#log").html("拼命加载中...").load('/auction/ajax_log?id={$data.row.act_id}');
+            isloadLog = true;
+        }
+    }
+    function load_cod(load){
+        load=load?load:false;
+        if(isloadCod==false || load==true){
+            $("#cod").html("拼命加载中...").load('/auction/ajax_log?id={$data.row.act_id}&status=cod');
+            isloadCod = true;
+        }
+    }
+</script>

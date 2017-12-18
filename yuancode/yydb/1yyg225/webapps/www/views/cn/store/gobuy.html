@@ -1,0 +1,39 @@
+{include file="header.html"}
+<link type="text/css" rel="stylesheet" href="/style/css_02/style.css" />
+<link type="text/css" rel="stylesheet" href="/style/css_02/merchant.css" />
+<div class="container menu-show">
+    <div class="merchant-left">
+        <div class="merchant-pd" id="m">
+            <div class="merchant-top">
+                <a href="/store/index/{$mid}">返回店铺</a>
+                <strong>所有{$L.unit_go_buy}商品</strong>
+            </div>
+            <ul class="ten box-sizing">
+                {foreach from=$data.list item=m}
+                <li style="height: auto">
+                    <div class="ten1 index1-img">
+                        <em class="scrollLoadingDiv"><a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}" target="_blank" title="{$m.title}"><img alt="{$m.title}" class="scrollLoading" src="/style/images/pix.gif" data-url="{zz mod=fileurl source=$m.imgurl_src width=150 height=150 type=0}" id="buy_img_{$m.buy_id}" /></a></em>
+                        <p class="banner-title"><a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}" target="_blank" title="{$m.title}">{$m.title}</a></p>
+                        <p class="banner-money">价格：<b style="color: #f60">{$m.custom_price|price_format}</b></p>
+                    </div>
+                    <div class="ten2">
+                        <p>
+                            <a href="javascript:;" onclick="addToCart('{$m.buy_id}','buy');" class="ten-a">立即购买</a>
+                            <a href="javascript:;" onclick="addToCart('{$m.buy_id}','',this)" class="ten-a1">加入购物车</a>
+                        </p>
+                    </div>
+                </li>
+                {/foreach}
+            </ul>
+        </div>
+        {include file="public_page.html"}
+    </div>
+    {include file="store/info.html"}
+</div>
+<div class="merchant"></div>
+{include file="footer.html"}
+<script src="/style/jquery.SuperSlide.2.1.1.js"></script>
+<script src="/style/css_02/common_02.js"></script>
+<script type="text/javascript">
+    $(".merchant-banner").slide({ titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"fold",autoPlay:true,interTime:5000 });
+</script>

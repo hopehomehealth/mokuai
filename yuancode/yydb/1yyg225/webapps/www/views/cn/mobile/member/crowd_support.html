@@ -1,0 +1,41 @@
+{include file="crowd/crowd_header.html"}
+{include file="member/crowd_menu.html"}
+<div class="user-top-nav">
+    <ul>
+        <li {if $smarty.get.status eq ''}class="on"{/if}>
+            <a href="{url('/crowd_member/support')}">全部</a>
+        </li>
+        <li {if $smarty.get.status eq 1}class="on"{/if}>
+            <em><a href="{url('/crowd_member/support')}?status=1">已支付</a></em>
+        </li>
+        <li {if $smarty.get.status eq 2}class="on"{/if}>
+            <em> <a href="{url('/crowd_member/support')}?status=2">未支付</a></em>
+        </li>
+        <li {if $smarty.get.status eq 3}class="on"{/if}>
+            <em><a href="{url('/crowd_member/support')}?status=3">已取消</a></em>
+        </li>
+    </ul>
+</div>
+
+<div class="mylist">
+    <ul class="list">
+        {include file="member/lbi/list_crowd_support.html"}
+    </ul>
+
+
+
+</div>
+<script type="text/javascript">
+    var status = "{if $smarty.get.status}{$smarty.get.status}{else}{/if}";
+    var url = "/crowd_member/support";
+    $(function(){
+    });
+
+    var ExtendOptions = {
+        path: function(index) {
+            return "/crowd_member/support/"+index+"?status="+status+"&load";
+        }
+    };
+</script>
+{include file="public_scroll.html"}
+{include file="crowd/crowd_footer.html"}

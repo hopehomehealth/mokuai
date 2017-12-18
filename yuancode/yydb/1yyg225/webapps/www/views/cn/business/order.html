@@ -1,0 +1,178 @@
+{include file="header.html"}
+<link type="text/css" rel="stylesheet" href="/style/css_02/style.css" />
+<link type="text/css" rel="stylesheet" href="/style/css/member.css" />
+<link type="text/css" rel="stylesheet" href="/style/css_02/merchant.css" />
+<div class="container menu-show">
+    {include file="business/ur_here.html"}
+    {include file="business/menu.html"}
+    <div class="fn-right hy-r" id="m">
+        <div class="shop-right">
+            <h3>订单管理</h3>
+        </div>
+        <div class="shop-bor">
+            <div class="shop-order">
+                <form action="/business/order#m" method="get">
+                    <select class="order-select" name="k">
+                        <option value="order_sn" {if $k eq 'order_sn'}selected{/if}>订单号</option>
+                    </select>
+                    <input type="text" name="q" value="{$q}" class="order-input order-w" />
+                    <select class="order-select" name="status">
+                        <option value="">-订单状态-</option>
+                        {foreach from=$orderStatus item=m key=k}
+                        <option value="{$k}"{if $status eq $k} selected="selected"{/if}>{$m}</option>
+                        {/foreach}
+                    </select>
+                    <input type="submit" class="order-input2" value="搜索" />
+                </form>
+            </div>
+            <div class="shop-order1 box-sizing">
+            <table width="100%">
+                <thead>
+                    <tr>
+                        <th colspan="2">商品详情</th>
+                        <th width="300">收货人信息</th>
+                        <th width="140">订单总价/还需支付</th>
+                        <th>状态与操作</th>
+                    </tr>
+                </thead>
+                {foreach from=$list item=m}
+                <tbody>
+                    <tr><td class="shop-border" colspan="5"></td></tr>
+                    <tr>
+                        <th colspan="5">
+                            <span class="shop-color">订单编号：</span>
+                            <font>{$m.order_sn}</font>
+                            <span>（{$m.order_code}）</span>
+                            <span class="shop-color">下单时间：</span>
+                            <span>{date('Y-m-d H:i:s',$m.c_time)}</span>
+                            <!--<a href="#"><i class="iconfont icon-product-doc"></i>订单详情</a>-->
+                            <span>会员名：</span>
+                            <span class="shop-color">{$m.m_username}</span>
+                            {if $m.m_nickname}
+                            <span>昵称：</span>
+                            <span class="shop-color">{$m.m_nickname}</span>
+                            {/if}
+                            <span>注册手机：</span>
+                            <font>{$m.m_mobile}</font>
+                            {if $m.m_status eq 0}
+                            <b style="color: #f00">已封号</b>
+                            {/if}
+                        </th>
+                    </tr>
+                    {foreach from=$m.goods item=g name=f}
+                    <tr class="shop-border1">
+                        <td width="85"><a href="{$m.goods_url}" target="_blank"><img src="{$g.imgurl_thumb}" /></a></td>
+                        <td width="320" class="shop-border2">
+                            <a href="{$m.goods_url}" target="_blank">
+                                {$g.goods_name} <font class="color03">（数量：{$g.buy_num}）</font>
+                            </a>
+                            {if $g.goods_info}
+                            <span>{$g.goods_info|nl2br}</span>
+                            {/if}
+                            {if $g.goods_price}
+                            <p>原价：{$g.goods_price}</p>
+                            {/if}
+                        </td>
+                        {if $smarty.foreach.f.index eq 0}
+                        <td class="shop-border3" rowspan="{$m.goods|count}">
+                            <p>{$m.name}[{$m.mobile}]</p>
+                            {if $m.area || $m.deliver}
+                            <p><i class="iconfont icon-truckfuzhi"></i>{$m.area} {$m.deliver}</p>
+                            {/if}
+                            {if $m.express_name || $m.express_num}<p>{$m.express_name}[<a href="http://www.kuaidi100.com/chaxun?com={$m.express_pinyin}&nu={$m.express_num}" target="_blank">{$m.express_num}</a>]</p>{/if}
+                            {if $m.note}<p>{$m.note}</p>{/if}
+                        </td>
+                        <td rowspan="{$m.goods|count}">
+                            <p>{$m.order_price|price_format}</p>
+                            <strong>{$m.amount|price_format}</strong>
+                        </td>
+                        <td class="shop-border4" rowspan="{$m.goods|count}">
+                            {if $m.status==2 || $m.status==7}
+                            <!--收到货款,等待发货-->
+                            <p>{$m.status_name}</p>
+                            <p><a href="javascript:;" onclick="send('{$m.order_sn}')" class="order-color">发货</a></p>
+
+                            {elseif $m.status==3}
+                            <!--已发货-->
+                            <p>{$m.status_name}</p>
+                            <p><a href="http://www.kuaidi100.com/chaxun?com={$m.express_pinyin}&nu={$m.express_num}" target="_blank" class="order-color1">查看物流</a></p>
+
+                            {else}
+                            <p>{$m.status_name}</p>
+                            {/if}
+                        </td>
+                        {/if}
+                    </tr>
+                    {/foreach}
+                </tbody>
+                {foreachelse}
+                <tfoot>
+                    <tr>
+                        <td colspan="10" style="text-align: center;padding: 20px 0;">没有找到符合条件的订单！</td>
+                    </tr>
+                </tfoot>
+                {/foreach}
+            </table>
+            </div>
+            {include file="public_page.html"}
+        </div>
+    </div>
+</div>
+<div class="merchant"></div>
+<div id="layer_send" style="display: none;">
+    <style type="text/css">
+        .shop-set{ padding: 15px 20px; }
+        .shop-set table tr th, .shop-set tr td{ padding: 8px 10px; }
+    </style>
+    <div class="shop-set">
+        <form class="layer_form" action="/business/doSend" method="post" target="iframeNews">
+        <table width="100%" class="box-sizing" border="0">
+            <tr>
+                <th width="100">订单号：</th>
+                <td>
+                    <span id="order_sn"></span>
+                    <input type="hidden" id="order_sn_input" name="order_sn" value="" />
+                </td>
+            </tr>
+            <tr>
+                <th>选择快递：</th>
+                <td>
+                    <select name="express">
+                        {foreach from=$express item=m}
+                        <option value="{$m.id}">{$m.name}</option>
+                        {/foreach}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>快递单号：</th>
+                <td>
+                    <input type="text" name="express_no" class="shop-set2" />
+                </td>
+            </tr>
+            <tr>
+                <th>&nbsp;</th>
+                <td><input type="submit" name="submit" value="确认发货" class="shop-set3" /></td>
+                <th>&nbsp;</th>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+        </form>
+    </div>
+</div>
+{include file="footer.html"}
+<script src="/style/css_02/common_02.js"></script>
+<script type="text/javascript">
+    function send(order_sn){
+        $('#order_sn').html(order_sn);
+        $('#order_sn_input').val(order_sn);
+        var pagei = $.layer({
+            type: 1,   //0-4的选择,
+            title: '商家订单发货',
+            area: ['400px', '300px'],
+            page: {
+                html: $('#layer_send').html()
+            }
+        });
+    }
+</script>

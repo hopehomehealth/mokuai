@@ -1,0 +1,25 @@
+{foreach from=$list item=row}
+<li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+    <div class="am-u-sm-4 am-list-thumb">
+        <div class="icon {if $row.is_success eq 0}icon-ing{elseif $row.is_success eq 1}icon-success{/if}"></div>
+        <a href="{url('/crowd/detail/')}{$row.cd_id}" class="">
+            <img src="{zz mod=fileurl source=$row.thumb width=285 height=224}" />
+        </a>
+    </div>
+    <div class="am-u-sm-8 am-list-main">
+        <h3 class="am-list-item-hd">{$row.cd_name}</h3>
+        <div class="zcjd">
+            <span style="width:{$row.cd_total|progress:$row.cd_price}%;"></span>
+        </div>
+        <div class="am-list-item-text">
+            <dl>
+                <dd>{$row.cd_total|progress:$row.cd_price}% <i>已达</i></dd>
+                <dd>{$row.cd_total|price_format:1}  <i>已筹</i></dd>
+                <dd>{$row.end_time|endDay} <i>剩余时间</i></dd>
+            </dl>
+
+        </div>
+
+    </div>
+</li>
+{/foreach}

@@ -1,0 +1,20 @@
+<li class="w-quickBuyList-item">
+    <div class="w-goods w-goods-l w-goods-ing">
+        <div class="w-goods-pic scrollLoadingDiv">
+            <a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}" target="_blank" title="{$m.title}">
+                <img alt="{$m.title}" class="scrollLoading" src="/style/images/pix.gif" data-url="{zz mod=fileurl source=$m.imgurl_src width=250 height=150 type=0}" id="buy_img_{$m.buy_id}" />
+            </a></div>
+        <p class="w-goods-title f-txtabb">
+            <a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}" target="_blank" title="{$m.title}">{$m.title}</a>
+        </p>
+        <p class="w-goods-price">
+            价格：<b>{$m.custom_price|price_format}</b>
+            <s>{if $m.goods_price gt $m.custom_price}{$m.goods_price|price_format}{/if}</s>
+        </p>
+        <div class="w-goods-opr">
+            <p class="w-goods-opr-buy">
+                <a class="w-button w-button-main w-button-l" onclick="addToCart('{$m.buy_id}','buy');" href="javascript:;" style="width: 90px;">立即购买</a>
+                <a class="w-button w-button-l" onclick="addToCart('{$m.buy_id}','',this)" href="javascript:;" style="width:90px;">加入购物车</a> </p>
+        </div>
+    </div>
+</li>

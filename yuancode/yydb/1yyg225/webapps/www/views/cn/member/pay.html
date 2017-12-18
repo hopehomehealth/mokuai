@@ -1,0 +1,36 @@
+{include file="header.html"}
+<link rel="stylesheet" href="{url('/style/css/member.css')}">
+{include file="ur_here.html"}
+<style type="text/css">
+    .pay_button input{ background: #e54048; border: 0; font-size: 22px; color: #fff; font-weight: bold; padding:10px 20px; margin: 10px 0; cursor: pointer }
+</style>
+<div id="container">
+    <div class="fn-clear mt20 pb20">
+        {include file="member/menu.html"}
+        <div class="fn-right hy-r">
+            <div class="fn-clear hy-tjxh">
+                <div class="title">
+                    <h2>充值确认</h2>
+                </div>
+
+                <div class="hy-box">
+                    <div style="font-size:18px;color:#000;">尊敬的<b class="color01">{$member.username}</b>用户：</div>
+                    <div style="border-top:1px dotted #ccc;border-bottom:1px dotted #ccc;padding:10px 0;margin:10px 0;">
+                        <p>商户名称：<b class="color01">{$site_config.site_name}</b></p>
+                        <p>您的充值金额为：<b class="color01">{$order.surplus_amount}</b>元</p>
+                        {if $payment_info.pay_fee}
+                        <p>支付手续费用为：<b class="color01">{$payment_info.pay_fee}</b>元</p>
+                        {/if}
+                        <p>您选择的支付方式为：<b class="color01">{$payment_info.pay_name}</b></p>
+                        <div class="pay_button">{$payment_info.pay_button}</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style type="text/css">
+.pay_button input{ background: #e54048; border: 0; font-size: 14px; color: #fff; font-weight: bold; padding:10px 20px; margin: 10px 0; cursor: pointer }
+</style>
+{include file="footer.html"}

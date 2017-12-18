@@ -1,0 +1,25 @@
+{assign var='header' value='header2'}
+{include file="top.html"}
+<style type="text/css">
+    .pay_success{ padding: 30px; font-size: 12px; }
+    .pay_success h2{ font-size: 16px;}
+    .pay_success .p1{ font-weight: bold; font-size: 12px; }
+    .pay_success .p2{ font-size: 12px; }
+    .share_box{ margin: 10px 0 0; padding:10px;background:#ececec;border-radius:5px; }
+</style>
+<div id="content" class="container main">
+    <div class="pay_success">
+        <h2 class="color01">恭喜您，支付成功！</h2>
+        <p class="p1">请等待系统为您揭晓！</p>
+        <p class="p2">您现在可以
+            <a href="{url('/member/db')}" class="color02">查看{$L.unit_yun}记录</a> 或
+            <a href="{url('/yunbuy')}" class="color02">继续{$L.unit_yun}</a>
+        </p>
+    </div>
+</div>
+<script>
+	window.setTimeout(go,3000);
+	function go(){
+		location.href="{url('/yunbuy')}";
+	}
+</script>

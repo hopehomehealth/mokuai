@@ -1,0 +1,11 @@
+{if $page.count>1}
+<div class="page">
+    {if $page.nonce>1}
+    <a class="demo" {$page.prev}>上一页</a>
+    {/if}
+
+    {if $page.nonce<$page.count}
+    <a class="demo" {$page.next}>下一页</a>
+    {/if}
+</div>
+{/if}

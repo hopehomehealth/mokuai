@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="renderer" content="webkit">
+    {$site_config.qq_admins}
+    <title>{$seo.title}</title>
+    <meta name="keywords" content="{$seo.keywords}" />
+    <meta name="description" content="{$seo.description}" />
+    {$main.favicon}
+    <link type="text/css" rel="stylesheet" href="{url('/style/crowd/style/style.css')}" />
+    <script src="{url('/style/crowd/js/jquery-1.11.2.min.js')}" type="text/javascript"></script>
+    <script src="{url('/style/crowd/js/jquery.W3CI.js')}" type="text/javascript"></script>
+    <script type="text/javascript" src="/style/layer/layer.min.js"></script>
+    <script type="text/javascript" src="/style/respond.min.js"></script>
+    <script type="text/javascript" src="/style/jquery.scrollLoading-min.js"></script>
+    <script type="text/javascript" src="/style/common.js"></script>
+    <!--[if lt IE 9]>    <script src="/js/html5shiv.min.js"></script>
+    <![endif]-->
+    <!--[if IE 6]>
+    <script src="/js/iepng.js" type="text/javascript"></script>
+    <script type='text/javascript'>
+        EvPNG.fix('*,a:hover');
+    </script>
+    <![endif]-->
+</head>
+<body>
+{if $page neq 'index'}
+<style>
+    body {
+        background-color: #f6f7f8;
+    }
+</style>
+{/if}
+<div class="full headbg">
+    <div class="site-nav">
+        <div class="container site-nav-bd">
+            <div class="site-nav-bd-l ui-left">
+                <a href="{url()}"><img height="17" width="17" src="{url('/style/crowd/images/sy.png')}" />云购首页</a>
+            </div>
+            <div class="site-nav-bd-r ui-right">
+                {if !$smarty.session.mid}
+                {if $smarty.session.oauth.nickname}
+                <a href="{url('/member/verifymobile')}" class="color">{$smarty.session.oauth.nickname}</a>
+                [<a href="{url('/member/doexit')}">退出</a>]
+                {else}
+                {if $site_config.wxpc_login && $mobile neq 1}
+                <a href="https://open.weixin.qq.com/connect/qrconnect?appid={$site_config.wxpc_appid}&redirect_uri={urlencode(url(''))}&response_type=code&scope=snsapi_login&state=22138#wechat_redirect" class="color"><img src="/style/images/wechat.png" style="vertical-align: middle" /> 微信登录</a>
+                <span></span>
+                {/if}
+                {if $site_config.qq_login}
+                <a href="javascript:;" onclick="oauth('{url('/member/oauth/qq?open=1')}')" class="color"><img src="/style/images/qq.png" style="vertical-align: middle" /> QQ登录</a>
+                <span></span>
+                {/if}
+                <a href="{url('/member/login')}" class="color">请登录</a>
+                <span></span>
+                <a href="{url('/member/regist')}"><i class="color" style="font-style: normal">{$L.unit_gift}</i></a>
+                {/if}
+                {else}
+                <a href="{url('/member')}" class="color">{$smarty.session.username}</a>
+                [<a href="{url('/member/doexit')}">退出</a>]
+                <span></span>
+                <a href="{url('/member')}" class="color abg">会员中心</a>
+                {/if}
+
+                {assign var="nav" value=1|nav}
+                {foreach from=$nav item=m}
+                <span> | </span>
+                <a href="{$m.linkurl}"{if $m.isblank} target="_blank"{/if}{if $m.rec eq 1} class="color01"{/if}>{$m.title}</a>
+                {/foreach}
+
+                <span> | </span>
+                <a href="javascript:;" onclick="AddFavorites(document.title, '{url()}')">收藏网站</a>
+                {if $site_config.disk_status eq 1}
+                <span> | </span>
+                <a href="/disk/login"  class="topa-hot">我的{$L.unit_skydrive}</a>
+                {/if}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="navm">
+    <div class="container">
+
+        <a href="{url('/crowd')}"><img class="logo" src="{zz mod=fileurl source=$site_config.crowd_logo}" /></a>
+
+        <div class="navBar">
+            <ul class="nav clearfix">
+                <li class="m">
+                    <h3>
+                        <a target="_blank" href="{url('/crowd')}">首页</a>
+                    </h3>
+                </li>
+
+                <li class="m">
+                    <h3>
+                        <a class="syxm" target="_blank" href="{url('/crowd/lists')}">所有项目</a>
+                    </h3>
+                    <ul class="sub">
+                        {foreach from=$cat item=m}
+                        <li>
+                            <a href="{url('/crowd/lists?cid=')}{$m.id}">{$m.catname}</a>
+                        </li>
+                        {/foreach}
+
+                    </ul>
+                </li>
+                {assign var="nav" value=6|nav}
+                {foreach from=$nav item=m}
+                <li class="m ">
+                    <h3>
+                        <a href="{$m.linkurl|url}"{if $m.isblank} target="_blank"{/if}>{$m.title}</a>
+                    </h3>
+                </li>
+                {/foreach}
+
+
+
+                <li class="m fbxm">
+                    <h3>
+                        <a target="_blank" href="{url('/crowd/step_base')}">发布项目</a>
+                    </h3>
+                </li>
+
+                <li class="m">
+                    <h3>
+                        <a class="syxm" href="{url('/member')}">我的</a>
+                    </h3>
+                    <ul class="sub" style="width:105px;">
+                        <li>
+                            <a href="{url('/crowd_member/support')}">我支持的</a>
+                        </li>
+                        <li>
+                            <a href="{url('/crowd_member/focus')}">我关注的</a>
+                        </li>
+                        <li>
+                            <a href="{url('/crowd_member/start')}">我发起的</a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+
+
+
+    </div>
+</div>

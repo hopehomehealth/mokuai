@@ -1,0 +1,63 @@
+{include file='../public_btn.html'}
+<div class="html-box">
+    <form class="cond-form clear" action="#!business/index" onsubmit="return xForm.submit(this)">
+        <input type="hidden" value="" name="page" id="page">
+        <div class="f-unit">
+            <select name="k" id="k">
+                <option value="m.username" {if $k eq 'm.username'}selected{/if}>会员名</option>
+                <option value="b.bus_name" {if $k eq 'b.bus_name'}selected{/if}>店铺名称</option>
+                <option value="b.bus_tel" {if $k eq 'b.bus_tel'}selected{/if}>联系电话</option>
+            </select>
+            <input id="q" class="form-i w160 sitem" name="q" value="{$q}" type="text">
+            <select name="status">
+                <option value="99">-商家状态-</option>
+                {foreach from=$bus_status item=m key=key}
+                <option value="{$key}" {if $key eq $status}selected{/if}>{$m.name}</option>
+                {/foreach}
+            </select>
+
+            <button type="submit" id="submit" style="margin:1px 20px 0 10px;float:left;" class="uiBtn BtnBlue">搜索</button>
+        </div>
+    </form>
+
+    <table class="list">
+        <thead>
+        <tr>
+            <th class="w60">会员ID</th>
+            <th align="left" colspan="2">商家名称/用户名</th>
+            <th align="left">联系手机/QQ</th>
+            <th align="left">实体名称/联系地址</th>
+            <th align="left">备注（未审核原因）</th>
+            <th class="w140">开店时间/申请时间</th>
+            <th class="w80">状态</th>
+            <th class="w140">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {foreach from=$list item=m}
+        <tr>
+            <td align='center'>{$m.mid}</td>
+            <td align="left" width="40"><img src="{$m.bus_logo|default_pic:'store'}" width="40" /></td>
+            <td align='left'>{$m.bus_name|default:'-'}<br /><span class="c-gray">{$m.username|default:'-'}</span></td>
+            <td align='left'>{$m.bus_tel|default:'-'}<br /><span class="c-gray">{$m.bus_qq|default:'-'}</span></td>
+            <td align='left'>{$m.bus_company|default:'-'} <b class="c-orange">{$m.bus_company_type}</b><br /><span class="c-gray">{$m.bus_area|default:'-'} {$m.bus_address|default:'-'}</span></td>
+            <td align='left'>{$m.bus_why}</td>
+            <td align='center'>{if $m.time_open}{date('Y-m-d H:i:s',$m.time_open)}{else}-{/if}<br /><span class="c-gray">{if $m.time_apply}{date('Y-m-d H:i:s',$m.time_apply)}{else}-{/if}</span></td>
+            <td align="center">
+                <span style="color:{$m.bus_status_row.color}">{$m.bus_status_row.name}</span>
+            </td>
+            <td class="opera" nowrap>
+                <a class="uiBtn" href="#!business/edit/{$m.id}?com=xshow|编辑商家信息">编辑</a>
+                <a class="uiBtn" href="#!goods/index/?k=b.bus_name&q={$m.bus_name}&is_sale=99">商品审核</a>
+                <p style="height: 5px"> </p>
+                <a class="uiBtn" href='javascript:;' onclick="main.confirm_del('business/del','{$m.id}')">删除</a>
+                <a class="uiBtn" href="#!member/account_log?mid={$m.mid}&k=desc&q=商家资金结算" title="商家资金结算">结算明细</a>
+            </td>
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+    <div class="foot-btn">
+        <div class="pager r">{$page}</div>
+    </div>
+</div>

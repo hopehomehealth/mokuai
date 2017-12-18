@@ -1,0 +1,17 @@
+{assign var='header' value='header2'}
+{include file="top.html"}
+<div id="content" class="container detail">
+    <ul class="win-list" id="win"></ul>
+    <div class="loading getMore_win"></div>
+</div>
+{include file="footer.html"}
+<script src="/style/mobile/js/jquery-pageload.js"></script>
+<script src="/style/mobile/js/jquery.more.js"></script>
+<script type="text/javascript">
+    var type='win';
+    $('#'+type).pageload({
+        url: '/yunbuy/ajax_'+type,
+        param: 'id={$row.buy_id}',
+        trigger: '.getMore_'+type
+    });
+</script>

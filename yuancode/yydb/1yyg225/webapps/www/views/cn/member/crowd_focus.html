@@ -1,0 +1,108 @@
+{include file="header.html"}
+<link rel="stylesheet" href="{url('/style/css/member.css')}">
+<link rel="stylesheet" href="{url('/style/crowd/style/style.css')}">
+{include file="ur_here.html"}
+<div id="container">
+    <div class="fn-clear mt20 pb20">
+        {include file="member/menu.html"}
+        <div class="fn-right hy-r">
+        <div class="hy-tjxh fn-clear">
+            <ul class="fn-clear db-tab">
+                <li><a href="{url('/crowd_member/support')}">我支持的</a></li>
+                <li class="dq"><a href="{url('/crowd_member/focus')}">我关注的</a></li>
+                <li><a href="{url('/crowd_member/start')}">我发起的</a></li>
+            </ul>
+            <div class="liat-table mt20">
+                <ul>
+                    <li class="li1">
+                        <i>项目信息</i>
+                    </li>
+                    <li class="li2">
+                        <i>支持人数</i>
+                    </li>
+                    <li class="li3">
+                        <i>关注人数</i>
+                    </li>
+                    <li class="li4">
+                        <i>操作</i>
+                    </li>
+                </ul>
+                {foreach from=$list item=row}
+                <dl>
+                    <dd class="dd1">
+                        <a href="{url('/crowd/detail/')}{$row.cd_id}"><img src="{zz mod=fileurl source=$row.thumb width=100 height=100}" /></a>
+                        <h3>
+                            <a href="{url('/crowd/detail/')}{$row.cd_id}">{$row.cd_name}</a>
+                            {if $row.status eq 0}<span class="dsh">待审核</span>
+                            {else if $row.status eq 1}<span class="shz">审核中</span>
+                            {else if $row.status eq 2}<span class="zhongcz">众筹中</span>
+                            {else if $row.status eq 3}<span class="ybh" title="{$row.reason}">已驳回</span>
+                            {/if}
+                        </h3>
+                        <p>&nbsp;</p>
+                        <section>
+                                <span>
+                                    已完成<br />
+                                    {$row.cd_total|progress:$row.cd_price}%
+                                </span>
+                                <span>
+                                    已筹集<br />
+                                    {$row.cd_total|price_format:1}
+                                </span>
+                                {if $row.end_time}
+                                <span>
+                                    剩余时间<br />
+                                    {$row.end_time|endDay}
+                                </span>
+                                {/if}
+                        </section>
+                    </dd>
+                    <dd class="dd2">
+                        <table style="width:100%;">
+                            <tr>
+                                <td>
+                                    <em>{$row.support_num}</em>
+                                </td>
+                            </tr>
+                        </table>
+                    </dd>
+                    <dd class="dd3">
+                        <table style="width:100%;">
+                            <tr>
+                                <td>
+                                    <em>{$row.focus_num}</em>
+                                </td>
+                            </tr>
+
+                        </table>
+
+                    </dd>
+                    <dd class="dd4">
+                        <table style="width:100%;">
+                            <tr>
+                                <td>
+                                    <a href="{url('/crowd/detail/')}{$row.cd_id}#support">去支持</a>
+                                    <a  href="javascript:zz_confirm('您确认取消关注吗?','{url('/crowd_member/cancel_focus/')}{$row.cd_id}');">取消关注</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </dd>
+                </dl>
+                {/foreach}
+
+                </dl>
+
+            </div>
+            <div class="foot-btn">
+                {include file="public_page.html"}
+            </div>
+        </div>
+
+
+
+
+
+        </div>
+     </div>
+</div>
+{include file="footer.html"}

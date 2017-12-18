@@ -1,0 +1,248 @@
+{include file="header.html"}
+<script src="/style/lefttime.js"></script>
+<link rel="stylesheet" href="{url('/style/css/boutique.css')}">
+<link rel="stylesheet" href="{url('/style/css/yiyuanbao.css')}">
+<style type="text/css">
+    .fn-clear{ clear: both; }
+
+    .tiyan-box{ margin-bottom: 40px;}
+    .tright{ float: right; width: 250px; background: #F5F5F5; line-height: 1.8; color: #333; }
+    .tright dt{ background: #1FB89A; height: 35px; line-height: 35px; padding: 0 0 0 15px; font-size: 16px; color: #fff; }
+    .tright dd{ padding: 15px 18px; border-bottom:1px dashed #CBCBCB}
+    .tright dd.last{ border-bottom: 0; }
+    .tright dd h4{ font-size: 16px; color: #1FB89A; line-height: 1.2;}
+    .tright dd h4 i{ font-size: 30px; font-weight: normal; font-style: italic }
+    .tright dd .d0{ color: #999; }
+    .tright dd .d1{ margin-top:5px; }
+    .tright dd .d1 em{ font-style: italic; }
+    .tleft{ float:left; width:879px;  }
+    h3{ font-size: 18px; line-height: 40px; height: 40px; overflow: hidden; color: #000; font-weight: normal; }
+    h3 a{ color: #000; }
+    h3 a:hover{ color: #e54048; }
+    h3 span{ float:right; font-size: 12px; line-height: 50px; }
+
+    .jp-list{ width: 878px; border-top:2px solid #888 }
+    .jp-list ul{ width: 879px;}
+    .jp-list li{ padding: 10px 12px 10px 12px; }
+    .jp-list li:hover{ padding: 9px 11px 9px 11px; }
+
+    .hy-btn{ background:#1FB89A; height:22px; line-height: 22px; font-size:14px; color:#fff; cursor:pointer; border-radius:3px; border:1px solid #048E77; padding:0 10px; border-width: 0 1px 2px 0; }
+    .hy-btn:hover{ color:#ff0;}
+
+    .dl2{ border-top: 10px solid #fff; }
+    .dl2 dd{ padding:0; }
+    .act-bd { padding:0; height:auto; overflow:hidden; position:relative; background: #F5F5F5; }
+    .act-bd li { height: 70px; padding:14px 10px 0 70px; border-bottom:1px dotted #ddd; position: relative; }
+    .act-bd li.odd{ background: #F5F5F5; }
+    .act-bd li img{ position: absolute; left: 10px; top:18px; border-radius: 50%; }
+    .act-bd li a{ color: #00a0e9; }
+    .act-bd li a:hover{ text-decoration: underline; }
+    .act-bd li .p1{ font-size: 14px; height: 20px; overflow: hidden; }
+    .act-bd li .p2{ height: 36px; line-height: 18px; overflow: hidden;}
+    .act-bd li .p2 a{ color: #666; }
+
+    .more{ text-align: center; font-size: 18px; }
+    .more a{ color: #333;}
+    .more a:hover{ color: #e54048;}
+</style>
+
+<div class="ggAuc">
+    {zz mod=content var=tagAdw module=ad id=13}
+    {zz mod=fileurl var=tagAds source=$tagAdw.images num=2}
+    {foreach from=$tagAds item=m}
+    <div class="g-gg" style="height:{$tagAdw.height}px;background:{$tagAdw.bgcolor} url('{$m.path}') no-repeat center bottom"><span></span>{if $m.title}<a href="{$m.title}" target="_blank"></a>{/if}</div>
+    {/foreach}
+    <div class="container" style="position:relative;margin-top:-180px;height:250px;">
+        {zz mod=content var=tagGG catid=61 limit=1 type=row field=content}
+        {if $tagGG}
+        <div class="txt txt_ty">
+            <dl style="background: #ffdb0b;color:#000;">
+                <dt style="color: #e53f47">{$L.unit_pay}体验公告</dt>
+                <dd>
+                    {$tagGG.content|stripcslashes}
+                </dd>
+            </dl>
+        </div>
+        {/if}
+        <div class="txtScroll-top" style="color: #666">
+            <h4>幸运一族：</h4>
+            <div class="bd">
+                <ul>
+                    {foreach from=$data.log item=m}
+                    <li title="恭喜{$m.username}会员{if $m.win > 0}在{$m.win}%出价成交活动中{/if}以{$m.bid_price|price_format}获{$m.title}">恭喜<a href="{'/minfo?id='|cat:$m.bid_user|url}#aucCod" target="_blank"><span class="color01">{$m.username|nickname:$m.nickname}</span></a>会员{if $m.win > 0}在{$m.win}%出价成交活动中{/if}以<span class="color01">{if $m.bid_price gt 0}{$m.bid_price|price_format}{/if}{if $m.paib gt 0} {$m.paib}{$L.unit_pay_points}{/if}</span>获{$m.title|truncate:16}</li>
+                    {/foreach}
+                </ul>
+            </div>
+        </div>
+        {include file="ur_here.html"}
+    </div>
+</div>
+
+<div class="container tiyan-box fn-clear mt10">
+    <div class="tleft">
+        <h3><span><a href="{'/auction/lists/tiyan'|url}">体验更多宝贝哦...</a></span><a href="{'/auction/lists/tiyan'|url}">{$site_config.site_name}体验区</a></h3>
+        <div class="fn-clear jp-list mb20">
+            <ul class="fn-clear" style="display:block">
+                {foreach from=$data.aucList item=auction}
+                {include file="auction/lbi_auction.html"}
+                {/foreach}
+                {if $data.aucListNo < 3 && $data.aucListNo > 0}
+                {for $foo=1 to $data.aucListNo}
+                <li class="blank"></li>
+                {/for}
+                {/if}
+            </ul>
+        </div>
+        <div class="more" style="display: none"><a href="{'/auction/lists/tiyan'|url}">体验更多精彩宝贝，搬回家.....</a></div>
+    </div>
+    <div class="tright">
+        <dl>
+            <dt>做任务，赚{$L.unit_pay_points}</dt>
+            <dd>
+                <h4>任务<i>1</i>：语音认证</h4>
+
+                <div class="d0">( 每个用户限领一次 )</div>
+                <div class="d1">【任务{$L.unit_jiangli}】<b>1</b> {$L.unit_db_points}{$L.unit_bonus}
+                    <span id="isVoice">
+                        {if $data.memberOther.isVoice neq 1}
+                        <a href="javascript:;" onclick="getPoints('isVoice')" class="hy-btn">领取</a>
+                        <em class="color01" style="display:none;">已领取</em>
+                        {else} <em class="color01">已领取</em>{/if}
+                    </span>
+                </div>
+                <div class="d2">【任务说明】<a href="{url('/member/verifyVoice')}" class="color02">“语音认证”</a>后，即可领取。 </div>
+            </dd>
+            <dd>
+                <h4>任务<i>2</i>：上传头像</h4>
+                <div class="d0">( 每个用户限领一次 )</div>
+                <div class="d1">【任务{$L.unit_jiangli}】<b>{$site_config.isPhoto}</b> {$L.unit_pay_points}
+                    <span id="isPhoto">
+                        {if $data.memberOther.isPhoto neq 1}
+                        <a href="javascript:;" onclick="getPoints('isPhoto')" class="hy-btn">领取</a>
+                        <em class="color01" style="display:none;">已领取</em>
+                        {else} <em class="color01">已领取</em>{/if}
+                    </span>
+                </div>
+                <div class="d2">【任务说明】<a href="{url('/member/photo')}" class="color02">“上传头像”</a>即可领取。</div>
+            </dd>
+            <dd>
+                <h4>任务<i>3</i>：实名认证</h4>
+
+                <div class="d0">( 每个用户限领一次 )</div>
+                <div class="d1">【任务{$L.unit_jiangli}】<b>{$site_config.isIdcard}</b> {$L.unit_db_points}{$L.unit_bonus}
+                    <span id="isIdcard">
+                        {if $data.memberOther.isIdcard neq 1}
+                        <a href="javascript:;" onclick="getPoints('isIdcard')" class="hy-btn">领取</a>
+                        <em class="color01" style="display:none;">已领取</em>
+                        {else} <em class="color01">已领取</em>{/if}
+                    </span>
+                </div>
+                <div class="d2">【任务说明】<a href="{url('/member/verifyidcard')}" class="color02">“实名认证”</a>审核后，即可领取。 </div>
+            </dd>
+            <dd>
+                <h4>任务<i>4</i>：邮箱认证</h4>
+
+                <div class="d0">( 每个用户限领一次 )</div>
+                <div class="d1">【任务{$L.unit_jiangli}】<b>{$site_config.isMail}</b> {$L.unit_db_points}{$L.unit_bonus}
+                    <span id="isMail">
+                        {if $data.memberOther.isMail neq 1}
+                        <a href="javascript:;" onclick="getPoints('isMail')" class="hy-btn">领取</a>
+                        <em class="color01" style="display:none;">已领取</em>
+                        {else} <em class="color01">已领取</em>{/if}
+                    </span>
+                </div>
+                <div class="d2">【任务说明】到<a href="{url('/member/safe')}" class="color02">“账户安全”</a>，点击认证邮箱通过后，即可领取。 </div>
+            </dd>
+            <dd>
+                <h4>任务<i>5</i>：邀请赚{$L.unit_pay_points}</h4>
+                <div class="d2">
+                    【任务说明】邀请第1位送5{$L.unit_pay_points}，第2位送10{$L.unit_pay_points}，第3位送15{$L.unit_pay_points}，第4位送20{$L.unit_pay_points}，第5位起送25{$L.unit_pay_points}，推荐多多，领取多多。
+                    <span>
+                        <a href="{'/member/myivt'|url}" class="hy-btn">立即邀请</a>
+                    </span>
+                </div>
+            </dd>
+            <dd>
+                <h4>任务<i>6</i>：签到送{$L.unit_pay_points}</h4>
+
+                <div class="d0">( 每个用户每天限领一次 )</div>
+                <div class="d1">【任务{$L.unit_jiangli}】<b>{$site_config.signin_jl}</b> {$L.unit_pay_points}
+                    <span id="isQd">
+                        {if $data.is_signin gt 0}
+                        <em class="color01">今日已签到</em>
+                        {else}
+                        <a href="{'/member'|url}" class="hy-btn">立即签到</a>
+                        {/if}
+                    </span>
+                </div>
+                <div class="d2">【任务说明】每日签到免费得{$L.unit_pay_points}，语音认证后第一次签到可获得20{$L.unit_pay_points}（未语音认证仅前5天领取{$site_config.signin_jl}{$L.unit_pay_points}）！</div>
+            </dd>
+            <dd>
+                <h4>任务<i>7</i>：{$L.unit_yun}达人</h4>
+
+                <div class="d0">( 不限次数 )</div>
+                <div class="d1">【任务{$L.unit_jiangli}】<b>{$site_config.isDaren}</b> {$L.unit_pay_points}
+                    <span id="isDaren">
+                        <a href="javascript:;" onclick="getPoints('isDaren')" class="hy-btn">领取</a>
+                    </span>
+                </div>
+                <div class="d2">【任务说明】参与人次（不含体验拍和免费{$L.unit_yun}商品）参与次数每超过50次后获50个{$L.unit_pay_points}！</div>
+            </dd>
+            <dd>
+                <h4>任务<i>8</i>：{$L.unit_pay}达人</h4>
+
+                <div class="d0">( 不限次数 )</div>
+                <div class="d1">【任务{$L.unit_jiangli}】<b>{$site_config.isJpDaren}</b> {$L.unit_pay_points}
+                    <span id="isJpDaren">
+                        <a href="javascript:;" onclick="getPoints('isJpDaren')" class="hy-btn">领取</a>
+                    </span>
+                </div>
+                <div class="d2">【任务说明】参与{$L.unit_pay}商品数（不含体验拍和免费{$L.unit_yun}商品）每超过50次后获50个{$L.unit_pay_points}！</div>
+            </dd>
+        </dl>
+        <dl class="dl2">
+            <dt>最新参与记录</dt>
+            <dd class="last">
+                <div class="act-bd">
+                    <ul>
+                        {foreach from=$data.newlog item=m key=key}
+                        <li {if $key%2 neq 0}class="odd"{/if}>
+                        <a href="{'/minfo?id='|cat:$m.bid_user|url}#auc" target="_blank"><img src="{zz mod=photo source=$m.photo size='80' nopic='/upload/default.gif'}" width="50" height="50" /></a>
+                        <p class="p1"><a href="{'/minfo?id='|cat:$m.bid_user|url}#auc" class="color01" target="_blank">{$m.username|nickname:$m.nickname}</a></p>
+                            <p class="p2"><a href="{'/auction/view/'|cat:$m.act_id|url}" target="_blank" title="{$m.title}">{$m.title|truncate:40}</a></p>
+                        </li>
+                        {/foreach}
+                    </ul>
+                </div>
+            </dd>
+        </dl>
+    </div>
+    <div class="fn-clear"></div>
+
+</div>
+{include file="footer.html"}
+<script src="/style/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript">
+    jQuery(".txtScroll-top").slide({ mainCell:".bd ul",autoPage:true,interTime:3000,effect:"top",autoPlay:true,vis:1 });
+    jQuery(".act-bd").slide({ mainCell:"ul",autoPage:true,effect:"topLoop",autoPlay:true,vis:16,interTime:"2500",delayTime:"1000",opp:true });
+  
+    $('.jp-list li').bind('mouseover',function(){
+        $(this).addClass('hover');
+    }).bind('mouseout',function(){
+        $(this).removeClass('hover');
+    });
+
+    function getPoints(type){
+        $.post('/content/getPoints',{ type:type },function(data){
+            if(data.msg){
+                if(data.error == 0){
+                    layer.msg(data.msg, 2, { type:1 });
+                    $('#'+type+' a').hide();
+                    $('#'+type+' em').css('display','');
+                }else{
+                    layer.tips(data.msg, '#'+type, { time:5 });
+                }
+            }
+        },"json");
+    }
+</script>

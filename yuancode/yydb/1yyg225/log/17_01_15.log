@@ -1,0 +1,6 @@
+[ 2017-01-15T20:25:04+08:00 ] 1.180.215.99 /manage/yunbuy/order?k=d.goods_name&q=&username=15010009589&status=&type=&is_award=&start_time=&end_time=&ajax=1
+ERR 1052 - Column 'username' in where clause is ambiguous! SQL: SELECT SQL_CALC_FOUND_ROWS  d.*, m.is_robots FROM `zz_yundb` AS d   LEFT  JOIN `zz_member` AS m  ON  m.mid = d.mid  WHERE d.id<>0  AND `username` = '15010009589' ORDER BY id DESC  LIMIT 0,20
+
+[ 2017-01-15T20:25:35+08:00 ] 1.180.215.99 /manage/yunbuy/order?k=d.goods_name&q=&username=37169155@qq.com&status=&type=&is_award=&start_time=&end_time=&ajax=1
+ERR 1052 - Column 'username' in where clause is ambiguous! SQL: SELECT SQL_CALC_FOUND_ROWS  d.*, m.is_robots FROM `zz_yundb` AS d   LEFT  JOIN `zz_member` AS m  ON  m.mid = d.mid  WHERE d.id<>0  AND `username` = '37169155@qq.com' ORDER BY id DESC  LIMIT 0,20
+

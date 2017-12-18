@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+	<meta name="format-detection" content="telephone=no" />
+	<title>佣金提现</title>
+	<link rel="stylesheet" type="text/css" href="../css/api.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/user.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/member.css"/>
+</head>
+<body>
+  <div id="header">
+	   <div class="active">
+		    <div class="icon_box" tapmode="" onclick="api.closeWin()"><i class="iconfont icon-fanhui"></i></div>
+		    <div class="toptit">佣金提现</div>
+		    <div class="icon_box" tapmode="" onclick="backhome()"><i class="iconfont icon-shouye"></i></div>
+	   </div>
+  </div>
+
+<div id="content" class="container main">
+
+	<div class="form-m">
+		<form id="submit_form">
+				<div class="item ui-clr">
+					<dl>
+						<dt class="color03">可充值余额：</dt>
+						<dd>
+							<span class="color01 commission"></span>
+						</dd>
+					</dl>
+					<dl>
+						<dt class="color03"><span class="color01">*</span> 提现金额：</dt>
+						<dd>
+							<input name="amount" type="text" class="input-m" data-rule="*" data-nullmsg="请输入提现金额"  />
+						</dd>
+					</dl>
+				</div>
+				<div class="list01 list-address" id="list-content" >
+				</div>
+
+				<input name="Submit" type="hidden" value="1" data-haved="true"/>
+				<input type="button" value="提交申请" id="submit" class="btn" />
+			</form>
+	</div>
+
+	<div id="commission-content"></div>
+</div>
+
+<div class="list_foot">
+	提现手续费：<br>
+	提现佣金<=200 , 收取8%平台手续费<br>
+	提现佣金201-500 , 收取5%平台手续费<br>
+	提现佣金501-800，收取5%平台手续费+5.6%营业税<br>
+	提现佣金801-1000，收取5%平台手续费+5.6%营业税+3%所得税<br>
+	提现佣金1001-4000，收取5%平台手续费+5.6%营业税+（提现佣金-800）*20%所得税<br>
+	大额佣金提现请联系客服处理<br>
+</div>
+<script id="list-template" type="text/x-dot-template">
+	{{?it.list}}
+		{{ for(var i=0; i< it.list.length; i++) { }}
+		<dl class="ui-clr">
+			<dt>
+				<label>
+					<input name="id" type="radio" value="{{=it.list[i].id}}" {{? it.list[i].is_default == 1}}checked="checked"{{?}} data-haved="true" /> 
+					<b>{{=it.list[i].bankname}}</b> 
+					<span>（{{=it.list[i].bankcard}}）</span>
+				</label>
+			</dt>
+			<dd>
+		<table cellpadding="0" cellspacing="0">
+			<tr>
+				<td>
+					<span class="color03">姓名：</span>{{=it.list[i].name}}&nbsp;&nbsp;
+					<span class="color03">开户行地址：</span>{{=it.list[i].bankaddress}}
+				</td>
+			</tr>
+		</table>
+			</dd>
+		</dl>
+		{{ } }}
+	{{?}}
+</script>
+				
+<script type="text/javascript" src="../script/jquery.min.js"></script>
+<script type="text/javascript" src="../script/availdate.js"></script>
+<script type="text/javascript" src="../script/fastclick.js"></script>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/doT.min.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript">			
+function loadData(){							
+	showprog();
+	ajaxRequest('member/withdraw_commission', 'GET', {}, function(ret, err) {
+		if(ret.code==2){
+			api.confirm({
+    			title: '提示',
+    			msg: ret.msg,
+    			buttons: ['确定','取消']
+				}, function(ret, err) {
+					var index = ret.buttonIndex;
+					if (index == 1) {
+						openWin('member_verifyidcard',{win:'commission_withdrawal'});
+					} else {
+						api.closeWin();
+					}
+			});
+		}else if(ret.code==3){
+			api.confirm({
+    			title: '提示',
+    			msg: ret.msg,
+    			buttons: ['确定','取消']
+				}, function(ret, err) {
+					var index = ret.buttonIndex;
+					if (index == 1) {
+						openWin('member_bankcard',{win:'commission_withdrawal'});
+					} else {
+						api.closeWin();
+					}
+			});
+		}else{					
+			temp(ret.data, "list");//alert(JSON.stringify(ret.data));
+			$('.commission').text(ret.data.commission);
+			hideprog();
+		}
+	});				
+}
+
+apiready = function() {
+	loadData();
+}
+
+$(function(){        
+	ac.form({
+		area: "#submit_form",
+		btn: "#submit",
+		singleError: function (e, msg) {
+			toast(msg);
+		},
+		endSuccess: function (data) {
+			showprog();       
+			var amount = $('input[name=amount]').val();
+			var id = $('input[name=id]:checked').val();  
+	    	var D = {id:id,amount:amount,Submit:1};
+			ajaxRequest('member/withdraw_commission', 'POST', {values:D}, function (ret, err) {
+				hideprog();		      
+				toast(ret.msg);
+				if(ret.code==0){
+					openWin('commission_withdrawal_log');
+				 }
+			});
+		}
+	});
+});
+</script>
+</body>
+</html>

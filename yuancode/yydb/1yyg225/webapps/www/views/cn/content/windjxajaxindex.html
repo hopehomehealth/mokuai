@@ -1,0 +1,26 @@
+{if $listDjx.list}
+{foreach from=$listDjx.list item=m key=key}
+{if $m.wait_status eq 0}
+<div class="item itemDjx" title="{$m.title}" id="itemDjx{$m.buy_id}" q="{$m.qihao}">
+    <div class="icon"></div>
+    <div class="pic">
+        <a href="{$m.url}" target="_blank"><img src="{zz mod=fileurl source=$m.imgurl_src width=102 height=102 type=0}" alt="{$m.title}" /></a>
+    </div>
+    <p><a href="{$m.url}" target="_blank" title="{$m.title}"><!--{$m.qishu_name} -->{if $m.title}{$m.title}{else}{$m.goods_name}{/if}</a></p>
+
+    商品总需：<span class="color01">{$m.need_num}</span>人次<br>
+    <span class="color03">已满员</span><br>
+    <div class="jx-count">
+        <label>剩余时间：</label>
+        <strong id="leftTimeJx{$m.buy_id}">00:00:00</strong>
+    </div>
+    <div class="jx-count jx-ing" style="display:none;">{$L.unit_kaijiang}计算中...</div>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            onload_leftTime_jx('{$m.buy_id}',"{$m.has_time}",'index');
+        });
+    </script>
+</div>
+{/if}
+{/foreach}
+{/if}

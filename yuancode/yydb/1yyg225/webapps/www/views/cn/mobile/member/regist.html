@@ -1,0 +1,136 @@
+{assign var='header' value='header2'}
+{include file="top.html"}
+<div id="content" class="container main">
+    <div class="user-box">
+        <form id="regForm" method="post">
+            <div id="step1">
+                {if $smarty.session.oauth}
+                <div class="form-box">
+                    <div class="Validform_checktip color01"></div>
+                    <div class="input">
+                        <i class="ap-icon icon-name"></i>
+                        <input class="txt" type="text" name="username" placeholder="用户名" value="{$smarty.session.oauth.nickname}" autocomplete="false" datatype="*2-40" ajaxurl="/member/check_username" />
+                    </div>
+                </div>
+                {else}
+                <div class="form-box">
+                    <div class="Validform_checktip color01"></div>
+                    <div class="input">
+                        <i class="ap-icon icon-name"></i>
+                        <!-- <input class="txt" type="text" name="username" placeholder="手机/邮箱" autocomplete="false" datatype="m|e,*2-40" ajaxurl="/member/check_username" nullmsg="请填写邮箱或手机号" errormsg="邮箱或手机格式不正确" /> -->
+                        <input class="txt" type="text" name="username" placeholder="手机" autocomplete="false" datatype="m|e,*2-40" ajaxurl="/member/check_username" nullmsg="请填写手机号" errormsg="手机格式不正确" />
+                    </div>
+                </div>
+                {/if}
+                <div class="form-box">
+                    <div class="Validform_checktip color01"></div>
+                    <div class="input">
+                        <i class="ap-icon icon-psw"></i>
+                        <input class="txt" type="password" id="password" name="password" placeholder="请输入密码" datatype="*" nullmsg="请设置密码" />
+                    </div>
+                </div>
+                <div class="form-box">
+                    <div class="Validform_checktip color01"></div>
+                    <div class="input">
+                        <i class="ap-icon icon-psw"></i>
+                        <input class="txt" type="password" name="confirm_password" placeholder="确认密码" recheck="password" datatype="*" nullmsg="请确认密码" errormsg="两次输入的密码不一致" />
+                    </div>
+                </div>
+            </div>
+            <div id="step2" style="display: none;">
+                <div class="input">
+                    <i class="ap-icon icon-phone"></i>
+                    <input class="txt" type="text" placeholder="请输入手机号" name="mobile" id="mobile" value="" />
+                </div>
+
+                {$html_code}
+
+                {if $site_config.sms_open eq 1 && 'sms_register'|statusTpl}
+                <div class="input code">
+                    <i class="ap-icon icon-code"></i>
+                    <input class="txt" type="text" placeholder="请输入验证码" name="sms_code" id="sms_code" />
+                </div>
+                {if $site_config.voice_open && $site_config.voice_sid}
+                <input type="button" value="获取语音" onclick="getVoiceVerify('#btnVoice')" id="btnVoice" style="font-size:12px;" />
+                {else}
+                <input type="button" value="获取短信" onclick="getSmsVerify('sms_register')" id="btnSms" style="font-size:12px;" />
+                {/if}
+                {/if}
+            </div>
+
+            <input class="btn" type="submit" value="提 交 注 册" />
+            <div class="ubox-b ui-clr">
+                {if $site_config.qq_login}<a style="font-size:14px;" href="javascript:void(0);" onclick="oauth('{url('/member/oauth/qq?open=1')}')"><img src="/style/images/qq.png" /> QQ登录</a>{/if}
+                <p class="ui-right">
+                    <a style="font-size:14px;color:rgb(255,102,0);" href="{url('/member/login')}">已有账号？立即登录</a>
+                </p>
+            </div>
+        </form>
+        <div id="regSuc" style="display: none;">
+            <div style="text-align:center; padding:30px 0 0;">
+                <h2 style="font-size:20px;" class="msg_{$icon}">恭喜您成为{$site_config.site_name}尊贵的会员！</h2>
+                <div style="text-align:center; padding: 10px 0; font-size:14px;" class="msg_link">
+                    <a href="{'/member'|url}#free" class="color02" style="margin:0 5px;">会员中心</a>
+                    {if $back_url}
+                    <a href="{$back_url}" class="color02" style="margin:0 5px;">返回上一页</a>
+                    {/if}
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <p style="text-align:center;font-size:14px;">
+                                新用户注册就送88元体验金+大转盘抽奖一次
+                        </p>
+                        <p style="text-align:center;font-size:14px;">
+                                邀请好友来夺宝，赚取佣金！
+                        </p>
+
+</div>
+
+{literal}
+<script type="text/javascript" src="/style/jquery.form.js"></script>
+<script type="text/javascript" src="/style/Validform_min.js"></script>
+<script type="text/javascript" src="/style/mobile/js/script.js"></script>
+<script type="text/javascript">
+    var step = 1;
+    //触点验证码
+    var typeCod = "{$smarty.const.TYPE_CODE}";
+
+    $(function(){
+        $("#regForm").Validform({
+            tiptype:function(msg,o,cssctl){ validTip(msg,o,cssctl); },
+            showAllError:true,
+            beforeSubmit:function(){
+                //触点验证码
+                if(typeCod=='tou' && step==2 && tou_submit('regForm')==false){ return false; }
+
+                var D = $('#regForm').formSerialize();
+                D=D+'&step='+step;
+                $.post("/member/submit", D,
+                    function(data){
+                        if(data.error==1){
+                            layer.alert(data.msg,8);
+                        }
+                        else{
+                            if(step == 1){
+                                step = 2;
+                                $('#step1').hide();
+                                $('#step2').show();
+                                $('#mobile').val(data.mobile);
+                            }else if(step == 2){
+                                step = 2;
+                                $('#regForm').hide();
+                                $('#regSuc').show();
+                            }
+                        }
+                    },"json"
+                );
+                return false;
+            }
+        });
+    })
+</script>
+{/literal}
+</body>
+</html>

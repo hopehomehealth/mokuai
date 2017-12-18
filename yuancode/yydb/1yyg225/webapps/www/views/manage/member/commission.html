@@ -1,0 +1,53 @@
+<h3 class="info-tag">
+    明细列表(共{$page_total}个记录) 佣金统计:<span>￥{$total}</span>
+</h3>
+
+<div class="html-box">
+    <form class="cond-form clear" action="#!member/commission" id="searchForm" method="get">
+        <input type="hidden" value="" name="page" id="page">
+        <div class="f-unit">
+            <select name="k" id="k">
+                <option value="username" {if $smarty.get.k eq 'username'}selected{/if}>会员名</option>
+                <option value="mid" {if $smarty.get.k eq 'mid'}selected{/if}>会员ID</option>
+                <option value="ivt_username" {if $smarty.get.k eq 'ivt_username'}selected{/if}>被邀请会员</option>
+                <option value="ivt_mid" {if $smarty.get.k eq 'ivt_mid'}selected{/if}>被邀请会员ID</option>
+                <option value="desc" {if $smarty.get.k eq 'desc'}selected{/if}>描述</option>
+            </select>
+            <input id="q" class="form-i w160 sitem" name="q" value="{$q}" type="text">
+            <label class="ui-label w60">操作时间：</label>
+            <div class="l">
+                <input class="form-i w120 sitem" name="start_time" value="{$smarty.get.start_time|strip_tags}" type="text" autocomplete="off" onclick="WdatePicker()">
+                <input style="margin-left:-1px" class="form-i w120 sitem" name="end_time" value="{$smarty.get.end_time|strip_tags}" type="text"  autocomplete="off" onclick="WdatePicker()">
+            </div>
+            <button type="submit" style="margin-left:10px; margin-top:1px" class="uiBtn BtnBlue e2-member-searchlog-1">搜索</button>
+        </div>
+    </form>
+
+    <table class="list" style="width:100%">
+        <tr>
+            <th class="w40"><input type="checkbox" class="checkall"></th>
+            <th class="w40">ID</th>
+            <th class="w80">会员名称</th>
+            <th class="w80">被邀请会员</th>
+            <th class="w80">订单总价</th>
+            <th class="w80">获取佣金</th>
+            <th>描述</th>
+            <th class="w160">操作时间</th>
+        </tr>
+        {foreach from=$list item=m}
+        <tr class="opera">
+            <td><input type="checkbox" name="id" value="{$m.id}"></td>
+            <td>{$m.id}</td>
+            <td>{$m.username}<span class="c-gray"> ({$m.mid})</span></td>
+            <td>{$m.ivt_username}<span class="c-gray"> ({$m.ivt_mid})</span></td>
+            <td><b style="color:#f80">{$m.total}</b></td>
+            <td><b style="color:#f80">{$m.commission}</b></td>
+            <td>{$m.desc}</td>
+            <td>{date('Y-m-d H:i',$m.addtime)}</td>
+        </tr>
+        {/foreach}
+    </table>
+    {$page}
+</div>
+
+<script src="/js/manage/member.js"></script>

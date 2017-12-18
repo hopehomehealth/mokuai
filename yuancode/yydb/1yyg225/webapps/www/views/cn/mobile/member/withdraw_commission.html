@@ -1,0 +1,99 @@
+{assign var='header' value='header2'}
+{include file="top.html"}
+<link rel="stylesheet" href="/style/mobile/css/member.css">
+<div id="content" class="container main">
+    <div class="nav-m ui-clr">
+        <ul>
+            {if $site_config.withdraw_status eq 1}
+            <li class="on"><a href="{'/member/withdraw_commission'}">提现</a></li>
+            {/if}
+            {if $site_config.apply_jufu!=1}
+            <li><a href="{'/member/recharge_commission'}">充值到账户</a></li>
+            {if $site_config.withdraw_status eq 1}
+            <li><a href="{url('/member/commission')}">佣金明细</a></li>
+            <li><a href="{url('/member/withdraw_commission_log')}">佣金提现记录</a></li>
+        	{/if}
+            {/if}
+        </ul>
+    </div>
+
+    <div class="title-m2">
+        <b>可提现佣金：<span class="color01">{$member.commission|price_format}</span></b>
+    </div>
+
+    <div class="form-m" style="background: #fff;border-top:1px solid #e6e6e6;">
+        <form action="" method="post" target="iframeNews">
+            <div class="item ui-clr">
+                <dl>
+                    <dt class="color03"><span class="color01">*</span> 提现金额：</dt>
+                    <dd>
+                        <input name="amount" onblur="commission_fee()" type="text" class="input-m" />
+                    </dd>
+                </dl>
+                <div style="line-height: 2em;" id="withdraw_tip"></div>
+            </div>
+            <script type="text/javascript">
+function commission_fee(){
+    var amount = $("input[name=amount]").val();
+    var html = '';
+    $.post("/member/commission_fee", { amount:amount },
+            function(data){
+                html = "到账金额 <span class=\"color01\">￥"+data.amount+"</span> (收取平台手续费:<span class=\"color01\">￥"+data.fee+"</span>";
+                if(data.sales_tax){
+                    html += "营业税:<span class=\"color01\">￥"+data.sales_tax+"</span>";
+                }
+                if(data.income_tax){
+                    html += "所得税:<span class=\"color01\">￥"+data.income_tax+"</span>";
+                }
+                html += ")";
+                html = data.msg ? data.msg : html;
+                $("#withdraw_tip").html(html);
+                if(data.msg){
+                    $("#withdraw_tip").addClass('color01');
+                }else{
+                    $("#withdraw_tip").removeClass('color01');
+                }
+             }, "json");
+}
+</script>
+            {if $feelist}
+            
+            <script type="text/javascript">
+                $('#gotime').bind('change',function(){
+                    var v=$(this).val();
+                    $('.fee b').hide();
+                    $('.fee b.fee'+v).css('display','');
+                })
+            </script>
+            {/if}
+            <div class="list01 list-address">
+                {foreach from=$list item=m}
+                <dl class="ui-clr">
+                    <dt><label><input name="id" type="radio" value="{$m.id}" {if $m.is_default eq 1}checked{/if} /> <b>{$m.bankname}</b> <span>（{$m.bankcard}）</span></label></dt>
+                    <dd>
+                        <table cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td>
+                                    <span class="color03">姓名：</span>{$m.name}&nbsp;&nbsp;
+                                    <span class="color03">开户行地址：</span>{$m.bankaddress}
+                                </td>
+                            </tr>
+                        </table>
+                    </dd>
+                </dl>
+                {/foreach}
+            </div>
+            <div class="item ui-clr" style="font-size: 1.4rem;color: #000;padding-left:5px;padding-top:15px;">
+      	<h3>提现手续费：</h3>         
+                提现佣金<=200 , 收取8%平台手续费<br/>
+                            提现佣金201-500 , 收取5%平台手续费<br/>
+                            提现佣金501-800，收取5%平台手续费+5.6%营业税<br/>
+                            提现佣金801-1000，收取5%平台手续费+5.6%营业税+3%所得税<br/>
+                            提现佣金1001-4000，收取5%平台手续费+5.6%营业税+（提现佣金-800）*20%所得税<br/>
+                            大额佣金提现请联系客服处理
+            </div>
+            <input name="Submit" type="submit" value="提交申请" class="btn" />
+        </form>
+    </div>
+</div>
+{include file="footer.html"}

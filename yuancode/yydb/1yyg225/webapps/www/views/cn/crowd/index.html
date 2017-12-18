@@ -1,0 +1,158 @@
+{include file="crowd/crowd_header.html"}
+<div class="focusBox">
+    <ul class="pic">
+        {zz mod=content var=tagAdw module=ad where="mark = 'crowd_pc'" type=row}
+        {zz mod=fileurl var=tagAds source=$tagAdw.images num=10}
+        {foreach from=$tagAds item=m}
+        <li style="background-image: url('{$m.path}');">
+            <a href="{$m.title}"{if $m.isblank} target="_blank"{/if}> </a>
+        </li>
+        {/foreach}
+    </ul>
+    <a class="prev" href="javascript:void(0)"></a>
+    <a class="next" href="javascript:void(0)"></a>
+    <ul class="hd">
+        {foreach from=$tagAds item=m}<li></li>{/foreach}
+    </ul>
+</div>
+
+<div class="xmzhong">
+
+    <div class="container">
+        <ul>
+            <li class="li1">
+                <em>{$total.item_total}</em>
+                <i>项目总数</i>
+
+            </li>
+            <li class="li2">
+                <em>{$total.support_total}</em>
+                <i>累计支持人</i>
+
+            </li>
+            <li class="li3">
+                <em>{$total.crowd_total|price_format:3}</em>
+                <i>累计筹资金额</i>
+
+            </li>
+            <dd class="li4">
+                <form action="{url('/crowd/lists')}">
+                <section>
+                    <input type="text" name="k" placeholder="输入关键词搜索" />
+                    <input type="submit" value=" " />
+                </section>
+                </form>
+            </dd>
+        </ul>
+    </div>
+
+
+</div>
+<div class="container zxxm-list">
+    <h3 class="zxxm-list-h3">
+        <a href="{url('/crowd/lists')}?rec=1">更多 &gt;</a>热门推荐
+    </h3>
+    <ul class="zxxm-list-ul">
+        {foreach from=$hotitem item=row}
+        {include file="crowd/lbi_item.html"}
+        {/foreach}
+
+
+    </ul>
+
+    <div class="clear"></div>
+</div>
+
+
+<div class="zxsj ">
+
+<div class="container">
+
+
+
+<div class="zxsjBox">
+<div class="hd">
+    <ul>
+        <li>最新上架</li>
+        <li>即将结束</li>
+    </ul>
+                    <span class="spbd">
+                        <a href="{url('/crowd/lists?order=1')}">更多 ></a>
+                        <a href="{url('/crowd/lists?status=2')}">更多 ></a>
+                    </span>
+</div>
+<div class="bd zxxm-list">
+<ul class="zxxm-list-ul">
+    {foreach from=$newItem item=row}
+    {include file="crowd/lbi_item.html"}
+    {/foreach}
+</ul>
+<ul class="zxxm-list-ul">
+    {foreach from=$endItem item=row}
+    {include file="crowd/lbi_item.html"}
+    {/foreach}
+
+</ul>
+</div>
+</div>
+
+<script type="text/javascript">
+
+    jQuery(".zxsjBox").slide({});
+    jQuery(".zxsjBox").slide({ mainCell: ".spbd" });
+</script>
+
+
+
+</div>
+
+
+<div class="clear"></div>
+
+
+</div>
+
+<div class="container zxxm-list">
+    <h3 class="zxxm-list-h3">
+        <a href="{url('/crowd/lists?cid=1')}">更多 &gt;</a>爱心公益
+    </h3>
+    <ul class="zxxm-list-ul">
+        {foreach from=$loveItem item=row}
+        {include file="crowd/lbi_item.html"}
+        {/foreach}
+    </ul>
+
+    <div class="clear"></div>
+</div>
+
+<div class="cgxm">
+
+    <div class="container zxxm-list">
+        <h3 class="zxxm-list-h3">
+            <a href="{url('/crowd/lists?cid=1')}">更多 &gt;</a>成功项目
+        </h3>
+        <ul class="zxxm-list-ul">
+            {foreach from=$successItem item=row}
+            <li>
+                <a class="imgfd" href="{url('/crowd/detail/')}{$row.cd_id}"><img src="{zz mod=fileurl source=$row.thumb width=285 height=224}" /></a>
+                <section>
+                    <div class="zzje">
+                        <a href="{url('/crowd/detail/')}{$row.cd_id}">{$row.cd_name}</a>
+                    </div>
+                    <p class="xxp">
+                        获得筹款：{$row.cd_total|price_format:2}元
+                        <br />
+                        支持人数：{$row.support_num}人
+                    </p>
+                </section>
+                <a class="ckxm" href="{url('/crowd/detail/')}{$row.cd_id}">查看项目</a>
+            </li>
+            {/foreach}
+        </ul>
+
+        <div class="clear"></div>
+    </div>
+
+</div>
+
+{include file="crowd/crowd_footer.html"}

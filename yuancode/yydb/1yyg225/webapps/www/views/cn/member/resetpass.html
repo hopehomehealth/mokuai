@@ -1,0 +1,42 @@
+{include file="top.html"}
+<link type="text/css" rel="stylesheet" href="{url('/style/css/member.css')}" />
+<div id="logo" class="fn-clear">
+    <a href="{url()}"><img src="{zz mod=fileurl source=$site_config.logo}" align="" /></a>
+    <h2>重置密码</h2>
+</div>
+
+<div class="dl-box fn-clear">
+    <form action="" target="iframeNews" id="reset_form" method="post">
+        <div class="fn-left dl-boxl">
+            <div class="form-box fn-clear">
+                <label id="Label1"><font class="label">新密码</font>：</label><input name="password" type="password" class="inpt-style" autocomplete="false" datatype="*"/>
+            </div>
+            <div class="form-box fn-clear">
+                <label id="Label1"><font class="label">确认密码</font>：</label><input name="confirm_password" recheck="password" type="password" datatype="*" class="inpt-style" datatype="e"/>
+            </div>
+            <div class="form-box fn-clear">
+                <label id="Label1">&nbsp;</label><input name="Submit" type="submit" value="确认重置" class="hy-btn" />
+            </div>
+        </div>
+    </form>
+    <div class="fn-left dl-boxr">
+        <p>我没有{$site_config.site_name}帐号，</p>
+        <div class="fn-clear">
+            <a href="{url('/member/regist')}" class="hy-a1">立即注册</a>
+        </div>
+    </div>
+</div>
+
+{literal}
+<script type="text/javascript" src="/style/Validform_min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $("#reset_form").Validform({
+            tiptype:3,
+            showAllError:true,
+            label:".label",
+        });
+    });
+</script>
+{/literal}
+{include file="footer.html"}

@@ -1,0 +1,42 @@
+{include file="header.html"}
+<link rel="stylesheet" href="{url('/style/css/member.css')}">
+{include file="ur_here.html"}
+<div id="container">
+    <div class="fn-clear mt20 pb20">
+        <div class="fn-clear hy-r">
+            <div style="color:red;font-size:14px;font-weight:bold;padding:10px;">请先绑定您的常用手机号（以便{$L.unit_winning}后系统第一时间通知到您）。</div>
+            <div class="hy-box">
+                <div class="hy-yhk">
+                    <form action="" target="iframeNews" method="post" id="submit_form">
+                        <table>
+                            <tr>
+                                <th style="width: 100px;">手机号：</th>
+                                <td><input name="mobile" id="mobile" type="text" class="inpt-style2" /> {if 'sms_verifymobile'|statusTpl}<input type="button" value="获取短信验证码" onclick="getSmsVerify('sms_verifymobile')" id="btnSms" />{/if}</td>
+                            </tr>
+                            <tr>
+                                <th>验证码：</th>
+                                <td>
+                                    <input type="text" id="scode" name="scode" value="" class="inpt-style2" placeholder="请输入答案" />
+                                    <img src="/welcome/scode" class="imgcode" onclick="this.src='/welcome/scode?xrand='+Math.random();" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>短信验证码：</th>
+                                <td><input type="text" name="sms_code" id="sms_code" class="inpt-style2" value=""></td>
+                            </tr>
+                            <tr>
+                                <th> &nbsp;</th>
+                                <td class="">
+                                    <input type="hidden" name="Submit" value="1">
+                                    <input type="submit" value="确定" class="hy-btn2 fn-left"/>
+                                    <input type="button" value="返回" class="hy-btn2" onclick="window.history.go(-1)" />
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="footer.html"}

@@ -1,0 +1,72 @@
+{assign var='header' value='header2'}
+{include file="top.html"}
+<link rel="stylesheet" href="/style/mobile/css/member.css">
+<div id="content" class="container main">
+    <div class="list01 list-luck">
+        <dl class="item ui-clr"></dl>
+    </div>
+    <div class="loading getMore"></div>
+</div>
+<script src="/style/mobile/js/jquery.more.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $('.list-luck').more({
+            'address': '/member/luck',
+            'amount' : 10
+        })
+    });
+</script>
+{include file="footer.html"}
+{if $site_config.a_money eq 1}
+{literal}
+<script type="text/javascript">
+    function a_money(id){
+        var D = {
+            id: id,
+            type: 3,
+            act: 'money'
+        };
+        $.layer({
+            shade: [0],
+            area: ['auto','auto'],
+            dialog: {
+                msg: '确认折现并选择折现方式!',
+                btns: 2,
+                type: 4,
+                btn: ['折现到余额','直接提现'],
+                yes: function(){
+                    layer.close();
+                    $.post('/order/buy',D,function(result){
+                        if(!result.error){
+                            layer.msg(result.msg,2,1);
+                            location.reload();
+                        }else{
+                            layer.alert(result.msg,8,function(){
+                                if(result.url){
+                                    location.href=result.url;
+                                }
+                            });
+                        }
+                    },'json');
+                }, no: function(){
+                    layer.close();
+                    D['tx'] = 1;
+                    $.post('/order/buy',D,function(result){
+                        if(!result.error){
+                            layer.msg(result.msg,2,1);
+                            location.reload();
+                        }else{
+                            layer.alert(result.msg,8,function(){
+                                if(result.url){
+                                    location.href=result.url;
+                                }
+                            });
+                        }
+                    },'json');
+                }
+            }
+        });
+    }
+</script>
+{/literal}
+{/if}

@@ -1,0 +1,107 @@
+{include file="header.html"}
+<link rel="stylesheet" href="{url('/style/css/member.css')}">
+{include file="ur_here.html"}
+<div id="container">
+    <div class="fn-clear mt20 pb20">
+        {include file="member/menu.html"}
+        <div class="fn-right hy-r">
+        <div class="hy-tjxh fn-clear">
+            <ul class="fn-clear db-tab">
+                <li><a href="{url('/member/db')}">{$L.unit_yun}记录</a></li>
+                <li class="dq"><a href="{url('/member/luck')}">{$L.unit_winning}记录</a></li>
+            </ul>
+            {if $list}
+            <div class="db-nrbox fn-clear">
+                <ul class="db-zjxx fn-clear">
+                    {foreach from=$list item=m}
+                    <li>
+                        <div class="zjxx-box">
+                            <a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}" title="{$m.goods_name}" target="_blank" style="text-align: center; display: block;"><img src="{zz mod=fileurl source=$m.imgurl_thumb width=250 height=175 type=0}" alt="{$m.goods_name}" /></a>
+                            <div class="df-qh">
+                                <p>(第{$m.qishu}期) {$m.goods_name}</p>
+                                <p>总需：{$m.need_num}人次</p>
+                                <p>幸运号码：<strong class="color01">{$m.luck_code}</strong></p>
+                                <p>总共参与：<b>{$m.qty}</b>人次</p>
+                                <p>揭晓时间：{microtime_format($m.db_time,'Y-m-d H:i:s.x')}</p>
+                                {if $m.is_award neq 1}
+                                <div class="center">
+                                    <form action="{url('/order/buy')}" method="post" style="display: inline-block">
+                                        <input class="hy-btn2" style="margin-top:5px;" type="submit" value="{$L.unit_lingjiang}">
+                                        <input type="hidden" name="id" value="{$m.id}">
+                                        <input type="hidden" name="type" value="3">
+                                    </form>
+                                    {if $site_config.a_money eq 1 && $m.goods_real_price gt 0}
+                                    <input class="hy-btn1" style="margin-top:5px;" type="button" onclick="a_money('{$m.id}')" value="折现￥{$m.goods_real_price}" />
+                                    {/if}
+                                </div>
+                                {/if}
+                            </div>
+                        </div>
+                    </li>
+                    {/foreach}
+                </ul>
+            </div>
+            <div class="foot-btn">
+                {include file="public_page.html"}
+            </div>
+            {else}
+            <div class="m-user-blank" id="dvBlank" style="">还没有{$L.unit_winning}记录，赶快 <a href="{url('/yunbuy')}">去参加</a> 吧！</div>
+            {/if}
+        </div>
+        </div>
+     </div>
+</div>
+{include file="footer.html"}
+{if $site_config.a_money eq 1}
+{literal}
+<script type="text/javascript">
+    function a_money(id){
+        var D = {
+            id: id,
+            type: 3,
+            act: 'money'
+        };
+        $.layer({
+            shade: [0],
+            area: ['auto','auto'],
+            dialog: {
+                msg: '确认折现并选择折现方式!',
+                btns: 2,
+                type: 4,
+                btn: ['折现到余额','直接提现'],
+                yes: function(){
+                    layer.close();
+                    $.post('/order/buy',D,function(result){
+                        if(!result.error){
+                            layer.msg(result.msg,2,1);
+                            location.reload();
+                        }else{
+                            layer.alert(result.msg,8,function(){
+                                if(result.url){
+                                    location.href=result.url;
+                                }
+                            });
+                        }
+                    },'json');
+                }, no: function(){
+                    layer.close();
+                    D['tx'] = 1;
+                    $.post('/order/buy',D,function(result){
+                        if(!result.error){
+                            layer.msg(result.msg,2,1);
+                            location.reload();
+                        }else{
+                            layer.alert(result.msg,8,function(){
+                                if(result.url){
+                                    location.href=result.url;
+                                }
+                            });
+                        }
+                    },'json');
+                }
+            }
+        });
+    }
+</script>
+{/literal}
+{/if}

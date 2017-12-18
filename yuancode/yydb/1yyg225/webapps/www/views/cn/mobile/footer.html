@@ -1,0 +1,156 @@
+{if $site_config.index_skin eq 2}
+<head>
+    <style type="text/css">
+        .new-foot li{ width: 25%; }
+    </style>
+</head>
+{/if}
+<div class="new-foot1"></div>
+<ul class="new-foot">
+    <li>
+        <a href="{url()}"{if $mod eq 'home'} class="hover"{/if}>
+            <em><i class="iconfont icon-zhuye"></i></em>
+            <p>首页</p>
+        </a>
+    </li>
+    {if $site_config.index_skin eq 2}
+    <li>
+        <a href="{'/yunbuy?zq=buy'|url}"{if $mod eq 'yunbuy'} class="hover"{/if}>
+        <em><i class="iconfont icon-suoyou"></i></em>
+        <p>所有商品</p>
+        </a>
+    </li>
+    {else}
+    <li>
+        <a href="{'/yunbuy'|url}"{if $mod eq 'yunbuy'} class="hover"{/if}>
+        <em><i class="iconfont icon-yiyuangoujilu"></i></em>
+        <p>{$L.unit_yun_one}</p>
+        </a>
+    </li>
+    {/if}
+    {if $site_config.index_skin eq 2}{else}
+    <li>
+        <a href="{'/content/win'|url}"{if $mod eq 'content'} class="hover"{/if}>
+            <em><i class="iconfont icon-sfsiconyidongduankaijiang"></i></em>
+            <p>最新揭晓</p>
+        </a>
+    </li>
+    {/if}
+    <li>
+        <a href="{'/yunbuy/cart'|url}"{if $mod eq 'home'} class="hover"{/if}>
+            <em><i class="iconfont icon-gouwuche"></i></em>
+            <p>购物车</p>
+            <span class=" cartNum" id="cartNum">{$cartNum}</span>
+        </a>
+    </li>
+    <li>
+        <a href="{'/member'|url}"{if $mod eq 'member'} class="hover"{/if}>
+            <em><i class="iconfont icon-01huiyuanzhongxin"></i></em>
+            {if $site_config.index_skin eq 2}
+            <p>会员中心</p>
+            {else}
+            <p>我的{$L.unit_yun}</p>
+            {/if}
+        </a>
+    </li>
+</ul>
+
+<ul class="foot-fix">
+    {if $site_config.ios_url|trim || $site_config.and_url|trim}
+    <!-- <li class="fix-app"><a href="/content/download">APP</a></li> -->
+    <li>
+      <a href="/content/download" style="width:80px;height:65px;margin-left:-44px;">
+        <img style="width:100%;height:100%;" src="/upload/images/app-download-go.png">
+      </a>
+    </li>
+    {/if}
+    <li class="fix-top"><a id="top" style="margin-left:-20px;">TOP</a></li>
+</ul>
+
+
+<iframe name="iframeNews" style="display:none;"></iframe>
+<span id="BIDNUMBER" style="display:none;"></span>
+<script type="text/javascript">
+    var logCount = '{$main.logCount}';
+</script>
+<script src="/style/mobile/js/script.js"></script>
+{if $wechat && $smarty.session.mid}
+{if !$wx_config_false}
+<script type="text/javascript">
+    $(function(){
+        {if $nav neq myivt}
+        var oSearch = this.location.search.toString();
+        oSearch = oSearch.replace(eval('/(code=)([^&]*)&/gi'),'');
+        oSearch = oSearch.replace(eval('/(code=)([^&]*)/gi'),'');
+        oSearch = oSearch.replace(eval('/(state=)([^&]*)&/gi'),'');
+        oSearch = oSearch.replace(eval('/(state=)([^&]*)/gi'),'');
+        if(oSearch.trim() == '?'){ oSearch = ''; }
+
+        if(oSearch.indexOf('?')>=0){ oSearch += '&'; }
+        else{ oSearch += '?'; }
+        oSearch += 'iv={$smarty.session.mid}';
+
+        var href = location.origin+location.pathname+oSearch+location.hash;
+        var title = $("title").eq(0).html();
+        var row_keyword=$("#row_keyword").html();
+        if(row_keyword!=null||row_keyword!=undefined){
+        	title=row_keyword;
+        }
+
+        var desc = $("meta[name='description']").eq(0).attr('content');
+        var row_title=$("#row_title").html();
+        if(row_title!=null||row_title!=undefined){
+        	desc=row_title;
+        }
+        var pic = $('img').eq(0).attr('src');
+        pic = pic != 'undefined' ? pic : '';
+    	$.get(
+           "/content/ajax_shorturl?href="+href,{},
+           function(data){
+            		var obj=JSON.parse(data);
+            		var href =obj.dwz;
+            		
+                    wx.ready(function () {
+                        //分享给朋友
+			//alert(title);
+			//alert(desc);
+                        wx.onMenuShareAppMessage({
+                            title : title,
+                            desc : desc,
+                            link : '',
+                            imgUrl : pic,
+                            success : function (res) {
+                                layer.msg('分享成功',3,{ type:1 })
+                            },
+                            cancel : function (res) {
+                                layer.msg('分享取消');
+				//layer.msg(title+desc+href+pic);
+                            },
+                        });
+                        //分享到朋友圈
+                        wx.onMenuShareTimeline({
+                            title: title,
+                            link: href,
+                            imgUrl: pic,
+                            success: function (res) {
+                                layer.msg('分享成功',3,{ type:1 })
+                            },
+                            cancel: function (res) {
+                                layer.msg('已取消');
+                            }
+                        });
+                        wx.error(function (res) {
+                            console.log(res.errMsg);
+                        });
+                    })
+            }
+        );
+        {/if}
+        })
+</script>
+{/if}
+{/if}
+{include file="cnzz.html"}
+{include file="stat.html"}
+</body>
+</html>

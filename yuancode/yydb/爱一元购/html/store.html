@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no" />
+    <title>所有夺宝</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/yunbuy.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+</head>
+<body>
+  <div id="header">
+	   <div class="active">
+		    <div class="icon_box" tapmode="" onclick="api.closeWin()"><i class="iconfont icon-fanhui"></i></div>
+		    <div class="toptit">我的店铺</div>
+		    <div class="icon_box" tapmode="" onclick="closetoWin()"><i class="iconfont icon-shouye"></i></div>
+	   </div>
+  </div>
+<div id="content" class="container main">
+    <div class="filter_tit">
+      <div class="ca" tapmode="active"><span>云购商品</span> <i class="iconfont icon-xiala"></i></div>
+      <div class="order" tapmode="active"><span>排序</span> <i class="iconfont icon-xiala"></i></div>
+    </div>
+    <div class="filter_bar">
+      <ul id="cat-content" class="ca_ul">
+      </ul>
+      <ul class="order_ul">
+        <li order="ratio">人气</li>
+        <li order="new">最新</li>
+        <li order="end_num">剩余人次</li>
+        <li order="need_numa">总需人次（由低到高）</li>
+        <li order="need_numd">总需人次（由高到低）</li>
+      </ul>
+    </div>
+    <ul id="list-content" class="paiList">
+    
+    </ul>
+    <script id="list-template" type="text/x-dot-template">
+    {{ for(var i=0; i< it.yunbuy.length; i++) { }}
+    <li class="flex_box">
+	    <div class="pic ac">
+	        <a onclick="openWin('yunbuy_detail',{id:{{=it.yunbuy[i].buy_id}}})"><img alt="(第{{=it.yunbuy[i].qishu}}期){{=it.yunbuy[i].title}}" src="{{=it.yunbuy[i].imgurl_src}}" width="100" height="100" id="buy_img_{{=it.yunbuy[i].buy_id}}" /></a>
+	        {{? it.yunbuy[i].price > 1}} <span><img src="../image/{{=Math.floor(it.yunbuy[i].price)}}.png"></span>{{?}}
+	    </div>
+	    <div class="info">
+	        <p class="title" onclick="openWin('yunbuy_detail',{id:{{=it.yunbuy[i].buy_id}}})">{{=it.yunbuy[i].title}}</p>
+	        {{? it.yunbuy[i].gobuy != 1}}
+	        <div class="progressBar">
+	            <p class="wrap-bar">
+	                <span class="bar" style="width:{{=it.yunbuy[i].jindu}}%"></span>
+	            </p>
+                <div class="flex_con"><span class="ui-left">总需：{{=it.yunbuy[i].need_num}}{{? it.yunbuy[i].unit}} {{=it.yunbuy[i].unit}}{{?}}</span><span class="ui-right">剩余：<ins>{{=it.yunbuy[i].end_num}}</ins></span></div>
+	        </div>
+	        {{??}}
+	        <p>价格：<b class="red">{{=it.yunbuy[i].custom_price}}</b></p>
+	        {{?}}
+	    </div>
+        <div class="yungou-buy">
+            <button class="add-btn" tapmode="add-btn" onclick="addToCart('{{=it.yunbuy[i].buy_id}}','{{? it.yunbuy[i].type == 2}}free{{?}}',this)"><i class="iconfont icon-gouwuche1"></i></button>                
+        </div>
+	</li>
+	{{ } }}
+	</script>
+  </div>
+<script type="text/javascript" src="../script/jquery.min.js"></script>  
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/doT.min.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript" src="../script/fastclick.js"></script>
+<script type="text/javascript">
+var page = order = 1;
+var curtype,cid,q,zq,type,ckey;
+$(function(){
+  $(".filter_tit div").live('click',function(){
+    var type = $(this).attr('class');
+    if(curtype!=type){
+	  $(".filter_bar").height(api.winHeight-40).fadeIn();
+	  $(".filter_bar ul").hide();
+	  $("."+type+'_ul').show();
+	  curtype = type;
+	}else{
+	  curtype = "";
+	  $(".filter_bar").fadeOut();
+	}
+  });
+  $('.order_ul li').click(function(){
+    order = $(this).attr('order');
+    $(this).addClass('active').siblings().removeClass('active');
+    $('.order span').html($(this).html());
+    $api.byId('list-content').innerHTML='';
+    page = 1;
+    loadData(page);
+    curtype = "";
+	$(".filter_bar").fadeOut();
+  });
+});
+function loadcat(param,key){
+  cid = param.cid;
+  zq = param.zq;
+  type = param.type;
+  curtype = "";
+  $(".filter_bar").fadeOut();
+  $('.ca span').html($('.cat'+key).html());
+  $('#cat-content li').removeClass('active');
+  $('.cat'+key).addClass('active');
+  $api.byId('list-content').innerHTML='';
+  page = 1;
+  loadData(page);
+}
+function loadData(page){
+    var url = 'store/index/'+uid+'/'+page+'?ajaxcontent=1&order='+order+'&cid='+cid+'&zq='+zq;
+    var reslut = false;
+    showprog();
+    ajaxRequest(url, 'GET', {}, function (ret, err) {
+        if (ret.data) {
+            var content = $api.byId('list-content');
+            var tpl = $api.byId('list-template').text;
+            var tempFn = doT.template(tpl);
+            $api.append(content, tempFn(ret.data));
+            reslut = true;
+        }else{
+        	if (ret.code == 0)  {
+        		toast(ret.msg);
+        	} else {
+        		toast('没有更多了');
+        	}
+        }
+        hideprog();
+   });
+   return reslut;
+}
+apiready = function() {
+	//适配iOS 7+，Android 4.4+状态栏
+	var header = $api.byId('header');
+	$api.fixStatusBar(header);
+    ckey = typeof(api.pageParam.ckey) != "undefined" ? api.pageParam.ckey : 0; 
+    cid = typeof(api.pageParam.cid) != "undefined" ? api.pageParam.cid : ''; 
+    q = typeof(api.pageParam.q) != "undefined" ? api.pageParam.q : '';  
+    type = typeof(api.pageParam.type) != "undefined" ? api.pageParam.type : '';  
+    zq = typeof(api.pageParam.zq) != "undefined" ? api.pageParam.zq : ''; 
+    page=1; 
+    ajaxRequest('store/index/'+uid, 'GET', {}, function (ret, err) {
+        if (ret) {
+            var content = $api.byId('cat-content');
+            var tpl = '';
+            var it = ret.data;
+            for(var i=0; i< it.cat.length; i++) {
+            var cname = ckey==i ? 'active' : '';
+            tpl +='<li class="cat'+i+' '+cname+'" onclick="loadcat({'+it.cat[i].catname_en+'},'+i+')">'+it.cat[i].catname+'</li>'; 
+	            if(ckey==i){
+	               $('.ca span').html(it.cat[i].catname);
+	            }
+            }
+            content.innerHTML = tpl;
+             
+        } else {
+            toast(err.msg);
+        }
+    })        
+    loadData(page);    
+    api.addEventListener({name: 'scrolltobottom'}, function(ret, err){
+       page++;
+       loadData(page);
+    }); 
+    api.setRefreshHeaderInfo({
+        visible: true,
+        bgColor: '#f2f2f2',
+        textColor: '#4d4d4d',
+        textDown: '下拉刷新...',
+        textUp: '松开刷新...',
+        showTime: true
+    }, function(ret, err){
+        $api.byId('list-content').innerHTML='';
+        page=1;
+        loadData(1);
+        api.refreshHeaderLoadDone();
+    });
+}
+</script>
+</body>
+</html>

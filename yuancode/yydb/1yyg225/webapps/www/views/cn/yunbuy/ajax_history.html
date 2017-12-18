@@ -1,0 +1,70 @@
+{if $list}
+<div class="content" style="">
+    <ul class="m-detail-shareList-list">
+        {foreach $list item=m}
+        <li class="m-detail-tabHistory-item m-detail-tabHistory-published" id="pro-view-18">   
+          <div class="m-detail-tabHistory-period">期号 {date('Ymd',$m.add_time)}</div>   
+          <div class="m-detail-tabHistory-info">       
+            <img src="/upload/photo.jpg">    
+            <div class="m-detail-tabHistory-info-txt">           
+              <span>恭喜 <a href="/minfo?id={$m.member_id}#db" title="{$m.member_name}" target="_blank"><span class="m-detail-tabHistory-info-nickname">{$m.member_name}</span></a>获得了本期商品</span>           
+              <span>用户ID：{$m.member_id}（ID为用户唯一不变标识）</span>          
+              <span>本期参与：<strong>{$m.buy_num}人次</strong></span>      
+            </div>  
+          </div>   
+          <div class="m-detail-tabHistory-result">       
+            <span>
+              幸运号码：<strong>{$m.luck_code}</strong>
+            </span>     
+            <span>揭晓时间：{date('Y-m-d H:i:s',$m.end_time)}</span>
+            <span>云购时间：{date('Y-m-d H:i:s',$m.add_time)}</span>
+          </div>   
+          <div class="m-detail-tabHistory-operation">
+            <a href="/yunbuy/detail/{$m.buy_id}" target="_blank">查看详情</a>
+          </div>
+        </li>
+        {/foreach}
+        
+        <!-- {foreach $list item=m}
+        <li>
+            <div class="m-detail-shareList-author">
+                <a class="avatar" href="{'/minfo?id='|cat:$m.mid|url}" target="_blank"><img height="90" src="{zz mod=photo source=$m.photo}" width="90"></a>
+                <a class="nickname f-txtabb" href="{'/minfo?id='|cat:$m.mid|url}" target="_blank" title="{$m.username}">{$m.username|nickname:$m.nickname}</a></div>
+            <div class="m-detail-shareList-detail">
+                <i class="ico ico-arrow ico-arrow-grayShareArr"></i>
+                <div class="titleWrap">
+                    <span class="date">{date('Y-m-d H:i:s',$m.addtime)}</span><span class="title">第{$m.qishu}期晒单<a href="{'/minfo?id='|cat:$m.mid|url}#share#vid={$m.id}" target="_blank"><b>{$m.title}</b></a></span></div>
+                <div class="contentWrap">
+                    <a href="{'/minfo?id='|cat:$m.mid|url}#share#vid={$m.id}" target="_blank">{$m.content|truncate:120}</a></div>
+                <div class="imgWrap">
+                    {foreach from=unserialize($m.thumbs) item=t}
+                    <a href="{'/minfo?id='|cat:$m.mid|url}#share#vid={$m.id}" target="_blank">
+                        <div style="display: table-cell; writing-mode: tb-rl; height: 140px; line-height: 140px; vertical-align: middle"><img src="{zz mod=fileurl source=$t}" width="140"></div>
+                    </a>
+                    {/foreach}
+                </div>
+            </div>
+        </li>
+        {/foreach} -->
+    </ul>
+    {include file="ajax_page.html"}
+</div>
+{else}
+<div class="empty"><p class="status-empty"><i class="littleU littleU-cry"></i>&nbsp;&nbsp;暂时还没有任何往期记录</p></div>
+{/if}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#historyPanel').find('.demo').ajaxContent({
+            event:'click', //mouseover
+            loaderType:"img",
+            loadingMsg:"/style/images/transparent.gif",
+            target:'#historyPanel'
+        });
+        $('#historyPanel').find('*[nc_type="sform"]').ajaxContent({
+            event:'change', //mouseover
+            loaderType:"img",
+            loadingMsg:"/style/images/transparent.gif",
+            target:'#historyPanel'
+        });
+    });
+</script>

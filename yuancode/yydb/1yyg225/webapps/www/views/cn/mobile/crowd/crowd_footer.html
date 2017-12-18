@@ -1,0 +1,20 @@
+<div class="h133"></div>
+<div class="ftnav">
+    <ul>
+        <li>
+            <a href="{url()}"><i class="iconfont">&#xe601;</i><em>云购</em></a>
+        </li>
+        <li>
+            <a {if $nav eq 'rec'}class="on"{/if} href="{url('/crowd/lists?is_rec=1')}"><i class="iconfont">&#xe60a;</i><em>推荐</em></a>
+        </li>
+        <li>
+            <a href="{url('/crowd/step_one')}"><i class="iconfont">&#xe605;</i></a>
+        </li>
+        <li {if $nav eq 'past'}class="on"{/if}>
+            <a href="{url('/crowd/lists?status=3')}"><i class="iconfont">&#xe60b;</i><em>往期</em></a>
+        </li>
+        <li {if $nav eq 'member'}class="on"{/if}>
+            <a href="{url('/crowd_member/support')}"><i class="iconfont">&#xe604;</i><em>我的</em></a>
+        </li>
+    </ul>
+</div>

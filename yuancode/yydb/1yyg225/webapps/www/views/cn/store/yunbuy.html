@@ -1,0 +1,90 @@
+{include file="header.html"}
+<link type="text/css" rel="stylesheet" href="/style/css_02/style.css" />
+<link type="text/css" rel="stylesheet" href="/style/css_02/merchant.css" />
+<div class="container menu-show">
+    <div class="merchant-left">
+        <div class="merchant-pd" id="m">
+            <div class="merchant-top">
+                <a href="/store/index/{$mid}">返回店铺</a>
+                <strong>所有{$L.unit_yun}商品</strong>
+            </div>
+            <ul class="ten box-sizing">
+                {foreach from=$data.list item=m}
+                <li class="index1-img">
+                    <div class="ten1">
+                        <em class="scrollLoadingDiv"><a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}" target="_blank" title="{$m.title}"><img alt="{$m.title}" class="scrollLoading" src="/style/images/pix.gif" data-url="{zz mod=fileurl source=$m.imgurl_src height=200 type=0}" id="buy_img_{$m.buy_id}" /></a></em>
+                        <p class="banner-title"><a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}" target="_blank" title="{$m.title}"><span class="color01">(第{$m.qishu}期)</span> {$m.title}</a></p>
+                        <p class="banner-money">总需：{$m.need_num} 人次</p>
+                        <div class="progressBar">
+                            <p class="progressBar-wrap">
+                                <span style="width:{$m.jindu}%"></span>
+                            </p>
+                            <div class="progressBar-txt">
+                                <div class="txt-l">
+                                    <p><b>{$m.buy_num}</b></p>
+                                    <p>已参与人次</p>
+                                </div>
+                                <div class="txt-r">
+                                    <p><b>{$m.end_num}</b></p>
+                                    <p>剩余人次</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ten2">
+                        <span>我要参与：</span>
+                        <div class="ten2-1">
+                            <input type="button" value="-" class="ten-jian ten-i w-number-btn-minus" />
+                            <input type="text" class="ten-text w-number-input" id="qty_{$m.buy_id}" data-max="{$m.end_num}" value="{$site_config.qty|intval}" />
+                            <input type="button" value="+" class="ten-jian ten-i w-number-btn-plus" />
+                        </div>
+                        <span>人次</span>
+                        <p>
+                            {if $m.type eq 2}
+                            <a href="javascript:;" onclick="addToCart('{$m.buy_id}','free');" class="ten-a ten-free">免费{$L.unit_yun}</a>
+                            {else}
+                            <a href="javascript:;" onclick="addToCart('{$m.buy_id}','buy');" class="ten-a">{$L.unit_yun_button}</a>
+                            <a href="javascript:;" onclick="addToCart('{$m.buy_id}','',this)" class="ten-a1">加入购物车</a>
+                            {/if}
+                        </p>
+                    </div>
+                </li>
+                {/foreach}
+            </ul>
+        </div>
+        {include file="public_page.html"}
+        {literal}
+        <script type="text/javascript">
+            $(function(){
+                $(".w-number-btn-plus").click(function(){
+                    var max = $(this).parent().children('input.w-number-input').attr('data-max');
+                    var qty = $(this).parent().children('input.w-number-input').val()*1;
+                    if(qty < max){
+                        $(this).parent().children('input.w-number-input').val(qty+1);
+                    }
+                });
+                $(".w-number-btn-minus").click(function(){
+                    var qty = $(this).parent().children('input.w-number-input').val()*1;
+                    if(qty>1){
+                        $(this).parent().children('input.w-number-input').val(qty-1);
+                    }
+                });
+                $(".w-number-input").blur(function(){
+                    var max = $(this).attr('data-max')*1;
+                    if($(this).val()>max){
+                        $(this).val(max);
+                    }
+                });
+            });
+        </script>
+        {/literal}
+    </div>
+    {include file="store/info.html"}
+</div>
+<div class="merchant"></div>
+{include file="footer.html"}
+<script src="/style/jquery.SuperSlide.2.1.1.js"></script>
+<script src="/style/css_02/common_02.js"></script>
+<script type="text/javascript">
+    $(".merchant-banner").slide({ titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"fold",autoPlay:true,interTime:5000 });
+</script>

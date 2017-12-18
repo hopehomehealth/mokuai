@@ -1,0 +1,60 @@
+{include file="header.html"}
+<link rel="stylesheet" href="{url('/style/css/refer.css')}">
+{include file="ur_here.html"}
+<div class="fn-clear refer-box">
+    <div class="rright">
+        <h4>温馨提示</h4>
+        <dl>
+            <dt>1、在哪里可以看到我的佣金？</dt>
+            <dd>在【会员中心】的【佣金明细】里可看到您的每次返现记录。佣金满100及以上可申请提现，任何时候都可充值到账号中参与{$L.unit_yun}。</dd>
+        </dl>
+        <dl>
+            <dt>2、哪些情况会导致佣金失效？</dt>
+            <dd>借助网站及其他平台，恶意获取佣金，一经查实，扣除一切佣金且封号。</dd>
+        </dl>
+        <dl>
+            <dt>3、自己邀请自己也能获得佣金吗？</dt>
+            <dd>不可以。我们会人工核查，对于查实的作弊行为，扣除一切佣金，取消邀请佣金的资格且封号。</dd>
+        </dl>
+        <dl>
+            <dt>4、如何知道我有没有邀请成功</dt>
+            <dd>您可以在【会员中心】的【我的推荐】里面查看。</dd>
+        </dl>
+    </div>
+    <div class="rleft">
+        <h4>邀请有礼</h4>
+        <div class="refer-con">
+            <ul class="fn-clear">
+                <li class="lli li02">
+                    <dl>
+                        <dt>一重礼 送送送</dt>
+                        <dd>
+                            每邀请一位，送<b>{$site_config.ivt1}</b>{$L.unit_pay_points}<br>
+                            邀请第三位，送<b>{$site_config.ivt3}</b>{$L.unit_db_points}<br>
+                            邀请第五位，送电影票或游戏点卡
+                        </dd>
+                    </dl>
+                </li>
+                <li class="rli li02">
+                    <dl>
+                        <dt>二重礼 6%的{$L.unit_db_points}提成</dt>
+                        <dd>经您邀请，成功参与{$L.unit_yun}的好友，你都可以获得6%{$L.unit_db_points}给您，永久有效</dd>
+                    </dl>
+                </li>
+                <li class="lli li02">
+                    <dl>
+                        <dt>同时享第三重礼</dt>
+                        <dd>
+                            经您邀请，成功参与竞拍的好友，参与一件竞拍，你都可以获得1个{$L.unit_pay_points}，365天有效（不含体验区）
+                        </dd>
+                    </dl>
+                </li>
+            </ul>
+            {if !$smarty.session.mid}
+            <div class="tips">请先 <a href="{'/member/login'|url}" class="color01">登录</a> 或 <a href="{'/member/regist'|url}" class="color01">注册</a> ，获取您的专属邀请链接。</div>
+            {/if}
+            <div class="loginbtn"><a href="{'/member/myivt'|url}">立即邀请好友</a></div>
+        </div>
+    </div>
+</div>
+{include file="footer.html"}

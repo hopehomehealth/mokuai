@@ -1,0 +1,39 @@
+{assign var='header' value='header2'}
+{include file="top.html"}
+<link rel="stylesheet" href="/style/mobile/css/member.css">
+<div id="content" class="container main">
+    <div class="form-m">
+        <form action="" target="iframeNews" method="post">
+            <div class="item ui-clr">
+                <dl>
+                    <dt class="color03">新资金密码：</dt>
+                    <dd>
+                        <input type="password" class="input-m" name="pass1" value="" />
+                    </dd>
+                </dl>
+            </div>
+            <div class="item ui-clr">
+                <dl>
+                    <dt class="color03">确认密码：</dt>
+                    <dd>
+                        <input type="password" class="input-m" name="pass2" value="" />
+                    </dd>
+                </dl>
+            </div>
+            {if $site_config.sms_open eq 1 && 'sms_chpaypass'|statusTpl}
+            <div class="item ui-clr">
+                <dl>
+                    <dt class="color03">短信验证码：</dt>
+                    <dd>
+                        <input type="text" name="sms_code" class="input-m" value="" style="width:80px;" />
+                        <input type="button" value="获取短信验证码" onclick="getSmsVerify('sms_chpaypass')" id="btnSms" />
+                    </dd>
+                </dl>
+            </div>
+            {/if}
+            <input type="hidden" id="mobile" value="" />
+            <input name="Submit" type="submit" value="确定修改" class="btn" />
+        </form>
+    </div>
+</div>
+{include file="footer.html"}

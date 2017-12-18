@@ -1,0 +1,54 @@
+<div class="shareA container" style="width:800px;padding: 0 0 10px 0;text-align: right">
+    <a href="{url('/member/order')}"><img src="/style/images/shareB.png" /></a>
+</div>
+{if $list}
+<div class="m-shareList fn-clear">
+    {foreach from=$list item=m name=list}
+    <div class="item {if $smarty.foreach.list.iteration%3 eq 0}last{/if}">
+        <div class="pic"><a href="javascript:;" onclick="mLoad('share#vid='+{$m.id})" title="{$m.title}"><img alt="{$m.title}" src="{zz mod=fileurl source=$m.thumb width=255 type=0}"></a></div>
+        <div class="name"><a href="javascript:;" onclick="mLoad('share#vid='+{$m.id})">
+            {if $m.extension_code eq $smarty.const.CART_DB}<!--(第{$m.qishu}期) -->{/if}
+            {$m.obj_name}
+            <span class="color01" style="white-space: nowrap">【{if $m.extension_code eq $smarty.const.CART_DB}{$L.unit_yun_one}{elseif $m.extension_code eq $smarty.const.CART_WIN}{$L.unit_pay}{$L.unit_winning}{elseif $m.extension_AUC eq $smarty.const.CART_DB}{$L.unit_pay}获得{/if}】</span>
+        </a></div>
+        {if $m.extension_code eq $smarty.const.CART_DB}
+        <div class="code">幸运号码：<strong class="txt-impt">{$m.luck_code}</strong></div>
+        {/if}
+        <div class="post">
+            <div class="title">
+                <a href="javascript:;" onclick="mLoad('share#vid='+{$m.id})"><strong>{$m.title}</strong></a>
+            </div>
+            <div class="time">{date('m-d H:i:s',$m.addtime)}</div>
+            <div class="abbr">{$m.content}</div>
+        </div>
+    </div>
+    {/foreach}
+</div>
+<div class="foot-btn fn-clear">{include file="ajax_page.html"}</div>
+{else}
+<div class="m-blank">该用户还没有晒单记录！</div>
+{/if}
+<script type="text/javascript">
+    var load_div = '#load_share';
+    $(document).ready(function(){
+        $(load_div).find('.demo').ajaxContent({
+            event:'click', //mouseover
+            loaderType:"text",
+            loadingMsg:"拼命加载中...",
+            target:load_div,
+            success:function(){
+                var $container = $('.m-shareList');
+                $container.imagesLoaded( function(){
+                    $container.masonry({
+                        itemSelector: '.item',
+                        columnWidth: 3,
+                        isAnimated: true
+                    });
+                });
+            }
+        }).bind('click',function(){
+            $('html,body').animate({ scrollTop: '400px' }, 500);
+        });
+    });
+</script>
+<script type="text/javascript" src="{url('/style/jquery.masonry.min.js')}"></script>

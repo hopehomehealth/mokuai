@@ -1,0 +1,34 @@
+{assign var='header' value='header2'}
+{include file="top.html"}
+<link rel="stylesheet" href="/style/mobile/css/member.css">
+<div id="content" class="container main">
+    <div class="tips-m" style="padding:10px;text-align: center;color:#333;">
+        <a href="{url('/member/order')}?status=1"{if $smarty.get.status eq 1} class="color01"{/if}>待付款<span class="color01">（{$total.notpay}）</span></a>
+        <a href="{url('/member/order')}?status=2"{if $smarty.get.status eq 2} class="color01"{/if}>待发货<span class="color01">（{$total.wait}）</span></a>
+        <a href="{url('/member/order')}?status=3"{if $smarty.get.status eq 3} class="color01"{/if}>已发货<span class="color01">（{$total.shiped}）</span></a>
+        <a href="{url('/member/order')}?status=4"{if $smarty.get.status eq 4} class="color01"{/if}>已完成<span class="color01">（{$total.finish}）</span></a>
+    </div>
+
+    <ul class="tab-cell tab-cell-5 ui-clr">
+        <li{if $smarty.get.time eq ''} class="on"{/if}><a href="{url('/member/order')}{if isset($smarty.get.order)}?order{/if}">全部</a></li>
+        <li{if $smarty.get.time eq 1} class="on"{/if}><a href="{url('/member/order')}?time=1{if isset($smarty.get.order)}&order{/if}">今天</a></li>
+        <li{if $smarty.get.time eq 2} class="on"{/if}><a href="{url('/member/order')}?time=2{if isset($smarty.get.order)}&order{/if}">本周</a></li>
+        <li{if $smarty.get.time eq 3} class="on"{/if}><a href="{url('/member/order')}?time=3{if isset($smarty.get.order)}&order{/if}">本月</a></li>
+        <li class="last {if $smarty.get.time eq 4} on{/if}"><a href="{url('/member/order')}?time=4{if isset($smarty.get.order)}&order{/if}">最近三月</a></li>
+    </ul>
+
+    <div class="list01 list-db">
+        <dl class="item ui-clr"></dl>
+    </div>
+    <div class="loading getMore" style="background: #fff;"></div>
+</div>
+<script src="/style/mobile/js/jquery.more.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $('.list-db').more({
+            'address': '/member/order?1{if isset($smarty.get.order)}&order{/if}{if $smarty.get.time}&time={$smarty.get.time}{/if}{if $smarty.get.status}&status={$smarty.get.status}{/if}',
+            'amount' : 10
+        })
+    });
+</script>
+{include file="footer.html"}

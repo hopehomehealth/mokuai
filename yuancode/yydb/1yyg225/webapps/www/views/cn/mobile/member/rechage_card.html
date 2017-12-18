@@ -1,0 +1,37 @@
+{assign var='header' value='header2'}
+{include file="top.html"}
+<link rel="stylesheet" href="/style/mobile/css/member.css">
+<div id="content" class="container main">
+    <div class="form-m">
+        <form action="" target="iframeNews" method="post">
+            <div class="item ui-clr">
+                <dl>
+                    <dt class="color03">卡号：</dt>
+                    <dd>
+                        <input class="input-m" name="number" value="" />
+                    </dd>
+                </dl>
+            </div>
+            <div class="item ui-clr">
+                <dl>
+                    <dt class="color03">卡密：</dt>
+                    <dd>
+                        <input class="input-m" name="password" value="" />
+                    </dd>
+                </dl>
+            </div>
+            <div class="item ui-clr">
+                <dl>
+                    <dt class="color03">验证码：</dt>
+                    <dd>
+                        <input type="text" id="scode" name="scode" value="" class="input-m" placeholder="请输入答案" style="vertical-align:middle;width:40%" />
+                        <img src="/welcome/scode" class="imgcode" onclick="this.src='/welcome/scode?xrand='+Math.random();" style="vertical-align:middle;" />
+                    </dd>
+                </dl>
+            </div>
+            <input type="hidden" name="token" value="{createToken()}" />
+            <input name="Submit" type="submit" value="确认充值" class="btn" />
+        </form>
+    </div>
+</div>
+{include file="footer.html"}

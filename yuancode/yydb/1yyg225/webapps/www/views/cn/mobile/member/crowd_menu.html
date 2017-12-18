@@ -1,0 +1,19 @@
+<div class="user-top">
+    <section>
+        <img src="{zz mod=photo source=$member.photo size='80'}" />
+        <p>{if $member.nickname}{$member.nickname}{else}{$member.username}{/if}</p>
+    </section>
+    <ul>
+        <li {if $nav eq 'support'}class="on"{/if}>
+        <a href="{url('/crowd_member/support')}">我支持的</a>
+        </li>
+        <li {if $nav eq 'focus'}class="on"{/if}>
+        <em>
+            <a href="{url('/crowd_member/focus')}">我关注的</a>
+        </em>
+        </li>
+        <li {if $nav eq 'start'}class="on"{/if}>
+        <a href="{url('/crowd_member/start')}">我发起的</a>
+        </li>
+    </ul>
+</div>

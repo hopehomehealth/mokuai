@@ -1,0 +1,48 @@
+<dt class="db-order color03">
+    <div style="float:right">
+        还需：<span class="color01">
+            {if $r.type eq 1}
+            {$r.order_amount}{$L.unit_db_points}
+            {else}
+            {$r.total}{$L.unit_pay_points}
+            {/if}
+        </span>
+        {if $r.allow_pay}<br/><a href="{'/yunbuy/pay/'|cat:$r.order_sn|url}" target="_blank" class="color02">支付订单</a>{/if}
+    </div>
+    订单号：<span>{$r.order_sn}</span><br>
+{$L.unit_yun}时间：<span>{$r.add_time|date_format:'Y-m-d H:i:s'}</span>
+</dt>
+{foreach from=$r.db item=m}
+<dt class="ui-clr">
+    <div class="db-img"><a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}" target="_blank"><img src="{zz mod=fileurl source=$m.imgurl_src width=90 type=0}" alt="{$m.goods_name}" /></a></div>
+    <div class="db-txt">
+        <p class="p1">{if $m.type eq 2}<span class="type-free">霸王餐区</span>{/if} <a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}" target="_blank" class="color00"><span class="color01">(第{$m.qishu}期)</span> {$m.goods_name}</a></p>
+        <p class="color03">总需：{$m.buy.need_num}{if $m.type eq 1}人次{else}{$L.unit_pay_points}{/if}</p>
+        {if $m.buy.luck_code eq 0}
+        <p class="db-jdt">
+            <span style="width:{$m.buy.jindu}%"></span>
+        </p>
+        <ul class="db-nums ui-clr color03">
+            <li class="tr">剩余<span>{$m.buy.end_num}</span></li>
+            <li class="tl">已参与<span>{$m.buy.buy_num}</span></li>
+        </ul>
+        {else}
+        <p>
+        获得者：<a href="{'/minfo?id='|cat:$m.buy.member_id|url}#dbCod" target="_blank">{$m.buy.member_name|nickname:$m.luck_nickname}</a>（本期共参与{$m.luck_qty}人次）<br/>
+        幸运号码：<b class="color01">{$m.buy.luck_code}</b><br/>
+        揭晓时间：{microtime_format($m.buy.end_time,'Y-m-d H:i:s.x')}
+        </p>
+        {/if}
+    </div>
+</dt>
+<dd>
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th>参与人次</th>
+            <td>
+                {$m.qty}人次
+            </td>
+        </tr>
+    </table>
+</dd>
+{/foreach}

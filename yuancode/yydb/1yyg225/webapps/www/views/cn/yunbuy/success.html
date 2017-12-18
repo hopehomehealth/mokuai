@@ -1,0 +1,38 @@
+{include file="header.html"}
+<link rel="stylesheet" href="{url('/style/css/yiyuanbao.css')}">
+<style type="text/css">
+    .g-body{ border:1px solid #ccc; width: 1150px; margin:20px auto 0; padding: 60px 0 70px; }
+    #progress{ float: none; margin:0 auto; display: block; }
+    .pay_success{ width: 1000px; min-height:300px; margin:30px auto 0; background: #f6f6f6 url('/style/images/yes.gif') 50px center no-repeat; }
+    .pay_success h2{ font-size: 50px;}
+    .pay_success .txt{ padding: 70px 0 70px 320px; }
+    .pay_success .p1{ font-weight: bold; font-size: 30px; }
+    .pay_success .p2{ font-size: 18px; }
+    .share_box{ width: 360px; margin: 10px 0 0; padding:10px;background:#ececec;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        border-radius:10px; }
+</style>
+<div class="g-body blue">
+    <div class="m-header">
+        <div class="g-wrap">
+            {assign var="progress" value="3"}
+            {include file="yunbuy/progress_cart.html"}
+        </div>
+    </div>
+    <div class="clear"></div>
+    <dl class="pay_success">
+        <div class="txt">
+            <h2 class="color01">恭喜您，支付成功！</h2>
+            <p class="p1">请等待系统为您揭晓！</p>
+            <p class="p2">您现在可以<a href="{url('/member/db')}" class="color01">查看{$L.unit_yun}记录</a>或<a href="{url('/yunbuy')}" class="color01">继续{$L.unit_yun}</a></p>
+        </div>
+    </dl>
+</div>
+<script>
+	window.setTimeout(go,3000);
+	function go(){
+		location.href="{url('/yunbuy')}";
+	}
+</script>
+{include file="footer.html"}

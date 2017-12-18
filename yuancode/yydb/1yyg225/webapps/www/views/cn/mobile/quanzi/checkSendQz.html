@@ -1,0 +1,79 @@
+<style type="text/css">
+    .qzContent{ padding: 20px 0 10px; color: #000; display: block; width: 100%; }
+    .qzContent p{ padding: 0; margin: 0; text-indent: 0; text-align: left; }
+    .qzContent .title{ font-size: 18px; color: #e54048; text-align: center; font-weight: normal }
+    .qzContent .need_num{ font-size: 16px; color: #000; text-align: center; }
+    .qzContent .need_num span{ color: #ababab; }
+    .qzContent .table{ color: #000; font-size: 14px; width: 95%; margin: 0 auto; }
+    .qzContent .table td{ padding-bottom:10px; line-height: 34px; vertical-align: top; }
+    .qzContent .table td .text{ padding: 0 5px; width: 95%; height: 32px; line-height: 32px; color: #999; border: 1px solid #ccc; }
+    .qzContent .table td .tip{ line-height: 15px; color: #666; padding-top:5px; }
+    .qzContent .table td .tip span{ color: #f30 }
+    .qzContent .tr_btn td{ padding: 5px 0 5px; }
+    .qzContent .btn_qz{ background: #e54048; font-size: 16px; color: #fff; display: inline-block; width: 50%; height: 35px; line-height: 35px; border: 0; border-radius: 5px; }
+</style>
+
+<div id="checkSendQz" style="display: none;">
+    <div class="qzContent">
+        <table cellpadding="0" cellspacing="0" class="table">
+            <tr>
+                <td width="100" nowrap>本商品最大参与人数：</td>
+                <td><input type="text" class="text" id="qz_max_num" value="" placeholder="不得低于3人" /></td>
+            </tr>
+            <tr>
+                <td nowrap>参与本{$L.unit_yun_team}商品密码：</td>
+                <td><input type="password" class="text" id="qz_pass" value="" placeholder="请输入6位纯数字密码" /></td>
+            </tr>
+            <tr class="tr_btn">
+                <td colspan="2" align="center">
+                    <input type="hidden" id="qz_buy_id" value="" />
+                    <button class="btn_qz" onclick="sendQz()">立即发起</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div id="checkSetQz" style="display: none;">
+    <div class="qzContent">
+        <table cellpadding="0" cellspacing="0" class="table">
+            <tr>
+                <td width="100" nowrap>修改后的{$L.unit_yun_team}人数：</td>
+                <td>
+                    <input type="text" class="text" id="setQz_max_num" value="" placeholder="不得低于3人" />
+                    <p class="tip">原{$L.unit_yun_team}人数：<span id="setQz_max_num_old">0</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td nowrap>修改后的{$L.unit_yun_team}密码：</td>
+                <td>
+                    <input type="password" class="text" id="setQz_pass" value="" placeholder="请输入6位纯数字密码" />
+                    <p class="tip">原{$L.unit_yun_team}密码：<span id="setQz_pass_old">0</span><br>（不修改请留空）</p>
+                </td>
+            </tr>
+            <tr class="tr_btn">
+                <td colspan="2" align="center">
+                    <input type="hidden" id="setQz_buy_id" value="" />
+                    <button class="btn_qz" onclick="setQz()">确认修改</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div id="checkPassAlertQz" style="display: none;">
+    <div class="qzContent">
+        <table cellpadding="0" cellspacing="0" class="table">
+            <tr>
+                <td width="100" nowrap>圈子密码：</td>
+                <td><input type="password" class="text" id="checkQz_pass" value="" placeholder="" /></td>
+            </tr>
+            <tr class="tr_btn">
+                <td colspan="2" align="center">
+                    <input type="hidden" id="checkQz_buy_id" value="" />
+                    <button class="btn_qz" onclick="checkPassQz()">立即参与</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

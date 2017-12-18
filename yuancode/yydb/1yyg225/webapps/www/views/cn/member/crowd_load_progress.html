@@ -1,0 +1,35 @@
+<ul style="margin-top: 0px;" >
+    {foreach from=$list item=row}
+    <li>
+        <span class="icon">{date('Y-m-d',$row.add_time)}</span>
+        <p>
+            {$info.cd_name}
+            <a href="javascript:;">{$info.username|nickname:$info.nickname}</a>
+        </p>
+        <section>{$row.content}</section>
+        <div class="fuck">
+            {if $row.thumbs}
+            {foreach from=$row.thumb item=m}
+            <a class="fancybox-effects-a" href="{zz mod=fileurl source=$m width=500 height=500}">
+                <img src="{zz mod=fileurl source=$m width=50 height=50}">
+            </a>
+            {/foreach}
+            {/if}
+        </div>
+    </li>
+    {/foreach}
+</ul>
+<div class="feny mt20">
+    {include file="ajax_page.html"}
+</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#load_list').find('.demo').ajaxContent({
+            event:'click', //mouseover
+            loaderType:"img",
+            loadingMsg:"/style/images/transparent.gif",
+            target:'#load_list'
+        });
+    });
+    jQuery(".focusBox").hover(function () { jQuery(this).find(".prev,.next").stop(true, true).fadeTo("show", 0.2) }, function () { jQuery(this).find(".prev,.next").fadeOut() });
+</script>

@@ -1,0 +1,73 @@
+{assign var='header' value='header2'}
+{include file="top.html"}
+<link rel="stylesheet" href="/style/mobile/css/member.css">
+<div id="content" class="container main">
+    <div class="tips-m">
+        <div class="prompt">每个订单只要有一次晒单机会，发布晒单您将获得（<b class="color01" style="font-size:1.2rem">1-5{$L.unit_db_points}</b>）的{$L.unit_jiangli}，好好把握机会吧！</div>
+        <div class="prompt">
+            <span>普通晒单（<b class="color01" style="font-size:1.2rem">{$site_config.share_db}个{$L.unit_db_points}</b>）内容要求包含>>>></span><br>
+            <span class="color03">
+            1、{$L.unit_winning}感言；<br>
+            2、{$L.unit_winning}商品真实拍摄照片；
+            </span>
+        </div>
+        <div class="prompt">
+            <span>精华晒单（<b class="color01" style="font-size:1.2rem">{$site_config.rec_share_db}个{$L.unit_db_points}</b>）内容要求包含>>>></span><br>
+            <span class="color03">
+            1、刷脸和刷{$L.unit_winning}产品，合照图片清晰，无倒置图片（即：您或您的亲友与物品的开心合照）；<br>
+            2、{$L.unit_winning}短信通知截图、物品高清照；<br>
+            2、文字言之有物，分享{$L.unit_winning}喜悦得当，寄语{$site_config.site_name}、正品、真实可信描述以及个人主观评价。
+            </span>
+        </div>
+    </div>
+
+    <div class="form-m">
+        <form action="" target="iframeNews" method="post" id="submit_form">
+            <div class="item ui-clr">
+                <dl>
+                    <dt class="color03">晒单商品：</dt>
+                    <dd style="line-height: 2rem;">
+                        <a href="{$goods.url}" target="_blank">
+                            <img src="{zz mod=fileurl source=$goods.thumb width=64 type=0}" width="64" style="float:left;margin-right:10px;" />
+                            {$goods.title}
+                        </a>
+                    </dd>
+                </dl>
+            </div>
+            <div class="item ui-clr">
+                <dl>
+                    <dt class="color03">晒单标题：</dt>
+                    <dd>
+                        <input type="text" class="input-m" name="title" value="{$row.title}" />
+                    </dd>
+                </dl>
+            </div>
+            <div class="item ui-clr">
+                <dl>
+                    <dt class="color03">晒单内容：</dt>
+                    <dd>
+                        <textarea name="content" class="input-m" style="padding:5px;width:95%;height:80px;">{$row.content}</textarea>
+                    </dd>
+                </dl>
+            </div>
+            <div class="item ui-clr">
+                <dl>
+                    <dt class="color03">上传图片：</dt>
+                    <dd style="line-height: 2;">
+                        {upload_btn('share','','',6,'gif,jpg,jpeg,png,mp4,flv')}
+
+                        <div style="line-height:1.5rem;padding-top:5px;color:#f00;font-size:1.2rem;">
+                            支持图片和视频格式：gif,jpg,jpeg,png,mp4,flv；<br>
+                            请至少上传一张图片做封面，支持小视频格式；<br>
+                            单个文件大小不超过{ini_get('post_max_size')}！
+                        </div>
+
+                    </dd>
+                </dl>
+            </div>
+            <input type="hidden" name="Submit" value="1">
+            <input type="submit" value="提交晒单" class="btn" />
+        </form>
+    </div>
+</div>
+{include file="footer.html"}

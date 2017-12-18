@@ -1,0 +1,103 @@
+{include file='home/head.html'}
+<link rel="stylesheet" href="/css/wx-site.css" type="text/css" />
+<link rel="stylesheet" href="/css/wx-home.css" type="text/css" />
+{literal}
+<style type="text/css"></style>
+{/literal}
+<div class="slider1 clear" id="mod_slider">
+    <div class="slider_cnt">
+        <ul id="detail-slider">
+            {foreach from=$sliders item=m key=k}
+            <li><img index="{$k}" back_src="{$m.imgurl_src}"></li>
+            {/foreach}
+        </ul>
+    </div>
+</div>
+
+<div class="wrp-body">
+    <div class="home-goods">
+        <div class="good-cates clear" id="gcate">
+            <a href="/xmall/good_list?cate=1" class="m1">
+                <span>手机</span><i class="iconfont">&#xe60f;</i>
+            </a>
+            <a href="/xmall/good_list?cate=2" class="m2">
+                <span>平板</span><i class="iconfont">&#xf0070;</i>
+            </a>
+            <a href="/xmall/good_list?cate=3" class="m3">
+                <span>配件</span><i class="iconfont">&#x3437;</i>
+            </a>
+            <a href="/xmall/good_list?cate=4" class="m4">
+                <span>0元购</span><i class="iconfont">&#xf000e;</i>
+            </a>
+        </div>
+    </div>
+
+    {foreach from=$goodsa item=m}
+    <div class="home-item1">
+        <div class="hi-tag">{$m.name}</div>
+        <div class="hi-cover">
+            <a class="hi-link" href="/xmall/detail/{$m.id}"><img src="{$m.imgurl_src}"></a>
+            <div class="hi-desc">{$m.desc}</div>
+            <div class="hi-layer"></div>
+        </div>
+        <div class="hi-price">
+            <label class="s18">踏青价：</label>
+            <span class="through c999">{$m.price}</span>
+            <span class="s22 cf00">{$m.real_price}</span><em>元</em>
+        </div>
+    </div>
+    {/foreach}
+
+    <div class="home-item1">
+        {foreach from=$cates item=cate_name key=cateid}
+        {if isset($goodsb[$cateid]) && is_array($goodsb[$cateid])}
+        <div class="hi-tag">{$cate_name}</div>
+        {foreach from=$goodsb[$cateid] item=m key=k}
+        <a class="hgood in-box" href="/xmall/detail/{$m.id}">
+            <span class="flex1 home-good-info">
+                <span class="lit-tag">{$m.name}</span>
+                <span class="cf00"><i class="s22">{$m.real_price}</i>元</span>
+            </span>
+            <span class="w100"><img src="{$m.imgurl_thumb}"></span>
+        </a>
+        <div class="line_ddd"></div>
+        {/foreach}
+        {/if}
+        {/foreach}
+    </div>
+
+    {foreach from=$list item=m key=k}
+    <div class="wrp-box{if $k==0} firstAd{/if}{if $k==count($list)-1} lastAd{/if}">
+        <div class="ad ad{$m.frame_id} clear" ad-id="{$m.id}">
+            <div class="ad-tag"><span>{$m.name}</span></div>
+            {$m.frame_code}
+        </div>
+    </div>
+    {/foreach}
+
+
+    <div class="home-foot">
+        <a href="/xabout" style="color:#666">关于锐沃电铺</a><br>
+        riv锐沃电铺  客服电话：0592-5900389<br>
+        锐骐（厦门）电子科技有限公司  版权所有<br>
+    </div>
+</div>
+
+{include file='home/mall/cart_btn.html'}
+
+<script type="text/javascript" src="/js/touch_slider.js?a=2"></script>
+<script type="text/javascript">
+var zz = new loopImage({
+    contentWrap: "#detail-slider",
+    autoGen: !1,
+    loadImg: !0,
+    margin: 0,
+    autoTime: 3e3,
+    autoAdapt: !0,
+    offset: !0,
+    onInit: function () {
+        this.param.container.css("visibility", "visible")
+    }
+});
+</script>
+{include file='home/foot.html'}

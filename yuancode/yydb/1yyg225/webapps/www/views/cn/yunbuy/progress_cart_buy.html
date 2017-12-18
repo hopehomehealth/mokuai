@@ -1,0 +1,7 @@
+<div id="progress" class="progress-0{$progress}" style="width: 420px;">
+    <ul class="fn-clear">
+        <li{if $progress >= 1} class="dq"{/if}><span>1</span><p>提交订单</p></li>
+        <li{if $progress >= 2} class="dq"{/if}><span>2</span><p>支付订单</p></li>
+        <li style="background: url('/style/images/225-jdbg.png') no-repeat right 0;" {if $progress >= 5} class="dq"{/if}><span>3</span><p>支付成功，等待发货</p></li>
+    </ul>
+</div>

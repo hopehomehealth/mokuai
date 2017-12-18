@@ -1,0 +1,14 @@
+{assign var='header' value='header2'}
+{include file="top.html"}
+<link rel="stylesheet" href="/style/mobile/css/member.css">
+<div id="content" class="container main">
+    <div class="tips-m">
+        <p>您的支付金额为：<span class="color01">{$order.surplus_amount}</span></p>
+        {if $payment_info.pay_fee}
+        <p>支付手续费用为：{$payment_info.pay_fee}</p>
+        {/if}
+        <p style="margin-bottom: 10px;">您选择的支付方式为：{$payment_info.pay_name}</p>
+        {$payment_info.pay_button}
+    </div>
+</div>
+{include file="footer.html"}

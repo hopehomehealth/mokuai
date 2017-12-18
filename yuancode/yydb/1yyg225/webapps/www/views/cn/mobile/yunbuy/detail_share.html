@@ -1,0 +1,18 @@
+{assign var='header' value='header2'}
+{include file="top.html"}
+<div id="content" class="container detail">
+    <div class="shareList" style="padding: 0">
+        <div class="item"></div>
+    </div>
+    <div class="loading getMore"></div>
+</div>
+
+{include file="footer.html"}
+<script src="/style/mobile/js/jquery-pageload.js"></script>
+<script src="/style/mobile/js/jquery.more.js"></script>
+<script type="text/javascript">
+    $('.shareList').more({
+        'address': '/content/share_ajax/all?goods_id={$row.goods_id}&type=db',
+        'amount' : 10
+    })
+</script>

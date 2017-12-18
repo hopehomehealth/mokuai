@@ -1,0 +1,65 @@
+{assign var='header' value='header2'}
+{include file="top.html"}
+<link href="/style/mobile/css/lottery.css" rel="stylesheet" />
+<div id="content" class="container detail">
+    <section id="calResult" class="z-minheight">
+        <div class="infoResult">
+            <dl>截止揭晓时间【{microtime_format($row.last_dbtime,'Y-m-d H:i:s.x')}】最<em>后100条全站购买时间记录</em></dl>
+            <ul class="result2">
+                {foreach from=$site_join item=m name=site_join}
+                {if $smarty.foreach.site_join.iteration lt 101}
+                <li>
+                    <span>{microtime_format($m.db_time,'Y-m-d')}<dd>{microtime_format($m.db_time,'H:i:s.x')}</dd></span>
+                    <span>{$m.timenum}</span>
+                    <span>{$m.username|nickname:$m.nickname}</span>
+                    <p><b class="z-arrow"></b></p>
+                </li>
+                {/if}
+                {/foreach}
+            </ul>
+        </div>
+        <div class="infoCount">
+            <div class="infoCount2">
+                <ul>
+                    <li style="border:0;">
+                        取以上数值结果得：
+                    </li>
+                    <li>
+                        1、求和：{$row.time_total}
+                        <em>(上面100条{$L.unit_yun}记录时间取值相加之和</em>
+                    </li>
+                    <li>
+                        2、第 {$row.qihao}期 “老时时彩”开奖号码：{if $row.kjjg}{foreach from=$row.kjjg item=m}<b class="ball">{$m}</b>{/foreach}{else}<b class="ball">？</b>{/if}
+                        <em><a href="http://caipiao.163.com/award/ssc/{microtime_format($row.wait_time,'Ymd')}.html" style="margin-left: 10px; color: #FFE000; font-family: simsun;" target="_blank">开奖查询&gt;&gt;</a></em>
+                    </li>
+                    <li>
+                        <p>
+                            3、取余：{$row.time_total}<em>(100条时间记录之和){if $site_config.is_ssc}+{if $row.kjjg}{$row.kjjg_str}{else}?{/if}({$row.qihao}期时时彩开奖结果){/if}</em>
+                            <br />%{$row.need_num}
+                            <em>(本商品总需参与人次)</em>={if $row.residue}{foreach from=$row.residue item=m}{$m}{/foreach}{else}?{/if}<em>(余数)</em>
+                        </p>
+                    </li>
+                    <li>
+                        4、计算结果：{if $row.residue}{foreach from=$row.residue item=m}{$m}{/foreach}{else}?{/if}<em>(余数)</em>+10000001=
+                        <span>{if $row.luck_code}{$row.luck_code}{else}?{/if}</span>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="infoResult">
+            <ul class="result1 result3">
+                {foreach from=$site_join item=m name=site_join}
+                {if $smarty.foreach.site_join.iteration gt 100}
+                <li>
+                    <span>{microtime_format($m.db_time,'Y-m-d')}<dd>{microtime_format($m.db_time,'H:i:s.x')}</dd></span>
+                    <span>{$m.timenum}</span>
+                    <span>{$m.username|nickname:$m.nickname}</span>
+                </li>
+                {/if}
+                {/foreach}
+            </ul>
+        </div>
+    </section>
+</div>
+{include file="footer.html"}

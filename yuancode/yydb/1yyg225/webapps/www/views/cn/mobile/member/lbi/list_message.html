@@ -1,0 +1,36 @@
+<dt><b>{date('Y-m-d H:i:s',$m.add_time)}</b></dt>
+<dd>
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th>发送内容</th>
+            <td>
+                {$m.content}
+                {if $m.reply}<br/>
+                <span class="color01">[回复]</span>
+                {$m.reply.content}
+                <i class="color03" style="font-size: 1rem;">{date('Y-m-d H:i:s',$m.reply.add_time)}</i>
+                {/if}
+            </td>
+        </tr>
+        <tr>
+            <th>发送者</th>
+            <td>
+		{if $m.username&&$m.type==0}{$m.username}{else}管理员{/if}
+            </td>
+        </tr>
+        <tr>
+            <th>接收者</th>
+            <td>
+		{if $m.to_username&&$m.type==1}{$m.to_username}{else}管理员{/if}
+            </td>
+        </tr>
+        <tr>
+            <th>操作</th>
+            <td>
+		{if $m.status==0&&$m.type==1}<a href="{url('/member/message_read/')}{$m.id}" class="color02">标为已读</a>&nbsp;&nbsp;{/if}
+                {if $m.is_reply}<a href="{url('/member/message/')}?id={$m.id}" class="color02">回复</a>&nbsp;&nbsp;{/if}
+                <a href="javascript:zz_confirm('您确认要删除该留言?','{url('/member/message_del/')}{$m.id}');" title="删除"  class="color02">删除</a>
+            </td>
+        </tr>
+    </table>
+</dd>

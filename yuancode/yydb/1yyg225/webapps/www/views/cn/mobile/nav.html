@@ -1,0 +1,23 @@
+{if $site_config.index_skin eq 2}{else}
+<nav class="nav">
+    <ul class="ui-clr">
+        <li{if $navMark eq 'index'} class="selected"{/if}><a href="{url()}"><span>首页</span></a></li>
+        {if $navMark eq 'free'}
+        <li class="selected"><a href="{'/yunbuy/free'|url}"><span>免费{$L.unit_yun}</span></a></li>
+        {elseif !empty($smarty.get.zq)}
+        <li class="selected"><a href="/yunbuy?zq={$smarty.get.zq}"><span>{$row.title}</span></a></li>
+        {else}
+        <li{if $navMark eq 'yunbuy'} class="selected"{/if}><a href="{'/yunbuy'|url}"><span>{$L.unit_yun_one}</span></a></li>
+        {/if}
+        {if $smarty.const.IsAuction}
+        <li{if $navMark eq 'auction'} class="selected"{/if}><a href="{'/auction/lists'|url}"><span>所有{$L.unit_pay}</span></a></li>
+        <style type="text/css">
+            .nav li{ width: 20%;}
+        </style>
+        {/if}
+        <li{if $navMark eq 'win'} class="selected"{/if}><a href="{'/content/win'|url}"><span>最新揭晓</span></a></li>
+        <li{if $navMark eq 'share'} class="selected"{/if}><a href="{'/content/share'|url}"><span>晒单</span></a></li>
+    </ul>
+</nav>
+<div class="clear"></div>
+{/if}

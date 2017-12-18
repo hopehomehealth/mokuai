@@ -1,0 +1,65 @@
+<dt><b>{date('Y-m-d H:i',$m.logtime)}</b></dt>
+<dd>
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th>类型</th>
+            <td>
+                {$m.stage_title}
+            </td>
+        </tr>
+        {if $m.amount gt 0 || $m.amount lt 0}
+        <tr>
+            <th>第三方支付</th>
+            <td>
+                <b class="color01">{$m.amount}</b>
+            </td>
+        </tr>
+        {/if}
+        {if $m.user_money gt 0 || $m.user_money lt 0}
+        <tr>
+            <th>可用金额</th>
+            <td>
+                <b class="color01">{$m.user_money}</b>
+            </td>
+        </tr>
+        {/if}
+        {if $m.frozen_money gt 0 || $m.frozen_money lt 0}
+        <tr>
+            <th>冻结金额</th>
+            <td>
+                <b class="color01">{$m.frozen_money}</b>
+            </td>
+        </tr>
+        {/if}
+        {if $m.db_points gt 0 || $m.db_points lt 0}
+        <tr>
+            <th>{$L.unit_db_points}</th>
+            <td>
+                {$m.db_points}
+            </td>
+        </tr>
+        {/if}
+        {if $m.pay_points gt 0 || $m.pay_points lt 0}
+        <tr>
+            <th>{$L.unit_pay_points}</th>
+            <td>
+                {$m.pay_points}
+            </td>
+        </tr>
+        {/if}
+        {if $m.rank_points gt 0 || $m.rank_points lt 0}
+        <tr>
+            <th>经验值</th>
+            <td>
+                {$m.rank_points}
+            </td>
+        </tr>
+        {/if}
+        <tr>
+            <th>备注</th>
+            <td>
+                {$m.desc}
+            </td>
+        </tr>
+    </table>
+</dd>

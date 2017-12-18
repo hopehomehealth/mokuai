@@ -1,0 +1,42 @@
+<div class="xqjz-l-main">
+    <ul>
+        {foreach from=$list item=row}
+        <li>
+            <span class="icon">{date('Y-m-d',$row.add_time)}</span>
+            <p>
+                {$info.cd_name}
+                <a href="javascript:;">{$info.username|nickname:$info.nickname}</a>
+            </p>
+            <section>{$row.content}</section>
+            <div class="fuck">
+                {if $row.thumbs}
+                {foreach from=$row.thumb item=m}
+                <a class="fancybox-effects-a" href="{zz mod=fileurl source=$m width=500 height=500}">
+                    <img src="{zz mod=fileurl source=$m width=50 height=50}">
+                </a>
+                {/foreach}
+                {/if}
+            </div>
+        </li>
+        {/foreach}
+    </ul>
+</div>
+<div class="feny mt20">
+    {include file="crowd/ajax_page.html"}
+</div>
+<script type="text/javascript">
+    var load_div = '.xq-l-main';
+    $(document).ready(function(){
+        $(load_div).find('.demo').ajaxContent({
+            event:'click', //mouseover
+            loaderType:"text",
+            loadingMsg:"拼命加载中...",
+            target:load_div,
+            success:function(){
+                scrollLoading();
+            }
+        }).bind('click',function(){
+            //$('html,body').animate({ scrollTop: '400px' }, 500);
+        });
+    });
+</script>

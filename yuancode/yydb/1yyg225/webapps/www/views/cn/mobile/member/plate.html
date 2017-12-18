@@ -1,0 +1,26 @@
+{assign var='header' value='header2'}
+{include file="top.html"}
+<link rel="stylesheet" href="/style/mobile/css/member.css">
+<div id="content" class="container main">
+    <div class="nav-m ui-clr">
+        <ul>
+            <li{if $type neq 1} class="on"{/if}><a href="{'/member/plate'}">抽奖记录</a></li>
+            <li{if $type eq 1} class="on"{/if}><a href="{'/member/plate?type=1'}">中奖记录</a></li>
+        </ul>
+    </div>
+
+    <div class="list01 list-plate">
+        <dl class="item"></dl>
+    </div>
+    <div class="loading getMore"></div>
+</div>
+<script src="/style/mobile/js/jquery.more.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $('.list-plate').more({
+            'address': '/member/plate?type={$type}',
+            'amount' : 10
+        })
+    });
+</script>
+{include file="footer.html"}

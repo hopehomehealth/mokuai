@@ -1,0 +1,112 @@
+{assign var='header' value='header2'}
+{include file="top.html"}
+<link rel="stylesheet" href="/style/mobile/css/member.css">
+<div id="content" class="container main">
+    <div class="tips-m">
+        {if $row.id}编辑{else}新增{/if}收货人信息 <span class="color01">(最多保存5个有效地址)</span>
+        {if $row.id}
+        <a href="/member/address{if $smarty.get.back}?back={$smarty.get.back}{/if}" class="color02">[新增]</a>
+        {/if}
+    </div>
+
+    <div class="form-m">
+        <form action="" target="iframeNews" method="post" id="submit_form">
+            <div class="item ui-clr">
+                <dl>
+                    <dt class="color03"><span class="color01">*</span> 配送区域：</dt>
+                    <dd>
+                        {linkage('zone',$row.zone)}
+                    </dd>
+                </dl>
+            </div>
+            <div class="item ui-clr">
+                <dl>
+                    <dt class="color03"><span class="color01">*</span> 详细地址：</dt>
+                    <dd>
+                        <input name="address" value="{$row.address}" datatype="*" type="text" class="input-m">
+                    </dd>
+                </dl>
+            </div>
+            <div class="item ui-clr">
+                <dl>
+                    <dt class="color03"><span class="color01">*</span> 收货人姓名：</dt>
+                    <dd>
+                        <input name="name" value="{$row.name}" datatype="*2-6" type="text" class="input-m">
+                    </dd>
+                </dl>
+            </div>
+            <div class="item ui-clr">
+                <dl>
+                    <dt class="color03"><span class="color01">*</span> 手机/电话：</dt>
+                    <dd>
+                        <input name="mobile" value="{$row.mobile|default:$member.mobile}" datatype="*2-6" type="text" class="input-m">
+                    </dd>
+                </dl>
+            </div>
+            <div class="item ui-clr">
+                <dl>
+                    <dt class="color03">邮政编码：</dt>
+                    <dd>
+                        <input  name="zip" value="{$row.zip}" datatype="n" ignore="ignore" type="text" class="input-m">
+                    </dd>
+                </dl>
+            </div>
+            <div class="item ui-clr">
+                <dl>
+                    <dt class="color03">设为默认：</dt>
+                    <dd>
+                        <input type="checkbox" name="is_default" value="1" {if $row.is_default}checked{/if}>
+                    </dd>
+                </dl>
+            </div>
+            <input type="hidden" name="back" value="{$smarty.get.back}" />
+            <input type="hidden" name="id" value="{$row.id}">
+            <input name="Submit" type="submit" value="{if $smarty.get.back}配送到此地址{else}保 存{/if}" class="btn" />
+        </form>
+    </div>
+
+    <div class="list01 list-address">
+        {foreach from=$address item=m name=f}
+        <dl class="item">
+            <dt><b>有效地址{$smarty.foreach.f.index+1}</b></dt>
+            <dd>
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <th>收货人</th>
+                        <td>
+                            {$m.name}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>手机/电话</th>
+                        <td>
+                            {$m.mobile|default:$member.mobile}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>收货地址</th>
+                        <td>
+                            {$m.area}
+                            {$m.address}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>邮编</th>
+                        <td>
+                            {$m.zip}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>操作</th>
+                        <td>
+                            <a href="{url('/member/address/'|cat:$m.id)}{if $smarty.get.back}?back={$smarty.get.back}{/if}" class="color02">编辑</a>&nbsp;&nbsp;
+                            <a href="javascript:zz_confirm('您是否确认删除收货地址?','{url('/member/address_del/'|cat:$m.id)}{if $smarty.get.back}?back={$smarty.get.back}{/if}');" class="color02">删除</a>
+                        </td>
+                    </tr>
+                </table>
+            </dd>
+        </dl>
+        {/foreach}
+    </div>
+</div>
+{include file="footer.html"}

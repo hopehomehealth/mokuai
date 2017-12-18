@@ -1,0 +1,55 @@
+{include file="header.html"}
+<link type="text/css" rel="stylesheet" href="/style/css_02/style.css" />
+<link type="text/css" rel="stylesheet" href="/style/css/member.css" />
+<link type="text/css" rel="stylesheet" href="/style/css_02/merchant.css" />
+<div class="container menu-show">
+    {include file="business/ur_here.html"}
+    {include file="business/menu.html"}
+    <div class="fn-right hy-r">
+        {if $data.list}
+        <div class="shop-right">
+            <h3>我的商品</h3>
+            <a href="/business/yunbuy#m">更多</a>
+        </div>
+        <ul class="box-sizing shop-right1">
+            {foreach from=$data.list item=m}
+            <li class="index1-img">
+                <em><a href="{$m.url}" target="_blank"><img src="{zz mod=fileurl source=$m.imgurl_src width=160 height=160 type=0}" /></a></em>
+                <p class="banner-title"><a href="{$m.url}" target="_blank">第{$m.qishu}期 {$m.title}</a></p>
+                <p class="banner-money">总需：{$m.need_num} 人次{if $m.price gt 1}<span class="zq_ico" style="float: right;">{$m.price|num2char}元{$L.unit_area}</span>{/if}</p>
+                <div class="progressBar">
+                    <p class="progressBar-wrap">
+                        <span style="width:{$m.buy_num/$m.need_num*100}%"></span>
+                    </p>
+                    <div class="progressBar-txt">
+                        <div class="txt-l">
+                            <p><b>{$m.buy_num}</b></p>
+                            <p>已参与人次</p>
+                        </div>
+                        <div class="txt-r">
+                            <p><b>{$m.end_num}</b></p>
+                            <p>剩余人次</p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            {/foreach}
+        </ul>
+        {/if}
+        {zz mod=content var=tagGG module=article field='id,title,url,createtime' catid=$smarty.const.NOTE_ID limit=5}
+        {if $tagGG}
+        <div class="shop-right">
+            <h3>消息通知</h3>
+            <a href="/content/index/{$smarty.const.NOTE_ID}" target="_blank">更多</a>
+        </div>
+        <ul class="gg-list fn-clear shop-bor">
+            {foreach from=$tagGG item=m}
+            <li><a href="{$m.url|url}">{$m.title}</a><span>{$m.createtime|date_format:'Y-m-d'}</span></li>
+            {/foreach}
+        </ul>
+        {/if}
+    </div>
+</div>
+<div class="merchant"></div>
+{include file="footer.html"}
+<script src="/style/css_02/common_02.js"></script>

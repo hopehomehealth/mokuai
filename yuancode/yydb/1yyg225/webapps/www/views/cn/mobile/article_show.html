@@ -1,0 +1,12 @@
+{$row.head=$data.cat.catname}
+{assign var='header' value='header2'}
+{include file="top.html"}
+<link rel="stylesheet" href="/style/mobile/css/content.css">
+<div id="content" class="container main">
+    <div class="page_content">
+        <div class="t">{$data.row.title}</div>
+        <div class="c ui-clr">{$data.row.content|stripcslashes}</div>
+    </div>
+</div>
+{include file="footer.html"}
+

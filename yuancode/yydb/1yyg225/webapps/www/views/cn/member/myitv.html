@@ -1,0 +1,115 @@
+{include file="header.html"}
+<link rel="stylesheet" href="/style/css/member.css">
+<link rel="stylesheet" href="{url('/style/css/refer.css')}">
+<script src="{url('/style/jquery.ajaxContent.pack.js')}" type="text/javascript"></script>
+<style type="text/css">
+    .refer-box .rleft ul li{ width:420px;}
+    .username img{ vertical-align:bottom;}
+</style>
+{include file="ur_here.html"}
+<div id="container">
+    <div class="fn-clear mt20 pb20">
+        {include file="member/menu.html"}
+        <div class="fn-right hy-r">
+            <div class="fn-clear hy-tjxh">
+                <div class="title"><h2>邀请好友注册</h2> <h2 style="font-size:12px; color:red;margin-left:20px;border:0">邀请好友夺宝赚佣金</h2></div>
+                <div class="hy-box" style="padding-bottom: 0;">
+                    <div class="regMytiv" style="width: 450px; float: left;">
+                        <p class="p1 color01">复制邀请链接：</p>
+                        <p class="p2"><textarea id="text" onfocus="this.style.borderColor='#777';this.select();" onblur="this.style.borderColor='#ccc'">{$comment.text} {$comment.url}</textarea></p>
+                        <p class="p5"><a class="hy-btn2" id="copybtn">复制链接</a><span style="margin-left:20px; font-size: 12px;">建议您写分享感受，获得最好邀请效果</span></p>
+                    </div>
+                    <div style="float: left; width: 420px;">
+                        <img src="{zz mod=fileurl source=$qrcode}" style="float: left;" width="140"/>
+                        <div style="float: left; width: 260px; margin-left: 5px; margin-top: 15px;">我的专属二维码，分享给好友，<br/>无论是微信、微博、QQ群、QQ空间……<br/>只要你乐于分享，<br/>就有收获，三重好礼等你来拿！</div>
+                    </div>
+                    <div style="clear: both; height: 15px;"></div>
+                </div>
+                <script type="text/javascript" src="{url('/style/ZeroClipboard.js')}"></script>
+                <script type="text/javascript">
+                    $(document).ready(function(){
+                        $("#copybtn").zclip( { path:'/style/ZeroClipboard.swf',copy:$('#text').html() } );
+                    });
+                </script>
+            </div>
+            <div class="fn-clear hy-tjxh hy-noborder">
+                <div class="title" id="ivt_list">
+                    <h2>已邀请注册人</h2>
+                </div>
+                <div class="hy-table" style="margin:10px auto;">
+                    <style type="text/css">
+                        .cmss_list_count{ font-size:16px; }
+                        .cmss_list_count li{ padding-top: 10px; }
+                        .cmss_list_count li p{ margin-bottom: 5px; color: #000; }
+                        .cmss_list_count li p a{ color: #f30; font-weight: bold; text-decoration: underline; font-size: 14px; }
+                        .load{ display:none; }
+                        .hy-table td{ padding: 7px 5px; font-size: 14px; }
+                    </style>
+                    <ul class="cmss_list_count">
+                        {foreach from=$cmss item=m name=f}
+                        <li>
+                            <p>{$m.levelName}：{$m.count} 人 <a href="javascript:;" onclick="mLoad('{$smarty.foreach.f.index}',true)">点击查看</a> </p>
+                            <div class="load" id="load_{$smarty.foreach.f.index}"><div class="loading">拼命加载中...</div></div>
+                        </li>
+                        {/foreach}
+                    </ul>
+                    <script type="text/javascript">
+                        function mLoad(hash, load){
+                            var loadDiv = '#load_'+hash;
+                            $(loadDiv).toggle();
+
+                            load=load?load:false;
+                            if(load==true){
+                                $(loadDiv).load('/member/myivt?type='+hash);
+                            }
+                        }
+                        function award_btn(mid){
+                            $.layer({
+                                shade: [0],
+                                area: ['auto','auto'],
+                                dialog: {
+                                    msg: '确认领取此{$L.unit_jiangli}吗？',
+                                    type: 4,
+                                    yes: function(){
+                                        $.post('/member/award_ivt/',{ mid:mid },function(data){
+                                            if(!data.error){
+                                                layer.closeAll();
+                                                $('#mid'+mid).addClass('hy-btn1').html('已领取');
+                                            }else{
+                                                layer.msg(data.msg,3);
+                                            }
+                                        },'json');
+                                    }
+                                }
+                            });
+                        }
+                    </script>
+                </div>
+                {include file="public_page.html"}
+                <div class="refer-box" style="width:900px;margin:0 auto; margin-bottom: 25px;">
+                    <div class="rright" style="float:none;width:auto;">
+                        <h4>温馨提示</h4>
+                        <dl>
+                            <dt>1、邀请注册能获得什么好处？</dt>
+                            <dd>邀请会员注册，会员参拍后您将得到分销提成。</dd>
+                        </dl>
+                        <dl>
+                            <dt>1、在哪里可以看到我的佣金？</dt>
+                            <dd>在【会员中心】的【佣金明细】里可看到您的每次返现记录。{if $site_config.withdraw_status eq 1}佣金可申请提现，{/if}任何时候都可充值到账号中参与{$L.unit_yun}。</dd>
+                        </dl>
+                        <dl>
+                            <dt>2、哪些情况会导致佣金失效？</dt>
+                            <dd>借助网站及其他平台，恶意获取佣金，一经查实，扣除一切佣金且封号。</dd>
+                        </dl>
+                        <dl>
+                            <dt>4、如何知道我有没有邀请成功</dt>
+                            <dd>您可以在【会员中心】的【我的邀请】里面查看。</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{include file="footer.html"}

@@ -1,0 +1,55 @@
+{include file='home/uhead.html'}
+<link rel="stylesheet" href="/css/wx-site.css" type="text/css" />
+{literal}
+<style type="text/css">
+.ship-addr{margin:0 16px}
+.ship-addr .f-label{text-align:right; padding-right:5px}
+.form-row .sel-zone{height:auto}
+.sel-zone select{border:1px solid #ddd; display:block; line-height:24px; height:24px; margin-top:2px}
+.ship-addr .info{display:block}
+.addrs .zone-detail{width:85%; display:inline-block}
+.addrs .zone{color:#666}
+.addrs .default{color:#090}
+</style>
+{/literal}
+<div class="context clear">
+    <div class="ship-addr">
+        <input type="hidden" name="callback" id="callback" value="{if isset($callback)}{$callback}{/if}"/>
+
+        {if count($list)}
+        <ul class="addrs">
+            {foreach from=$list item=m}
+            <li>
+                <a class="info{if $select_addr} d1-deliver-setDefault-{$m.id}-1{else} d1-deliver-setDefault-{$m.id}-0{/if}" href="javascript:;">
+                    <span class="uname">{$m.real_name}</span>
+                    <span class="mobile">{$m.mobile}</span><br>
+                    <span class="zone">{substr($m.prov_name,2)}{$m.city_name}{$m.district_name}</span><br>
+                    <span class="zone-detail">{$m.address}({$m.zipcode})</span>
+                    <div class="arrow-right">
+                        {if $m.is_default}
+                        <i class="iconfont default">&#xf02a7;</i>
+                        {else}
+                        <i class="iconfont">&#xf02a8;</i>
+                        {/if}
+                    </div>
+
+                </a>
+                <div class="opbtn in-box">
+                    <a href="/xdeliver/edit/{$m.id}" class="flex1"><i class="iconfont">&#xf0032;</i>&nbsp;修改</a>
+                    <a href="javascript:;" class="flex1 d2-deliver-del-{$m.id}"><i class="iconfont">&#xf0002;</i>&nbsp;删除</a>
+                </div>
+            </li>
+            {/foreach}
+        </ul>
+        {else}
+        <div style="text-align:center">暂无收获地址</div>
+        {/if}
+
+        <div class="fix-bottom">
+            <a href="/xdeliver/add" class="uiBtn BtnBlue BtnS4 s14"><i class="iconfont">&#xf00a3;</i> 新增收货地址</a>
+        </div>
+    </div>
+</div><!--End Context-->
+<span style="display:none" class="icon-heart"></span>
+<script type="text/javascript" src="/js/user/deliver.js"></script>
+{include file='home/foot.html'}

@@ -1,0 +1,491 @@
+{include file="header.html"}
+<link rel="stylesheet" href="{url('/style/css/index.css')}">
+<script src="/style/lefttime.js?v={$main.vjs}"></script>
+<script src="/style/lefttime_jx.js?v={$main.vjs}"></script>
+<style>
+  .hidden{ display: none !important; }
+  .home-ad{ position:fixed; top:0; width:100%; height:100%; background-color: rgba(56, 47, 107, 0.701961); z-index:9999; display: -webkit-flex;  
+              display: flex;  -webkit-align-items: center;  align-items: center;  -webkit-justify-content: center;  justify-content: center; }
+</style>
+<div class="container">
+<div class="ui-clr first-screen">
+    <div class="screen-left ui-left">
+        <ul class="nav-sub">
+            {foreach from=$yuncat item=m name=yuncat}
+            {if $smarty.foreach.yuncat.index lt 6}
+            <li class="n{$key+1}"><a href="{$m.url}">{$m.catname}</a>
+                <div class="nav-child">
+                    <!--<div class="nc-title">{$m.catname}</div>-->
+                    <div class="nc-content clearfix">
+                        {foreach from=$yuncat item=n}
+                        {if $n.parentid eq $m.id}
+                        <p><a href="{$n.url}">{$n.catname}</a></p>
+                        {/if}
+                        {/foreach}
+                    </div>
+                </div>
+            </li>
+            {/if}
+            {/foreach}
+        </ul>
+        <div class="active">
+<!--
+            <h3>{$site_config.site_name}公告</h3>
+-->
+            <h3 style="text-align: center; padding: 0;">公&nbsp;&nbsp;&nbsp;&nbsp;告</h3>
+            {zz mod=content module=article field='id,title,url' catid=$smarty.const.REC_ID limit=3}
+            <ul>
+                {foreach from=$tagData item=m name=rec}
+                <li class="a{$smarty.foreach.rec.iteration}"><b>{$smarty.foreach.rec.iteration}</b><a href="{if $m.link}{$m.link}{else}{$m.url|url}{/if}" title="{$m.title}">{$m.title}</a></li>
+                {/foreach}
+            </ul>
+        </div>
+    </div>
+
+    <div class="screen-center ui-left">
+        <div id="slideBox" class="slideBox">
+            <div class="bd">
+                <ul>
+                    {zz mod=content var=tagAdw module=ad id=1}
+                    {zz mod=fileurl var=tagAds source=$tagAdw.images num=10}
+                    {foreach from=$tagAds item=m}
+                    <li class="scrollLoadingDiv"><a href="{$m.title}"{if $m.isblank} target="_blank"{/if}><img class="scrollLoading" src="/style/images/pix.gif" data-url="{$m.path}" /></a></li>
+                    {/foreach}
+                </ul>
+            </div>
+            <div class="hd">
+                <ul>{foreach from=$tagAds item=m key=key}<li>{$key+1}</li>{/foreach}</ul>
+            </div>
+        </div>
+
+        <div id="scroll" class="scroll">
+            <div class="scroll-box">
+                <div class="bd" id="win-list">
+                    {foreach from=$data.jxdb item=m}
+                    {include file="content/windbitemindex.html"}
+                    {/foreach}
+                </div>
+            </div>
+            <a class="prev" href="javascript:void(0)"></a>
+            <a class="next" href="javascript:void(0)"></a>
+            <span class="bor"></span>
+        </div>
+        <input type="hidden" name="ids" id="ids" value="" />
+
+    </div>
+
+    <div class="screen-right ui-right">
+        {if $recbuy}
+        <div class="recduobao">
+            <div class="bd">
+                <ul>
+                    {foreach from=$recbuy item=m}
+                    <li>
+                        <div class="title"><i></i><a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}" title="{$m.title}" target="_blank">{$m.title}</a></div>
+                        <div class="pic v"><a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}" title="{$m.title}" target="_blank"><img src="{zz mod=fileurl source=$m.imgurl_src width=200 height=150 type=0}"></a><span></span></div>
+                        <div class="progressBar">
+                            <p class="progressBar-wrap">
+                                <span style="width:{$m.jindu}%"></span>
+                            </p>
+                            <div class="progressBar-txt">
+                                <div class="txt-l">
+                                    <p><b>{$m.buy_num}</b></p>
+                                    <p>已参与人次</p>
+                                </div>
+                                <div class="txt-r">
+                                    <p><b>{$m.end_num}</b></p>
+                                    <p>剩余人次</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="btn-btn" href="javascript:void(0)" onclick="addToCart({$m.buy_id},'buy')"></a>
+                    </li>
+                    {/foreach}
+                </ul>
+            </div>
+        </div>
+        {/if}
+        {if $smarty.const.IsAuction}
+        <a class="index-com" href="{'/content/newbie/yunbuy'|url}"></a>
+        <div class="stock">
+            <div class="tip">上证<br>指数</div>
+            {if $data.cod}
+            <div class="today">
+                <a href="http://cj.gw.com.cn/news/index/000001.shtml" target="_blank"><strong>{$data.cod.cod}</strong></a><br>[{$data.cod.addtime|date_format:'Y-m-d'}]
+            </div>
+            {/if}
+            <div class="latest">
+                {foreach from=$data.codlist item=m}
+                <p>[{$m.addtime|date_format:'m-d'}] <a>{$m.cod}</a></p>
+                {/foreach}
+            </div>
+        </div>
+        {else}
+        <a class="index-com" style="height: 162px; margin-top: 10px; background: url('style/images/index1_1.jpg');" href="{'/content/newbie/yunbuy'|url}"></a>
+        {/if}
+
+    </div>
+</div>
+<div class="screen-bot"></div>
+
+<div class="section">
+    <div class="s-hd">
+        <h3>正在{$L.unit_yun}</h3>
+        <ul class="s-nav">
+           <!--  <li><a href="{url('/content/share')}" target="_blank">查看{$L.unit_winning}</a></li> -->
+           <li><a href="http://www.i1y8.com/yunbuy/?cid=0&bid=0&k=ratio&type=&" target="_blank">人气商品</a></li>
+        </ul>
+    </div>
+    <div class="s-bd ui-clr">
+        <div class="s-aside ui-left">
+            <div class="win-t"><img src="/style/images/a-pic.png"></div>
+            <div class="win-bd">
+                <ul>
+                    {foreach from=$luck_db item=m}
+                    <li>
+                        <div class="pic"><img src="{zz mod=photo source=$m.photo size='80' nopic='/upload/default.gif'}" width="50" height="50"></div>
+                        <div class="info">
+                            <p class="p1"><span>于{$m.db_time|date_format:'m月d日'}</span><a href="{'/minfo?id='|cat:$m.mid|url}" target="_blank" title="{$m.username|nickname:$m.nickname}"><strong>{$m.username|nickname:$m.nickname}</strong></a></p>
+                            <p class="p2"><b class="color01">{$m.qty}人次</b>参与<a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}" target="_blank" title="{$m.goods_name}">{$m.goods_name|truncate:10:''}</a></p>
+                            <p>总需：{$m.need_num} 人次</p>
+                        </div>
+                    </li>
+                    {/foreach}
+                </ul>
+            </div>
+        </div>
+
+        <div class="s-main">
+            <ul class="win-list ui-clr">
+                {assign var=pre value='02'}
+                {foreach from=$yunbuy item=m}
+                {include file="yunbuy/lbi_yunbuy_index.html"}
+                {/foreach}
+            </ul>
+        </div>
+    </div>
+</div>
+{if $site_config.index_crowd}
+<link rel="stylesheet" href="{url('/style/css/index-zhongchou.css')}">
+<div class="section">
+<div class="s-hd">
+    <h3>热门众筹</h3>
+</div>
+<div class="s-bd ui-clr">
+<div class="fn-clear">
+<ul class="index-zhongcou win-list ui-clr">
+{foreach from=$hotCrowd item=row}
+<li>
+    <div class="pic v scrollLoadingDiv"><a href="{url('/crowd/detail/')}{$row.cd_id}"target="_blank"><img class="scrollLoading" src="{zz mod=fileurl source=$row.thumb width=285 height=224}" /></a><span></span></div>
+    <p class="title"><a href="{url('/crowd/detail/')}{$row.cd_id}" title="{$row.cd_name}" target="_blank">{$row.cd_name|truncate:16:''}</a></p>
+    <div class="progressBar">
+        <p class="progressBar-wrap">
+            <span style="width:{$row.cd_total|progress:$row.cd_price}%"></span>
+        </p>
+        <div class="progressBar-txt">
+            <div class="txt-l">
+                <span>{$row.cd_total|progress:$row.cd_price}%</span>
+                <p>已达</p>
+            </div>
+            <div class="txt-r">
+                <span>{$row.end_time|endDay}</span>
+                <p>剩余</p>
+            </div>
+            <div class="txt-m">
+                <span>{$row.cd_total|price_format:1}</span>
+                <p>已筹</p>
+            </div>
+        </div>
+    </div>
+</li>
+{/foreach}
+</ul>
+</div>
+</div>
+</div>
+{/if}
+
+<div class="section">
+    <div class="s-hd">
+        <h3>数码电器</h3>
+        <a href="/yunbuy/index/?cid=1" class="s-nav" style="float:right;cursor:pointer;" target="_blank">查看更多</a>
+    </div>
+    <div class="s-bd ui-clr">
+        <div class="fn-clear">
+            <ul class="win-list ui-clr">
+                {assign var=pre value='03'}
+                {foreach from=$digitalyunbuy item=m}
+                {include file="yunbuy/lbi_yunbuy_index.html"}
+                {/foreach}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="s-hd">
+        <h3>汽车专区</h3>
+        <a href="/yunbuy/index/?cid=35" class="s-nav" style="float:right;cursor:pointer;" target="_blank">查看更多</a>
+    </div>
+    <div class="s-bd ui-clr">
+        <div class="fn-clear">
+            <ul class="win-list ui-clr">
+                {assign var=pre value='03'}
+                {foreach from=$caryunbuy item=m}
+                {include file="yunbuy/lbi_yunbuy_index.html"}
+                {/foreach}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="s-hd">
+        <h3>时尚潮流</h3>
+        <a href="/yunbuy/index/?cid=4" class="s-nav" style="float:right;cursor:pointer;" target="_blank">查看更多</a>
+    </div>
+    <div class="s-bd ui-clr">
+        <div class="fn-clear">
+            <ul class="win-list ui-clr">
+                {assign var=pre value='03'}
+                {foreach from=$fashionyunbuy item=m}
+                {include file="yunbuy/lbi_yunbuy_index.html"}
+                {/foreach}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="s-hd">
+        <h3>生活超市</h3>
+        <a href="/yunbuy/index/?cid=3" class="s-nav" style="float:right;cursor:pointer;" target="_blank">查看更多</a>
+    </div>
+    <div class="s-bd ui-clr">
+        <div class="fn-clear">
+            <ul class="win-list ui-clr">
+                {assign var=pre value='03'}
+                {foreach from=$lifeyunbuy item=m}
+                {include file="yunbuy/lbi_yunbuy_index.html"}
+                {/foreach}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="s-hd">
+        <h3>户外运动</h3>
+        <a href="/yunbuy/index/?cid=2" class="s-nav" style="float:right;cursor:pointer;" target="_blank">查看更多</a>
+    </div>
+    <div class="s-bd ui-clr">
+        <div class="fn-clear">
+            <ul class="win-list ui-clr">
+                {assign var=pre value='03'}
+                {foreach from=$outdooryunbuy item=m}
+                {include file="yunbuy/lbi_yunbuy_index.html"}
+                {/foreach}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="s-hd">
+        <h3>充值卡类</h3>
+        <a href="/yunbuy/index/?cid=8" class="s-nav" style="float:right;cursor:pointer;" target="_blank">查看更多</a>
+    </div>
+    <div class="s-bd ui-clr">
+        <div class="fn-clear">
+            <ul class="win-list ui-clr">
+                {assign var=pre value='03'}
+                {foreach from=$cardyunbuy item=m}
+                {include file="yunbuy/lbi_yunbuy_index.html"}
+                {/foreach}
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="section">
+    <div class="s-hd">
+        <h3>最新上架</h3>
+    </div>
+    <div class="s-bd ui-clr">
+        <div class="fn-clear">
+            <ul class="win-list ui-clr">
+                {assign var=pre value='03'}
+                {foreach from=$newyunbuy item=m}
+                {include file="yunbuy/lbi_yunbuy_index.html"}
+                {/foreach}
+            </ul>
+        </div>
+        {if $data.newAuction}
+        <div class="fn-clear">
+            <ul class="pro-list ui-clr">
+                {foreach from=$data.newAuction item=auction}
+                <li class="aucli">
+                    <div class="pic scrollLoadingDiv"><a href="{$auction.url}" title="{$auction.title}" target="_blank"><img class="scrollLoading" src="/style/images/pix.gif" data-url="{zz mod=fileurl source=$auction.imgurl_src width=210 height=130 type=0}" alt="{$auction.title}" /></a></div>
+                    <p class="title"><a href="{$auction.url}" title="{$auction.title}" target="_blank">{$auction.title}</a></p>
+
+                    {if $auction.cat_type eq 'tiyan'}
+                    <p class="price" style="line-height: 24px;">
+                        价值：{$auction.price|price_format}
+                        {if $auction.paib}
+                        仅需<i> {$auction.paib}<em><a href="{'/content/tiyan'|url}" target="_blank" title="做任务，赚{$L.unit_pay_points}">{$L.unit_pay_points}</a></em></i>
+                        {/if}
+                    </p>
+                    {else}
+                    <p class="price"><i>￥</i><span>{$auction.current_price}</span> <del>原价：{$auction.price|price_format}</del></p>
+                    {/if}
+
+
+                    <p class="tip">{if $auction.cat_type eq 'tiyan'}<span class="color01">体验</span>{/if}{$L.unit_winning}率：{$auction.win}%，已有<span class="color01">{$auction.bid_user_count}</span>人参与</p>
+                    {if $auction.status lt $smarty.const.FINISHED}
+                    <div class="count-time"><i></i>{if $auction.status eq $smarty.const.PRE_START}即将开始{else}剩余{/if}：<span id="leftTime{$auction.act_id}">请稍等, 载入中...</span></div>
+                    <script type="text/javascript">
+                        onload_leftTime('{$auction.act_id}{$auction.key}',"{$auction.diff_time}","{$auction.status}");
+                    </script>
+                    {/if}
+
+                    {if $auction.status eq $smarty.const.PRE_START}
+                    <a class="btn-go btn-pre" href="{$auction.url}">即将推出</a>
+                    {elseif $auction.status eq $smarty.const.UNDER_WAY}
+                    <a class="btn-go" href="{$auction.url}">抢拍</a>
+                    {else}
+                    <a class="btn-go btn-finish" href="{$auction.url}">已结束</a>
+                    {/if}
+
+                    {if $auction.win}
+                    <div class="winz"><i>{$auction.win}<span>%</span></i></div>
+                    {/if}
+                </li>
+                {/foreach}
+            </ul>
+        </div>
+        {/if}
+    </div>
+</div>
+
+{if $share}
+<div class="section">
+    <div class="s-hd">
+        <h3>晒单分享</h3>
+        <span id="start"></span>
+        <ul class="s-nav">
+            <li><a href="{'/content/share'|url}" target="_blank">更多分享...</a></li>
+        </ul>
+    </div>
+    <div class="s-bd ui-clr">
+        <div class="share-list">
+            <ul class="ui-clr">
+                {foreach from=$share item=m}
+                <li>
+                    <div class="pic"><a href="{'/minfo?id='|cat:$m.mid|cat:'#share#vid='|cat:$m.id|url}" target="_blank" title="{$m.title}"><img src="{zz mod=fileurl source=$m.thumb width=100 height=82 type=1}" /></a></div>
+                    <div class="detail">
+                        <i class="former"></i>
+                        <p class="txt"><a href="{'/minfo?id='|cat:$m.mid|cat:'#share#vid='|cat:$m.id|url}" target="_blank" title="{$m.content}">{$m.content|truncate:54}</a></p>
+                        <p class="author">&mdash;&mdash; <a href="{'/minfo?id='|cat:$m.mid|cat:'#share#vid='|cat:$m.id|url}" title="{$m.title}" target="_blank">{$m.title|truncate:10}</a>&nbsp; {date('Y-m-d H:i',$m.addtime)}</p>
+                        <i class="after"></i>
+                    </div>
+                </li>
+                {foreachelse}
+                <li class="empty" style="border:0;width:100%;line-height:200px;">等你来晒单...</li>
+                {/foreach}
+            </ul>
+        </div>
+    </div>
+</div>
+{/if}
+
+</div>
+
+<!-- 首页广告  -->
+<!-- <div class="home-ad" style="position:fixed; bottom:0; width:100%; height:135px; background-color: rgba(56, 47, 107, 0.701961); z-index:9999;">
+  <div style="width:1200px;margin: 0 auto;">
+    <div style="float:left; margin-top: -20px; padding-left:35px;">
+      <img src="/upload/images/home2.png" alt="">
+    </div>
+    <div style="float:left;">
+      <img src="/upload/images/home1.png" alt="">
+    </div>
+    <a id="close-home-ad" href="javascript:;" style="display:block; float:left; margin-top:42px; margin-left: 80px;">
+      <img src="/upload/images/homeclose.png" alt="">
+    </a>
+  </div>
+</div> -->
+<div class="home-ad hidden">
+  <div style="width:360px;margin: 0 auto;position:relative;">
+    <a href="/content/html/apps"><img src="{zz mod=fileurl source=$site_config.pc_home_ad_picture}" alt="" style="width:100%;"></a>
+    <a id="close-home-ad" href="javascript:;" style="position:absolute;top:5px;right:0;"><img src="/upload/images/homeclose.png" alt=""></a>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+      if(sessionStorage.getItem("home_visited") == "true" ){
+      }else{
+          $(".home-ad").removeClass("hidden");
+          sessionStorage.setItem("home_visited", true);
+          $("#close-home-ad").click(function(e){
+              $(this).parents(".home-ad").addClass("hidden");
+          });
+      }
+  })
+</script>
+
+<script src="{url('/style/script.js')}"></script>
+<script src="{url('/style/jquery.SuperSlide.2.1.1.js')}"></script>
+<script src="{url('/style/jcarousellite.js')}"></script>
+{literal}
+<script type="text/javascript">
+    jQuery(".recduobao").slide({mainCell:".bd ul",effect:"top",autoPlay:true,interTime:"3000",delayTime:"1000"});
+    jQuery("#slideBox").slide({mainCell:".bd ul",effect:"left",autoPlay:true});
+    jQuery("#notice").slide({});
+    jQuery("#focus").slide({mainCell:".bd ul",effect:"top",autoPlay:true,interTime:"3000"});
+    jQuery(".win-bd").slide({mainCell:"ul",autoPage:true,effect:"topLoop",autoPlay:true,vis:7,interTime:"2500",delayTime:"1000",opp:true});
+    jQuery(".act-bd").slide({mainCell:"ul",autoPage:true,effect:"topLoop",autoPlay:true,vis:7,interTime:"2500",delayTime:"1000",opp:true});
+    jQuery("#share").slide({mainCell:".share-list ul",autoPage:true,interTime:"5000",effect:"topLoop",autoPlay:true,vis:2});
+    //jQuery("#scroll").slide({ mainCell:".bd",autoPage:true,effect:"left",autoPlay:true,interTime:"4000",scroll:2,vis:2 });
+
+    $(function(){
+        $(".share-list").jCarouselLite({auto:3000,speed: 300});
+        $(".share-list li:even").addClass("even");
+
+        $(".side-r img").each(function(){
+            SetImage(this,294,142);
+        });
+
+        $('.win-list li,.pro-list li').bind('mouseover',function(){
+            $(this).addClass('hover');
+        }).bind('mouseout',function(){
+            $(this).removeClass('hover');
+        });
+
+        //商品分类效果
+        $('.nav-sub li').bind('mouseover',function(){
+            if($(this).find('.nc-content').html().trim()){
+                $(this).find('.nav-child').stop().show();
+            }
+        }).bind('mouseout',function(){
+            $(this).find('.nav-child').stop().hide();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        compaceIds();
+        setInterval('compaceIds()',5*1000);
+    });
+    function compaceIds(){
+        $.post('/content/ajaxIds','skin=index&ids='+$('#ids').val(),function(data){
+            if(data.error==1){
+                $('#ids').val(data.ids);
+                $('#win-list').prepend(data.html);
+            }
+        },'json');
+    }
+</script>
+{/literal}
+{include file="footer.html"}

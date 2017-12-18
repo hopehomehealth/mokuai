@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>内页</title>
+<link type="text/css" href="/style/css/xz_wp.css" rel="stylesheet">
+<script type="text/javascript" src="/style/jquery-1.8.3.min.js"></script>
+</head>
+
+<body>
+{include file="disk/header.html"}
+<div class="gr_dom">
+  {include file="disk/left.html"}
+  <div class="right">
+    <div class="xz_ny">
+      <table cellpadding="0" cellspacing="0" width="100%">
+      {include file="disk/menu.html"}
+      <tr><td colspan="4"><p class="list">当前位置：<a href="/disk/index" class="a1">我的{$L.unit_skydrive}</a>><a class="a2 on">{$foldername}</a></p></td></tr>
+      <tr><td class="td2"><h4>文件名</h4></td><td class="td2"><h4>文件大小</h4></td><td class="td2"><h4>上传时间</h4></td><td class="td2"><p class="p1"><i>操作</i></p></td></tr>
+      {foreach from=$list  item=m}
+      <tr>
+      <td><label><input type="checkbox">{$m.title}</label></td>
+      <td>{$m.size}</td>
+      <td>{date('Y-m-d H:i:s',$m.addtime)}</td>
+      <td class="xz_cz">
+      <p class="p1">
+      <a class="a3" href="/uploadfile/{$m.foldername}/{$m.name}"></a>
+      <a value="{$m.id}" class="a4 editfile"></a>
+      <a href="/disk/delfile/?id={$m.id}" class="a5"></a>
+      </p></td>
+      </tr>
+      {/foreach}
+      <tr>
+        <td class="td3" colspan="3">
+          <label style="display:none;"><input type="checkbox">全选/反选</label>
+          <select style="display:none;"><option>请选择</option><option>请选择1</option><option>请选择2</option></select>
+          <label class="ra1" style="display:none;"><input type="radio" name="tdt">批量删除</label>
+          <input style="display:none;" type="button" value="." class="xz_but">
+        </td>
+        <td class="td3">{include file="public_page.html"}</td>
+      </tr>
+    </table>
+    
+    </div>
+  </div>
+</div>
+{include file="disk/footer.html"}
+</body>
+</html>

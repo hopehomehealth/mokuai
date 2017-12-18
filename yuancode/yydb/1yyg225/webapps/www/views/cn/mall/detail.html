@@ -1,0 +1,141 @@
+{include file='home/head.html'}
+{literal}
+<link rel="stylesheet" href="/css/wx-site.css" type="text/css" />
+{/literal}
+
+<div class="mod_slider clear" id="mod_slider">
+    <div class="slider_cnt">
+        <ul id="detail-slider">
+            {foreach from=$good.pics item=m key=k}
+            {if $m.imgurl_middle!=''}
+            <li class="e2-mall-imagePreview"><img index="{$k}" class="default" back_src="{$m.imgurl_middle}" bigsrc="{$m.imgurl_src}"></li>
+            {/if}
+            {/foreach}
+        </ul>
+    </div>
+</div>
+<div class="pholder"></div>
+
+<div class="pro">
+    <div class="ptag">
+        {$good.name}
+    </div>
+    <div class="pprice">
+        <div class="price"><span>价格：</span><em>{$good.price}元</em><b id="ctrl-price" d-price="{$good.real_price}">{$good.real_price}元</b></div>
+        <div class="sell"><span>销量：</span><i>{$good.sell}件</i>&nbsp;&nbsp;&nbsp;<span>邮费：</span><i>免邮费</i></div>
+    </div>
+
+    <ul class="psafe" style="display:none">
+        <li class="safe-tencent"><i class="iconfont">&#xe61a;</i><span>腾讯支付担保</span></li>
+        <li class="safe-seven"><i class="iconfont">&#x3467;</i><span>7天无条件退换</span></li>
+        <li class="safe-quality"><i class="iconfont">&#x3468;</i><span>正品保证</span></li>
+    </ul>
+
+    <div class="pro-opt" id="rules">
+        <input type="hidden" id="saler" value="{if isset($saler)}{$saler}{/if}" name="saler"/>
+        <input type="hidden" id="sale_id" value="{if isset($sale_id)}{$sale_id}{/if}" name="sale_id"/>
+        {foreach from=$good.sp_val item=splist key=k}
+        {if isset($sp_names[$k])}
+
+        <dl class="clear">
+            <dt item-name="{$sp_names[$k]}">{$sp_names[$k]}：</dt>
+            <dd>
+                {foreach from=$splist item=m key=item_id}
+                <a href="javascript:;" class="d1-mall-seltype" rel="{$item_id}">{$m}</a>
+                {/foreach}
+            </dd>
+        </dl>
+        {/if}
+        {/foreach}
+
+        <dl class="clear">
+            <dt>数量：</dt>
+            <dd>
+                <div class="ctrl-num">
+                    <i class="iconfont d1-mall-minusnum">&#xf000d;</i>
+                    <input class="form-i" value="1" id="sel-good-num">
+                    <i class="iconfont d1-mall-addnum">&#xf000f;</i>
+                    <span class="ctrl-stock">库存:<span id="ctrl-stock" d-stock="{$good.stock}">{$good.stock}</span></span>
+                </div>
+            </dd>
+        </dl>
+
+    </div>
+    <div class="order-btn">
+        <a href="javascript:;" class="uiBtn BtnS7 BtnOrange s14 d1-mall-buynow-{$good.id}">立即购买</a>
+        <a href="javascript:;" class="uiBtn BtnGreen BtnS7 s14 d1-mall-joincart-{$good.id}">加入购物车</a>
+    </div>
+</div>
+<div class="pholder"></div>
+<ul class="pro-show d1-com-iTab-li">
+    <li class="on tab-btn">
+        <a href="javascript:;">商品详情</a>
+        <i class="iconfont">&#xf0007;</i><i class="iconfont arrow2">&#xf0007;</i>
+    </li>
+    <li class="tab-btn">
+        <a href="javascript:;">详细参数</a>
+        <i class="iconfont">&#xf0007;</i><i class="iconfont arrow2">&#xf0007;</i></li>
+    <li class="tab-btn">
+        <a href="javascript:;">评价({count($evals)})</a>
+        <i class="iconfont">&#xf0007;</i><i class="iconfont arrow2">&#xf0007;</i>
+    </li>
+</ul>
+<div class="pholder"></div>
+<div class="tab-mod detail-desc" style="display:block">
+    {$good.desc}
+</div>
+<div class="tab-mod">
+    <div class="pro-param">
+    <table>
+        {foreach from=$good.params item=m}
+        <tr><th>{$m.name}</th><td>{$m.name}</td></tr>
+        {/foreach}
+    </table>
+    </div>
+</div>
+<div class="tab-mod">
+    <ul class="cmt">
+        {foreach from=$evals item=m key=k}
+        <li{if $k%2==1} class="odd"{/if}>
+            <div class="cmt-user">
+                <a href="javascript:;">{$m.nickname}</a>
+                <span><i class="iconfont">{str_repeat('&#xf0061;',$m.star)}</i></span>
+            </div>
+            <div class="cmt-desc">{$m.comment}</div>
+            <div class="cmt-info">
+                <span class="rule">{$m.spec_str}</span>
+                <span class="date">{date('Y-m-d',$m.c_time)}</span>
+            </div>
+        </li>
+        {foreachelse}
+        <li style="line-height:40px; text-align:center">暂无评价!</li>
+        {/foreach}
+    </ul>
+
+</div>
+
+<div class="pholder-null"></div>
+
+{include file='home/mall/cart_btn.html'}
+
+<script type="text/javascript" src="/js/touch_slider.js?a=1"></script>
+<script type="text/javascript" src="/js/mall.js"></script>
+<script type="text/javascript">
+    {if isset($goodsItem)}
+        var goodsItem = {$goodsItem};
+    {/if}
+var zz = new loopImage({
+    contentWrap: "#detail-slider",
+    autoGen: !1,
+    loadImg: !0,
+    margin: 20,
+    autoTime: 3e3,
+    autoAdapt: !0,
+    offset: !0,
+    onInit: function () {
+        this.param.container.css("visibility", "visible")
+    }
+});
+
+</script>
+{include file='home/foot.html'}

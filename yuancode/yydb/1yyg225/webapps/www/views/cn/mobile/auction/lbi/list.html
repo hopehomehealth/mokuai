@@ -1,0 +1,26 @@
+{foreach from=$list item=auction}
+<li class="ui-clr">
+    <div class="pic">
+        <a href="{$auction.url}"><img src="{zz mod=fileurl source=$auction.imgurl_src width=110 type=0}" /></a>
+        <span class="tip">{$L.unit_winning}<br><i>{$auction.win}%</i></span>
+    </div>
+    <div class="info">
+        <p class="title"><a href="{$auction.url}">{$auction.title}</a></p>
+        <p class="price">
+            <span class="color">{if $auction.current_price gt 0}{$auction.current_price|price_format} {/if}{if $auction.paib}{$auction.paib}{$L.unit_pay_points}{/if}</span>
+            价值：<del>{$auction.price|price_format}</del>
+        </p>
+        {if $auction.status lt $smarty.const.FINISHED}
+        <div class="count">
+            <i class="ap-icon icon-count"></i>
+            {if $auction.status eq $smarty.const.PRE_START}即将开始：{else}剩余：{/if}
+            <span id="leftTime{$auction.act_id}{$auction.key}">请稍等, 载入中...</span>
+            <script type="text/javascript">
+                onload_leftTime('{$auction.act_id}{$auction.key}',"{$auction.diff_time}","{$auction.status}");
+            </script>
+        </div>
+        {/if}
+        <a href="{$auction.url}" class="btn-pai">抢拍</a>
+    </div>
+</li>
+{/foreach}

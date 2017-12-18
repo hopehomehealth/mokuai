@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+	<meta name="format-detection" content="telephone=no" />
+	<title>购物车</title>
+	<link rel="stylesheet" type="text/css" href="../css/api.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/user.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+</head>
+<body>	
+<div id="header">
+   <div class="cart active">
+	    <div class="icon_box" tapmode="" onclick="api.closeWin()"><i class="iconfont icon-fanhui"></i></div>
+	    <div class="toptit">我的晒单<font class="unit_bonus"></font></div>
+	    <div class="icon_box " tapmode="" onclick="backhome()"><i class="iconfont icon-shouye"></i></div>
+   </div>
+</div>
+<div id="content" class="container main">
+</div>
+<script id="share-template" type="text/x-dot-template">
+	    {{? it}}
+		<div class="shareList">
+		    {{ for(var i=0; i< it.length; i++) { }}
+		    <div class="item">
+		        <p class="title" onclick="openWin('minfo_share',{id:{{=it[i].mid}},vid:{{=it[i].id}}})">{{=it[i].obj_name}}<font class="red">（第{{=it[i].qishu}}期）</font></p>
+				<div class="cont ui-clr">
+				    <div class="pic"><a onclick="openWin('minfo_share',{id:{{=it[i].mid}},vid:{{=it[i].id}}})"><img src="{{=it[i].thumb}}" width="100"/></a></div>
+				    <div class="txt">
+				        <p class="mb5"><b style="color:#000">{{=it[i].title}}</b></p>
+				        <a onclick="openWin('minfo_share',{id:{{=it[i].mid}},vid:{{=it[i].id}}})">{{=it[i].content}}</a>
+				    </div>
+				</div>
+				<div class="fn-clear"></div>
+				<div class="author">
+				    <a onclick="openWin('minfo',{id:{{=it[i].mid}}})" class="blue">{{=it[i].username}}</a>
+				    <time>{{=it[i].addtime}}</time>
+				</div>
+		    </div>
+		    {{}}}
+		</div>
+		{{??}}
+		<div class="prompt">该用户还没有中奖记录！</div>
+		{{?}}
+	    </script>		
+<script type="text/javascript" src="../script/zepto.min.js"></script>
+<script type="text/javascript" src="../script/fastclick.js"></script>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/doT.min.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript">
+function loadData(page){
+    var url = 'minfo/load_share/'+uid+'/'+page;
+    var reslut = false;
+    showprog();
+    ajaxRequest(url, 'GET', {}, function (ret, err) {
+        if(ret.data){
+            var content = $api.byId('content');
+            var tpl = $api.byId('share-template').text;
+            var tempFn = doT.template(tpl);
+            $api.append(content, tempFn(ret.data));
+            reslut = true;
+        }else{
+            toast('没有更多了');
+        }
+        hideprog();
+    });
+    return reslut;
+}
+var page = 1;	    
+apiready = function() {
+    //适配iOS 7+，Android 4.4+状态栏
+	var header = $api.byId('header');
+	$api.fixStatusBar(header);
+    loadData(page);
+    api.addEventListener({name: 'scrolltobottom'}, function(ret, err){
+       page++;
+       loadData(page);
+    }); 
+    
+}
+</script>
+</body>
+</html>

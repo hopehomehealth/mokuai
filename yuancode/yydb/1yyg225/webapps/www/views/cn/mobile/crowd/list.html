@@ -1,0 +1,130 @@
+{include file="crowd/crowd_header.html"}
+<script src="/style/crowd/mobile/js/m.js"></script>
+<div class="topsx">
+    <ul>
+        <li class="on" _t_nav="n1" id="an1">
+            全部
+            <i class="iconfont">&#xe628;</i>
+        </li>
+        <li _t_nav="n2" id="an2">
+            <em>
+                进度
+                <i class="iconfont">&#xe628;</i>
+            </em>
+        </li>
+        <li _t_nav="n3" id="an3">
+            排序
+            <i class="iconfont">&#xe628;</i>
+        </li>
+
+    </ul>
+</div>
+<div id="n1" class="nav-zi ty" style="display: none;" _t_nav="n1">
+    <ul>
+        <li {if $smarty.get.cid eq ''}class="on"{/if}>
+            <a  href="{url('/crowd/lists')}?cid=&status={$smarty.get.status}&order={$smarty.get.order}&k={$smarty.get.k}">
+                <i class="iconfont">&#xe614;</i>全部
+            </a>
+        </li>
+        {foreach from=$cat item=m}
+        <li {if $smarty.get.cid eq $m.id}class="on"{/if}>
+            <a href="{url('/crowd/lists')}?cid={$m.id}&status={$smarty.get.status}&order={$smarty.get.order}&k={$smarty.get.k}">
+                <i class="iconfont">&#xe614;</i> {$m.catname}
+            </a>
+        </li>
+        {/foreach}
+    </ul>
+
+</div>
+<div id="n2" class="nav-zi ty" style="display: none;" _t_nav="n2">
+    <ul>
+        <li {if $smarty.get.status eq ''}class="on"{/if}>
+            <a href="{url('/crowd/lists')}?cid={$smarty.get.cid}&status=&order={$smarty.get.order}&k={$smarty.get.k}">
+                <i class="iconfont">&#xe614;</i>全部
+            </a>
+        </li>
+        <li {if $smarty.get.status eq 1}class="on"{/if}>
+            <a href="{url('/crowd/lists')}?cid={$smarty.get.cid}&status=1&order={$smarty.get.order}&k={$smarty.get.k}">
+                <i class="iconfont">&#xe614;</i> 众筹中
+            </a>
+        </li>
+        <li {if $smarty.get.status eq 2}class="on"{/if}>
+            <a href="{url('/crowd/lists')}?cid={$smarty.get.cid}&status=2&order={$smarty.get.order}&k={$smarty.get.k}">
+                <i class="iconfont">&#xe614;</i> 即将结束
+            </a>
+        </li>
+        <li {if $smarty.get.status eq 3}class="on"{/if}>
+            <a href="{url('/crowd/lists')}?cid={$smarty.get.cid}&status=3&order={$smarty.get.order}&k={$smarty.get.k}">
+                <i class="iconfont">&#xe614;</i> 已成功
+            </a>
+        </li>
+    </ul>
+
+</div>
+<div id="n3" class="nav-zi ty" style="display: none;" _t_nav="n3">
+    <ul>
+        <li {if $smarty.get.order eq ''}class="on"{/if}>
+            <a href="{url('/crowd/lists')}?cid={$smarty.get.cid}&status={$smarty.get.status}&order=&k={$smarty.get.k}">
+                <i class="iconfont">&#xe614;</i>默认
+            </a>
+        </li>
+        <li {if $smarty.get.order eq 1}class="on"{/if}>
+            <a href="{url('/crowd/lists')}?cid={$smarty.get.cid}&status={$smarty.get.status}&order=1&k={$smarty.get.k}">
+                <i class="iconfont">&#xe614;</i> 最新上线
+            </a>
+        </li>
+        <li {if $smarty.get.order eq 2}class="on"{/if}>
+        <a href="{url('/crowd/lists')}?cid={$smarty.get.cid}&status={$smarty.get.status}&order=2&k={$smarty.get.k}">
+            <i class="iconfont">&#xe614;</i> 目标金额
+        </a>
+        </li>
+        <li {if $smarty.get.order eq 3}class="on"{/if}>
+        <a href="{url('/crowd/lists')}?cid={$smarty.get.cid}&status={$smarty.get.status}&order=3&k={$smarty.get.k}">
+            <i class="iconfont">&#xe614;</i> 支持人数
+        </a>
+        </li>
+        <li {if $smarty.get.order eq 4}class="on"{/if}>
+        <a href="{url('/crowd/lists')}?cid={$smarty.get.cid}&status={$smarty.get.status}&order=4&k={$smarty.get.k}">
+            <i class="iconfont">&#xe614;</i> 筹资额
+        </a>
+        </li>
+
+
+    </ul>
+
+</div>
+
+<style>
+    body {
+        background-color: white;
+    }
+</style>
+<div>
+<ul class="list">
+    {include file="crowd/lbi_item.html"}
+</ul>
+</div>
+<script type="text/javascript">
+    var order = "{if $smarty.get.order}{$smarty.get.order}{else}{/if}";
+    var sort = "{if $smarty.get.sort}{$smarty.get.sort}{else}{/if}";
+    var url = "/crowd/lists";
+    var param = "?cid={$cid}&order="+order+"&sort="+sort+"&type={$type}&zq={$smarty.get.zq}&q={$smarty.get.q}&load";
+
+    $(function(){
+    });
+
+    function mLoad(type){
+        if(type=='need_num'){ sort=(sort=='ASC')?'DESC':'ASC'; }
+        else if(type=='end_num'){ sort='ASC'; }
+        else{ sort='DESC'; }
+        location.replace(url+(url.indexOf('?')>-1?'&':'?')+'cid={$cid}&order='+type+'&sort='+sort+"&type={$type}&zq={$smarty.get.zq}&q={$smarty.get.q}");
+    }
+
+    var ExtendOptions = {
+        path: function(index) {
+            return "/crowd/lists/"+index+"?cid={$cid}&order="+order+"&sort="+sort+"&type={$type}&zq={$smarty.get.zq}&q={$smarty.get.q}&load";
+        }
+    };
+</script>
+{include file="public_scroll.html"}
+{include file="crowd/crowd_footer.html"}

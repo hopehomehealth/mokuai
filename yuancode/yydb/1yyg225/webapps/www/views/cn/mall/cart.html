@@ -1,0 +1,87 @@
+{include file='home/uhead.html'}
+<link rel="stylesheet" href="/css/wx-site.css" type="text/css" />
+{literal}
+<style type="text/css">
+
+</style>
+{/literal}
+<div class="context clear">
+    <div class="wrap-cart">
+        {if count($list)}
+        <ul class="cart-list">
+            {foreach from=$list item=m}
+            <li>
+                <div class="cart-item">
+                    <div class="good-desc">
+                        <div class="good-pic">
+                            <a href="/xmall/detail/{$m.good_id}"><img src="{$m.imgurl_thumb}"></a>
+                        </div>
+                        <div class="good-info">
+                            <a>{$m.good_name}</a>
+                            <span>{$m.rule}</span>
+                        </div>
+                    </div>
+                    <div class="good-opt">
+                        <table>
+                            <tr><th>单价</th><th>数量</th><th>积分
+                                {if (isset($m.group_pref_price) && $m.group_pref_price!=0)}
+                                / 团折
+                                {/if}
+                                {if isset($m.goods_cheap_price)}
+                                / 特惠
+                                {/if}
+                                {if isset($m.sale_discount)}
+                                / 沃销
+                                {/if}
+                            </th></tr>
+                            <tr>
+                                <td>￥{$m.good_real_price}元</td>
+                                <td>
+                                    <div class="ctrl-num cart-ctrl-num clear">
+                                        <i class="iconfont d1-mall-minusnum-{$m.id}">&#xf000d;</i>
+                                        <input class="form-i" value="{$m.buy_num}">
+                                        <i class="iconfont d1-mall-addnum-{$m.id}">&#xf000f;</i>
+                                    </div>
+                                </td>
+                                <td>
+                                    {$m.good_real_price * 1}
+                                    {if (isset($m.group_pref_price) && $m.group_pref_price!=0)}
+                                    / 优惠{$m.group_pref_price}元
+                                    {/if}
+                                    {if isset($m.goods_cheap_price)}
+                                    / 限购
+                                    {/if}
+                                    {if isset($m.sale_discount)}
+                                    / -￥{$m.sale_discount}/件
+                                    {/if}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="cart-info">
+                        <div class="cart-price">共计：<span>￥{$m.good_real_price*$m.buy_num}</span></div>
+                        <div class="od_ctime"><a href="javascript:;" class="oddel d2-mall-delCartGood-{$m.id}">删除</a></div>
+                    </div>
+                </div>
+            </li>
+            {/foreach}
+        </ul>
+        <div class="cart-count">
+            <label>合计：</label><span class="pay-money">￥{$totalPrice}</span><br>
+            <div style="display:none">
+                <label>积分使用：</label><span class="pay-credit">2000</span>
+            </div>
+        </div>
+        <div class="order-btn"><a href="/xmall/good_list" class="uiBtn BtnS7 BtnBlue s14">继续购物</a><a href="/xmall/order_confirm" class="uiBtn BtnOrange BtnS7 s14">去结算</a></div>
+        {else}
+        <div style="text-align:center">购物车暂无任何商品。</div>
+        <div class="order-btn"><a href="/xmall/good_list" class="uiBtn BtnS7 BtnGreen s14">前往购物</a></div>
+        {/if}
+
+
+    </div>
+</div><!--End Context-->
+<script type="text/javascript" src="/js/mall.js"></script>
+<span style="display:none" class="icon-heart"></span>
+{include file='home/foot.html'}

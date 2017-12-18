@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no" />
+    <title>圈子详情</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/yunbuy_detail.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+    
+</head>
+<body>
+  <div id="header">
+	   <div class="active main-bor">
+		    <div class="icon_box" tapmode="" onclick="api.closeWin()"><i class="iconfont icon-fanhui"></i></div>
+		    <div class="toptit">商品详情</div>
+		    <div class="icon_box icon_two" tapmode="" onclick="opentoTab('cart')"><i class="iconfont icon-gouwuche"></i></div>
+		    <div class="icon_box" tapmode="" onclick="backhome()"><i class="iconfont icon-shouye"></i></div>
+	   </div>
+  </div>
+  <div class="flex_con detail" id="content">
+    <div class="slider" id="pics-content">
+        
+    </div>
+    <script id="pics-template" type="text/x-dot-template">
+    {{? it.info.pics}}
+    {{ for(var i=0; i< it.info.pics.length; i++) { }}
+	    {{? it.info.pics[i].imgurl_src!=''}}
+	    <div><img src="{{=it.info.pics[i].imgurl_src}}"/></div>
+	    {{?}}
+	    {{? i==0}}
+	    <img src="{{=it.info.pics[i].imgurl_src}}" id="buy_img_{{=it.info.buy_id}}" style="display:none;"/>
+	    {{? it.row_buy}}<img src="{{=it.info.pics[i].imgurl_src}}" id="buy_img_{{=it.row_buy.buy_id}}" style="display:none;"/>{{?}}
+	    {{?}}
+    {{}}} 
+    {{?}}
+    </script>
+    
+    <div class="info" id="info-content"></div>
+    <script id="info-template" type="text/x-dot-template">
+	    {{? it.info.gobuy!= 1}}
+	        <p class="title_1"><b class="red">{{=it.info.qz_sn_name}}</b> {{=it.info.title}}{{=it.info.goods_subtit}}{{? it.info.price > 1}}<span style="margin-left:10px;" class="zq_ico">{{=it.info.num2char}}元专区</span>{{?}}</p>
+		    <div class="price">
+		        <div class="ui-right">总需{{=it.info.need_num}}人次</div>
+	            <div class="ui-left">总需：<b class="color01">{{=it.info.need_num}}</b>人次</div>
+	            <div class="fn-clear"></div>
+	        </div>
+	        <div class="fn-clear"></div>
+	        {{? it.info.end_num > 1}}
+	        <div class="progressBar">
+	            <p class="wrap-bar">
+	                <span class="bar" style="width:{{=it.info.jindu}}%"></span>
+	            </p>
+	            <div class="ui-clr">
+	                <div class="ui-left">{{=it.info.buy_num}}人已参与</div>
+	                <div class="ui-right">剩余{{=it.info.end_num}}人次</div>
+	            </div>
+	        </div>
+	        <div class="fn-clear"></div>
+	        {{?}}
+        {{?? !it.row_buy}}
+            <p class="title">{{=it.info.title}}</p>
+        	<div>价格：<b class="color01" style="margin-right:2rem;">{{=it.info.goods_price}}</b></div>
+        {{?}}
+        {{? it.row_buy}}
+	    <div class="info_1">
+		    <p class="title">全价购买 <span>&nbsp;&nbsp;无需等待，直接获得商品！</span></p>
+		    <div class="bottom button-box ui-clr">
+		        <b class="color01" style="margin-right:2rem;">{{=it.row_buy.custom_price}}</b>
+		        {{? it.row_buy.need_num > 0}}
+		        <span class="btn-db-buy" onclick="addToCart('{{=it.row_buy.buy_id}}','buy_buy')">直接购买</span>
+		        {{??}}
+		        <span class="btn-db-disable">已抢光</span>
+		        <em style="color: #db3652;line-height:5rem">&nbsp;&nbsp;库存不足，立即{{=it.unit_yun}}</em>
+		        {{?}}
+		    </div>
+		</div>
+	    {{?}}
+    </script>
+    <div id="detail-content"></div>
+    <script id="detail-template" type="text/x-dot-template">
+    {{? it.info.end_num>0}}
+    <div class="detail-userCodes">
+        {{? it.member_join.length}}
+        <p>您本期总共参与了<b class="color01">{{=it.member_join_count}}</b>人次</p>
+        <p class="codes">
+                                   您的号码:
+            <span class="m-detail-code">
+            {{ for(var i=0; i< it.member_join.length; i++) { }}
+            {{? i < 9}}
+            {{? i < 8}}<b>{{=it.member_join[i]}}</b>{{??}}……{{?}}
+            {{?}}
+            {{ } }}
+            </span>
+            {{? it.member_join_count >8}}
+            <a class="m-detail-codes-btn blue" href="javascript:void(0)">展开所有&gt;&gt;</a>
+            <span class="m-detail-codes" style="display:none;">
+            {{ for(var i=0; i< it.member_join.length; i++) { }}
+                <b {{? it.member_join[i] == it.info.luck_code}}class="red"{{?}}>{{=it.member_join[i]}}</b>
+            {{}}}
+            </span>
+            <a class="m-detail-codes-btn-hide blue" style="display: none;" href="javascript:void(0)">收起号码&gt;&gt;</a>
+            {{?}}
+        </p>
+        {{??}}
+        <p class="detail-userCodes-blank">您还没有参与,赶紧参与吧！</p>
+        {{?}}
+    </div>
+    {{?? it.info.luck_code>0}}
+    <div style="clear:both;height:1px;width:100%;"></div>
+    <div class="detail-win">
+        <div class="win-mpic"><img src="../image/win-1.png"></div>
+        <div class="win-top">
+            <em onclick="openWin('minfo',{id:{{=it.luck_member.mid}}})"><img src="{{=it.luck_member.photo}}"></em>
+            <div class="win-left">
+                <p>获奖者：<span class="win-left-font">{{=it.luck_member.username}}({{=it.luck_member.ip_str}})</span></p>
+                <p style="display: none">用户ID：70037964（唯一不变标识）</p>
+                <p>期号：{{=it.info.qihao}}</p>
+                <p>本期参与：<span>{{=it.luck_member.qty}}</span>人次</p>
+                <p>揭晓时间：{{=it.info.wait_time}}</p>
+            </div>
+        </div>
+        <dl class="win-bottom">
+            <dt>幸运号码：<strong>{{=it.info.luck_code}}</strong></dt>
+            <dd onclick="openWin('quanzi_detail_result',{id:{{=it.info.buy_id}}})">计算结果</dd>
+        </dl>
+    </div>
+    {{?? it.info.wait_lottery}}
+    <div style="clear:both;height:1px;width:100%;"></div>
+    <div id="divLotteryTime" class="pProcess clearfix">
+        <div class="pCountdown">
+            <div class="g-snav">
+                <div class="g-s g-s-1"><div class="g-snav-lst">揭晓<br>倒计时<s></s></div></div>
+                <div class="g-s"><div class="g-snav-lst"><b id="liMinute">00</b><em>分</em></div></div>
+                <div class="g-s"><div class="g-snav-lst"><b id="liSecond">00</b><em>秒</em></div></div>
+                <div class="g-s"><div class="g-snav-lst"><b id="liMilliSecond">00</b><em>毫秒</em></div></div>
+            </div>
+        </div>
+    </div>
+    {{?}}
+    </script>
+    <ul class="yunbuy_other">
+        <a class="detail_join" onclick="openWin('quanzi_detail_join',{id:api.pageParam.id})"><b></b>所有参与记录</a>
+        <a onclick="openWin('quanzi_detail_info',{id:api.pageParam.id})"><b></b>图文详情<label>（建议WIFI下查看）</label></a>
+        <div id="win-content"></div>
+        <script id="win-template" type="text/x-dot-template">
+        {{? it.info.qishu > 1}}
+        <a onclick="openWin('quanzi_detail_win',{id:api.pageParam.id})"><b></b>往期揭晓</a>
+        {{?}}
+        </script>
+        <a class="detail_share" onclick="openWin('quanzi_detail_share',{id:api.pageParam.id})"><b></b>晒单分享</a>
+    </ul>
+    <div style="height:50px;"></div>
+    <div class="btn_bar">
+      <div class="btn_box flex_wrap" id="btn-content"></div>
+	  <div class="btn_bg"></div>
+	</div>
+	<script id="btn-template" type="text/x-dot-template">
+	  {{? it.info.luck_code > 0 || it.info.wait_lottery}}
+	    <div class="flex_wrap ing_str">第{{=it.new_buy.qishu}}期 火热进行中…</div><span class="btn-db"><a onclick="openWin('quanzi_detail',{id:{{=it.new_buy.buy_id}}})" tapmode="" class="ac">立即前往</a></span>
+	  {{?? it.info.gobuy==1}}
+	    <span class="btn-db"><a class="ac" tapmode="" href="javascript:void(0)" onclick="addToCart('{{=it.info.buy_id}}','buy')">立即购买</a></span>
+	    <span class="btn-db btn-cart"><a class="ac" tapmode="" href="javascript:void(0)" onclick="addToCart('{{=it.info.buy_id}}','',this)">加入购物车</a></span>
+	  {{?? it.info.type == 1}}
+	  	{{? it.info.qishu ==0}}
+	    <span class="btn-db"><a class="ac" tapmode="" href="javascript:void(0)" onclick="openWin('quanzi_send',{id:{{=it.info.buy_id}}})">发起圈子</a></span>
+	    {{??}}
+           {{? uid == it.info.qz_mid}}
+           	<span class="btn-db"><a class="ac" tapmode="" href="javascript:void(0)" onclick="addToCart('{{=it.info.buy_id}}','buy')">{{=it.unit_yun_button}}</a></span>
+            <span class="btn-db btn-cart copyInvQz"><a class="ac">立即邀请</a></span>
+            <span class="btn-db btn-cart"><a href="javascript:void(0)" onclick="openWin('quanzi_set',{id:{{=it.info.buy_id}}})" class="ac">设置圈子</a></span>
+            {{??}}
+			<span class="btn-db"><a class="ac" tapmode="" href="javascript:void(0)" onclick="openWin('quanzi_check',{id:{{=it.info.buy_id}}})">{{=it.unit_yun_button}}</a></span>
+			<span class="btn-db btn-cart copyInvQz"><a class="ac">立即邀请</a></span>
+            {{?}}
+	    {{?}}
+	  {{??}}
+	    <span class="btn-db btn-db-free"><a class="ac" tapmode="" href="javascript:void(0)" onclick="addToCart('{{=it.info.buy_id}}','free')">免费{{=it.unit_yun}}</a></span>
+	  {{?}}
+	</script>
+  </div>
+  <div class="tipBg"></div>
+  <ul class="shareBar">
+    <li><i class="iconfont icon-qzone" onclick="qqshare('QZone')"></i></li>
+    <li><i class="iconfont icon-qq2" onclick="qqshare('QFriend')"></i></li>
+    <li><i class="iconfont icon-weixin" onclick="wxshare('session')"></i></li>
+    <li><i class="iconfont icon-wxfriend" onclick="wxshare('timeline')"></i></li>
+  </ul>
+<script type="text/javascript" src="../script/jquery.min.js"></script>
+<script type="text/javascript" src="../script/slick.min.js"></script>    
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/doT.min.js"></script>
+<script type="text/javascript" src="../script/fastclick.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript">
+var sharetext,shareurl,sharepic,wxKey,type;
+function qqshare(type){
+    showprog();
+    var qq = api.require('qq');
+	qq.shareNews({
+	    url:shareurl,
+	    title:sharetext,
+	    description:sharetext,
+	    imgUrl:sharepic,
+	    type:type
+	}, function(ret, err){
+	    hideprog();
+	    if(ret.status){
+	        toast('分享成功');
+	    }else{
+	        toast(err.msg);
+	    }
+	    $('.shareBar').animate({bottom:"0px"},"fast");
+  		$('.tipBg').hide();
+	});
+}
+function wxshare(type){
+   showprog();
+   var wx = api.require('wx');
+   wx.shareWebpage({
+	    apiKey: wxKey,
+	    scene: type,
+	    title: sharetext,
+	    description: sharetext,
+	    contentUrl: shareurl,
+	    thumb:sharepic
+	}, function(ret, err){
+	    hideprog();
+	    if(ret.status){
+	        toast('分享成功');
+	    }else{
+	        var msg = '';
+	        switch(err.code)
+			{
+			case -1:
+			  msg = '未知错误';
+			  break;
+			case 0:
+			  msg = '成功';
+			  break;
+			case 1:
+			  msg = 'apiKey非法';
+			  break;
+			case 2:
+			  msg = '用户取消';
+			  break;
+			case 3:
+			  msg = '发送失败';
+			  break;
+			case 4:
+			  msg = '授权拒绝';
+			  break;
+			case 5:
+			  msg = '微信服务器返回的不支持错误';
+			  break;
+			case 6:
+			  msg = '当前设备未安装微信客户端';
+			  break;
+			default:
+			  msg = '注册SDK失败';
+			}
+	        toast(msg);
+	    }
+	    $('.shareBar').animate({bottom:"0px"},"fast");
+  		$('.tipBg').hide();
+	});
+}
+$(function(){
+  $('.m-detail-codes-btn').live('click',function(){
+	    $(this).hide();
+	    $('.m-detail-code').hide();
+	    $('.m-detail-codes').show();
+	    $('.m-detail-codes-btn-hide').show();
+  });
+  $('.m-detail-codes-btn-hide').live('click',function(){
+	    $(this).hide();
+	    $('.m-detail-codes').hide();
+	    $('.m-detail-code').show();
+	    $('.m-detail-codes-btn').show();
+  });
+  $('.copyInvQz').live('click',function(){
+        $('.tipBg').show();
+        $('.shareBar').animate({bottom:"50px"},"fast");
+  });
+  $('.tipBg').live('click',function(){
+  		$('.shareBar').animate({bottom:"0px"},"fast");
+  		$('.tipBg').hide();
+        
+  });
+});
+var id = '';
+var lottery = 0;
+var is_ssc = 0;
+var qihao = 0;
+var Secondms_jx = 60*1000;
+var minutems_jx = 1000;
+var wait_time = 0;
+function show_date_time(diff,obj) {
+		if(diff <= 0) {
+            $("#liMinute").html('00');
+            $("#liSecond").html('00');
+            $("#liMilliSecond").html('00');
+            if(lottery==0){ //#
+                if(is_ssc==1){
+	                lottery = 1;
+	                ajaxRequest('welcome/lottery/'+qihao, 'GET', {}, function (ret, err) {
+					    openWin('quanzi_detail',{id:id})
+					});
+                }else{
+	                rTimeout = window.clearTimeout(rTimeout);
+		            $('#divLotteryTime').html("<span class='jx_ing'>开奖计算中...</span>");
+		            setTimeout(function(){
+		                lottery = 1;
+		                openWin('quanzi_detail',{id:id})
+		            }, 5000);
+                }
+            }
+            return false;
+        }
+
+        DifferSecond   = Math.floor(diff / Secondms_jx);
+        diff -= DifferSecond * Secondms_jx;
+        DifferMinute   = Math.floor(diff / minutems_jx);
+        diff -= DifferMinute * minutems_jx;
+
+        if(DifferSecond.toString().length < 2) DifferSecond = '0'+DifferSecond;
+        if(DifferMinute.toString().length < 2) DifferMinute = '0'+DifferMinute;
+
+        wait_time=wait_time-1000;
+        $("#liMinute").html(DifferSecond);
+        $("#liSecond").html(DifferMinute);
+}
+apiready = function  () {
+    //适配iOS 7+，Android 4.4+状态栏
+    var header = $api.byId('header');
+    $api.fixStatusBar(header);
+    id = api.pageParam.id;
+    showprog();
+    ajaxRequest('quanzi/detail/'+id, 'GET', {}, function (ret, err) {
+        if (ret) {
+           var data = ret.data;
+           qihao = data.info.qihao;
+           temp(data,'pics');
+           $('#pics-content').slick({
+			    autoplay: true,
+			    arrows: false,
+			    dots: true,
+			    centerPadding:0
+		   });
+		   temp(data,'info');
+		   if(data.info.gobuy!=1) temp(data,'detail');
+		   temp(data,'win');
+		   temp(data,'btn');
+		   is_ssc = data.is_ssc;
+		   if(data.info.gobuy==1) $('.detail_join,.detail_share').hide();
+		   if(data.end_time>0){
+		     wait_time = parseInt(data.end_time);
+	         rTimeout = window.setInterval(function(){ show_date_time(wait_time, null); }, 1000);
+	
+	         //毫秒单独计时
+	         var h = 100;
+	         timeID_h_jx = window.setInterval(function(){
+	            if(h<=0) h = 100;
+	            h = parseInt(h)-1;
+	            if(h.toString().length < 1) h = '00';
+	            if(h.toString().length == 1) h = '0'+h;
+	            if(h.toString().length > 2) h = '99';
+	
+	            $("#liMilliSecond").html(h);
+	         }, 10);
+		   }
+		   sharetext = data.share.text;
+		   shareurl = data.share.url;
+		   sharepic = data.share.pic;
+		   wxKey = data.share.wxKey;
+        } else {
+            toast(err.msg);
+        }
+        
+        hideprog();
+    });
+}
+</script>
+</body>
+</html>

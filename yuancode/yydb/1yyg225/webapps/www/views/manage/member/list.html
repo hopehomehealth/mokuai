@@ -1,0 +1,189 @@
+{include file='../public_btn.html'}
+<div class="html-box">
+    <form class="cond-form clear" action="#!member/index" onsubmit="return xForm.submit(this)">
+        <input type="hidden" value="" name="page" id="page">
+        <div class="f-unit">
+            <select name="k" id="k">
+                <option value="username" {if $k eq 'username'}selected{/if}>用户名</option>
+                <option value="nickname" {if $k eq 'nickname'}selected{/if}>昵称</option>
+                <option value="realname" {if $k eq 'realname'}selected{/if}>姓名</option>
+                <option value="itv" {if $k eq 'itv'}selected{/if}>推荐人</option>
+                <option value="mobile" {if $k eq 'mobile'}selected{/if}>手机</option>
+                <option value="email" {if $k eq 'email'}selected{/if}>邮箱</option>
+                <option value="ip" {if $k eq 'ip'}selected{/if}>IP</option>
+                <option value="mid" {if $k eq 'mid'}selected{/if}>ID</option>
+            </select>
+            <input id="q" class="form-i w160 sitem" name="q" value="{$q}" type="text">
+            <select name="rank_id">
+                <option value="">-所有等级-</option>
+                {foreach from=$ranklist item=m}
+                <option value="{$m.id}" {if $m.id eq $rank_id}selected{/if}>{$m.rank_name}</option>
+                {/foreach}
+            </select>
+            <select name="online">
+                <option value="">-在线状态-</option>
+                <option value="1" {if 1 eq $online}selected{/if}>在线</option>
+            </select>
+	    <select name="robots" style="display:none;">
+                <option value="">-用户身份-</option>
+                <option value="1"{if 1 eq $robots}selected{/if}>机器人</option>
+                <option value="99"{if 99 eq $robots}selected{/if}>用户</option>
+            </select>
+            <select name="status">
+                <option value="">-用户状态-</option>
+                <option value="99" {if 99 eq $status}selected{/if}>禁用</option>
+                <option value="1" {if 1 eq $status}selected{/if}>开启</option>
+            </select>
+            <select name="verify_mobile">
+                <option value="">-手机状态-</option>
+                <option value="99" {if 99 eq $verify_mobile && isset($verify_mobile)}selected{/if}>待认证</option>
+                <option value="1" {if 1 eq $verify_mobile && isset($verify_mobile)}selected{/if}>已认证</option>
+                <option value="-1" {if -1 eq $verify_mobile && isset($verify_mobile)}selected{/if}>未拨通</option>
+            </select>
+	<input class="form-i w160 sitem" name="dbcs" value="{$dbcs}" type="text" style="width: 70px;" placeholder="夺宝次数">
+            <label class="ui-label w60">注册时间：</label>
+            <input class="form-i w120 sitem" name="start_time" value="{$smarty.get.start_time|strip_tags}" type="text" onclick="WdatePicker({ dateFmt:'yyyy-MM-dd 00:00:00' })" autocomplete="false" />
+            <input style="margin-left:-1px" class="form-i w120 sitem" name="end_time" value="{$smarty.get.end_time|strip_tags}" type="text" onclick="WdatePicker({ dateFmt:'yyyy-MM-dd 23:59:59' })" autocomplete="false" />
+
+            <select name="sortby" id="sortby">
+                <option value="a.mid" {if $sortby eq 'mid'}selected{/if}>ID</option>
+                <option value="a.user_money" {if $sortby eq 'user_money'}selected{/if}>可用余额</option>
+                <option value="a.frozen_money" {if $sortby eq 'frozen_money'}selected{/if}>冻结余额</option>
+                <option value="a.db_points" {if $sortby eq 'db_points'}selected{/if}>{$L.unit_db_points}</option>
+                <option value="a.pay_points" {if $sortby eq 'pay_points'}selected{/if}>{$L.unit_pay_points}</option>
+                <option value="a.ivt_count" {if $sortby eq 'ivt_count'}selected{/if}>推荐数</option>
+            </select>
+            <select name="sortorder" id="sortorder">
+                <option value="DESC" {if $sortorder eq 'DESC'}selected{/if}>降序</option>
+                <option value="ASC" {if $sortorder eq 'ASC'}selected{/if}>升序</option>
+            </select>
+
+            <button type="submit" id="submit" style="margin:1px 20px 0 10px;float:left;" class="uiBtn BtnBlue" onclick="if($('#batch').val()){ if(!confirm('确认此批量操作吗？')) return false; }">搜索</button>
+        </div>
+    </form>
+
+    <div class="tips">
+        <span id="online">在线人数统计中...</span>
+    </div>
+
+    <table class="list">
+        <thead>
+        <tr>
+            <th class="w30"><input type="checkbox" class="checkall"></th>
+            <th class="w30">ID</th>
+            <th align="left" colspan="2">用户名</th>
+            <th align="left">昵称/<span class="c-orange">姓名</span></th>
+            <th align="left">手机/邮箱</th>
+            <th align="center">推荐人/推荐数</th>
+            <th class="w100">可用/冻结余额</th>
+            <th class="w100">{$L.unit_pay_points}/{$L.unit_db_points}</th>
+            <th class="w80">可用佣金</th>
+            <th class="w140">状态/创建时间/注册IP</th>
+            <th class="w160">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {foreach from=$list item=m}
+        <tr>
+            <td align='center'><input type="checkbox" name="id" value="{$m.mid}"></td>
+            <td align='center'>{$m.mid}</td>
+            <td width="50"><img src="{$m.photo|photo}" width="50" style="border-radius: 50%" /></td>
+            <td align='left'>
+                <a href="{$smarty.const.RootUrl}welcome/auth_login/{$m.mid}" target="_blank" title="点击直接登录">{$m.username}</a><br />
+                {if $m.online eq 1}
+                <span class="c-orange">在线</span>
+                {else}
+                <span class="c-disable">离线</span>
+                {/if}
+                {if $m.oauth_login}
+                <img src="/images/qq.png" style="vertical-align: middle" title="QQ登录用户" />
+                {/if}
+                {if $m.is_robots}
+                <img src="/admin/images/robots.png" style="vertical-align: middle" title="机器人" />
+                {/if}
+            </td>
+            <td align='left'>{if $m.nickname}<a href="{$smarty.const.RootUrl}welcome/auth_login/{$m.mid}" target="_blank" title="点击直接登录">{$m.nickname}</a><br />{/if}<span class="c-orange">{$m.realname}</span></td>
+            <td align='left'>
+                {$m.mobile}
+                {if $m.verify_mobile eq 1}
+                <a class="c-green" href="#!member/edit/{$m.mid}?act=mobile&com=xshow|手机状态">已认证</a>
+                {else if $m.verify_mobile eq -1}
+                <a class="c-orange" href="#!member/edit/{$m.mid}?act=mobile&com=xshow|手机状态">未拨通</a>
+                {else}
+                <a class="c-gray" href="#!member/edit/{$m.mid}?act=mobile&com=xshow|手机状态">待认证</a>
+                {/if}
+                {if $m.email}
+                <br />
+                {$m.email}
+                {if $m.verify_email eq 1}
+                <span class="c-green">已认证</span>
+                {/if}
+                {/if}
+            </td>
+            <td align='center'><a href="#!member/index?k=itv&q={$m.ivt_name}">{$m.ivt_name}</a> / <a href="#!member/index?k=itv&q={$m.username}">{$m.ivt_count}</a></td>
+            <td align='center'><b style="color:#f80">{$m.user_money}<br />{$m.frozen_money}</b></td>
+            <td align='center'>{$m.pay_points}<br />{$m.db_points}</td>
+            <td align='center'>{$m.commission}</td>
+            <td align='center'>
+                {if $m.status eq 1}
+                <a href="javascript:;" onclick="main.chang_status('{$m.mid}','member','status','mid')" class="c-green" title="点击禁用">开启</a>
+                {else}
+                <a href="javascript:;" onclick="main.chang_status('{$m.mid}','member','status','mid')" class="c-red" title="点击开启">禁用</a>
+                {/if}
+                <span class="c-gray">{$m.c_time|date_format:'Y-m-d H:i'}</span><br>
+                {$m.ip}
+            </td>
+            <td class="opera" nowrap>
+                <a class="uiBtn" href="#!member/edit/{$m.mid}?com=xshow|会员信息">编辑</a>
+                <a class="uiBtn" href="#!member/address/{$m.mid}?com=xshow|收货地址">收货</a>
+                <a class="uiBtn" href="#!member/bankcard/{$m.mid}?com=xshow|银行账号">银行</a>
+                <a class="uiBtn" href="#!member/account_log/?mid={$m.mid}">明细</a>
+                <p style="height:5px;"></p>
+                <a class="uiBtn" href="#!member/change_account/{$m.mid}?com=xshow|调整账户">调整</a>
+                <a class="uiBtn" href="#!auction/log?k=bid_user&q={$m.mid}">竞拍</a>
+                <!--<a class="uiBtn" href="#!yunbuy/order?k=username&q={$m.username}">{$L.unit_yun}</a> -->
+                <a class="uiBtn" href="#!yunbuy/order?k=mid&mid={$m.mid}">{$L.unit_yun}</a>
+                <a class="uiBtn" href="#!order/index?k=username&q={$m.username}">订单</a>
+            </td>
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+    <div class="foot-btn">
+        <div class="pager r">{$page}</div>
+        <select id="type">
+            <option value="1" selected>当前勾选的</option>
+            <option value="2">所有筛选的</option>
+        </select>
+        <a class="uiBtn BtnBlue e2-member-batchDelete-1" href="javascript:;">禁用</a>
+    </div>
+</div>
+{literal}
+<script type="text/javascript">
+    var checkboxs=document.getElementsByName("id");
+    $('.checkall').click(function(){
+        var checkboxs=document.getElementsByName("id");
+        for (var i=0;i<checkboxs.length;i++) {
+            var e=checkboxs[i];
+            e.checked=!e.checked;
+        }
+    });
+    $.loadJs('/admin/js/manage/member.js',function(){
+        member.online();
+        /*window.setInterval(function(){
+            member.online();
+        },10000);*/
+    });
+</script>
+<script type="text/javascript">
+    function exportExcel(){
+        var arr = location.hash.split("?");
+        var get = arr[1]?('?'+arr[1]):'';
+        if(!get){
+            com.xtip('导出量较大，请先进行筛选操作！',{ type:1 });
+        }else{
+            location.href='/manage/member/exportExcel'+get;
+        }
+    }
+</script>
+{/literal}

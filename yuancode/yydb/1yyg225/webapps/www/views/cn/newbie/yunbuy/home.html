@@ -1,0 +1,13 @@
+{include file="header.html"}
+<link rel="stylesheet" href="{url('/style/css/member.css')}">
+{include file="ur_here.html"}
+<div id="container">
+    <div class="fn-clear mt20 pb20">
+        {if $site_config.index_skin eq 2}
+        {zz mod=block mark=new_gobuy}
+        {else}
+        {zz mod=block mark=new_yunbuy}
+        {/if}
+    </div>
+</div>
+{include file="footer.html"}

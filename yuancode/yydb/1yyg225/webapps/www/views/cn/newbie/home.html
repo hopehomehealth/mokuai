@@ -1,0 +1,194 @@
+{include file="header.html"}
+<!-- {include file="ur_here.html"} -->
+<style type="text/css">
+    .newbieBg{ margin:0 auto 20px; width: 1160px; height: 580px; background: url('/style/images/newbie/newbiebg.png') no-repeat; position: relative; }
+    .newbieBg a{ display: block; position: absolute; width: 196px; height: 61px; }
+    .newbieBg a.a1{ top: 343px; left: 266px; }
+    .newbieBg a.a2{ top: 343px; left: 867px; }
+    
+    .item-logo a{ position:absolute;z-index:999;top:85px;left:170px; font-size:20px; text-decoration:none; color: #fff; }
+    .hidden{ display: none; }
+    .item-logo{ position:relative; }
+    .item .item-logo{ width:374px; height:160px; margin:-70px auto 0; }
+    .item .item-logo-first{ margin-top:0; }
+    .item .item-main{ width:90%;margin:0 auto 70px; text-align:center; }
+    .hy-qalist a{ color: #e54048; } 
+
+    /* css 重置 */
+    .slideBox *{ margin:0; padding:0; list-style:none; }
+
+    /* 本例子css */
+    .slideBox{ width:737px; height:567px; overflow:hidden; position:relative; border:1px solid #ddd;  margin: 0 auto;}
+    .slideBox .hd{ height:15px; overflow:hidden; position:absolute; right:5px; bottom:5px; z-index:1; }
+    .slideBox .hd ul{ overflow:hidden; zoom:1; float:left;  }
+    .slideBox .hd ul li{ float:left; margin-right:2px;  width:15px; height:15px; line-height:14px; text-align:center; background:#fff; cursor:pointer; }
+    .slideBox .hd ul li.on{ background:#f00; color:#fff; }
+    .slideBox .bd{ position:relative; height:100%; z-index:0;   }
+    .slideBox .bd li{ zoom:1; vertical-align:middle; }
+    .slideBox .bd img{ width:737px; height:567px; display:block;  }
+
+    /* 下面是前/后按钮代码，如果不需要删除即可 */
+    .slideBox .prev,
+    .slideBox .next{ position:absolute; left:3%; top:50%; margin-top:-25px; display:block; width:32px; height:40px; background:url(/upload/images/slider-arrow.png) -110px 5px no-repeat; filter:alpha(opacity=50);opacity:0.5;   }
+    .slideBox .next{ left:auto; right:3%; background-position:8px 5px; }
+    .slideBox .prev:hover,
+    .slideBox .next:hover{ filter:alpha(opacity=100);opacity:1;  }
+    .slideBox .prevStop{ display:none;  }
+    .slideBox .nextStop{ display:none;  }
+</style>
+<div id="container">
+
+    <!-- <div class="newbieBg">
+        <a href="{'/content/newbie/auction'|url}" class="a1"></a>
+        <a href="{'/content/newbie/yunbuy'|url}" class="a2"></a>
+    </div> -->
+    
+    <div class="newB" style="width:1160px; margin:0 auto; background-color:#ddd;">
+        <div class="item" >
+            <div class="item-logo item-logo-first">
+              <img src="/upload/images/newbie.png" style="position:absolute;z-index:99;">
+              <a href="#0" style="">一元夺宝是啥</a>
+            </div>
+            <div class="item-main hidden">
+              <img src="/upload/images/shenmeshiduobao.jpg">
+            </div>
+        </div>
+        <div class="item" >
+            <div class="item-logo">
+              <img src="/upload/images/newbie1.png" style="position:absolute;z-index:98;">
+              <a href="#1" style="">如何一元夺宝</a>
+            </div>
+            <div class="item-main hidden">
+              <div id="slideBox" class="slideBox">
+                <div class="bd">
+                  <ul>
+                    <li><a href="javascript:;"><img src="/upload/images/zenmewanyiyuanduobao1.jpg" /></a></li>
+                    <li><a href="javascript:;"><img src="/upload/images/zenmewanyiyuanduobao2.jpg" /></a></li>
+                    <li><a href="javascript:;"><img src="/upload/images/zenmewanyiyuanduobao3.jpg" /></a></li>
+                    <li><a href="javascript:;"><img src="/upload/images/zenmewanyiyuanduobao4.jpg" /></a></li>
+                    <li><a href="javascript:;"><img src="/upload/images/zenmewanyiyuanduobao5.jpg" /></a></li>
+                    <li><a href="javascript:;"><img src="/upload/images/zenmewanyiyuanduobao6.jpg" /></a></li>
+                  </ul>
+                </div>
+
+                <!-- 下面是前/后按钮代码，如果不需要删除即可 -->
+                <a class="prev" href="javascript:void(0)"></a>
+                <a class="next" href="javascript:void(0)"></a>
+
+              </div>
+            </div>
+        </div>
+        <div class="item" >
+            <div class="item-logo">
+              <img src="/upload/images/newbie2.png" style="position:absolute;z-index:97;">
+              <a href="#2" style="">网站币值说明</a>
+            </div>
+            <div class="item-main hidden">
+               <div class="hy-qalist" style="padding-left:120px;"><p style="text-align:justify;" class="p16">
+                    <span style="font-family:微软雅黑;font-size:10.5pt;"><strong>一、</strong></span><span style="font-family:微软雅黑;font-size:10.5pt;"><strong>什么是拍币</strong></span><span style="font-family:微软雅黑;font-size:10.5pt;">？</span><span style="font-family:微软雅黑;font-size:10.5pt;"></span> 
+                </p>
+                <p style="text-align:justify;text-indent:21pt;" class="p16">
+                    <span style="font-family:微软雅黑;color:#444444;font-size:10.5pt;">爱一元吧赠送给会员的电子货币，以元为单位，可以用来参与<a href="http://www.i1y8.com/plate" target="_blank">大转盘</a>摇奖，拍币不可转为现金。</span><span style="font-family:微软雅黑;font-size:10.5pt;"><strong></strong></span> 
+                </p>
+                <p style="text-align:justify;" class="p16">
+                    <span style="font-family:微软雅黑;font-size:10.5pt;"><strong> 二、</strong></span><span style="font-family:微软雅黑;font-size:10.5pt;"><strong>什么是夺宝币？</strong></span> 
+                </p>
+                <p class="p16" style="text-align:justify;text-indent:21pt;">
+                    <span style="font-family:微软雅黑;color:#444444;font-size:10.5pt;">会员每充值1元即可兑换1元夺宝币。夺宝币可以用来在1元夺宝区进行夺宝。<span style="color:#444444;font-family:微软雅黑;font-size:14px;line-height:21px;">夺宝币</span>不能转为现金。</span> 
+                </p>
+                <p style="text-align:justify;" class="p16">
+                    <span style="font-family:微软雅黑;font-size:10.5pt;"><strong> 三、</strong></span><span style="font-family:微软雅黑;font-size:10.5pt;"><strong>什么是红包？</strong></span> 
+                </p>
+                <p class="p16" style="text-align:justify;text-indent:21pt;">
+                    <span style="font-family:微软雅黑;color:#444444;font-size:10.5pt;">爱一元吧送给会员的现金优惠，以元为单位，有时间有效期限制，可以参与夺宝（一次性参与10次以上夺宝可以使用一个红包）。</span> 
+                </p>
+                <p style="text-align:justify;" class="p16">
+                    <span style="font-family:微软雅黑;font-size:10.5pt;"><strong>四、</strong></span><span style="font-family:微软雅黑;font-size:10.5pt;"><strong>如何获得拍币，者夺宝币或红包？</strong></span><span style="font-family:微软雅黑;font-size:10.5pt;"></span> 
+                </p>
+                <p style="text-align:justify;text-indent:21pt;" class="p16">
+                    <span style="font-family:微软雅黑;font-size:10.5pt;">&nbsp;注册成为爱一元吧会员，完成爱一元吧相关任务即可获得相应的拍币，<span><span>夺宝</span></span>币或红包。（具体任务以爱一元吧公告、活动为准）</span><span style="font-family:微软雅黑;font-size:10.5pt;"></span> 
+                </p>
+                <p style="text-align:justify;" class="p16">
+                    <span style="font-family:微软雅黑;font-size:10.5pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1、</span><span style="font-family:微软雅黑;font-size:10.5pt;">获得拍币方式：</span><span style="font-family:微软雅黑;font-size:10.5pt;"></span> 
+                </p>
+                <p style="text-align:justify;text-indent:21pt;" class="p16">
+                    <span style="font-family:微软雅黑;font-size:10.5pt;">&nbsp;&nbsp;&nbsp;&nbsp;A、</span><span style="font-family:微软雅黑;font-size:10.5pt;"><a href="/regist">注册会员</a>——<a href="/member/safe">认证邮箱</a>——<a href="/member/safe">认证手机</a>——<a href="/member/safe" target="_blank">每日签到</a>。</span> 
+                </p>
+                <p style="text-align:justify;text-indent:21pt;" class="p16">
+                    <span style="font-family:微软雅黑;font-size:10.5pt;">&nbsp;&nbsp;&nbsp;&nbsp;B、</span><span style="font-family:微软雅黑;font-size:10.5pt;">发送含有你会员号的<a href="/member/myivt">链接</a>，邀请亲朋好友注册会员，获得拍币，<span>【<a class="layerTip" href="/member/myivt">每邀请一位送5拍币</a>】</span></span> 
+                </p>
+                <p style="text-align:justify;text-indent:21pt;" class="p16">
+                    <span style="font-family:微软雅黑;font-size:10.5pt;">&nbsp;&nbsp;&nbsp;&nbsp;C、</span><span style="font-family:微软雅黑;font-size:10.5pt;line-height:1.5;">参与夺宝50次后，可进行大转盘摇奖一次，相当于赠送了50拍币。</span> 
+                </p>
+                <p style="text-align:justify;text-indent:21pt;" class="p16">
+                    <span style="font-family:微软雅黑;font-size:10.5pt;">&nbsp;&nbsp;&nbsp;&nbsp;D、</span><span style="font-family:微软雅黑;font-size:10.5pt;">每天登录并签到得5拍币</span><span style="font-family:微软雅黑;font-size:10.5pt;"></span> 
+                </p>
+                <p style="text-align:justify;" class="p16">
+                    <span style="font-family:微软雅黑;font-size:10.5pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2、</span><span style="font-family:微软雅黑;font-size:10.5pt;">获得<span style="color:#444444;font-family:微软雅黑;font-size:14px;line-height:21px;">夺宝币</span>方式：</span><span style="font-family:微软雅黑;font-size:10.5pt;"></span> 
+                </p>
+                <p style="text-align:justify;text-indent:21pt;" class="p16">
+                    <span style="font-family:微软雅黑;font-size:10.5pt;">&nbsp;&nbsp;&nbsp;&nbsp;A、<span style="color:#444444;font-family:微软雅黑;font-size:14px;line-height:21px;">夺宝币</span></span><span style="font-family:微软雅黑;font-size:10.5pt;">，通过后台按充值获得。</span> 
+                </p>
+                <p style="text-align:justify;text-indent:21pt;" class="p16">
+                    <span style="font-family:微软雅黑;font-size:10.5pt;">&nbsp; &nbsp; B、通过大转盘免费摇奖。</span> 
+                </p>
+                <p style="text-align:justify;text-indent:21pt;" class="p16">
+                    <span style="font-family:微软雅黑;font-size:10.5pt;"> </span> 
+                </p>
+                <p class="p16" style="text-align:justify;">
+                    <span style="font-family:微软雅黑;font-size:10.5pt;">&nbsp; &nbsp; &nbsp; &nbsp;3、</span><span style="font-family:微软雅黑;font-size:10.5pt;">获得<span style="color:#444444;">红包</span>方式：</span><span style="font-family:微软雅黑;font-size:10.5pt;"></span> 
+                </p>
+                <p class="p16" style="text-align:justify;text-indent:21pt;">
+                    <span style="font-family:微软雅黑;font-size:10.5pt;">&nbsp;&nbsp;&nbsp;&nbsp;A、<span style="color:#444444;">注册会员</span></span><span style="font-family:微软雅黑;font-size:10.5pt;">，由爱一元吧统一发放。</span> 
+                </p>
+                <p class="p16" style="text-align:justify;text-indent:21pt;">
+                    <span style="font-family:微软雅黑;font-size:10.5pt;">&nbsp; &nbsp; B、平台充值<span style="font-family:微软雅黑;font-size:14px;line-height:21px;">，由爱一元吧统一发放。</span></span> 
+                </p>
+                <div>
+                    <br>
+                </div>
+                <br>
+                <p>
+                    <br>
+                </p></div>
+            </div>
+        </div>
+        <div class="item" >
+            <div class="item-logo">
+              <img src="/upload/images/newbie3.png" style="position:absolute;z-index:96;">
+              <a href="#3" style="">公平公正开奖</a>
+            </div>
+            <!-- <div class="item-main hidden">
+              <img src="/upload/images/gongpinggongzheng.jpg" alt="">
+            </div>-->
+            <div class="item-main hidden">
+              <div class="hy-qalist" style="padding-left:120px;">
+                <p style="font-family:微软雅黑;font-size:10.5pt;" class="p16"><strong>幸运号码计算规则</strong></p>
+                <p style="text-align:justify;font-family:微软雅黑;font-size:10.5pt;" class="p16">1.截止该奖品开奖时间点前本站全部奖品的最后100参与时间所代表数值之和；</p>
+                <p style="text-align:justify;font-family:微软雅黑;font-size:10.5pt;" class="p16">2.将这100个时间的数值进行求和（得出数值A）（每个时间按时、分、秒、毫秒的顺序组合，如20:15:25.123则为201525123）；</p>
+                <p style="text-align:justify;font-family:微软雅黑;font-size:10.5pt;" class="p16">3.数值B为奖品所需人次；</p>
+                <p style="text-align:justify;font-family:微软雅黑;font-size:10.5pt;" class="p16">4.数值A除以数值B得到的余数+原始数10000001，得到最终幸运号码，拥有该幸运号码者，直接获得该奖品。</p>
+                <p style="text-align:justify;font-family:微软雅黑;font-size:10.5pt;" class="p16">5.余数是指整数除法中被除数未被除尽部分， 如7÷3 = 2 ......1，1就是余数 。</p>
+                <p style="text-align:justify;font-family:微软雅黑;font-size:10.5pt;" class="p16">温馨提示：消费者在娱乐同时，应该结合自身实际情况进行适当的消费。</p>
+              </div>
+            </div>
+        </div>
+      </div>
+
+</div>
+<script src="{url('/style/jquery.SuperSlide.2.1.1.js')}"></script>
+<script>
+jQuery(".slideBox").slide( { mainCell:".bd ul", effect:"fade",autoPlay:false,trigger:"mouseover",easing:"swing",mouseOverStop:true,pnLoop:true });
+</script>
+<script> 
+      $(document).ready(function(){
+        $(".item a").click(function(){
+          $(this).parents(".item").siblings().children(".item-main").addClass("hidden");
+          $(this).parent().siblings().toggleClass("hidden");
+         if($(this).attr('href') == '#1'){
+            jQuery(".slideBox").slide( { mainCell:".bd ul", effect:"fade",autoPlay:false,trigger:"mouseover",easing:"swing",mouseOverStop:true,pnLoop:true });
+          } 
+        })
+      })
+</script>
+{include file="footer.html"}

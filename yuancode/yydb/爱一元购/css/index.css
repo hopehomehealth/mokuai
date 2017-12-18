@@ -1,0 +1,98 @@
+html,body {font-size:12px; height:100%; color:#000; font-family:"microsoft yahei",simhei}
+#wrap{
+    height: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-flex-flow: column;
+    flex-flow: column;
+}
+#header{
+    height: 50px;
+    background: #E54048;
+}
+#header .head{
+    display: none;
+}
+#header .active{
+    display: block;
+}
+#header .head_main{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    padding: 0 1rem;
+    color: #ffffff;
+    height: 50px;
+    line-height: 50px;
+}
+#header .head_main .left,#header .head_main .right{
+    width: 3rem;
+}
+#header .head_main .right{
+    text-align: right;
+}
+#header .head_main .left i,#header .head_main .right i{
+    font-size: 2.2rem;
+}
+#header .head_main .title{
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    text-align: center;
+    font-size: 1.5rem;
+}
+#main{
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+}
+#footer{
+    background: #f9f9f9;
+    border-top: 1px solid #EEEEEE;
+    color: #999999;
+    position: fixed;
+	top:auto;
+	bottom: 0;
+	width:100%;
+	z-index:999;
+}
+#foot{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+#foot .list{
+    width: 20%;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    text-align: center;
+}
+#foot .list .icons{
+    height: 2rem;
+}
+#foot .list em{
+    font-size: 1rem;
+    position: absolute;
+    color:#fff;
+    background:#e74e56;
+    border-radius:50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    width:1.5rem;
+}
+#foot .list .icons i{
+    font-size: 2rem;
+}
+#foot .list p{
+    height:2rem;
+    line-height:2rem;
+    font-size: 1rem;
+}
+#foot .active{
+    color: #E54048;
+}

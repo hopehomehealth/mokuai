@@ -1,0 +1,39 @@
+@charset "UTF-8";
+@font-face { font-family: 'iconfenxiao'; src: url("../icofenxiao/iconfont.eot") format("embedded-opentype"), url("../icofenxiao/iconfont.svg") format("svg"), url("../icofenxiao/iconfont.ttf") format("truetype"), url("../icofenxiao/iconfont.woff") format("woff"); }
+.iconfenxiao { font-family: "iconfenxiao" !important; font-size: 16px; font-style: normal; -webkit-font-smoothing: antialiased; -webkit-text-stroke-width: 0.2px; -moz-osx-font-smoothing: grayscale; }
+
+#header2 h1{ font-size: 0.8rem; }
+.back a:before{ font-size: 1rem; }
+#header2 .menu a{ font-size: 1.2rem; }
+
+.choujiang { margin: 0 auto; max-width: 15rem; position: relative; overflow: hidden; }
+.choujiang .plate { top: 50%; left: 50%; position: absolute; float: left; width: 10.12rem; height: 10.12rem; background: url("../img/dzpan.png") center center no-repeat; background-size: 10.12rem 10.12rem; margin-left: -5.06rem; margin-top: -2.89143rem; }
+.choujiang #plateBtn { position: absolute; left: 50%; top: 50%; width: 2.72rem; height: 5.04rem; margin-top: -2.52rem; margin-left: -1.36rem; background-image: url("../img/zizhen.png"); background-size: 2.72rem 5.04rem; text-indent: -9999px; overflow: hidden; }
+.choujiang .result { padding-top: 0.2rem; display: none; position: absolute; left: 50%; top: 50%; width: 9.76rem; height: 6.02rem; margin-top: -1.505rem; margin-left: -4.88rem; background-color: white; text-align: center; z-index: 11; border-radius: 0.2rem; }
+.choujiang .resultTxt{ padding: 0 0.5rem; }
+.choujiang .resultTxt img { display: block; margin: 0 auto; width: 2.6rem; }
+.choujiang .resultTxt span{ font-size: 0.4rem; color: #ababab; }
+.choujiang .resultTxt b{ font-size: 0.6rem; color: #000; padding-top: 0.7rem; display: block; margin-bottom: 0.4rem; }
+.choujiang .resultTxt em{ color: #de3636; font-style: normal; font-size: 0.56rem; }
+.choujiang #fenxiang { position: absolute; top: 0.4rem; right: 0.4rem; border: 1px #e6e6e6 solid; padding: 0.1rem 0.46rem; border-radius: 0.62rem; }
+.choujiang .resultBtn { display: inline-block; background-color: #ff2f46; color: white; padding: 0.12rem 0.58rem; border-radius: 25px; margin-top: 0.5rem; }
+.choujiang .result .resultClose{ position: absolute; right: 0.4rem; top: 0.4rem; width: 16px; height: 16px; display: block; background: url('../img/close.gif') no-repeat 0; cursor: pointer; }
+.resultBg{ position: fixed; width: 100%; height: 100%; z-index:10; background-color:#000; opacity:0.6; filter:alpha(opacity=60); display: none; top: 0; left: 0; }
+
+.dzp-jifen { margin: 0 0.4rem; background-color: #ff2f46; line-height: 1.4rem; padding: 0 0.4rem; border-radius: 4px; color: #fff; }
+.dzp-jifen i { float: right; }
+
+.dzp-jxsm { padding: 0 0.4rem; margin-top: 0.4rem; }
+.dzp-jxsm section { overflow: hidden; border-radius: 4px; }
+.dzp-jxsm table { border: 1px #ff2f46 dashed; width: 100%; }
+.dzp-jxsm th { border: 1px #ff2f46 solid; background-color: #ff2f46; width: 1.6rem; text-align: center; padding: 0.6rem 0; color: #fff; font-size: 0.52rem; }
+.dzp-jxsm td { border: 1px #ff2f46 dashed; color: #434343; line-height: 0.8rem; padding: 0.2rem 0 0.2rem 0.4rem; font-size: 0.4rem; }
+.dzp-jxsm td i { color: #ff2f46; font-size: 0.6rem; vertical-align: middle; }
+.dzp-jxsm td em { color: #ababab; }
+
+.dzp-guiz { border-radius: 4px; margin: 0 0.4rem; background-color: #fff9e7; margin-top: 0.4rem; border: 1px #f0cf18 solid; padding: 0.4rem; }
+.dzp-guiz .dzp-guiz-h3 { color: #000000; font-size: 0.52rem; margin-bottom: 0.2rem; }
+.dzp-guiz section { color: #818181; font-size: 0.36rem; line-height: 0.72rem; font-size: 0.48rem; }
+
+.dzp-mywin{ text-align: center; margin-top: 0.4rem; padding: 0 0.4rem; }
+.dzp-mywin a{ display: block; margin: 0 auto; background: #ffeaee; border: 1px solid #db3652; color: #db3652; font-size: 0.6rem; border-radius: 5px; }

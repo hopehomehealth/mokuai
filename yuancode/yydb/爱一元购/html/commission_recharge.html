@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+	<meta name="format-detection" content="telephone=no" />
+	<title>佣金充值</title>
+	<link rel="stylesheet" type="text/css" href="../css/api.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/user.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/member.css"/>
+</head>
+<body>
+	<div id="header">
+	   <div class="active">
+		    <div class="icon_box" tapmode="" onclick="api.closeWin()"><i class="iconfont icon-fanhui"></i></div>
+		    <div class="toptit">佣金充值</div>
+		    <div class="icon_box" tapmode="" onclick="backhome()"><i class="iconfont icon-shouye"></i></div>
+	   </div>
+	</div>
+<div id="content" class="container main">
+	<div class="form-m">
+		<form id="submit_form">
+			<div class="item ui-clr">
+				<dl>
+					<dt class="color03">可充值余额：</dt>
+					<dd>
+							<span class="color01 commission"></span>
+					</dd>
+				</dl>
+				<dl>
+					<dt class="color03"><span class="color01">*</span> 充值金额：</dt>
+					<dd>
+						<input name="amount" type="text" class="input-m" data-rule="*" data-nullmsg="请输入充值金额"  />
+					</dd>
+				</dl>
+			</div>		
+			<input name="Submit" type="hidden" value="1" data-haved="true"/>
+			<input type="button" value="提交申请" id="submit" class="btn" />
+		</form>
+	</div>
+	<div  id="commission-content"></div>
+</div>
+
+<script type="text/javascript" src="../script/jquery.min.js"></script>
+<script type="text/javascript" src="../script/availdate.js"></script>
+<script type="text/javascript" src="../script/fastclick.js"></script>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/doT.min.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript">			
+function loadData(){			
+	showprog();
+	ajaxRequest('member/recharge_commission', 'GET', {}, function(ret, err) {
+		$('.commission').text(ret.data.commission);
+		hideprog();
+	});				
+}
+apiready = function() {
+	loadData();
+}
+$(function(){
+	ac.form({
+	area: "#submit_form",
+	btn: "#submit",
+	singleError: function (e, msg) {
+		toast(msg);
+	},
+	endSuccess: function (data) {
+		showprog();
+        var change_money = $('input[name=amount]').val();
+	    var D = {change_money:change_money,Submit:1};
+		ajaxRequest('member/recharge_commission', 'POST', {values:D}, function (ret, err) {
+			hideprog();		      
+			toast(ret.msg);
+			if(ret.code==0){
+				loadData();
+			}
+		});
+	}
+	});
+});
+
+</script>
+</body>
+</html>

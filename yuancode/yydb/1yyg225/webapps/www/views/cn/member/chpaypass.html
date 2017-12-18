@@ -1,0 +1,46 @@
+{include file="header.html"}
+<link rel="stylesheet" href="{url('/style/css/member.css')}">
+{include file="ur_here.html"}
+<div id="container">
+    <div class="fn-clear mt20 pb20">
+        {include file="member/menu.html"}
+        <div class="fn-right hy-r">
+            <div class="fn-clear hy-tjxh">
+                <div class="title">
+                    <h2>资金密码</h2>
+                </div>
+                <div class="hy-box">
+                    <div class="hy-yhk">
+                        <form action="" target="iframeNews" method="post">
+                            <table>
+                                <tr>
+                                    <th>新资金密码：</th>
+                                    <td><input name="pass1" type="password" value=""></td>
+                                </tr>
+                                <tr>
+                                    <th>确认密码：</th>
+                                    <td><input name="pass2" type="password" value=""></td>
+                                </tr>
+                                {if $site_config.sms_open eq 1 && 'sms_chpaypass'|statusTpl}
+                                <tr>
+                                    <th>短信验证码</th>
+                                    <td><input type="text" name="sms_code" value=""><input type="button" value="获取短信验证码" onclick="getSmsVerify('sms_chpaypass')" id="btnSms" /></td>
+                                </tr>
+                                {/if}
+                                <tr>
+                                    <th> &nbsp;</th>
+                                    <td class="">
+                                        <input name="Submit" type="submit" value="确定修改" class="hy-btn2 fn-left" />
+                                        <input type="hidden" id="mobile" value="" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="footer.html"}

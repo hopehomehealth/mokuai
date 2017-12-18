@@ -1,0 +1,62 @@
+{include file="header.html"}
+<link rel="stylesheet" href="/style/css/member.css">
+<script type="text/javascript" src="/style/dp/WdatePicker.js"></script>
+{include file="ur_here.html"}
+<div id="container">
+    <div class="fn-clear mt20 pb20">
+        {include file="member/menu.html"}
+        <div class="fn-right hy-r">
+            <div class="fn-clear hy-tjxh">
+                <div class="title"><h2>佣金提现记录</h2></div>
+                <div class="db-nrbox fn-clear">
+                    <div class="fn-clear mt20">
+                        <div class="fn-left db-sxl">
+                            <a href="{url('/member/withdraw_commission_log')}" {if $smarty.get.time eq ''}class="dq"{/if}>全部</a>
+                            <a href="{url('/member/withdraw_commission_log')}?time=1" {if $smarty.get.time eq 1}class="dq"{/if}>今天</a>
+                            <a href="{url('/member/withdraw_commission_log')}?time=2" {if $smarty.get.time eq 2}class="dq"{/if}>本周</a>
+                            <a href="{url('/member/withdraw_commission_log')}?time=3" {if $smarty.get.time eq 3}class="dq"{/if}>本月</a>
+                            <a href="{url('/member/withdraw_commission_log')}?time=4" {if $smarty.get.time eq 4}class="dq"{/if}>最近三个月</a>
+                        </div>
+                        <form action="{url('/member/withdraw_commission_log')}">
+                            <div class="fn-right db-sxr">
+                                <label id="Label1">选择时间段：</label>
+                                <input name="from_data" type="text" onclick="WdatePicker()" class="dq-inpt" />
+                                <label id="Label1">-</label>
+                                <input name="to_data" type="text"  onclick="WdatePicker()" class="dq-inpt"  />
+                                <input type="submit" value="搜索" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="hy-table" style="margin: 10px auto; width: 905px;">
+                        <table>
+                            <tbody>
+                            <tr>
+                                <th>申请时间</th>
+                                <th>银行账户信息</th>
+                                <th>提现金额(元)</th>
+                                <th>手续费(元)</th>
+                                <th>状态</th>
+                            </tr>
+                            {if $list}
+                            {foreach from=$list item=m}
+                             <tr>
+                                  <td>{date('Y-m-d H:i:s',$m.addtime)}</td>
+                                  <td>{$m.bankname} {$m.bankcard}</td>
+                                  <td>{$m.commission}</td>
+                                  <td>{$m.fee}</td>
+                                  <td>{if $m.status eq 1}待处理{else if $m.status eq 2}处理中{else}已处理{/if}</td>
+                              </tr>
+                            {/foreach}
+                            {else}
+                            <tr><td colspan="5" align="center">暂时没有提现记录</td></tr>
+                            {/if}
+                            </tbody>
+                         </table>
+                     </div>
+                    {include file="public_page.html"}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="footer.html"}

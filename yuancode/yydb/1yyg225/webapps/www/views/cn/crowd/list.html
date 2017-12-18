@@ -1,0 +1,61 @@
+{include file="crowd/crowd_header.html"}
+<div class="xmlb">
+    <div class="container">
+        <span>项目列表</span>
+        <dd class="li4">
+            <form action="{url('/crowd/lists')}">
+            <section>
+                <input type="text" name="k" value="{$smarty.get.k}" placeholder="输入关键词搜索" />
+                <input type="submit" value=" " />
+            </section>
+            </form>
+        </dd>
+    </div>
+</div>
+<div class="fenl">
+    <div class="container">
+        <ul>
+            <li>
+                项目分类：
+                <a {if $smarty.get.cid eq ''}class="on"{/if} href="{url('/crowd/lists')}?cid=&status={$smarty.get.status}&order={$smarty.get.order}&k={$smarty.get.k}">全部</a>
+                {foreach from=$cat item=m}
+                <a {if $smarty.get.cid eq $m.id}class="on"{/if} href="{url('/crowd/lists')}?cid={$m.id}&status={$smarty.get.status}&order={$smarty.get.order}&k={$smarty.get.k}">{$m.catname}</a>
+                {/foreach}
+            </li>
+            <li>
+                项目进度：
+                <a {if $smarty.get.status eq ''}class="on"{/if} href="{url('/crowd/lists')}?cid={$smarty.get.cid}&status=&order={$smarty.get.order}&k={$smarty.get.k}">全部</A>
+                <a {if $smarty.get.status eq 1}class="on"{/if} href="{url('/crowd/lists')}?cid={$smarty.get.cid}&status=1&order={$smarty.get.order}&k={$smarty.get.k}">众筹中</a>
+                <a {if $smarty.get.status eq 2}class="on"{/if} href="{url('/crowd/lists')}?cid={$smarty.get.cid}&status=2&order={$smarty.get.order}&k={$smarty.get.k}">即将结束</a>
+                <a {if $smarty.get.status eq 3}class="on"{/if} href="{url('/crowd/lists')}?cid={$smarty.get.cid}&status=3&order={$smarty.get.order}&k={$smarty.get.k}">已成功</a>
+            </li>
+            <li>
+                项目排序：
+                <a {if $smarty.get.order eq ''}class="on"{/if} href="{url('/crowd/lists')}?cid={$smarty.get.cid}&status={$smarty.get.status}&order=&k={$smarty.get.k}">默认</a>
+                <a {if $smarty.get.order eq 1}class="on"{/if} href="{url('/crowd/lists')}?cid={$smarty.get.cid}&status={$smarty.get.status}&order=1&k={$smarty.get.k}">最新上线</a>
+                <a {if $smarty.get.order eq 2}class="on"{/if} href="{url('/crowd/lists')}?cid={$smarty.get.cid}&status={$smarty.get.status}&order=2&k={$smarty.get.k}">目标金额</a>
+                <a {if $smarty.get.order eq 3}class="on"{/if} href="{url('/crowd/lists')}?cid={$smarty.get.cid}&status={$smarty.get.status}&order=3&k={$smarty.get.k}">支持人数</a>
+                <a {if $smarty.get.order eq 4}class="on"{/if} href="{url('/crowd/lists')}?cid={$smarty.get.cid}&status={$smarty.get.status}&order=4&k={$smarty.get.k}">筹资额</a>
+            </li>
+
+        </ul>
+
+
+    </div>
+</div>
+
+
+<div class="container zxxm-list liat">
+    {if $list}
+    <ul class="zxxm-list-ul">
+        {foreach from=$list item=row}
+        {include file="crowd/lbi_item.html"}
+        {/foreach}
+    </ul>
+    {else}
+    <div class="empty">暂时没有相关项目</div>
+    {/if}
+<div class="clear"></div>
+</div>
+<div class="feny mt20">{include file="crowd/ajax_page.html"}</div>
+{include file="crowd/crowd_footer.html"}

@@ -1,0 +1,30 @@
+{foreach from=$list item=m key=key}
+<li class="ui-clr item">
+    <div class="pic"><a href="/minfo?id={$m.bid_user}#auc"><img src="{zz mod=photo source=$m.photo size='80' nopic='/upload/default.gif'}" alt="" /></a></div>
+    <div class="text">
+        <p>
+            {if $data.row.type eq 1 && $key eq 0 && ($smarty.get.page eq 1 || !$smarty.get.page)}
+            <b class="color01">领先</b>
+            {/if}
+            <a href="/minfo?id={$m.bid_user}#auc">{$m.username|nickname:$m.nickname}</a>
+            {if $m.first eq 1}<span class="red">首次出价</span>{/if}
+            <i class="gray">{$m.bid_time|date_format:'Y-m-d H:i:s'}</i>
+        </p>
+        <p>
+            出价：<span class="blue">{if $m.bid_price gt 0}{$m.bid_price|price_format}{/if}</span>
+            {if $m.paib gt 0}<span class="blue">{$m.paib}{$L.unit_pay_points}</span>{/if}
+            {if $m.first eq 1}
+            随机码：<span class="blue">{$m.cod}</span>
+            {if $m.status eq 0}
+            <span>{$L.unit_kaijiang}日期：{$m.kj_time}</span>
+            {else}
+            <span>已{$L.unit_kaijiang}</span>
+            {/if}
+            {/if}
+        </p>
+        {if $m.status gt 0}
+        <div class="win"><img src="/style/mobile/images/win.png"></div>
+        {/if}
+    </div>
+</li>
+{/foreach}

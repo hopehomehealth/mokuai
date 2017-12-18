@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no" />
+    <title>首页</title>
+    <link rel="stylesheet" type="text/css" href="../cssn/aui.2.0.css" />
+    <link rel="stylesheet" type="text/css" href="../cssn/swiper.min.css" />
+    <link rel="stylesheet" type="text/css" href="../fonts/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="../cssn/style.css" />
+    <style>
+    	.hid{
+    		display:none;
+    		margin-bottom:10px;
+    	}
+    	.win-title{
+    		font-size:8px;
+    	}
+    	.menu{clear: both;overflow: hidden;background: #fff;padding: 10px 0;}
+		.menu .slider a{display: block;overflow: hidden; text-align: center;padding: 0 10px;}
+		.menu .slider a img{width:85%;max-width: 60px;}
+		.menu .slider p{margin: 7px 0 0;}
+    </style>
+</head>
+<body>
+<div class="slider" style="height:200px;" id="banner-content"></div>
+<div class="menu" style="padding:5px 0; margin: 5px auto;">
+    <div class="slider">
+        <div style="float:left; width:25%;" onclick="openWin('newbee',{frommain:true})">
+            <a>
+                <em><img src="http://www.i1y8.com/upload/images/gallery/z/z/1296_src.png"/></em>
+                <p style="font-size:10px; margin:7px -10px 0;">新手堂</p>
+            </a>
+        </div>
+        <div style="float:left; width:25%;"onclick="openWin('share')">
+            <a>
+                <em><img src="http://www.i1y8.com/style/mobile/css_02/images/cats/share.png"/></em>
+                <p style="font-size:10px; margin:7px -10px 0;">晒单</p>
+            </a>
+        </div>
+        <div style="float:left; width:25%;" onclick="openWin('plate')">
+            <a>
+                <em><img src="http://www.i1y8.com/style/mobile/css_02/images/cats/plate.png"/></em>
+                <p style="font-size:10px; margin:7px -10px 0;">大转盘</p>
+            </a>
+        </div>
+        <!--
+        <div style="float:left; width:20%;" onclick="openWin('freepage',{frommain:true});">
+            <a>
+                <em><img src="http://www.i1y8.com/style/mobile/css_02/images/cats/free.png"/></em>
+                <p style="font-size:10px; margin:7px -10px 0;">免费夺宝</p>
+            </a>
+        </div>
+        -->
+        <div style="float:left; width:25%;" onclick="contact()">
+            <a>
+                <em><img src="http://www.i1y8.com/upload/images/gallery/y/3/1228_src.png"/></em>
+                <p style="font-size:10px; margin:7px -10px 0;">联系客服</p>
+            </a>
+        </div>
+    </div>
+</div>
+
+<a id="qqchat" style="display:none;" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1453476146&site=qq&menu=yes">click here</a> 
+<dl class="index-top" onclick="opentoTab('results');" style="border-bottom: 0px solid red;display: none;">
+	<dt>
+		<i class="iconfont icon-zuixinjiexiaoxiankuang"></i>
+		<span>最新揭晓</span>
+	</dt>	
+	<dd><i class="iconfont icon-jiantou"></i></dd>
+</dl>
+<div class="index-pd index aui-clearfix" style="margin-bottom: 0px; padding-bottom: 0px; border-bottom: 0px solid grey;">
+	<i class="iconfont aui-pull-left icon-gonggao"></i>
+	<div class="index-1" id="gx-box">
+		<div class="bd">
+			<ul id="luck-content">
+				
+			</ul>
+		</div>
+	</div>
+</div>
+<script id="luck-template" type="text/x-dot-template">
+{{? it.luck_db.length}}
+{{ for(var i=0; i< it.luck_db.length; i++) { }}
+<li><a onclick="openWin('yunbuy_detail',{id:{{=it.luck_db[i].buy_id}}})"><b style=" color: #e54048">恭喜</b><span>{{=it.luck_db[i].username}}</span>获得{{=it.luck_db[i].goods_name}}</a></li>
+{{ } }}
+{{?}}
+</script>
+<div class="index1 aui-clearfix swiper-container" style="margin-top: 0px;padding-top: 0px;border: 0px solid grey;">
+    <div class="swiper-wrapper" id="fenlei-content">
+    </div>
+    <!--<div class="swiper-pagination"></div>-->
+</div>
+<script id="fenlei-template" type="text/x-dot-template">
+{{? it.nav.length}}
+{{ for(var i=0; i< it.nav.length; i++) { }}
+<div class="swiper-slide">
+	<a onclick="{{? it.nav[i].win}}openWin('{{=it.nav[i].win}}',{{=it.nav[i].parame}}){{?? it.nav[i].tab}}opentoTab('{{=it.nav[i].tab}}',{{=it.nav[i].parame}}){{?}}">
+		<em><img src="{{? it.nav[i].thumb}}{{=it.nav[i].thumb}}{{??}}../image/index_0{{=i+1}}.png{{?}}"></em>
+		<p>{{=it.nav[i].catname}}</p>
+	</a>
+</div>
+{{ } }}
+{{?}}
+</script>
+<div style="display: none;">
+<ul class="index-ul" id="win-content">
+</ul>
+</div>
+<input type="hidden" name="ids" id="ids" value=""/>
+<script id="win-template" type="text/x-dot-template">
+{{ for(var i=0; i< it.luck_db.length; i++) { }}
+{{? i<3}}
+<li id="itemDjx{{=it.luck_db[i].buy_id}}" q="{{=it.luck_db[i].qihao}}">
+	<a onclick="openWin('yunbuy_detail',{id:{{=it.luck_db[i].buy_id}}})" class="index-img"><em><img src="{{=it.luck_db[i].imgurl_thumb}}"></em></a>
+	<div class="index-sale">恭喜<a onclick="openWin('minfo',{id:{{=it.luck_db[i].mid}}})" class="color2">{{=it.luck_db[i].username}}</a>获得</div>
+</li>
+{{?}}
+{{ } }}
+</script>
+<script id="lottery-template" type="text/x-dot-template">
+{{ for(var i=0; i< it.list.length; i++) { }}
+{{? it.list[i].wait_status==0}}
+<li id="itemDjx{{=it.list[i].buy_id}}" q="{{=it.list[i].qihao}}">
+	<a onclick="openWin('yunbuy_detail',{id:{{=it.list[i].buy_id}}})" class="index-img"><em><img src="{{=it.list[i].imgurl_thumb}}"></em></a>
+	<font class="lefttime"><font id="leftTimeJx{{=it.list[i].buy_id}}"></font></font>
+    <font class="jx-ing org" style="display:none;">开奖计算中...</font>
+</li>
+{{?}}
+{{}}}
+</script>
+<div class="aui-tab index-top1 aui-clearfix filter" id="tab">
+    <div type="5" class="aui-tab-item aui-active"><span>人气</span></div>
+    <div type="1" class="aui-tab-item"><span>即将揭晓</span></div>
+    <div type="" class="aui-tab-item"><span>最新</span></div>
+    <div type="3" class="aui-tab-item"><span>价格<img src="../image/index1-1.png"></span></div>
+</div>
+<ul class="index2-ul aui-clearfix" id="hot-content">
+  
+</ul>
+<script id="hot-template" type="text/x-dot-template">
+{{ for(var i=0; i< it.yunbuy.length; i++) { }}
+<li>
+	{{? it.yunbuy[i].price > 1}}<div class="index2-2 {{? it.yunbuy[i].price ==5}}index2-five{{??}}index2-ten{{?}}">{{=it.yunbuy[i].num2char}}元专区</div>{{?}}
+	<a onclick="openWin('yunbuy_detail',{id:{{=it.yunbuy[i].buy_id}}})" class="index-img"><em><img src="{{=it.yunbuy[i].imgurl_src}}" id="buy_img_{{=it.yunbuy[i].buy_id}}"></em></a>
+	<a class="index2-text aui-ellipsis-2">{{=it.yunbuy[i].title}}</a>
+	<div class="index2-1">
+		<a onclick="addToCart('{{=it.yunbuy[i].buy_id}}','{{? it.yunbuy[i].type == 2}}free{{?}}',this)">立即参与</a>
+		<dl>
+			<dd class="aui-progress aui-progress-xs">
+				<div class="aui-progress-bar" style="width: {{=it.yunbuy[i].jindu}}%;"></div>
+			</dd>
+			<dt>揭晓进度：<span>{{=it.yunbuy[i].jindu}}%</span></dt>
+		</dl>
+	</div>
+</li>
+{{}}}
+</script>
+<div class="index-more"><span>继续拖动，加载更多商品</span><em><p></p></em></div>
+<div class="index-foot" id="copyright-content">
+	
+</div>
+<script id="copyright-template" type="text/x-dot-template">
+<strong><i class="iconfont icon-dianhua"></i>客服电话：<span>{{=it.tel}}</span></strong>
+<p>{{=it.copyright}}</p>
+{{? it.app_indexadshow==1}}
+<div class="index-bg"></div>
+<div class="index-yq-tc">
+	<a onclick="openWin('member_myivt')"><img src="../image/yq.jpg"></a>
+	<span><img src="../image/close.png"></span>
+</div>
+{{?}}
+</script>
+
+<script id="result-template" type="text/x-dot-template">
+{{ for(var i=0; i< it.list.length; i++) { }}
+<li>
+	<a onclick="openWin('yunbuy_detail',{id:{{=it.list[i].buy_id}}})" class="index-img"><em><img src="{{=it.list[i].imgurl_thumb}}"/></em></a>
+	<a class="index2-text aui-ellipsis-2 win-title" onclick="openWin('yunbuy_detail',{id:{{=it.list[i].buy_id}}})">{{=it.list[i].goods_name}}</a>
+</li>
+{{ } }}
+</script>
+
+<script type="text/javascript" src="../script/jquery.min.js"></script>
+<script type="text/javascript" src="../script/api.js"></script> 
+<script type="text/javascript" src="../script/doT.min.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript" src="../script/swiper.min.js"></script>
+<script type="text/javascript" src="../script/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="../script/lefttime_jx.js"></script>
+<script type="text/javascript" src="../script/fastclick.js"></script>
+<script type="text/javascript" src="../script/ad.js"></script>
+<script type="text/javascript">
+var compaceCount = 0;
+$(function(){
+	$('.filter .aui-tab-item').live('click',function(){
+	    $(this).addClass('aui-active').siblings().removeClass('aui-active');
+	    page = 1;
+	    order = $(this).attr('type');
+	    loadData(page,order);
+	    if(order==3){
+	    	$(this).attr('type',6);
+	    }else if (order==6){
+	    	$(this).attr('type',3);
+	    }
+    });
+    $(".index-bg,.index-yq-tc span").live('click',function(){
+		$('.index-bg').fadeOut();
+		$('.index-yq-tc').fadeOut();
+	})
+});
+
+function contact(){
+var dialogBox = api.require('dialogBox');
+dialogBox.popupAlert({
+    tapClose: true,
+    msg: {
+        content:'如果无法打开，请下载最新版QQ或在网页版进行咨询',
+        okBtnTitle: 'QQ客服'
+    }, 
+    styles: {
+        bg: '#fff',                
+        maskBg:'rgba(0,0,0,0.5)', 
+        h: 180,
+        msg :{            
+            color : '#000000', 
+            size  : 20,
+            maginLR: 10,
+            maginT: 40,
+            align : 'center',
+        },                   
+        okBtn :{                      
+            bg: '#25b6ed',    
+            color: '#FFF',      
+            size: 14,
+            maginLR: 10,
+            maginB: 10
+        },
+    }
+}, function(ret) {
+	dialogBox.close({
+		dialogName: 'popupAlert'
+	});
+    if(ret.eventType === 'ok'){
+    	var u ='http://wpa.qq.com/msgrd?v=3&uin=1453476146&site=qq&menu=yes';
+		var browser = api.require('webBrowser');
+		browser.open({url:u,titleBar:{bg:'#e54048',textColor:'#ffffff'}});
+    }
+});
+
+/*
+dialogBox.confirm({
+    tapClose: true,
+    msg: {
+        leftBtnTitle: '微信联系',
+        rightBtnTitle:'QQ联系'
+    }, 
+    styles: {
+        bg: '#fff',                
+        maskBg:'rgba(0,0,0,0.5)', 
+        h: 80, 
+        msg :{            
+            color : '#000000', 
+            size  : 16,
+            maginLR: 10 ,
+            maginT: 15  
+        },
+                           
+        leftBtn :{                     
+            bg: '#62b900',
+            highlightBg:'#73ca11',
+            color: '#ffffff', 
+            size: 12,
+            maginB:20
+        },
+        
+        rightBtn :{                  
+            bg: '#25b6ed',
+            highlightBg:'36c7fe',
+            color: '#ffffff',
+            size: 12,
+            maginB:20
+        }
+    }
+}, function(ret) {
+    if(ret.eventType === 'ok'){
+    	var u ='http://wpa.qq.com/msgrd?v=3&uin=1453476146&site=qq&menu=yes';
+		var browser = api.require('webBrowser');
+		browser.open({url:u,titleBar:{bg:'#e54048',textColor:'#ffffff'}});
+    }else if(ret.eventType === 'cancel'){
+    	var clipBoard = api.require('clipBoard');
+		clipBoard.set({
+		    value: 'i1y8商城'
+		}, function(ret, err) {
+		    if (ret) {
+		        toast('微信公众号已复制到剪切板');
+		    } else {
+		        toas(JSON.stringify(err));
+		    }
+		});
+    }
+    dialogBox.close({dialogName:'confirm'});
+});
+}
+*/
+}
+
+function getBanner() {
+    var getTabBarBannerUrl = 'home/getbanner';
+    ajaxRequest(getTabBarBannerUrl, 'POST', {values:{id:10}}, function (ret, err) {
+        if (ret) {
+	            var data = ret.data;
+	            var img = new Array();
+	            for(i=0;i<data.length;i++){
+	              img[i] = data[i].path;
+	            }
+		        var UIScrollPicture = api.require('UIScrollPicture');
+				UIScrollPicture.open({
+				    rect: {
+				        x: 0,
+				        y: 0,
+				        w: api.winWidth,
+				        h: 200
+				    },
+				    data: {
+				        paths: img
+				    },
+				    styles: {
+				        indicator: {
+				            align: 'center',
+				            color: '#FFFFFF',
+				            activeColor: '#e54048'
+				        }
+				    },
+				    placeholderImg: 'widget://image/loading_more.gif',
+				    contentMode: 'scaleToFill',
+				    interval: 5,
+				    fixedOn: api.frameName,
+				    loop: true,
+				    fixed: false
+				}, function(ret, err){
+				   if(ret.index>=0 && ret.eventType=='click'){
+				      	var index = ret.index;
+				      	if(data[index].title){
+				      		var i =0;
+				      		for(var k in JSON.parse(data[index].title)){
+				      			i++;
+				      			if(i==1){
+				      				if(k=="main" || k=="yunbuy" || k=="user" || k=="results" || k=="cart"){
+				      					opentoTab(k);
+				      				}else if(k=="yunbuy#1"){
+				      				    opentoTab('yunbuy', {"cid":"1"});
+				      				}else if(k=="yunbuy#35"){
+				      				    opentoTab('yunbuy', {"cid":"35"});
+				      				}else if(k=="yunbuy#4"){
+				      				    opentoTab('yunbuy', {"cid":"4"});
+				      				}else if(k=="yunbuy#3"){
+				      				    opentoTab('yunbuy', {"cid":"3"});
+				      				}else if(k=="yunbuy#2"){
+				      				    opentoTab('yunbuy', {"cid":"2"});
+				      				}else if(k=="yunbuy#8"){
+				      				    opentoTab('yunbuy', {"cid":"8"});
+				      				}else{
+				      					openWin('./'+k);
+				      				}
+				      			}
+				      		}
+				      		
+				      	}else if(data[index].page){
+					      openWin(data[index].page,JSON.parse(data[index].title));
+					    }else if(data[index].tab){
+					      opentoTab(data[index].tab,JSON.parse(data[index].title));
+					    }else{
+					      var browser = api.require('webBrowser');
+					      var s = data[index].title.substr(2);
+					      u = s.substr(0, s.indexOf(':')-1);
+					      u = 'http://www.i1y8.com' + u.split('\\').join('');
+					      console.log(u);
+    					  var minfo = $api.getStorage('minfo');
+    					  var upsw = minfo && minfo.password ? minfo.password : '';
+						  browser.open({
+							 url:u,
+							 titleBar:{
+							 	bg:'#e54048',
+							 	textColor:'#ffffff'
+							 },
+							 headers:{
+							 	"AppKey": '0fd1ff545d0df8cc9e464370c5b2eddd',
+					            "UID": $api.getStorage('uid'),
+					            "UNAME": $api.getStorage('uname'),
+					            "UPSW": upsw
+							 }
+						  });
+					    }
+				   }
+				});
+        } else {
+            api.alert({
+                msg: err.msg
+            });
+        }
+  });
+}
+function CheckUrl(str) {
+	var RegUrl = new RegExp();
+	RegUrl.compile("^[A-Za-z]+://[A-Za-z0-9-_]+\\.[A-Za-z0-9-_%&\?\/.=]+$");//jihua.cnblogs.com
+	if (!RegUrl.test(str)) {
+	return false;
+	}
+	return true;
+} 
+function loadIndexData(){
+	ajaxRequest('home/getindexdata', 'GET', {}, function (ret, err) {
+	    if (ret) {
+	       var data = ret.data;
+	       for(var i = 0 ; i< data.luck_db.length; i++){
+	       		var time = data.luck_db[i].end_time;
+	       		data.luck_db[i].end_time = formatDate(parseInt(time)*1000);
+	       }
+	       if(data.luck_db && data.luck_db.length){temp(data,'luck');temp(data,'win');}
+	       if(data.nav && data.nav.length){temp(data,'fenlei');}
+	       if(data.copyright){temp(data,'copyright');}
+		   $("#gx-box").slide({mainCell:".bd ul",autoPage:true,effect:"topLoop",autoPlay:true,interTime:2500,delayTime:1000});
+		   var swiper = new Swiper('.index1.swiper-container', {
+			    pagination: '.index1 .swiper-pagination',
+			    grabCursor: true,
+			    slidesPerView: 5,
+			    slidesPerGroup :5
+		   });
+		   $('.index-ul li a.index-img em').width($('.index-ul li a.index-img').width());
+		   $('.index-ul li a.index-img em').height($('.index-ul li a.index-img').width()*0.75);
+	    } else {
+	       toast(err.msg);
+	    }
+	});
+}
+function compaceIds(){
+	compaceCount ++;
+    ajaxRequest('content/ajaxIds', 'POST', {values:{skin:'index_mobile','ids':$('#ids').val()}}, function (ret, err) {
+	    if(ret.error==1){
+	    	$('#win-content').removeClass('hid');
+	        //$('.item-wait').remove();
+            $('#ids').val(ret.ids);
+			var tpl = $api.byId('lottery-template').text;
+			var tempFn = doT.template(tpl);
+			var content = $api.byId('win-content');
+			$api.prepend(content,tempFn(ret.data));
+            var it = ret.data;
+            for(var i=0; i< it.list.length; i++){
+              onload_leftTime_jx(it.list[i].buy_id,it.list[i].has_time,'index_mobile');
+            }
+            $('.index-ul li a.index-img em').width($('.index-ul li a.index-img').width())
+			$('.index-ul li a.index-img em').height($('.index-ul li a.index-img').width()*0.75)
+        }else{
+        	if(compaceCount === 1){
+        		ajaxRequest('content/win/1', 'GET', {}, function (ret, err) {
+				    if (ret.data) {
+			            var content = $api.byId('win-content');
+			            var tpl = $api.byId('result-template').text;
+			            var tempFn = doT.template(tpl);
+						$api.html(content, tempFn(ret.data));
+						$('.index-ul li a.index-img em').width($('.index2-ul li a.index-img').width());
+						$('.index-ul li a.index-img em').height($('.index2-ul li a.index-img').width()*0.5);
+			            hideprog();
+			        }else{
+			            hideprog();
+			            toast('没有更多了');
+			            $('.index-more').hide();
+			        }
+				});
+        	}
+        }
+	});
+}
+function loadData(page,order){
+    showprog();
+    ajaxRequest('yunbuy/index/'+page+'?order='+order+'&ajaxcontent=1&appVersion='+api.appVersion, 'GET', {}, function (ret, err) {
+	    if (ret.data) {
+	    	//alert(api.appVersion);
+	    	/*
+	    	for(var i in ret.data.yunbuy){
+	    		alert(i,":",ret.data.yunbuy[i]);
+	    	}
+	    	
+	    	for(var i=0;i<ret.data.yunbuy.length;i++){
+	    		var temp=ret.data.yunbuy[i];
+	    		alert(temp.title);
+	    	}
+	    	*/
+            var content = $api.byId('hot-content');
+            var tpl = $api.byId('hot-template').text;
+            var tempFn = doT.template(tpl);
+			if(page==1){
+			  $api.html(content, tempFn(ret.data));
+			}else{
+			  $api.append(content, tempFn(ret.data));
+			}
+			$('.index2-ul li a.index-img em').width($('.index2-ul li a.index-img').width())
+			$('.index2-ul li a.index-img em').height($('.index2-ul li a.index-img').width()*0.85)
+            hideprog();
+        }else{
+            hideprog();
+            toast('没有更多了');
+            $('.index-more').hide();
+        }
+	});
+}
+
+var page = 1;
+var order = 5;
+var browser;
+apiready = function(){
+	if(parseInt($api.getStorage('adcount'))<1){
+		if(!$api.getStorage('uid')){
+			showad(false);
+		}else{
+			showad(true);
+		}
+	}
+    //checkUpdate();
+    browser = api.require('webBrowser');
+    showprog();
+    getBanner();
+    loadIndexData();
+    loadData(page,order);
+//  api.execScript({
+//     name : 'root',
+//     script : "getlogo()"
+//  });  
+    //pull to refresh
+    /*
+    var sType = api.systemType;
+	if (sType == "ios") {
+	    var idfa = api.require('idfa');
+	    api.alert(api.deviceId);
+		idfa.getIDFA(function(ret, err){
+		    if(ret.status){
+		        api.alert({msg: ret.value});
+		    }else{
+		        api.alert({msg: err.code+' '+err.msg});
+		    }
+		});
+	}else{
+		api.alert('安卓手机');
+	}
+	*/
+    api.setRefreshHeaderInfo({
+        visible: true,
+        // loadingImgae: 'wgt://image/refresh-white.png',
+        bgColor: '#f2f2f2',
+        textColor: '#4d4d4d',
+        textDown: '下拉刷新...',
+        textUp: '松开刷新...',
+        showTime: true
+    }, function (ret, err) {
+        timer = clearInterval(timer); 
+        for(var i=0;i<timeID_h_jx.length;i++){
+           if(timeID_h_jx[i]){
+            timeID_jx[i] = window.clearInterval(timeID_jx[i]);
+            timeID_h_jx[i] = window.clearInterval(timeID_h_jx[i]);
+           }
+        }
+        showprog();
+        page = 1;
+	    loadData(page,order);
+	    loadIndexData();
+	    $('.item-wait').remove();
+        $("#ids").val('');
+        compaceIds();
+        timer = setInterval('compaceIds()',5*1000);
+        api.refreshHeaderLoadDone();
+    });
+
+    api.addEventListener({
+        name: 'scrolltobottom'
+    }, function (ret, err) {
+        page++;
+        loadData(page,order);
+        
+    });
+    compaceIds();
+    var timer = setInterval('compaceIds()',5*1000);
+    
+    api.addEventListener({
+	    name:'resume'
+	}, function(ret, err){        
+	    var adlastshow = parseInt($api.getStorage('adlastshow'));
+	    if(adlastshow >=12){
+	    	if(!$api.getStorage('uid')){showad(false);}else{showad(true);}
+	    	$api.setStorage('adlastshow',1);
+	    }
+	});
+	api.addEventListener({name:'showivtadafterlogin'},function(ret){
+		if(parseInt($api.getStorage('showivtad'))<1){showad(true)}				
+	});
+	setInterval(function(){
+		var ls = parseInt($api.getStorage('adlastshow'));
+		console.log(ls);
+		$api.setStorage('adlastshow',ls+1);
+	},3600 * 1000);
+};
+</script>
+</body>
+</html>

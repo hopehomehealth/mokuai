@@ -1,0 +1,59 @@
+{include file="crowd/crowd_header.html"}
+<div class="xmjs">
+    <section>
+        <img src="{zz mod=photo source=$member.photo size='80' nopic='/upload/default.gif'}" />
+        {$member.username|nickname:$member.nickname}
+    </section>
+
+    <h3>{$info.cd_name}</h3>
+    <p>
+        <i>已筹</i>
+        <em>￥</em>{$info.cd_total}
+    </p>
+
+
+
+</div>
+
+<div class="xmjs-nr">
+    <div class="xmjs-nr-div">{$info.content}</div>
+
+
+</div>
+
+
+<div class="h133"></div>
+<div class="ftnav2">
+    <ul>
+        <li class="on">
+            <a href="javascript:;" class="focus"><i class="iconfont">&#xe60c;</i><em>{if $isfocus}已{/if}关注 <span>{$info.focus_num}</span></em></a>
+        </li>
+        <li>
+            <a href="{url('/crowd/detail/')}{$info.cd_id}" class="submit_support">我要支持</a>
+        </li>
+        <li>
+            <a href="javascript:;"><i class="iconfont">&#xe60d;</i><em>分享</em></a>
+        </li>
+    </ul>
+
+
+</div>
+<script type="text/javascript">
+    var id = '{$info.cd_id}';
+    $(function(){
+        $('.focus').click(function(){
+            $.post('/crowd/focus/'+id,{},function(result){
+                if(result.code==1){
+                    layer.alert(result.msg,8,function(){
+                        location.href="{url('/member/login')}";
+                    });
+                }else if(result.code==0){
+                    layer.alert(result.msg);
+                    $('.focus em').html('已关注 <span>'+result.count+'</span>');
+                }else{
+                    layer.alert(result.msg);
+                }
+            },'JSON');
+        });
+    })
+</script>

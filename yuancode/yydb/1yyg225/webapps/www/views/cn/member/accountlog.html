@@ -1,0 +1,54 @@
+{include file="header.html"}
+<link rel="stylesheet" href="{url('/style/css/member.css')}">
+{include file="ur_here.html"}
+<div id="container">
+    <div class="fn-clear mt20 pb20">
+        {include file="member/menu.html"}
+        <div class="fn-right hy-r">
+            <div class="fn-clear hy-tjxh">
+                <div class="title">
+                    <h2>充值记录</h2>
+                </div>
+
+                <div class="hy-box">
+                    <div class="mt15 hy-table">
+                        <table>
+                            <tr>
+                                <th style="width:130px;">操作时间</th>
+                                <th style="width:80px">类型</th>
+                                <th style="width:110px">金额</th>
+                                <th style="width:60px">手续费</th>
+                                <th style="width:175px">支付方式</th>
+                                <th style="width:125px">处理备注</th>
+                                <th style="width:110px">状态</th>
+                                <th>操作</th>
+                            </tr>
+                            {foreach from=$list item=m}
+                            <tr>
+                                <td><span class="color03">{date('Y-m-d H:i',$m.add_time)}</span></td>
+                                <td>{if $m.type eq 1}充值{else}{/if}</td>
+                                <td><span class="color01">￥{$m.amount}</span></td>
+                                <td><span class="color01">￥{$m.fee}</span></td>
+                                <td>{$m.pay_name}</td>
+                                <td>{$m.admin_note}</td>
+                                <td>{if $m.status eq 1}待付款{elseif $m.status eq 2}已完成{else}已取消{/if}</td>
+                                <td class="hy-rza">
+                                    {if $m.type eq 1 && $m.status eq 1}<a href="{url('/member/pay/')}{$m.id}">付款</a>{/if}
+                                    {if $m.status eq 1}<a href="javascript:zz_confirm('您确认取消该申请？','{url('/member/account_cancel/')}{$m.id}');">取消</a>{/if}
+                                </td>
+                            </tr>
+                            {/foreach}
+                            <tr>
+                                <td colspan="8" style="text-align:right;">您当前的可用{$L.unit_baozheng}为：<span class="color01">￥{$member.user_money}</span>	冻结{$L.unit_baozheng}：<span class="color02">￥{$member.frozen_money}</span> </td>
+                            </tr>
+                        </table>
+                        <div class="foot-btn">
+                            {include file="public_page.html"}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="footer.html"}

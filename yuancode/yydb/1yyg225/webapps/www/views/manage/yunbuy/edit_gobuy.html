@@ -1,0 +1,171 @@
+{include file='../public_btn.html'}
+<div class="html-box">
+    <form target="iframeNewsTarget" method="post" action="/manage/yunbuy/edit">
+    <input type="hidden" name="id" value="{$row.buy_id}" />
+    <input type="hidden" name="post[gobuy]" value="1" />
+
+    <table class="table-list">
+    <tbody>
+        <tr>
+            <td class="td-label"><label>{$L.unit_go_buy}商品：<span class="c-red">*</span></label></td>
+            <td class="td-input">
+                <div class="f-unit" style="padding: 0">
+                    <select name="k" id="SEARCH_K">
+                        <option value='name'>名称</option>
+                        <option value="id">ID</option>
+                    </select>
+                    <input type="text" class="form-i w100" name="q" id="SEARCH_Q" value="" />
+                    <select name="cid" id="SEARCH_CID">
+                        <option value=''>-商品分类-</option>
+                        {$select_categorys}
+                    </select>
+                    <button type="submit" style="margin-left:5px;padding:2px 10px;" class="uiBtn BtnBlue" onclick="yunbuy.search_goods();">搜索</button>
+                </div>
+                <div class="f-unit" style="padding: 0">
+                    <select name="post[goods_id]" id="GOODS_ID" onchange="yunbuy.select_goods(this)" style="width: 400px;">
+                        {if $row.buy_id}
+                        <option value="{$row.goods_id}">{$row.title}</option>
+                        {else}
+                        <option value=""></option>
+                        {/if}
+                    </select>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="td-label"><label>商品名称：</label></td>
+            <td class="td-input">
+                <input type="text" class="form-i w300" id="GOODS_NAME" name="post[title]" value="{$row.title}" />
+                <span class="form-tip">留空时取{$L.unit_yun}商品名称</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="td-label"><label>副标题：</label></td>
+            <td class="td-input">
+                <input type="text" class="form-i w300" name="post[goods_subtit]" value="{$row.goods_subtit}" />
+            </td>
+        </tr>
+        <tr>
+            <td class="td-label"><label>{$L.unit_go_buy}分类：</label></td>
+            <td class="td-input">
+                <select name="post[cid]">
+                    <option value=''>-{$L.unit_go_buy}分类-</option>
+                    {$select_yuncategorys}
+                </select>
+            </td>
+        </tr>
+
+        <tr class="table-h3">
+            <td colspan="2">{$L.unit_go_buy}参数</td>
+        </tr>
+
+        <tr>
+            <td class="td-label"><label>购买价格：</label></td>
+            <td class="td-input">
+                <input type="text" class="form-i w140" id="GOODS_PRICE" name="post[custom_price]" value="{$row.custom_price}"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="td-label"><label>市场价：</label></td>
+            <td class="td-input">
+                <input type="text" class="form-i w140" name="post[goods_price]" value="{$row.goods_price|default:0}" />
+            </td>
+        </tr>
+
+        <tr>
+            <td class="td-label"><label>库存：</label></td>
+            <td class="td-input">
+                <input type="text" class="form-i w140" name="post[need_num]" value="{if $row.buy_id}{$row.need_num|default:0}{else}999{/if}" />
+            </td>
+        </tr>
+
+        <tr>
+            <td class="td-label"><label>销量：</label></td>
+            <td class="td-input">
+                <input type="text" class="form-i w140" name="post[buy_num]" value="{$row.buy_num|default:0}" />
+            </td>
+        </tr>
+
+        <tr style="display: none;">
+            <td class="td-label"><label>最大期数：<span class="c-red">*</span></label></td>
+            <td class="td-input">
+                <input type="text" class="form-i w140" name="post[max_qishu]" value="{$row.max_qishu|default:1}" />
+            </td>
+        </tr>
+        <tr style="display: none;">
+            <td class="td-label"><label>限购次数：</label></td>
+            <td class="td-input">
+                <input type="text" class="form-i w140" name="post[buynum]" value="{$row.buynum}" />
+                <span class="form-tip">每个会员本期最多可购买的人次，留空不限制</span>
+            </td>
+        </tr>
+        <tr style="display: none;">
+            <td class="td-label"><label>推荐人数：</label></td>
+            <td class="td-input">
+                <input type="text" class="form-i w140" name="post[usernum]" value="{$row.usernum}" />
+                <label><input type="checkbox" name="post[isreal]" value="1" {if $row.isreal eq 1}checked{/if} /> 需实名认证</label>
+                <div class="form-tip" style="clear: both">会员推荐注册需要达到的人数限制，留空不限制</div>
+            </td>
+        </tr>
+        <tr style="display: none;">
+            <td class="td-label"><label>限制会员：</label></td>
+            <td class="td-input">
+                <select name="post[member]">
+                    <option value="">所有会员</option>
+                    <option value="-1" {if $row.member eq -1}selected{/if}>新会员(7天内注册)</option>
+                </select>
+                <span class="form-tip">符合该条件的用户才能参与</span>
+            </td>
+        </tr>
+
+        <tr class="table-h3 s h0">
+            <td colspan="2">其它设置</td>
+        </tr>
+        <tr>
+            <td class="td-label"><label>是否显示：</label></td>
+            <td class="td-input">
+                <label><input type="radio" name="post[is_show]" value="1" {if $row.is_show eq 1}checked{/if}>是</label>
+                <label><input type="radio" name="post[is_show]" value="0" {if $row.is_show eq 0}checked{/if}>否</label>
+            </td>
+        </tr>
+        <tr style="display: none;">
+            <td class="td-label"><label>开售时间：</label></td>
+            <td class="td-input">
+
+                <input type="text" class="form-i Wdate" id="start_time" name="post[start_time]" value="{if $row.start_time}{date('Y-m-d H:i',$row.start_time)}{/if}" {if $row.buy_num > 0}readonly{/if}  {if $row.buy_num == 0}onclick="WdatePicker({ dateFmt:'yyyy-MM-dd HH:mm', minDate:'%y-%M-%d %H:%m' })"{/if}/>
+            </td>
+        </tr>
+        <tr class="s h0">
+            <td class="td-label"><label>SEO关键词：</label></td>
+            <td class="td-input">
+                <input type="text" class="form-i w200" name="post[keywords]" value="{$row.keywords}" />
+            </td>
+        </tr>
+        <tr class="s h0">
+            <td class="td-label"><label>SEO描述：</label></td>
+            <td class="td-input">
+                <textarea name="post[description]">{$row.description}</textarea>
+            </td>
+        </tr>
+
+        <tr class="tr-btn">
+            <td class="td-label"></td>
+            <td class="td-input td-button">
+                <button type="submit" name="Submit" class="uiBtn BtnGreen">提&nbsp;&nbsp;交</button>
+                <button type="reset" class="uiBtn">重&nbsp;&nbsp;置</button>
+            </td>
+        </tr>
+
+    </tbody>
+    </table>
+
+    </form>
+</div>
+
+<script type="text/javascript">
+    $.loadJs('/admin/js/manage/yunbuy.js',function(){ });
+</script>
+
+

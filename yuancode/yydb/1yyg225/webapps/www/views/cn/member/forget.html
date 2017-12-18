@@ -1,0 +1,53 @@
+{assign var='mod' value='login'}
+{include file="header.html"}
+<link type="text/css" rel="stylesheet" href="/style/css/member.css" />
+<div class="dl-box fn-clear">
+    <form action="" target="iframeNews"  id="forget_form" method="post">
+        <div class="fn-left dl-boxl">
+            {if $type eq 'mobile'}
+            <div class="form-box fn-clear">
+                <label><font class="label">手机号码</font>：</label><input name="mobile" id="mobile" type="text" class="inpt-style"  nullmsg="请输入您绑定的手机号码" errormsg="手机格式不正确" datatype="m" />
+            </div>
+            {$html_code}
+            <div class="form-box fn-clear">
+                <label><font class="label">短信验证码</font>：</label><input name="sms_code" id="sms_code" type="text" nullmsg="请输入短信验证码" errormsg="邮箱格式不正确" class="inpt-style2" />
+                <input type="button" value="获取短信验证码" onclick="getSmsVerify('sms_password')" id="btnSms" />
+            </div>
+            <div class="form-box fn-clear">
+                <label>&nbsp;</label><input name="Submit2" type="submit" value="立即找回" class="hy-btn" />
+            </div>
+
+            {else}
+            <div class="form-box fn-clear">
+                <label><font class="label">账户名</font>：</label><input name="username" type="text" class="inpt-style" autocomplete="false" datatype="*"/>
+            </div>
+            <div class="form-box fn-clear">
+                <label><font class="label">邮箱</font>：</label><input name="username2" type="text" nullmsg="请输入邮箱" errormsg="邮箱格式不正确" class="inpt-style" datatype="e"/>
+            </div>
+            <div class="form-box fn-clear">
+                <label>&nbsp;</label><input name="Submit" type="submit" value="立即找回" class="hy-btn" />
+            </div>
+            {/if}
+        </div>
+    </form>
+    <div class="fn-left dl-boxr">
+        <p>我没有{$site_config.site_name}帐号，</p>
+        <div class="fn-clear">
+            <a href="{url('/member/regist')}" class="hy-a1">立即注册</a>
+        </div>
+    </div>
+</div>
+
+{literal}
+<script type="text/javascript" src="/style/Validform_min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $("#forget_form").Validform({
+            tiptype:3,
+            showAllError:true,
+            label:".label"
+        });
+    });
+</script>
+{/literal}
+{include file="footer.html"}

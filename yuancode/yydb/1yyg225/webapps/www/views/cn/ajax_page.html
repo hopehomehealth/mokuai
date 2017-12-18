@@ -1,0 +1,17 @@
+{if $page.count>1}
+<div class="page">
+    {if $page.nonce>1}
+    <a class="demo" {$page.home}>首页</a>
+    <a class="demo" {$page.prev}>上一页</a>
+    {/if}
+
+    {foreach from=$page.links item=v key=k}
+    <a {if $v}class="demo"{/if} {$v} {if $k==$page.nonce} class="dq"{/if}>{$k}</a>
+    {/foreach}
+
+    {if $page.nonce<$page.count}
+    <a class="demo" {$page.next}>下一页</a>
+    <a class="demo" {$page.end}>尾页</a>
+    {/if}
+</div>
+{/if}

@@ -1,0 +1,15 @@
+{foreach from=$list item=m name=list}
+<li class="ui-clr">
+    <div class="pic">
+        <a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}"><img src="{zz mod=fileurl source=$m.imgurl_src}" alt="{$m.title}" id="buy_img_{$m.buy_id}" /></a>
+    </div>
+    <div class="info">
+        <p class="title"><a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}">{$m.title}</a></p>
+        <p class="price">
+            价格：<b>{$m.custom_price|price_format}</b><br>
+            <s>{if $m.goods_price gt $m.custom_price}市场价：{$m.goods_price|price_format}{/if}</s>
+        </p>
+    </div>
+    <button class="add-btn" onclick="addToCart('{$m.buy_id}','{if $m.type eq 2}free{/if}',this)"><span class="ap-icon icon-cart"></span></button>
+</li>
+{/foreach}

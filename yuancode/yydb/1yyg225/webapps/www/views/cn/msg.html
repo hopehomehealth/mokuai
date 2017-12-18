@@ -1,0 +1,41 @@
+{include file="header.html"}
+<style type="text/css">
+    .msg{ width:1200px; margin: 30px auto 20px; border:1px solid #e3e3e3; }
+    .msg_content{ margin: 50px 20px 70px 120px; }
+    .msg_content h2{ font-size: 32px; padding:30px 0 10px 0; line-height: 1.2; font-weight: normal; }
+    .msg_content h2 b{ font-size: 50px; }
+    .msg_link{ padding-top:10px;}
+    .msg_link p{ margin-bottom: 10px; margin-right: 10px; float: left; }
+    .msg_link a{ display:inline-block; background: #33cc99; padding: 0 20px; line-height: 40px; color: #fff; font-size: 24px; font-weight: bold; }
+</style>
+<div class="msg msg_{$icon}">
+    <div class="msg_content">
+        <table>
+            <tr>
+                {if $icon eq 3}
+                <td width="10" style="padding-right:80px;"><img src="/style/images/msg_3.png" /></td>
+                {else}
+                <td width="10" nowrap><img src="/style/images/msg_{if $icon gt 1}{$icon}{elseif $icon gt 0}1{else}0{/if}.gif" /></td>
+                {/if}
+                <td>
+                    <h2 class="color01">{$message}</h2>
+                    {if $link}
+                    <div class="msg_link">
+                        {foreach from=$link item=m}
+                        <p><a href="{$m.link}">{$m.text}</a></p>
+                        {/foreach}
+                    </div>
+                    {else}
+                    <div class="msg_link">
+                        <p><a href="{$url}">点击跳转</a></p>
+                    </div>
+                    <script type="text/javascript">
+                        setTimeout(function(){ location.href='{$url}' },3*1000);
+                    </script>
+                    {/if}
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+{include file="footer.html"}

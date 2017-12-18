@@ -1,0 +1,57 @@
+{assign var='header' value='header2'}
+{include file="top.html"}
+<link rel="stylesheet" href="/style/mobile/css/member.css">
+<div id="content" class="container main">
+    <form action="" method="post" id="msgform" target="iframeNews">
+    <div class="form-m">
+        {if $row}<input type="hidden" name="parent_id" value="{$row.id}"/>{/if}
+        {if $row.id}
+        <div class="item ui-clr">
+            <dl>
+                <dt class="color03">回复：</dt>
+                <dd>
+                    {$row.content|stripcslashes|nl2br}
+                </dd>
+            </dl>
+        </div>
+        {/if}
+        <div class="item ui-clr">
+            <dl>
+                <dt class="color03">收件人：</dt>
+                <dd>
+                    {if $row.mid}
+                    <a href="{'/minfo?id='|cat:$row.mid}" target="_blank">{$row.username|nickname:$row.nickname}</a>
+                    <input name="to_mid" type="hidden" value="{$row.mid}" />
+                    {else}
+                    网站管理员
+                    {/if}
+                </dd>
+            </dl>
+        </div>
+        <div class="item ui-clr">
+            <dl>
+                <dt class="color03">发送内容：</dt>
+                <dd>
+                    <textarea name="content" class="input-m" style="padding:5px;width:95%;height:80px;"></textarea>
+                </dd>
+            </dl>
+        </div>
+        <input name="Submit" type="submit" value="提 交" class="btn" />
+    </div>
+
+    <div class="list01 list-address">
+        <dl class="item ui-clr"></dl>
+    </div>
+    <div class="loading getMore"></div>
+    </form>
+</div>
+<script src="/style/mobile/js/jquery.more.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $('.list-address').more({
+            'address': '/member/message',
+            'amount' : 10
+        })
+    });
+</script>
+{include file="footer.html"}

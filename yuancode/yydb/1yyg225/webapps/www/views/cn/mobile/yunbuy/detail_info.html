@@ -1,0 +1,21 @@
+{assign var='viewport' value='pc'}
+{assign var='header' value='header2'}
+{include file="top.html"}
+<div id="content" class="container detail">
+    <div class="tab-item detail-info">
+        {picurl($row.goods_body|stripcslashes)}
+        {if $row.goods_price gte 5000}<p class="special" style="display: none">重要说明：商品获得者拥有 {$row.title} 10年免费使用权</p>{/if}
+    </div>
+</div>
+{include file="footer.html"}
+
+<style type="text/css">
+#header2{ position:relative !important; z-index:10; top:auto; left:auto;min-width:320px}
+#content{ margin-top:-3px !important}
+.mini-cart{ display: none !important; }
+</style>
+<script type="text/javascript">
+    $(function(){
+        $('#content img').removeAttr('width').removeAttr('height');
+    })
+</script>

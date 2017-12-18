@@ -1,0 +1,40 @@
+{foreach from=$list item=m}
+<tr>
+    <td class="col1"><a target="_blank" href="{$m.url}"><img src="{zz mod=fileurl source=$m.imgurl_src width=120 type=0}" alt="{$m.title}"></a></td>
+    <td class="col2" style="text-align: left">
+        <div class="w-goods w-goods-l">
+            <p class="w-goods-title"><a title="{$m.goods_name}" target="_blank" href="{$m.url}">{$m.title}</a></p>
+            <p class="w-goods-price">价值：{$m.price|price_format}</p>
+            <div class="w-progressBar">
+                <ul class="w-progressBar-txt f-clear">
+                    <li class="w-progressBar-txt-l">
+                        已参加{$m.bid_user_count}人次
+                    </li>
+                    <li class="w-progressBar-txt-r">
+                        <a href="{$m.url}" target="_blank">前去围观<span class="st">>></span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </td>
+    <td class="col3" nowrap>
+        <!-- {if $m.status eq $smarty.const.UNDER_WAY} -->
+        <span class="color01">正在进行中...</span>
+        <!-- {else} -->
+        <!-- {if $m.last_bid.bid_user eq $member.mid && $m.type eq 1} -->
+        <span class="color02">最高价获得</span>
+        <!-- {else} -->
+        <span class="color03">{$L.unit_pay}已结束</span>
+        <!-- {/if} -->
+        <!-- {/if} -->
+    </td>
+    <td class="col4" style="table-layout:fixed; word-break: break-all;">
+        <span class="color01">{$m.current_price|price_format}</span><br>
+        <a href="{'/minfo?id='|cat:$m.last_bid.bid_user|url}#auc" target="_blank">{$m.last_bid.username|nickname:$m.last_bid.nickname}</a>
+    </td>
+    <td class="col5" style="table-layout:fixed; word-break: break-all;">
+        <span class="color01">{$m.my_bid.bid_price|price_format}</span><br>
+        {$m.my_bid.cod}
+    </td>
+</tr>
+{/foreach}

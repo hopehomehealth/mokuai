@@ -1,0 +1,44 @@
+{include file="header.html"}
+<link rel="stylesheet" href="/style/css/member.css">
+{include file="ur_here.html"}
+<div id="container">
+    <div class="fn-clear mt20 pb20">
+        {include file="member/menu.html"}
+        <style type="text/css">
+            .refer-box .rleft ul li{ width:410px;}
+        </style>
+        <div class="fn-right hy-r">
+            <div class="fn-clear hy-tjxh">
+                <div class="title"><h2>我的大转盘记录</h2></div>
+                <div class="db-nrbox fn-clear">
+                    <div class="fn-clear">
+                        <div class="fn-left db-sxl">
+                            <a href="{'/member/plate'}"{if $type neq 1} class="dq"{/if}>抽奖记录</a>
+                            <a href="{'/member/plate?type=1'}"{if $type eq 1} class="dq"{/if}>中奖记录</a>
+                        </div>
+                    </div>
+                    <div class="hy-table" style="margin: 10px auto; width: 100%;">
+                        <table>
+                            <tbody>
+                            <tr>
+                                <th>中奖信息</th>
+                                <th>抽奖条件</th>
+                                <th>抽奖时间</th>
+                            </tr>
+                            {foreach from=$list item=m}
+                              <tr>
+                                  <td>{$m.star_info}</td>
+                                  <td>{$m.cond_info}</td>
+                                  <td>{date('Y-m-d H:i:s',$m.c_time)}</td>
+                              </tr>
+                            {/foreach}
+                            </tbody>
+                         </table>
+                     </div>
+                    {include file="public_page.html"}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="footer.html"}

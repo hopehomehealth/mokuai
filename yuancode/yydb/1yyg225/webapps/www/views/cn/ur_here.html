@@ -1,0 +1,13 @@
+{if $ur_here}
+<div id="breadCrumb">
+    <div class="breadCrumb-txt">
+        <a href="{url()}">首页</a> {$ur_here}
+    </div>
+</div>
+{else}
+<div id="breadCrumb">
+    <div class="breadCrumb-txt">
+        <a href="{url()}">首页</a>{zz mod=catpos catid=$data.cat.id space=' > ###' end=' > <span class="end">###</span>'}
+    </div>
+</div>
+{/if}

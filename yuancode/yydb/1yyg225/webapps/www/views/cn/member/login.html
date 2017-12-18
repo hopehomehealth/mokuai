@@ -1,0 +1,43 @@
+{assign var='mod' value='login'}
+{include file="header.html"}
+<link type="text/css" rel="stylesheet" href="/style/css/member.css" />
+<link type="text/css" rel="stylesheet" href="/style/css/validform.css" />
+<div class="dl-box login-box fn-clear">
+    <a href="{'/content/chart'|url}" class="atip" title="【导购流程、了解商城】"></a>
+    <form action="/member/act_login" target="iframeNews" id="login_form" method="post">
+        <!--<input name="username" type="text" class="input input-user" autocomplete="false" placeholder="账户名/邮箱/手机号" /> -->
+        <input name="username" type="text" class="input input-user" autocomplete="false" placeholder="账户名/手机号" />
+        <input name="password" type="password" class="input input-pass" placeholder="输入密码" />
+
+        <div class="dl-btna fn-clear">
+            <div class="ui-left oauth">
+                {if $site_config.qq_login}<a href="javascript:void(0);" onclick="oauth('{url('/member/oauth/qq?open=1')}')"><img src="/style/images/qq.png" /> QQ登录</a>{/if}
+                {if $site_config.weibo_login}<a href="javascript:void(0);" onclick="oauth('{url('/member/oauth/weibo?open=1')}')"><img src="/style/images/weibo.png" /> 微博登录</a>{/if}
+                {if $site_config.wxpc_login && $mobile neq 1}<a href="https://open.weixin.qq.com/connect/qrconnect?appid={$site_config.wxpc_appid}&redirect_uri={urlencode(url(''))}&response_type=code&scope=snsapi_login&state=22138#wechat_redirect"><img src="/style/images/wechat.png"/> 微信登录</a>{/if}
+                {if $site_config.sync_login && $mobile neq 1}<a href="{url('/member/wx_scan')}"><img src="/style/images/wechat.png"/> 微信登录</a>{/if}
+            </div>
+            <a href="{url('/member/regist')}" style="margin-right: 10px;" class="ui-left">注册会员</a>
+            <a href="{url('/member/forget/mobile')}" class="ui-left">忘记密码？</a>
+            <label><input type="checkbox" name="un_login" value="1" style="vertical-align: bottom" /> 7天免登录</label>
+            <span id="msgTip" style="margin-left:30px;"></span>
+        </div>
+
+        <input type="hidden" name="back_url" value="{$back_url}">
+        <input name="Submit" type="submit" value=" " class="hy-btn" id="submit-button" />
+    </form>
+    <div class="fn-left dl-boxr"></div>
+</div>
+
+{literal}
+<script type="text/javascript" src="/style/Validform_min.js"></script>
+<script type="text/javascript">
+$(function(){
+    $("#login_form").Validform({
+        showAllError:true,
+        label:".label",
+        tiptype:function(msg,o,cssctl){ validTip(msg,o,cssctl); }
+    });
+});
+</script>
+{/literal}
+{include file="footer.html"}

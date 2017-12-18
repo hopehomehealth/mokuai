@@ -1,0 +1,165 @@
+{assign var='header' value='header2'}
+{include file="top.html"}
+<link rel="stylesheet" href="/style/mobile/plate/css/common.css">
+<link rel="stylesheet" href="/style/mobile/plate/css/plate.css">
+<div class="resultBg"></div>
+<div id="content" class="container main">
+
+    <div class="choujiang">
+        <img src="/style/mobile/plate/img/dzpanbg.png" />
+        <div class="plate">
+            <a id="plateBtn" href="javascript:">开始抽奖</a>
+        </div>
+        <div id="result" class="result">
+            <p id="resultTxt" class="resultTxt"></p>
+            <a id="resultBtn" class="resultBtn" href="javascript:">再转一次</a>
+        </div>
+        <div id="tips" class="result">
+            <a class="resultClose"></a>
+            <p class="resultTxt"><b></b><span></span></p>
+            <a class="resultBtn" href="javascript:;"></a>
+        </div>
+    </div>
+
+    <div class="dzp-jifen"{if $data.status lt 1} style="background-color: #aaa;"{/if}>
+        {if $data.status gt 0}
+        <i>{$data.status_name}</i>
+        剩余次数：{$data.count_qty}
+        {else}
+        {$data.status_name}
+        {/if}
+    </div>
+
+    <div class="dzp-mywin">
+        <a href="/member/plate?type=1">我的中奖记录</a>
+    </div>
+
+    <div class="dzp-jxsm">
+        <section>
+            <table>
+                <tr>
+                    <th>中<br />奖<br />名<br />单<br /></th>
+                    <td>
+                        <ul>
+                            {foreach from=$winList item=m key=k}
+                            <li><p><i class="icon iconfenxiao">&#xe650;</i>{$m.star|num2char}等奖：{$m.username|nickname:$m.nickname}<em>（{date('Y-m-d',$m.c_time)}）</em></p></li>
+                            {foreachelse}
+                            <li><p>暂无中奖记录</p></li>
+                            {/foreach}
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </section>
+    </div>
+
+    <div class="dzp-jxsm">
+        <section>
+            <table>
+                <tr>
+                    <th>奖<br />品<br />说<br />明<br /></th>
+                    <td>
+                        {foreach from=$config_plate.plate_get_points item=m key=k}
+                        <p><i class="icon iconfenxiao">&#xe650;</i>{$k|num2char}等奖：获得 {$m} {$config_plate.plate_get_title_type.$k}<em>（{if $config_plate.plate_get_type.$k eq 2 && isset($full_cut_discount)}满{$full_cut_discount.0}用{$full_cut_discount.1}{$config_plate.plate_get_title_type.$k}{else}无条件使用限制{/if}）</em></p>
+                        {/foreach}
+                    </td>
+                </tr>
+            </table>
+        </section>
+    </div>
+
+    <div class="dzp-guiz">
+        <h3 class="dzp-guiz-h3">活动规则：</h3>
+        <section>
+            1.{if $config_plate.plate_db_points}每参与{$config_plate.plate_db_points}人次（不含免费区）{/if}{if $config_plate.plate_db_points && $config_plate.plate_pay_points}（优先）或{/if}{if $config_plate.plate_pay_points}单次消耗{$config_plate.plate_pay_points}{$L.unit_pay_points}{/if}{if !$config_plate.plate_db_points && !$config_plate.plate_pay_points}没有设置参与条件{/if}，可以获得一次大转盘机会;<br>
+            2.活动时间：{if $config_plate.plate_start_time}{date('Y年m月d日',$config_plate.plate_start_time|strtotime)}{/if}-{if $config_plate.plate_end_time}{date('Y年m月d日',$config_plate.plate_end_time|strtotime)}{/if}；<br />
+            3.抽奖成功，奖品将直接充值到您的帐户，立即生效；<br />
+            4.本次活动最终解释权归{$site_config.site_name}所有。<br />
+        </section>
+    </div>
+
+<script type="text/javascript" src="/style/mobile/plate/js/jquery.rotate.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var $plateBtn = $('#plateBtn');
+        var $result = $('#result');
+        var $resultTxt = $('#resultTxt');
+        var $resultBtn = $('#resultBtn');
+        var status = 1; //抽奖状态 1可抽奖 0抽奖运行中
+
+        $plateBtn.click(function () {
+            if(status == 1){
+                var D = { token:'{createToken()}' };
+                $.post('/plate/get',D,function(x){
+                    if(x.status<1){
+                        if(x.status_name){
+                            $('#tips .resultTxt b').html(x.status_name);
+                        }
+                        if(x.status_tip){
+                            $('#tips .resultTxt span').html(x.status_tip);
+                        }
+                        if(x.status_btn){
+                            $('#tips .resultBtn').html(x.status_btn);
+                        }
+                        if(x.status_url){
+                            $('#tips .resultBtn').attr('href',x.status_url);
+                        }
+                        $('#tips,.resultBg').show();
+                    }else{
+                        switch (x.m) {
+                            case 1:
+                                rotateFunc(1, 210, '<img src="/style/mobile/plate/img/dzp-zj.jpg" /><span>恭喜您获得<em>一等奖</em>（'+x.desc+'）</span>');
+                                break;
+                            case 2:
+                                rotateFunc(2, 270, '<img src="/style/mobile/plate/img/dzp-zj.jpg" /><span>恭喜您获得<em>二等奖</em>（'+x.desc+'）</span>');
+                                break;
+                            case 3:
+                                rotateFunc(3, 330, '<img src="/style/mobile/plate/img/dzp-zj.jpg" /><span>恭喜您获得<em>三等奖</em>（'+x.desc+'）</span>');
+                                break;
+                            case 4:
+                                rotateFunc(4, 30, '<img src="/style/mobile/plate/img/dzp-zj.jpg" /><span>恭喜您获得<em>四等奖</em>（'+x.desc+'）</span>');
+                                break;
+                            case 5:
+                                rotateFunc(5, 90, '<img src="/style/mobile/plate/img/dzp-zj.jpg" /><span>恭喜您获得<em>五等奖</em>（'+x.desc+'）</span>');
+                                break;
+                            default:
+                                rotateFunc(0, 150, '<img src="/style/mobile/plate/img/dzp-wzj.jpg" /><span>很遗憾，<em>未中奖</em>，谢谢参与！</span>');
+                                break;
+                        }
+                    }
+                },'json');
+            }
+        });
+
+        var rotateFunc = function (awards, angle, text) {  //awards:奖项，angle:奖项对应的角度
+            status = 0;
+            $plateBtn.stopRotate();
+            $plateBtn.rotate({
+                angle: 0,
+                duration: 5000,
+                animateTo: angle + 1440,  //angle是图片上各奖项对应的角度，1440是让指针固定旋转4圈
+                callback: function () {
+                    $resultTxt.html(text);
+                    $result.show();
+                    $('.resultBg').show();
+                    status = 1;
+                }
+            });
+        };
+
+        $resultBtn.click(function () {
+            $result.hide();
+            $('.resultBg').hide();
+            location.reload();
+        });
+
+        $('.resultClose').click(function () {
+            $('.result,.resultBg').hide();
+        });
+    });
+</script>
+
+    <div class="ft"></div>
+</div>
+</body>
+</html>

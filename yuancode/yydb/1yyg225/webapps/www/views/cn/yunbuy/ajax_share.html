@@ -1,0 +1,46 @@
+{if $list}
+<div class="content" style="">
+    <ul class="m-detail-shareList-list">
+        {foreach $list item=m}
+        <li>
+            <div class="m-detail-shareList-author">
+                <a class="avatar" href="{'/minfo?id='|cat:$m.mid|url}" target="_blank"><img height="90" src="{zz mod=photo source=$m.photo}" width="90"></a>
+                <a class="nickname f-txtabb" href="{'/minfo?id='|cat:$m.mid|url}" target="_blank" title="{$m.username}">{$m.username|nickname:$m.nickname}</a></div>
+            <div class="m-detail-shareList-detail">
+                <i class="ico ico-arrow ico-arrow-grayShareArr"></i>
+                <div class="titleWrap">
+                    <span class="date">{date('Y-m-d H:i:s',$m.addtime)}</span><span class="title">第{$m.qishu}期晒单<a href="{'/minfo?id='|cat:$m.mid|url}#share#vid={$m.id}" target="_blank"><b>{$m.title}</b></a></span></div>
+                <div class="contentWrap">
+                    <a href="{'/minfo?id='|cat:$m.mid|url}#share#vid={$m.id}" target="_blank">{$m.content|truncate:120}</a></div>
+                <div class="imgWrap">
+                    {foreach from=unserialize($m.thumbs) item=t}
+                    <a href="{'/minfo?id='|cat:$m.mid|url}#share#vid={$m.id}" target="_blank">
+                        <div style="display: table-cell; writing-mode: tb-rl; height: 140px; line-height: 140px; vertical-align: middle"><img src="{zz mod=fileurl source=$t}" width="140"></div>
+                    </a>
+                    {/foreach}
+                </div>
+            </div>
+        </li>
+        {/foreach}
+    </ul>
+    {include file="ajax_page.html"}
+</div>
+{else}
+<div class="empty"><p class="status-empty"><i class="littleU littleU-cry"></i>&nbsp;&nbsp;暂时还没有任何晒单</p></div>
+{/if}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#sharePanel').find('.demo').ajaxContent({
+            event:'click', //mouseover
+            loaderType:"img",
+            loadingMsg:"/style/images/transparent.gif",
+            target:'#sharePanel'
+        });
+        $('#sharePanel').find('*[nc_type="sform"]').ajaxContent({
+            event:'change', //mouseover
+            loaderType:"img",
+            loadingMsg:"/style/images/transparent.gif",
+            target:'#sharePanel'
+        });
+    });
+</script>

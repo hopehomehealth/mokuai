@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no" />
+    <title>幸运大转盘</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/plate.css"/>
+</head>
+<body>
+<div id="header">
+   <div class="cart active">
+	    <div class="icon_box" tapmode="" onclick="api.closeWin()"><i class="iconfont icon-fanhui"></i></div>
+	    <div class="toptit">幸运大转盘</div>
+	    <div class="icon_box" tapmode="" onclick="backhome()"><i class="iconfont icon-shouye"></i></div>
+   </div>
+</div>
+<div class="container main" style="padding-top:50px;">
+   <div class="choujiang">
+        <img src="../image/plate/dzpanbg.png" width="100%"/>
+        <div class="plate">
+            <a id="plateBtn" href="javascript:">开始抽奖</a>
+        </div>
+        <div id="result" class="result">
+            <p id="resultTxt" class="resultTxt"></p>
+            <a id="resultBtn" class="resultBtn" href="javascript:">再转一次</a>
+        </div>
+        <div id="tips" class="result">
+            <a class="resultClose"></a>
+            <p class="resultTxt"><b></b><span></span></p>
+            <a class="resultBtn" href="javascript:;"></a>
+        </div>
+    </div>
+    <div id="jifen-content"></div>
+    
+    <script id="jifen-template" type="text/x-dot-template">
+    <div class="dzp-jifen" {{? it.status < 1}}style="background-color: #aaa;"{{?}}>
+        {{? it.status > 0}}
+        <i>{{=it.status_name}}</i>剩余次数：<font id="count">{{=it.count_qty}}</font>
+        {{??}}
+        <font id="status_name">{{=it.status_name}}</font>
+        {{?}}
+    </div>
+    </script>
+
+    <div class="dzp-jxsm" style="margin-top: 20px;">
+        <section>
+            <table>
+                <tr>
+                    <th>奖<br />品<br />说<br />明<br /></th>
+                    <td id="sm-content">
+                    </td>
+                </tr>
+            </table>
+        </section>
+    </div>
+    <script id="sm-template" type="text/x-dot-template">
+    {{? it.config_plate.points_arr}}
+    {{ for(var i=0; i< it.config_plate.points_arr.length; i++) { }}
+    <p><i class="icon iconfenxiao">&#xe650;</i>
+    {{=it.config_plate.points_arr[i].str}}等奖：获得 {{=it.config_plate.points_arr[i].val}} {{=it.config_plate.plate_get_title_type[i+1]}}
+    <em>（{{? it.config_plate.plate_get_type[i] == 2 && it.full_cut_discount}}满{{=it.full_cut_discount[0]}}用{{=it.full_cut_discount[1]}}{{=it.config_plate.plate_get_title_type[i+1]}}{{??}}无条件使用限制{{?}}）</em>
+    </p>
+    {{}}}
+    {{?}}
+    </script>
+
+    <div class="dzp-guiz">
+        <h3 class="dzp-guiz-h3">活动规则：</h3>
+        <section id="gz-content"></section>
+    </div>
+    <script id="gz-template" type="text/x-dot-template">
+    1.{{? it.config_plate.plate_db_points>0}}每参与{{=it.config_plate.plate_db_points}}人次（不含免费区）{{?}}
+    {{? it.config_plate.plate_db_points>0 && it.config_plate.plate_pay_points}}（优先）或{{?}}
+    {{? it.config_plate.plate_pay_points}}单次消耗{{=it.config_plate.plate_pay_points}}{{=it.unit_pay_points}}{{?}}
+    {{? !it.config_plate.plate_db_points && !it.config_plate.plate_pay_points}}没有设置参与条件{{?}}，可以获得一次大转盘机会;<br>
+    2.活动时间：{{? it.config_plate.plate_start_time}}{{=it.config_plate.plate_start_time}}{{?}}-{{? it.config_plate.plate_end_time}}{{=it.config_plate.plate_end_time}}{{?}}；<br />
+    3.抽奖成功，商品将直接充值到您的帐户，立即生效；<br />
+    4.本次活动最终解释权归{{=it.site_name}}所有。<br />
+    </script>
+</div>
+<div class="ft"></div>
+<script type="text/javascript" src="../script/jquery.min.js"></script>
+<script type="text/javascript" src="../script/fastclick.js"></script>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/doT.min.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript" src="../script/jquery.rotate.min.js"></script>
+<script type="text/javascript">
+$(function () {
+    var $plateBtn = $('#plateBtn');
+    var $result = $('#result');
+    var $resultTxt = $('#resultTxt');
+    var $resultBtn = $('#resultBtn');
+    var status = 1; //抽奖状态 1可抽奖 0抽奖运行中
+    var win,tab;
+    
+    $("#tips .resultBtn").click(function(){
+       if(tab){
+         opentoTab(tab);
+       }else{
+         openWin(win);
+       }
+    });
+
+    $plateBtn.click(function () {
+        if(status == 1){
+            showprog();
+            ajaxRequest('plate/get', 'POST',{}, function (x, err) {
+              hideprog();
+              if(x.status<1){
+                if(x.status_name){
+                    $('#tips .resultTxt b').html(x.status_name);
+                }
+                if(x.status_tip){
+                    $('#tips .resultTxt span').html(x.status_tip);
+                }
+                if(x.status_btn){
+                    $('#tips .resultBtn').html(x.status_btn);
+                }
+                if(x.tab){
+                  tab = x.tab
+                }else{
+                  win = x.win;
+                }
+                
+                $('#tips,.resultBg').show();
+            }else{
+                $('#count').html(x.plate_status.count_qty);
+                $('#status_name').html(x.plate_status.status_name);
+                switch (x.m) {
+                    case 1:
+                        rotateFunc(1, 210, '<img src="../image/plate/dzp-zj.jpg" /><span>恭喜您获得<em>一等奖</em>（'+x.desc+'）</span>');
+                        break;
+                    case 2:
+                        rotateFunc(2, 270, '<img src="../image/plate/dzp-zj.jpg" /><span>恭喜您获得<em>二等奖</em>（'+x.desc+'）</span>');
+                        break;
+                    case 3:
+                        rotateFunc(3, 330, '<img src="../image/plate/dzp-zj.jpg" /><span>恭喜您获得<em>三等奖</em>（'+x.desc+'）</span>');
+                        break;
+                    case 4:
+                        rotateFunc(4, 30, '<img src="../image/plate/dzp-zj.jpg" /><span>恭喜您获得<em>四等奖</em>（'+x.desc+'）</span>');
+                        break;
+                    case 5:
+                        rotateFunc(5, 90, '<img src="../image/plate/dzp-zj.jpg" /><span>恭喜您获得<em>五等奖</em>（'+x.desc+'）</span>');
+                        break;
+                    default:
+                        rotateFunc(0, 150, '<img src="../image/plate/dzp-wzj.jpg" /><span>很遗憾，<em>未中奖</em>，谢谢参与！</span>');
+                        break;
+                }
+            } 
+			});
+        }
+    });
+
+    var rotateFunc = function (awards, angle, text) {  //awards:奖项，angle:奖项对应的角度
+        status = 0;
+        $plateBtn.stopRotate();
+        $plateBtn.rotate({
+            angle: 0,
+            duration: 5000,
+            animateTo: angle + 1440,  //angle是图片上各奖项对应的角度，1440是让指针固定旋转4圈
+            callback: function () {
+                $resultTxt.html(text);
+                $result.show();
+                $('.resultBg').show();
+                status = 1;
+            }
+        });
+    };
+
+    $resultBtn.click(function () {
+        $result.hide();
+        $('.resultBg').hide();
+    });
+
+    $('.resultClose').click(function () {
+        $('.result,.resultBg').hide();
+    });
+});
+apiready = function(){
+  	var header = $api.byId('header');
+	$api.fixStatusBar(header);
+	ajaxRequest('plate/index', 'GET',{}, function (ret, err) {
+	  temp(ret.data,'jifen');
+	  temp(ret.data,'sm');
+	  temp(ret.data,'gz');
+	});
+}
+</script>
+</body>
+</html>

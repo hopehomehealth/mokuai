@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no" />
+    <title>发起圈子</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/user.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/member.css"/>
+</head>
+<body>
+<div id="header">
+   <div class="cart active">
+	    <div class="icon_box" tapmode="" onclick="api.closeWin()"><i class="iconfont icon-fanhui"></i></div>
+	    <div class="toptit">输入圈子密码</div>
+	    <div class="icon_box " tapmode="" onclick="backhome()"><i class="iconfont icon-shouye"></i></div>
+   </div>
+</div>
+<div id="content" class="container main">
+<form id="submit_form">
+    <div  id="member-content"></div>
+
+    <div class="tab-m-c">
+        <div class="form-m">
+            <div class="item ui-clr">
+                <dl>
+                    <dt class="color03">请输入密码：</dt>
+                    <dd>
+                    	<input type="password" class="input-m" name="password" value="" />
+                    </dd>
+                </dl>
+            </div>
+            <input class="btn" name="Submit" type="button" id="submit" value="立即参与">           
+        </div>
+    </div>
+        
+</form>
+</div>
+<img src="" id="buy_img" style="display:none;"/>
+
+<script type="text/javascript" src="../script/jquery.min.js"></script>
+<script type="text/javascript" src="../script/availdate.js"></script>
+<script type="text/javascript" src="../script/fastclick.js"></script>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/doT.min.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript">
+var id;
+$(function(){        
+    ac.form({
+	    area: "#submit_form",
+	    btn: "#submit",
+	    singleError: function (e, msg) {
+	        toast(msg);
+	    },
+	    endSuccess: function (data) {
+	        showprog();       
+            var qz_pass = $('input[name=password]').val();
+            var buy_id = api.pageParam.id;
+    		var D={qz_pass:qz_pass,buy_id:buy_id};
+
+		if(parseInt(qz_pass) != qz_pass || qz_pass.length != 6){ 
+			toast('圈子商品密码为6位纯数字密码！'); 
+			hideprog();
+			return false; 
+		} 
+		$('#buy_img').attr('id','buy_img_'+buy_id);
+		
+	        ajaxRequest('quanzi/checkPassQz', 'POST', {values:D}, function (ret, err) {
+		        hideprog();		
+		        if(ret.code){
+		          	toast(ret.msg);
+					addToCart(buy_id,'buy');
+		        }else{
+		          toast(ret.msg);
+		        }
+		        
+		   });
+	    }
+     });
+});
+apiready = function(){
+	//适配iOS 7+，Android 4.4+状态栏
+	var header = $api.byId('header');
+	$api.fixStatusBar(header);			
+    id = api.pageParam.id;
+
+
+}
+window.addEventListener('load', function() {
+  FastClick.attach(document.body);
+}, false);
+
+</script>
+</body>
+</html>

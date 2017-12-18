@@ -1,0 +1,31 @@
+{include file="crowd/crowd_header.html"}
+<form action="/crowd/step_two" target="iframeNews" id="step_form" method="post">
+    <div class="faqizc-sh">
+        <textarea placeholder="请输入" name="content">{$info.content}</textarea>
+    </div>
+    <div class="faqizc-sh-img">
+        <ul id="warp" style="display: none">
+            <li class="faqizc-ul-img">
+                <img id="imgShow_WU_FILE_0" src="images/xji.png" />
+            </li>
+        </ul>
+        <p>你是谁，为什么众筹，钱将如何使用，以及意义是什么</p>
+        <input type="submit" class="tjsh" name="submit" value="提交审核"/>
+        <input type="hidden" name="id" value="{$info.cd_id}">
+    </div>
+</form>
+<style type="text/css">
+    #select_linkage select:first-child{ margin-right: 15px; }
+    .webuploader-pick{
+        margin: 0px;
+        width: 196px;
+        height: 124px;
+        text-indent:-999em;
+        background: none;
+    }
+    .fqbd-txt-cj li span.state{
+        float: none; width: auto; margin: 0px; text-align:left;
+    }
+    .fqbd-txt-cj li.thumb{ line-height: normal;}
+</style>
+<iframe name="iframeNews" style="display:none;"></iframe>

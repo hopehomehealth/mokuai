@@ -1,0 +1,94 @@
+{include file="crowd/crowd_header.html"}
+{include file="crowd/ur_here.html"}
+<div class="container">
+    <div class="gwc1">
+        <h3 class="gwc1-h3">{{$return['cd_name']}}</h3>
+        <div class="gwc1-r">
+            <img src="{url('/style/crowd/images/jd1.jpg')}" />
+            <form action="/crowd/support/{{$return['rt_id']}}" target="iframeNews" id="support_form" method="post">
+            <div class="gwc1-r2">
+                <div class="gwc1-r2-zc">
+                    <h3>支持 ￥{{$return['price']}}</h3>
+                    <p> {{$return['rt_desc']}}</p>
+                </div>
+                <ul>
+                    <li class="user-grxx-tx">
+                        <span>发票：</span>
+                        <p>
+                            <i><input type="radio" id="radio-1-1" name="invoice" class="regular-radio" checked="" value="0"><label for="radio-1-1"></label>无需发票</i>
+                            <input type="radio" id="radio-1-2" name="invoice" class="regular-radio" value="1">
+                            <label for="radio-1-2"></label>需要发票
+                        </p>
+                    </li>
+                    <li class="beiz">
+                        <span>备注：</span>
+                        <p>
+                            <input id="Text1" type="text" name="remark" />
+                        </p>
+                    </li>
+                </ul>
+                <dl>
+                    {if $return.is_address}
+                    <dd>
+                        <span>收货地址：</span>
+                        {if is_array($address)}
+                        <div class="dizi">
+                            <div class="hd">
+                                <input type="hidden" id="address" name="address" class="regular-radio" value="{{$address[0]['id']}}">
+                                {foreach from=$address item=a}
+                                <section>
+                                    <input type="hidden" id="sectionAddress" class="regular-radio" value="{{$a['id']}}">
+                                    <em>
+                                        <a href="/member/address/{{$a['id']}}?back={urlencode('/crowd/support/')}{{$return['rt_id']}}" class="operate-show">编辑</a>
+                                        <a href="javascript:zz_confirm('您是否确认删除收货地址?','/member/address_del/{{$a['id']}}');">删除</a>
+                                    </em>
+                                    <i>{{$a['name']}}</i>
+                                    <label>{{$a['area']}} {{$a['address']}}</label>
+                                    <label>{{$a['mobile']}}</label>
+                                </section>
+                                {/foreach}
+
+                            </div>
+                            <div class="address-btns">
+                                <input type="button" value="添加新地址" onclick="document.location.href='/member/address?back={urlencode('/crowd/support/')}{$return.rt_id}'" class="btn-normal" id="addNewAddress">
+                            </div>
+                        </div>
+                        {else}
+                        <p>
+                            <a href="/member/address?back={urlencode('/crowd/support/')}{$return.rt_id}">设置地址</a>
+                        </p>
+                        {/if}
+                    </dd>
+                    <dd>
+                        <span> 运费：</span> 免运费
+                    </dd>
+                    {/if}
+                    <dd>
+                        <span> 实付款：</span><b>￥{{$return['price']}}</b>
+                    </dd>
+                    <dd> <input type="checkbox" checked name="agree" value="on"/> 我已阅读并同意爱我拍众筹的<a style="color: #e54048;" href="{url('/content/index/0?mark=crowd_service')}">《支持者协议》</a></dd>
+                    <dd>
+                        <input type="hidden" name="submit" value="on" />
+                        <input type="hidden" name="return" value="{{$return['rt_id']}}" />
+                        <input type="submit" value="提交订单" /> 
+                    </dd>
+                </dl>
+            </div>
+            </form>
+            <div class="fxts">
+                <strong> 风险提示：</strong>
+                <div>{zz mod=block mark=tip}</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    jQuery(".dizi").slide({ titCell: ".hd section", trigger: "click" });
+    $(document).ready(function () {
+        $(".hd section").click(function () {
+            $("#address").val($(this).children("#sectionAddress").val());
+        });
+    });
+</script>
+
+{include file="crowd/crowd_footer.html"}

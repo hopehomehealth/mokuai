@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+</head>
+<body>
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<button onclick="pay(1)">测试android付款信息</button>
+	<br />
+	<br />
+	<button onclick="pay(2)">测试IOS付款信息</button>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/fastclick.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript">
+/*聚合付*/
+function jhpay(back_info){
+	jh = api.require('jhfPay');
+	console.log(JSON.stringify(back_info));
+    jh.jhfpay({
+        msg:back_info.productdesc || 'Hello App!',
+        productName:back_info.productname || '充值',
+        money:back_info.paymoney*100,
+        merid:back_info.merid,
+        mername:back_info.mername,
+        merorderid:back_info.merorderid,
+        userid:back_info.userid,
+        username:back_info.username,
+        extra:back_info.extra,
+        
+    },function(ret,err){
+        if(ret.resCode==1){
+	        toast('支付成功');
+	        openWin('respon',{result:1});
+        }else if(ret.resCode=='-2'){
+            toast('支付取消');
+        }else{
+            toast('支付失败');
+        }
+    });
+}
+
+var backInfoAndroid = JSON.parse('{"merorderid":"2017041210504548509954886","phone":"","extra":"2017041210504548509954","userid":48361,"productdesc":"商城商品支付","mername":"北京同光智信网络技术有限公司","merid":"26100735","paymoney":1,"version":"1.0","username":"MTU1Mjc5NDE2Njc=","email":"","redirecturl":"http://www.i1y8.com/welcome/respond?code=jhpay","redirect":"2","custom":"","productname":"商城商品支付","policyid":"000001"}');
+var backInfoIOS = JSON.parse('{"extra":"2017041210565356101549","version":"1.0","mername":"北京同光智信网络技术有限公司","merorderid":"2017041210565356101549888","paymoney":1,"productdesc":"商城商品支付","userid":48360,"policyid":"000001","productname":"商城商品支付","merid":"26100735","phone":"","redirect":"2","redirecturl":"http://www.i1y8.com/welcome/respond?code=jhpay","custom":"","username":"Lg==","email":""}');
+
+function pay(t){
+	if(t == 1){
+		console.log('amdroid');
+		jhpay(backInfoAndroid);
+	}else{
+		console.log('ios');
+		jhpay(backInfoIOS);
+	}
+}
+	apiready = function(){
+//		jhfpay(backInfoAndroid);
+	};
+</script>
+</html>

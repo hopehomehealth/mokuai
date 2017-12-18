@@ -1,0 +1,19 @@
+{assign var='header' value='header2'}
+{include file="top.html"}
+<link rel="stylesheet" href="/style/mobile/css/member.css">
+<div id="content" class="container main">
+    <div class="list01 list-bonus">
+        <dl class="item"></dl>
+    </div>
+    <div class="loading getMore"></div>
+</div>
+<script src="/style/mobile/js/jquery.more.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $('.list-bonus').more({
+            'address': '/member/bonus',
+            'amount' : 10
+        })
+    });
+</script>
+{include file="footer.html"}

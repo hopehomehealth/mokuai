@@ -1,0 +1,28 @@
+<div class="shareA container" style="padding:10px 15px; text-align:left">
+    <a href="{url('/member/order')}"><img src="/style/images/shareB.png" /></a>
+</div>
+{if $list}
+<div class="shareList" style="margin-top:0;">
+    {foreach from=$list item=m name=list}
+    <div class="item">
+        {include file="content/lbi/list_share.html"}
+    </div>
+    {/foreach}
+</div>
+<div class="foot-btn">{include file="ajax_page.html"}</div>
+{else}
+<div class="prompt">该用户还没有晒单记录！</div>
+{/if}
+<script type="text/javascript">
+    var load_div = '#load_share';
+    $(document).ready(function(){
+        $(load_div).find('.demo').ajaxContent({
+            event:'click', //mouseover
+            loaderType:"text",
+            loadingMsg:"拼命加载中...",
+            target:load_div
+        }).bind('click',function(){
+            $('html,body').animate({ scrollTop: '0px' }, 500);
+        });
+    });
+</script>

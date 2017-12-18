@@ -1,0 +1,37 @@
+{if $list}
+<div class="list01 list-luck">
+    {foreach from=$list item=m name=list}
+    <dl class="item ui-clr">
+        <dt class="ui-clr">
+            <a href="{'/auction/view/'|cat:$m.act_id|url}"><span class="color01">（第{$m.qishu}期）</span>{$m.title}</a>
+        </dt>
+        <dd>
+            <div class="db-img"><a href="{'/auction/view/'|cat:$m.act_id|url}" target="_blank"><img src="{zz mod=fileurl source=$m.imgurl_src width=120 type=0}" alt="{$m.title}" /></a></div>
+            <div class="db-txt color03">
+                <p>价值：{$m.goods_price|price_format}</p>
+                <p>{$L.unit_winning}出价：<span class="color01">{if $m.bid_price gt 0}{$m.bid_price|price_format}{/if}{if $m.paib gt 0} {$m.paib}{$L.unit_pay_points}{/if}</span></p>
+                <p>{$L.unit_winning}随机码：<span class="color01">{$m.cod}</span></p>
+                <p>{$L.unit_winning}时间：<span style="font-size: 13px;">{$m.cod_time|date_format:'Y-m-d H:i:s'}</span></p>
+            </div>
+        </dd>
+    </dl>
+    {/foreach}
+</div>
+<div class="foot-btn">{include file="ajax_page.html"}</div>
+{else}
+<div class="prompt">该用户还没有{$L.unit_pay}{$L.unit_winning}记录！</div>
+{/if}
+
+<script type="text/javascript">
+    var load_div = '#load_aucCod';
+    $(document).ready(function(){
+        $(load_div).find('.demo').ajaxContent({
+            event:'click', //mouseover
+            loaderType:"text",
+            loadingMsg:"拼命加载中...",
+            target:load_div
+        }).bind('click',function(){
+            $('html,body').animate({ scrollTop: '0px' }, 500);
+        });
+    })
+</script>

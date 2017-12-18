@@ -1,0 +1,9 @@
+<li>
+    <div class="pic v scrollLoadingDiv"><a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}" title="{$m.title}" target="_blank"><img class="scrollLoading" src="/style/images/pix.gif" data-url="{zz mod=fileurl source=$m.imgurl_src width=210 height=180 type=0}" id="buy_img_{$m.buy_id}{$pre}" /></a><span></span></div>
+    <p class="title"><a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}" title="{$m.title}" target="_blank">{$m.title}</a></p>
+    <p class="price">价格：<b class="color04">{$m.custom_price|price_format}</b></p>
+    <div class="btn-go-box">
+        <a class="btn-go" href="javascript:void(0)" onclick="addToCart('{$m.buy_id}','buy')">立即购买</a>
+        <a class="btn-go btn-go-cart" href="javascript:void(0)" onclick="addToCart('{$m.buy_id}','',this,'{$pre}')"></a>
+    </div>
+</li>

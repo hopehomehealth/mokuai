@@ -1,0 +1,24 @@
+<dt class="ui-clr">
+    {if $m.type eq 2}<span class="type-free">霸王餐区</span> {/if}<a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}" target="_blank" class="color00"><span class="color01">(第{$m.qishu}期)</span> {$m.goods_name}</a>
+</dt>
+<dd>
+    <div class="db-img"><a href="{'/yunbuy/detail/'|cat:$m.buy_id|url}" target="_blank"><img src="{zz mod=fileurl source=$m.imgurl_src width=200 type=0}" alt="{$m.goods_name}" /></a></div>
+    <div class="db-txt color03">
+        <p>总需：{$m.need_num}人次</p>
+        <p>幸运号码：<strong class="color01">{$m.luck_code}</strong></p>
+        <p>本次参与：{$m.qty}人次</p>
+        <p>揭晓时间：{microtime_format($m.db_time,'Y-m-d H:i:s.x')}</p>
+        {if $m.is_award neq 1}
+        <div>
+            <form action="{url('/order/buy')}" method="post" style="display: inline-block">
+                <input class="btn-small" style="margin-top:5px;" type="submit" value="{$L.unit_lingjiang}">
+                <input type="hidden" name="id" value="{$m.id}">
+                <input type="hidden" name="type" value="3">
+            </form>
+            {if $site_config.a_money eq 1 && $m.goods_real_price gt 0}
+            <input class="btn-small btn-disable" style="margin-top:5px;" type="button" onclick="a_money('{$m.id}')" value="折现￥{$m.goods_real_price}">
+            {/if}
+        </div>
+        {/if}
+    </div>
+</dd>

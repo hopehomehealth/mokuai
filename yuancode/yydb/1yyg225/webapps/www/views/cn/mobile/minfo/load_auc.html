@@ -1,0 +1,67 @@
+{if $list}
+<div class="list01 list-db">
+    {foreach from=$list item=m}
+    <dl class="item ui-clr">
+        <dt class="ui-clr">
+        <div class="db-img"><a href="{$m.url}" target="_blank"><img src="{zz mod=fileurl source=$m.imgurl_src width=90 type=0}" alt="{$m.goods_name}" /></a></div>
+        <div class="db-txt">
+            <p class="p1"><a href="{$m.url}"><span class="color01">（第{$m.qishu}期）</span>{$m.title}</a></p>
+            <p class="color03">价值：<b class="color01" style="font-size: 1.2rem;">{$m.price|price_format}</b></p>
+            <p class="color03">已参加{$m.bid_user_count}人次</p>
+        </div>
+        </dt>
+        <dd>
+            <table cellpadding="0" cellspacing="0">
+                <tr>
+                    <th>{$L.unit_pay}状态</th>
+                    <td>
+                        <!-- {if $m.status eq $smarty.const.UNDER_WAY} -->
+                        <span class="color01">正在进行中...</span>
+                        <!-- {else} -->
+                        <!-- {if $m.last_bid.bid_user eq $member.mid && $m.type eq 1} -->
+                        <span class="color02">最高价获得</span>
+                        <!-- {else} -->
+                        <span class="color03">{$L.unit_pay}已结束</span>
+                        <!-- {/if} -->
+                        <!-- {/if} -->
+                    </td>
+                </tr>
+                <tr>
+                    <th>最后出价<i class="color03">（￥/人）</i></th>
+                    <td>
+                        <span class="color01">{$m.current_price|price_format}</span>
+                        <a href="{'/minfo?id='|cat:$m.last_bid.bid_user|url}#auc" target="_blank">{$m.last_bid.username|nickname:$m.last_bid.nickname}</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th>我的出价<i class="color03">（￥/码）</i></th>
+                    <td>
+                        <span class="color01">{$m.my_bid.bid_price|price_format}</span>
+                        {$m.my_bid.cod}
+                    </td>
+                </tr>
+            </table>
+        </dd>
+    </dl>
+    {/foreach}
+</div>
+<div class="foot-btn">
+    {include file="ajax_page.html"}
+</div>
+{else}
+<div class="prompt">该用户还没有参与过{$L.unit_pay}！</div>
+{/if}
+
+<script type="text/javascript">
+    var load_div = '#load_auc';
+    $(document).ready(function(){
+        $(load_div).find('.demo').ajaxContent({
+            event:'click', //mouseover
+            loaderType:"text",
+            loadingMsg:"拼命加载中...",
+            target:load_div
+        }).bind('click',function(){
+            $('html,body').animate({ scrollTop: '0px' }, 500);
+        });
+    });
+</script>

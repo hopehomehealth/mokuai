@@ -1,0 +1,28 @@
+{assign var='header' value='header2'}
+{include file="top.html"}
+<link rel="stylesheet" href="/style/mobile/css/member.css">
+<div id="content" class="container main">
+    <div class="nav-m ui-clr">
+        <ul>
+            <li{if !$smarty.get.status} class="on"{/if}><a href="{'/member/auction'}">所有参与的</a></li>
+            <li{if $smarty.get.status eq $smarty.const.UNDER_WAY} class="on"{/if}><a href="{'/member/auction?status=1'}">进行中的</a></li>
+            <li{if $smarty.get.status eq $smarty.const.FINISHED} class="on"{/if}><a href="{'/member/auction?status=2'}">成功的（未购买）</a></li>
+            <li{if $smarty.get.status eq $smarty.const.SETTLED} class="on"{/if}><a href="{'/member/auction?status=3'}">成功的（已购买）</a></li>
+            <li{if $smarty.get.status eq $smarty.const.FINISHED_ALL} class="on"{/if}><a href="{'/member/auction?status=4'}">历史记录</a></li>
+        </ul>
+    </div>
+    <div class="list01 list-auc">
+        <dl class="item"></dl>
+    </div>
+    <div class="loading getMore"></div>
+</div>
+<script src="/style/mobile/js/jquery.more.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $('.list-auc').more({
+            'address': '/member/auction?status={$smarty.get.status}',
+            'amount' : 10
+        })
+    });
+</script>
+{include file="footer.html"}

@@ -1,0 +1,70 @@
+{include file="header.html"}
+<link type="text/css" rel="stylesheet" href="/style/css_02/style.css" />
+<link type="text/css" rel="stylesheet" href="/style/css/member.css" />
+<link type="text/css" rel="stylesheet" href="/style/css_02/merchant.css" />
+<div class="container menu-show">
+    {include file="business/ur_here.html"}
+    {include file="business/menu.html"}
+    <div class="fn-right hy-r" id="m">
+        <div class="shop-right">
+            <h3>店铺设置</h3>
+        </div>
+        <div class="shop-bor shop-set">
+            <form action="" method="post" target="iframeNews">
+            <table width="100%" class="box-sizing" border="0">
+                <tr>
+                    <th width="100">店铺logo：</th>
+                    <td colspan='3'>
+                        <dl class="shop-set1">
+                            <dt class="v"><img src="{$business_row.bus_logo|default_pic:'store'}" id="bus_logo" /><span></span></dt>
+                            <dd>
+                                {$option.btn_title='选择LOGO'}
+                                {upload_btn('bus_logo',150,150,1,'','',$option)}
+                                <style type="text/css">
+                                    .webuploader-pick{ background: none; padding: 0; color: #ff706a; text-decoration: underline; }
+                                    .uploader-list{ display: none; }
+                                </style>
+                            </dd>
+                        </dl>
+                    </td>
+                </tr>
+                <tr>
+                    <th width="100">店铺名称：</th>
+                    <td width="330"><input type="text" name="name" value="{$business_row.bus_name}" class="shop-set2" placeholder="必填" /></td>
+                    <th width="100">经营范围：</th>
+                    <td><input type="text" name="scope" value="{$business_row.bus_scope}" class="shop-set2" placeholder="必填" /></td>
+                </tr>
+                <tr>
+                    <th>实体名称：</th>
+                    <td><input type="text" name="company" value="{$business_row.bus_company}" class="shop-set2" placeholder="必填" /></td>
+                    <th>实体类型：</th>
+                    <td><input type="text" name="company_type" value="{$business_row.bus_company_type}" class="shop-set2" placeholder="必填" /></td>
+                </tr>
+                <tr>
+                    <th>客服电话：</th>
+                    <td><input type="text" name="tel" value="{$business_row.bus_tel}" class="shop-set2" placeholder="必填" /></td>
+                    <th>所属地区：</th>
+                    <td>
+                        {linkage('zone',{$business_row.bus_zone|default:1})}
+                    </td>
+                </tr>
+                <tr>
+                    <th>客服QQ号：</th>
+                    <td><input type="text" name="qq" value="{$business_row.bus_qq}" class="shop-set2" placeholder="选填" /></td>
+                    <th>联系地址：</th>
+                    <td><input type="text" name="address" value="{$business_row.bus_address}" class="shop-set2" placeholder="必填" /></td>
+                </tr>
+                <tr>
+                    <th>&nbsp;</th>
+                    <td><input type="submit" name="submit" value="保存修改" class="shop-set3" /></td>
+                    <th>&nbsp;</th>
+                    <td>&nbsp;</td>
+                </tr>
+            </table>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="merchant"></div>
+{include file="footer.html"}
+<script src="/style/css_02/common_02.js"></script>

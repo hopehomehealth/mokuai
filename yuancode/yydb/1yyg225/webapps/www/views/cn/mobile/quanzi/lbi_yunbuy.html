@@ -1,0 +1,23 @@
+<li class="w-quickBuyList-item">
+    <div class="w-goods w-goods-l w-goods-ing">
+        <div class="w-goods-pic scrollLoadingDiv">
+            <a href="{'/quanzi/detail/'|cat:$m.buy_id|url}" target="_blank" title="{$m.title}">
+                <img alt="{$m.title}" class="scrollLoading" src="/style/images/pix.gif" data-url="{zz mod=fileurl source=$m.imgurl_src width=250 height=150 type=0}" id="buy_img_{$m.buy_id}" />
+            </a>
+        </div>
+        <p class="w-goods-title f-txtabb">
+            <a href="{'/quanzi/detail/'|cat:$m.buy_id|url}" target="_blank" title="{$m.title}">{$m.qz_sn_name}{$m.title}</a>
+        </p>
+        <p class="w-goods-price">总需：<b>{$m.need_num}人次</b></p>
+        <div class="w-goods-opr">
+            <p class="w-goods-opr-buy">
+                {if $m.qishu gt 0}
+                <a class="w-button w-button-main w-button-l" href="/quanzi/detail/{$m.buy_id}" style="width:90px;">立即参与</a>
+                {else}
+                <a class="w-button w-button-main w-button-l" onclick="checkSendQz('{$m.buy_id}')" href="javascript:;" style="width:90px;">发起圈子</a>
+                <a class="w-button w-button-l" href="/quanzi/detail/{$m.buy_id}" style="width:90px;">查看详情</a>
+                {/if}
+            </p>
+        </div>
+    </div>
+</li>

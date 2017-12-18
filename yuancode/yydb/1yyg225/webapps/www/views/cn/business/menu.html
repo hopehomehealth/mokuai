@@ -1,0 +1,73 @@
+<dl class="shop-center">
+    <dd>
+        <em><a href="{url('/member/photo#m')}"><img src="{zz mod=photo source=$member.photo nopic=$member.defaultPic}" /></a></em>
+        <div class="shop-center-1">
+            <big><strong>{if $member.nickname}{$member.nickname|truncate:6}{else}{$member.username|truncate:6}{/if}</strong><span id="hello">下午好！</span></big>
+            <p>当前/最近<span>登录IP</span>：{$member.ip}/{$member.lastip}</p>
+            <p>当前/最近<span>登录时间</span>：{date('Y-m-d H:i:s',$member.login)}/{date('Y-m-d H:i:s',$member.lastlogin)}</p>
+            <p class="shop-a">
+                <a href="{url('/business/info#m')}" class="a2">店铺设置</a>
+                <span>|</span>
+                <a href="{url('/member')}" class="a1">会员中心</a>
+            </p>
+        </div>
+    </dd>
+    <dt>
+    <ul class="shop-center-ul1">
+        <li class="shop-center-li1">
+            <strong><a href="{'/member/accountdetail'|url}#m">{$member.user_money|price_format}</a></strong>
+            <p>可用余额</p>
+        </li>
+        {if $smarty.const.IsAuction}
+        <li>
+            <strong><a href="{'/member/accountdetail'|url}#m">{$member.frozen_money}</a></strong>
+            <p>冻结余额</p>
+        </li>
+        {/if}
+        <li>
+            <strong><a href="{'/member/accountdetail'|url}#m">{$member.pay_points}</a></strong>
+            <p>{$L.unit_pay_points}</p>
+        </li>
+        <li>
+            <strong><a href="{'/member/accountdetail'|url}#m">0</a></strong>
+            <p>{$L.unit_db_points}</p>
+        </li>
+        <li>
+            <strong><a href="{'/member/bonus'|url}#m">{$bonus_count.money}</a></strong>
+            <p>限时{$L.unit_bonus}</p>
+        </li>
+    </ul>
+    <ul class="shop-center-ul2">
+        <li><a href="/store/index/{$business_row.mid}" target="_blank" class="shop-a1">我的店铺</a></li>
+        <li><a href="/business/yunbuy_edit#m" class="shop-a2">发布商品</a></li>
+        {if $site_config.apply_jufu!=1}
+        <li><a href="{url('/member/withdraw#m')}" target="_blank" class="shop-a3">提现</a></li>
+        {/if}
+    </ul>
+    </dt>
+</dl>
+<script type="text/javascript">
+    $(function(){
+        welcome_time();
+    })
+</script>
+<div class="fn-left hy-l">
+    <h2>商家中心</h2>
+    <div class="hy-lnav">
+        <h3 class="fn-clear">我的店铺</h3>
+        <ul>
+            <li class="{if $nav eq 'info'}dq{/if}"><a href="/business/info#m">店铺设置</a></li>
+            <li class="{if $nav eq 'introduction'}dq{/if}"><a href="/business/introduction#m">店铺介绍</a></li>
+            <li class="{if $nav eq 'ad'}dq{/if}"><a href="/business/ad#m">店铺广告图</a></li>
+        </ul>
+        <h3 class="fn-clear">运营管理</h3>
+        <ul>
+            <li class="{if $nav eq 'yunbuy'}dq{/if}"><a href="/business/yunbuy#m">商品管理</a></li>
+            <li class="{if $nav eq 'order'}dq{/if}"><a href="/business/order#m">订单管理</a></li>
+        </ul>
+        <h3 class="fn-clear">资金记录</h3>
+        <ul>
+            <li class="{if $nav eq 'account'}dq{/if}"><a href="/business/account#m">分润记录</a></li>
+        </ul>
+    </div>
+</div>

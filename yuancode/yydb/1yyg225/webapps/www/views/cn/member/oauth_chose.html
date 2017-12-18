@@ -1,0 +1,12 @@
+{assign var='mod' value='login'}
+{include file="header.html"}
+<style type="text/css">
+    .btn-common{ font-size: 24px; height: 40px; line-height: 40px; }
+</style>
+<div class="container " style="padding: 64px 0 50px;text-align: center">
+    <div class="user-box">
+    <input type="button" onclick="window.location.href='/member/login'" style="margin-bottom: 10px;" class="btn-common" value="绑定已有账号">
+    <input type="button" onclick="window.location.href='/member/regist'" class="btn-common" value="绑定新账号">
+    </div>
+</div>
+{include file="footer.html"}

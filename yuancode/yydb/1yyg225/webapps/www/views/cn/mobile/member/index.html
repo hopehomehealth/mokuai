@@ -1,0 +1,247 @@
+{include file="top.html"}
+<link rel="stylesheet" href="/style/mobile/css_02/font/iconfont.css">
+<link rel="stylesheet" href="/style/mobile/css/bootstrap.css">
+<link rel="stylesheet" href="/style/mobile/css_02/style.css">
+<link rel="stylesheet" href="/style/mobile/css_02/center.css">
+<link rel="stylesheet" href="/style/mobile/css/member.css">
+<div class="center">
+    <div class="center-top main-pd">
+        <span>
+            <a href="javascript:;" class="singer_r_img"><i class="iconfont icon-qiandao"></i></a>
+            <a href="/member/info"><i class="iconfont icon-shezhi"></i></a>
+            <a href="/member/message"><i class="iconfont icon-xiaoxi"></i></a>
+        </span>
+    </div>
+    <dl class="center-top1 main-pd">
+        <dt><a href="/member/photo"><img src="{zz mod=photo source=$member.photo size='80'}" /></a></dt>
+        <dd>
+            <p class="center-top2">
+                <label>
+                    <span style="width: 100%">{if $member.nickname}{$member.nickname}{else}{$member.username}{/if}（{$member.rank_name|default:'普通会员'}）</span>
+                    <span>经验：{$member.rank_points}</span>
+                    <span>{$L.unit_pay_points}：{$member.pay_points}</span>
+                    <span>{$L.unit_db_points}：{$member.db_points}</span>
+                    <span id="layerTip-bonus">{$L.unit_bonus}：{$bonus_count.money}</span>
+                </label>
+            </p>
+            <p class="center-top3">
+                <span>余额：<font>{$member.user_money|price_format}</font></span>
+            	{if $site_config.apply_jufu!=1}
+    		<a href="{url('/member/recchage')}" style="margin-right: 26%;height:28px;font-size:18px;line-height:28px;float:right;color:yellow;">充值</a>
+    		{/if}
+	    </p>
+        </dd>
+    </dl>
+</div>
+
+<p class="center-top3" style="padding:10px 10px 0;">
+    <a href="/member/change_db" style="margin-right:5px;">兑换{$L.unit_db_points}</a>
+    <a href="javascript:;" onclick="$('.free-c').fadeToggle()" style="margin-right:5px;">做任务赚币</a>
+	 <br class="clear" />
+</p>
+{if $data.isfree}
+<div class="free-m">
+    <div class="free-c">
+        <ul>
+            {if $site_config.isPhoto gt 0 && $data.memberOther.isPhoto neq 1}
+            <li class="ui-clr" id="isPhoto">
+                <b>1.</b>{if $data.memberOther.isPhoto neq 1}<a href="javascript:;" onclick="getPoints('isPhoto')" class="btn-small ui-right">领取</a>{else}<i class="ui-right color03">已领取</i>{/if}
+                <span><a href="{url('/member/photo')}" class="color02">“上传头像”</a>即可领取{$site_config.isPhoto}{$L.unit_pay_points}<span class="color03">（限领一次）</span>。</span>
+            </li>
+            {/if}
+            {if $site_config.isIdcard gt 0 && $data.memberOther.isIdcard neq 1}
+            <li class="ui-clr" id="isIdcard">
+                <b>2.</b>{if $data.memberOther.isIdcard neq 1}<a href="javascript:;" onclick="getPoints('isIdcard')" class="btn-small ui-right">领取</a>{else}<i class="ui-right color03">已领取</i>{/if}
+                <span><a href="{url('/member/verifyidcard')}" class="color02">“实名认证”</a>即可领取{$site_config.isIdcard}{$L.unit_db_points}{$L.unit_bonus}<span class="color03">（限领一次）</span>。</span>
+            </li>
+            {/if}
+            {if $site_config.isMail gt 0 && $data.memberOther.isMail neq 1}
+            <!-- <li class="ui-clr" id="isMail">
+                <b>3.</b>{if $data.memberOther.isMail neq 1}<a href="javascript:;" onclick="getPoints('isMail')" class="btn-small ui-right">领取</a>{else}<i class="ui-right color03">已领取</i>{/if}
+                <span><a href="{url('/member/verifyEmail')}" class="color02">“邮箱认证”</a>即可领取{$site_config.isMail}{$L.unit_db_points}{$L.unit_bonus}<span class="color03">（限领一次）</span>。</span>
+            </li> -->
+            {/if}
+            {if $site_config.apply_jufu!=1}
+            {if $site_config.ivt1 gt 0}
+            <li class="ui-clr">
+                <b>4.</b><a href="{'/member/myivt'|url}" class="btn-small ui-right">立即邀请</a>
+                <span><a href="{'/member/myivt'|url}" class="color02">“邀请好友”</a>每推荐1位好友注册，领{$site_config.ivt1}{$L.unit_pay_points}。</span>
+            </li>
+            {/if}
+            {/if}
+            {if $site_config.signin_jl gt 0 && $is_signin eq 0}
+            <li class="ui-clr" id="isSign">
+                <b>5.</b>{if $is_signin eq 0}<a href="javascript:;" class="btn-small ui-right btn-sing">立即签到</a>{else}<i class="ui-right color03">今日已签到</i>{/if}
+                <span>每日签到免费得{$L.unit_pay_points}，语音认证后第一次签到可获得20{$L.unit_pay_points}！<span class="color03">（每日限领一次）</span>。</span>
+            </li>
+            {/if}
+            {if $site_config.isDaren gt 0}
+            <li class="ui-clr" id="isDaren">
+                <b>6.</b><a href="javascript:;" onclick="getPoints('isDaren')" class="btn-small ui-right">领取</a>
+                <span>{$L.unit_yun}达人：参与人次（不含体验拍和免费{$L.unit_yun}商品）参与次数每超过50次后获{$site_config.isDaren}{$L.unit_pay_points}<span class="color03">（不限次数）</span>。</span>
+            </li>
+            {/if}
+            <!--<li class="ui-clr" id="isJpDaren" style="display: none;">
+                <b>7.</b><a href="javascript:;" onclick="getPoints('isJpDaren')" class="btn-small ui-right">领取</a>
+                <span>{$L.unit_pay}达人：参与{$L.unit_pay}商品数（不含体验拍和免费{$L.unit_yun}商品）每超过50次后获{$site_config.isJpDaren}{$L.unit_pay_points}<span class="color03">（不限次数）</span>。</span>
+            </li>-->
+        </ul>
+    </div>
+</div>
+{/if}
+{if $site_config.index_skin eq 2}{else}
+<div class="center-1">
+    <div class="center-2 main-pd">
+        <a href="/member/db?type=2">
+            <i class="iconfont icon-xiangyou"></i>
+            <p>正在进行</p>
+        </a>
+        <a href="/member/db?type=3">
+            <i class="iconfont icon-zuixinjiexiao1"></i>
+            <p>已揭晓</p>
+        </a>
+        <a href="/member/db?type=4">
+            <i class="iconfont icon-fenqigouwu"></i>
+            <p>多期参与</p>
+        </a>
+    </div>
+    <div class="center-3">
+        <a href="{'/member/db'|url}">
+            <i class="iconfont icon-jiantou right"></i>
+            <p><i class="iconfont icon-jilu-copy" style="color: #4eca89;"></i>{$L.unit_yun}记录</p>
+        </a>
+        <a href="{'/member/luck'|url}">
+            <i class="iconfont icon-jiantou right"></i>
+            <p><i class="iconfont icon-jiangbei" style="color: #a2de2e;"></i>{$L.unit_winning}记录</p>
+        </a>
+    </div>
+</div>
+{/if}
+
+{if $business_power eq 1}
+{if $business_row.bus_status gt 9}
+<div class="center-3 center-4">
+    <a href="/store/index/{$smarty.const.MID}">
+        <i class="iconfont icon-jiantou right"></i>
+        <p><i class="iconfont icon-zhuye" style="color: #ffaa45;"></i>我的店铺</p>
+    </a>
+</div>
+{/if}
+{/if}
+
+<div class="center-3 center-4">
+    <a href="{'/member/order'|url}">
+        <i class="iconfont icon-jiantou right"></i>
+        <p><i class="iconfont icon-order" style="color: #ffaa45;"></i>订单管理</p>
+    </a>
+    {if $site_config.apply_jufu!=1}
+    <a href="{'/member/accountdetail'|url}">
+        <i class="iconfont icon-jiantou right"></i>
+        <p><i class="iconfont icon-zijinzhanghu" style="color: #fc7075;"></i>资金管理</p>
+    </a>
+    {/if}
+    <a href="{'/member/bonus'|url}">
+        <i class="iconfont icon-jiantou right"></i>
+        <p><i class="iconfont icon-zijinzhanghu" style="color: #fc7075;"></i>我的{$L.unit_bonus}</p>
+    </a>
+    <a href="{'/member/safe'|url}">
+        <i class="iconfont icon-jiantou right"></i>
+        <p><i class="iconfont icon-anquan" style="color: #ffc239;"></i>账户安全</p>
+    </a>
+    <a href="{'/member/address'|url}">
+        <i class="iconfont icon-jiantou right"></i>
+        <p><i class="iconfont icon-dizhi" style="color: #45e6b7;"></i>收货地址</p>
+    </a>
+    <a href="{'/member/info'|url}">
+        <i class="iconfont icon-jiantou right"></i>
+        <p><i class="iconfont icon-gerenxinxi" style="color: #6b9cff;"></i>个人信息</p>
+    </a>
+    <a href="{'/member/message'|url}">
+        <i class="iconfont icon-jiantou right"></i>
+        <p><i class="iconfont icon-youxiang" style="color: #f60;"></i>站内信（<em id="readNum" style="font-style:normal;">0</em>）</p>
+    </a>
+</div>
+<div class="center-3 center-4">
+	{if $site_config.apply_jufu!=1}
+    <a href="{'/member/myivt'|url}">
+        <i class="iconfont icon-jiantou right"></i>
+        <p><i class="iconfont icon-yaoqing" style="color: #fc70a5;"></i>我的邀请</p>
+    </a>
+    <a href="{'/member/commission'|url}">
+        <i class="iconfont icon-jiantou right"></i>
+        <p><i class="iconfont icon-zijinzhanghu" style="color: #fc7075;"></i>佣金明细</p>
+    </a>
+	{/if}
+</div>
+<div class="center-3 center-4" style="margin-bottom: 0">
+    <a href="{'/member/doexit'|url}">
+        <i class="iconfont icon-jiantou right"></i>
+        <p><i class="iconfont icon-01huiyuanzhongxin" style="color: #999;"></i>退出登录</p>
+    </a>
+</div>
+{include file="footer.html"}
+<script type="text/javascript">
+    $(function(){
+	mread();
+	window.setInterval(mread, 60000); 
+	function mread(){
+    		$.get('/member/ajax_message_read',{},function(data){
+    			var obj=JSON.parse(data)
+    			$('#readNum').text(obj.num);
+    		});
+	}
+    });
+    $(function(){
+        if(location.hash=='#free'){
+            $('.free-c').show();
+        }
+
+        {if $bonus_count.count_dis gt 0}
+        $("#layerTip-bonus").each(function(){
+            layer.tips('您有{$bonus_count.count_dis}{$L.unit_bonus_unit}{$L.unit_bonus}快过期', $(this), { time:0 });
+        });
+        {/if}
+
+        $(".singer_r_img,.btn-sing").click(function(){
+            $.post('/member/ajax_signin',{},function(data){
+                if(data.error==1){
+                    var params = ' ';
+                    if(data.url){
+                        params = function(){
+                            location.href=data.url;
+                        };
+                    }
+                    layer.alert(data.msg,8,params);
+                }else{
+                    $(".singer_r_img").addClass("current");
+                    layer.alert(data.msg,1,function(){ location.reload(); });
+                }
+            },'json');
+        });
+
+    });
+</script>
+{literal}
+<script type="text/javascript">
+    $(function(){
+        if(location.hash=='#free'){
+            $('#free').css('border','2px solid #e54048');
+        }
+    });
+
+    function getPoints(type){
+        $.post('/content/getPoints',{ type:type },function(data){
+            if(data.msg){
+                if(data.error == 0){
+                    layer.msg(data.msg, 2, { type:1 });
+                    if(type!='isJpDaren' || type!='isDaren'){
+                        $('#'+type).hide();
+                    }
+                }else{
+                    layer.tips(data.msg, '#'+type+' span', { time:3 });
+                }
+            }
+        },"json");
+    }
+</script>
+{/literal}

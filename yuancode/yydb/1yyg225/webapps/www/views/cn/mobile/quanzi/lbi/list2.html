@@ -1,0 +1,15 @@
+{foreach from=$list item=m name=list}
+<div class="new-box {if ($smarty.foreach.list.index+1)%2 eq 0}new-nr{/if}" style="position: relative">
+    {if $m.price gt 1}<span class="zq_ico" style="position: absolute;right:0;top:0;">{$m.price|num2char}元{$L.unit_area}</span>{/if}
+    <em><a href="{'/quanzi/detail/'|cat:$m.buy_id|url}"><img alt="{$m.title}" src="{zz mod=fileurl source=$m.imgurl_src width=180 type=0}" id="buy_img_{$m.buy_id}"></a></em>
+    <h5><a href="{'/quanzi/detail/'|cat:$m.buy_id|url}"><span>{$m.qz_sn_name}</span><p>{$m.title}</p></a></h5>
+    <p class="p1">总需：<span>{$m.need_num}人次</span></p>
+    <p class="p2">
+        {if $m.qishu gt 0}
+        <a href="/quanzi/detail/{$m.buy_id}">立即参与</a>
+        {else}
+        <a onclick="checkSendQz('{$m.buy_id}')" href="javascript:;">发起圈子</a>
+        {/if}
+    </p>
+</div>
+{/foreach}

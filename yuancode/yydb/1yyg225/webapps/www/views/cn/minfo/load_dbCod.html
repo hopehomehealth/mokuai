@@ -1,0 +1,44 @@
+{if $list}
+<ul class="w-goodsList fn-clear">
+    {foreach from=$list item=m name=list}
+    <li class="w-goodsList-item {if $smarty.foreach.list.iteration %3 eq 0}last{/if}">
+        <div class="w-goods">
+            <div class="w-goods-pic v scrollLoadingDiv">
+                <a title="{$m.goods_name}" target="_blank" href="{'/yunbuy/detail/'|cat:$m.buy_id|url}"><img class="scrollLoading" src="/style/images/pix.gif" data-url="{zz mod=fileurl source=$m.imgurl_src width=230 height=142 type=0}" alt="{$m.goods_name}"></a><span></span>
+            </div>
+            <p class="w-goods-title"><a title="{$m.goods_name}" target="_blank" href="{'/yunbuy/detail/'|cat:$m.buy_id|url}"><!--(第{$m.qishu}期)--> {$m.goods_name|truncate:50:''}</a></p>
+            <p class="w-goods-info">总需：{$m.need_num}人次</p>
+            <p class="w-goods-info">幸运号码：<span class="color01">{$m.luck_code}</span></p>
+            <p class="w-goods-info">总共参与：<span>{$m.qty}</span>人次</p>
+            <p class="w-goods-info">揭晓时间：<span style="font-size: 13px;">{microtime_format($m.end_time)}</span></p>
+        </div>
+    </li>
+    {/foreach}
+</ul>
+<div class="foot-btn fn-clear">{include file="ajax_page.html"}</div>
+{else}
+<div class="m-blank">该用户还没有{$L.unit_yun}{$L.unit_winning}记录！</div>
+{/if}
+
+<script type="text/javascript">
+    var load_div = '#load_dbCod';
+    $(document).ready(function(){
+        $(load_div).find('.demo').ajaxContent({
+            event:'click', //mouseover
+            loaderType:"text",
+            loadingMsg:"拼命加载中...",
+            target:load_div,
+            success:function(){
+                scrollLoading();
+            }
+        }).bind('click',function(){
+            $('html,body').animate({ scrollTop: '400px' }, 500);
+        });
+    })
+
+    $('.w-goodsList-item').bind('mouseover',function(){
+        $(this).addClass('hover');
+    }).bind('mouseout',function(){
+        $(this).removeClass('hover');
+    })
+</script>

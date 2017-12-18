@@ -1,0 +1,16 @@
+{zz mod=category var=tagMenu field='id,catname,ismenu' catid=$data.cat.id type=top}
+{if $tagMenu.ismenu==1}
+<div class="fn-left hy-l side-article">
+    <h4>{$tagMenu.catname}</h4>
+    <div class="hy-lnav">
+        <ul class="fn-clear">
+            {zz mod=category field='id,catname,url,ismenu' catid=$data.catlist.1 type=child child=0 }
+            {foreach from=$tagData item=m}
+			{if $m.ismenu==1}
+            <li{if $data.cat.id==$m.id} class="dq"{/if}><a href="{$m.url|url}">{$m.catname}</a></li>
+			{/if}
+            {/foreach}
+        </ul>
+    </div>
+</div>
+{/if}

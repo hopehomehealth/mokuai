@@ -1,0 +1,26 @@
+@charset "utf-8";
+/* CSS Document */
+/*全局样式*/
+
+html{width:100%; overflow-x:scroll;min-height: 100%;}
+body{ font:12px/1.8 arial,"微软雅黑";color:#434343; min-width:320px; min-height: 100%;background-attachment: fixed; background-size: 100% auto !important;}
+@media only screen and (min-width:320px) {
+html{ overflow-x:hidden;}
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {margin: 0;padding: 0;border: 0;outline: none;}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+ol,ul,li{list-style-image:none;list-style-position:outside;list-style-type:none;}
+input{ padding:0; margin:0; font-family:"微软雅黑"; outline:none}
+img{vertical-align: middle;}
+.left{float:left;}
+.right{float:right;}
+.clear{clear:both; height:0px; width:0; margin:0; padding:0; border:none; overflow:hidden; }
+dt{font-weight: normal;}
+dt,dd{line-height: 1.8;}
+a{text-decoration:none; cursor:pointer; color:#434343;transition-property:box-shadow,color,background-color,border;transition-duration:.5s;}
+a:hover{ color:#c41305;text-decoration: none;}
+
+.loaddown{position: absolute;left: 0;bottom:5%; text-align: center;width: 100%;font-size: 18px;}
+.loaddown a{border-radius: 5px; background: #e54048;padding:0 2em; line-height: 3;color: #fff;display: inline-block}
+.loaddown a span{display: block;background: url(/style/images/mobile-loaddown2.png) no-repeat 0 center; padding-left:3em;}

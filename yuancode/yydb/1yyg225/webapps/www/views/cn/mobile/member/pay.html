@@ -1,0 +1,27 @@
+{assign var='header' value='header2'}
+{include file="top.html"}
+<link rel="stylesheet" href="/style/mobile/css/member.css">
+<div id="content" class="container main">
+    <div class="tips-m">
+        <p>您的充值金额为：<span class="color01">{$order.surplus_amount}</span></p>
+        {if $payment_info.pay_fee}
+        <p>支付手续费用为：{$payment_info.pay_fee}</p>
+        {/if}
+        <p style="margin-bottom: 10px;">您选择的支付方式为：{$payment_info.pay_name}</p>
+        <div class="pay_button">{$payment_info.pay_button}</div>
+    </div>
+    {if $payment_info.pay_name == '扫码支付'}
+    <div style="padding: 10px 0 0 10px;font-size:12px;">
+      扫码支付步骤：
+      <p>1、长按二维码图片，保存二维码到手机相册</p>
+      <p>2、打开微信或支付宝，选择“扫一扫”</p>
+      <p>3、点击右上角“相册”，选中二维码图片</p>
+      <p>4、支付成功，回到浏览器，完成本次夺宝</p>
+    </div>
+    {/if}
+</div>
+<style type="text/css">
+    .pay_button{ text-align: center;}
+    .pay_button input{ background: #e54048; border: 0; font-size: 14px; color: #fff; font-weight: bold; padding:10px 20px; margin: 10px 0; cursor: pointer }
+</style>
+{include file="footer.html"}

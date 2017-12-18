@@ -1,0 +1,50 @@
+{foreach from=$data.logList item=m key=key}
+<dl class="zj-list">
+    <dt class="fn-left">
+        <a href="{'/minfo?id='|cat:$m.bid_user|url}#auc" target="_blank"><img src="{zz mod=photo source=$m.photo size='80' nopic='/upload/default.gif'}" alt="" /></a>
+    </dt>
+    <dd class="fn-left">
+        <p>
+            {if $data.row.type eq 1 && $key eq 0 && ($smarty.get.page eq 1 || !$smarty.get.page)}
+            <b class="color01">领先</b>
+            {/if}
+            <a href="{'/minfo?id='|cat:$m.bid_user|url}#auc" target="_blank">{$m.username|nickname:$m.nickname}</a>
+            {if $m.first eq 1}<span class="bg-01">首次出价</span>{/if} &nbsp;
+            <i style="color: #999;">{$m.bid_time|date_format:'Y-m-d H:i:s'}</i>
+        </p>
+        <p>
+            出价：<span class="color01">{if $m.bid_price gt 0}{$m.bid_price|price_format}{/if}</span>
+            {if $m.paib gt 0}<span class="color02">{$m.paib}{$L.unit_pay_points}</span>{/if} &nbsp;
+            {if $m.first eq 1}
+            随机码：<span class="color02">{$m.cod}</span> &nbsp;
+            {if $m.status eq 0}
+            <span>{$L.unit_kaijiang}日期：{$m.kj_time}</span>
+            {else}
+            <span>已{$L.unit_kaijiang}</span>
+            {/if}
+            {/if}
+        </p>
+    </dd>
+    {if $m.status gt 0}
+    <dd class="fn-right">
+        <img src="/style/images/zj-ico.png" alt="" />
+    </dd>
+    {/if}
+</dl>
+{foreachelse}
+<dl class="empty">暂无{if $data.status eq cod}{$L.unit_winning}{else}出价{/if}记录</dl>
+{/foreach}
+
+<div style="clear:both"></div>
+{include file="ajax_page.html"}
+<script type="text/javascript">
+    var ID = "{if $data.status eq cod}cod{else}log{/if}";
+    $(document).ready(function(){
+        $('#'+ID).find('.demo').ajaxContent({
+            event:'click', //mouseover
+            loaderType:"text",
+            loadingMsg:"拼命加载中...",
+            target:'#'+ID
+        });
+    });
+</script>

@@ -1,0 +1,26 @@
+{include file="header.html"}
+<link rel="stylesheet" href="/style/css/member.css">
+{include file="ur_here.html"}
+<div id="container">
+    <div class="fn-clear mt20 pb20">
+        {include file="member/menu.html"}
+        <div class="fn-right hy-r">
+            <div class="fn-clear hy-tjxh">
+                <div class="title"><h2>佣金充值{$L.unit_yun}</h2></div>
+                <div class="hy-zjfl">
+                    {if $site_config.withdraw_status eq 1}<a href="{url('/member/withdraw_commission')}">提现</a> | {/if}<a href="{url('/member/recharge_commission')}" class="dq">充值{$L.unit_yun}账户</a>
+                </div>
+                <div class="hy-yhk">
+                <form target="iframeNews" method="post">
+                <table>
+                    <tr><th>当前可充值佣金：</th><td><b class="color04">{$member.commission}</b> 元 <span class="color03">当佣金余额满1元即可充值</span></td></tr>
+                    <tr><th>充值金额：</th><td><input id="txtCZMoney" name="change_money" class="inpt-style2 w100" value="" tip="请输入充值金额" type="text"><b>元</b>&nbsp;<span class="color03">以整数为单位提取</span></td></tr>
+                    <tr><th>&nbsp;</th><td><input type="hidden" name="Submit" value="1"/><input type="submit" value="充值" class="hy-btn2"/></td></tr>
+                </table>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="footer.html"}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no" />
+    <title>发起圈子</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/user.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/member.css"/>
+</head>
+<body>
+<div id="header">
+   <div class="cart active">
+	    <div class="icon_box" tapmode="" onclick="api.closeWin()"><i class="iconfont icon-fanhui"></i></div>
+	    <div class="toptit">发起圈子</div>
+	    <div class="icon_box " tapmode="" onclick="backhome()"><i class="iconfont icon-shouye"></i></div>
+   </div>
+</div>
+<div id="content" class="container main">
+<form id="submit_form">
+    <div  id="member-content"></div>
+
+    <div class="tab-m-c">
+        <div class="form-m">
+
+            <div class="item ui-clr">
+                <dl>
+                    <dt class="color03">最大参与人数：</dt>
+                    <dd>
+                        <input type="text" class="input-m" name="count" value="" data-haved="true"/>
+                        <div class="tip-m" style="line-height: 1.8; font-size: 14px;">
+                                                                                    不得低于3人
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+            <div class="item ui-clr">
+                <dl>
+                    <dt class="color03">参与商品密码：</dt>
+                    <dd>
+                    	<input type="password" class="input-m" name="password" value="" />
+                    	<div class="tip-m" style="line-height: 1.8; font-size: 14px;">
+                                                                                 请输入6位纯数字密码
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+
+            <input class="btn" name="Submit" type="button" id="submit" value="立即发起">           
+        </div>
+    </div>
+        
+</form>
+</div>
+<script type="text/javascript" src="../script/jquery.min.js"></script>
+<script type="text/javascript" src="../script/availdate.js"></script>
+<script type="text/javascript" src="../script/fastclick.js"></script>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/doT.min.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript">
+var id;
+$(function(){        
+    ac.form({
+	    area: "#submit_form",
+	    btn: "#submit",
+	    singleError: function (e, msg) {
+
+	        toast(msg);
+	    },
+	    endSuccess: function (data) {
+	        showprog();       
+
+            var qz_max_num = $('input[name=count]').val();	 
+            var qz_pass = $('input[name=password]').val();
+            var buy_id = api.pageParam.id;
+    		var D={qz_max_num:qz_max_num,qz_pass:qz_pass,buy_id:buy_id};
+		//数据验证
+		if(parseInt(qz_max_num) != qz_max_num){ 
+			toast('最大参与人数只能输入数字！');
+			hideprog();
+			return false; 
+		}
+		if(parseInt(qz_pass) != qz_pass || qz_pass.length != 6){ 
+			toast('圈子商品密码为6位纯数字密码！'); 
+			hideprog();
+			return false; 
+		} 
+
+	        ajaxRequest('quanzi/sendQz', 'POST', {values:D}, function (ret, err) {
+		        hideprog();		
+		        if(ret.code){
+		          	toast(ret.msg);
+					openWin('quanzi_detail',{id:ret.data.qz_buy_id})
+		        }else{
+		          toast(ret.msg);
+		        }
+		        
+		   });
+	    }
+     });
+});
+apiready = function(){
+	//适配iOS 7+，Android 4.4+状态栏
+	var header = $api.byId('header');
+	$api.fixStatusBar(header);			
+    id = api.pageParam.id;
+
+
+}
+window.addEventListener('load', function() {
+  FastClick.attach(document.body);
+}, false);
+
+</script>
+</body>
+</html>

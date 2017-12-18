@@ -1,0 +1,42 @@
+{foreach from=$list item=row}
+<li>
+    <h3><a href="{url('/crowd/detail/')}{$row.cd_id}">{$row.cd_name}</a></h3>
+    <div class="">
+        <a href="{url('/crowd/detail/')}{$row.cd_id}"><img src="{zz mod=fileurl source=$row.thumb width=100 height=100}" /></a>
+        <h2>
+            订单金额：
+            <i>{$row.support_amount|price_format:2}</i>
+        </h2>
+        <p>
+            订单编号：{$row.support_sn}
+            <br />
+            交易状态：{if $row.support_status eq 0}
+            未支付
+            {elseif $row.support_status eq 1}
+            订单过期（未支付）
+            {elseif $row.support_status eq 2}
+            已支付
+            {elseif $row.support_status eq 3}
+            已退款（人数已满）
+            {elseif $support.support_status eq 4}
+            已支付
+            {elseif $row.support_status eq 5}
+            已支付
+            {elseif $row.support_status eq 6}
+            已支付
+            {/if}
+            {if $support.support_status eq 4}
+            未中奖
+            {elseif $support.support_status eq 5}
+            中奖（等待发货）
+            {elseif $support.support_status eq 6}
+            中奖（已发货）
+            {/if}
+            {if $row.support_lottery_number}<br/>抽奖编号:{$row.support_lottery_number} ({if $row.support_status eq 2}待开奖{elseif $row.support_status eq 4}未中奖{elseif $row.support_status gt 4}已中奖{/if}){/if}
+        </p>
+        <section>
+            {if $row.support_status eq 0}<a href="{url('/crowd/supportCheckout/')}{$row.support_sn}">去支付</a> | {/if}<a href="{url('/crowd_member/orderDetail/')}{$row.support_sn}">交易详情</a>
+        </section>
+    </div>
+</li>
+{/foreach}

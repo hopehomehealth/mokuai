@@ -1,0 +1,48 @@
+{assign var='header' value='header2'}
+{include file="top.html"}
+<link rel="stylesheet" href="/style/mobile/css/member.css">
+<div id="content" class="container main">
+	<div class="nav-m ui-clr">
+        <ul>
+            {if $site_config.withdraw_status eq 1}
+            <li><a href="{'/member/withdraw_commission'}">提现</a></li>
+            {/if}
+            {if $site_config.apply_jufu!=1}
+            <li><a href="{'/member/recharge_commission'}">充值到账户</a></li>
+            {if $site_config.withdraw_status eq 1}
+            <li><a href="{url('/member/commission')}">佣金明细</a></li>
+            <li class="on"><a href="{url('/member/withdraw_commission_log')}">佣金提现记录</a></li>
+        	{/if}
+            {/if}
+        </ul>
+    </div>
+
+    <div class="tips-m" style="padding:10px;text-align: center;color:#333;">
+        <a>累计收入<span class="color01">（{$commission_total}元）</span></a>
+        <a>累计(充值{if $site_config.withdraw_status eq 1}/提现{/if})<span class="color01">（{$member.deduct_commission}元）</span></a>
+        <a>佣金余额<span class="color01">（{$member.commission}元）</span></a>
+    </div>
+
+    <ul class="tab-cell tab-cell-5 ui-clr">
+        <li{if $smarty.get.time eq ''} class="on"{/if}><a href="{url('/member/withdraw_commission_log')}">全部</a></li>
+        <li{if $smarty.get.time eq 1} class="on"{/if}><a href="{url('/member/withdraw_commission_log')}?time=1">今天</a></li>
+        <li{if $smarty.get.time eq 2} class="on"{/if}><a href="{url('/member/withdraw_commission_log')}?time=2">本周</a></li>
+        <li{if $smarty.get.time eq 3} class="on"{/if}><a href="{url('/member/withdraw_commission_log')}?time=3">本月</a></li>
+        <li class="last {if $smarty.get.time eq 4} on{/if}"><a href="{url('/member/withdraw_commission_log')}?time=4">最近三月</a></li>
+    </ul>
+
+    <div class="list01 list-address">
+        <dl class="item"></dl>
+    </div>
+    <div class="loading getMore" style="background: #fff;"></div>
+</div>
+<script src="/style/mobile/js/jquery.more.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $('.list-address').more({
+            'address': '/member/withdraw_commission_log?1{if $smarty.get.time}&time={$smarty.get.time}{/if}',
+            'amount' : 10
+        })
+    });
+</script>
+{include file="footer.html"}
