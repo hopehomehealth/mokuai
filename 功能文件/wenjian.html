@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+	<title>Bootstrap 101 Template</title>
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+		crossorigin="anonymous">
+		<script>
+
+		</script>
+		<style>
+			.fade-enter-active,
+			.fade-leave-active {
+				transition: opacity .5s
+			}
+			
+			.fade-enter,
+			.fade-leave-to
+			/* .fade-leave-active in below version 2.1.8 */
+			
+			{
+				opacity: 0
+			}
+		</style>
+</head>
+
+<body style="text-align:center">
+	<h1 class="text-center">测试用</h1>
+	<div id="app">
+		<div v-show="1" class="panel panel-default" v-for="permission in permissions">
+			<div class="panel-heading">
+				<h3 class="panel-title" v-bind:data-id="5" v-on:click="changeShow">面板标题</h3>
+			</div>
+			<div class="panel-body" v-show="0">
+				<div>
+					hehe
+				</div>
+			</div>
+		</div>
+
+
+
+
+		姓名:<input id='start_time' type="text"><br/> 年龄:
+		<input id='end_time' type="text"> 下载文件:
+		<button @click="download" type="button">ajax下载文件</button>
+		<a href="download.php">直接链接下载文件</a>
+
+
+	</div>
+	<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+	<script src="/laydate/laydate.js"></script>
+	<script src="vue.js"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>
+<script>
+	laydate.render({
+        elem:'#start_time'  //指定元素
+
+    });
+    laydate.render({
+        elem:'#end_time'  //指定元素
+    });
+    var app = new Vue({
+        el:'#app',
+        data:{
+            permissions:[{'name':'zxj'},{'name':'shepeng'},{'name':'zhangqiang'},{'name':'jiachang'}],
+            show:[],
+        },
+        methods:{
+            changeShow:function (event) {
+//                console.log(event.target.dataset.id);
+//                event.target.dataset.id = !event.target.dataset.id;
+
+                console.log(event.target.appendChild(para));
+            },
+            download:function (e) {
+                $.ajax({
+                    type:'post',
+                    url:'download.php',
+                    data:{
+                        name:e.target.innerHTML
+                    },
+                    dataType:'json',
+                    success:function (res) {
+                        console.log(res);
+                        alert(res.name);
+                    }
+
+                });
+            }
+
+        }
+
+    });
+
+</script>
